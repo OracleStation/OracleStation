@@ -325,10 +325,10 @@
 	gloves = /obj/item/clothing/gloves/combat
 	back = /obj/item/storage/backpack
 	ears = /obj/item/device/radio/headset/syndicate/alt
-	l_pocket = /obj/item/pinpointer/syndicate
-	id = /obj/item/card/id/syndicate
-	belt = /obj/item/gun/ballistic/automatic/pistol
-	backpack_contents = list(/obj/item/storage/box/syndie=1)
+	l_pocket = /obj/item/weapon/pinpointer/nuke/syndicate
+	id = /obj/item/weapon/card/id/syndicate
+	belt = /obj/item/weapon/gun/ballistic/automatic/pistol
+	backpack_contents = list(/obj/item/weapon/storage/box/syndie=1)
 
 	var/tc = 25
 
