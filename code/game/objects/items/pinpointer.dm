@@ -15,12 +15,12 @@
 	materials = list(MAT_METAL = 500, MAT_GLASS = 250)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	var/active = FALSE
-	var/atom/movable/target //The thing we're searching for
+	var/atom/movable/target = null //The thing we're searching for
 	var/minimum_range = 0 //at what range the pinpointer declares you to be at your destination
 	var/alert = FALSE // TRUE to display things more seriously
 
-/obj/item/pinpointer/Initialize()
-	. = ..()
+/obj/item/pinpointer/New()
+	..()
 	GLOB.pinpointer_list += src
 
 /obj/item/pinpointer/Destroy()
@@ -31,30 +31,30 @@
 /obj/item/pinpointer/attack_self(mob/living/user)
 	active = !active
 	user.visible_message("<span class='notice'>[user] [active ? "" : "de"]activates their pinpointer.</span>", "<span class='notice'>You [active ? "" : "de"]activate your pinpointer.</span>")
-	playsound(src, 'sound/items/screwdriver2.ogg', 50, 1)
+	playsound(user, 'sound/items/screwdriver2.ogg', 50, 1)
 	if(active)
 		START_PROCESSING(SSfastprocess, src)
 	else
 		target = null
 		STOP_PROCESSING(SSfastprocess, src)
-	update_icon()
+	update_pointer_overlay()
 
 /obj/item/pinpointer/process()
 	if(!active)
-		return PROCESS_KILL
+		STOP_PROCESSING(SSfastprocess, src)
+		return
 	scan_for_target()
-	update_icon()
+	update_pointer_overlay()
 
 /obj/item/pinpointer/proc/scan_for_target()
 	return
 
-/obj/item/pinpointer/update_icon()
+/obj/item/pinpointer/proc/update_pointer_overlay()
 	cut_overlays()
 	if(!active)
 		return
 	if(!target)
 		add_overlay("pinon[alert ? "alert" : ""]null")
-		return
 	var/turf/here = get_turf(src)
 	var/turf/there = get_turf(target)
 	if(here.z != there.z)
@@ -95,10 +95,10 @@
 	if(active)
 		active = FALSE
 		user.visible_message("<span class='notice'>[user] deactivates their pinpointer.</span>", "<span class='notice'>You deactivate your pinpointer.</span>")
-		playsound(src, 'sound/items/screwdriver2.ogg', 50, 1)
+		playsound(user, 'sound/items/screwdriver2.ogg', 50, 1)
 		target = null //Restarting the pinpointer forces a target reset
 		STOP_PROCESSING(SSfastprocess, src)
-		update_icon()
+		update_pointer_overlay()
 		return
 
 	var/list/name_counts = list()
@@ -108,32 +108,31 @@
 		if(!trackable(H))
 			continue
 
-		var/crewmember_name = "Unknown"
+		var/name = "Unknown"
 		if(H.wear_id)
 			var/obj/item/card/id/I = H.wear_id.GetID()
-			if(I && I.registered_name)
-				crewmember_name = I.registered_name
+			name = I.registered_name
 
-		while(crewmember_name in name_counts)
-			name_counts[crewmember_name]++
-			crewmember_name = text("[] ([])", crewmember_name, name_counts[crewmember_name])
-		names[crewmember_name] = H
-		name_counts[crewmember_name] = 1
+		while(name in name_counts)
+			name_counts[name]++
+			name = text("[] ([])", name, name_counts[name])
+		names[name] = H
+		name_counts[name] = 1
 
 	if(!names.len)
 		user.visible_message("<span class='notice'>[user]'s pinpointer fails to detect a signal.</span>", "<span class='notice'>Your pinpointer fails to detect a signal.</span>")
 		return
 
 	var/A = input(user, "Person to track", "Pinpoint") in names
-	if(!A || QDELETED(src) || !user || !user.is_holding(src) || user.incapacitated())
+	if(!src || QDELETED(src) || !user || !user.is_holding(src) || user.incapacitated() || !A)
 		return
 
 	target = names[A]
 	active = TRUE
 	user.visible_message("<span class='notice'>[user] activates their pinpointer.</span>", "<span class='notice'>You activate your pinpointer.</span>")
-	playsound(src, 'sound/items/screwdriver2.ogg', 50, 1)
+	playsound(user, 'sound/items/screwdriver2.ogg', 50, 1)
 	START_PROCESSING(SSfastprocess, src)
-	update_icon()
+	update_pointer_overlay()
 
 /obj/item/pinpointer/crew/scan_for_target()
 	if(target)
@@ -141,12 +140,13 @@
 			var/mob/living/carbon/human/H = target
 			if(!trackable(H))
 				target = null
-	if(!target) //target can be set to null from above code, or elsewhere
+	if(!target)
 		active = FALSE
 
 /obj/item/pinpointer/process()
 	if(!active)
-		return PROCESS_KILL
+		STOP_PROCESSING(SSfastprocess, src)
+		return
 	scan_for_target()
-	update_icon()
+	update_pointer_overlay()
 
