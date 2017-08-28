@@ -13,7 +13,6 @@
 #define AI_JF				(1<<9)
 #define CYBORG			(1<<10)
 
-
 #define MEDSCI			(1<<1)
 
 #define RD_JF				(1<<0)
@@ -41,3 +40,4 @@
 #define CLOWN				(1<<11)
 #define MIME				(1<<12)
 #define ASSISTANT			(1<<13)
+#define BLUESHIELD (1<<14)

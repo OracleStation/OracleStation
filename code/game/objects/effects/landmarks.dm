@@ -129,6 +129,9 @@
 /obj/effect/landmark/start/chaplain
 	name = "Chaplain"
 
+/obj/effect/landmark/start/blueshield
+	name = "Blueshield"
+
 //Department Security spawns
 
 /obj/effect/landmark/start/depsec
