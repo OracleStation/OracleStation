@@ -248,7 +248,7 @@ EVENTS_MIN_PLAYERS_MUL 1
 ## AI ###
 
 ## Allow the AI job to be picked.
-#ALLOW_AI
+ALLOW_AI
 
 ## Secborg ###
 ## Uncomment to prevent the security cyborg module from being chosen
@@ -266,6 +266,11 @@ GATEWAY_DELAY 18000
 
 
 ## ACCESS ###
+
+## If the number of players ready at round starts exceeds this threshold, JOBS_HAVE_MINIMAL_ACCESS will automatically be enabled. Otherwise, it will be disabled.
+## This is useful for accomodating both low and high population rounds on the same server.
+## Comment this out or set to 0 to disable this automatic toggle.
+MINIMAL_ACCESS_THRESHOLD 20
 
 ## Comment this out this if you wish to use the setup where jobs have more access.
 ## This is intended for servers with low populations - where there are not enough
