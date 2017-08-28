@@ -129,6 +129,25 @@
 	color = "#731008" // rgb: 115, 16, 8
 	taste_description = "ketchup"
 
+/datum/reagent/consumable/fungus
+	name = "Space Fungus"
+	id = "fungus"
+	description = "Scrapings of some unknown fungus found growing on the station walls."
+	reagent_state = LIQUID
+	color = "#C87D28"
+	taste_description = "mold"
+
+/datum/reagent/consumable/fungus/reaction_mob(mob/living/M, method=TOUCH, volume)
+	if(method == INGEST)
+		var/randchance = rand(1, 10)
+		if(randchance == 1)
+			to_chat(M, "<span class='warning'>You feel very sick.</span>)")
+			M.reagents.add_reagent("toxin", rand(1, 5))
+		else if(randchance <= 5)
+			to_chat(M, "<span class='warning'>That tasted absolutely foul.</span>")
+			//Contract a disease
+		else
+			to_chat(M, "<span class='warning'>Yuck!</span>")
 
 /datum/reagent/consumable/capsaicin
 	name = "Capsaicin Oil"
@@ -390,7 +409,7 @@
 	T.MakeSlippery(min_wet_time = 10, wet_time_to_add = reac_volume*2)
 	var/obj/effect/hotspot/hotspot = (locate(/obj/effect/hotspot) in T)
 	if(hotspot)
-		var/datum/gas_mixture/lowertemp = T.remove_air(T.air.total_moles())
+		var/datum/gas_mixture/lowertemp = T.remove_air( T:air:total_moles() )
 		lowertemp.temperature = max( min(lowertemp.temperature-2000,lowertemp.temperature / 2) ,0)
 		lowertemp.react()
 		T.assume_air(lowertemp)

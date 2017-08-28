@@ -3,7 +3,7 @@
 	name = "Sterilizine"
 	id = "sterilizine"
 	results = list("sterilizine" = 3)
-	required_reagents = list("ethanol" = 1, "charcoal" = 1, "chlorine" = 1)
+	required_reagents = list("antihol" = 2, "chlorine" = 1)
 
 /datum/chemical_reaction/lube
 	name = "Space Lube"
@@ -73,7 +73,7 @@
 	name = "Capsaicincondensation"
 	id = "capsaicincondensation"
 	results = list("condensedcapsaicin" = 5)
-	required_reagents = list("capsaicin" = 1, "ethanol" = 5)
+	required_reagents = list("capsaicin" = 2, "stable_plasma" = 5)
 
 /datum/chemical_reaction/soapification
 	name = "Soapification"
@@ -223,7 +223,7 @@
 	name = "Virus Food"
 	id = "virusfood"
 	results = list("virusfood" = 15)
-	required_reagents = list("water" = 5, "milk" = 5)
+	required_reagents = list("water" = 5, "milk" = 5, "oxygen" = 1)
 
 /datum/chemical_reaction/virus_food_mutagen
 	name = "mutagenic agar"
@@ -466,20 +466,6 @@
 	s.start()
 	holder.clear_reagents()
 
-/datum/chemical_reaction/smart_foam
-	name = "Smart Metal Foam"
-	id = "smart_metal_foam"
-	required_reagents = list("aluminium" = 3, "smart_foaming_agent" = 1, "facid" = 1)
-	mob_react = TRUE
-
-/datum/chemical_reaction/smart_foam/on_reaction(datum/reagents/holder, created_volume)
-	var/turf/location = get_turf(holder.my_atom)
-	location.visible_message("<span class='danger'>The solution spews out metallic foam!</span>")
-	var/datum/effect_system/foam_spread/metal/smart/s = new()
-	s.set_up(created_volume * 5, location, holder, TRUE)
-	s.start()
-	holder.clear_reagents()
-
 /datum/chemical_reaction/ironfoam
 	name = "Iron Foam"
 	id = "ironlfoam"
@@ -499,14 +485,7 @@
 	name = "Foaming Agent"
 	id = "foaming_agent"
 	results = list("foaming_agent" = 1)
-	required_reagents = list("lithium" = 1, "hydrogen" = 1)
-
-/datum/chemical_reaction/smart_foaming_agent
-	name = "Smart foaming Agent"
-	id = "smart_foaming_agent"
-	results = list("smart_foaming_agent" = 3)
-	required_reagents = list("foaming_agent" = 3, "acetone" = 1, "iron" = 1)
-	mix_message = "The solution mixes into a frothy metal foam and conforms to the walls of its container."
+	required_reagents = list("aluminium" = 3, "fluorosurfactant" = 1, "sacid" = 1)
 
 
 /////////////////////////////// Cleaning and hydroponics /////////////////////////////////////////////////
@@ -522,12 +501,19 @@
 	id = "diethylamine"
 	results = list("diethylamine" = 2)
 	required_reagents = list ("ammonia" = 1, "ethanol" = 1)
+	required_temp = 374
 
 /datum/chemical_reaction/space_cleaner
 	name = "Space cleaner"
 	id = "cleaner"
 	results = list("cleaner" = 2)
-	required_reagents = list("ammonia" = 1, "water" = 1)
+	required_reagents = list("ammonia" = 1, "water" = 1, "ethanol" = 1)
+
+/datum/chemical_reaction/sulfuric_acid
+	name = "Sulfuric acid"
+	id = "sacid"
+	results = list("sacid" = 2)
+	required_reagents = list("sulfur" = 1, "oxygen" = 1, "hydrogen" = 1)
 
 /datum/chemical_reaction/plantbgone
 	name = "Plant-B-Gone"
@@ -565,7 +551,7 @@
 	name = "carpet"
 	id = "carpet"
 	results = list("carpet" = 2)
-	required_reagents = list("space_drugs" = 1, "blood" = 1)
+	required_reagents = list("fungus" = 1, "blood" = 1)
 
 /datum/chemical_reaction/oil
 	name = "Oil"
@@ -671,3 +657,13 @@
 	var/location = get_turf(holder.my_atom)
 	for(var/i in 1 to 10)
 		new /obj/item/stack/sheet/plastic(location)
+
+/datum/chemical_reaction/synthmeat
+	name = "Synth Meat"
+	id = "synth_meat"
+	required_reagents = list("cryoxadone" = 1, "blood" = 5)
+
+/datum/chemical_reaction/synthmeat/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/reagent_containers/food/snacks/meat/slab/synthmeat(location)
