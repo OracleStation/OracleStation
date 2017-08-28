@@ -117,3 +117,4 @@
 #define NO_UNDERWEAR	26
 #define NOLIVER			27
 #define NOSTOMACH		28
+#define FOXHAIR			29	//hair for foxpeople; different than humans

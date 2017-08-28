@@ -87,6 +87,13 @@
 	tastes = list("meat" = 4, "scales" = 1)
 	foodtype = MEAT | RAW
 
+/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/fox
+	icon_state = "foxmeat"
+	desc = "Rawr?"
+	filling_color = "#DF8134"
+	tastes = list("meat" = 4, "stray hairs" = 1)
+	foodtype = MEAT | RAW
+
 /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/plant
 	icon_state = "plantmeat"
 	desc = "All the joys of healthy eating with all the fun of cannibalism."
@@ -239,7 +246,7 @@
 	list_reagents = list("nutriment" = 1)
 	filling_color = "#B22222"
 	tastes = list("bacon" = 1)
-	foodtype = RAW | MEAT 
+	foodtype = RAW | MEAT
 
 /obj/item/reagent_containers/food/snacks/meat/bacon
 	name = "piece of bacon"
