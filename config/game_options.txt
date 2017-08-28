@@ -41,17 +41,17 @@ RUN_DELAY 1
 WALK_DELAY 4
 
 ## The variables below affect the movement of specific mob types.
-HUMAN_DELAY 0
-ROBOT_DELAY 0
-MONKEY_DELAY 0
-ALIEN_DELAY 0
-SLIME_DELAY 0
-ANIMAL_DELAY 1
+HUMAN_DELAY 1.5
+ROBOT_DELAY 1.5
+MONKEY_DELAY 1.5
+ALIEN_DELAY 1.5
+SLIME_DELAY 1.5
+ANIMAL_DELAY 1.5
 
 
 ## NAMES ###
 ## If uncommented this adds a random surname to a player's name if they only specify one name.
-#HUMANS_NEED_SURNAMES
+HUMANS_NEED_SURNAMES
 
 ## If uncommented, this forces all players to use random names !and appearances!.
 #FORCE_RANDOM_NAMES
@@ -487,4 +487,3 @@ ARRIVALS_SHUTTLE_DOCK_WINDOW 55
 ## How many wirechewing rodents you want to spawn on exposed maintenane wires at the start of the round. You may wish to set this to 0 if you're testing powernets.
 
 MICE_ROUNDSTART 10
-

@@ -3,6 +3,10 @@
 #Ignore everything in datafolder and subdirectories
 /data/**/*
 
+#ignore any files in config/, except those in subdirectories.
+/config/*
+!config/**/*/
+
 #Ignore byond config folder.
 /cfg/**/*
 
@@ -192,3 +196,4 @@ Temporary Items
 
 #Visual studio stuff
 *.vscode/*
+.atom-build.json
