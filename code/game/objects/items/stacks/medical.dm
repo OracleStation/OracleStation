@@ -51,7 +51,9 @@
 					return
 
 		if(splint_fracture)
-			if(!affecting.broken)
+			if(affecting.body_part in list(CHEST, HEAD))
+				to_chat(user, "<span class='warning'>You can't splint that bodypart!</span>")
+			else if(!affecting.broken)
 				to_chat(user, "<span class='warning'>[M]'s [parse_zone(user.zone_selected)] isn't broken!</span>")
 				return
 			else if(affecting.splinted)
