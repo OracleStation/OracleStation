@@ -228,7 +228,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			if(HAIR in pref_species.species_traits)
 
-				dat += "<td valign='top' width='14%'>"
+				dat += "<td valign='top' width='10%'>"
 
 				dat += "<h3>Hair Style</h3>"
 
@@ -238,6 +238,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 
 				dat += "</td><td valign='top' width='14%'>"
+
+			if(FACEHAIR in pref_species.species_traits)
 
 				dat += "<h3>Facial Hair Style</h3>"
 
@@ -334,7 +336,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "</td>"
 
 				if("body_markings" in pref_species.mutant_bodyparts)
-					dat += "<td valign='top' width='14%'>"
+					dat += "<td valign='top' width='10%'>"
 
 					dat += "<h3>Body Markings</h3>"
 
