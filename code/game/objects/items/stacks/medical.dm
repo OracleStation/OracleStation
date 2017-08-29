@@ -14,7 +14,9 @@
 	var/heal_brute = 0
 	var/heal_burn = 0
 	var/stop_bleeding = 0
+	var/splint_fracture = FALSE
 	var/self_delay = 50
+
 
 /obj/item/stack/medical/attack(mob/living/M, mob/user)
 
@@ -47,6 +49,14 @@
 				else if(!H.bleed_rate)
 					to_chat(user, "<span class='warning'>[H] isn't bleeding!</span>")
 					return
+
+		if(splint_fracture)
+			if(!affecting.broken)
+				to_chat(user, "<span class='warning'>[M]'s [parse_zone(user.zone_selected)] isn't broken!</span>")
+				return
+			else if(affecting.splinted)
+				to_chat(user, "<span class='warning'>[M]'s [parse_zone(user.zone_selected)] is already splinted!</span>")
+				return
 
 
 	if(isliving(M))
@@ -81,7 +91,6 @@
 
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		affecting = C.get_bodypart(check_zone(user.zone_selected))
 		if(!affecting) //Missing limb?
 			to_chat(user, "<span class='warning'>[C] doesn't have \a [parse_zone(user.zone_selected)]!</span>")
 			return
@@ -93,8 +102,11 @@
 		if(affecting.status == BODYPART_ORGANIC) //Limb must be organic to be healed - RR
 			if(affecting.heal_damage(heal_brute, heal_burn))
 				C.update_damage_overlays()
+			if(splint_fracture)
+				affecting.splinted = TRUE
+				C.update_inv_splints()
 		else
-			to_chat(user, "<span class='notice'>Medicine won't work on a robotic limb!</span>")
+			to_chat(user, "<span class='notice'>[src] won't work on a robotic limb!</span>")
 	else
 		M.heal_bodypart_damage((src.heal_brute/2), (src.heal_burn/2))
 
@@ -145,3 +157,12 @@
 	heal_burn = 40
 	origin_tech = "biotech=2"
 	self_delay = 20
+
+/obj/item/stack/medical/splint
+	name = "splints"
+	desc = "Used to secure limbs following a fracture."
+	gender = PLURAL
+	singular_name = "splint"
+	icon_state = "splint"
+	self_delay = 40
+	splint_fracture = TRUE

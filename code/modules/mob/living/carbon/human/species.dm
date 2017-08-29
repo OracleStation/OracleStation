@@ -1242,6 +1242,10 @@
 			I.add_mob_blood(H)
 			playsound(get_turf(H), I.get_dismember_sound(), 80, 1)
 
+	if(I.force >= 10 && prob(I.force * 2))
+		affecting.break_bone()
+		H.visible_message("<span class='warning'>You hear a cracking sound coming from [H]'s [parse_zone(affecting)].</span>", "<span class='warning'>You feel something crack in your [parse_zone(affecting)]!</span>", "<span class='warning'>You hear an awful cracking sound.</span>")
+
 	var/bloody = 0
 	if(((I.damtype == BRUTE) && I.force && prob(25 + (I.force * 2))))
 		if(affecting.status == BODYPART_ORGANIC)
