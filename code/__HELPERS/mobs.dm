@@ -115,7 +115,7 @@
 
 /proc/random_unique_fox_name(gender, attempts_to_find_unique_name=10)
 	for(var/i=1, i<=attempts_to_find_unique_name, i++)
-		. = capitalize(lizard_name(gender))
+		. = capitalize(fox_name(gender))
 
 		if(i != attempts_to_find_unique_name && !findname(.))
 			break
