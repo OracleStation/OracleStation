@@ -24,6 +24,7 @@
 //STUN
 /datum/status_effect/incapacitating/stun
 	id = "stun"
+	alert_type = /obj/screen/alert/status_effect/stunned
 
 //KNOCKDOWN
 /datum/status_effect/incapacitating/knockdown
