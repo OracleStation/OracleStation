@@ -106,7 +106,7 @@
 	growing_icon = 'icons/obj/hydroponics/growing_flowers.dmi'
 	icon_grow = "sunflower-grow"
 	icon_dead = "sunflower-dead"
-	mutatelist = list(/obj/item/seeds/sunflower/moonflower, /obj/item/seeds/sunflower/novaflower)
+	mutatelist = list(/obj/item/seeds/sunflower/moonflower)
 	reagents_add = list("cornoil" = 0.08, "nutriment" = 0.04)
 
 /obj/item/weapon/grown/sunflower // FLOWER POWER!
@@ -146,57 +146,3 @@
 	slot_flags = SLOT_HEAD
 	filling_color = "#E6E6FA"
 	bitesize_mod = 2
-
-// Novaflower
-/obj/item/seeds/sunflower/novaflower
-	name = "pack of novaflower seeds"
-	desc = "These seeds grow into novaflowers."
-	icon_state = "seed-novaflower"
-	species = "novaflower"
-	plantname = "Novaflowers"
-	product = /obj/item/weapon/grown/novaflower
-	mutatelist = list()
-	reagents_add = list("condensedcapsaicin" = 0.25, "capsaicin" = 0.3, "nutriment" = 0)
-	rarity = 20
-
-/obj/item/weapon/grown/novaflower
-	seed = /obj/item/seeds/sunflower/novaflower
-	name = "novaflower"
-	desc = "These beautiful flowers have a crisp smokey scent, like a summer bonfire."
-	icon_state = "novaflower"
-	damtype = "fire"
-	force = 0
-	slot_flags = SLOT_HEAD
-	throwforce = 0
-	w_class = WEIGHT_CLASS_TINY
-	throw_speed = 1
-	throw_range = 3
-	attack_verb = list("roasted", "scorched", "burned")
-
-/obj/item/weapon/grown/novaflower/add_juice()
-	..()
-	force = round((5 + seed.potency / 5), 1)
-
-/obj/item/weapon/grown/novaflower/attack(mob/living/carbon/M, mob/user)
-	if(!..())
-		return
-	if(isliving(M))
-		to_chat(M, "<span class='danger'>You are lit on fire from the intense heat of the [name]!</span>")
-		M.adjust_fire_stacks(seed.potency / 20)
-		if(M.IgniteMob())
-			message_admins("[key_name_admin(user)] set [key_name_admin(M)] on fire")
-			log_game("[key_name(user)] set [key_name(M)] on fire")
-
-/obj/item/weapon/grown/novaflower/afterattack(atom/A as mob|obj, mob/user,proximity)
-	if(!proximity) return
-	if(force > 0)
-		force -= rand(1, (force / 3) + 1)
-	else
-		to_chat(usr, "<span class='warning'>All the petals have fallen off the [name] from violent whacking!</span>")
-		qdel(src)
-
-/obj/item/weapon/grown/novaflower/pickup(mob/living/carbon/human/user)
-	..()
-	if(!user.gloves)
-		to_chat(user, "<span class='danger'>The [name] burns your bare hand!</span>")
-		user.adjustFireLoss(rand(1, 5))

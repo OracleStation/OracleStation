@@ -242,7 +242,7 @@
 	name ="Melon keg"
 	reqs = list(
 		/datum/reagent/consumable/ethanol/vodka = 25,
-		/obj/item/weapon/reagent_containers/food/snacks/grown/holymelon = 1,
+		/obj/item/weapon/reagent_containers/food/snacks/grown/watermelon = 1,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka = 1
 	)
 	parts = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka = 1)

@@ -64,17 +64,6 @@
 	result = /obj/item/weapon/reagent_containers/food/snacks/store/bread/creamcheese
 	subcategory = CAT_BREAD
 
-/datum/crafting_recipe/food/mimanabread
-	name = "Mimana bread"
-	reqs = list(
-		/datum/reagent/consumable/soymilk = 5,
-		/obj/item/weapon/reagent_containers/food/snacks/store/bread/plain = 1,
-		/obj/item/weapon/reagent_containers/food/snacks/tofu = 3,
-		/obj/item/weapon/reagent_containers/food/snacks/grown/banana/mime = 1
-	)
-	result = /obj/item/weapon/reagent_containers/food/snacks/store/bread/mimana
-	subcategory = CAT_BREAD
-
 /datum/crafting_recipe/food/butteredtoast
 	name = "Buttered Toast"
 	reqs = list(
@@ -92,4 +81,3 @@
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/butterbiscuit
 	subcategory = CAT_BREAD
-
