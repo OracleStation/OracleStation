@@ -279,12 +279,15 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["uplink_loc"]			>> uplink_spawn_loc
 	S["feature_mcolor"]					>> features["mcolor"]
 	S["feature_lizard_tail"]			>> features["tail_lizard"]
+	S["feature_fox_tail"]				>> features["tail_fox"]
 	S["feature_lizard_snout"]			>> features["snout"]
+	S["feature_snout_fox"]				>> features["snout_fox"]
 	S["feature_lizard_horns"]			>> features["horns"]
 	S["feature_lizard_frills"]			>> features["frills"]
 	S["feature_lizard_spines"]			>> features["spines"]
 	S["feature_lizard_body_markings"]	>> features["body_markings"]
 	S["feature_lizard_legs"]			>> features["legs"]
+	S["feature_ears_anthro"]			>> features["ears_anthro"]
 	if(!config.mutant_humans)
 		features["tail_human"] = "none"
 		features["ears"] = "none"
@@ -345,10 +348,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	uplink_spawn_loc = sanitize_inlist(uplink_spawn_loc, GLOB.uplink_spawn_loc_list, initial(uplink_spawn_loc))
 	features["mcolor"]	= sanitize_hexcolor(features["mcolor"], 3, 0)
 	features["tail_lizard"]	= sanitize_inlist(features["tail_lizard"], GLOB.tails_list_lizard)
+	features["tail_fox"] = sanitize_inlist(features["tail_fox"], GLOB.tails_list_fox)
 	features["tail_human"] 	= sanitize_inlist(features["tail_human"], GLOB.tails_list_human, "None")
 	features["snout"]	= sanitize_inlist(features["snout"], GLOB.snouts_list)
+	features["snout_fox"] = sanitize_inlist(features["snout_fox"], GLOB.snouts_fox_list)
 	features["horns"] 	= sanitize_inlist(features["horns"], GLOB.horns_list)
 	features["ears"]	= sanitize_inlist(features["ears"], GLOB.ears_list, "None")
+	features["ears_anthro"] = sanitize_inlist(features["ears_anthro"], GLOB.ears_anthro_list)
 	features["frills"] 	= sanitize_inlist(features["frills"], GLOB.frills_list)
 	features["spines"] 	= sanitize_inlist(features["spines"], GLOB.spines_list)
 	features["body_markings"] 	= sanitize_inlist(features["body_markings"], GLOB.body_markings_list)
@@ -400,6 +406,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_lizard_tail"]			, features["tail_lizard"])
 	WRITE_FILE(S["feature_human_tail"]				, features["tail_human"])
 	WRITE_FILE(S["feature_lizard_snout"]			, features["snout"])
+	WRITE_FILE(S["feature_snout_fox"]			, features["snout_fox"])
+	WRITE_FILE(S["feature_fox_tail"]			, features["tail_fox"])
+	WRITE_FILE(S["feature_ears_anthro"]			, features["ears_anthro"])
 	WRITE_FILE(S["feature_lizard_horns"]			, features["horns"])
 	WRITE_FILE(S["feature_human_ears"]				, features["ears"])
 	WRITE_FILE(S["feature_lizard_frills"]			, features["frills"])

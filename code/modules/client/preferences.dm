@@ -66,7 +66,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
-	var/list/features = list("mcolor" = "FFF", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs")
+	var/list/features = list("mcolor" = "FFF", "tail_lizard" = "Smooth", "tail_human" = "None", "tail_fox" = "Bushy", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs")
 
 	var/list/custom_names = list("clown", "mime", "ai", "cyborg", "religion", "deity")
 	var/prefered_security_department = SEC_DEPT_RANDOM
@@ -228,7 +228,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			if(HAIR in pref_species.species_traits)
 
-				dat += "<td valign='top' width='21%'>"
+				dat += "<td valign='top' width='10%'>"
 
 				dat += "<h3>Hair Style</h3>"
 
@@ -237,7 +237,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=hair;task=input'>Change</a><BR>"
 
 
-				dat += "</td><td valign='top' width='21%'>"
+				dat += "</td><td valign='top' width='14%'>"
+
+			if(FACEHAIR in pref_species.species_traits)
 
 				dat += "<h3>Facial Hair Style</h3>"
 
@@ -247,9 +249,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				dat += "</td>"
 
-			if(EYECOLOR in pref_species.species_traits)
+			if("foxhair" in pref_species.mutant_bodyparts)
 
 				dat += "<td valign='top' width='21%'>"
+
+				dat += "<h3>Hair Style</h3>"
+
+				dat += "<a href='?_src_=prefs;preference=foxhair_style;task=input'>[hair_style]</a><BR>"
+				dat += "<a href='?_src_=prefs;preference=previous_foxhair_style;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_foxhair_style;task=input'>&gt;</a><BR>"
+				dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=hair;task=input'>Change</a><BR>"
+
+			if(EYECOLOR in pref_species.species_traits)
+
+				dat += "<td valign='top' width='7%'>"
 
 				dat += "<h3>Eye Color</h3>"
 
@@ -279,11 +291,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "</td>"
 
 				if("snout" in pref_species.mutant_bodyparts)
-					dat += "<td valign='top' width='7%'>"
+					dat += "<td valign='top' width='14%'>"
 
 					dat += "<h3>Snout</h3>"
 
 					dat += "<a href='?_src_=prefs;preference=snout;task=input'>[features["snout"]]</a><BR>"
+
+					dat += "</td>"
+
+				if("snout_fox" in pref_species.mutant_bodyparts)
+					dat += "<td valign='top' width='14%'>"
+
+					dat += "<h3>Snout</h3>"
+
+					dat += "<a href='?_src_=prefs;preference=snout_fox;task=input'>[features["snout_fox"]]</a><BR>"
 
 					dat += "</td>"
 
@@ -315,7 +336,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "</td>"
 
 				if("body_markings" in pref_species.mutant_bodyparts)
-					dat += "<td valign='top' width='7%'>"
+					dat += "<td valign='top' width='10%'>"
 
 					dat += "<h3>Body Markings</h3>"
 
@@ -330,6 +351,25 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<a href='?_src_=prefs;preference=legs;task=input'>[features["legs"]]</a><BR>"
 
 					dat += "</td>"
+
+				if("tail_fox" in pref_species.mutant_bodyparts)
+					dat += "<td valign='top' width='14%'>"
+
+					dat += "<h3>Tail</h3>"
+
+					dat += "<a href='?_src_=prefs;preference=tail_fox;task=input'>[features["tail_fox"]]</a><BR>"
+
+					dat += "</td>"
+
+				if("ears_anthro" in pref_species.mutant_bodyparts)
+					dat += "<td valign='top' width='14%'>"
+
+					dat += "<h3>Ears</h3>"
+
+					dat += "<a href='?_src_=prefs;preference=ears_anthro;task=input'>[features["ears_anthro"]]</a><BR>"
+
+					dat += "</td>"
+
 			if(config.mutant_humans)
 
 				if("tail_human" in pref_species.mutant_bodyparts)
@@ -896,6 +936,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_hair_style)
 						hair_style = new_hair_style
 
+				if("foxhair_style")
+					var/new_hair_style
+					new_hair_style = input(user, "Choose your character's hair style:", "Character Preference")  as null|anything in GLOB.hair_list_fox
+					if(new_hair_style)
+						features["foxhair"] = new_hair_style
+
+				if("next_foxhair_style")
+					features["foxhair"] = next_list_item(features["foxhair"], GLOB.hair_list_fox)
+
+				if("previous_foxhair_style")
+					features["foxhair"] = previous_list_item(features["foxhair"], GLOB.hair_list_fox)
+
 				if("next_hair_style")
 					if (gender == MALE)
 						hair_style = next_list_item(hair_style, GLOB.hair_styles_male_list)
@@ -981,7 +1033,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						var/temp_hsv = RGBtoHSV(new_mutantcolor)
 						if(new_mutantcolor == "#000000")
 							features["mcolor"] = pref_species.default_color
-						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#7F7F7F")[3]) // mutantcolors must be bright, but only if they affect the skin
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#252525")[3]) // mutantcolors must be bright, but only if they affect the skin
 							features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
 						else
 							to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -991,6 +1043,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					new_tail = input(user, "Choose your character's tail:", "Character Preference") as null|anything in GLOB.tails_list_lizard
 					if(new_tail)
 						features["tail_lizard"] = new_tail
+
+				if("tail_fox")
+					var/new_tail
+					new_tail = input(user, "Choose your character's tail:", "Character Preference") as null|anything in GLOB.tails_list_fox
+					if(new_tail)
+						features["tail_fox"] = new_tail
+
+				if("ears_anthro")
+					var/new_ears
+					new_ears = input(user, "Choose your character's ears:", "Character Preference") as null|anything in GLOB.ears_anthro_list
+					if(new_ears)
+						features["ears_anthro"] = new_ears
 
 				if("tail_human")
 					var/new_tail
@@ -1003,6 +1067,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					new_snout = input(user, "Choose your character's snout:", "Character Preference") as null|anything in GLOB.snouts_list
 					if(new_snout)
 						features["snout"] = new_snout
+
+				if("snout_fox")
+					var/new_snout
+					new_snout = input(user, "Choose your character's snout:", "Character Preference") as null|anything in GLOB.snouts_fox_list
+					if(new_snout)
+						features["snout_fox"] = new_snout
 
 				if("horns")
 					var/new_horns

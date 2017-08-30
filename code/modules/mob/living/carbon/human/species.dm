@@ -415,7 +415,7 @@
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
 	var/list/bodyparts_to_add = mutant_bodyparts.Copy()
-	var/list/relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	var/list/relevant_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	var/list/standing	= list()
 
 	H.remove_overlay(BODY_BEHIND_LAYER)
@@ -448,6 +448,16 @@
 		else if ("tail_human" in mutant_bodyparts)
 			bodyparts_to_add -= "waggingtail_human"
 
+	if("tail_fox" in mutant_bodyparts)
+		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
+			bodyparts_to_add -= "tail_fox"
+
+	if("waggingtail_fox" in mutant_bodyparts)
+		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
+			bodyparts_to_add -= "waggingtail_fox"
+		else if ("tail_fox" in mutant_bodyparts)
+			bodyparts_to_add -= "waggingtail_fox"
+
 	if("spines" in mutant_bodyparts)
 		if(!H.dna.features["spines"] || H.dna.features["spines"] == "None" || H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
 			bodyparts_to_add -= "spines"
@@ -461,6 +471,14 @@
 	if("snout" in mutant_bodyparts) //Take a closer look at that snout!
 		if((H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || (H.head && (H.head.flags_inv & HIDEFACE)) || !HD || HD.status == BODYPART_ROBOTIC)
 			bodyparts_to_add -= "snout"
+
+	if("snout_fox" in mutant_bodyparts) //Take a closer look at that snout!
+		if((H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || (H.head && (H.head.flags_inv & HIDEFACE)) || !HD || HD.status == BODYPART_ROBOTIC)
+			bodyparts_to_add -= "snout_fox"
+
+	if("ears_anthro" in mutant_bodyparts)
+		if((H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || (H.head && (H.head.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
+			bodyparts_to_add -= "ears_anthro"
 
 	if("frills" in mutant_bodyparts)
 		if(!H.dna.features["frills"] || H.dna.features["frills"] == "None" || H.head && (H.head.flags_inv & HIDEEARS) || !HD || HD.status == BODYPART_ROBOTIC)
@@ -513,7 +531,7 @@
 
 	var/g = (H.gender == FEMALE) ? "f" : "m"
 
-	for(var/layer in relevent_layers)
+	for(var/layer in relevant_layers)
 		var/layertext = mutant_bodyparts_layertext(layer)
 
 		for(var/bodypart in bodyparts_to_add)
@@ -523,6 +541,10 @@
 					S = GLOB.tails_list_lizard[H.dna.features["tail_lizard"]]
 				if("waggingtail_lizard")
 					S.= GLOB.animated_tails_list_lizard[H.dna.features["tail_lizard"]]
+				if("tail_fox")
+					S = GLOB.tails_list_fox[H.dna.features["tail_fox"]]
+				if("waggingtail_fox")
+					S.= GLOB.animated_tails_list_fox[H.dna.features["tail_fox"]]
 				if("tail_human")
 					S = GLOB.tails_list_human[H.dna.features["tail_human"]]
 				if("waggingtail_human")
@@ -533,6 +555,10 @@
 					S.= GLOB.animated_spines_list[H.dna.features["spines"]]
 				if("snout")
 					S = GLOB.snouts_list[H.dna.features["snout"]]
+				if("snout_fox")
+					S = GLOB.snouts_fox_list[H.dna.features["snout_fox"]]
+				if("ears_anthro")
+					S = GLOB.ears_anthro_list[H.dna.features["ears_anthro"]]
 				if("frills")
 					S = GLOB.frills_list[H.dna.features["frills"]]
 				if("horns")
@@ -554,9 +580,10 @@
 			var/mutable_appearance/accessory_overlay = mutable_appearance(S.icon, layer = -layer)
 
 			//A little rename so we don't have to use tail_lizard or tail_human when naming the sprites.
-			if(bodypart == "tail_lizard" || bodypart == "tail_human")
+			//A little rename so we don't have to use tail_lizard, tail_human or tail_fox when naming the sprites.
+			if(bodypart in list("tail_lizard", "tail_human", "tail_fox"))
 				bodypart = "tail"
-			else if(bodypart == "waggingtail_lizard" || bodypart == "waggingtail_human")
+			else if(bodypart in list("waggingtail_lizard", "waggingtail_human", "waggingtail_fox"))
 				bodypart = "waggingtail"
 
 			if(S.gender_specific)
@@ -618,7 +645,6 @@
 			return "ADJ"
 		if(BODY_FRONT_LAYER)
 			return "FRONT"
-
 
 /datum/species/proc/spec_life(mob/living/carbon/human/H)
 	if(NOBREATH in species_traits)
