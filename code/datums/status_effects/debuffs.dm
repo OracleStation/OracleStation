@@ -24,6 +24,7 @@
 //STUN
 /datum/status_effect/incapacitating/stun
 	id = "stun"
+	alert_type = /obj/screen/alert/status_effect/stunned
 
 //KNOCKDOWN
 /datum/status_effect/incapacitating/knockdown
@@ -71,6 +72,11 @@
 	desc = "You've fallen asleep. Wait a bit and you should wake up. Unless you don't, considering how helpless you are."
 	icon_state = "asleep"
 
+/obj/screen/alert/status_effect/stunned
+	name = "Stunned"
+	desc = "You've been stunned and can't move a muscle. Wait until the effect wears off."
+	icon_state = "stun"
+
 //OTHER DEBUFFS
 /datum/status_effect/his_wrath //does minor damage over time unless holding His Grace
 	id = "his_wrath"
@@ -85,7 +91,7 @@
 	alerttooltipstyle = "hisgrace"
 
 /datum/status_effect/his_wrath/tick()
-	for(var/obj/item/weapon/his_grace/HG in owner.held_items)
+	for(var/obj/item/his_grace/HG in owner.held_items)
 		qdel(src)
 		return
 	owner.adjustBruteLoss(0.1)
@@ -139,6 +145,20 @@
 	if(owner.m_intent == MOVE_INTENT_WALK)
 		owner.toggle_move_intent()
 
+/datum/status_effect/geis_tracker
+	id = "geis_tracker"
+	duration = -1
+	alert_type = null
+	var/obj/structure/destructible/clockwork/geis_binding/binding
+
+/datum/status_effect/geis_tracker/on_creation(mob/living/new_owner, obj/structure/destructible/clockwork/geis_binding/new_binding)
+	. = ..()
+	if(.)
+		binding = new_binding
+
+/datum/status_effect/geis_tracker/tick()
+	if(QDELETED(binding))
+		qdel(src)
 
 /datum/status_effect/maniamotor
 	id = "maniamotor"
@@ -243,9 +263,9 @@
 	status_type = STATUS_EFFECT_REPLACE
 	alert_type = null
 	var/mutable_appearance/marked_underlay
-	var/obj/item/weapon/twohanded/required/kinetic_crusher/hammer_synced
+	var/obj/item/twohanded/required/kinetic_crusher/hammer_synced
 
-/datum/status_effect/crusher_mark/on_creation(mob/living/new_owner, obj/item/weapon/twohanded/required/kinetic_crusher/new_hammer_synced)
+/datum/status_effect/crusher_mark/on_creation(mob/living/new_owner, obj/item/twohanded/required/kinetic_crusher/new_hammer_synced)
 	. = ..()
 	if(.)
 		hammer_synced = new_hammer_synced

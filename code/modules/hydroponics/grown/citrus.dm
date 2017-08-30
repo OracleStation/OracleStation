@@ -1,5 +1,5 @@
 // Citrus - base type
-/obj/item/weapon/reagent_containers/food/snacks/grown/citrus
+/obj/item/reagent_containers/food/snacks/grown/citrus
 	seed = /obj/item/seeds/lime
 	name = "citrus"
 	desc = "It's so sour, your face will twist."
@@ -14,7 +14,7 @@
 	icon_state = "seed-lime"
 	species = "lime"
 	plantname = "Lime Tree"
-	product = /obj/item/weapon/reagent_containers/food/snacks/grown/citrus/lime
+	product = /obj/item/reagent_containers/food/snacks/grown/citrus/lime
 	lifespan = 55
 	endurance = 50
 	yield = 4
@@ -24,7 +24,7 @@
 	mutatelist = list(/obj/item/seeds/orange)
 	reagents_add = list("vitamin" = 0.04, "nutriment" = 0.05)
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/citrus/lime
+/obj/item/reagent_containers/food/snacks/grown/citrus/lime
 	seed = /obj/item/seeds/lime
 	name = "lime"
 	desc = "It's so sour, your face will twist."
@@ -38,7 +38,7 @@
 	icon_state = "seed-orange"
 	species = "orange"
 	plantname = "Orange Tree"
-	product = /obj/item/weapon/reagent_containers/food/snacks/grown/citrus/orange
+	product = /obj/item/reagent_containers/food/snacks/grown/citrus/orange
 	lifespan = 60
 	endurance = 50
 	yield = 5
@@ -50,10 +50,10 @@
 	mutatelist = list(/obj/item/seeds/lime)
 	reagents_add = list("vitamin" = 0.04, "nutriment" = 0.05)
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/citrus/orange
+/obj/item/reagent_containers/food/snacks/grown/citrus/orange
 	seed = /obj/item/seeds/orange
 	name = "orange"
-	desc = "It's an tangy fruit."
+	desc = "It's a tangy fruit."
 	icon_state = "orange"
 	filling_color = "#FFA500"
 
@@ -64,7 +64,7 @@
 	icon_state = "seed-lemon"
 	species = "lemon"
 	plantname = "Lemon Tree"
-	product = /obj/item/weapon/reagent_containers/food/snacks/grown/citrus/lemon
+	product = /obj/item/reagent_containers/food/snacks/grown/citrus/lemon
 	lifespan = 55
 	endurance = 45
 	yield = 4
@@ -74,7 +74,7 @@
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
 	reagents_add = list("vitamin" = 0.04, "nutriment" = 0.05)
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/citrus/lemon
+/obj/item/reagent_containers/food/snacks/grown/citrus/lemon
 	seed = /obj/item/seeds/lemon
 	name = "lemon"
 	desc = "When life gives you lemons, make lemonade."

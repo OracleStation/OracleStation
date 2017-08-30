@@ -5,7 +5,7 @@
 	icon_state = "seed-corn"
 	species = "corn"
 	plantname = "Corn Stalks"
-	product = /obj/item/weapon/reagent_containers/food/snacks/grown/corn
+	product = /obj/item/reagent_containers/food/snacks/grown/corn
 	maturation = 8
 	potency = 20
 	growthstages = 3
@@ -14,18 +14,18 @@
 	icon_dead = "corn-dead" // Same for the dead icon
 	reagents_add = list("cornoil" = 0.2, "vitamin" = 0.04, "nutriment" = 0.1)
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/corn
+/obj/item/reagent_containers/food/snacks/grown/corn
 	seed = /obj/item/seeds/corn
 	name = "ear of corn"
 	desc = "Needs some butter!"
 	icon_state = "corn"
-	cooked_type = /obj/item/weapon/reagent_containers/food/snacks/popcorn
+	cooked_type = /obj/item/reagent_containers/food/snacks/popcorn
 	filling_color = "#FFFF00"
-	trash = /obj/item/weapon/grown/corncob
+	trash = /obj/item/grown/corncob
 	bitesize_mod = 2
 	foodtype = VEGETABLES
 
-/obj/item/weapon/grown/corncob
+/obj/item/grown/corncob
 	name = "corn cob"
 	desc = "A reminder of meals gone by."
 	icon_state = "corncob"
@@ -35,7 +35,7 @@
 	throw_speed = 3
 	throw_range = 7
 
-/obj/item/weapon/grown/corncob/attackby(obj/item/weapon/grown/W, mob/user, params)
+/obj/item/grown/corncob/attackby(obj/item/grown/W, mob/user, params)
 	if(W.is_sharp())
 		to_chat(user, "<span class='notice'>You use [W] to fashion a pipe out of the corn cob!</span>")
 		new /obj/item/clothing/mask/cigarette/pipe/cobpipe (user.loc)

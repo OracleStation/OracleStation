@@ -103,6 +103,12 @@
 	icon_state = "hop_cypherkey"
 	channels = list("Supply" = 1, "Service" = 1, "Command" = 1)
 
+/obj/item/device/encryptionkey/heads/blueshield
+	name = "\proper the blueshield's encryption key"
+	desc = "An encryption key for a radio headset.  Channels are as follows: :c - command."
+	icon_state = "com_cypherkey"
+	channels = list("Command" = 1)
+
 /obj/item/device/encryptionkey/headset_cargo
 	name = "supply radio encryption key"
 	desc = "An encryption key for a radio headset.  To access the supply channel, use :u."
@@ -126,7 +132,7 @@
 	desc = "An encryption key for a radio headset.  To access the centcom channel, use :y."
 	icon_state = "cent_cypherkey"
 	independent = TRUE
-	channels = list("Centcom" = 1)
+	channels = list("CentCom" = 1)
 
 /obj/item/device/encryptionkey/ai //ported from NT, this goes 'inside' the AI.
 	channels = list("Command" = 1, "Security" = 1, "Engineering" = 1, "Science" = 1, "Medical" = 1, "Supply" = 1, "Service" = 1, "AI Private" = 1)

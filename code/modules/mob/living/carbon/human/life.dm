@@ -40,6 +40,10 @@
 		//Stuff jammed in your limbs hurts
 		handle_embedded_objects()
 
+	if(stat != DEAD)
+		//Fractured bones
+		handle_fractures()
+
 	//Update our name based on whether our face is obscured/disfigured
 	name = get_visible_name()
 
@@ -50,7 +54,7 @@
 
 
 /mob/living/carbon/human/calculate_affecting_pressure(pressure)
-	if((wear_suit && (wear_suit.flags & STOPSPRESSUREDMAGE)) && (head && (head.flags & STOPSPRESSUREDMAGE)))
+	if((wear_suit && (wear_suit.flags_1 & STOPSPRESSUREDMAGE_1)) && (head && (head.flags_1 & STOPSPRESSUREDMAGE_1)))
 		return ONE_ATMOSPHERE
 	else
 		return pressure
@@ -280,13 +284,13 @@
 
 /mob/living/carbon/human/has_smoke_protection()
 	if(wear_mask)
-		if(wear_mask.flags & BLOCK_GAS_SMOKE_EFFECT)
+		if(wear_mask.flags_1 & BLOCK_GAS_SMOKE_EFFECT_1)
 			. = 1
 	if(glasses)
-		if(glasses.flags & BLOCK_GAS_SMOKE_EFFECT)
+		if(glasses.flags_1 & BLOCK_GAS_SMOKE_EFFECT_1)
 			. = 1
 	if(head)
-		if(head.flags & BLOCK_GAS_SMOKE_EFFECT)
+		if(head.flags_1 & BLOCK_GAS_SMOKE_EFFECT_1)
 			. = 1
 	if(NOBREATH in dna.species.species_traits)
 		. = 1
@@ -308,6 +312,22 @@
 				visible_message("<span class='danger'>[I] falls out of [name]'s [BP.name]!</span>","<span class='userdanger'>[I] falls out of your [BP.name]!</span>")
 				if(!has_embedded_objects())
 					clear_alert("embeddedobject")
+
+/mob/living/carbon/human/proc/handle_fractures()
+	//this whole thing is hacky and WILL NOT work right with multiple hands
+	//you've been warned
+	var/obj/item/bodypart/L = get_bodypart("l_arm")
+	var/obj/item/bodypart/R = get_bodypart("r_arm")
+
+	if(L.broken && held_items[1] && prob(30))
+		emote("scream")
+		visible_message("<span class='warning'>[src] screams and lets go of [held_items[1]] in pain.</span>", "<span class='userdanger'>A horrible pain in your [parse_zone(L)] makes it impossible to hold [held_items[1]]!</span>")
+		dropItemToGround(held_items[1])
+
+	if(R.broken && held_items[2] && prob(30))
+		emote("scream")
+		visible_message("<span class='warning'>[src] screams and lets go of [held_items[2]] in pain.</span>", "<span class='userdanger'>A horrible pain in your [parse_zone(R)] makes it impossible to hold [held_items[2]]!</span>")
+		dropItemToGround(held_items[2])
 
 /mob/living/carbon/human/proc/can_heartattack()
 	CHECK_DNA_AND_SPECIES(src)

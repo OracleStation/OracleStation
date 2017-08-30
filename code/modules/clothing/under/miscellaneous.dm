@@ -104,16 +104,16 @@
 	can_adjust = 0
 
 /obj/item/clothing/under/rank/centcom_officer
-	desc = "It's a jumpsuit worn by Centcom Officers."
-	name = "\improper Centcom officer's jumpsuit"
+	desc = "It's a jumpsuit worn by CentCom Officers."
+	name = "\improper CentCom officer's jumpsuit"
 	icon_state = "officer"
 	item_state = "g_suit"
 	item_color = "officer"
 	alt_covers_chest = 1
 
 /obj/item/clothing/under/rank/centcom_commander
-	desc = "It's a jumpsuit worn by Centcom's highest-tier Commanders."
-	name = "\improper Centcom officer's jumpsuit"
+	desc = "It's a jumpsuit worn by CentCom's highest-tier Commanders."
+	name = "\improper CentCom officer's jumpsuit"
 	icon_state = "centcom"
 	item_state = "dg_suit"
 	item_color = "centcom"
@@ -387,7 +387,7 @@
 
 /obj/item/clothing/under/kilt/highlander
 	desc = "You're the only one worthy of this kilt."
-	flags = NODROP
+	flags_1 = NODROP_1
 
 /obj/item/clothing/under/sexymime
 	name = "sexy mime outfit"
@@ -703,3 +703,11 @@
 	fitted = NO_FEMALE_UNIFORM
 	can_adjust = FALSE
 	resistance_flags = NONE
+
+/obj/item/clothing/under/rank/blueshield
+	desc = "Gold trim on space-black cloth, this uniform displays the rank of \"Lieutenant\" on the left shoulder."
+	name = "\improper Blueshield Uniform"
+	icon_state = "ert_uniform"
+	item_state = "bl_suit"
+	item_color = "ert_uniform"
+	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)

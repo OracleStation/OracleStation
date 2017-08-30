@@ -5,7 +5,7 @@
 	icon_state = "seed-cannabis"
 	species = "cannabis"
 	plantname = "Cannabis Plant"
-	product = /obj/item/weapon/reagent_containers/food/snacks/grown/cannabis
+	product = /obj/item/reagent_containers/food/snacks/grown/cannabis
 	maturation = 8
 	potency = 20
 	growthstages = 1
@@ -17,7 +17,7 @@
 
 // ---------------------------------------------------------------
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/cannabis
+/obj/item/reagent_containers/food/snacks/grown/cannabis
 	seed = /obj/item/seeds/cannabis
 	icon = 'goon/icons/obj/hydroponics.dmi'
 	name = "cannabis leaf"

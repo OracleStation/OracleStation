@@ -35,7 +35,7 @@
 	icon_state = "seed-cabbage"
 	species = "cabbage"
 	plantname = "Cabbages"
-	product = /obj/item/weapon/reagent_containers/food/snacks/grown/cabbage
+	product = /obj/item/reagent_containers/food/snacks/grown/cabbage
 	lifespan = 50
 	endurance = 25
 	maturation = 3
@@ -47,7 +47,7 @@
 	mutatelist = list(/obj/item/seeds/replicapod)
 	reagents_add = list("vitamin" = 0.04, "nutriment" = 0.1)
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/cabbage
+/obj/item/reagent_containers/food/snacks/grown/cabbage
 	seed = /obj/item/seeds/cabbage
 	name = "cabbage"
 	desc = "Ewwwwwwwwww. Cabbage."
@@ -64,7 +64,7 @@
 	icon_state = "seed-sugarcane"
 	species = "sugarcane"
 	plantname = "Sugarcane"
-	product = /obj/item/weapon/reagent_containers/food/snacks/grown/sugarcane
+	product = /obj/item/reagent_containers/food/snacks/grown/sugarcane
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
 	lifespan = 60
 	endurance = 50
@@ -73,7 +73,7 @@
 	growthstages = 3
 	reagents_add = list("sugar" = 0.25)
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/sugarcane
+/obj/item/reagent_containers/food/snacks/grown/sugarcane
 	seed = /obj/item/seeds/sugarcane
 	name = "sugarcane"
 	desc = "Sickly sweet."
@@ -90,6 +90,6 @@
 	icon_state = "seed-cactus"
 	species = "cactus"
 	plantname = "Fruiting Cactus"
-	product = /obj/item/weapon/reagent_containers/food/snacks/grown/ash_flora/cactus_fruit
+	product = /obj/item/reagent_containers/food/snacks/grown/ash_flora/cactus_fruit
 	growing_icon = 'icons/obj/hydroponics/growing_fruits.dmi'
 	growthstages = 2

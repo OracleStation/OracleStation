@@ -300,7 +300,7 @@
 	update_canmove()
 
 //Recursive function to find everything a mob is holding.
-/mob/living/get_contents(obj/item/weapon/storage/Storage = null)
+/mob/living/get_contents(obj/item/storage/Storage = null)
 	var/list/L = list()
 
 	if(Storage) //If it called itself
@@ -308,11 +308,11 @@
 		return L
 	else
 		L += src.contents
-		for(var/obj/item/weapon/storage/S in src.contents)	//Check for storage items
+		for(var/obj/item/storage/S in src.contents)	//Check for storage items
 			L += get_contents(S)
 		for(var/obj/item/clothing/under/U in src.contents)	//Check for jumpsuit accessories
 			L += U.contents
-		for(var/obj/item/weapon/folder/F in src.contents)	//Check for folders
+		for(var/obj/item/folder/F in src.contents)	//Check for folders
 			L += F.contents
 		return L
 
@@ -387,6 +387,7 @@
 	cure_nearsighted()
 	cure_blind()
 	cure_husk()
+	mend_fractures()
 	disabilities = 0
 	hallucination = 0
 	heal_overall_damage(100000, 100000, 0, 0, 1) //heal brute and burn dmg on both organic and robotic limbs, and update health right away.
@@ -434,6 +435,10 @@
 		stop_pulling()
 	var/turf/T = loc
 	. = ..()
+
+	if(lying && !buckled && (prob(getBruteLoss()*200/maxHealth)))//I'M BLEEEEEEEDING OUUUUUT
+		makeTrail(get_turf(src))
+
 	if(. && pulling && pulling == pullee) //we were pulling a thing and didn't lose it during our move.
 		if(pulling.anchored)
 			stop_pulling()
@@ -441,10 +446,6 @@
 
 		var/pull_dir = get_dir(src, pulling)
 		if(get_dist(src, pulling) > 1 || ((pull_dir - 1) & pull_dir)) //puller and pullee more than one tile away or in diagonal position
-			if(isliving(pulling))
-				var/mob/living/M = pulling
-				if(M.lying && !M.buckled && (prob(M.getBruteLoss()*200/M.maxHealth)))
-					M.makeTrail(T)
 			pulling.Move(T, get_dir(pulling, T)) //the pullee tries to reach our previous position
 			if(pulling && get_dist(src, pulling) > 1) //the pullee couldn't keep up
 				stop_pulling()
@@ -551,6 +552,7 @@
 	if(!restrained(ignore_grab = 1) && pulledby)
 		visible_message("<span class='danger'>[src] resists against [pulledby]'s grip!</span>")
 		resist_grab()
+		add_logs(pulledby, src, "resisted grab")
 		return
 
 	//unbuckling yourself
@@ -585,6 +587,7 @@
 	if(pulledby.grab_state)
 		if(prob(30/pulledby.grab_state))
 			visible_message("<span class='danger'>[src] has broken free of [pulledby]'s grip!</span>")
+			add_logs(pulledby, src, "broke grab")
 			pulledby.stop_pulling()
 			return 0
 		if(moving_resist && client) //we resisted by trying to move
@@ -633,7 +636,7 @@
 // The src mob is trying to strip an item from someone
 // Override if a certain type of mob should be behave differently when stripping items (can't, for example)
 /mob/living/stripPanelUnequip(obj/item/what, mob/who, where)
-	if(what.flags & NODROP)
+	if(what.flags_1 & NODROP_1)
 		to_chat(src, "<span class='warning'>You can't remove \the [what.name], it appears to be stuck!</span>")
 		return
 	who.visible_message("<span class='danger'>[src] tries to remove [who]'s [what.name].</span>", \
@@ -654,7 +657,7 @@
 // Override if a certain mob should be behave differently when placing items (can't, for example)
 /mob/living/stripPanelEquip(obj/item/what, mob/who, where)
 	what = src.get_active_held_item()
-	if(what && (what.flags & NODROP))
+	if(what && (what.flags_1 & NODROP_1))
 		to_chat(src, "<span class='warning'>You can't put \the [what.name] on [who], it's stuck to your hand!</span>")
 		return
 	if(what)
@@ -752,7 +755,7 @@
 	var/turf/T = get_turf(src)
 	if(!T)
 		return 0
-	if(T.z == ZLEVEL_CENTCOM) //dont detect mobs on centcomm
+	if(T.z == ZLEVEL_CENTCOM) //dont detect mobs on centcom
 		return 0
 	if(T.z >= ZLEVEL_SPACEMAX)
 		return 0
@@ -793,11 +796,11 @@
 	else
 		to_chat(src, "<span class='warning'>You don't have the dexterity to do this!</span>")
 	return
-/mob/living/proc/can_use_guns(var/obj/item/weapon/gun/G)
+/mob/living/proc/can_use_guns(obj/item/G)
 	if (G.trigger_guard != TRIGGER_GUARD_ALLOW_ALL && !IsAdvancedToolUser())
 		to_chat(src, "<span class='warning'>You don't have the dexterity to do this!</span>")
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /mob/living/carbon/proc/update_stamina()
 	if(staminaloss)
@@ -962,7 +965,7 @@
 			fall()
 		else if(ko || (!has_legs && !ignore_legs) || chokehold)
 			fall(forced = 1)
-	canmove = !(ko || resting || has_status_effect(STATUS_EFFECT_STUN) || has_status_effect(/datum/status_effect/freon) || chokehold || buckled || (!has_legs && !ignore_legs && !has_arms))
+	canmove = !(ko || (resting && !can_crawl) || has_status_effect(STATUS_EFFECT_STUN) || has_status_effect(/datum/status_effect/freon) || chokehold || buckled || (!has_legs && !ignore_legs && !has_arms))
 	density = !lying
 	if(lying)
 		if(layer == initial(layer)) //to avoid special cases like hiding larvas.

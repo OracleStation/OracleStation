@@ -10,7 +10,7 @@
 	config_tag = "traitor"
 	antag_flag = ROLE_TRAITOR
 	restricted_jobs = list("Cyborg")//They are part of the AI if he is traitor so are they, they use to get double chances
-	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain")
+	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Blueshield")
 	required_players = 0
 	required_enemies = 1
 	recommended_enemies = 4
@@ -124,7 +124,7 @@
 				text += " (used [TC_uses] TC) [purchases]"
 				if(TC_uses==0 && traitorwin)
 					var/static/icon/badass = icon('icons/badass.dmi', "badass")
-					text += "<BIG>[bicon(badass)]</BIG>"
+					text += "<BIG>[icon2html(badass, world)]</BIG>"
 
 			text += objectives
 

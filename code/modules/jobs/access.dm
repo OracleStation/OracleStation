@@ -111,7 +111,7 @@
 			return list(ACCESS_CENT_GENERAL, ACCESS_CENT_LIVING, ACCESS_CENT_STORAGE)
 		if("Thunderdome Overseer")
 			return list(ACCESS_CENT_GENERAL, ACCESS_CENT_THUNDER)
-		if("Centcom Official")
+		if("CentCom Official")
 			return list(ACCESS_CENT_GENERAL, ACCESS_CENT_LIVING)
 		if("Medical Officer")
 			return list(ACCESS_CENT_GENERAL, ACCESS_CENT_LIVING, ACCESS_CENT_MEDICAL)
@@ -123,7 +123,7 @@
 			return list(ACCESS_CENT_GENERAL, ACCESS_CENT_THUNDER, ACCESS_CENT_SPECOPS, ACCESS_CENT_LIVING, ACCESS_CENT_STORAGE)
 		if("Admiral")
 			return get_all_centcom_access()
-		if("Centcom Commander")
+		if("CentCom Commander")
 			return get_all_centcom_access()
 		if("Emergency Response Team Commander")
 			return get_ert_access("commander")
@@ -133,7 +133,7 @@
 			return get_ert_access("eng")
 		if("Medical Response Officer")
 			return get_ert_access("med")
-		if("Centcom Bartender")
+		if("CentCom Bartender")
 			return list(ACCESS_CENT_GENERAL, ACCESS_CENT_LIVING, ACCESS_CENT_BAR)
 
 /proc/get_all_accesses()
@@ -147,7 +147,7 @@
 	            ACCESS_HYDROPONICS, ACCESS_LIBRARY, ACCESS_LAWYER, ACCESS_VIROLOGY, ACCESS_CMO, ACCESS_QM, ACCESS_SURGERY,
 	            ACCESS_THEATRE, ACCESS_RESEARCH, ACCESS_MINING, ACCESS_MAILSORTING, ACCESS_WEAPONS,
 	            ACCESS_HEADS_VAULT, ACCESS_MINING_STATION, ACCESS_XENOBIOLOGY, ACCESS_CE, ACCESS_HOP, ACCESS_HOS, ACCESS_RC_ANNOUNCE,
-	            ACCESS_KEYCARD_AUTH, ACCESS_TCOMSAT, ACCESS_GATEWAY, ACCESS_MINERAL_STOREROOM, ACCESS_MINISAT, ACCESS_NETWORK, ACCESS_CLONING)
+	            ACCESS_KEYCARD_AUTH, ACCESS_TCOMSAT, ACCESS_GATEWAY, ACCESS_MINERAL_STOREROOM, ACCESS_MINISAT, ACCESS_NETWORK, ACCESS_CLONING, ACCESS_BLUESHIELD)
 
 /proc/get_all_centcom_access()
 	return list(ACCESS_CENT_GENERAL, ACCESS_CENT_THUNDER, ACCESS_CENT_SPECOPS, ACCESS_CENT_MEDICAL, ACCESS_CENT_LIVING, ACCESS_CENT_STORAGE, ACCESS_CENT_TELEPORTER, ACCESS_CENT_CAPTAIN)
@@ -183,7 +183,7 @@
 		if(6) //supply
 			return list(ACCESS_MAILSORTING, ACCESS_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_CARGO, ACCESS_QM)
 		if(7) //command
-			return list(ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_CHANGE_IDS, ACCESS_AI_UPLOAD, ACCESS_TELEPORTER, ACCESS_EVA, ACCESS_GATEWAY, ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_HEADS_VAULT, ACCESS_HOP, ACCESS_CAPTAIN)
+			return list(ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_CHANGE_IDS, ACCESS_AI_UPLOAD, ACCESS_TELEPORTER, ACCESS_EVA, ACCESS_GATEWAY, ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_HEADS_VAULT, ACCESS_HOP, ACCESS_CAPTAIN, ACCESS_BLUESHIELD)
 
 /proc/get_region_accesses_name(code)
 	switch(code)
@@ -338,6 +338,8 @@
 			return "Network Access"
 		if(ACCESS_CLONING)
 			return "Cloning Room"
+		if(ACCESS_BLUESHIELD)
+			return "Blueshield"
 
 /proc/get_centcom_access_desc(A)
 	switch(A)
@@ -364,21 +366,21 @@
 	return list("Assistant", "Captain", "Head of Personnel", "Bartender", "Cook", "Botanist", "Quartermaster", "Cargo Technician",
 				"Shaft Miner", "Clown", "Mime", "Janitor", "Curator", "Lawyer", "Chaplain", "Chief Engineer", "Station Engineer",
 				"Atmospheric Technician", "Chief Medical Officer", "Medical Doctor", "Chemist", "Geneticist", "Virologist",
-				"Research Director", "Scientist", "Roboticist", "Head of Security", "Warden", "Detective", "Security Officer")
+				"Research Director", "Scientist", "Roboticist", "Head of Security", "Warden", "Detective", "Security Officer", "Blueshield")
 
 /proc/get_all_job_icons() //For all existing HUD icons
 	return get_all_jobs() + list("Prisoner")
 
 /proc/get_all_centcom_jobs()
-	return list("VIP Guest","Custodian","Thunderdome Overseer","Centcom Official","Medical Officer","Death Commando","Research Officer","Special Ops Officer","Admiral","Centcom Commander","Emergency Response Team Commander","Security Response Officer","Engineer Response Officer", "Medical Response Officer","Centcom Bartender")
+	return list("VIP Guest","Custodian","Thunderdome Overseer","CentCom Official","Medical Officer","Death Commando","Research Officer","Special Ops Officer","Admiral","CentCom Commander","Emergency Response Team Commander","Security Response Officer","Engineer Response Officer", "Medical Response Officer","CentCom Bartender")
 
 /obj/item/proc/GetJobName() //Used in secHUD icon generation
-	var/obj/item/weapon/card/id/I = GetID()
+	var/obj/item/card/id/I = GetID()
 	if(!I)
 		return
 	var/jobName = I.assignment
 	if(jobName in get_all_job_icons()) //Check if the job has a hud icon
 		return jobName
-	if(jobName in get_all_centcom_jobs()) //Return with the NT logo if it is a Centcom job
-		return "Centcom"
+	if(jobName in get_all_centcom_jobs()) //Return with the NT logo if it is a CentCom job
+		return "CentCom"
 	return "Unknown" //Return unknown if none of the above apply
