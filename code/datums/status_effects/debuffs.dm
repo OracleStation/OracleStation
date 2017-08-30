@@ -71,6 +71,11 @@
 	desc = "You've fallen asleep. Wait a bit and you should wake up. Unless you don't, considering how helpless you are."
 	icon_state = "asleep"
 
+/obj/screen/alert/status_effect/stunned
+	name = "Stunned"
+	desc = "You've been stunned and can't move a muscle. Wait until the effect wears off."
+	icon_state = "stun"
+
 //OTHER DEBUFFS
 /datum/status_effect/his_wrath //does minor damage over time unless holding His Grace
 	id = "his_wrath"
