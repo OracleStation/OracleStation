@@ -107,7 +107,6 @@
 /obj/item/bodypart/proc/break_bone()
 	if(status == BODYPART_ROBOTIC)
 		return
-	playsound(owner, 'sound/effects/bone_crack.ogg', 50, 1, -1)
 	broken = TRUE
 
 /obj/item/bodypart/proc/fix_bone()

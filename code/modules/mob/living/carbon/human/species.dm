@@ -1244,7 +1244,7 @@
 
 
 	if(I.damtype == BRUTE && I.force >= 10 && prob(I.force * 2))
-		if(sharpness && prob(50))//if it stabs, you won't break bones with it as effectively.
+		if(I.sharpness && prob(50))//if it stabs, you won't break bones with it as effectively.
 			return
 		affecting.break_bone()
 		H.visible_message("<span class='warning'>You hear a cracking sound coming from [H]'s [parse_zone(affecting)].</span>", "<span class='warning'>You feel something crack in your [parse_zone(affecting)]!</span>", "<span class='warning'>You hear an awful cracking sound.</span>")
