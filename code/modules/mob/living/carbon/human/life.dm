@@ -321,12 +321,12 @@
 
 	if(L.broken && held_items[1] && prob(30))
 		emote("scream")
-		visible_message("<span class='warning'>[src] screams and lets go of [held_items[1]] in pain.", "<span class='userdanger'>A horrible pain in your [parse_zone(L)] makes it impossible to hold [held_items[1]]!</span>")
+		visible_message("<span class='warning'>[src] screams and lets go of [held_items[1]] in pain.</span>", "<span class='userdanger'>A horrible pain in your [parse_zone(L)] makes it impossible to hold [held_items[1]]!</span>")
 		dropItemToGround(held_items[1])
 
 	if(R.broken && held_items[2] && prob(30))
 		emote("scream")
-		visible_message("<span class='warning'>[src] screams and lets go of [held_items[2]] in pain.", "<span class='userdanger'>A horrible pain in your [parse_zone(R)] makes it impossible to hold [held_items[2]]!</span>")
+		visible_message("<span class='warning'>[src] screams and lets go of [held_items[2]] in pain.</span>", "<span class='userdanger'>A horrible pain in your [parse_zone(R)] makes it impossible to hold [held_items[2]]!</span>")
 		dropItemToGround(held_items[2])
 
 /mob/living/carbon/human/proc/can_heartattack()
