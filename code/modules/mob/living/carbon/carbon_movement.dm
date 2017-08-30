@@ -11,18 +11,23 @@
 	else
 		. += grab_state * 3 //can't go fast while grabbing something.
 
-	if(!get_leg_ignore()) //ignore the fact we lack legs
+	if(!get_leg_ignore() && !lying) //ignore the fact we lack legs
 		var/leg_amount = get_num_legs()
 		. += 6 - 3*leg_amount //the fewer the legs, the slower the mob
 		if(!leg_amount)
 			. += 6 - 3*get_num_arms() //crawling is harder with fewer arms
 		if(legcuffed)
 			. += legcuffed.slowdown
+
 		for(var/obj/item/bodypart/X in bodyparts)
 			if(!X.broken)
 				return
 			if(X.body_part == LEG_RIGHT || X.body_part == LEG_LEFT)
 				. += 2 //can't move fast with a broken leg
+
+	if(lying)
+		. += 14
+
 
 /mob/living/carbon/slip(knockdown_amount, obj/O, lube)
 	if(movement_type & FLYING)

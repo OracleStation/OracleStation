@@ -54,6 +54,26 @@
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/door_remote/civillian(src)
 
+/obj/structure/closet/secure_closet/blueshield
+	name = "\proper blueshield's locker"
+	req_access = list(ACCESS_BLUESHIELD)
+	icon_state = "blueshield"
+
+/obj/structure/closet/secure_closet/blueshield/PopulateContents()
+	..()
+	new /obj/item/storage/briefcase(src)
+	new	/obj/item/storage/firstaid/regular(src)
+	new /obj/item/storage/belt/security(src)
+	new /obj/item/grenade/flashbang(src)
+	new /obj/item/device/assembly/flash/handheld(src)
+	new /obj/item/restraints/handcuffs(src)
+	new /obj/item/melee/baton/loaded(src)
+	new /obj/item/clothing/glasses/sunglasses(src)
+	new /obj/item/clothing/suit/armor/vest/blueshield(src)
+	new /obj/item/clothing/suit/storage/blueshield(src)
+	new /obj/item/storage/belt/holster(src)
+	new /obj/item/clothing/shoes/jackboots(src)
+
 /obj/structure/closet/secure_closet/hos
 	name = "\proper head of security's locker"
 	req_access = list(ACCESS_HOS)

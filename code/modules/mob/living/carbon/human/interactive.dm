@@ -302,7 +302,7 @@
 			functions += "healpeople"
 		if("Research Director","Scientist","Roboticist")
 			favoured_types = list(/obj/item/reagent_containers/glass/beaker, /obj/item/stack, /obj/item/reagent_containers)
-		if("Head of Security","Warden","Security Officer","Detective")
+		if("Head of Security","Warden","Security Officer","Detective", "Blueshield")
 			favoured_types = list(/obj/item/clothing, /obj/item, /obj/item/restraints)
 		if("Janitor")
 			favoured_types = list(/obj/item/mop, /obj/item/reagent_containers/glass/bucket, /obj/item/reagent_containers/spray/cleaner, /obj/effect/decal/cleanable)
@@ -798,7 +798,7 @@
 	var/datum/job/T = target
 	if(T.title == "Assistant")
 		return /area/hallway/primary
-	if(T.title == "Captain" || T.title == "Head of Personnel")
+	if(T.title == "Captain" || T.title == "Head of Personnel" || T.title == "Blueshield")
 		return /area/bridge
 	if(T.title == "Bartender")
 		return /area/crew_quarters/bar

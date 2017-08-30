@@ -31,6 +31,11 @@
 	MAP_JOB_CHECK_BASE
 	return get_all_accesses()
 
+/datum/job/blueshield/New()
+	..()
+	MAP_JOB_CHECK
+	supervisors = "the command personnel"
+
 //Security
 
 /datum/job/officer/New()

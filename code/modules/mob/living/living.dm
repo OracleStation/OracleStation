@@ -435,6 +435,10 @@
 		stop_pulling()
 	var/turf/T = loc
 	. = ..()
+
+	if(lying && !buckled && (prob(getBruteLoss()*200/maxHealth)))//I'M BLEEEEEEEDING OUUUUUT
+		makeTrail(get_turf(src))
+
 	if(. && pulling && pulling == pullee) //we were pulling a thing and didn't lose it during our move.
 		if(pulling.anchored)
 			stop_pulling()
@@ -442,10 +446,6 @@
 
 		var/pull_dir = get_dir(src, pulling)
 		if(get_dist(src, pulling) > 1 || ((pull_dir - 1) & pull_dir)) //puller and pullee more than one tile away or in diagonal position
-			if(isliving(pulling))
-				var/mob/living/M = pulling
-				if(M.lying && !M.buckled && (prob(M.getBruteLoss()*200/M.maxHealth)))
-					M.makeTrail(T)
 			pulling.Move(T, get_dir(pulling, T)) //the pullee tries to reach our previous position
 			if(pulling && get_dist(src, pulling) > 1) //the pullee couldn't keep up
 				stop_pulling()
@@ -965,7 +965,7 @@
 			fall()
 		else if(ko || (!has_legs && !ignore_legs) || chokehold)
 			fall(forced = 1)
-	canmove = !(ko || resting || has_status_effect(STATUS_EFFECT_STUN) || has_status_effect(/datum/status_effect/freon) || chokehold || buckled || (!has_legs && !ignore_legs && !has_arms))
+	canmove = !(ko || (resting && !can_crawl) || has_status_effect(STATUS_EFFECT_STUN) || has_status_effect(/datum/status_effect/freon) || chokehold || buckled || (!has_legs && !ignore_legs && !has_arms))
 	density = !lying
 	if(lying)
 		if(layer == initial(layer)) //to avoid special cases like hiding larvas.
