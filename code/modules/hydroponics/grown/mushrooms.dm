@@ -129,7 +129,6 @@
 	growthstages = 3
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
-	mutatelist = list(/obj/item/seeds/plump/walkingmushroom)
 	reagents_add = list("vitamin" = 0.04, "nutriment" = 0.1)
 
 /obj/item/reagent_containers/food/snacks/grown/mushroom/plumphelmet
@@ -138,45 +137,6 @@
 	desc = "<I>Plumus Hellmus</I>: Plump, soft and s-so inviting~"
 	icon_state = "plumphelmet"
 	filling_color = "#9370DB"
-
-
-// Walking Mushroom
-/obj/item/seeds/plump/walkingmushroom
-	name = "pack of walking mushroom mycelium"
-	desc = "This mycelium will grow into huge stuff!"
-	icon_state = "mycelium-walkingmushroom"
-	species = "walkingmushroom"
-	plantname = "Walking Mushrooms"
-	product = /obj/item/reagent_containers/food/snacks/grown/mushroom/walkingmushroom
-	lifespan = 30
-	endurance = 30
-	maturation = 5
-	yield = 1
-	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
-	mutatelist = list()
-	reagents_add = list("vitamin" = 0.05, "nutriment" = 0.15)
-	rarity = 30
-
-/obj/item/reagent_containers/food/snacks/grown/mushroom/walkingmushroom
-	seed = /obj/item/seeds/plump/walkingmushroom
-	name = "walking mushroom"
-	desc = "<I>Plumus Locomotus</I>: The beginning of the great walk."
-	icon_state = "walkingmushroom"
-	filling_color = "#9370DB"
-	origin_tech = "biotech=4;programming=5"
-
-/obj/item/reagent_containers/food/snacks/grown/mushroom/walkingmushroom/attack_self(mob/user)
-	if(isspaceturf(user.loc))
-		return
-	var/mob/living/simple_animal/hostile/mushroom/M = new /mob/living/simple_animal/hostile/mushroom(user.loc)
-	M.maxHealth += round(seed.endurance / 4)
-	M.melee_damage_lower += round(seed.potency / 20)
-	M.melee_damage_upper += round(seed.potency / 20)
-	M.move_to_delay -= round(seed.production / 50)
-	M.health = M.maxHealth
-	qdel(src)
-	to_chat(user, "<span class='notice'>You plant the walking mushroom.</span>")
-
 
 // Chanterelle
 /obj/item/seeds/chanter

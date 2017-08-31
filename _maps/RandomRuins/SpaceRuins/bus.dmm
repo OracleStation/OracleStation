@@ -112,7 +112,6 @@
 	icon_state = "driverseat";
 	pixel_y = 17
 	},
-/obj/item/reagent_containers/food/snacks/grown/cherry_bomb,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/airless/black{
 	icon_state = "bus"

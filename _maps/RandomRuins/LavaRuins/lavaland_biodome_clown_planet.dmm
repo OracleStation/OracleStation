@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /turf/template_noop,
 /area/template_noop)
@@ -674,7 +674,7 @@
 /area/ruin/powered/clownplanet)
 "bQ" = (
 /obj/structure/table/glass,
-/obj/item/grown/bananapeel/bluespace,
+/obj/item/grown/bananapeel,
 /turf/open/floor/carpet,
 /area/ruin/powered/clownplanet)
 "bR" = (

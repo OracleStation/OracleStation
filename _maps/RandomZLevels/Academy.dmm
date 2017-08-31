@@ -1159,7 +1159,6 @@
 /area/awaymission/academy/classrooms)
 "dM" = (
 /obj/machinery/hydroponics/constructable,
-/obj/item/seeds/tomato/blue/bluespace,
 /turf/open/floor/plasteel,
 /area/awaymission/academy/classrooms)
 "dN" = (
