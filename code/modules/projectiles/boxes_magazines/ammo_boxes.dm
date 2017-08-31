@@ -21,6 +21,12 @@
 	ammo_type = /obj/item/ammo_casing/c9mm
 	max_ammo = 30
 
+/obj/item/ammo_box/r45
+	name = "ammo box (.45 rubber)"
+	icon_state = "45rbox"
+	ammo_type = /obj/item/ammo_casing/rubber45
+	max_ammo = 10
+
 /obj/item/ammo_box/c10mm
 	name = "ammo box (10mm)"
 	icon_state = "10mmbox"
