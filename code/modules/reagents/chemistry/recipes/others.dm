@@ -139,6 +139,12 @@
 	results = list("lizardmutationtoxin" = 1)
 	required_reagents = list("unstablemutationtoxin" = 1, "radium" = 1) //mutant
 
+/datum/chemical_reaction/ethari_mutation_toxin
+	name = "Ethari Mutation Toxin"
+	id = "etharimutationtoxin"
+	results = list("etharimutationtoxin" = 1)
+	required_reagents = list("unstablemutationtoxin" = 1, "welding_fuel" = 1)
+
 /datum/chemical_reaction/fly_mutation_toxin
 	name = "Fly Mutation Toxin"
 	id = "flymutationtoxin"

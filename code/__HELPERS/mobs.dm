@@ -52,12 +52,18 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, GLOB.tails_list_human)
 	if(!GLOB.tails_list_lizard.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/lizard, GLOB.tails_list_lizard)
+	if(!GLOB.tails_list_ethari.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/ethari, GLOB.tails_list_ethari)
 	if(!GLOB.snouts_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/snouts, GLOB.snouts_list)
+	if(!GLOB.snouts_ethari_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/snouts_ethari, GLOB.snouts_ethari_list)
+	if(!GLOB.ears_ethari_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/anthro_ears, GLOB.ears_ethari_list)
 	if(!GLOB.horns_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/horns, GLOB.horns_list)
 	if(!GLOB.ears_list.len)
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/ears, GLOB.horns_list)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/ears, GLOB.ears_list)
 	if(!GLOB.frills_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/frills, GLOB.frills_list)
 	if(!GLOB.spines_list.len)
@@ -70,7 +76,7 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/wings, GLOB.wings_list)
 
 	//For now we will always return none for tail_human and ears.
-	return(list("mcolor" = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"), "tail_lizard" = pick(GLOB.tails_list_lizard), "tail_human" = "None", "wings" = "None", "snout" = pick(GLOB.snouts_list), "horns" = pick(GLOB.horns_list), "ears" = "None", "frills" = pick(GLOB.frills_list), "spines" = pick(GLOB.spines_list), "body_markings" = pick(GLOB.body_markings_list), "legs" = "Normal Legs"))
+	return(list("mcolor" = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"), "tail_lizard" = pick(GLOB.tails_list_lizard), "tail_ethari" = pick(GLOB.tails_list_ethari), "tail_human" = "None", "wings" = "None", "snout" = pick(GLOB.snouts_list), "snout_ethari" = pick(GLOB.snouts_ethari_list), "ears_ethari" = "Fox", "horns" = pick(GLOB.horns_list), "ears" = "None", "frills" = pick(GLOB.frills_list), "spines" = pick(GLOB.spines_list), "body_markings" = pick(GLOB.body_markings_list), "legs" = "Normal Legs"))
 
 /proc/random_hair_style(gender)
 	switch(gender)
@@ -103,6 +109,13 @@
 /proc/random_unique_lizard_name(gender, attempts_to_find_unique_name=10)
 	for(var/i=1, i<=attempts_to_find_unique_name, i++)
 		. = capitalize(lizard_name(gender))
+
+		if(i != attempts_to_find_unique_name && !findname(.))
+			break
+
+/proc/random_unique_ethari_name(gender, attempts_to_find_unique_name=10)
+	for(var/i=1, i<=attempts_to_find_unique_name, i++)
+		. = capitalize(ethari_name(gender))
 
 		if(i != attempts_to_find_unique_name && !findname(.))
 			break

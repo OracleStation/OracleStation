@@ -20,6 +20,7 @@
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, GLOB.tails_list_human)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails_animated/human, GLOB.animated_tails_list_human)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/snouts, GLOB.snouts_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/snouts_ethari, GLOB.snouts_ethari_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/horns,GLOB.horns_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/ears, GLOB.ears_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/wings, GLOB.wings_list)
@@ -29,7 +30,9 @@
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/spines_animated, GLOB.animated_spines_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/legs, GLOB.legs_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/wings, GLOB.r_wings_list,roundstart = TRUE)
-
+	//fox bodyparts
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/ethari, GLOB.tails_list_ethari)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails_animated/ethari, GLOB.animated_tails_list_ethari)
 
 	//Species
 	for(var/spath in subtypesof(/datum/species))

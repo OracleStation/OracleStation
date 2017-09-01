@@ -6,6 +6,9 @@
 	else
 		return "[pick(GLOB.lizard_names_female)]-[pick(GLOB.lizard_names_female)]"
 
+/proc/ethari_name(gender)
+	return "[pick(GLOB.ethari_names)] [pick(GLOB.ethari_names)]"
+
 /proc/plasmaman_name()
 	return "[pick(GLOB.plasmaman_names)] \Roman[rand(1,99)]"
 

@@ -500,6 +500,54 @@
 	name = "Sidecut"
 	icon_state = "hair_sidecut"
 
+/datum/sprite_accessory/hair/anita
+	name = "Anita (ears)"
+	icon_state = "anita"
+
+/datum/sprite_accessory/hair/apollo
+	name = "Apollo (ears)"
+	icon_state = "apollo"
+
+/datum/sprite_accessory/hair/bun
+	name = "Bun (ears)"
+	icon_state = "bun"
+
+/datum/sprite_accessory/hair/curl
+	name = "Curl (ears)"
+	icon_state = "curl"
+
+/datum/sprite_accessory/hair/hawk
+	name = "Hawk (ears)"
+	icon_state = "hawk"
+
+/datum/sprite_accessory/hair/jagged
+	name = "Jagged (ears)"
+	icon_state = "jagged"
+
+/datum/sprite_accessory/hair/keid
+	name = "Keid (ears)"
+	icon_state = "keid"
+
+/datum/sprite_accessory/hair/kleeia
+	name = "Kleeia (ears)"
+	icon_state = "kleeia"
+
+/datum/sprite_accessory/hair/mizar
+	name = "Mizar (ears)"
+	icon_state = "mizar"
+
+/datum/sprite_accessory/hair/short
+	name = "Short (ears)"
+	icon_state = "short"
+
+/datum/sprite_accessory/hair/spike
+	name = "Spike (ears)"
+	icon_state = "spike"
+
+/datum/sprite_accessory/hair/braided
+	name = "Braided (ears)"
+	icon_state = "braided"
+
 /////////////////////////////
 // Facial Hair Definitions //
 /////////////////////////////
@@ -1157,12 +1205,67 @@
 	name = "Light Belly"
 	icon_state = "lbelly"
 	gender_specific = 1
+	color_src = 0
 
 /datum/sprite_accessory/tails
 	icon = 'icons/mob/mutant_bodyparts.dmi'
 
 /datum/sprite_accessory/tails_animated
 	icon = 'icons/mob/mutant_bodyparts.dmi'
+
+/datum/sprite_accessory/tails/ethari/bushy
+	name = "Bushy"
+	icon_state = "bushy"
+	hasinner = TRUE
+
+/datum/sprite_accessory/tails_animated/ethari/bushy
+	name = "Bushy"
+	icon_state = "bushy"
+	hasinner = TRUE
+
+/datum/sprite_accessory/tails/ethari/bushyclean
+	name = "Bushy (no markings)"
+	icon_state = "bushyclean"
+
+/datum/sprite_accessory/tails_animated/ethari/bushyclean
+	name = "Bushy (no markings)"
+	icon_state = "bushyclean"
+
+/datum/sprite_accessory/tails/ethari/short
+	name = "Short"
+	icon_state = "short"
+	hasinner = TRUE
+
+/datum/sprite_accessory/tails_animated/ethari/short
+	name = "Short"
+	icon_state = "short"
+	hasinner = TRUE
+
+/datum/sprite_accessory/tails/ethari/stub
+	name = "Stub"
+	icon_state = "stub"
+
+/datum/sprite_accessory/tails_animated/ethari/stub
+	name = "Stub"
+	icon_state = "stub"
+
+/datum/sprite_accessory/tails/ethari/long
+	name = "Long"
+	icon_state = "long"
+	hasinner = TRUE
+
+/datum/sprite_accessory/tails_animated/ethari/long
+	name = "Long"
+	icon_state = "long"
+	hasinner = TRUE
+
+/datum/sprite_accessory/tails/ethari/longclean
+	name = "Long (no markings)"
+	icon_state = "longclean"
+
+/datum/sprite_accessory/tails_animated/ethari/longclean
+	name = "Long (no markings)"
+	icon_state = "longclean"
 
 /datum/sprite_accessory/tails/lizard/smooth
 	name = "Smooth"
@@ -1214,6 +1317,27 @@
 	icon_state = "cat"
 	color_src = HAIR
 
+/datum/sprite_accessory/snouts_ethari
+	icon = 'icons/mob/mutant_bodyparts.dmi'
+
+/datum/sprite_accessory/snouts_ethari/sharp
+	name = "Sharp"
+	icon_state = "pointed"
+
+/datum/sprite_accessory/snouts_ethari/sharplight
+	name = "Sharp, Light"
+	icon_state = "pointedlight"
+	hasinner = TRUE
+
+/datum/sprite_accessory/snouts_ethari/round
+	name = "Round"
+	icon_state = "round"
+
+/datum/sprite_accessory/snouts_ethari/roundlight
+	name = "Round, Light"
+	icon_state = "roundlight"
+	hasinner = TRUE
+
 /datum/sprite_accessory/snouts
 	icon = 'icons/mob/mutant_bodyparts.dmi'
 
@@ -1226,11 +1350,11 @@
 	icon_state = "round"
 
 /datum/sprite_accessory/snouts/sharplight
-	name = "Sharp + Light"
+	name = "Sharp, Light"
 	icon_state = "sharplight"
 
 /datum/sprite_accessory/snouts/roundlight
-	name = "Round + Light"
+	name = "Round, Light"
 	icon_state = "roundlight"
 
 /datum/sprite_accessory/horns
@@ -1259,6 +1383,27 @@
 /datum/sprite_accessory/horns/angler
 	name = "Angeler"
 	icon_state = "angler"
+
+/datum/sprite_accessory/anthro_ears
+	icon = 'icons/mob/mutant_bodyparts.dmi'
+
+/datum/sprite_accessory/anthro_ears/foxbeast
+	name = "Fox"
+	icon_state = "fox"
+
+/datum/sprite_accessory/anthro_ears/foxbeastfluff
+	name = "Fox, Fluff"
+	icon_state = "fox"//same icon state because they're the same :C
+	hasinner = TRUE//but this one has the inner sprite on top of the regular one
+
+/datum/sprite_accessory/anthro_ears/catbeast
+	name = "Cat"
+	icon_state = "cat"
+
+/datum/sprite_accessory/anthro_ears/catbeastfluff
+	name = "Cat, Fluff"
+	icon_state = "cat"
+	hasinner = TRUE
 
 /datum/sprite_accessory/ears
 	icon = 'icons/mob/mutant_bodyparts.dmi'
@@ -1342,11 +1487,11 @@
 	icon_state = "short"
 
 /datum/sprite_accessory/spines/shortmeme
-	name = "Short + Membrane"
+	name = "Short, Membrane"
 	icon_state = "shortmeme"
 
 /datum/sprite_accessory/spines_animated/shortmeme
-	name = "Short + Membrane"
+	name = "Short, Membrane"
 	icon_state = "shortmeme"
 
 /datum/sprite_accessory/spines/long
@@ -1358,11 +1503,11 @@
 	icon_state = "long"
 
 /datum/sprite_accessory/spines/longmeme
-	name = "Long + Membrane"
+	name = "Long, Membrane"
 	icon_state = "longmeme"
 
 /datum/sprite_accessory/spines_animated/longmeme
-	name = "Long + Membrane"
+	name = "Long, Membrane"
 	icon_state = "longmeme"
 
 /datum/sprite_accessory/spines/aqautic
