@@ -28,6 +28,19 @@
 	. = ..()
 	for(var/datum/mutation/human/HM in dna.mutations)
 		HM.on_move(src, NewLoc)
+
+	if(direct == EAST && lying == 270)//rotation handled on people crawling in different directions
+		//yes, this is shitcode, blame FlattestGuitar
+		lying = 90
+		lying_prev = 270
+		update_transform(TRUE)
+		lying_prev = lying
+	else if(direct == WEST && lying == 90)
+		lying = 270
+		lying_prev = 90
+		update_transform(TRUE)
+		lying_prev = lying
+
 	if(shoes)
 		if(!lying && !buckled)
 			if(loc == NewLoc)
@@ -60,6 +73,9 @@
 	. = ..()
 	if(buckled_mobs && buckled_mobs.len && riding_datum)
 		riding_datum.on_vehicle_move()
+	if(!lying)
+		for(var/obj/item/bodypart/B in bodyparts)
+			B.on_mob_move()
 
 /mob/living/carbon/human/Process_Spacemove(movement_dir = 0) //Temporary laziness thing. Will change to handles by species reee.
 	if(..())

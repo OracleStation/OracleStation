@@ -103,6 +103,12 @@
 	icon_state = "hop_cypherkey"
 	channels = list("Supply" = 1, "Service" = 1, "Command" = 1)
 
+/obj/item/device/encryptionkey/heads/blueshield
+	name = "\proper the blueshield's encryption key"
+	desc = "An encryption key for a radio headset.  Channels are as follows: :c - command."
+	icon_state = "com_cypherkey"
+	channels = list("Command" = 1)
+
 /obj/item/device/encryptionkey/headset_cargo
 	name = "supply radio encryption key"
 	desc = "An encryption key for a radio headset.  To access the supply channel, use :u."
