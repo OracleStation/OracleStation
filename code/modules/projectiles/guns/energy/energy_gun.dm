@@ -62,7 +62,7 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 
 /obj/item/gun/energy/e_gun/blueshield
-	name = "advanced stun revolver"
+	name = "Aegis SG7 stun revolver"
 	desc = "An advanced stun revolver with the capacity to shoot both electrodes and lasers."
 	icon_state = "bsgun"
 	item_state = "gun"

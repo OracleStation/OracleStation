@@ -14,6 +14,7 @@
  *		ID and security PDA cart boxes,
  *		Handcuff, mousetrap, and pillbottle boxes,
  *		Snap-pops and matchboxes,
+ *		Blueshield Equipment boxes
  *		Replacement light boxes.
  *		Action Figure Boxes
  *		Various paper bags.
@@ -901,3 +902,29 @@
 /obj/item/storage/box/fountainpens/PopulateContents()
 	for(var/i in 1 to 7)
 		new /obj/item/pen/fountain(src)
+
+/obj/item/storage/box/blueshield
+	desc = "It's a box filled with a Blueshield's equipment."
+	illustration = "blu-box"
+
+/obj/item/storage/box/blueshield/laser
+	name = "Blueshield Equipment (Aegis SG7 laser gun)"
+
+/obj/item/storage/box/blueshield/laser/PopulateContents()
+	new /obj/item/gun/energy/e_gun/blueshield(src)
+
+/obj/item/storage/box/blueshield/revolver
+	name = "Blueshield Equipment (.38 Mars Special revolver)"
+
+/obj/item/storage/box/blueshield/revolver/PopulateContents()
+	new /obj/item/gun/ballistic/revolver/detective(src)
+	new /obj/item/ammo_box/c38(src)
+	new /obj/item/ammo_box/c38(src)
+
+/obj/item/storage/box/blueshield/enforcer
+	name = "Blueshield Equipment (.45 Enforcer semi automatic pistol)"
+
+/obj/item/storage/box/blueshield/enforcer/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/pistol/enforcer(src)
+	new /obj/item/ammo_box/magazine/enforcer(src)
+	new /obj/item/ammo_box/magazine/enforcer(src)

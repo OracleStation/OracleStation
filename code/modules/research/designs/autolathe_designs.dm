@@ -431,6 +431,13 @@
 	build_path = /obj/item/ammo_box/c38
 	category = list("initial", "Security")
 
+/datum/design/r45
+	name = "Ammo Box (.45 rubber)"
+	build_type = AUTOLATHE
+	materials = list(MAT_METAL = 30000)
+	build_path = /obj/item/ammo_box/r45
+	category = list("initial", "Security")
+
 /datum/design/recorder
 	name = "Universal Recorder"
 	id = "recorder"
