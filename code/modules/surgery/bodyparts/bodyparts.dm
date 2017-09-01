@@ -119,7 +119,7 @@
 		return
 	broken = TRUE
 	spawn(1)//because otherwise it pops before the punch message; we don't want that
-		owner.visible_message("<span class='warning'>You hear a cracking sound coming from [owner]'s [parse_zone(src)].</span>", "<span class='warning'>You feel something crack in your [parse_zone(src)]!</span>", "<span class='warning'>You hear an awful cracking sound.</span>")
+		owner.visible_message("<span class='userdanger'>You hear a cracking sound coming from [owner]'s [parse_zone(src)].</span>", "<span class='warning'>You feel something crack in your [parse_zone(src)]!</span>", "<span class='warning'>You hear an awful cracking sound.</span>")
 
 /obj/item/bodypart/proc/fix_bone()
 	broken = FALSE
@@ -131,7 +131,7 @@
 		return
 
 	if(prob(5))
-		to_chat(owner, "<span class='warning'>[pick("You feel broken bones moving around in your [src]!", "There are broken bones moving around in your [src]!", "The bones in your [src] are moving around!")]</span>")
+		to_chat(owner, "<span class='userdanger'>[pick("You feel broken bones moving around in your [src]!", "There are broken bones moving around in your [src]!", "The bones in your [src] are moving around!")]</span>")
 		receive_damage(rand(1, 3))
 		//1-3 damage every 20 tiles for every broken bodypart.
 		//A single broken bodypart will give you an average of 650 tiles to run before you get a total of 100 damage and fall into crit
