@@ -38,6 +38,7 @@
 		"water",
 		"ethanol",
 		"sugar",
+		"sacid",
 		"silver",
 		"iodine",
 		"bromine",
