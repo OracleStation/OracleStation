@@ -179,7 +179,7 @@
 	var/ooc_during_round = 0
 	var/looc_during_round = 0
 	var/emojis = 0
-	var/roll_credits_round_end = 0
+	var/no_credits_round_end = FALSE
 
 	//Used for modifying movement speed for mobs.
 	//Unversal modifiers
@@ -598,8 +598,8 @@
 					looc_during_round = TRUE
 				if("emojis")
 					emojis					= 1
-				if("roll_credits_round_end")
-					roll_credits_round_end	= 1
+				if("no_credits_round_end")
+					no_credits_round_end	= TRUE
 				if("run_delay")
 					run_speed				= text2num(value)
 				if("walk_delay")
