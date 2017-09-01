@@ -23,6 +23,7 @@
 	var/is_pseudopart = FALSE //For limbs that don't really exist, eg chainsaws
 	var/broken = FALSE //For whether...it's broken
 	var/splinted = FALSE //Whether it's splinted. Movement doesn't deal damage, but you still move slowly.
+	var/has_bones = FALSE
 
 	//Coloring and proper item icon update
 	var/skin_tone = ""
@@ -104,10 +105,21 @@
 	for(var/obj/item/I in src)
 		I.forceMove(T)
 
-/obj/item/bodypart/proc/break_bone()
+/obj/item/bodypart/proc/can_break_bone()
+	if(broken)
+		return 0
 	if(status == BODYPART_ROBOTIC)
+		return 0
+	if(!has_bones)
+		return 0
+	return 1
+
+/obj/item/bodypart/proc/break_bone()
+	if(!can_break_bone())
 		return
 	broken = TRUE
+	spawn(1)//because otherwise it pops before the punch message; we don't want that
+		owner.visible_message("<span class='warning'>You hear a cracking sound coming from [owner]'s [parse_zone(src)].</span>", "<span class='warning'>You feel something crack in your [parse_zone(src)]!</span>", "<span class='warning'>You hear an awful cracking sound.</span>")
 
 /obj/item/bodypart/proc/fix_bone()
 	broken = FALSE
@@ -142,6 +154,9 @@
 	switch(animal_origin)
 		if(ALIEN_BODYPART,LARVA_BODYPART) //aliens take double burn
 			burn *= 2
+
+	if(prob(brute*2))
+		break_bone()
 
 	var/can_inflict = max_damage - (brute_dam + burn_dam)
 	if(!can_inflict)
@@ -239,6 +254,8 @@
 		C = owner
 		no_update = 0
 
+	has_bones = C.has_bones//get the carbon's default bone settings
+
 	if(C.disabilities & HUSK)
 		species_id = "husk" //overrides species_id
 		dmg_overlay_type = "" //no damage overlay shown when husked
@@ -256,6 +273,12 @@
 		var/datum/species/S = H.dna.species
 		species_id = S.limbs_id
 		species_flags_list = H.dna.species.species_traits
+
+		if(NO_BONES in S.species_traits)
+			has_bones = FALSE
+			fix_bone()
+		else
+			has_bones = TRUE
 
 		if(S.use_skintones)
 			skin_tone = H.skin_tone
