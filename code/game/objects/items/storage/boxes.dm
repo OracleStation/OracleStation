@@ -905,6 +905,7 @@
 
 /obj/item/storage/box/blueshield
 	desc = "It's a box filled with a Blueshield's equipment."
+	illustration = "blu-box"
 
 /obj/item/storage/box/blueshield/laser
 	name = "Blueshield Equipment (Aegis SG7 laser gun)"

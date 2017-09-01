@@ -44,5 +44,5 @@ Blueshield
   duffelbag = /obj/item/storage/backpack/duffelbag/sec
 
   backpack_contents = list(
-    /obj/item/blueshield_gun_ticket = 1
+    /obj/item/blueshield_gun_package = 1
   )
