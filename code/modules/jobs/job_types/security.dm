@@ -293,6 +293,40 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 
 	implants = list(/obj/item/implant/mindshield)
 
+/datum/job/brig_phys
+	title = "Brig Physician"
+	flag = BRIG_PHYS
+	department_head = list("Head of Security")
+	department_flag = ENGSEC
+	faction = "Station"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the head of security"
+	selection_color = "#ffeeee"
+	minimal_player_age = 7
+	exp_requirements = 300
+	exp_type = EXP_TYPE_CREW
+
+	outfit = /datum/outfit/job/brig_phys
+
+	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_MAINT_TUNNELS, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_FORENSICS_LOCKERS, ACCESS_MEDICAL)
+	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_MAINT_TUNNELS, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_FORENSICS_LOCKERS, ACCESS_MEDICAL)
+
+/datum/outfit/job/brig_phys
+	name = "Brig Physician"
+	jobtype = /datum/job/brig_phys
+
+	belt = /obj/item/device/pda/security
+	ears = /obj/item/device/radio/headset/headset_sec/alt
+	uniform = /obj/item/clothing/under/rank/brig_phys
+	shoes = /obj/item/clothing/shoes/sneakers/white
+	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
+	suit = /obj/item/clothing/suit/hazardvest/brig_phys
+	suit_store = /obj/item/device/flashlight/seclite
+	l_hand = /obj/item/storage/firstaid/regular
+	head = /obj/item/clothing/head/soft/sec/brig_phys
+	implants = list(/obj/item/implant/mindshield)
+
 
 /obj/item/device/radio/headset/headset_sec/alt/department/Initialize()
 	wires = new/datum/wires/radio(src)
