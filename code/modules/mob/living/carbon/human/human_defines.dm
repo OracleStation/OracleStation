@@ -43,8 +43,9 @@
 
 	var/drunkenness = 0 //Overall drunkenness - check handle_alcohol() in life.dm for effects
 	var/datum/personal_crafting/handcrafting
+	var/shock_stage = 0 //how much pain they're in. High levels are bad for your health. Very bad.
+	var/traumatic_shock = 0 //a sum of all damage; taken into account by shock_stage
 	can_buckle = TRUE
 	buckle_lying = FALSE
 	can_ride_typecache = list(/mob/living/carbon/human, /mob/living/simple_animal/slime, /mob/living/simple_animal/parrot)
 	can_crawl = TRUE
-	
