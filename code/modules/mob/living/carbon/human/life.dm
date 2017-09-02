@@ -334,7 +334,7 @@
 		dropItemToGround(held_items[2])
 
 /mob/living/carbon/human/proc/update_shock()
-	traumatic_shock = getOxyLoss() + getToxLoss() + getFireLoss() + getBruteLoss() + getCloneLoss() + getBrainLoss()
+	traumatic_shock = health + getBrainLoss()
 
 	// broken or ripped off organs will add quite a bit of pain
 	for(var/thing in bodyparts)
@@ -374,10 +374,10 @@
 
 	switch(shock_stage)
 		if(30)
-			src.visible_message("<span class='warning'><b>[src]</b> is having trouble keeping their eyes open.</span>", "<span class='userdanger'>[pick(ouch_list)]</span>")
+			visible_message("<span class='warning'><b>[src]</b> is having trouble keeping their eyes open.</span>", "<span class='userdanger'>[pick(ouch_list)]</span>")
 
 		if(40)
-			src.visible_message("<span class='warning'><b>[src]</b> grinds their teeth in pain.</span>", "<span class='userdanger'>[pick(ouch_list)]</span>")
+			visible_message("<span class='warning'><b>[src]</b> grinds their teeth in pain.</span>", "<span class='userdanger'>[pick(ouch_list)]</span>")
 
 		if(41 to 71)
 			if(prob(2))
@@ -392,12 +392,12 @@
 
 	if(shock_stage > 90)
 		if(prob(2) && stat == CONSCIOUS)
-			src.visible_message("<span class='warning'><b>[src]</b> blacks out.</span>", "<span class='userdanger'>[pick("You black out from the pain!", "The pain is too much to bear!")]</span>")
+			visible_message("<span class='warning'><b>[src]</b> blacks out.</span>", "<span class='userdanger'>[pick("You black out from the pain!", "The pain is too much to bear!")]</span>")
 			Unconscious(100)
 
 	if(shock_stage > 150)
 		if(!lying && !resting && !buckled)
-			src.visible_message("<span class='warning'><b>[src]</b> falls onto the floor, limp.</span>", "<span class='userdanger'>[pick(holy_heck_the_ouch_list)]</span>")
+			visible_message("<span class='warning'><b>[src]</b> falls onto the floor, limp.</span>", "<span class='userdanger'>[pick(holy_heck_the_ouch_list)]</span>")
 		Knockdown(200, stun = FALSE)
 
 	if(shock_stage > 210 && can_heartattack() && !undergoing_cardiac_arrest())
