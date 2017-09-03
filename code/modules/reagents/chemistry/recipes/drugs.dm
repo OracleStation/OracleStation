@@ -40,3 +40,9 @@
 	id = "aranesp"
 	results = list("aranesp" = 3)
 	required_reagents = list("epinephrine" = 1, "atropine" = 1, "insulin" = 1)
+
+/datum/chemical_reaction/lsd
+	name = "Lysergic acid diethylamide"
+	id = "lsd"
+	results = list("lsd" = 2)
+	required_reagents = list("fungus" = 1, "diethylamine" = 1)

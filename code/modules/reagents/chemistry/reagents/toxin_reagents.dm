@@ -175,18 +175,6 @@
 	M.status_flags &= ~FAKEDEATH
 	..()
 
-/datum/reagent/toxin/mindbreaker
-	name = "Mindbreaker Toxin"
-	id = "mindbreaker"
-	description = "A powerful hallucinogen. Not a thing to be messed with."
-	color = "#B31008" // rgb: 139, 166, 233
-	toxpwr = 0
-	taste_description = "sourness"
-
-/datum/reagent/toxin/mindbreaker/on_mob_life(mob/living/M)
-	M.hallucination += 10
-	return ..()
-
 /datum/reagent/toxin/plantbgone
 	name = "Plant-B-Gone"
 	id = "plantbgone"
@@ -901,3 +889,56 @@
 	color = "#F0F8FF" // rgb: 240, 248, 255
 	toxpwr = 0
 	taste_description = "stillness"
+
+/datum/reagent/toxin/sarin
+	name = "Sarin"
+	id = "sarin"
+	description = "An extremely deadly neurotoxin."
+	reagent_state = LIQUID
+	metabolization_rate = 0.1
+	overdose_threshold = 25
+	taste_description = null
+
+/datum/reagent/toxin/sarin/on_mob_life(mob/living/M)
+	switch(current_cycle)
+		if(1 to 15)
+			M.Jitter(20)
+			if(prob(20))
+				M.emote(pick("twitch","twitch_s","quiver"))
+		if(16 to 30)
+			if(prob(25))
+				M.emote(pick("twitch","twitch","drool","quiver","tremble"))
+			M.blur_eyes(5)
+			M.stuttering += 3
+			if(prob(10))
+				M.confused += 15
+			if(prob(15))
+				M.Stun(1)
+				M.emote("scream")
+		if(30 to 60)
+			M.blur_eyes(5)
+			M.stuttering += 5
+			if(prob(10))
+				M.Stun(1)
+				M.emote(pick("twitch","twitch","drool","shake","tremble"))
+			if(prob(5))
+				M.emote("collapse")
+			if(prob(5))
+				M.Unconscious(20)
+				M.visible_message("<span class='warning'>[M] has a seizure!</span>")
+				M.Jitter(1000)
+			if(prob(5))
+				to_chat(M, "<span class='warning'>You can't breathe!</span>")
+				M.emote(pick("gasp", "choke", "cough"))
+				M.losebreath += 1
+		if(61 to INFINITY)
+			if(prob(15))
+				M.emote(pick("gasp", "choke", "cough","twitch", "shake", "tremble","quiver","drool", "twitch","collapse"))
+			M.losebreath += 5
+			M.adjustToxLoss(1)
+			M.adjustBrainLoss(1)
+			M.Unconscious(4)
+	M.adjustToxLoss(1)
+	M.adjustBrainLoss(1)
+	M.adjustFireLoss(1)
+	..()

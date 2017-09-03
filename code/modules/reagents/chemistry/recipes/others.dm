@@ -688,3 +688,24 @@
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/food/snacks/meat/slab/synthmeat(location)
+
+/datum/chemical_reaction/tofu
+	name = "Tofu"
+	id = "tofu"
+	required_reagents = list("soymilk" = 10)
+	required_catalysts = list("enzyme" = 5)
+
+/datum/chemical_reaction/tofu/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i, i <= created_volume, i++)
+		new /obj/item/reagent_containers/food/snacks/tofu(location)
+
+/datum/chemical_reaction/chocolate
+	name = "Chocolate"
+	id = "chocolate"
+	required_reagents = list("milk" = 2, "cocoa" = 2, "sugar" = 2)
+
+/datum/chemical_reaction/chocolate/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i, i <= created_volume, i++)
+		new /obj/item/reagent_containers/food/snacks/chocolatebar(location)

@@ -333,7 +333,7 @@
 	emagged_reagents = list(
 		"thirteenloko",
 		"whiskeycola",
-		"mindbreaker",
+		"lsd",
 		"tirizene"
 	)
 
