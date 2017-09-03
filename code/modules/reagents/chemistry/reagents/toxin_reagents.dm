@@ -904,10 +904,10 @@
 		if(1 to 15)
 			M.Jitter(20)
 			if(prob(20))
-				M.emote(pick("twitch","twitch_s","quiver"))
+				M.emote(pick("twitch", "twitch_s", "quiver"))
 		if(16 to 30)
 			if(prob(25))
-				M.emote(pick("twitch","twitch","drool","quiver","tremble"))
+				M.emote(pick("twitch", "twitch", "drool", "quiver", "tremble"))
 			M.blur_eyes(5)
 			M.stuttering += 3
 			if(prob(10))
@@ -920,7 +920,7 @@
 			M.stuttering += 5
 			if(prob(10))
 				M.Stun(1)
-				M.emote(pick("twitch","twitch","drool","shake","tremble"))
+				M.emote(pick("twitch", "twitch", "drool", "shake", "tremble"))
 			if(prob(5))
 				M.emote("collapse")
 			if(prob(5))
@@ -933,7 +933,7 @@
 				M.losebreath += 1
 		if(61 to INFINITY)
 			if(prob(15))
-				M.emote(pick("gasp", "choke", "cough","twitch", "shake", "tremble","quiver","drool", "twitch","collapse"))
+				M.emote(pick("gasp", "choke", "cough", "twitch", "shake", "tremble", "quiver", "drool", "twitch", "collapse"))
 			M.losebreath += 5
 			M.adjustToxLoss(1)
 			M.adjustBrainLoss(1)
