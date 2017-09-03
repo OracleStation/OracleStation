@@ -38,6 +38,7 @@
 		"water",
 		"ethanol",
 		"sugar",
+		"welding_fuel",
 		"silver",
 		"iodine",
 		"bromine",
