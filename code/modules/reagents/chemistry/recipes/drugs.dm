@@ -29,7 +29,7 @@
 	required_temp = 374
 
 /datum/chemical_reaction/bath_salts
-	name = "bath_salts"
+	name = "Bath salts"
 	id = "bath_salts"
 	results = list("bath_salts" = 7)
 	required_reagents = list("bad_food" = 1, "saltpetre" = 1, "nutriment" = 1, "cleaner" = 1, "enzyme" = 1, "tea" = 1, "mercury" = 1)
@@ -39,4 +39,10 @@
 	name = "aranesp"
 	id = "aranesp"
 	results = list("aranesp" = 3)
-	required_reagents = list("epinephrine" = 1, "atropine" = 1, "morphine" = 1)
+	required_reagents = list("epinephrine" = 1, "atropine" = 1, "insulin" = 1)
+
+/datum/chemical_reaction/lsd
+	name = "Lysergic acid diethylamide"
+	id = "lsd"
+	results = list("lsd" = 2)
+	required_reagents = list("fungus" = 1, "diethylamine" = 1)

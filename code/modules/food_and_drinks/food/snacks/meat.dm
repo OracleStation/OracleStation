@@ -16,6 +16,10 @@
 	tastes = list("meat" = 1)
 	foodtype = MEAT | RAW
 
+/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat
+	name = "synth meat"
+	desc = "A slab of synthetic meat"
+
 /obj/item/reagent_containers/food/snacks/meat/slab/initialize_slice(obj/item/reagent_containers/food/snacks/meat/rawcutlet/slice, reagents_per_slice)
 	..()
 	var/mutable_appearance/filling = mutable_appearance(icon, "rawcutlet_coloration")

@@ -340,3 +340,14 @@
 		M.adjustOxyLoss(1, 0)
 	..()
 	. = 1
+
+/datum/reagent/drug/lsd
+	name = "Lysergic acid diethlamide"
+	id = "lsd"
+	description = "A powerful hallucinogen. Not a thing to be messed with."
+	color = "#B31008" // rgb: 139, 166, 233
+	taste_description = "sourness"
+
+/datum/reagent/drug/lsd/on_mob_life(mob/living/M)
+	M.hallucination += 10
+	return ..()

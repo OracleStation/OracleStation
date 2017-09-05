@@ -14,13 +14,13 @@
 	current_cycle++
 	holder.remove_reagent(src.id, metabolization_rate / M.metabolism_efficiency) //medicine reagents stay longer if you have a better metabolism
 
-/datum/reagent/medicine/leporazine
-	name = "Leporazine"
-	id = "leporazine"
+/datum/reagent/medicine/teporone
+	name = "Teporone"
+	id = "teporone"
 	description = "Leporazine will effectively regulate a patient's body temperature, ensuring it never leaves safe levels."
 	color = "#C8A5DC" // rgb: 200, 165, 220
 
-/datum/reagent/medicine/leporazine/on_mob_life(mob/living/M)
+/datum/reagent/medicine/teporone/on_mob_life(mob/living/M)
 	if(M.bodytemperature > 310)
 		M.bodytemperature = max(310, M.bodytemperature - (40 * TEMPERATURE_DAMAGE_COEFFICIENT))
 	else if(M.bodytemperature < 311)
@@ -84,8 +84,8 @@
 	M.AdjustStun(-20, 0)
 	M.AdjustKnockdown(-20, 0)
 	M.AdjustUnconscious(-20, 0)
-	if(holder.has_reagent("mindbreaker"))
-		holder.remove_reagent("mindbreaker", 5)
+	if(holder.has_reagent("lsd"))
+		holder.remove_reagent("lsd", 5)
 	M.hallucination = max(0, M.hallucination - 10)
 	if(prob(30))
 		M.adjustToxLoss(1, 0)
@@ -100,24 +100,14 @@
 
 /datum/reagent/medicine/synaphydramine/on_mob_life(mob/living/M)
 	M.drowsyness = max(M.drowsyness-5, 0)
-	if(holder.has_reagent("mindbreaker"))
-		holder.remove_reagent("mindbreaker", 5)
+	if(holder.has_reagent("lsd"))
+		holder.remove_reagent("lsd", 5)
 	if(holder.has_reagent("histamine"))
 		holder.remove_reagent("histamine", 5)
 	M.hallucination = max(0, M.hallucination - 10)
 	if(prob(30))
 		M.adjustToxLoss(1, 0)
 		. = 1
-	..()
-
-/datum/reagent/medicine/inacusiate
-	name = "Inacusiate"
-	id = "inacusiate"
-	description = "Instantly restores all hearing to the patient, but does not cure deafness."
-	color = "#6600FF" // rgb: 100, 165, 255
-
-/datum/reagent/medicine/inacusiate/on_mob_life(mob/living/M)
-	M.restoreEars()
 	..()
 
 /datum/reagent/medicine/cryoxadone
@@ -232,23 +222,6 @@
 
 /datum/reagent/medicine/silver_sulfadiazine/on_mob_life(mob/living/M)
 	M.adjustFireLoss(-2*REM, 0)
-	..()
-	. = 1
-
-/datum/reagent/medicine/oxandrolone
-	name = "Oxandrolone"
-	id = "oxandrolone"
-	description = "Stimulates the healing of severe burns. Extremely rapidly heals severe burns and slowly heals minor ones. Overdose will worsen existing burns."
-	reagent_state = LIQUID
-	color = "#f7ffa5"
-	metabolization_rate = 0.5 * REAGENTS_METABOLISM
-	overdose_threshold = 25
-
-/datum/reagent/medicine/oxandrolone/on_mob_life(mob/living/M)
-	if(M.getFireLoss() > 50)
-		M.adjustFireLoss(-4*REM, 0) //Twice as effective as silver sulfadiazine for severe burns
-	else
-		M.adjustFireLoss(-0.5*REM, 0) //But only a quarter as effective for more minor ones
 	..()
 	. = 1
 
@@ -894,120 +867,6 @@
 	M.reagents.remove_reagent("sugar", 3)
 	..()
 
-//Trek Chems, used primarily by medibots. Only heals a specific damage type, but is very efficient.
-/datum/reagent/medicine/bicaridine
-	name = "Bicaridine"
-	id = "bicaridine"
-	description = "Restores bruising. Overdose causes it instead."
-	reagent_state = LIQUID
-	color = "#C8A5DC"
-	overdose_threshold = 30
-
-/datum/reagent/medicine/bicaridine/on_mob_life(mob/living/M)
-	M.adjustBruteLoss(-2*REM, 0)
-	..()
-	. = 1
-
-/datum/reagent/medicine/bicaridine/overdose_process(mob/living/M)
-	M.adjustBruteLoss(4*REM, 0)
-	..()
-	. = 1
-
-/datum/reagent/medicine/dexalin
-	name = "Dexalin"
-	id = "dexalin"
-	description = "Restores oxygen loss. Overdose causes it instead."
-	reagent_state = LIQUID
-	color = "#C8A5DC"
-	overdose_threshold = 30
-
-/datum/reagent/medicine/dexalin/on_mob_life(mob/living/M)
-	M.adjustOxyLoss(-2*REM, 0)
-	..()
-	. = 1
-
-/datum/reagent/medicine/dexalin/overdose_process(mob/living/M)
-	M.adjustOxyLoss(4*REM, 0)
-	..()
-	. = 1
-
-/datum/reagent/medicine/kelotane
-	name = "Kelotane"
-	id = "kelotane"
-	description = "Restores fire damage. Overdose causes it instead."
-	reagent_state = LIQUID
-	color = "#C8A5DC"
-	overdose_threshold = 30
-
-/datum/reagent/medicine/kelotane/on_mob_life(mob/living/M)
-	M.adjustFireLoss(-2*REM, 0)
-	..()
-	. = 1
-
-/datum/reagent/medicine/kelotane/overdose_process(mob/living/M)
-	M.adjustFireLoss(4*REM, 0)
-	..()
-	. = 1
-
-/datum/reagent/medicine/antitoxin
-	name = "Anti-Toxin"
-	id = "antitoxin"
-	description = "Heals toxin damage and removes toxins in the bloodstream. Overdose causes toxin damage."
-	reagent_state = LIQUID
-	color = "#C8A5DC"
-	overdose_threshold = 30
-	taste_description = "a roll of gauze"
-
-/datum/reagent/medicine/antitoxin/on_mob_life(mob/living/M)
-	M.adjustToxLoss(-2*REM, 0)
-	for(var/datum/reagent/toxin/R in M.reagents.reagent_list)
-		M.reagents.remove_reagent(R.id,1)
-	..()
-	. = 1
-
-/datum/reagent/medicine/antitoxin/overdose_process(mob/living/M)
-	M.adjustToxLoss(4*REM, 0) // End result is 2 toxin loss taken, because it heals 2 and then removes 4.
-	..()
-	. = 1
-
-/datum/reagent/medicine/inaprovaline
-	name = "Inaprovaline"
-	id = "inaprovaline"
-	description = "Stabilizes the breathing of patients. Good for those in critical condition."
-	reagent_state = LIQUID
-	color = "#C8A5DC"
-
-/datum/reagent/medicine/inaprovaline/on_mob_life(mob/living/M)
-	if(M.losebreath >= 5)
-		M.losebreath -= 5
-	..()
-
-/datum/reagent/medicine/tricordrazine
-	name = "Tricordrazine"
-	id = "tricordrazine"
-	description = "Has a high chance to heal all types of damage. Overdose instead causes it."
-	reagent_state = LIQUID
-	color = "#C8A5DC"
-	overdose_threshold = 30
-	taste_description = "grossness"
-
-/datum/reagent/medicine/tricordrazine/on_mob_life(mob/living/M)
-	if(prob(80))
-		M.adjustBruteLoss(-1*REM, 0)
-		M.adjustFireLoss(-1*REM, 0)
-		M.adjustOxyLoss(-1*REM, 0)
-		M.adjustToxLoss(-1*REM, 0)
-		. = 1
-	..()
-
-/datum/reagent/medicine/tricordrazine/overdose_process(mob/living/M)
-	M.adjustToxLoss(2*REM, 0)
-	M.adjustOxyLoss(2*REM, 0)
-	M.adjustBruteLoss(2*REM, 0)
-	M.adjustFireLoss(2*REM, 0)
-	..()
-	. = 1
-
 /datum/reagent/medicine/syndicate_nanites //Used exclusively by Syndicate medical cyborgs
 	name = "Restorative Nanites"
 	id = "syndicate_nanites"
@@ -1072,6 +931,26 @@
 	M.adjustStaminaLoss(2.5*REM, 0)
 	..()
 	. = 1
+
+/datum/reagent/medicine/ether
+	name = "Ether"
+	id = "ether"
+	description = "A strong anaesthetic and sedative."
+	reagent_state = LIQUID
+	color = "#96DEDE"
+
+/datum/reagent/medicine/ether/on_mob_life(mob/living/M)
+	M.apply_effect(20, JITTER)
+	switch(current_cycle)
+		if(1 to 15)
+			if(prob(7))
+				M.emote("yawn")
+		if(16 to 35)
+			M.apply_effect(20, DROWSY)
+		if(36 to INFINITY)
+			M.apply_effect(15, UNCONSCIOUS)
+			M.apply_effect(20, DROWSY)
+	..()
 
 /datum/reagent/medicine/miningnanites
 	name = "Nanites"
