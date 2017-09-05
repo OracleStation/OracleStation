@@ -132,6 +132,9 @@
 /obj/effect/landmark/start/blueshield
 	name = "Blueshield"
 
+/obj/effect/landmark/start/brig_phys
+	name = "Brig Physician"
+
 //Department Security spawns
 
 /obj/effect/landmark/start/depsec

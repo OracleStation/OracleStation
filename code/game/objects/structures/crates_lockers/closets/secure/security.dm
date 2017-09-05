@@ -74,6 +74,26 @@
 	new /obj/item/storage/belt/holster(src)
 	new /obj/item/clothing/shoes/jackboots(src)
 
+/obj/structure/closet/secure_closet/brig_phys
+	name = "\proper brig physician's locker"
+	req_access = list(ACCESS_BRIG)
+	icon_state = "brig_phys"
+
+/obj/structure/closet/secure_closet/brig_phys/PopulateContents()
+	..()
+	new /obj/item/device/radio/headset/headset_sec(src)
+	new	/obj/item/storage/firstaid/regular(src)
+	new	/obj/item/storage/firstaid/fire(src)
+	new	/obj/item/storage/firstaid/toxin(src)
+	new	/obj/item/storage/firstaid/o2(src)
+	new	/obj/item/storage/firstaid/brute(src)
+	new /obj/item/storage/belt/medical(src)
+	new /obj/item/reagent_containers/spray/pepper(src)
+	new /obj/item/device/assembly/flash/handheld(src)
+	new /obj/item/restraints/handcuffs(src)
+	new /obj/item/device/sensor_device(src)
+	new /obj/item/clothing/gloves/color/latex/nitrile(src)
+
 /obj/structure/closet/secure_closet/hos
 	name = "\proper head of security's locker"
 	req_access = list(ACCESS_HOS)
