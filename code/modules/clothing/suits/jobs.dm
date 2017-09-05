@@ -112,7 +112,7 @@
 	icon_state = "brig_phys_vest"
 	item_state = "sec_helm"//looks kinda similar, I guess
 	allowed = list(/obj/item/device/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/device/healthanalyzer, /obj/item/device/flashlight, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/beaker, /obj/item/reagent_containers/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/melee/classic_baton/telescopic, /obj/item/soap, /obj/item/device/sensor_device, /obj/item/tank/internals/emergency_oxygen)
-	armor = list(melee = 15, bullet = 15, laser = 15,energy = 10, bomb = 10, bio = 50, rad = 10, fire = 50, acid = 50)
+	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0, fire = 50, acid = 50)
 
 //Engineering
 /obj/item/clothing/suit/hazardvest
