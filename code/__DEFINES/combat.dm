@@ -42,7 +42,7 @@
 #define XENO_HOST	32768	//Tracks whether we're gonna be a baby alien's mummy.
 
 //Health Defines
-#define HEALTH_THRESHOLD_CRIT 0
+#define HEALTH_THRESHOLD_CRIT -50
 #define HEALTH_THRESHOLD_DEAD -100
 
 //Actual combat defines

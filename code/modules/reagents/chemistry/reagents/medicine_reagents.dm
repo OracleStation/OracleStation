@@ -1134,3 +1134,10 @@
 	id = "corazone"
 	description = "A medication used to treat pain, fever, and inflammation, along with heart attacks."
 	color = "#F5F5F5"
+
+/datum/reagent/medicine/corazone/on_mob_life(mob/living/M as mob)
+	..()
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	H.shock_stage = max(H.shock_stage - 1.5, 0)
