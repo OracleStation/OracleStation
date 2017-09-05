@@ -15,7 +15,6 @@
 	icon_grow = "grass-grow"
 	icon_dead = "grass-dead"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	mutatelist = list(/obj/item/seeds/grass/carpet)
 	reagents_add = list("nutriment" = 0.02, "hydrogen" = 0.05)
 
 /obj/item/reagent_containers/food/snacks/grown/grass
@@ -49,21 +48,3 @@
 				break
 	qdel(src)
 	return
-
-// Carpet
-/obj/item/seeds/grass/carpet
-	name = "pack of carpet seeds"
-	desc = "These seeds grow into stylish carpet samples."
-	icon_state = "seed-carpet"
-	species = "carpet"
-	plantname = "Carpet"
-	product = /obj/item/reagent_containers/food/snacks/grown/grass/carpet
-	mutatelist = list()
-	rarity = 10
-
-/obj/item/reagent_containers/food/snacks/grown/grass/carpet
-	seed = /obj/item/seeds/grass/carpet
-	name = "carpet"
-	desc = "The textile industry's dark secret."
-	icon_state = "carpetclump"
-	stacktype = /obj/item/stack/tile/carpet

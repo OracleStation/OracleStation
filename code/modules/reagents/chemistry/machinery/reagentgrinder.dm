@@ -30,7 +30,6 @@
 				/obj/item/ore/bluespace_crystal = list("bluespace" = 20),
 				/obj/item/grown/nettle/basic = list("sacid" = 0),
 				/obj/item/grown/nettle/death = list("facid" = 0, "sacid" = 0),
-				/obj/item/grown/novaflower = list("capsaicin" = 0, "condensedcapsaicin" = 0),
 				//Blender Stuff
 				/obj/item/reagent_containers/food/snacks/grown/soybeans = list("soymilk" = 0),
 				/obj/item/reagent_containers/food/snacks/grown/tomato = list("ketchup" = 0),

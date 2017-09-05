@@ -942,7 +942,6 @@
 /area/awaymission/BMPship/Midship)
 "de" = (
 /obj/machinery/seed_extractor,
-/obj/item/seeds/plump/walkingmushroom,
 /turf/open/floor/plasteel/green/side,
 /area/awaymission/BMPship/Midship)
 "df" = (
