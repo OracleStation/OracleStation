@@ -393,14 +393,14 @@ JOIN_WITH_MUTANT_RACE
 ## You probably want humans on your space station, but technically speaking you can turn them off without any ill effect
 ROUNDSTART_RACES human
 
-## Races that are strictly worse than humans that could probably be turned on without balance concerns
+## Races that are okay-ish on the station. Safe to enable.
 ROUNDSTART_RACES lizard
-#ROUNDSTART_RACES fly
 ROUNDSTART_RACES plasmaman
-#ROUNDSTART_RACES shadow
+ROUNDSTART_RACES slime
 ROUNDSTART_RACES ethari
+ROUNDSTART_RACES pod
 
-## Races that are better than humans in some ways, but worse in others
+## Races that aren't on the station by default.
 #ROUNDSTART_RACES jelly
 #ROUNDSTART_RACES golem
 #ROUNDSTART_RACES adamantine
@@ -411,12 +411,12 @@ ROUNDSTART_RACES ethari
 #ROUNDSTART_RACES uranium
 #ROUNDSTART_RACES abductor
 #ROUNDSTART_RACES synth
+#ROUNDSTART_RACES fly
+#ROUNDSTART_RACES shadow
 
-## Races that are straight upgrades. If these are on expect powergamers to always pick them
+## Weird-ass races that should probably never be enabled for various reasons.
 #ROUNDSTART_RACES skeleton
 #ROUNDSTART_RACES zombie
-#ROUNDSTART_RACES slime
-#ROUNDSTART_RACES pod
 #ROUNDSTART_RACES military_synth
 #ROUNDSTART_RACES agent
 
