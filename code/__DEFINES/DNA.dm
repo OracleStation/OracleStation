@@ -118,3 +118,4 @@
 #define NOLIVER			27
 #define NOSTOMACH		28
 #define NO_BONES		29
+#define NOPAIN			30

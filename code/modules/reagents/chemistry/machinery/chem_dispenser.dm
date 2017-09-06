@@ -38,7 +38,6 @@
 		"water",
 		"ethanol",
 		"sugar",
-		"sacid",
 		"welding_fuel",
 		"silver",
 		"iodine",
@@ -335,7 +334,7 @@
 	emagged_reagents = list(
 		"thirteenloko",
 		"whiskeycola",
-		"mindbreaker",
+		"lsd",
 		"tirizene"
 	)
 

@@ -155,7 +155,7 @@
 
 /datum/chemical_reaction/reagent_explosion/methsplosion/methboom2
 	required_reagents = list("diethylamine" = 1, "iodine" = 1, "phosphorus" = 1, "hydrogen" = 1) //diethylamine is often left over from mixing the ephedrine.
-	required_temp = 300 //room temperature, chilling it even a little will prevent the explosion 
+	required_temp = 300 //room temperature, chilling it even a little will prevent the explosion
 	results = list("methboom1" = 4) // this is ugly. Sorry goof.
 
 /datum/chemical_reaction/sorium
@@ -212,7 +212,7 @@
 	name = "Flash powder"
 	id = "flash_powder"
 	results = list("flash_powder" = 3)
-	required_reagents = list("aluminium" = 1, "potassium" = 1, "sulfur" = 1 )
+	required_reagents = list("aluminium" = 1, "chlorine" = 1, "potassium" = 1, "sulfur" = 1 )
 
 /datum/chemical_reaction/flash_powder/on_reaction(datum/reagents/holder, created_volume)
 	if(holder.has_reagent("stabilizing_agent"))
@@ -364,7 +364,7 @@
 /datum/chemical_reaction/reagent_explosion/teslium_lightning
 	name = "Teslium Destabilization"
 	id = "teslium_lightning"
-	required_reagents = list("teslium" = 1, "water" = 1)
+	required_reagents = list("teslium" = 1, "uranium" = 1)
 	results = list("destabilized_teslium" = 1)
 	strengthdiv = 100
 	modifier = -100

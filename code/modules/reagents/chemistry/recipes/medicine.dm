@@ -1,28 +1,28 @@
 
-/datum/chemical_reaction/leporazine
-	name = "Leporazine"
-	id = "leporazine"
-	results = list("leporazine" = 2)
-	required_reagents = list("silicon" = 1, "copper" = 1)
+/datum/chemical_reaction/ether
+	name = "Ether"
+	id = "ether"
+	results = list("ether" = 2)
+	required_reagents = list("sacid" = 1, "ethanol" = 1, "oxygen" = 1)
+
+/datum/chemical_reaction/teporone
+	name = "Teporone"
+	id = "teporone"
+	results = list("teporone" = 2)
+	required_reagents = list("silicon" = 1, "acetone" = 1)
 	required_catalysts = list("plasma" = 5)
 
 /datum/chemical_reaction/rezadone
 	name = "Rezadone"
 	id = "rezadone"
 	results = list("rezadone" = 3)
-	required_reagents = list("carpotoxin" = 1, "cryptobiolin" = 1, "copper" = 1)
+	required_reagents = list("carpotoxin" = 1, "spaceacillin" = 1, "copper" = 1)
 
 /datum/chemical_reaction/spaceacillin
 	name = "Spaceacillin"
 	id = "spaceacillin"
 	results = list("spaceacillin" = 2)
-	required_reagents = list("cryptobiolin" = 1, "epinephrine" = 1)
-
-/datum/chemical_reaction/inacusiate
-	name = "inacusiate"
-	id = "inacusiate"
-	results = list("inacusiate" = 2)
-	required_reagents = list("water" = 1, "carbon" = 1, "charcoal" = 1)
+	required_reagents = list("fungus" = 1, "ethanol" = 1)
 
 /datum/chemical_reaction/synaptizine
 	name = "Synaptizine"
@@ -100,12 +100,6 @@
 	results = list("sal_acid" = 5)
 	required_reagents = list("sodium" = 1, "phenol" = 1, "carbon" = 1, "oxygen" = 1, "sacid" = 1)
 
-/datum/chemical_reaction/oxandrolone
-	name = "Oxandrolone"
-	id = "oxandrolone"
-	results = list("oxandrolone" = 6)
-	required_reagents = list("carbon" = 3, "phenol" = 1, "hydrogen" = 1, "oxygen" = 1)
-
 /datum/chemical_reaction/salbutamol
 	name = "Salbutamol"
 	id = "salbutamol"
@@ -138,7 +132,7 @@
 	name = "Oculine"
 	id = "oculine"
 	results = list("oculine" = 3)
-	required_reagents = list("charcoal" = 1, "carbon" = 1, "hydrogen" = 1)
+	required_reagents = list("atropine" = 1, "spaceacillin" = 1, "salglu_solution" = 1)
 	mix_message = "The mixture sputters loudly and becomes a pale pink color."
 
 /datum/chemical_reaction/atropine
@@ -176,13 +170,13 @@
 	name = "antihol"
 	id = "antihol"
 	results = list("antihol" = 3)
-	required_reagents = list("ethanol" = 1, "charcoal" = 1, "copper" = 1)
+	required_reagents = list("ethanol" = 1, "charcoal" = 1)
 
 /datum/chemical_reaction/cryoxadone
 	name = "Cryoxadone"
 	id = "cryoxadone"
 	results = list("cryoxadone" = 3)
-	required_reagents = list("stable_plasma" = 1, "acetone" = 1, "mutagen" = 1)
+	required_reagents = list("cryostylane" = 1, "plasma" = 1, "acetone" = 1, "mutagen" = 1)
 
 /datum/chemical_reaction/clonexadone
 	name = "Clonexadone"
@@ -196,30 +190,6 @@
 	id = "haloperidol"
 	results = list("haloperidol" = 5)
 	required_reagents = list("chlorine" = 1, "fluorine" = 1, "aluminium" = 1, "potass_iodide" = 1, "oil" = 1)
-
-/datum/chemical_reaction/bicaridine
-	name = "Bicaridine"
-	id = "bicaridine"
-	results = list("bicaridine" = 3)
-	required_reagents = list("carbon" = 1, "oxygen" = 1, "sugar" = 1)
-
-/datum/chemical_reaction/kelotane
-	name = "Kelotane"
-	id = "kelotane"
-	results = list("kelotane" = 2)
-	required_reagents = list("carbon" = 1, "silicon" = 1)
-
-/datum/chemical_reaction/antitoxin
-	name = "Antitoxin"
-	id = "antitoxin"
-	results = list("antitoxin" = 3)
-	required_reagents = list("nitrogen" = 1, "silicon" = 1, "potassium" = 1)
-
-/datum/chemical_reaction/tricordrazine
-	name = "Tricordrazine"
-	id = "tricordrazine"
-	results = list("tricordrazine" = 3)
-	required_reagents = list("bicaridine" = 1, "kelotane" = 1, "antitoxin" = 1)
 
 /datum/chemical_reaction/corazone
 	name = "Corazone"
