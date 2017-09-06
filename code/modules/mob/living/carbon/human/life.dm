@@ -334,7 +334,7 @@
 		dropItemToGround(held_items[2])
 
 /mob/living/carbon/human/proc/update_shock()
-	traumatic_shock = health + getBrainLoss()
+	traumatic_shock = 100 - health + getBrainLoss()
 
 	// broken or ripped off organs will add quite a bit of pain
 	for(var/thing in bodyparts)
