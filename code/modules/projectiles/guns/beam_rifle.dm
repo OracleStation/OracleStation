@@ -33,7 +33,6 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/beam_rifle/hitscan)
 	cell_type = /obj/item/stock_parts/cell/beam_rifle
 	canMouseDown = TRUE
-	pin = null
 	var/aiming = FALSE
 	var/aiming_time = 7
 	var/aiming_time_fire_threshold = 2
@@ -86,7 +85,6 @@
 	cell_type = /obj/item/stock_parts/cell/infinite
 	aiming_time = 0
 	recoil = 0
-	pin = /obj/item/device/firing_pin
 
 /obj/item/gun/energy/beam_rifle/equipped(mob/user)
 	set_user(user)

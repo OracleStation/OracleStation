@@ -15,7 +15,6 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/tesla_revolver)
 	origin_tech = "combat=4;materials=4;powerstorage=4"
 	can_flashlight = 0
-	pin = null
 	shaded_charge = 1
 
 /obj/item/gun/energy/e_gun/advtaser

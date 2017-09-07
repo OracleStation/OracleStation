@@ -14,9 +14,6 @@
 	needs_permit = 0
 	casing_ejector = 0
 
-/obj/item/gun/ballistic/automatic/toy/unrestricted
-	pin = /obj/item/device/firing_pin
-
 /obj/item/gun/ballistic/automatic/toy/pistol
 	name = "foam force pistol"
 	desc = "A small, easily concealable toy handgun. Ages 8 and up."
@@ -39,12 +36,6 @@
 	magazine = new /obj/item/ammo_box/magazine/toy/pistol/riot(src)
 	return ..()
 
-/obj/item/gun/ballistic/automatic/toy/pistol/unrestricted
-	pin = /obj/item/device/firing_pin
-
-/obj/item/gun/ballistic/automatic/toy/pistol/riot/unrestricted
-	pin = /obj/item/device/firing_pin
-
 /obj/item/gun/ballistic/shotgun/toy
 	name = "foam force shotgun"
 	desc = "A toy shotgun with wood furniture and a four-shell capacity underneath. Ages 8 and up."
@@ -62,9 +53,6 @@
 	..()
 	if(chambered && !chambered.BB)
 		qdel(chambered)
-
-/obj/item/gun/ballistic/shotgun/toy/unrestricted
-	pin = /obj/item/device/firing_pin
 
 /obj/item/gun/ballistic/shotgun/toy/crossbow
 	name = "foam force crossbow"
@@ -86,9 +74,6 @@
 	mag_type = /obj/item/ammo_box/magazine/toy/smgm45
 	casing_ejector = 0
 
-/obj/item/gun/ballistic/automatic/c20r/toy/unrestricted
-	pin = /obj/item/device/firing_pin
-
 /obj/item/gun/ballistic/automatic/l6_saw/toy
 	name = "donksoft LMG"
 	desc = "A heavily modified toy light machine gun, designated 'L6 SAW'. Ages 8 and up."
@@ -97,6 +82,3 @@
 	needs_permit = 0
 	mag_type = /obj/item/ammo_box/magazine/toy/m762
 	casing_ejector = 0
-
-/obj/item/gun/ballistic/automatic/l6_saw/toy/unrestricted
-	pin = /obj/item/device/firing_pin

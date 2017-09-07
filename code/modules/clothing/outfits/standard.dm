@@ -348,7 +348,7 @@
 	r_pocket = /obj/item/shield/energy
 	suit_store = /obj/item/tank/internals/emergency_oxygen
 	belt = /obj/item/gun/ballistic/revolver/mateba
-	r_hand = /obj/item/gun/energy/pulse/loyalpin
+	r_hand = /obj/item/gun/energy/pulse
 	id = /obj/item/card/id
 	ears = /obj/item/device/radio/headset/headset_cent/alt
 

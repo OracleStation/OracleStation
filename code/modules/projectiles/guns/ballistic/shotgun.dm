@@ -139,7 +139,6 @@
 	name = "arcane barrage"
 	desc = "Pew Pew Pew"
 	fire_sound = 'sound/weapons/emitter.ogg'
-	pin = /obj/item/device/firing_pin/magic
 	icon_state = "arcane_barrage"
 	item_state = "arcane_barrage"
 

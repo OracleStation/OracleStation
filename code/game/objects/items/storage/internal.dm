@@ -46,9 +46,7 @@
 		/obj/item/kitchen/knife, /obj/item/switchblade, /obj/item/pen,
 		/obj/item/scalpel, /obj/item/reagent_containers/syringe, /obj/item/dnainjector,
 		/obj/item/reagent_containers/hypospray/medipen, /obj/item/reagent_containers/dropper,
-		/obj/item/implanter, /obj/item/screwdriver, /obj/item/weldingtool/mini,
-		/obj/item/device/firing_pin
-		)
+		/obj/item/implanter, /obj/item/screwdriver, /obj/item/weldingtool/mini)
 	//can hold both regular pens and energy daggers. made for your every-day tactical curators/murderers.
 	priority = FALSE
 	quickdraw = TRUE
@@ -61,7 +59,7 @@
 		/obj/item/scalpel, /obj/item/reagent_containers/syringe, /obj/item/dnainjector,
 		/obj/item/reagent_containers/hypospray/medipen, /obj/item/reagent_containers/dropper,
 		/obj/item/implanter, /obj/item/screwdriver, /obj/item/weldingtool/mini,
-		/obj/item/device/firing_pin, /obj/item/bikehorn)
+		/obj/item/bikehorn)
 
 /obj/item/storage/internal/pocket/small/detective
 	priority = TRUE // so the detectives would discover pockets in their hats

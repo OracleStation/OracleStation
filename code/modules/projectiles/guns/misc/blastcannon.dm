@@ -15,11 +15,6 @@
 	var/datum/gas_mixture/air1
 	var/datum/gas_mixture/air2
 
-/obj/item/gun/blastcannon/New()
-	if(!pin)
-		pin = new
-	. = ..()
-
 /obj/item/gun/blastcannon/Destroy()
 	if(bomb)
 		qdel(bomb)
