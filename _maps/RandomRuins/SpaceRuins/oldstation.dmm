@@ -3932,7 +3932,6 @@
 /obj/structure/closet/crate,
 /obj/item/device/assembly/flash/handheld,
 /obj/item/device/assembly/flash/handheld,
-/obj/item/storage/box/firingpins,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/ancientstation/deltacorridor)
 "jA" = (

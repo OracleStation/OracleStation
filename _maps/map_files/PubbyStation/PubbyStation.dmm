@@ -3801,8 +3801,6 @@
 /area/security/armory)
 "aiO" = (
 /obj/structure/table,
-/obj/item/storage/box/firingpins,
-/obj/item/storage/box/firingpins,
 /obj/item/key/security,
 /obj/machinery/power/apc{
 	cell_type = 5000;

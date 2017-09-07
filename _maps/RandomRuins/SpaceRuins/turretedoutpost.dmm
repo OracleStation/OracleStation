@@ -105,7 +105,6 @@
 /area/ruin/space/has_grav/turretedoutpost)
 "v" = (
 /obj/structure/rack,
-/obj/item/device/firing_pin,
 /turf/open/floor/plasteel{
 	icon_state = "vault";
 	dir = 8

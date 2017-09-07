@@ -6919,7 +6919,7 @@
 /area/maintenance/starboard/fore)
 "apt" = (
 /obj/structure/table/wood,
-/obj/item/gun/ballistic/automatic/toy/pistol/unrestricted,
+/obj/item/gun/ballistic/automatic/toy/pistol,
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},
@@ -44958,8 +44958,6 @@
 	},
 /area/ai_monitored/security/armory)
 "bJi" = (
-/obj/item/storage/box/firingpins,
-/obj/item/storage/box/firingpins,
 /obj/item/key/security,
 /obj/structure/table/reinforced,
 /turf/open/floor/plasteel/vault{

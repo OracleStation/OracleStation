@@ -432,9 +432,7 @@
 /area/ruin/space/has_grav/abandonedzoo)
 "aY" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/energy/temperature{
-	pin = /obj/item/device/firing_pin
-	},
+/obj/item/gun/energy/temperature,
 /turf/open/floor/plasteel{
 	icon_state = "dark"
 	},
