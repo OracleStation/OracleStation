@@ -452,6 +452,10 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 						if(!istype(new_item, /obj/item/stack/sheet) && !istype(new_item, /obj/item/ore/bluespace_crystal)) // To avoid materials dupe glitches
 							new_item.materials = efficient_mats.Copy()
 						new_item.loc = linked_lathe.loc
+						if(being_built.lockbox_access)
+							var/obj/item/storage/lockbox/L = new /obj/item/storage/lockbox(linked_lathe.loc)
+							L.req_access = being_built.lockbox_access
+							new_item.forceMove(L)
 						if(!already_logged)
 							SSblackbox.add_details("item_printed","[new_item.type]|[amount]")
 							already_logged = 1

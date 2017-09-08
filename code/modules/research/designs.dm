@@ -26,7 +26,7 @@ other types of metals and chemistry for reagents).
 - Add the AUTOLATHE tag to
 */
 
-/datum/design						//Datum for object designs, used in construction
+/datum/design							//Datum for object designs, used in construction
 	var/name = "Name"					//Name of the created object.
 	var/desc = "Desc"					//Description of the created object.
 	var/id = "id"						//ID of the created object for easy refernece. Alphanumeric, lower-case, no symbols
@@ -35,11 +35,12 @@ other types of metals and chemistry for reagents).
 	var/list/materials = list()			//List of materials. Format: "id" = amount.
 	var/construction_time				//Amount of time required for building the object
 	var/build_path = null				//The file path of the object that gets created
-	var/list/make_reagents = list()			//Reagents produced. Format: "id" = amount. Currently only supported by the biogenerator.
+	var/list/make_reagents = list()		//Reagents produced. Format: "id" = amount. Currently only supported by the biogenerator.
 	var/list/category = null 			//Primarily used for Mech Fabricators, but can be used for anything
-	var/list/reagents_list = list()			//List of reagents. Format: "id" = amount.
+	var/list/reagents_list = list()		//List of reagents. Format: "id" = amount.
 	var/maxstack = 1
 	var/lathe_time_factor = 1			//How many times faster than normal is this to build on the protolathe
+	var/lockbox_access = null			//HAS TO BE A LIST. DON'T MAKE THIS NOT A LIST. IF YOU MAKE THIS NOT A LIST I WILL BE DISAPPOINTED.
 
 
 ////////////////////////////////////////
