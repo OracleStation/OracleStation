@@ -51,7 +51,7 @@
 	backpack_contents = list(/obj/item/storage/box/engineer=1,\
 		/obj/item/melee/baton/loaded=1,\
 		/obj/item/clothing/mask/gas/sechailer/swat=1,\
-		/obj/item/gun/energy/pulse/pistol/loyalpin=1)
+		/obj/item/gun/energy/pulse/pistol=1)
 	l_pocket = /obj/item/melee/transforming/energy/sword/saber
 
 /datum/outfit/ert/security
@@ -85,7 +85,7 @@
 		/obj/item/storage/box/handcuffs=1,\
 		/obj/item/clothing/mask/gas/sechailer/swat=1,\
 		/obj/item/melee/baton/loaded=1,\
-		/obj/item/gun/energy/pulse/carbine/loyalpin=1)
+		/obj/item/gun/energy/pulse/carbine=1)
 
 
 /datum/outfit/ert/medic
@@ -120,7 +120,7 @@
 	backpack_contents = list(/obj/item/storage/box/engineer=1,\
 		/obj/item/melee/baton/loaded=1,\
 		/obj/item/clothing/mask/gas/sechailer/swat=1,\
-		/obj/item/gun/energy/pulse/pistol/loyalpin=1,\
+		/obj/item/gun/energy/pulse/pistol=1,\
 		/obj/item/reagent_containers/hypospray/combat/nanites=1,\
 		/obj/item/gun/medbeam=1)
 
@@ -156,7 +156,7 @@
 	backpack_contents = list(/obj/item/storage/box/engineer=1,\
 		/obj/item/melee/baton/loaded=1,\
 		/obj/item/clothing/mask/gas/sechailer/swat=1,\
-		/obj/item/gun/energy/pulse/pistol/loyalpin=1,\
+		/obj/item/gun/energy/pulse/pistol=1,\
 		/obj/item/construction/rcd/combat=1)
 
 

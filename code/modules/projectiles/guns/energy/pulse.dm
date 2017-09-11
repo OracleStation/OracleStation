@@ -14,9 +14,6 @@
 /obj/item/gun/energy/pulse/emp_act(severity)
 	return
 
-/obj/item/gun/energy/pulse/prize
-	pin = /obj/item/device/firing_pin
-
 /obj/item/gun/energy/pulse/prize/Initialize()
 	. = ..()
 	GLOB.poi_list += src
@@ -31,9 +28,6 @@
 	GLOB.poi_list -= src
 	. = ..()
 
-/obj/item/gun/energy/pulse/loyalpin
-	pin = /obj/item/device/firing_pin/implant/mindshield
-
 /obj/item/gun/energy/pulse/carbine
 	name = "pulse carbine"
 	desc = "A compact variant of the pulse rifle with less firepower but easier storage."
@@ -46,9 +40,6 @@
 	flight_x_offset = 18
 	flight_y_offset = 12
 
-/obj/item/gun/energy/pulse/carbine/loyalpin
-	pin = /obj/item/device/firing_pin/implant/mindshield
-
 /obj/item/gun/energy/pulse/pistol
 	name = "pulse pistol"
 	desc = "A pulse rifle in an easily concealed handgun package with low capacity."
@@ -57,9 +48,6 @@
 	icon_state = "pulse_pistol"
 	item_state = "gun"
 	cell_type = "/obj/item/stock_parts/cell/pulse/pistol"
-
-/obj/item/gun/energy/pulse/pistol/loyalpin
-	pin = /obj/item/device/firing_pin/implant/mindshield
 
 /obj/item/gun/energy/pulse/destroyer
 	name = "pulse destroyer"

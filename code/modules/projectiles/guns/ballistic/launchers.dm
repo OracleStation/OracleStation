@@ -9,10 +9,6 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/grenadelauncher
 	fire_sound = 'sound/weapons/grenadelaunch.ogg'
 	w_class = WEIGHT_CLASS_NORMAL
-	pin = /obj/item/device/firing_pin/implant/pindicate
-
-/obj/item/gun/ballistic/revolver/grenadelauncher/unrestricted
-	pin = /obj/item/device/firing_pin
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/attackby(obj/item/A, mob/user, params)
 	..()
@@ -25,7 +21,6 @@
 	icon = 'icons/mecha/mecha_equipment.dmi'
 	icon_state = "mecha_grenadelnchr"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/grenademulti
-	pin = /obj/item/device/firing_pin
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/cyborg/attack_self()
 	return

@@ -2,26 +2,6 @@
 /////////////////Weapons/////////////////
 /////////////////////////////////////////
 
-/datum/design/pin_testing
-	name = "Test-Range Firing Pin"
-	desc = "This safety firing pin allows firearms to be operated within proximity to a firing range."
-	id = "pin_testing"
-	req_tech = list("combat" = 2, "materials" = 2)
-	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 500, MAT_GLASS = 300)
-	build_path = /obj/item/device/firing_pin/test_range
-	category = list("Firing Pins")
-
-/datum/design/pin_mindshield
-	name = "Mindshield Firing Pin"
-	desc = "This is a security firing pin which only authorizes users who are mindshield-implanted."
-	id = "pin_loyalty"
-	req_tech = list("combat" = 5, "materials" = 6)
-	build_type = PROTOLATHE
-	materials = list(MAT_SILVER = 600, MAT_DIAMOND = 600, MAT_URANIUM = 200)
-	build_path = /obj/item/device/firing_pin/implant/mindshield
-	category = list("Firing Pins")
-
 /datum/design/stunrevolver
 	name = "Tesla Revolver"
 	desc = "A high-tech revolver that fires internal, reusable shock cartridges in a revolving cylinder. The cartridges can be recharged using conventional rechargers."
@@ -31,6 +11,7 @@
 	materials = list(MAT_METAL = 10000, MAT_GLASS = 10000, MAT_SILVER = 10000)
 	build_path = /obj/item/gun/energy/tesla_revolver
 	category = list("Weapons")
+	lockbox_access = list(ACCESS_ARMORY)
 
 /datum/design/nuclear_gun
 	name = "Advanced Energy Gun"
@@ -41,6 +22,7 @@
 	materials = list(MAT_METAL = 10000, MAT_GLASS = 2000, MAT_URANIUM = 3000, MAT_TITANIUM = 1000)
 	build_path = /obj/item/gun/energy/e_gun/nuclear
 	category = list("Weapons")
+	lockbox_access = list(ACCESS_ARMORY)
 
 /datum/design/tele_shield
 	name = "Telescopic Riot Shield"
@@ -61,6 +43,7 @@
 	materials = list(MAT_METAL = 10000, MAT_GLASS = 5000, MAT_DIAMOND = 5000, MAT_URANIUM = 8000, MAT_SILVER = 4500, MAT_GOLD = 5000)
 	build_path = /obj/item/gun/energy/beam_rifle
 	category = list("Weapons")
+	lockbox_access = list(ACCESS_ARMORY)
 
 /datum/design/decloner
 	name = "Decloner"
@@ -72,6 +55,7 @@
 	reagents_list = list("mutagen" = 40)
 	build_path = /obj/item/gun/energy/decloner
 	category = list("Weapons")
+	lockbox_access = list(ACCESS_ARMORY)
 
 /datum/design/rapidsyringe
 	name = "Rapid Syringe Gun"
@@ -156,6 +140,7 @@
 	materials = list(MAT_GOLD = 5000, MAT_URANIUM = 4000, MAT_METAL = 5000, MAT_TITANIUM = 2000, MAT_BLUESPACE = 2000)
 	build_path = /obj/item/gun/energy/xray
 	category = list("Weapons")
+	lockbox_access = list(ACCESS_ARMORY)
 
 /datum/design/ioncarbine
 	name = "Ion Carbine"
@@ -166,6 +151,7 @@
 	materials = list(MAT_SILVER = 6000, MAT_METAL = 8000, MAT_URANIUM = 2000)
 	build_path = /obj/item/gun/energy/ionrifle/carbine
 	category = list("Weapons")
+	lockbox_access = list(ACCESS_ARMORY)
 
 /datum/design/wormhole_projector
 	name = "Bluespace Wormhole Projector"
@@ -176,6 +162,7 @@
 	materials = list(MAT_SILVER = 2000, MAT_METAL = 5000, MAT_DIAMOND = 2000, MAT_BLUESPACE = 3000)
 	build_path = /obj/item/gun/energy/wormhole_projector
 	category = list("Weapons")
+	lockbox_access = list(ACCESS_RD)
 
 //WT550 Mags
 
@@ -249,6 +236,7 @@
 	materials = list(MAT_SILVER = 8000, MAT_URANIUM = 8000, MAT_GLASS = 12000, MAT_METAL = 12000, MAT_DIAMOND = 3000, MAT_BLUESPACE = 3000)
 	build_path = /obj/item/gun/energy/gravity_gun
 	category = list("Weapons")
+	lockbox_access = list(ACCESS_RD)
 
 /datum/design/largecrossbow
 	name = "Energy Crossbow"
@@ -259,3 +247,4 @@
 	materials = list(MAT_METAL = 5000, MAT_GLASS = 1500, MAT_URANIUM = 1500, MAT_SILVER = 1500)
 	build_path = /obj/item/gun/energy/kinetic_accelerator/crossbow/large
 	category = list("Weapons")
+	lockbox_access = list(ACCESS_ARMORY)

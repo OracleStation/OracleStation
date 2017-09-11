@@ -3882,7 +3882,7 @@
 /area/awaymission/snowdin/sekret)
 "kx" = (
 /obj/structure/rack,
-/obj/item/gun/ballistic/automatic/l6_saw/unrestricted,
+/obj/item/gun/ballistic/automatic/l6_saw,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -3978,8 +3978,8 @@
 /area/awaymission/snowdin/sekret)
 "kI" = (
 /obj/structure/rack,
-/obj/item/gun/ballistic/automatic/c20r/unrestricted,
-/obj/item/gun/ballistic/automatic/c20r/unrestricted,
+/obj/item/gun/ballistic/automatic/c20r,
+/obj/item/gun/ballistic/automatic/c20r,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -4065,8 +4065,8 @@
 /area/awaymission/snowdin/sekret)
 "kT" = (
 /obj/structure/rack,
-/obj/item/gun/ballistic/automatic/shotgun/bulldog/unrestricted,
-/obj/item/gun/ballistic/automatic/shotgun/bulldog/unrestricted,
+/obj/item/gun/ballistic/automatic/shotgun/bulldog,
+/obj/item/gun/ballistic/automatic/shotgun/bulldog,
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},

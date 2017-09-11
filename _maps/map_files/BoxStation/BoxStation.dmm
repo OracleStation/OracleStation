@@ -396,8 +396,6 @@
 /area/security/main)
 "abm" = (
 /obj/structure/table,
-/obj/item/storage/box/firingpins,
-/obj/item/storage/box/firingpins,
 /obj/item/key/security,
 /turf/open/floor/plasteel/vault{
 	dir = 8

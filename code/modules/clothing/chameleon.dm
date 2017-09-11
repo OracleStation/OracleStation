@@ -409,7 +409,6 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/chameleon)
 	clumsy_check = 0
 	needs_permit = 0
-	pin = /obj/item/device/firing_pin
 	cell_type = /obj/item/stock_parts/cell/bluespace
 
 	var/datum/action/item_action/chameleon/change/chameleon_action

@@ -216,11 +216,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/gun/ballistic/automatic/c20r
 	cost = 10
 	surplus = 40
-	include_modes = list(/datum/game_mode/nuclear)
-
-/datum/uplink_item/dangerous/smg/unrestricted
-	item = /obj/item/gun/ballistic/automatic/c20r/unrestricted
-	include_modes = list(/datum/game_mode/gang)
+	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
 
 /datum/uplink_item/dangerous/machinegun
 	name = "L6 Squad Automatic Weapon"

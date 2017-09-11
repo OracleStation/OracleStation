@@ -6778,7 +6778,6 @@
 /turf/open/floor/plasteel,
 /area/centcom/ferry)
 "rJ" = (
-/obj/item/gun/energy/pulse/carbine/loyalpin,
 /obj/item/device/flashlight/seclite,
 /obj/structure/table/reinforced,
 /obj/machinery/airalarm{
@@ -8546,9 +8545,7 @@
 /area/syndicate_mothership/control)
 "wl" = (
 /obj/structure/table,
-/obj/item/gun/energy/ionrifle{
-	pin = /obj/item/device/firing_pin
-	},
+/obj/item/gun/energy/ionrifle,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},

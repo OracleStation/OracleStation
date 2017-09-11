@@ -41,8 +41,6 @@
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 
-	var/obj/item/device/firing_pin/pin = /obj/item/device/firing_pin //standard firing pin for most guns
-
 	var/obj/item/device/flashlight/gun_light
 	var/can_flashlight = 0
 	var/obj/item/kitchen/knife/bayonet
@@ -67,8 +65,6 @@
 
 /obj/item/gun/Initialize()
 	. = ..()
-	if(pin)
-		pin = new pin(src)
 	if(gun_light)
 		alight = new /datum/action/item_action/toggle_gunlight(src)
 	build_zooming()
@@ -79,17 +75,7 @@
 	var/obj/item/gun/G = locate(/obj/item/gun) in contents
 	if(G)
 		G.loc = loc
-		qdel(G.pin)
-		G.pin = null
-		visible_message("[G] can now fit a new pin, but the old one was destroyed in the process.", null, null, 3)
 		qdel(src)
-
-/obj/item/gun/examine(mob/user)
-	..()
-	if(pin)
-		to_chat(user, "It has [pin] installed.")
-	else
-		to_chat(user, "It doesn't have a firing pin installed, and won't fire.")
 
 /obj/item/gun/equipped(mob/living/user, slot)
 	. = ..()
@@ -186,23 +172,6 @@
 
 	process_fire(target,user,1,params, null, bonus_spread)
 
-
-
-/obj/item/gun/can_trigger_gun(mob/living/user)
-	. = ..()
-	if(!handle_pins(user))
-		return FALSE
-
-/obj/item/gun/proc/handle_pins(mob/living/user)
-	if(pin)
-		if(pin.pin_auth(user) || pin.emagged)
-			return 1
-		else
-			pin.auth_fail(user)
-			return 0
-	else
-		to_chat(user, "<span class='warning'>[src]'s trigger is locked. This weapon doesn't have a firing pin installed!</span>")
-	return 0
 
 /obj/item/gun/proc/recharge_newshot()
 	return
@@ -431,11 +400,6 @@
 		chambered.BB.damage *= 5
 
 	process_fire(target, user, 1, params)
-
-/obj/item/gun/proc/unlock() //used in summon guns and as a convience for admins
-	if(pin)
-		qdel(pin)
-	pin = new /obj/item/device/firing_pin
 
 /////////////
 // ZOOMING //
