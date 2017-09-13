@@ -61,11 +61,11 @@
 	name = "lay down"
 	icon = 'icons/mob/screen_midnight.dmi'
 	icon_state = "lay"
-	screen_loc = ui_crafting
+	screen_loc = ui_lay
 
 /obj/screen/lay/Click()
 	var/mob/living/M = usr
-	if(isobserver(usr))
+	if(!istype(M))
 		return
 	M.lay_down()
 
@@ -73,7 +73,7 @@
 	name = "crafting menu"
 	icon = 'icons/mob/screen_midnight.dmi'
 	icon_state = "craft"
-	screen_loc = ui_lay
+	screen_loc = ui_crafting
 
 /obj/screen/craft/Click()
 	var/mob/living/M = usr

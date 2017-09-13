@@ -46,7 +46,7 @@
 
 	using = new /obj/screen/lay
 	using.icon = ui_style
-	static_inventory +=using
+	static_inventory += using
 
 	using = new /obj/screen/craft
 	using.icon = ui_style
