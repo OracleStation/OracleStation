@@ -246,6 +246,8 @@
 	new /obj/item/clothing/suit/space/paramedic(src)
 	new /obj/item/clothing/suit/storage/paramedic(src)
 	new /obj/item/clothing/suit/toggle/labcoat/emt(src)
+	new /obj/item/storage/box/bodybags(src)
+	new /obj/item/roller(src)
 
 /obj/structure/closet/wardrobe/robotics_black
 	name = "robotics wardrobe"
