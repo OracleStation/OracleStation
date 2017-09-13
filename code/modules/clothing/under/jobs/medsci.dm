@@ -119,3 +119,12 @@
 	icon_state = "scrubspurple"
 	item_color = "scrubspurple"
 	can_adjust = 0
+
+/obj/item/clothing/under/rank/medical/paramedic
+	name = "paramedic's jumpsuit"
+	desc = "It's made of a special fiber that provides minor protection against biohazards and radiation. It has a cross on the chest denoting that the wearer is trained medical personnel."
+	icon_state = "paramedic"
+	item_state = "paramedic"
+	item_color = "paramedic"
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 10, fire = 0, acid = 0)
+	can_adjust = 0

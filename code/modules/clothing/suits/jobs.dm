@@ -208,3 +208,12 @@
 	armor = list(melee = 25, bullet = 10, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0)
 	cold_protection = CHEST|LEGS|ARMS
 	heat_protection = CHEST|LEGS|ARMS
+
+//Paramedic
+/obj/item/clothing/suit/storage/paramedic
+	name = "paramedic vest"
+	desc = "A hazard vest used in the recovery of bodies."
+	icon_state = "paramedic-vest"
+	item_state = "paramedic-vest"
+	allowed = list(/obj/item/stack/medical, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/hypospray, /obj/item/reagent_containers/syringe,	/obj/item/device/healthanalyzer, /obj/item/device/flashlight, /obj/item/device/radio, /obj/item/tank/internals/emergency_oxygen)
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 10)

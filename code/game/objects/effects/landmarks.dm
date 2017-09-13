@@ -105,6 +105,9 @@
 /obj/effect/landmark/start/medical_doctor
 	name = "Medical Doctor"
 
+/obj/effect/landmark/start/paramedic
+	name = "Paramedic"
+
 /obj/effect/landmark/start/scientist
 	name = "Scientist"
 
