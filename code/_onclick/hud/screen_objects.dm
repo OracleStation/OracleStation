@@ -57,6 +57,18 @@
 		M.swap_hand()
 	return 1
 
+/obj/screen/lay
+	name = "lay down"
+	icon = 'icons/mob/screen_midnight.dmi'
+	icon_state = "lay"
+	screen_loc = ui_lay
+
+/obj/screen/lay/Click()
+	var/mob/living/M = usr
+	if(!istype(M))
+		return
+	M.lay_down()
+
 /obj/screen/craft
 	name = "crafting menu"
 	icon = 'icons/mob/screen_midnight.dmi'
