@@ -65,6 +65,7 @@
 #define ACCESS_NETWORK 67
 #define ACCESS_CLONING 68 //Cloning room
 #define ACCESS_BLUESHIELD 69 // Blueshield Office
+#define ACCESS_PARAMEDIC 70 // Paramedic
 
 	//BEGIN CENTCOM ACCESS
 	/*Should leave plenty of room if we need to add more access levels.

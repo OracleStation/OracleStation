@@ -352,4 +352,16 @@ Contains:
 		playsound(loc, 'sound/weapons/slashmiss.ogg', 50, 1)
 		playsound(loc, 'sound/effects/refill.ogg', 50, 1)
 
+//Paramedic EVA suit
 
+/obj/item/clothing/head/helmet/space/paramedic
+	name = "Paramedic EVA helmet"
+	desc = "A paramedic EVA helmet. Used in the recovery of bodies from space."
+	icon_state = "paramedic-eva-helmet"
+	item_state = "paramedic-eva-helmet"
+
+/obj/item/clothing/suit/space/paramedic
+	name = "paramedic EVA suit"
+	desc = "A paramedic EVA suit. Used in the recovery of bodies from space."
+	icon_state = "paramedic-eva"
+	item_state = "paramedic-eva"

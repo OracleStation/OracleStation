@@ -214,8 +214,8 @@
 	new /obj/item/storage/backpack/medic(src)
 	new /obj/item/storage/backpack/satchel/med(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/medical(src)
-	new /obj/item/clothing/under/rank/nursesuit (src)
-	new /obj/item/clothing/head/nursehat (src)
+	new /obj/item/clothing/under/rank/nursesuit(src)
+	new /obj/item/clothing/head/nursehat(src)
 	new /obj/item/clothing/under/rank/medical/blue(src)
 	new /obj/item/clothing/under/rank/medical/green(src)
 	new /obj/item/clothing/under/rank/medical/purple(src)
@@ -230,6 +230,24 @@
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/head/soft/emt(src)
 	return
+
+/obj/structure/closet/wardrobe/white/medical/paramedic
+	name = "paramedic's closet"
+
+/obj/structure/closet/wardrobe/white/medical/paramedic/PopulateContents()
+	new /obj/item/clothing/under/rank/medical/paramedic(src)
+	new /obj/item/storage/backpack/duffelbag/med(src)
+	new /obj/item/storage/backpack/medic(src)
+	new /obj/item/storage/backpack/satchel/med(src)
+	new /obj/item/clothing/suit/hooded/wintercoat/medical(src)
+	new /obj/item/clothing/gloves/color/latex(src)
+	new /obj/item/clothing/head/soft/emt(src)
+	new /obj/item/clothing/head/helmet/space/paramedic(src)
+	new /obj/item/clothing/suit/space/paramedic(src)
+	new /obj/item/clothing/suit/storage/paramedic(src)
+	new /obj/item/clothing/suit/toggle/labcoat/emt(src)
+	new /obj/item/storage/box/bodybags(src)
+	new /obj/item/roller(src)
 
 /obj/structure/closet/wardrobe/robotics_black
 	name = "robotics wardrobe"
