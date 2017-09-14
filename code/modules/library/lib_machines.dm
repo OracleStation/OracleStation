@@ -17,7 +17,7 @@
 /obj/machinery/computer/libraryconsole
 	name = "library visitor console"
 	icon = 'icons/obj/modular_desktop.dmi'
-	icon_state = "desktop"
+	icon_state = "desktop-off"
 	icon_screen = "generic"
 	icon_keyboard = "desktop_key"
 	pixel_y = 8
