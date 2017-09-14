@@ -16,9 +16,12 @@
  */
 /obj/machinery/computer/libraryconsole
 	name = "library visitor console"
-	icon_state = "oldcomp"
-	icon_screen = "library"
-	icon_keyboard = null
+	icon = 'icons/obj/modular_desktop.dmi'
+	icon_state = "desktop"
+	icon_screen = "generic"
+	icon_keyboard = "desktop_key"
+	pixel_y = 8
+
 	circuit = /obj/item/circuitboard/computer/libraryconsole
 	var/screenstate = 0
 	var/title

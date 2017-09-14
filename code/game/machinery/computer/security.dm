@@ -27,14 +27,20 @@
 	icon_keyboard = "syndie_key"
 
 /obj/machinery/computer/secure_data/laptop
-	name = "security desktop"
-	desc = "A cheap Nanotrasen security desktop, it functions as a security records console. It's bolted to the table."
+	name = "security laptop"
+	desc = "A cheap Nanotrasen security laptop, it functions as a security records console. It's bolted to the table."
+	icon_state = "laptop"
+	icon_screen = "seclaptop"
+	icon_keyboard = "laptop_key"
+	clockwork = TRUE //it'd look weird
+
+/obj/machinery/computer/secure_data/desktop
+	name = "security records desktop"
 	icon = 'icons/obj/modular_desktop.dmi'
 	icon_state = "desktop"
 	icon_screen = "security"
 	icon_keyboard = "desktop_key"
-	clockwork = TRUE //it'd look weird
-	pixel_y = 7
+	pixel_y = 8
 
 /obj/machinery/computer/secure_data/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/card/id))
