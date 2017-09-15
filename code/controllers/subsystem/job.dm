@@ -92,7 +92,7 @@ SUBSYSTEM_DEF(job)
 	Debug("Freeing role: [rank]")
 	var/datum/job/job = GetJob(rank)
 	if(!job)
-		return 0
+		return FALSE
 	job.current_positions--
 
 /datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/job/job, level, flag)
