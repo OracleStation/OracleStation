@@ -133,7 +133,7 @@
 	uniform = /obj/item/clothing/under/color/grey
 	id = /obj/item/card/id
 	ears = /obj/item/device/radio/headset
-	belt = /obj/item/device/pda
+	pda_slot = /obj/item/device/pda
 	back = /obj/item/storage/backpack
 	shoes = /obj/item/clothing/shoes/sneakers/black
 
@@ -141,8 +141,6 @@
 	var/satchel  = /obj/item/storage/backpack/satchel
 	var/duffelbag = /obj/item/storage/backpack/duffelbag
 	var/box = /obj/item/storage/box/survival
-
-	var/pda_slot = slot_belt
 
 /datum/outfit/job/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	switch(H.backbag)

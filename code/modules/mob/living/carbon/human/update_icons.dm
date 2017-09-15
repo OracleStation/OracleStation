@@ -76,6 +76,7 @@ There are several things that need to be remembered:
 		update_hair()
 		update_inv_w_uniform()
 		update_inv_wear_id()
+		update_inv_wear_pda()
 		update_inv_gloves()
 		update_inv_glasses()
 		update_inv_ears()
@@ -336,6 +337,15 @@ There are several things that need to be remembered:
 
 	apply_overlay(SUIT_LAYER)
 
+/mob/living/carbon/human/update_inv_wear_pda()
+	if(client && hud_used)
+		var/obj/screen/inventory/inv = hud_used.inv_slots[slot_wear_pda]
+		if(inv)
+			inv.update_icon()
+
+		if(wear_pda)
+			client.screen += wear_pda
+			wear_pda.screen_loc = ui_pda
 
 /mob/living/carbon/human/update_inv_pockets()
 	if(client && hud_used)

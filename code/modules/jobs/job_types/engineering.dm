@@ -35,7 +35,7 @@ Chief Engineer
 
 	id = /obj/item/card/id/silver
 	belt = /obj/item/storage/belt/utility/chief/full
-	l_pocket = /obj/item/device/pda/heads/ce
+	pda_slot = /obj/item/device/pda/heads/ce
 	ears = /obj/item/device/radio/headset/heads/ce
 	uniform = /obj/item/clothing/under/rank/chief_engineer
 	shoes = /obj/item/clothing/shoes/sneakers/brown
@@ -48,7 +48,6 @@ Chief Engineer
 	satchel = /obj/item/storage/backpack/satchel/eng
 	duffelbag = /obj/item/storage/backpack/duffelbag/engineering
 	box = /obj/item/storage/box/engineer
-	pda_slot = slot_l_store
 
 /datum/outfit/job/ce/rig
 	name = "Chief Engineer (Hardsuit)"
@@ -90,7 +89,7 @@ Station Engineer
 	jobtype = /datum/job/engineer
 
 	belt = /obj/item/storage/belt/utility/full/engi
-	l_pocket = /obj/item/device/pda/engineering
+	pda_slot = /obj/item/device/pda/engineering
 	ears = /obj/item/device/radio/headset/headset_eng
 	uniform = /obj/item/clothing/under/rank/engineer
 	shoes = /obj/item/clothing/shoes/workboots
@@ -102,7 +101,6 @@ Station Engineer
 	satchel = /obj/item/storage/backpack/satchel/eng
 	duffelbag = /obj/item/storage/backpack/duffelbag/engineering
 	box = /obj/item/storage/box/engineer
-	pda_slot = slot_l_store
 	backpack_contents = list(/obj/item/device/modular_computer/tablet/preset/advanced=1)
 
 /datum/outfit/job/engineer/gloved
@@ -146,7 +144,7 @@ Atmospheric Technician
 	jobtype = /datum/job/atmos
 
 	belt = /obj/item/storage/belt/utility/atmostech
-	l_pocket = /obj/item/device/pda/atmos
+	pda_slot = /obj/item/device/pda/atmos
 	ears = /obj/item/device/radio/headset/headset_eng
 	uniform = /obj/item/clothing/under/rank/atmospheric_technician
 	r_pocket = /obj/item/device/analyzer
@@ -156,7 +154,6 @@ Atmospheric Technician
 	satchel = /obj/item/storage/backpack/satchel/eng
 	duffelbag = /obj/item/storage/backpack/duffelbag/engineering
 	box = /obj/item/storage/box/engineer
-	pda_slot = slot_l_store
 	backpack_contents = list(/obj/item/device/modular_computer/tablet/preset/advanced=1)
 
 /datum/outfit/job/atmos/rig

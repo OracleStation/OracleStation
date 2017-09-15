@@ -91,6 +91,9 @@
 			wear_id = I
 			sec_hud_set_ID()
 			update_inv_wear_id()
+		if(slot_wear_pda)
+			wear_pda = I
+			update_inv_wear_pda()
 		if(slot_ears)
 			ears = I
 			update_inv_ears()
@@ -209,6 +212,10 @@
 		sec_hud_set_ID()
 		if(!QDELETED(src))
 			update_inv_wear_id()
+	else if(I == wear_pda)
+		wear_pda = null
+		if(!QDELETED(src))
+			update_inv_wear_pda()
 	else if(I == r_store)
 		r_store = null
 		if(!QDELETED(src))

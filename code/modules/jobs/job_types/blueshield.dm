@@ -35,7 +35,7 @@ Blueshield
   shoes = /obj/item/clothing/shoes/jackboots
   ears = /obj/item/device/radio/headset/heads/blueshield/alt
   glasses = /obj/item/clothing/glasses/hud/health/sunglasses
-  belt = /obj/item/device/pda/blueshield
+  pda_slot = /obj/item/device/pda/blueshield
 
   implants = list(/obj/item/implant/mindshield)
 

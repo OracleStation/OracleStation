@@ -189,6 +189,8 @@
 		M.update_inv_shoes()
 	if(flags & SLOT_ID)
 		M.update_inv_wear_id()
+	if(flags & SLOT_PDA)
+		M.update_inv_wear_pda()
 	if(flags & SLOT_BELT)
 		M.update_inv_belt()
 	if(flags & SLOT_BACK)
@@ -583,4 +585,3 @@
 
 /obj/item/device/pda/chameleon/emp_act(severity)
 	chameleon_action.emp_randomise()
-

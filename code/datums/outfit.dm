@@ -16,6 +16,7 @@
 	var/id = null
 	var/l_pocket = null
 	var/r_pocket = null
+	var/pda_slot = null
 	var/suit_store = null
 	var/r_hand = null
 	var/l_hand = null
@@ -62,6 +63,8 @@
 		H.equip_to_slot_or_del(new glasses(H),slot_glasses)
 	if(id)
 		H.equip_to_slot_or_del(new id(H),slot_wear_id)
+	if(pda_slot)
+		H.equip_to_slot_or_del(new pda_slot(H),slot_wear_pda)
 	if(suit_store)
 		H.equip_to_slot_or_del(new suit_store(H),slot_s_store)
 

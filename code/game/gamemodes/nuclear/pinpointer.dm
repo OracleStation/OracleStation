@@ -5,7 +5,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "pinoff"
 	flags_1 = CONDUCT_1
-	slot_flags = SLOT_BELT
+	slot_flags = SLOT_PDA | SLOT_BELT
 	w_class = WEIGHT_CLASS_SMALL
 	item_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
@@ -174,6 +174,3 @@
 	desc = "An integrated tracking device, jury-rigged to search for living Syndicate operatives."
 	mode = TRACK_OPERATIVES
 	flags_1 = NODROP_1
-
-
-

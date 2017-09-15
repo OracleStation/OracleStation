@@ -777,6 +777,18 @@
 			if( !(I.slot_flags & SLOT_ID) )
 				return 0
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
+		if(slot_wear_pda)
+			if(H.wear_pda)
+				return 0
+
+			var/obj/item/bodypart/O = H.get_bodypart("chest")
+			if(!H.w_uniform && !nojumpsuit && (!O || O.status != BODYPART_ROBOTIC))
+				if(!disable_warning)
+					to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [I.name]!</span>")
+				return 0
+			if( !(I.slot_flags & SLOT_PDA) )
+				return 0
+			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(slot_l_store)
 			if(I.flags_1 & NODROP_1) //Pockets aren't visible, so you can't move NODROP_1 items into them.
 				return 0
