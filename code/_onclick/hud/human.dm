@@ -395,7 +395,7 @@
 				screenmob.client.screen += H.wear_id
 			if(H.wear_pda)
 				H.wear_pda.screen_loc = ui_pda
-	 			screenmob.client.screen += H.wear_pda
+				screenmob.client.screen += H.wear_pda
 			if(H.belt)
 				H.belt.screen_loc = ui_belt
 				screenmob.client.screen += H.belt

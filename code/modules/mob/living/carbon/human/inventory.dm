@@ -18,6 +18,8 @@
 			return belt
 		if(slot_wear_id)
 			return wear_id
+		if(slot_wear_pda)
+			return wear_pda
 		if(slot_ears)
 			return ears
 		if(slot_glasses)
@@ -171,6 +173,8 @@
 				dropItemToGround(l_store, TRUE)
 			if(wear_id)
 				dropItemToGround(wear_id)
+			if(wear_pda)
+				dropItemToGround(wear_pda)
 			if(belt)
 				dropItemToGround(belt)
 		w_uniform = null
