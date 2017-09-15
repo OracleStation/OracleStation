@@ -175,12 +175,12 @@
 	)
 
 /obj/machinery/cryopod/Initialize()
-	..()
 	update_icon()
 	find_control_computer()
+	return ..()
 
 /obj/machinery/cryopod/proc/find_control_computer(urgent = 0)
-	for(var/obj/machinery/computer/cryopod/C in area_contents(get_area(src))
+	for(var/obj/machinery/computer/cryopod/C in area_contents(get_area(src)))
 		control_computer = C
 		break
 
@@ -193,6 +193,8 @@
 	return control_computer != null
 
 /obj/machinery/cryopod/close_machine(mob/user)
+	if(!control_computer)
+		find_control_computer(TRUE)
 	if((isnull(user) || istype(user)) && state_open && !panel_open)
 		..(user)
 		var/mob/living/mob_occupant = occupant
@@ -239,20 +241,18 @@
 // This function can not be undone; do not call this unless you are sure
 /obj/machinery/cryopod/proc/despawn_occupant()
 	var/mob/living/mob_occupant = occupant
+
 	for(var/obj/item/W in mob_occupant.GetAllContents())
-		if(get_turf(W) != get_turf(mob_occupant))//hacky as hell - if this item hasn't been moved to a different place. Here so we don't delete a taser's battery or whatever
-			to_chat(world, W.name)
-			to_chat(world, "they didn't match! occupant is at [mob_occupant.loc]; item is at [W.loc]")
-			continue
-		W.forceMove(src)
 		for(var/T in preserve_items)
 			if(istype(W, T))
 				if(control_computer && control_computer.allow_items)
 					control_computer.frozen_items += W
+					W.forceMove(control_computer)
 				else
 					W.forceMove(loc)
-			else
-				qdel(W)
+
+	for(var/obj/item/W in mob_occupant.GetAllContents())
+		qdel(W)//because we moved all items to preserve away
 
 	if(istype(SSticker.mode, /datum/game_mode/cult))//thank
 		if("sacrifice" in SSticker.mode.cult_objectives)
@@ -292,7 +292,7 @@
 		// them win or lose based on cryo is silly so we remove the objective.
 		if(istype(O,/datum/objective/mutiny) && O.target == mob_occupant.mind)
 			qdel(O)
-		else if(O.target && istype(O.target,/datum/mind))
+		else if(O.target && istype(O.target, /datum/mind))
 			if(O.target == mob_occupant.mind)
 				if(O.owner && O.owner.current)
 					to_chat(O.owner.current, "<BR><span class='userdanger'>You get the feeling your target is no longer within reach. Time for Plan [pick("A","B","C","D","X","Y","Z")]. Objectives updated!</span>")
