@@ -58,6 +58,9 @@
 /mob/proc/update_inv_wear_id()
 	return
 
+/mob/proc/update_inv_wear_pda()
+	return
+
 /mob/proc/update_inv_shoes()
 	return
 

@@ -158,6 +158,14 @@
 	static_inventory += inv_box
 
 	inv_box = new /obj/screen/inventory()
+	inv_box.name = "pda"
+	inv_box.icon = ui_style
+	inv_box.icon_state = "pda"
+	inv_box.screen_loc = ui_pda
+	inv_box.slot_id = slot_wear_pda
+	static_inventory += inv_box
+
+	inv_box = new /obj/screen/inventory()
 	inv_box.name = "mask"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "mask"
@@ -385,6 +393,9 @@
 			if(H.wear_id)
 				H.wear_id.screen_loc = ui_id
 				screenmob.client.screen += H.wear_id
+			if(H.wear_pda)
+				H.wear_pda.screen_loc = ui_pda
+				screenmob.client.screen += H.wear_pda
 			if(H.belt)
 				H.belt.screen_loc = ui_belt
 				screenmob.client.screen += H.belt
@@ -402,6 +413,8 @@
 				screenmob.client.screen -= H.s_store
 			if(H.wear_id)
 				screenmob.client.screen -= H.wear_id
+			if(H.wear_pda)
+				screenmob.client.screen -= H.wear_pda
 			if(H.belt)
 				screenmob.client.screen -= H.belt
 			if(H.back)

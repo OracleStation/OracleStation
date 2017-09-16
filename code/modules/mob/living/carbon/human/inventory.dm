@@ -18,6 +18,8 @@
 			return belt
 		if(slot_wear_id)
 			return wear_id
+		if(slot_wear_pda)
+			return wear_pda
 		if(slot_ears)
 			return ears
 		if(slot_glasses)
@@ -91,6 +93,9 @@
 			wear_id = I
 			sec_hud_set_ID()
 			update_inv_wear_id()
+		if(slot_wear_pda)
+			wear_pda = I
+			update_inv_wear_pda()
 		if(slot_ears)
 			ears = I
 			update_inv_ears()
@@ -168,6 +173,8 @@
 				dropItemToGround(l_store, TRUE)
 			if(wear_id)
 				dropItemToGround(wear_id)
+			if(wear_pda)
+				dropItemToGround(wear_pda)
 			if(belt)
 				dropItemToGround(belt)
 		w_uniform = null
@@ -209,6 +216,10 @@
 		sec_hud_set_ID()
 		if(!QDELETED(src))
 			update_inv_wear_id()
+	else if(I == wear_pda)
+		wear_pda = null
+		if(!QDELETED(src))
+			update_inv_wear_pda()
 	else if(I == r_store)
 		r_store = null
 		if(!QDELETED(src))

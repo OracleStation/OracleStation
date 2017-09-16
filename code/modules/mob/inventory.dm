@@ -325,6 +325,7 @@
 
 /mob/living/carbon/human/get_equipped_items()
 	var/list/items = ..()
+
 	if(belt)
 		items += belt
 	if(ears)
@@ -337,10 +338,19 @@
 		items += shoes
 	if(wear_id)
 		items += wear_id
+	if(wear_pda)
+		items += wear_pda
+	if(r_store)
+		items += r_store
+	if(l_store)
+		items += l_store
+	if(s_store)
+		items += s_store
 	if(wear_suit)
 		items += wear_suit
 	if(w_uniform)
 		items += w_uniform
+
 	return items
 
 /mob/living/proc/unequip_everything()

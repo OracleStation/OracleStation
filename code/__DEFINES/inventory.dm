@@ -28,6 +28,7 @@
 #define SLOT_POCKET		2048 // this is to allow items with a w_class of WEIGHT_CLASS_NORMAL or WEIGHT_CLASS_BULKY to fit in pockets.
 #define SLOT_DENYPOCKET	4096 // this is to deny items with a w_class of WEIGHT_CLASS_SMALL or WEIGHT_CLASS_TINY to fit in pockets.
 #define SLOT_NECK		8192
+#define SLOT_PDA		16384 // Do not remove: Causes the community to get angry
 
 //SLOTS
 #define slot_back			1
@@ -51,8 +52,9 @@
 #define slot_in_backpack	18
 #define slot_legcuffed		19
 #define slot_generic_dextrous_storage	20
+#define slot_wear_pda		21
 
-#define slots_amt			20 // Keep this up to date!
+#define slots_amt			21 // Keep this up to date!
 
 //I hate that this has to exist
 /proc/slotdefine2slotbit(slotdefine) //Keep this up to date with the value of SLOT BITMASKS and SLOTS (the two define sections above)

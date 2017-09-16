@@ -36,7 +36,7 @@ Research Director
 	jobtype = /datum/job/rd
 
 	id = /obj/item/card/id/silver
-	belt = /obj/item/device/pda/heads/rd
+	pda_slot = /obj/item/device/pda/heads/rd
 	ears = /obj/item/device/radio/headset/heads/rd
 	uniform = /obj/item/clothing/under/rank/research_director
 	shoes = /obj/item/clothing/shoes/sneakers/brown
@@ -83,7 +83,7 @@ Scientist
 	name = "Scientist"
 	jobtype = /datum/job/scientist
 
-	belt = /obj/item/device/pda/toxins
+	pda_slot = /obj/item/device/pda/toxins
 	ears = /obj/item/device/radio/headset/headset_sci
 	uniform = /obj/item/clothing/under/rank/scientist
 	shoes = /obj/item/clothing/shoes/sneakers/white
@@ -119,12 +119,10 @@ Roboticist
 	jobtype = /datum/job/roboticist
 
 	belt = /obj/item/storage/belt/utility/full
-	l_pocket = /obj/item/device/pda/roboticist
+	pda_slot = /obj/item/device/pda/roboticist
 	ears = /obj/item/device/radio/headset/headset_sci
 	uniform = /obj/item/clothing/under/rank/roboticist
 	suit = /obj/item/clothing/suit/toggle/labcoat
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/tox
-
-	pda_slot = slot_l_store
