@@ -164,7 +164,6 @@
 		/obj/item/reagent_containers/hypospray/CMO,
 		/obj/item/clothing/accessory/medal/gold/captain,
 		/obj/item/clothing/gloves/krav_maga,
-		/obj/item/storage/internal,
 		/obj/item/nullrod,
 		/obj/item/tank/jetpack,
 		/obj/item/documents
@@ -210,6 +209,7 @@
 	..()
 	icon_state = "cryopod-open"
 	density = TRUE
+	name = initial(name)
 
 /obj/machinery/cryopod/container_resist(mob/living/user)
 	visible_message("<span class='notice'>[occupant] emerges from [src]!</span>",
@@ -241,18 +241,6 @@
 // This function can not be undone; do not call this unless you are sure
 /obj/machinery/cryopod/proc/despawn_occupant()
 	var/mob/living/mob_occupant = occupant
-
-	for(var/obj/item/W in mob_occupant.GetAllContents())
-		for(var/T in preserve_items)
-			if(istype(W, T))
-				if(control_computer && control_computer.allow_items)
-					control_computer.frozen_items += W
-					W.forceMove(control_computer)
-				else
-					W.forceMove(loc)
-
-	for(var/obj/item/W in mob_occupant.GetAllContents())
-		qdel(W)//because we moved all items to preserve away
 
 	if(istype(SSticker.mode, /datum/game_mode/cult))//thank
 		if("sacrifice" in SSticker.mode.cult_objectives)
@@ -287,7 +275,7 @@
 							to_chat(H.current, "<span class='danger'>Nar'Sie</span> murmurs, <span class='cultlarge'>[occupant] is beyond your reach. Sacrifice [GLOB.sac_mind.current] instead...</span></span>")
 
 	//Update any existing objectives involving this mob.
-	for(var/datum/objective/O in world)
+	for(var/datum/objective/O in GLOB.objectives)
 		// We don't want revs to get objectives that aren't for heads of staff. Letting
 		// them win or lose based on cryo is silly so we remove the objective.
 		if(istype(O,/datum/objective/mutiny) && O.target == mob_occupant.mind)
@@ -300,9 +288,11 @@
 				spawn(1) //This should ideally fire after the occupant is deleted.
 					if(!O) return
 					O.find_target()
+					O.update_explanation_text()
 					if(!(O.target))
 						O.owner.objectives -= O
 						qdel(O)
+
 	if(mob_occupant.mind && mob_occupant.mind.assigned_role)
 		//Handle job slot/tater cleanup.
 		var/job = mob_occupant.mind.assigned_role
@@ -339,6 +329,26 @@
 		announcer.announce("CRYOSTORAGE", mob_occupant.real_name, announce_rank, list())
 		visible_message("<span class='notice'>\The [src] hums and hisses as it moves [mob_occupant.real_name] into storage.</span>")
 
+	for(var/obj/item/W in mob_occupant.GetAllContents())
+		for(var/T in preserve_items)
+			if(istype(W, T))
+				if(control_computer && control_computer.allow_items)
+					control_computer.frozen_items += W
+					W.forceMove(control_computer)
+				else
+					W.forceMove(loc)
+
+	for(var/obj/item/W in mob_occupant.GetAllContents())
+		qdel(W)//because we moved all items to preserve away
+		//and yes, this totally deletes their bodyparts one by one, I just couldn't bother
+
+	if(iscyborg(mob_occupant))
+		var/mob/living/silicon/robot/R = occupant
+		if(!istype(R)) return ..()
+
+		R.contents -= R.mmi
+		qdel(R.mmi)
+
 	// Ghost and delete the mob.
 	if(!mob_occupant.get_ghost(1))
 		if(world.time < 30 * 600)//before the 30 minute mark
@@ -362,7 +372,8 @@
 		return
 
 	if(target.client && user != target)
-		to_chat(user, "<span class='notice'>You can't put conscious people into [src]!</span>")
+		to_chat(user, "<span class='danger'>You can't put conscious people into [src]!</span>")
+		return
 	else if(target.client)
 		if(alert(target,"Would you like to enter cryosleep?",,"Yes","No") == "No")
 			return
