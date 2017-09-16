@@ -646,6 +646,9 @@ GLOBAL_PROTECT(AdminProcCallCount)
 	SSblackbox.add_details("admin_verb","Select Equipment") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	for (var/obj/item/I in M.get_equipped_items())
 		qdel(I)
+	for (var/obj/item/I in M.held_items)
+		qdel(I)
+
 	switch(dresscode)
 		if ("Naked")
 			//do nothing

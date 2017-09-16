@@ -23,9 +23,9 @@
 //Middle left indicators
 #define ui_lingchemdisplay "WEST,CENTER-1:15"
 #define ui_lingstingdisplay "WEST:6,CENTER-3:11"
-#define ui_crafting	"12:-10,2:5"
-#define ui_building "12:-10,2:21"
-#define ui_language_menu "11:6,3:-11"
+#define ui_crafting	"13:-10,2:5"
+#define ui_building "13:-10,2:21"
+#define ui_language_menu "12:6,3:-11"
 
 #define ui_devilsouldisplay "WEST:6,CENTER-1:15"
 
