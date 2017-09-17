@@ -36,7 +36,7 @@
 		return
 
 	user.set_machine(src)
-	add_fingerprint(usr)
+	add_fingerprint(user)
 
 	var/dat
 
@@ -88,7 +88,7 @@
 			to_chat(user, "<span class='notice'>There is nothing to recover from storage.</span>")
 			return
 
-		var/obj/item/I = input(usr, "Please choose which object to retrieve.","Object recovery",null) as null|anything in frozen_items
+		var/obj/item/I = input(user, "Please choose which object to retrieve.","Object recovery",null) as null|anything in frozen_items
 		if(!I)
 			return
 
@@ -128,7 +128,7 @@
 //Cryopods themselves.
 /obj/machinery/cryopod
 	name = "cryogenic freezer"
-	desc = "A man-sized pod for entering suspended animation. Now for Cyborgs too!"
+	desc = "Suited for Cyborgs and Humanoids, the pod is a safe place for personnel affected by the Space Sleep Disorder to get some rest."
 	icon = 'icons/obj/cryogenic2.dmi'
 	icon_state = "cryopod-open"
 	density = TRUE
@@ -166,7 +166,8 @@
 		/obj/item/clothing/gloves/krav_maga,
 		/obj/item/nullrod,
 		/obj/item/tank/jetpack,
-		/obj/item/documents
+		/obj/item/documents,
+		/obj/item/nuke_core_container
 	)
 	// These items will NOT be preserved
 	var/list/do_not_preserve_items = list (
@@ -285,8 +286,9 @@
 				if(O.owner && O.owner.current)
 					to_chat(O.owner.current, "<BR><span class='userdanger'>You get the feeling your target is no longer within reach. Time for Plan [pick("A","B","C","D","X","Y","Z")]. Objectives updated!</span>")
 				O.target = null
-				spawn(1) //This should ideally fire after the occupant is deleted.
-					if(!O) return
+				spawn(10) //This should ideally fire after the occupant is deleted.
+					if(!O)
+						return
 					O.find_target()
 					O.update_explanation_text()
 					if(!(O.target))
@@ -329,14 +331,18 @@
 		announcer.announce("CRYOSTORAGE", mob_occupant.real_name, announce_rank, list())
 		visible_message("<span class='notice'>\The [src] hums and hisses as it moves [mob_occupant.real_name] into storage.</span>")
 
+
 	for(var/obj/item/W in mob_occupant.GetAllContents())
+		if(W.loc.loc && (( W.loc.loc == loc ) || (W.loc.loc == control_computer)))
+			continue//means we already moved whatever this thing was in
+			//I'm a professional, okay
 		for(var/T in preserve_items)
 			if(istype(W, T))
 				if(control_computer && control_computer.allow_items)
 					control_computer.frozen_items += W
-					W.forceMove(control_computer)
+					mob_occupant.transferItemToLoc(W, control_computer, TRUE)
 				else
-					W.forceMove(loc)
+					mob_occupant.transferItemToLoc(W, loc, TRUE)
 
 	for(var/obj/item/W in mob_occupant.GetAllContents())
 		qdel(W)//because we moved all items to preserve away
@@ -372,7 +378,10 @@
 		return
 
 	if(target.client && user != target)
-		to_chat(user, "<span class='danger'>You can't put conscious people into [src]!</span>")
+		if(iscyborg(target))
+			to_chat(user, "<span class='danger'>You can't put [target] into [src]. They're online.</span>")
+		else
+			to_chat(user, "<span class='danger'>You can't put [target] into [src]. They're conscious.</span>")
 		return
 	else if(target.client)
 		if(alert(target,"Would you like to enter cryosleep?",,"Yes","No") == "No")

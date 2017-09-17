@@ -41,6 +41,8 @@ GLOBAL_LIST_EMPTY(objectives)
 			possible_targets += possible_target
 	if(possible_targets.len > 0)
 		target = pick(possible_targets)
+	else
+		target = null//we'd rather have no target than an invalid one
 	update_explanation_text()
 	return target
 
