@@ -16,6 +16,8 @@
 	var/last_message_count = 0 //contins a number of how many times a message identical to last_message was sent.
 	var/ircreplyamount = 0
 
+	var/cryo_warned = -3000//when was the last time we warned them about not cryoing without an ahelp, set to -5 minutes so that rounstart cryo still warns
+
 		/////////
 		//OTHER//
 		/////////

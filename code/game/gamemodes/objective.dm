@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(objectives)
+
 /datum/objective
 	var/datum/mind/owner = null			//Who owns the objective.
 	var/explanation_text = "Nothing"	//What that person is supposed to do.
@@ -7,6 +9,7 @@
 	var/martyr_compatible = 0			//If the objective is compatible with martyr objective, i.e. if you can still do it while dead.
 
 /datum/objective/New(var/text)
+	GLOB.objectives += src
 	if(text)
 		explanation_text = text
 
@@ -38,6 +41,8 @@
 			possible_targets += possible_target
 	if(possible_targets.len > 0)
 		target = pick(possible_targets)
+	else
+		target = null//we'd rather have no target than an invalid one
 	update_explanation_text()
 	return target
 
