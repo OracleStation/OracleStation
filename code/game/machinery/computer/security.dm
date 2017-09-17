@@ -39,7 +39,7 @@
 /obj/machinery/computer/secure_data/desktop
 	name = "security records desktop"
 	icon = 'icons/obj/modular_desktop.dmi'
-	icon_state = "desktop"
+	icon_state = "desktop-off"
 	icon_screen = "security"
 	icon_keyboard = "desktop_key"
 	pixel_y = 8
