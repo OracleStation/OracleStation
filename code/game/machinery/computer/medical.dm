@@ -604,8 +604,18 @@
 
 /obj/machinery/computer/med_data/laptop
 	name = "medical laptop"
+	icon = 'icons/obj/modular_desktop.dmi'
 	desc = "A cheap Nanotrasen medical laptop, it functions as a medical records computer. It's bolted to the table."
-	icon_state = "laptop"
-	icon_screen = "medlaptop"
+	icon_state = "laptop-off"
+	icon_screen = "medcomp"
 	icon_keyboard = "laptop_key"
+	pixel_y = 6
 	clockwork = TRUE //it'd look weird
+
+/obj/machinery/computer/med_data/desktop
+	name = "medical records desktop"
+	icon = 'icons/obj/modular_desktop.dmi'
+	icon_state = "desktop-off"
+	icon_screen = "medcomp"
+	icon_keyboard = "desktop_key"
+	pixel_y = 8

@@ -28,11 +28,21 @@
 
 /obj/machinery/computer/secure_data/laptop
 	name = "security laptop"
+	icon = 'icons/obj/modular_desktop.dmi'
 	desc = "A cheap Nanotrasen security laptop, it functions as a security records console. It's bolted to the table."
-	icon_state = "laptop"
-	icon_screen = "seclaptop"
+	icon_state = "laptop-off"
+	icon_screen = "security"
 	icon_keyboard = "laptop_key"
 	clockwork = TRUE //it'd look weird
+	pixel_y = 6
+
+/obj/machinery/computer/secure_data/desktop
+	name = "security records desktop"
+	icon = 'icons/obj/modular_desktop.dmi'
+	icon_state = "desktop-off"
+	icon_screen = "security"
+	icon_keyboard = "desktop_key"
+	pixel_y = 8
 
 /obj/machinery/computer/secure_data/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/card/id))

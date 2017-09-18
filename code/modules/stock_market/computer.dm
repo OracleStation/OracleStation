@@ -1,14 +1,14 @@
 /obj/machinery/computer/stockexchange
 	name = "stock exchange computer"
-	icon = 'icons/obj/computer.dmi'
-	icon_state = "oldcomp"
-	icon_screen = "stock_computer"
-	icon_keyboard = "no_keyboard"
+	icon = 'icons/obj/modular_desktop.dmi'
+	icon_state = "desktop-off"
+	icon_screen = "stockexchange"
+	icon_keyboard = "desktop_key"
 	var/logged_in = "Cargo Department"
 	var/vmode = 1
 	circuit = /obj/item/circuitboard/computer/stockexchange
 	clockwork = TRUE //it'd look weird
-
+	pixel_y = 8
 	light_color = LIGHT_COLOR_GREEN
 
 /obj/machinery/computer/stockexchange/Initialize()
