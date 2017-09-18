@@ -11,7 +11,7 @@
 	for(var/mob/living/carbon/human/H in GLOB.mob_list)
 		var/obj/item/storage/backpack/b = locate() in H.contents
 		new /obj/item/storage/spooky(b)
-		if(ishuman(H) || islizard(H))
+		if(ishuman(H) || isunathi(H) || isethari(H))
 			if(prob(50))
 				H.set_species(/datum/species/skeleton)
 			else

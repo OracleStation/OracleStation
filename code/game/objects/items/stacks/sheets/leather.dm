@@ -61,10 +61,10 @@ GLOBAL_LIST_INIT(monkey_recipes, list ( \
 	recipes = GLOB.monkey_recipes
 	return ..()
 
-/obj/item/stack/sheet/animalhide/lizard
-	name = "lizard skin"
+/obj/item/stack/sheet/animalhide/unathi
+	name = "unathi skin"
 	desc = "Sssssss..."
-	singular_name = "lizard skin piece"
+	singular_name = "unathi skin piece"
 	icon_state = "sheet-lizard"
 
 /obj/item/stack/sheet/animalhide/ethari

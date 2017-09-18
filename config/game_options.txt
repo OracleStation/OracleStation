@@ -394,7 +394,7 @@ JOIN_WITH_MUTANT_RACE
 ROUNDSTART_RACES human
 
 ## Races that are okay-ish on the station. Safe to enable.
-ROUNDSTART_RACES lizard
+ROUNDSTART_RACES unathi
 ROUNDSTART_RACES plasmaman
 ROUNDSTART_RACES slime
 ROUNDSTART_RACES ethari

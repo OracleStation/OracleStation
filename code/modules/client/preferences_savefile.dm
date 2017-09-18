@@ -278,15 +278,15 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["backbag"]			>> backbag
 	S["uplink_loc"]			>> uplink_spawn_loc
 	S["feature_mcolor"]					>> features["mcolor"]
-	S["feature_lizard_tail"]			>> features["tail_lizard"]
+	S["feature_unathi_tail"]			>> features["tail_unathi"]
 	S["feature_ethari_tail"]				>> features["tail_ethari"]
-	S["feature_lizard_snout"]			>> features["snout"]
+	S["feature_unathi_snout"]			>> features["snout"]
 	S["feature_snout_ethari"]				>> features["snout_ethari"]
-	S["feature_lizard_horns"]			>> features["horns"]
-	S["feature_lizard_frills"]			>> features["frills"]
-	S["feature_lizard_spines"]			>> features["spines"]
-	S["feature_lizard_body_markings"]	>> features["body_markings"]
-	S["feature_lizard_legs"]			>> features["legs"]
+	S["feature_unathi_horns"]			>> features["horns"]
+	S["feature_unathi_frills"]			>> features["frills"]
+	S["feature_unathi_spines"]			>> features["spines"]
+	S["feature_unathi_body_markings"]	>> features["body_markings"]
+	S["feature_unathi_legs"]			>> features["legs"]
 	S["feature_ears_ethari"]			>> features["ears_ethari"]
 	if(!config.mutant_humans)
 		features["tail_human"] = "none"
@@ -347,7 +347,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	backbag			= sanitize_inlist(backbag, GLOB.backbaglist, initial(backbag))
 	uplink_spawn_loc = sanitize_inlist(uplink_spawn_loc, GLOB.uplink_spawn_loc_list, initial(uplink_spawn_loc))
 	features["mcolor"]	= sanitize_hexcolor(features["mcolor"], 3, 0)
-	features["tail_lizard"]	= sanitize_inlist(features["tail_lizard"], GLOB.tails_list_lizard)
+	features["tail_unathi"]	= sanitize_inlist(features["tail_unathi"], GLOB.tails_list_unathi)
 	features["tail_ethari"] = sanitize_inlist(features["tail_ethari"], GLOB.tails_list_ethari)
 	features["tail_human"] 	= sanitize_inlist(features["tail_human"], GLOB.tails_list_human, "None")
 	features["snout"]	= sanitize_inlist(features["snout"], GLOB.snouts_list)
@@ -358,7 +358,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["frills"] 	= sanitize_inlist(features["frills"], GLOB.frills_list)
 	features["spines"] 	= sanitize_inlist(features["spines"], GLOB.spines_list)
 	features["body_markings"] 	= sanitize_inlist(features["body_markings"], GLOB.body_markings_list)
-	features["feature_lizard_legs"]	= sanitize_inlist(features["legs"], GLOB.legs_list, "Normal Legs")
+	features["feature_unathi_legs"]	= sanitize_inlist(features["legs"], GLOB.legs_list, "Normal Legs")
 
 	joblessrole	= sanitize_integer(joblessrole, 1, 3, initial(joblessrole))
 	job_civilian_high = sanitize_integer(job_civilian_high, 0, 65535, initial(job_civilian_high))
@@ -403,18 +403,18 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["uplink_loc"]			, uplink_spawn_loc)
 	WRITE_FILE(S["species"]			, pref_species.id)
 	WRITE_FILE(S["feature_mcolor"]					, features["mcolor"])
-	WRITE_FILE(S["feature_lizard_tail"]			, features["tail_lizard"])
+	WRITE_FILE(S["feature_unathi_tail"]			, features["tail_unathi"])
 	WRITE_FILE(S["feature_human_tail"]				, features["tail_human"])
-	WRITE_FILE(S["feature_lizard_snout"]			, features["snout"])
+	WRITE_FILE(S["feature_unathi_snout"]			, features["snout"])
 	WRITE_FILE(S["feature_snout_ethari"]			, features["snout_ethari"])
 	WRITE_FILE(S["feature_ethari_tail"]			, features["tail_ethari"])
 	WRITE_FILE(S["feature_ears_ethari"]			, features["ears_ethari"])
-	WRITE_FILE(S["feature_lizard_horns"]			, features["horns"])
+	WRITE_FILE(S["feature_unathi_horns"]			, features["horns"])
 	WRITE_FILE(S["feature_human_ears"]				, features["ears"])
-	WRITE_FILE(S["feature_lizard_frills"]			, features["frills"])
-	WRITE_FILE(S["feature_lizard_spines"]			, features["spines"])
-	WRITE_FILE(S["feature_lizard_body_markings"]	, features["body_markings"])
-	WRITE_FILE(S["feature_lizard_legs"]			, features["legs"])
+	WRITE_FILE(S["feature_unathi_frills"]			, features["frills"])
+	WRITE_FILE(S["feature_unathi_spines"]			, features["spines"])
+	WRITE_FILE(S["feature_unathi_body_markings"]	, features["body_markings"])
+	WRITE_FILE(S["feature_unathi_legs"]			, features["legs"])
 	WRITE_FILE(S["clown_name"]			, custom_names["clown"])
 	WRITE_FILE(S["mime_name"]			, custom_names["mime"])
 	WRITE_FILE(S["ai_name"]			, custom_names["ai"])

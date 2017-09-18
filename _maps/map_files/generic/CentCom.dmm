@@ -8334,7 +8334,7 @@
 /turf/open/floor/engine/cult,
 /area/wizard_station)
 "vL" = (
-/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/lizard,
+/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/unathi,
 /turf/open/floor/grass,
 /area/wizard_station)
 "vM" = (
@@ -10727,10 +10727,10 @@
 /obj/item/reagent_containers/food/snacks/meat/slab/killertomato,
 /obj/item/reagent_containers/food/snacks/meat/slab/killertomato,
 /obj/item/reagent_containers/food/snacks/meat/slab/killertomato,
-/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/lizard,
-/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/lizard,
-/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/lizard,
-/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/lizard,
+/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/unathi,
+/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/unathi,
+/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/unathi,
+/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/unathi,
 /obj/item/reagent_containers/food/snacks/sausage,
 /obj/item/reagent_containers/food/snacks/sausage,
 /obj/item/reagent_containers/food/snacks/meat/rawcutlet,

@@ -113,7 +113,7 @@
 #define EASYDISMEMBER	22
 #define EASYLIMBATTACHMENT 23
 #define TOXINLOVER		24
-#define DIGITIGRADE		25	//Uses weird leg sprites. Optional for Lizards, required for ashwalkers. Don't give it to other races unless you make sprites for this (see human_parts_greyscale.dmi)
+#define DIGITIGRADE		25	//Uses weird leg sprites. Optional for Unathi, required for ashwalkers. Don't give it to other races unless you make sprites for this (see human_parts_greyscale.dmi)
 #define NO_UNDERWEAR	26
 #define NOLIVER			27
 #define NOSTOMACH		28

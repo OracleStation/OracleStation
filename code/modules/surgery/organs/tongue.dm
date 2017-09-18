@@ -41,14 +41,14 @@
 /obj/item/organ/tongue/could_speak_in_language(datum/language/dt)
 	. = is_type_in_typecache(dt, languages_possible)
 
-/obj/item/organ/tongue/lizard
+/obj/item/organ/tongue/unathi
 	name = "forked tongue"
 	desc = "A thin and long muscle typically found in reptilian races, apparently moonlights as a nose."
 	icon_state = "tonguelizard"
 	say_mod = "hisses"
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 
-/obj/item/organ/tongue/lizard/TongueSpeech(var/message)
+/obj/item/organ/tongue/unathi/TongueSpeech(var/message)
 	var/regex/lizard_hiss = new("s+", "g")
 	var/regex/lizard_hiSS = new("S+", "g")
 	if(copytext(message, 1, 2) != "*")

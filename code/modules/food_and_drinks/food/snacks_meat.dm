@@ -148,8 +148,8 @@
 	foodtype = VEGETABLES
 
 /obj/item/reagent_containers/food/snacks/kebab/tail
-	name = "lizard-tail kebab"
-	desc = "Severed lizard tail on a stick."
+	name = "unathi-tail kebab"
+	desc = "Severed unathi tail on a stick."
 	bonus_reagents = list("nutriment" = 1, "vitamin" = 4)
 	tastes = list("meat" = 8, "metal" = 4, "scales" = 1)
 	foodtype = MEAT

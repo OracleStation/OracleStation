@@ -438,11 +438,11 @@
 	mutationtext = "<span class='danger'>The pain subsides. Your whole body feels like slime.</span>"
 
 /datum/reagent/stableslimetoxin/lizard
-	name = "Lizard Mutation Toxin"
+	name = "Unathi Mutation Toxin"
 	id = "lizardmutationtoxin"
 	description = "A lizarding toxin produced by slimes."
 	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/lizard
+	race = /datum/species/unathi
 	mutationtext = "<span class='danger'>The pain subsides. You feel... scaly.</span>"
 
 /datum/reagent/stableslimetoxin/ethari
@@ -524,7 +524,7 @@
 	id = "ashmutationtoxin"
 	description = "An ashen toxin produced by slimes."
 	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/lizard/ashwalker
+	race = /datum/species/unathi/ashwalker
 	mutationtext = "<span class='danger'>The pain subsides. You feel... savage.</span>"
 
 

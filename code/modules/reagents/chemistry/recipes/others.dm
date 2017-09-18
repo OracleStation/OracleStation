@@ -134,7 +134,7 @@
 	required_reagents = list("unstablemutationtoxin" = 1, "blood" = 1) //classic
 
 /datum/chemical_reaction/lizard_mutation_toxin
-	name = "Lizard Mutation Toxin"
+	name = "Unathi Mutation Toxin"
 	id = "lizardmutationtoxin"
 	results = list("lizardmutationtoxin" = 1)
 	required_reagents = list("unstablemutationtoxin" = 1, "radium" = 1) //mutant
