@@ -23,6 +23,20 @@
 			return
 
 	var/list/modifiers = params2list(params)
+
+	//admin clicks; may override some weird functionality someone puts somewhere so watch out
+	if(check_rights(R_ADMIN, 0))
+		var/mob/M
+		if(modifiers["shift"] && modifiers["ctrl"])
+			client.debug_variables(A)
+			return
+		if(modifiers["ctrl"])
+			M = get_mob_in_atom_with_warning(A)
+			if(M)
+				client.holder.show_player_panel(M)
+			return
+	//====FIN====
+
 	if(modifiers["shift"] && modifiers["middle"])
 		ShiftMiddleClickOn(A)
 		return
