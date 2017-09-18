@@ -86,6 +86,14 @@ SUBSYSTEM_DEF(job)
 	Debug("AR has failed, Player: [player], Rank: [rank]")
 	return 0
 
+/datum/controller/subsystem/job/proc/FreeRole(rank)
+	if(!rank)
+		return
+	Debug("Freeing role: [rank]")
+	var/datum/job/job = GetJob(rank)
+	if(!job)
+		return FALSE
+	job.current_positions = max(0, job.current_positions - 1)
 
 /datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/job/job, level, flag)
 	Debug("Running FOC, Job: [job], Level: [level], Flag: [flag]")
