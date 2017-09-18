@@ -1454,3 +1454,19 @@ GLOBAL_PROTECT(valid_HTTPSGet)
 	var/temp = bitfield - ((bitfield>>1)&46811) - ((bitfield>>2)&37449) //0133333 and 0111111 respectively
 	temp = ((temp + (temp>>3))&29127) % 63	//070707
 	return temp
+
+/proc/get_mob_in_atom_with_warning(atom/A, mob/user = usr)
+	if(!istype(A))
+		return null
+	if(ismob(A))
+		return A
+
+	. = null
+	for(var/mob/M in A)
+		if(!.)
+			. = M
+		else
+			to_chat(user, "<span class='warning'>Multiple mobs in [A], using first mob found...</span>")
+			break
+	if(!.)
+		to_chat(user, "<span class='warning'>No mob located in [A].</span>")
