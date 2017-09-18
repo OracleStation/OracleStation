@@ -346,11 +346,7 @@
 		var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
 		announcer.announce("AIWIPE", real_name, mind.assigned_role, list())
 
-	//Refactor this once cryostorage is merged
-	var/datum/job/job = GetJob(mind.assigned_role)
-
-	if(job)
-		job.current_positions = max(0, job.current_positions--)
+	SSjob.FreeRole(mind.assigned_role)
 
 	if(mind.objectives.len)
 		mind.objectives.Cut()
