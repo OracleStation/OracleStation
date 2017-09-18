@@ -330,6 +330,18 @@
 /mob/living/silicon/ai/cancel_camera()
 	view_core()
 
+var/global/list/empty_playable_ai_cores = list()
+
+/proc/roundstart_spawn_empty_ai_if_needed()
+	for(var/obj/effect/landmark/start/S in GLOB.landmarks_list)
+		if(S.name != "AI")
+			continue
+		if(locate(/mob/living) in S.loc)
+			continue
+		empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(get_turf(S))
+
+	return 1
+
 /mob/living/silicon/ai/verb/wipe_core()
 	set name = "Wipe Core"
 	set category = "OOC"
@@ -341,7 +353,7 @@
 		return
 
 	// We warned you.
-	new /obj/structure/AIcore/deactivated(loc)
+	empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
 	if(GLOB.announcement_systems.len)
 		var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
 		announcer.announce("AIWIPE", real_name, mind.assigned_role, list())
