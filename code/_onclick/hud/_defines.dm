@@ -26,6 +26,7 @@
 #define ui_crafting	"13:-10,2:5"
 #define ui_building "13:-10,2:21"
 #define ui_language_menu "12:6,3:-11"
+#define ui_lay "12:6,2:5"
 
 #define ui_devilsouldisplay "WEST:6,CENTER-1:15"
 

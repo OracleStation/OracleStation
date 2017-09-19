@@ -298,6 +298,10 @@
 	resting = !resting
 	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"].</span>")
 	update_canmove()
+	update_rest_icon(src)
+
+/mob/living/proc/update_rest_icon(mob/living/M) // Just for updating the rest icon UI. Called every time rest is called.
+	return
 
 //Recursive function to find everything a mob is holding.
 /mob/living/get_contents(obj/item/storage/Storage = null)

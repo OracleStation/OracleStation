@@ -947,3 +947,15 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 			riding_datum.unequip_buckle_inhands(M)
 			riding_datum.restore_position(M)
 	. = ..(M, force)
+
+/mob/living/carbon/human/update_rest_icon(mob/living/M)
+	var/obj/screen/lay/byond_sucks
+
+	for(var/obj/screen/lay/L in M.hud_used.static_inventory)
+		byond_sucks = L
+
+	if(byond_sucks)
+		if(M.resting)
+			byond_sucks.icon_state = "rise"
+		else
+			byond_sucks.icon_state = "lay"

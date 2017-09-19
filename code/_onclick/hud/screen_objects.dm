@@ -69,6 +69,22 @@
 		return
 	M.OpenCraftingMenu()
 
+/obj/screen/lay
+	name = "lay down"
+	icon = 'icons/mob/screen_midnight.dmi'
+	icon_state = "lay"
+	screen_loc = ui_lay
+
+/obj/screen/lay/Click()
+	laydown_toggle(usr)
+
+/obj/screen/lay/proc/laydown_toggle(mob/user)
+	var/mob/living/M = user
+	if(!istype(M))
+		return
+	M.lay_down()
+
+
 /obj/screen/area_creator
 	name = "create new area"
 	icon = 'icons/mob/screen_midnight.dmi'
