@@ -949,13 +949,13 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	. = ..(M, force)
 
 /mob/living/carbon/human/update_rest_icon(mob/living/M)
-	var/obj/screen/lay/byond_sucks
+	var/obj/screen/lay/B
 
 	for(var/obj/screen/lay/L in M.hud_used.static_inventory)
-		byond_sucks = L
+		B = L
 
-	if(byond_sucks)
+	if(B)
 		if(M.resting)
-			byond_sucks.icon_state = "rise"
+			B.icon_state = "rise"
 		else
-			byond_sucks.icon_state = "lay"
+			B.icon_state = "lay"
