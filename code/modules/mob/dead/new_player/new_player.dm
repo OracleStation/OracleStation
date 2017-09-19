@@ -303,7 +303,7 @@
 	if(config.enforce_human_authority && !client.prefs.pref_species.qualifies_for_rank(rank, client.prefs.features))
 		return FALSE
 	if(job.title == "AI")
-		return (empty_playable_ai_cores.len != 0)
+		return (GLOB.empty_playable_ai_cores.len != 0)
 	if((job.current_positions >= job.total_positions) && job.total_positions != -1)
 		if(job.title == "Assistant")
 			if(isnum(client.player_age) && client.player_age <= 14) //Newbies can always be assistants
