@@ -338,6 +338,8 @@ GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 			continue
 		if(locate(/mob/living) in S.loc)
 			continue
+		if(locate(/obj/structure/AIcore/deactivated) in S.loc)
+			continue
 		GLOB.empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(get_turf(S))
 
 	return 1
@@ -345,6 +347,7 @@ GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 // Before calling this, make sure an empty core exists, or this will no-op
 /mob/living/silicon/ai/proc/moveToEmptyCore()
 	if(!GLOB.empty_playable_ai_cores.len)
+		message_admins("Tried to move an AI to an empty core when there were no playable empty cores!")
 		return
 
 	// IsJobAvailable for AI checks that there is an empty core available in this list
@@ -370,7 +373,7 @@ GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 	var/obj/structure/AIcore/deactivated/inactivecore = New(loc)
 	transfer_fingerprints_to(inactivecore)
 	GLOB.empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
-  
+
 	if(GLOB.announcement_systems.len)
 		var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
 		announcer.announce("AIWIPE", real_name, mind.assigned_role, list())

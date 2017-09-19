@@ -238,6 +238,12 @@
 	..()
 	circuit = new(src)
 
+/obj/structure/AIcore/deactivated/playable
+
+// This subclass starts eligible to join
+/obj/structure/AIcore/deactivated/playable/New()
+	..()
+	GLOB.empty_playable_ai_cores += src
 
 /*
 This is a good place for AI-related object verbs so I'm sticking it here.
