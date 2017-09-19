@@ -216,6 +216,8 @@ SUBSYSTEM_DEF(ticker)
 		cb.InvokeAsync()
 	LAZYCLEARLIST(round_start_events)
 
+	roundstart_spawn_empty_ai_if_needed() // I want to make this a hook later.
+
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	round_start_time = world.time
 

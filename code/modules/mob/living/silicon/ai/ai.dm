@@ -330,6 +330,35 @@
 /mob/living/silicon/ai/cancel_camera()
 	view_core()
 
+GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
+
+/proc/roundstart_spawn_empty_ai_if_needed()
+	for(var/obj/effect/landmark/start/S in GLOB.landmarks_list)
+		if(S.name != "AI")
+			continue
+		if(locate(/mob/living) in S.loc)
+			continue
+		if(locate(/obj/structure/AIcore/deactivated) in S.loc)
+			continue
+		GLOB.empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(get_turf(S))
+
+	return 1
+
+// Before calling this, make sure an empty core exists, or this will no-op
+/mob/living/silicon/ai/proc/moveToEmptyCore()
+	if(!GLOB.empty_playable_ai_cores.len)
+		message_admins("Tried to move an AI to an empty core when there were no playable empty cores!")
+		return
+
+	// IsJobAvailable for AI checks that there is an empty core available in this list
+	var/obj/structure/AIcore/deactivated/C = GLOB.empty_playable_ai_cores[1]
+	GLOB.empty_playable_ai_cores -= C
+
+	forceMove(C.loc)
+	view_core()
+
+	qdel(C)
+
 /mob/living/silicon/ai/verb/wipe_core()
 	set name = "Wipe Core"
 	set category = "OOC"
@@ -343,6 +372,7 @@
 	// We warned you.
 	var/obj/structure/AIcore/deactivated/inactivecore = New(loc)
 	transfer_fingerprints_to(inactivecore)
+	GLOB.empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
 
 	if(GLOB.announcement_systems.len)
 		var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
