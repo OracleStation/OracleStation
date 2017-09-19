@@ -13,6 +13,15 @@
 /obj/machinery/computer/crew/syndie
 	icon_keyboard = "syndie_key"
 
+/obj/machinery/computer/crew/desktop
+	name = "crew monitoring desktop"
+	icon = 'icons/obj/modular_desktop.dmi'
+	icon_state = "desktop-off"
+	icon_screen = "operating"
+	icon_keyboard = "desktop_key"
+	pixel_y = 8
+	layer = 3.3
+
 /obj/machinery/computer/crew/attack_ai(mob/user)
 	if(stat & (BROKEN|NOPOWER))
 		return
