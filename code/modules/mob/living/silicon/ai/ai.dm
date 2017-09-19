@@ -370,6 +370,7 @@ GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 	var/obj/structure/AIcore/deactivated/inactivecore = New(loc)
 	transfer_fingerprints_to(inactivecore)
 	GLOB.empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
+  
 	if(GLOB.announcement_systems.len)
 		var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
 		announcer.announce("AIWIPE", real_name, mind.assigned_role, list())
