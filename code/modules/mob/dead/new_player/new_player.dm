@@ -1,8 +1,8 @@
 #define LINKIFY_READY(string, value) "<a href='byond://?src=\ref[src];ready=[value]'>[string]</a>"
 
 /mob/dead/new_player
-	var/ready = 0
-	var/spawning = 0//Referenced when you want to delete the new_player later on in the code.
+	var/ready = FALSE
+	var/spawning = FALSE//Referenced when you want to delete the new_player later on in the code.
 
 	flags_1 = NONE
 
@@ -10,7 +10,7 @@
 
 	density = FALSE
 	stat = DEAD
-	canmove = 0
+	canmove = FALSE
 
 	anchored = TRUE	//  don't get pushed around
 	var/mob/living/new_character	//for instant transfer once the round is set up
@@ -47,14 +47,14 @@
 
 	if(!IsGuestKey(src.key))
 		if (SSdbcore.Connect())
-			var/isadmin = 0
+			var/isadmin = FALSE
 			if(src.client && src.client.holder)
-				isadmin = 1
+				isadmin = TRUE
 			var/datum/DBQuery/query_get_new_polls = SSdbcore.NewQuery("SELECT id FROM [format_table_name("poll_question")] WHERE [(isadmin ? "" : "adminonly = false AND")] Now() BETWEEN starttime AND endtime AND id NOT IN (SELECT pollid FROM [format_table_name("poll_vote")] WHERE ckey = \"[ckey]\") AND id NOT IN (SELECT pollid FROM [format_table_name("poll_textreply")] WHERE ckey = \"[ckey]\")")
 			if(query_get_new_polls.Execute())
-				var/newpoll = 0
+				var/newpoll = FALSE
 				if(query_get_new_polls.NextRow())
-					newpoll = 1
+					newpoll = TRUE
 
 				if(newpoll)
 					output += "<p><b><a href='byond://?src=\ref[src];showpoll=1'>Show Player Polls</A> (NEW!)</b></p>"
@@ -67,7 +67,7 @@
 	var/datum/browser/popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", 250, 265)
 	popup.set_window_options("can_close=0")
 	popup.set_content(output)
-	popup.open(0)
+	popup.open(FALSE)
 	return
 
 /mob/dead/new_player/Stat()
@@ -90,10 +90,10 @@
 
 /mob/dead/new_player/Topic(href, href_list[])
 	if(src != usr)
-		return 0
+		return FALSE
 
 	if(!client)
-		return 0
+		return FALSE
 
 	//Determines Relevent Population Cap
 	var/relevant_cap
@@ -104,7 +104,7 @@
 
 	if(href_list["show_preferences"])
 		client.prefs.ShowChoices(src)
-		return 1
+		return TRUE
 
 	if(href_list["ready"])
 		var/tready = text2num(href_list["ready"])
@@ -293,31 +293,33 @@
 /mob/dead/new_player/proc/IsJobAvailable(rank)
 	var/datum/job/job = SSjob.GetJob(rank)
 	if(!job)
-		return 0
+		return FALSE
+	if(jobban_isbanned(src,rank))
+		return FALSE
+	if(!job.player_old_enough(src.client))
+		return FALSE
+	if(job.required_playtime_remaining(client))
+		return FALSE
+	if(config.enforce_human_authority && !client.prefs.pref_species.qualifies_for_rank(rank, client.prefs.features))
+		return FALSE
+	if(job.title == "AI")
+		return (empty_playable_ai_cores.len != 0)
 	if((job.current_positions >= job.total_positions) && job.total_positions != -1)
 		if(job.title == "Assistant")
 			if(isnum(client.player_age) && client.player_age <= 14) //Newbies can always be assistants
-				return 1
+				return TRUE
 			for(var/datum/job/J in SSjob.occupations)
 				if(J && J.current_positions < J.total_positions && J.title != job.title)
-					return 0
+					return FALSE
 		else
-			return 0
-	if(jobban_isbanned(src,rank))
-		return 0
-	if(!job.player_old_enough(src.client))
-		return 0
-	if(job.required_playtime_remaining(client))
-		return 0
-	if(config.enforce_human_authority && !client.prefs.pref_species.qualifies_for_rank(rank, client.prefs.features))
-		return 0
-	return 1
+			return FALSE
+	return TRUE
 
 
 /mob/dead/new_player/proc/AttemptLateSpawn(rank)
 	if(!IsJobAvailable(rank))
 		alert(src, "[rank] is not available. Please try another.")
-		return 0
+		return FALSE
 
 	if(SSticker.late_join_disabled)
 		alert(src, "An administrator has disabled late join spawning.")
@@ -335,10 +337,21 @@
 	SSticker.queued_players -= src
 	SSticker.queue_delay = 4
 
-	SSjob.AssignRole(src, rank, 1)
+	if(rank == "AI")
+		var/mob/living/silicon/ai/ai_character = AIize(TRUE)
+		ai_character.moveToEmptyCore()
+		GLOB.joined_player_list += ai_character.ckey
+		SSticker.minds += ai_character.mind
+
+		if(GLOB.announcement_systems.len)
+			var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
+			announcer.announce("AIDOWNLOAD", real_name, mind.assigned_role, list())
+		return
+
+	SSjob.AssignRole(src, rank, TRUE)
 
 	var/mob/living/character = create_character(TRUE)	//creates the human and transfers vars and mind
-	var/equip = SSjob.EquipRank(character, rank, 1)
+	var/equip = SSjob.EquipRank(character, rank, TRUE)
 	if(isliving(equip))	//Borgs get borged in the equip, so we need to make sure we handle the new mob.
 		character = equip
 
@@ -445,11 +458,11 @@
 	var/datum/browser/popup = new(src, "latechoices", "Choose Profession", 440, 500)
 	popup.add_stylesheet("playeroptions", 'html/browser/playeroptions.css')
 	popup.set_content(dat)
-	popup.open(0) // 0 is passed to open so that it doesn't use the onclose() proc
+	popup.open(FALSE) // 0 is passed to open so that it doesn't use the onclose() proc
 
 
 /mob/dead/new_player/proc/create_character(transfer_after)
-	spawning = 1
+	spawning = TRUE
 	close_spawn_windows()
 
 	var/mob/living/carbon/human/H = new(loc)
@@ -460,7 +473,7 @@
 	client.prefs.copy_to(H)
 	H.dna.update_dna_identity()
 	if(mind)
-		mind.active = 0					//we wish to transfer the key manually
+		mind.active = FALSE					//we wish to transfer the key manually
 		mind.transfer_to(H)					//won't transfer key since the mind is not active
 
 	H.name = real_name
@@ -486,7 +499,7 @@
 	src << browse(dat, "window=manifest;size=387x420;can_close=1")
 
 /mob/dead/new_player/Move()
-	return 0
+	return FALSE
 
 
 /mob/dead/new_player/proc/close_spawn_windows()

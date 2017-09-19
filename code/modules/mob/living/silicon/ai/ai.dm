@@ -342,6 +342,20 @@ var/global/list/empty_playable_ai_cores = list()
 
 	return 1
 
+// Before calling this, make sure an empty core exists, or this will no-op
+/mob/living/silicon/ai/proc/moveToEmptyCore()
+	if(!empty_playable_ai_cores.len)
+		return
+
+	// IsJobAvailable for AI checks that there is an empty core available in this list
+	var/obj/structure/AIcore/deactivated/C = empty_playable_ai_cores[1]
+	empty_playable_ai_cores -= C
+
+	forceMove(C.loc)
+	view_core()
+
+	qdel(C)
+
 /mob/living/silicon/ai/verb/wipe_core()
 	set name = "Wipe Core"
 	set category = "OOC"
