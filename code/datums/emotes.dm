@@ -20,6 +20,7 @@
 	var/list/mob_type_blacklist_typecache //Types that are NOT allowed to use that emote
 	var/stat_allowed = CONSCIOUS
 	var/static/list/emote_list = list()
+	var/cooldown = 10 //deciseconds of cooldown
 
 /datum/emote/New()
 	if(key_third_person)
@@ -46,6 +47,7 @@
 
 	user.log_message(msg, INDIVIDUAL_EMOTE_LOG)
 	msg = "<b>[user]</b> " + msg
+	user.emote_cooldown = world.time + cooldown
 
 	for(var/mob/M in GLOB.dead_mob_list)
 		if(!M.client || isnewplayer(M))
@@ -96,6 +98,8 @@
 	if(!is_type_in_typecache(user, mob_type_allowed_typecache))
 		return FALSE
 	if(is_type_in_typecache(user, mob_type_blacklist_typecache))
+		return FALSE
+	if(world.time < user.emote_cooldown)
 		return FALSE
 	if(!help_check)
 		if(user.stat > stat_allowed  || (user.status_flags & FAKEDEATH))

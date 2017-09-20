@@ -73,6 +73,8 @@
 	var/lastKnownIP = null
 	var/atom/movable/buckled = null//Living
 
+	var/emote_cooldown = 0
+
 	//Hands
 	var/active_hand_index = 1
 	var/list/held_items = list(null, null) //len = number of hands, eg: 2 nulls is 2 empty hands, 1 item and 1 null is 1 full hand and 1 empty hand.
