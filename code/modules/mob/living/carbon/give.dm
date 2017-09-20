@@ -30,24 +30,24 @@
 				if(!I)
 					return
 				if(!Adjacent(usr))
-					to_chat(usr, "<span class='warning'> You need to stay in reaching distance while giving an object.</span>")
-					to_chat(target, "<span class='warning'> [usr.name] moved too far away.</span>")
+					to_chat(usr, "<span class='warning'>You need to stay in reaching distance while giving an object.</span>")
+					to_chat(target, "<span class='warning'>[usr.name] moved too far away.</span>")
 					return
 				if(I != usr.held_items[active_hand_index])
-					to_chat(usr, "<span class='warning'> You need to keep the item in your active hand.</span>")
-					to_chat(target, "<span class='warning'> [usr.name] seem to have given up on giving \the [I.name] to you.</span>")
+					to_chat(usr, "<span class='warning'>You need to keep the item in your active hand.</span>")
+					to_chat(target, "<span class='warning'>[usr.name] seem to have given up on giving \the [I.name] to you.</span>")
 					return
 				if(!target.can_put_in_hands(I))
-					to_chat(target, "<span class='warning'> Your hands are full.</span>")
-					to_chat(usr, "<span class='warning'> Their hands are full.</span>")
+					to_chat(target, "<span class='warning'>Your hands are full.</span>")
+					to_chat(usr, "<span class='warning'>Their hands are full.</span>")
 					return
 				usr.drop_item()
 				target.put_in_hands(I, FALSE)
 				I.add_fingerprint(target)
 				src.update_inv_hands()
 				target.update_inv_hands()
-				target.visible_message("<span class='notice'> [usr.name] handed \the [I.name] to [target.name].</span>")
+				target.visible_message("<span class='notice'>[usr.name] handed \the [I.name] to [target.name].</span>")
 			if("No")
-				target.visible_message("<span class='warning'> [usr.name] tried to hand [I.name] to [target.name] but [target.name] didn't want it.</span>")
+				target.visible_message("<span class='warning'>[usr.name] tried to hand [I.name] to [target.name] but [target.name] didn't want it.</span>")
 	else
-		to_chat(usr, "<span class='warning'> [target.name]'s hands are full.</span>")
+		to_chat(usr, "<span class='warning'>[target.name]'s hands are full.</span>")
