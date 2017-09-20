@@ -44,7 +44,7 @@
 				usr.drop_item()
 				target.put_in_hands(I, FALSE)
 				I.add_fingerprint(target)
-				src.update_inv_hands()
+				update_inv_hands()
 				target.update_inv_hands()
 				target.visible_message("<span class='notice'>[usr.name] handed \the [I.name] to [target.name].</span>")
 			if("No")
