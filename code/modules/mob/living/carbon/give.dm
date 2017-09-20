@@ -17,7 +17,7 @@
 		return
 	var/obj/item/I = usr.get_active_held_item()
 	if(I == null)
-		to_chat(usr, "<span class='warning'>You don't have anything in your active hand to give to [target.name]</span>")
+		to_chat(usr, "<span class='warning'>You don't have anything in your active hand to give to [target.name].</span>")
 		return
 	if(!I)
 		return
