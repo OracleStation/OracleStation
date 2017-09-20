@@ -8,15 +8,12 @@
 	else if(target.stat == DEAD)
 		to_chat(usr, "<span class='warning'>[target.name] is dead!</span>")
 		return
-	else if(target.stat != CONSCIOUS)
-		to_chat(usr, "<span class='warning'>[target.name] cannot receive your item!</span>")
+	else if(target.stat != CONSCIOUS | target.client == null) //Future proofing
+		to_chat(usr, "<span class='warning'>[target.name] is not conscious!</span>")
 		return
 
 	if(!iscarbon(target)) //something is bypassing the give arguments, no clue what, adding a sanity check JIC
 		to_chat(usr, "<span class='danger'>Wait a second... \the [target] HAS NO HANDS! AHH!</span>")//cheesy messages ftw
-
-		return
-	if(target.stat == 2 || usr.stat == 2|| target.client == null)
 		return
 	var/obj/item/I = usr.get_active_held_item()
 	if(I == null)
