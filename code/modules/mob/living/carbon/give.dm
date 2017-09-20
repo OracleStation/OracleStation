@@ -22,7 +22,7 @@
 	if(!I)
 		return
 	if((I.flags_1 & NODROP_1) || (I.flags_1 & ABSTRACT_1))
-		to_chat(usr, "<span class='notice'>That's not exactly something you can give.</span>")
+		to_chat(usr, "<span class='notice'>That's not something you can give.</span>")
 		return
 	if(target.can_put_in_hands(I))
 		switch(alert(target,"[usr] wants to give you \a [I]?",,"Yes","No"))
