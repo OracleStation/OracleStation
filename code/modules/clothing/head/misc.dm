@@ -259,7 +259,7 @@
 	icon_state = "rice_hat"
 
 /obj/item/clothing/head/unathi
-	name = "unathi skin cloche hat"
+	name = "Unathi skin cloche hat"
 	desc = "How many lizards died to make this hat? Not enough."
 	icon_state = "lizard"
 

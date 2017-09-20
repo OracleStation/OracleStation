@@ -137,7 +137,7 @@
 	//i need to create a body part manually using a set icon (otherwise it doesnt appear)
 	var/obj/item/bodypart/limb
 	limb = new buildpath(loc)
-	if(selected_category=="human" || selected_category=="unathi" || selected_category == "ethari") // Doing this because plasmamen have their limbs in a different icon file
+	if(selected_category == "human" || selected_category == "unathi" || selected_category == "ethari") // Doing this because plasmamen have their limbs in a different icon file
 		limb.icon = 'icons/mob/human_parts_greyscale.dmi'
 	else
 		limb.icon = 'icons/mob/human_parts.dmi'
