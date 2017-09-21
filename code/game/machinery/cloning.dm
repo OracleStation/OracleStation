@@ -42,6 +42,7 @@
 	// amounts to the occupant.
 	var/static/list/brine_types = list(
 		"salbutamol", // anti-oxyloss
+		"styptic_powder", //heals brute damage
 		"corazone", // prevents cardiac arrest and liver failure damage
 		"mimesbane") // stops them gasping from lack of air.
 

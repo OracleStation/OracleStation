@@ -19,7 +19,7 @@
 	var/list/available_chems
 	var/controls_inside = FALSE
 	var/list/possible_chems = list(
-		list("epinephrine", "morphine", "salbutamol", "ether"),
+		list("epinephrine","silver_sulfadiazine", "styptic_powder", "salbutamol", "ether"),
 		list("oculine"),
 		list("charcoal", "mutadone", "mannitol", "pen_acid"),
 		list("omnizine")

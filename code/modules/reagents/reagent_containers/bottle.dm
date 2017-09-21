@@ -83,12 +83,6 @@
 	icon_state = "bottle17"
 	list_reagents = list("charcoal" = 30)
 
-/obj/item/reagent_containers/glass/bottle/ether
-	name = "ether bottle"
-	desc = "A small bottle of ether"
-	icon_state = "bottle17"
-	list_reagents = list("ether" = 30)
-
 /obj/item/reagent_containers/glass/bottle/mutagen
 	name = "unstable mutagen bottle"
 	desc = "A small bottle of unstable mutagen. Randomly changes the DNA structure of whoever comes in contact."
