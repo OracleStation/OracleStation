@@ -37,7 +37,7 @@
 	mob_name = "an ash walker"
 	icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
 	icon_state = "large_egg"
-	mob_species = /datum/species/lizard/ashwalker
+	mob_species = /datum/species/unathi/ashwalker
 	outfit = /datum/outfit/ashwalker
 	roundstart = FALSE
 	death = FALSE
@@ -48,7 +48,7 @@
 	assignedrole = "Ash Walker"
 
 /obj/effect/mob_spawn/human/ash_walker/special(mob/living/new_spawn)
-	new_spawn.real_name = random_unique_lizard_name(gender)
+	new_spawn.real_name = random_unique_unathi_name(gender)
 	to_chat(new_spawn, "<b>Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind. Glory to the Necropolis!</b>")
 
 	new_spawn.grant_language(/datum/language/draconic)

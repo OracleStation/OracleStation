@@ -1,10 +1,10 @@
 #define ION_FILE "ion_laws.json"
 
-/proc/lizard_name(gender)
+/proc/unathi_name(gender)
 	if(gender == MALE)
-		return "[pick(GLOB.lizard_names_male)]-[pick(GLOB.lizard_names_male)]"
+		return "[pick(GLOB.unathi_names_male)]-[pick(GLOB.unathi_names_male)]"
 	else
-		return "[pick(GLOB.lizard_names_female)]-[pick(GLOB.lizard_names_female)]"
+		return "[pick(GLOB.unathi_names_female)]-[pick(GLOB.unathi_names_female)]"
 
 /proc/ethari_name(gender)
 	return "[pick(GLOB.ethari_names)] [pick(GLOB.ethari_names)]"
@@ -214,7 +214,7 @@ GLOBAL_VAR(syndicate_code_response) //Code response for traitors.
 							. += pick(names)
 						else
 							if(prob(10))
-								. += pick(lizard_name(MALE),lizard_name(FEMALE))
+								. += pick(unathi_name(MALE),unathi_name(FEMALE))
 							else
 								var/new_name = pick(pick(GLOB.first_names_male,GLOB.first_names_female))
 								new_name += " "

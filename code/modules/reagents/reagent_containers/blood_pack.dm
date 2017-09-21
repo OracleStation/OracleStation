@@ -62,7 +62,7 @@
 /obj/item/reagent_containers/blood/OMinus
 	blood_type = "O-"
 
-/obj/item/reagent_containers/blood/lizard
+/obj/item/reagent_containers/blood/unathi
 	blood_type = "L"
 
 /obj/item/reagent_containers/blood/empty

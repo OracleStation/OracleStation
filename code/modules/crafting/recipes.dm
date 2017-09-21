@@ -335,17 +335,17 @@
 	category = CAT_MISC
 
 /datum/crafting_recipe/lizardhat
-	name = "Lizard Cloche Hat"
-	result = /obj/item/clothing/head/lizard
+	name = "Unathi Cloche Hat"
+	result = /obj/item/clothing/head/unathi
 	time = 10
 	reqs = list(/obj/item/severedtail = 1)
 	category = CAT_MISC
 
 /datum/crafting_recipe/lizardhat_alternate
-	name = "Lizard Cloche Hat"
-	result = /obj/item/clothing/head/lizard
+	name = "Unathi Cloche Hat"
+	result = /obj/item/clothing/head/unathi
 	time = 10
-	reqs = list(/obj/item/stack/sheet/animalhide/lizard = 1)
+	reqs = list(/obj/item/stack/sheet/animalhide/unathi = 1)
 	category = CAT_MISC
 
 /datum/crafting_recipe/kittyears

@@ -344,8 +344,8 @@
 	icon_state = "poster33"
 
 /obj/structure/sign/poster/contraband/lizard
-	name = "Lizard"
-	desc = "This lewd poster depicts a lizard preparing to mate."
+	name = "Unathi"
+	desc = "This lewd poster depicts a Unathi preparing to mate."
 	icon_state = "poster34"
 
 /obj/structure/sign/poster/contraband/free_drone

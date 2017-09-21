@@ -84,7 +84,7 @@
 	filling_color = "#66CDAA"
 	foodtype = MEAT | RAW | GROSS
 
-/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/lizard
+/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/unathi
 	icon_state = "lizardmeat"
 	desc = "Delicious dino damage"
 	filling_color = "#6B8E23"

@@ -11,7 +11,7 @@
 
 /datum/surgery/tail_removal/can_start(mob/user, mob/living/carbon/target)
 	var/mob/living/carbon/human/L = target
-	if(("tail_lizard" in L.dna.species.mutant_bodyparts) || ("waggingtail_lizard" in L.dna.species.mutant_bodyparts))
+	if(("tail_unathi" in L.dna.species.mutant_bodyparts) || ("waggingtail_unathi" in L.dna.species.mutant_bodyparts))
 		return 1
 	return 0
 
@@ -36,15 +36,15 @@
 /datum/surgery_step/sever_tail/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/mob/living/carbon/human/L = target
 	user.visible_message("[user] severs [L]'s tail!", "<span class='notice'>You sever [L]'s tail.</span>")
-	if("tail_lizard" in L.dna.species.mutant_bodyparts)
-		L.dna.species.mutant_bodyparts -= "tail_lizard"
-	else if("waggingtail_lizard" in L.dna.species.mutant_bodyparts)
-		L.dna.species.mutant_bodyparts -= "waggingtail_lizard"
+	if("tail_unathi" in L.dna.species.mutant_bodyparts)
+		L.dna.species.mutant_bodyparts -= "tail_unathi"
+	else if("waggingtail_unathi" in L.dna.species.mutant_bodyparts)
+		L.dna.species.mutant_bodyparts -= "waggingtail_unathi"
 	if("spines" in L.dna.features)
 		L.dna.features -= "spines"
 	var/obj/item/severedtail/S = new(get_turf(target))
 	S.add_atom_colour("#[L.dna.features["mcolor"]]", FIXED_COLOUR_PRIORITY)
-	S.markings = "[L.dna.features["tail_lizard"]]"
+	S.markings = "[L.dna.features["tail_unathi"]]"
 	L.update_body()
 	return 1
 
@@ -58,7 +58,7 @@
 
 /datum/surgery/tail_attachment/can_start(mob/user, mob/living/carbon/target)
 	var/mob/living/carbon/human/L = target
-	if(!("tail_lizard" in L.dna.species.mutant_bodyparts) && !("waggingtail_lizard" in L.dna.species.mutant_bodyparts))
+	if(!("tail_unathi" in L.dna.species.mutant_bodyparts) && !("waggingtail_unathi" in L.dna.species.mutant_bodyparts))
 		return 1
 	return 0
 
@@ -76,8 +76,8 @@
 	if(!(L.dna.features["mcolor"]))
 		L.dna.features["mcolor"] = tool.color
 	var/obj/item/severedtail/T = tool
-	L.dna.features["tail_lizard"] = T.markings
-	L.dna.species.mutant_bodyparts += "tail_lizard"
+	L.dna.features["tail_unathi"] = T.markings
+	L.dna.species.mutant_bodyparts += "tail_unathi"
 	qdel(tool)
 	L.update_mutant_bodyparts()
 	return 1

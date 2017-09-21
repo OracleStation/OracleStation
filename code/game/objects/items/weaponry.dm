@@ -441,7 +441,7 @@
 
 /obj/item/tailclub
 	name = "tail club"
-	desc = "For the beating to death of lizards with their own tails."
+	desc = "For the beating to death of Unathi with their own tails."
 	icon_state = "tailclub"
 	force = 14
 	throwforce = 1 // why are you throwing a club do you even weapon
@@ -451,7 +451,7 @@
 
 /obj/item/melee/chainofcommand/tailwhip
 	name = "liz o' nine tails"
-	desc = "A whip fashioned from the severed tails of lizards."
+	desc = "A whip fashioned from the severed tails of Unathi."
 	icon_state = "tailwhip"
 	origin_tech = "engineering=3;combat=3;biotech=3"
 	needs_permit = 0

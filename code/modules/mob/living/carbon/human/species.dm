@@ -427,15 +427,15 @@
 
 	var/obj/item/bodypart/head/HD = H.get_bodypart("head")
 
-	if("tail_lizard" in mutant_bodyparts)
+	if("tail_unathi" in mutant_bodyparts)
 		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
-			bodyparts_to_add -= "tail_lizard"
+			bodyparts_to_add -= "tail_unathi"
 
-	if("waggingtail_lizard" in mutant_bodyparts)
+	if("waggingtail_unathi" in mutant_bodyparts)
 		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
-			bodyparts_to_add -= "waggingtail_lizard"
-		else if ("tail_lizard" in mutant_bodyparts)
-			bodyparts_to_add -= "waggingtail_lizard"
+			bodyparts_to_add -= "waggingtail_unathi"
+		else if ("tail_unathi" in mutant_bodyparts)
+			bodyparts_to_add -= "waggingtail_unathi"
 
 	if("tail_human" in mutant_bodyparts)
 		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
@@ -537,10 +537,10 @@
 		for(var/bodypart in bodyparts_to_add)
 			var/datum/sprite_accessory/S
 			switch(bodypart)
-				if("tail_lizard")
-					S = GLOB.tails_list_lizard[H.dna.features["tail_lizard"]]
-				if("waggingtail_lizard")
-					S.= GLOB.animated_tails_list_lizard[H.dna.features["tail_lizard"]]
+				if("tail_unathi")
+					S = GLOB.tails_list_unathi[H.dna.features["tail_unathi"]]
+				if("waggingtail_unathi")
+					S.= GLOB.animated_tails_list_unathi[H.dna.features["tail_unathi"]]
 				if("tail_ethari")
 					S = GLOB.tails_list_ethari[H.dna.features["tail_ethari"]]
 				if("waggingtail_ethari")
@@ -579,11 +579,11 @@
 
 			var/mutable_appearance/accessory_overlay = mutable_appearance(S.icon, layer = -layer)
 
-			//A little rename so we don't have to use tail_lizard or tail_human when naming the sprites.
-			//A little rename so we don't have to use tail_lizard, tail_human or tail_ethari when naming the sprites.
-			if(bodypart in list("tail_lizard", "tail_human", "tail_ethari"))
+			//A little rename so we don't have to use tail_unathi or tail_human when naming the sprites.
+			//A little rename so we don't have to use tail_unathi, tail_human or tail_ethari when naming the sprites.
+			if(bodypart in list("tail_unathi", "tail_human", "tail_ethari"))
 				bodypart = "tail"
-			else if(bodypart in list("waggingtail_lizard", "waggingtail_human", "waggingtail_ethari"))
+			else if(bodypart in list("waggingtail_unathi", "waggingtail_human", "waggingtail_ethari"))
 				bodypart = "waggingtail"
 
 			if(S.gender_specific)

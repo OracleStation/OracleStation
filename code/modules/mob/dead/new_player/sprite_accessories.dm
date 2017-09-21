@@ -1267,35 +1267,35 @@
 	name = "Long (no markings)"
 	icon_state = "longclean"
 
-/datum/sprite_accessory/tails/lizard/smooth
+/datum/sprite_accessory/tails/unathi/smooth
 	name = "Smooth"
 	icon_state = "smooth"
 
-/datum/sprite_accessory/tails_animated/lizard/smooth
+/datum/sprite_accessory/tails_animated/unathi/smooth
 	name = "Smooth"
 	icon_state = "smooth"
 
-/datum/sprite_accessory/tails/lizard/dtiger
+/datum/sprite_accessory/tails/unathi/dtiger
 	name = "Dark Tiger"
 	icon_state = "dtiger"
 
-/datum/sprite_accessory/tails_animated/lizard/dtiger
+/datum/sprite_accessory/tails_animated/unathi/dtiger
 	name = "Dark Tiger"
 	icon_state = "dtiger"
 
-/datum/sprite_accessory/tails/lizard/ltiger
+/datum/sprite_accessory/tails/unathi/ltiger
 	name = "Light Tiger"
 	icon_state = "ltiger"
 
-/datum/sprite_accessory/tails_animated/lizard/ltiger
+/datum/sprite_accessory/tails_animated/unathi/ltiger
 	name = "Light Tiger"
 	icon_state = "ltiger"
 
-/datum/sprite_accessory/tails/lizard/spikes
+/datum/sprite_accessory/tails/unathi/spikes
 	name = "Spikes"
 	icon_state = "spikes"
 
-/datum/sprite_accessory/tails_animated/lizard/spikes
+/datum/sprite_accessory/tails_animated/unathi/spikes
 	name = "Spikes"
 	icon_state = "spikes"
 
@@ -1524,5 +1524,5 @@
 /datum/sprite_accessory/legs/none
 	name = "Normal Legs"
 
-/datum/sprite_accessory/legs/digitigrade_lizard
+/datum/sprite_accessory/legs/digitigrade_unathi
 	name = "Digitigrade Legs"

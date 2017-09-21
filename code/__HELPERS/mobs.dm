@@ -50,8 +50,8 @@
 /proc/random_features()
 	if(!GLOB.tails_list_human.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, GLOB.tails_list_human)
-	if(!GLOB.tails_list_lizard.len)
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/lizard, GLOB.tails_list_lizard)
+	if(!GLOB.tails_list_unathi.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/unathi, GLOB.tails_list_unathi)
 	if(!GLOB.tails_list_ethari.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/ethari, GLOB.tails_list_ethari)
 	if(!GLOB.snouts_list.len)
@@ -76,7 +76,7 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/wings, GLOB.wings_list)
 
 	//For now we will always return none for tail_human and ears.
-	return(list("mcolor" = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"), "tail_lizard" = pick(GLOB.tails_list_lizard), "tail_ethari" = pick(GLOB.tails_list_ethari), "tail_human" = "None", "wings" = "None", "snout" = pick(GLOB.snouts_list), "snout_ethari" = pick(GLOB.snouts_ethari_list), "ears_ethari" = "Fox", "horns" = pick(GLOB.horns_list), "ears" = "None", "frills" = pick(GLOB.frills_list), "spines" = pick(GLOB.spines_list), "body_markings" = pick(GLOB.body_markings_list), "legs" = "Normal Legs"))
+	return(list("mcolor" = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"), "tail_unathi" = pick(GLOB.tails_list_unathi), "tail_ethari" = pick(GLOB.tails_list_ethari), "tail_human" = "None", "wings" = "None", "snout" = pick(GLOB.snouts_list), "snout_ethari" = pick(GLOB.snouts_ethari_list), "ears_ethari" = "Fox", "horns" = pick(GLOB.horns_list), "ears" = "None", "frills" = pick(GLOB.frills_list), "spines" = pick(GLOB.spines_list), "body_markings" = pick(GLOB.body_markings_list), "legs" = "Normal Legs"))
 
 /proc/random_hair_style(gender)
 	switch(gender)
@@ -106,9 +106,9 @@
 		if(i != attempts_to_find_unique_name && !findname(.))
 			break
 
-/proc/random_unique_lizard_name(gender, attempts_to_find_unique_name=10)
+/proc/random_unique_unathi_name(gender, attempts_to_find_unique_name=10)
 	for(var/i=1, i<=attempts_to_find_unique_name, i++)
-		. = capitalize(lizard_name(gender))
+		. = capitalize(unathi_name(gender))
 
 		if(i != attempts_to_find_unique_name && !findname(.))
 			break
