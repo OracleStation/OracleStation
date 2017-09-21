@@ -117,6 +117,7 @@
 	new /obj/item/stack/medical/gauze(src)
 	new /obj/item/stack/medical/gauze(src)
 	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/firstaid/tactical
 	name = "combat medical kit"
