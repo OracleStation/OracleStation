@@ -2,14 +2,10 @@
 	set category = "IC"
 	set name = "Give"
 
-	if(target.stat == UNCONSCIOUS)
-		to_chat(usr, "<span class='warning'>[target.name] is unconscious!</span>")
-		return
-	else if(target.stat == DEAD)
-		to_chat(usr, "<span class='warning'>[target.name] is dead!</span>")
-		return
-	else if(target.stat != CONSCIOUS | target.client == null) //Future proofing
-		to_chat(usr, "<span class='warning'>[target.name] is not conscious!</span>")
+	if(target.stat != CONSCIOUS | target.client == null)
+		return // Fail silently. Don't want to give any hints.
+	if(target.handcuffed)
+		to_chat(usr, "<span class='warning'>[target.name] is handcuffed!</span>")
 		return
 
 	if(!iscarbon(target)) //something is bypassing the give arguments, no clue what, adding a sanity check JIC
