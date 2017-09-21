@@ -66,12 +66,6 @@
 		var/mob/living/L = user
 		L.Unconscious(40)
 
-/datum/emote/living/cough
-	key = "cough"
-	key_third_person = "coughs"
-	message = "coughs!"
-	emote_type = EMOTE_AUDIBLE
-
 /datum/emote/living/dance
 	key = "dance"
 	key_third_person = "dances"
@@ -275,12 +269,6 @@
 	key = "smile"
 	key_third_person = "smiles"
 	message = "smiles."
-
-/datum/emote/living/sneeze
-	key = "sneeze"
-	key_third_person = "sneezes"
-	message = "sneezes."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/smug
 	key = "smug"
@@ -511,7 +499,6 @@
 	if(iscyborg(user))
 		sound_to_play = 'sound/effects/mob_effects/goonstation/robot_scream.ogg'
 
-
 	playsound(user.loc, sound_to_play, 50, frequency = frequency_to_use)
 
 /datum/emote/living/cough
@@ -520,6 +507,7 @@
 	message = "coughs."
 	message_mime = "seems to be coughing!"
 	emote_type = EMOTE_AUDIBLE
+	cooldown = 60
 
 /datum/emote/living/cough/run_emote(mob/user, params)
 	if(!..())
@@ -542,6 +530,7 @@
 	message = "sneezes!"
 	message_mime = "seems to be sneezing!"
 	emote_type = EMOTE_AUDIBLE
+	cooldown = 60
 
 /datum/emote/living/sneeze/run_emote(mob/user, params)
 	if(!..())

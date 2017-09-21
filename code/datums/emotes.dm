@@ -20,7 +20,7 @@
 	var/list/mob_type_blacklist_typecache //Types that are NOT allowed to use that emote
 	var/stat_allowed = CONSCIOUS
 	var/static/list/emote_list = list()
-	var/cooldown = 10 //deciseconds of cooldown
+	var/cooldown = 20 //deciseconds of cooldown
 
 /datum/emote/New()
 	if(key_third_person)
