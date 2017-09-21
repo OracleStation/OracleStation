@@ -881,31 +881,27 @@
 		initialize_wikibook()
 	..()
 
+GLOBAL_LIST_EMPTY(cached_wiki_pages)
+
 /obj/item/book/manual/wiki/proc/initialize_wikibook()
-	if(config.wikiurl)
-		dat = {"
 
-			<html><head>
-			<style>
-				iframe {
-					display: none;
-				}
-			</style>
-			</head>
-			<body>
-			<script type="text/javascript">
-				function pageloaded(myframe) {
-					document.getElementById("loading").style.display = "none";
-					myframe.style.display = "inline";
-    			}
-			</script>
-			<p id='loading'>You start skimming through the manual...</p>
-			<iframe width='100%' height='97%' onload="pageloaded(this)" src="[config.wikiurl]/[page_link]?printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
-			</body>
+	dat = GLOB.cached_wiki_pages[page_link]
 
-			</html>
+	if (dat)
+		return TRUE
 
-			"}
+	var/http[] = world.Export("http://www.oraclestation.com/w/index.php/[page_link]?action=render")
+
+	if(!http)
+		return FALSE
+
+	var/html = http["CONTENT"]
+	dat = file2text(html)
+	dat = replacetext(dat, "<a href=", "<a nolink=")
+	dat = replacetext(dat, "src=\"/w", "src=\"http://www.oraclestation.com/w")
+	GLOB.cached_wiki_pages[page_link] = dat
+
+	return TRUE
 
 /obj/item/book/manual/wiki/chemistry
 	name = "Chemistry Textbook"
