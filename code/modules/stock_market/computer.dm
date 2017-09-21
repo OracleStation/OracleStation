@@ -9,7 +9,7 @@
 	circuit = /obj/item/circuitboard/computer/stockexchange
 	clockwork = TRUE //it'd look weird
 	pixel_y = 8
-	layer = 3.3
+	layer = ABOVE_WINDOW_LAYER
 	light_color = LIGHT_COLOR_GREEN
 
 /obj/machinery/computer/stockexchange/Initialize()

@@ -43,7 +43,7 @@
 	icon_screen = "security"
 	icon_keyboard = "desktop_key"
 	pixel_y = 8
-	layer = 3.3
+	layer = ABOVE_WINDOW_LAYER
 
 /obj/machinery/computer/secure_data/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/card/id))
