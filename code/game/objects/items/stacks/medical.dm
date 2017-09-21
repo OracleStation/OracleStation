@@ -51,8 +51,9 @@
 					return
 
 		if(splint_fracture)
-			if(affecting.body_part in list(CHEST, HEAD))
+			if(!(affecting.body_part in list(ARM_LEFT, ARM_RIGHT, LEG_LEFT, LEG_RIGHT)))
 				to_chat(user, "<span class='warning'>You can't splint that bodypart!</span>")
+				return
 			else if(!affecting.broken)
 				to_chat(user, "<span class='warning'>[M]'s [parse_zone(user.zone_selected)] isn't broken!</span>")
 				return
@@ -166,5 +167,7 @@
 	gender = PLURAL
 	singular_name = "splint"
 	icon_state = "splint"
+	amount = 3
+	max_amount = 3
 	self_delay = 40
 	splint_fracture = TRUE
