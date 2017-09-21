@@ -40133,7 +40133,7 @@
 	volume_rate = 200
 	},
 /turf/open/space/basic,
-/area/space)
+/area/engine/atmos)
 "bxd" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
