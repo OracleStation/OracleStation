@@ -42,7 +42,6 @@
 	// amounts to the occupant.
 	var/static/list/brine_types = list(
 		"salbutamol", // anti-oxyloss
-		"bicaridine", // NOBREATHE species take brute in crit
 		"corazone", // prevents cardiac arrest and liver failure damage
 		"mimesbane") // stops them gasping from lack of air.
 

@@ -131,12 +131,6 @@
 	icon_state = "pill9"
 	list_reagents = list("sal_acid" = 24)
 	roundstart = 1
-/obj/item/reagent_containers/pill/oxandrolone
-	name = "oxandrolone pill"
-	desc = "Used to stimulate burn healing."
-	icon_state = "pill11"
-	list_reagents = list("oxandrolone" = 24)
-	roundstart = 1
 
 /obj/item/reagent_containers/pill/insulin
 	name = "insulin pill"

@@ -331,7 +331,7 @@
 				if(prob(ears.ear_damage - 5))
 					to_chat(src, "<span class='userdanger'>You can't hear anything!</span>")
 					ears.ear_damage = min(ears.ear_damage, UNHEALING_EAR_DAMAGE)
-					// you need earmuffs, inacusiate, or replacement
+					// you need earmuffs, or replacement
 			else if(ears.ear_damage >= 5)
 				to_chat(src, "<span class='warning'>Your ears start to ring!</span>")
 			SEND_SOUND(src, sound('sound/weapons/flash_ring.ogg',0,1,0,250))

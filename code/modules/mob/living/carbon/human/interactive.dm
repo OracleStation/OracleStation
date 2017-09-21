@@ -1206,9 +1206,9 @@
 	else if(shouldTryHeal == 2)
 		if(HPS)
 			if(HPS.reagents.total_volume <= 0)
-				HPS.reagents.add_reagent("tricordrazine",30)
+				HPS.reagents.add_reagent("omnizine",30)
 			for(var/mob/living/carbon/human/C in nearby)
-				if(C.health <= 75 && C.reagents.get_reagent_amount("tricordrazine") <= 0) // make sure they wont be overdosing
+				if(C.health <= 75 && C.reagents.get_reagent_amount("omnizine") <= 0) // make sure they wont be overdosing
 					if(get_dist(src,C) <= 2)
 						src.say("Wait, [C], let me heal you!")
 						HPS.attack(C,src)

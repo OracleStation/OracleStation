@@ -62,10 +62,8 @@
 /obj/item/storage/firstaid/fire/PopulateContents()
 	if(empty)
 		return
-	for(var/i in 1 to 3)
+	for(var/i in 1 to 5)
 		new /obj/item/reagent_containers/pill/patch/silver_sulf(src)
-	new /obj/item/reagent_containers/pill/oxandrolone(src)
-	new /obj/item/reagent_containers/pill/oxandrolone(src)
 	new /obj/item/reagent_containers/hypospray/medipen(src)
 	new /obj/item/device/healthanalyzer(src)
 

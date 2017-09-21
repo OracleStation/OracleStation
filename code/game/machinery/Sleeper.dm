@@ -19,12 +19,12 @@
 	var/list/available_chems
 	var/controls_inside = FALSE
 	var/list/possible_chems = list(
-		list("epinephrine", "morphine", "salbutamol", "bicaridine", "kelotane"),
-		list("oculine","inacusiate"),
-		list("antitoxin", "mutadone", "mannitol", "pen_acid"),
+		list("epinephrine", "morphine", "salbutamol", "ether"),
+		list("oculine"),
+		list("charcoal", "mutadone", "mannitol", "pen_acid"),
 		list("omnizine")
 	)
-	var/list/chem_buttons	//Used when emagged to scramble which chem is used, eg: antitoxin -> morphine
+	var/list/chem_buttons	//Used when emagged to scramble which chem is used, eg: charcoal -> morphine
 	var/scrambled_chems = FALSE //Are chem buttons scrambled? used as a warning
 
 /obj/machinery/sleeper/Initialize()
