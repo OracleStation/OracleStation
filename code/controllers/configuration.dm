@@ -76,10 +76,11 @@
 
 	var/server
 	var/banappeals
-	var/wikiurl = "http://www.tgstation13.org/wiki" // Default wiki link.
-	var/forumurl = "http://tgstation13.org/phpBB/index.php" //default forums
-	var/rulesurl = "http://www.tgstation13.org/wiki/Rules" // default rules
-	var/githuburl = "https://www.github.com/tgstation/-tg-station" //default github
+	var/wikiurl = "https://www.oraclestation.com/wiki/Main_Page" // Default wiki link.
+	var/wikibooksurl = "http://www.oraclestation.com" // Default wiki link.
+	var/forumurl = "https://www.oraclestation.com/forum/" //default forums
+	var/rulesurl = "https://www.oraclestation.com/wiki/Rules" // default rules
+	var/githuburl = "https://github.com/OracleStation/OracleStation" //default github
 	var/githubrepoid
 
 	var/forbid_singulo_possession = 0
@@ -418,6 +419,8 @@
 					banappeals = value
 				if("wikiurl")
 					wikiurl = value
+				if("wikibooksurl")
+					wikibooksurl = value
 				if("forumurl")
 					forumurl = value
 				if("rulesurl")

@@ -890,7 +890,7 @@ GLOBAL_LIST_EMPTY(cached_wiki_pages)
 	if (dat)
 		return TRUE
 
-	var/http[] = world.Export("http://www.oraclestation.com/w/index.php/[page_link]?action=render")
+	var/http[] = world.Export("[config.wikibooksurl]/w/index.php/[page_link]?action=render")
 
 	if(!http)
 		return FALSE
@@ -898,7 +898,7 @@ GLOBAL_LIST_EMPTY(cached_wiki_pages)
 	var/html = http["CONTENT"]
 	dat = file2text(html)
 	dat = replacetext(dat, "<a href=", "<a nolink=")
-	dat = replacetext(dat, "src=\"/w", "src=\"http://www.oraclestation.com/w")
+	dat = replacetext(dat, "src=\"/w", "src=\"[config.wikibooksurl]/w")
 	GLOB.cached_wiki_pages[page_link] = dat
 
 	return TRUE
