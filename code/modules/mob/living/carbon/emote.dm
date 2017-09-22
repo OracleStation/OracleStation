@@ -54,7 +54,11 @@
 	key = "screech"
 	key_third_person = "screeches"
 	message = "screeches."
-	mob_type_allowed_typecache = list(/mob/living/carbon/monkey, /mob/living/carbon/alien)
+	mob_type_allowed_typecache = list(/mob/living/carbon/monkey)
+
+/datum/emote/living/carbon/screech/run_emote(mob/user, params)
+	if(..())
+		playsound(user.loc, 'sound/effects/mob_effects/goonstation/monkey_scream.ogg', 50)
 
 /datum/emote/living/carbon/sign
 	key = "sign"

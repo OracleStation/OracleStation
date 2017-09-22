@@ -61,6 +61,13 @@
 	var/sound/attack_sound = 'sound/weapons/punch1.ogg'
 	var/sound/miss_sound = 'sound/weapons/punchmiss.ogg'
 
+	var/sound/female_scream_sound = 'sound/effects/mob_effects/goonstation/female_scream.ogg'
+	var/sound/male_scream_sound = 'sound/effects/mob_effects/goonstation/male_scream.ogg'
+	var/sound/female_cough_sound = 'sound/effects/mob_effects/f_cough.ogg'
+	var/sound/male_cough_sound = 'sound/effects/mob_effects/m_cough.ogg'
+	var/sound/female_sneeze_sound = 'sound/effects/mob_effects/f_sneeze.ogg'
+	var/sound/male_sneeze_sound = 'sound/effects/mob_effects/sneeze.ogg'
+
 	var/mob/living/list/ignored_by = list()	// list of mobs that will ignore this species
 	//Breathing!
 	var/obj/item/organ/lungs/mutantlungs = null
@@ -112,6 +119,9 @@
 	if(rank in GLOB.command_positions)
 		return 0
 	return 1
+
+/datum/species/proc/get_age_frequency(var/age)
+	return (1.0 + 0.5*(30 - age)/80)
 
 /datum/species/proc/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	// Drop the items the new species can't wear
