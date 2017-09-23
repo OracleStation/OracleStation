@@ -21,6 +21,7 @@
 	icon_screen = "generic"
 	icon_keyboard = "desktop_key"
 	pixel_y = 8
+	layer = ABOVE_WINDOW_LAYER
 
 	circuit = /obj/item/circuitboard/computer/libraryconsole
 	var/screenstate = 0

@@ -619,3 +619,4 @@
 	icon_screen = "medcomp"
 	icon_keyboard = "desktop_key"
 	pixel_y = 8
+	layer = ABOVE_WINDOW_LAYER
