@@ -8,7 +8,6 @@ Sensory-Restoration
 	Fatal.
 Bonus
 	The body generates Sensory restorational chemicals.
-	inacusiate for ears
 	antihol for removal of alcohol
 	synaphydramine to purge sensory hallucigens and histamine based impairment
 	mannitol to kickstart the mind
