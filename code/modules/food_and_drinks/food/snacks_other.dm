@@ -465,7 +465,7 @@
 	desc = "A colorful, sugary gumball."
 	icon = 'icons/obj/lollipop.dmi'
 	icon_state = "gumball"
-	list_reagents = list("sugar" = 5)
+	list_reagents = list("sugar" = 5, "salglu_solution" = 1)
 	tastes = list("candy")
 	foodtype = JUNKFOOD
 
