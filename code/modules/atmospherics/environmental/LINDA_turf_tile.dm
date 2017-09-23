@@ -29,6 +29,8 @@
 	var/recently_active = 0
 	var/datum/gas_mixture/air
 
+	var/icy = FALSE
+
 	var/obj/effect/hotspot/active_hotspot
 	var/atmos_cooldown  = 0
 	var/planetary_atmos = FALSE //air will revert to initial_gas_mix over time
@@ -111,6 +113,8 @@
 	UNSETEMPTY(new_overlay_types)
 	atmos_overlay_types = new_overlay_types
 
+GLOBAL_VAR(iceoverlaymaster)
+
 /turf/open/proc/tile_graphic()
 	. = new /list
 	if(air)
@@ -121,6 +125,14 @@
 			var/gas_overlay = gas_meta[META_GAS_OVERLAY]
 			if(gas_overlay && gas[MOLES] > gas_meta[META_GAS_MOLES_VISIBLE])
 				. += gas_overlay
+	if (icy)
+		if(!GLOB.iceoverlaymaster)
+			var/obj/effect/overlay/gas/iceoverlay = new()
+			iceoverlay.icon = 'icons/turf/overlays.dmi'
+			iceoverlay.icon_state = "snowfloor"
+			iceoverlay.layer = FROST_TURF_LAYER
+			GLOB.iceoverlaymaster = iceoverlay
+		. += GLOB.iceoverlaymaster
 
 /////////////////////////////SIMULATION///////////////////////////////////
 
@@ -230,6 +242,11 @@
 			LAST_SHARE_CHECK
 
 	our_air.react(src)
+
+	if(air.temperature < T0C && air.return_pressure() > 0.1)
+		icy = TRUE
+	else
+		icy = FALSE
 
 	update_visuals()
 
