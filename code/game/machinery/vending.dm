@@ -7,7 +7,6 @@
 	var/product_path = null
 	var/amount = 0
 	var/max_amount = 0
-	var/display_color = "blue"
 
 
 /obj/machinery/vending
@@ -145,7 +144,6 @@
 		if(!start_empty)
 			R.amount = amount
 		R.max_amount = amount
-		R.display_color = pick("red","blue","green")
 
 		if(hidden)
 			hidden_records += R
@@ -410,7 +408,7 @@
 GLOBAL_LIST_EMPTY(vending_machine_icon)
 
 /obj/machinery/vending/proc/GetIconForProduct(datum/data/vending_product/P)
-	var/producticon = GLOB.vending_machine_icon[P.product_name]
+	var/producticon = GLOB.vending_machine_icon[P.product_path]
 	if (producticon)
 		return producticon
 
@@ -418,8 +416,8 @@ GLOBAL_LIST_EMPTY(vending_machine_icon)
 	producticon = icon2base64html(product)
 	qdel(product)
 
-	GLOB.vending_machine_icon[P.product_name] = copytext(producticon,1,0)
-	return GLOB.vending_machine_icon[P.product_name]
+	GLOB.vending_machine_icon[P.product_path] = copytext(producticon,1,0)
+	return GLOB.vending_machine_icon[P.product_path]
 
 /obj/machinery/vending/Topic(href, href_list)
 	if(..())
@@ -536,9 +534,9 @@ GLOBAL_LIST_EMPTY(vending_machine_icon)
 		var/vended = new R.product_path(get_turf(src))
 		if(usr.can_put_in_hands(vended))
 			usr.put_in_hands(vended)
-			to_chat(usr, "<span class='notice'>You take the [R.product_name] out of the slot.</span>")
+			to_chat(usr, "<span class='notice'>You take [R.product_name] out of the slot.</span>")
 		else
-			to_chat(usr, "<span class='warning'>The [R.product_name] falls onto the floor!</span>")
+			to_chat(usr, "<span class='warning'>[R.product_name] falls onto the floor!</span>")
 		SSblackbox.add_details("vending_machine_usage","[src.type]|[R.product_path]")
 		vend_ready = 1
 
