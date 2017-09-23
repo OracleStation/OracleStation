@@ -371,17 +371,16 @@
 				display_records = product_records + coin_records
 			if((coin || bill) && extended_inventory)
 				display_records = product_records + hidden_records + coin_records
-			dat += "<ul>"
+			dat += "<table>"
 			for (var/datum/data/vending_product/R in display_records)
-				dat += "<li>"
+				dat += "<tr><td>" + GetIconForProduct(R) + "</td>"
+				dat += "<td style=\"width: 100%\"><b>[sanitize(R.product_name)]</b></td>"
 				if(R.amount > 0)
-					dat += "<a href='byond://?src=\ref[src];vend=\ref[R]'>Vend</a> "
+					dat += "<td><b>[R.amount]&nbsp;</b></td><td><a href='byond://?src=\ref[src];vend=\ref[R]'>Vend</a></td>"
 				else
-					dat += "<span class='linkOff'>Sold out</span> "
-				dat += "<font color = '[R.display_color]'><b>[sanitize(R.product_name)]</b>:</font>"
-				dat += " <b>[R.amount]</b>"
-				dat += "</li>"
-			dat += "</ul>"
+					dat += "<td>0&nbsp;</td><td><span class='linkOff'>Vend</span></td>"
+				dat += "</tr>"
+			dat += "</table>"
 		dat += "</div>"
 		if(premium.len > 0)
 			dat += "<b>Change Return:</b> "
@@ -408,6 +407,19 @@
 	popup.set_title_image(user.browse_rsc_icon(src.icon, src.icon_state))
 	popup.open()
 
+GLOBAL_LIST_EMPTY(vending_machine_icon)
+
+/obj/machinery/vending/proc/GetIconForProduct(datum/data/vending_product/P)
+	var/producticon = GLOB.vending_machine_icon[P.product_name]
+	if (producticon)
+		return producticon
+
+	var/product = new P.product_path()
+	producticon = icon2base64html(product)
+	qdel(product)
+
+	GLOB.vending_machine_icon[P.product_name] = copytext(producticon,1,0)
+	return GLOB.vending_machine_icon[P.product_name]
 
 /obj/machinery/vending/Topic(href, href_list)
 	if(..())
@@ -521,10 +533,14 @@
 		use_power(5)
 		if(icon_vend) //Show the vending animation if needed
 			flick(icon_vend,src)
-		new R.product_path(get_turf(src))
+		var/vended = new R.product_path(get_turf(src))
+		if(usr.can_put_in_hands(vended))
+			usr.put_in_hands(vended)
+			to_chat(usr, "<span class='notice'>You take the [R.product_name] out of the slot.</span>")
+		else
+			to_chat(usr, "<span class='warning'>The [R.product_name] falls onto the floor!</span>")
 		SSblackbox.add_details("vending_machine_usage","[src.type]|[R.product_path]")
 		vend_ready = 1
-		return
 
 		updateUsrDialog()
 		return
