@@ -48,6 +48,10 @@
 	using.icon = ui_style
 	static_inventory += using
 
+	using = new /obj/screen/lay
+	using.icon = ui_style
+	static_inventory += using
+
 	using = new /obj/screen/area_creator
 	using.icon = ui_style
 	static_inventory += using
