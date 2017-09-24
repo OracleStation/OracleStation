@@ -26,7 +26,6 @@
 #define ui_crafting	"13:-10,2:5"
 #define ui_building "13:-10,2:21"
 #define ui_language_menu "12:6,3:-11"
-#define ui_lay "12:6,2:5"
 
 #define ui_devilsouldisplay "WEST:6,CENTER-1:15"
 
@@ -83,6 +82,7 @@
 #define ui_drop_throw "EAST-1:28,SOUTH+1:7"
 #define ui_pull_resist "EAST-2:26,SOUTH+1:7"
 #define ui_movi "EAST-2:26,SOUTH:5"
+#define ui_lay "EAST-2:26,SOUTH:5"
 #define ui_acti "EAST-3:24,SOUTH:5"
 #define ui_zonesel "EAST-1:28,SOUTH:5"
 #define ui_acti_alt "EAST-1:28,SOUTH:5"	//alternative intent switcher for when the interface is hidden (F12)

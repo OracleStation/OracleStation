@@ -956,6 +956,8 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 
 	if(B)
 		if(M.resting)
-			B.icon_state = "rise"
+			B.icon_state = "standing"
+			B.name = "get up"
 		else
-			B.icon_state = "lay"
+			B.icon_state = "crawling"
+			B.name = "lay down"

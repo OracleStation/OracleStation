@@ -72,7 +72,7 @@
 /obj/screen/lay
 	name = "lay down"
 	icon = 'icons/mob/screen_midnight.dmi'
-	icon_state = "lay"
+	icon_state = "crawling"
 	screen_loc = ui_lay
 
 /obj/screen/lay/Click()
