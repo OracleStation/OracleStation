@@ -550,6 +550,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 					t1 += t.fields["name"] + " - " + t.fields["rank"] + "<br>"
 				P.info = t1
 				P.name = "paper- 'Crew Manifest'"
+				P.update_icon()
 				printing = null
 				playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, 0)
 	if (modify)
