@@ -67,6 +67,10 @@
 	if (config.log_law)
 		WRITE_FILE(GLOB.world_game_log, "\[[time_stamp()]]LAW: [text]")
 
+/proc/log_looc(text)
+	if (config.log_looc)
+		WRITE_FILE(GLOB.world_game_log, "\[[time_stamp()]]LOOC: [text]")
+
 /proc/log_ooc(text)
 	if (config.log_ooc)
 		WRITE_FILE(GLOB.world_game_log, "\[[time_stamp()]]OOC: [text]")

@@ -521,6 +521,24 @@
 	message_admins("[key_name_admin(usr)] toggled Dead OOC.")
 	SSblackbox.add_details("admin_toggle","Toggle Dead OOC|[GLOB.dooc_allowed]") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/datum/admins/proc/togglelooc()
+	set category = "Server"
+	set desc="can you even see verb descriptions anywhere?"
+	set name="Toggle LOOC"
+	toggle_looc()
+	log_admin("[key_name(usr)] toggled LOOC.")
+	message_admins("[key_name_admin(usr)] toggled LOOC.")
+	SSblackbox.add_details("admin_toggle","Toggle LOOC|[GLOB.looc_allowed]")
+
+/datum/admins/proc/toggleloocdead()
+	set category = "Server"
+	set desc = "seriously, why do we even bother"
+	set name = "Toggle Dead LOOC"
+	GLOB.dlooc_allowed = !(GLOB.dlooc_allowed)
+	log_admin("[key_name(usr)] toggled Dead LOOC.")
+	message_admins("[key_name_admin(usr)] toggled Dead LOOC.")
+	SSblackbox.add_details("admin_toggle","Toggle Dead LOOC|[GLOB.dlooc_allowed]")
+
 /datum/admins/proc/startnow()
 	set category = "Server"
 	set desc="Start the round RIGHT NOW"

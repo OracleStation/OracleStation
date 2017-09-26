@@ -132,6 +132,7 @@ SUBSYSTEM_DEF(ticker)
 			if(!mode.explosion_in_progress && mode.check_finished(force_ending) || force_ending)
 				current_state = GAME_STATE_FINISHED
 				toggle_ooc(1) // Turn it on
+				toggle_looc(1)
 				declare_completion(force_ending)
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
@@ -198,6 +199,8 @@ SUBSYSTEM_DEF(ticker)
 
 	if(!config.ooc_during_round)
 		toggle_ooc(0) // Turn it off
+	if(!config.looc_during_round)
+		toggle_looc(0)
 
 	CHECK_TICK
 	GLOB.start_landmarks_list = shuffle(GLOB.start_landmarks_list) //Shuffle the order of spawn points so they dont always predictably spawn bottom-up and right-to-left
