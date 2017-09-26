@@ -381,6 +381,7 @@ What a mess.*/
 					playsound(loc, 'sound/items/poster_being_created.ogg', 100, 1)
 					sleep(30)
 					var/obj/item/paper/P = new /obj/item/paper( loc )
+					P.icon_state = "paper_words"
 					P.info = "<CENTER><B>Security Record - (SR-[GLOB.data_core.securityPrintCount])</B></CENTER><BR>"
 					if((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
 						P.info += text("Name: [] ID: []<BR>\nSex: []<BR>\nAge: []<BR>", active1.fields["name"], active1.fields["id"], active1.fields["sex"], active1.fields["age"])

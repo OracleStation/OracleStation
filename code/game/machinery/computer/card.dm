@@ -545,6 +545,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 				printing = 1
 				sleep(50)
 				var/obj/item/paper/P = new /obj/item/paper( loc )
+				P.icon_state = "paper_words"
 				var/t1 = "<B>Crew Manifest:</B><BR>"
 				for(var/datum/data/record/t in sortRecord(GLOB.data_core.general))
 					t1 += t.fields["name"] + " - " + t.fields["rank"] + "<br>"
