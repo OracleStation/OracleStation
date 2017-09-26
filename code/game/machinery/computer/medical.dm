@@ -540,7 +540,6 @@
 					playsound(loc, 'sound/items/poster_being_created.ogg', 100, 1)
 					sleep(30)
 					var/obj/item/paper/P = new /obj/item/paper( src.loc )
-					P.icon_state = "paper_words"
 					P.info = "<CENTER><B>Medical Record - (MR-[GLOB.data_core.medicalPrintCount])</B></CENTER><BR>"
 					if(active1 in GLOB.data_core.general)
 						P.info += text("Name: [] ID: []<BR>\nSex: []<BR>\nAge: []<BR>", src.active1.fields["name"], src.active1.fields["id"], src.active1.fields["sex"], src.active1.fields["age"])
@@ -560,6 +559,7 @@
 						P.info += "<B>Medical Record Lost!</B><BR>"
 						P.name = text("MR-[] '[]'", GLOB.data_core.medicalPrintCount, "Record Lost")
 					P.info += "</TT>"
+					P.update_icon()
 					src.printing = null
 
 	src.add_fingerprint(usr)
