@@ -612,6 +612,27 @@
 		alert("[M.name] is not prisoned.")
 	SSblackbox.add_details("admin_verb","Unprison") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/datum/admins/proc/antagooc(message as text)
+	set category = "Admin"
+	set name = "AOOC"
+
+	if(!message)
+		message = input(usr, "Antagonist OOC", "AOOC", "This is antagonist OOC. Only reply to this message by adminhelp.") as message|null
+
+	if(!message)
+		return
+
+	var/list/to_hear = list()
+	for(var/client/C in GLOB.clients)
+		if(C in GLOB.admins)
+			to_hear += C
+			continue
+		if(C.mob && is_special_character(C.mob))
+			to_hear += C
+
+	for(var/C in to_hear)
+		to_chat(C, "<span class='aooc'>AOOC: [usr.key]: [message]</span>")
+
 ////////////////////////////////////////////////////////////////////////////////////////////////ADMIN HELPER PROCS
 
 /*
