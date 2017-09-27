@@ -151,6 +151,8 @@
 				else if(toner >= 5 && !busy && check_ass()) //You have to be sitting on the copier and either be a xeno or a human without clothes on.
 					if(isalienadult(ass) || istype(ass, /mob/living/simple_animal/hostile/alien)) //Xenos have their own asses, thanks to Pybro.
 						temp_img = "alien"
+					else if(isdrone(ass))
+						temp_img = "drone"
 					else if(ishuman(ass)) //Suit checks are in check_ass
 						var/mob/living/carbon/human/H = ass
 						temp_img = H.dna.species.ass_pic
