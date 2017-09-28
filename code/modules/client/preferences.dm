@@ -1307,12 +1307,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		random_character(gender)
 
 	if(config.humans_need_surnames && pref_species.id == "human")
-var/firstspace = findtext(real_name, " ")
-var/name_length = length(real_name)
-if(!firstspace)	//we need a surname
-real_name += " [pick(GLOB.last_names)]"
-else if(firstspace == name_length)
-real_name += "[pick(GLOB.last_names)]"
+		var/firstspace = findtext(real_name, " ")
+		var/name_length = length(real_name)
+		if(!firstspace)	//we need a surname
+			real_name += " [pick(GLOB.last_names)]"
+		else if(firstspace == name_length)
+			real_name += "[pick(GLOB.last_names)]"
 
 	character.real_name = real_name
 	character.name = character.real_name
