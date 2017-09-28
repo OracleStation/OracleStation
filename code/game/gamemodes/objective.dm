@@ -30,10 +30,9 @@ GLOBAL_LIST_EMPTY(objectives)
 	. = list()
 	for(var/V in GLOB.data_core.locked)
 		var/datum/data/record/R = V
-		var/mob/M = R.fields["reference"]
-		if(M && M.mind)
-			. += M.mind
-
+		var/datum/mind/M = R.fields["mindref"]
+		if(M)
+			. += M
 /datum/objective/proc/find_target()
 	var/list/possible_targets = list()
 	for(var/datum/mind/possible_target in get_crewmember_minds())
