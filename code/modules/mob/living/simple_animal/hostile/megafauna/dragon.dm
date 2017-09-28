@@ -107,7 +107,7 @@ Difficulty: Medium
 
 	if(prob(15 + anger_modifier) && !client)
 		if(health < maxHealth/2)
-			INVOKE_ASYNC(src, .proc/swoop_attack, TRUE, null, 50)
+			INVOKE_ASYNC(src, .proc/swoop_attack, TRUE, null, 75)
 		else
 			fire_rain()
 
@@ -154,11 +154,11 @@ Difficulty: Medium
 		sleep(1)
 
 /mob/living/simple_animal/hostile/megafauna/dragon/proc/triple_swoop()
-	swoop_attack(swoop_duration = 30)
-	swoop_attack(swoop_duration = 30)
-	swoop_attack(swoop_duration = 30)
+	swoop_attack(swoop_duration = 50)
+	swoop_attack(swoop_duration = 50)
+	swoop_attack(swoop_duration = 50)
 
-/mob/living/simple_animal/hostile/megafauna/dragon/proc/swoop_attack(fire_rain, atom/movable/manual_target, swoop_duration = 40)
+/mob/living/simple_animal/hostile/megafauna/dragon/proc/swoop_attack(fire_rain, atom/movable/manual_target, swoop_duration = 80)
 	if(stat || swooping)
 		return
 	if(manual_target)
