@@ -83,6 +83,7 @@
 
 	var/obj/item/organ/liver/mutantliver
 	var/obj/item/organ/stomach/mutantstomach
+	var/ass_pic = "human" // self explanatory
 
 ///////////
 // PROCS //
