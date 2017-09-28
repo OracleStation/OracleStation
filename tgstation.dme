@@ -253,6 +253,7 @@
 #include "code\datums\components\slippery.dm"
 #include "code\datums\diseases\_disease.dm"
 #include "code\datums\diseases\_MobProcs.dm"
+#include "code\datums\diseases\allergy.dm"
 #include "code\datums\diseases\anxiety.dm"
 #include "code\datums\diseases\appendicitis.dm"
 #include "code\datums\diseases\beesease.dm"

@@ -36,3 +36,11 @@
 /datum/species/ethari/spec_death(gibbed, mob/living/carbon/human/H)
 	if(H)
 		H.endTailWag()
+
+/datum/species/ethari/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
+	if(chem.id == "cocoa" || chem.id == "hot_coco")
+		if(prob(15))
+			var/datum/disease/D = new /datum/disease/anaphylactic_shock()
+			H.ContractDisease(D)
+	to_chat(world, chem.id)
+	return 0
