@@ -213,8 +213,8 @@
 				cy--
 	else
 		for(var/obj/O in contents)
-		if(QDELETED(O))
-			continue
+			if(QDELETED(O))
+				continue
 			O.mouse_opacity = MOUSE_OPACITY_OPAQUE //This is here so storage items that spawn with contents correctly have the "click around item to equip"
 			O.screen_loc = "[cx]:16,[cy]:16"
 			O.maptext = ""
