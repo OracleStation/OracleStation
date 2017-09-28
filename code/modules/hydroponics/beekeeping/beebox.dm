@@ -250,11 +250,11 @@
 				queen_bee = null
 
 /obj/structure/beebox/deconstruct(disassembled = TRUE)
- 	new /obj/item/stack/sheet/mineral/wood (loc, 20)
- 	for(var/mob/living/simple_animal/hostile/poison/bees/B in bees)
+	new /obj/item/stack/sheet/mineral/wood (loc, 20)
+	for(var/mob/living/simple_animal/hostile/poison/bees/B in bees)
 		if(B.loc == src)
- 			B.loc = get_turf(src)
- 	for(var/obj/item/honey_frame/HF in honey_frames)
+			B.loc = get_turf(src)
+	for(var/obj/item/honey_frame/HF in honey_frames)
 		if(HF.loc == src)
- 			HF.loc = get_turf(src)
- 	qdel(src)
+			HF.loc = get_turf(src)
+	qdel(src)

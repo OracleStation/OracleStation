@@ -919,7 +919,7 @@
 	density = FALSE
 	use_power = NO_POWER_USE
 	flags_1 = NODECONSTRUCT_1
- 	unwrenchable = FALSE
+	unwrenchable = FALSE
 
 /obj/machinery/hydroponics/soil/update_icon_hoses()
 	return // Has no hoses
