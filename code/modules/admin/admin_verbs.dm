@@ -29,6 +29,7 @@ GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 	/datum/admins/proc/show_player_panel,	/*shows an interface for individual players, with various links (links require additional flags*/
 	/client/proc/game_panel,			/*game panel, allows to change game-mode etc*/
 	/client/proc/check_ai_laws,			/*shows AI and borg laws*/
+	/datum/admins/proc/antagooc,		/*Antag-only OOC*/
 	/datum/admins/proc/toggleooc,		/*toggles ooc on/off for everyone*/
 	/datum/admins/proc/toggleoocdead,	/*toggles ooc on/off for everyone who is dead*/
 	/datum/admins/proc/toggleenter,		/*toggles whether people can join the current game*/
