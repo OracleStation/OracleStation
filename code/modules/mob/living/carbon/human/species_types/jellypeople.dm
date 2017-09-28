@@ -110,6 +110,7 @@
 	coldmod = 2
 	heatmod = 0.8
 	brutemod = 1.5//1.5 times as much brute, since they have no bones
+	ass_pic = "slime"
 
 /datum/species/jelly/slime/on_species_loss(mob/living/carbon/C)
 	C.faction -= "slime"
