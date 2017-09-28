@@ -531,6 +531,7 @@
 	name = "puddle"
 	desc = "A puddle used for washing one's hands and face."
 	icon_state = "puddle"
+	resistance_flags = UNACIDABLE
 
 /obj/structure/sink/puddle/attack_hand(mob/M)
 	icon_state = "puddle-splash"
@@ -541,6 +542,9 @@
 	icon_state = "puddle-splash"
 	. = ..()
 	icon_state = "puddle"
+
+/obj/structure/sink/puddle/deconstruct(disassembled = TRUE)
+	qdel(src)
 
 
 //Shower Curtains//
