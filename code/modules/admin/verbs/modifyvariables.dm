@@ -437,7 +437,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 
 	if(default == VV_NUM)
 		var/dir_text = ""
-			var/tdir = L[index]
+		var/tdir = L[index]
 		if(tdir > 0 && tdir < 16)
 			if(tdir & 1)
 				dir_text += "NORTH"
