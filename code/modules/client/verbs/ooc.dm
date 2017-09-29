@@ -121,7 +121,7 @@
 		if(handle_spam_prevention(msg, MUTE_LOOC))
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
+			to_chat(src, "<span class='bold'>Advertising other servers is not allowed.</span>")
 			log_admin("[key_name(src)] has attempted to advertise in LOOC: [msg]")
 			message_admins("[key_name_admin(src)] has attempted to advertise in LOOC: [msg]")
 			return
@@ -178,7 +178,7 @@
 			return
 	else
 		GLOB.looc_allowed = !GLOB.looc_allowed
-	to_chat(world, "<B>The LOOC channel has been globally [GLOB.looc_allowed ? "enabled" : "disabled"].</B>")
+	to_chat(world, "<span class='bold'>The LOOC channel has been globally [GLOB.looc_allowed ? "enabled" : "disabled"].</span>")
 
 GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 
