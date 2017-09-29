@@ -2258,7 +2258,6 @@
 	req_access = null;
 	req_access_txt = "57"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/turf_decal/stripes/line{
 	dir = 2
 	},
@@ -5315,9 +5314,6 @@
 	icon_state = "0-2"
 	},
 /obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
@@ -76731,9 +76727,9 @@ agF
 auQ
 avV
 awP
-bye
+bxZ
 byg
-byj
+byg
 aAD
 aBM
 ayu
@@ -76990,7 +76986,7 @@ avW
 bxZ
 axD
 byh
-byk
+byh
 aAE
 aBN
 ayv
@@ -77244,7 +77240,7 @@ asT
 atN
 auS
 avX
-bya
+bxZ
 axE
 ayw
 azA
@@ -77501,7 +77497,7 @@ asU
 atO
 arP
 apI
-byb
+bxZ
 axF
 ayx
 azB
@@ -77758,7 +77754,7 @@ asV
 atP
 auT
 avY
-byc
+bxZ
 axG
 ayy
 axG
@@ -78015,10 +78011,10 @@ asW
 atQ
 auU
 avZ
-byd
-byf
-byi
-byl
+bxZ
+bxZ
+bxZ
+bxZ
 byn
 bxK
 awQ
@@ -81138,7 +81134,7 @@ bea
 beG
 bfc
 bfH
-byu
+bys
 bgQ
 bhD
 bit
@@ -87520,7 +87516,7 @@ ape
 aqm
 abt
 abN
-atu
+acw
 abt
 aad
 aad
