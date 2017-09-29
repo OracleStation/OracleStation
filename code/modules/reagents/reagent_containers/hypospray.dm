@@ -58,7 +58,7 @@
 	icon_state = "combat_hypo"
 	volume = 90
 	ignore_flags = 1 // So they can heal their comrades.
-	list_reagents = list("epinephrine" = 30, "omnizine" = 30, "leporazine" = 15, "atropine" = 15)
+	list_reagents = list("epinephrine" = 30, "omnizine" = 30, "teporone" = 15, "atropine" = 15)
 
 /obj/item/reagent_containers/hypospray/combat/nanites
 	desc = "A modified air-needle autoinjector for use in combat situations. Prefilled with expensive medical nanites for rapid healing."
@@ -150,7 +150,7 @@
 	icon_state = "stimpen"
 	volume = 57
 	amount_per_transfer_from_this = 57
-	list_reagents = list("salbutamol" = 10, "leporazine" = 15, "omnizine" = 15, "epinephrine" = 10, "miningnanites" = 2, "omnizine" = 5)
+	list_reagents = list("salbutamol" = 10, "teporone" = 15, "omnizine" = 15, "epinephrine" = 10, "miningnanites" = 2, "omnizine" = 5)
 
 /obj/item/reagent_containers/hypospray/medipen/species_mutator
 	name = "species mutator medipen"

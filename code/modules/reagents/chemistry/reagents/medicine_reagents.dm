@@ -17,7 +17,7 @@
 /datum/reagent/medicine/teporone
 	name = "Teporone"
 	id = "teporone"
-	description = "Leporazine will effectively regulate a patient's body temperature, ensuring it never leaves safe levels."
+	description = "Teporone will effectively regulate a patient's body temperature, ensuring it never leaves safe levels."
 	color = "#C8A5DC" // rgb: 200, 165, 220
 
 /datum/reagent/medicine/teporone/on_mob_life(mob/living/M)
