@@ -777,7 +777,6 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/landmark/start/blueshield,
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},
@@ -899,7 +898,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/closet/secure_closet/blueshield,
+/obj/structure/table/wood,
+/obj/item/paper_bin,
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},
@@ -929,7 +929,6 @@
 /area/bridge)
 "abF" = (
 /obj/structure/table/wood,
-/obj/item/lighter,
 /obj/structure/cable/white{
 	d1 = 2;
 	d2 = 8;
@@ -941,6 +940,7 @@
 	icon_state = "1-2"
 	},
 /obj/item/paper_bin,
+/obj/item/lighter,
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},
@@ -4528,9 +4528,6 @@
 /turf/open/floor/plasteel/grimy,
 /area/security/detectives_office)
 "ahE" = (
-/obj/machinery/computer/security/wooden_tv{
-	density = 0
-	},
 /obj/structure/table/wood,
 /obj/machinery/button/door{
 	id = "detectivewindows";
@@ -4548,18 +4545,21 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/item/device/flashlight/lamp,
+/obj/item/reagent_containers/food/drinks/flask/det,
 /turf/open/floor/plasteel/grimy,
 /area/security/detectives_office)
 "ahF" = (
 /obj/structure/table/wood,
-/obj/item/device/flashlight/lamp,
 /obj/item/storage/secure/safe{
 	pixel_x = 32
 	},
-/obj/item/reagent_containers/food/drinks/flask/det,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 24;
 	pixel_y = -26
+	},
+/obj/machinery/computer/security/wooden_tv{
+	density = 0
 	},
 /turf/open/floor/plasteel/grimy,
 /area/security/detectives_office)
@@ -14491,8 +14491,6 @@
 /obj/item/stack/sheet/metal{
 	amount = 50
 	},
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},
@@ -14505,6 +14503,8 @@
 	pixel_y = 26
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/grenade/chem_grenade/smart_metal_foam,
+/obj/item/grenade/chem_grenade/smart_metal_foam,
 /turf/open/floor/plasteel/caution{
 	dir = 5
 	},
@@ -21317,19 +21317,17 @@
 /turf/open/floor/plasteel,
 /area/engine/gravity_generator)
 "aJm" = (
-/obj/machinery/power/terminal{
-	dir = 4
-	},
 /obj/item/device/radio/intercom{
 	name = "Station Intercom";
 	pixel_y = 26
 	},
-/obj/structure/cable/white{
-	d2 = 2;
-	icon_state = "0-2"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /turf/open/floor/plasteel,
 /area/engine/gravity_generator)
@@ -21339,14 +21337,14 @@
 /obj/machinery/power/smes{
 	charge = 5e+006
 	},
-/obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
-	},
 /obj/structure/sign/electricshock{
 	pixel_y = 32
 	},
 /obj/effect/turf_decal/bot,
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
 /turf/open/floor/plasteel,
 /area/engine/gravity_generator)
 "aJo" = (
@@ -21985,35 +21983,27 @@
 /area/engine/gravity_generator)
 "aKv" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
-/obj/structure/cable/white{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
-/area/engine/gravity_generator)
-"aKw" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/structure/cable/white{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
+/turf/open/floor/plasteel,
+/area/engine/gravity_generator)
+"aKw" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/delivery,
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable/white{
+	d2 = 4;
+	icon_state = "0-4"
+	},
 /turf/open/floor/plasteel,
 /area/engine/gravity_generator)
 "aKx" = (
@@ -30351,11 +30341,11 @@
 	},
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "aZT" = (
 /obj/structure/sign/nanotrasen,
 /turf/closed/wall,
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "aZU" = (
 /obj/machinery/recharge_station,
 /obj/effect/decal/cleanable/dirt,
@@ -30790,7 +30780,7 @@
 /turf/open/floor/plasteel/red/side{
 	dir = 9
 	},
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "baJ" = (
 /obj/structure/cable/white{
 	d1 = 1;
@@ -30803,7 +30793,7 @@
 /turf/open/floor/plasteel/red/side{
 	dir = 1
 	},
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "baK" = (
 /obj/structure/table/reinforced,
 /obj/item/book/manual/wiki/security_space_law,
@@ -30814,7 +30804,7 @@
 /turf/open/floor/plasteel/red/side{
 	dir = 5
 	},
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "baL" = (
 /obj/machinery/light{
 	dir = 8
@@ -31240,7 +31230,7 @@
 	},
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/plasteel,
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "bby" = (
 /obj/machinery/light_switch{
 	pixel_x = -26;
@@ -31252,7 +31242,7 @@
 /turf/open/floor/plasteel/red/side{
 	dir = 8
 	},
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "bbz" = (
 /obj/structure/cable/white{
 	d1 = 1;
@@ -31270,7 +31260,7 @@
 	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "bbA" = (
 /obj/structure/cable/white{
 	d2 = 8;
@@ -31288,7 +31278,7 @@
 /turf/open/floor/plasteel/red/side{
 	dir = 4
 	},
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "bbB" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
@@ -31667,7 +31657,7 @@
 	icon_state = "0-2"
 	},
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "bcn" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
@@ -31675,7 +31665,7 @@
 /turf/open/floor/plasteel/red/side{
 	dir = 8
 	},
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "bco" = (
 /obj/structure/cable/white{
 	d1 = 1;
@@ -31683,7 +31673,7 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/neutral,
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "bcp" = (
 /obj/machinery/status_display{
 	pixel_x = 32
@@ -31692,7 +31682,7 @@
 /turf/open/floor/plasteel/red/side{
 	dir = 6
 	},
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "bcq" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
@@ -32032,7 +32022,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel,
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "bde" = (
 /obj/structure/cable/white{
 	d1 = 4;
@@ -32051,7 +32041,7 @@
 /turf/open/floor/plasteel/red/side{
 	dir = 8
 	},
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "bdf" = (
 /obj/structure/cable/white{
 	d1 = 1;
@@ -32072,7 +32062,7 @@
 	icon_state = "1-4"
 	},
 /turf/open/floor/plasteel/neutral,
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "bdg" = (
 /obj/machinery/computer/security,
 /obj/machinery/light{
@@ -32084,7 +32074,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/red,
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "bdh" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable/white{
@@ -32092,7 +32082,7 @@
 	icon_state = "0-8"
 	},
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "bdi" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 8
@@ -32580,14 +32570,14 @@
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable/white,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "bec" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger,
 /turf/open/floor/plasteel/red/side{
 	dir = 8
 	},
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "bed" = (
 /obj/structure/cable/white{
 	d1 = 1;
@@ -32596,7 +32586,7 @@
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/plasteel/neutral,
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "bee" = (
 /obj/machinery/computer/secure_data,
 /obj/machinery/ai_status_display{
@@ -32605,7 +32595,7 @@
 /turf/open/floor/plasteel/red/side{
 	dir = 5
 	},
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "bef" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable/white{
@@ -32914,7 +32904,7 @@
 /turf/open/floor/plasteel/red/side{
 	dir = 10
 	},
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "beI" = (
 /obj/structure/cable/white{
 	d1 = 1;
@@ -32923,7 +32913,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel/red/side,
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "beJ" = (
 /obj/structure/closet/secure_closet/security,
 /obj/machinery/airalarm{
@@ -32937,7 +32927,7 @@
 /turf/open/floor/plasteel/red/side{
 	dir = 6
 	},
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "beK" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -33232,7 +33222,7 @@
 	dir = 2
 	},
 /turf/open/floor/plasteel,
-/area/hallway/primary/central)
+/area/security/checkpoint)
 "bfg" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
@@ -36925,7 +36915,7 @@
 	name = "\improper Departure Lounge"
 	})
 "bmb" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit{
 	name = "\improper Departure Lounge"
@@ -40646,6 +40636,45 @@
 "byu" = (
 /turf/closed/wall,
 /area/medical/paramedic)
+"byv" = (
+/turf/closed/wall,
+/area/security/checkpoint)
+"byw" = (
+/turf/closed/wall,
+/area/security/checkpoint)
+"byx" = (
+/turf/closed/wall,
+/area/security/checkpoint)
+"byy" = (
+/turf/closed/wall,
+/area/security/checkpoint)
+"byz" = (
+/turf/closed/wall,
+/area/security/checkpoint)
+"byA" = (
+/turf/closed/wall,
+/area/security/checkpoint)
+"byB" = (
+/turf/closed/wall,
+/area/security/checkpoint)
+"byC" = (
+/turf/closed/wall,
+/area/security/checkpoint)
+"byD" = (
+/turf/closed/wall,
+/area/security/checkpoint)
+"byE" = (
+/turf/closed/wall,
+/area/security/checkpoint)
+"byF" = (
+/turf/closed/wall,
+/area/security/checkpoint)
+"byG" = (
+/turf/closed/wall,
+/area/security/checkpoint)
+"byH" = (
+/turf/closed/wall,
+/area/security/checkpoint)
 
 (1,1,1) = {"
 aaa
@@ -76731,9 +76760,9 @@ agF
 auQ
 avV
 awP
-bye
+bxZ
 byg
-byj
+byg
 aAD
 aBM
 ayu
@@ -76990,7 +77019,7 @@ avW
 bxZ
 axD
 byh
-byk
+byh
 aAE
 aBN
 ayv
@@ -77244,7 +77273,7 @@ asT
 atN
 auS
 avX
-bya
+bxZ
 axE
 ayw
 azA
@@ -77501,7 +77530,7 @@ asU
 atO
 arP
 apI
-byb
+bxZ
 axF
 ayx
 azB
@@ -77758,7 +77787,7 @@ asV
 atP
 auT
 avY
-byc
+bxZ
 axG
 ayy
 axG
@@ -78015,10 +78044,10 @@ asW
 atQ
 auU
 avZ
-byd
-byf
-byi
-byl
+bxZ
+bxZ
+bxZ
+bxZ
 byn
 bxK
 awQ
@@ -81138,7 +81167,7 @@ bea
 beG
 bfc
 bfH
-byu
+bys
 bgQ
 bhD
 bit
@@ -81900,13 +81929,13 @@ aWP
 aSs
 aYc
 aYW
-aXv
-aXv
+byv
+byy
 bbx
 bcm
 bdd
 beb
-aXv
+byD
 aZT
 bfK
 bgg
@@ -82157,14 +82186,14 @@ aWQ
 aXv
 aYc
 aYW
-aXv
+byw
 baI
 bby
 bcn
 bde
 bec
 beH
-aXv
+byF
 bfK
 bgg
 bgU
@@ -82671,14 +82700,14 @@ aWS
 aXv
 aYe
 aYW
-aXv
+byx
 baK
 bbA
 bcp
 bdg
 bee
 beJ
-aXv
+byG
 bfK
 bgi
 bgU
@@ -82929,13 +82958,13 @@ aSq
 aYc
 aYW
 aZT
-aXv
-aXv
-aXv
+byz
+byA
+byB
 bdh
-aXv
-aXv
-aXv
+byC
+byE
+byH
 bfM
 bgi
 bgV
