@@ -137,15 +137,13 @@
 	var/list/clients_to_hear = list()
 
 	var/turf/looc_source = get_turf(mob.get_looc_source())
-	to_chat(world, "the looc source is called [looc_source.name], at [looc_source.x], [looc_source.y], [looc_source.z]")
 	var/list/stuff_that_hears = list()
 
 	for(var/mob/M in get_hear(7, looc_source))
 		stuff_that_hears += M
 
 	for(var/mob/M in stuff_that_hears)
-		to_chat(world, M.name)
-		if(!M.client && M.client_mobs_in_contents.len <= 0)
+		if(!M.client && (((M.client_mobs_in_contents) && (M.client_mobs_in_contents.len <= 0)) || !M.client_mobs_in_contents))
 			continue
 		if(M.client.prefs.chat_toggles & CHAT_LOOC)
 			clients_to_hear += M.client
