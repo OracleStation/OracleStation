@@ -16,6 +16,7 @@
 	var/decksize = 150
 	var/card_text_file = "strings/cas_white.txt"
 	var/list/allcards = list()
+	standard_deck = FALSE
 
 /obj/item/toy/cards/deck/cas/black
 	name = "\improper CAS deck (black)"

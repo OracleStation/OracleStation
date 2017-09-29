@@ -40,7 +40,7 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "waterballoon-e"
 	item_state = "balloon-empty"
-	
+
 
 /obj/item/toy/balloon/New()
 	create_reagents(10)
@@ -621,31 +621,33 @@
 	var/cooldown = 0
 	var/obj/machinery/computer/holodeck/holo = null // Holodeck cards should not be infinite
 	var/list/cards = list()
+	var/standard_deck = TRUE
 
 /obj/item/toy/cards/deck/New()
 	..()
 	icon_state = "deck_[deckstyle]_full"
-	for(var/i = 2; i <= 10; i++)
-		cards += "[i] of Hearts"
-		cards += "[i] of Spades"
-		cards += "[i] of Clubs"
-		cards += "[i] of Diamonds"
-	cards += "King of Hearts"
-	cards += "King of Spades"
-	cards += "King of Clubs"
-	cards += "King of Diamonds"
-	cards += "Queen of Hearts"
-	cards += "Queen of Spades"
-	cards += "Queen of Clubs"
-	cards += "Queen of Diamonds"
-	cards += "Jack of Hearts"
-	cards += "Jack of Spades"
-	cards += "Jack of Clubs"
-	cards += "Jack of Diamonds"
-	cards += "Ace of Hearts"
-	cards += "Ace of Spades"
-	cards += "Ace of Clubs"
-	cards += "Ace of Diamonds"
+	if(standard_deck)
+		for(var/i = 2; i <= 10; i++)
+			cards += "[i] of Hearts"
+			cards += "[i] of Spades"
+			cards += "[i] of Clubs"
+			cards += "[i] of Diamonds"
+		cards += "King of Hearts"
+		cards += "King of Spades"
+		cards += "King of Clubs"
+		cards += "King of Diamonds"
+		cards += "Queen of Hearts"
+		cards += "Queen of Spades"
+		cards += "Queen of Clubs"
+		cards += "Queen of Diamonds"
+		cards += "Jack of Hearts"
+		cards += "Jack of Spades"
+		cards += "Jack of Clubs"
+		cards += "Jack of Diamonds"
+		cards += "Ace of Hearts"
+		cards += "Ace of Spades"
+		cards += "Ace of Clubs"
+		cards += "Ace of Diamonds"
 
 
 /obj/item/toy/cards/deck/attack_hand(mob/user)
