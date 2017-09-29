@@ -39,7 +39,7 @@ BAN_LEGACY_SYSTEM
 ## Unhash this to override head jobs' playtime requirements with this number of hours.
 #USE_EXP_RESTRICTIONS_HEADS_HOURS 15
 ## Unhash this to change head jobs' playtime requirements so that they're based on department playtime, rather than crew playtime.
-#USE_EXP_RESTRICTIONS_HEADS_DEPARTMENT 
+#USE_EXP_RESTRICTIONS_HEADS_DEPARTMENT
 ## Unhash this to enable playtime requirements for certain non-head jobs, like Engineer and Scientist.
 #USE_EXP_RESTRICTIONS_OTHER
 ## Allows admins to bypass job playtime requirements.
@@ -48,6 +48,9 @@ BAN_LEGACY_SYSTEM
 
 ## log OOC channel
 LOG_OOC
+
+## log LOOC channel
+LOG_LOOC
 
 ## log client Say
 LOG_SAY
@@ -189,7 +192,7 @@ CHECK_RANDOMIZER
 
 ## Github repo id
 ##This can be found by going to https://api.github.com/users/<user name here>/repos
-##Or https://api.github.com/orgs/<org name here>/repos if the repo owner is an organization 
+##Or https://api.github.com/orgs/<org name here>/repos if the repo owner is an organization
 # GITHUBREPOID 3234987
 
 ## Ban appeals URL - usually for a forum or wherever people should go to contact your admins.
@@ -233,7 +236,7 @@ TICKLAG 0.5
 
 ## Hub address for tracking stats
 ## example: Hubmakerckey.Hubname
-#MEDAL_HUB_ADDRESS 
+#MEDAL_HUB_ADDRESS
 
 ## Password for the hub page
 #MEDAL_HUB_PASSWORD

@@ -31,6 +31,7 @@
 	var/hub = 0
 
 	var/log_ooc = 0						// log OOC channel
+	var/log_looc = 0					// log LOOC channel
 	var/log_access = 0					// log login/logout
 	var/log_say = 0						// log client say
 	var/log_admin = 0					// log admin actions
@@ -175,6 +176,7 @@
 
 	var/rename_cyborg = 0
 	var/ooc_during_round = 0
+	var/looc_during_round = 0
 	var/emojis = 0
 
 	//Used for modifying movement speed for mobs.
@@ -361,6 +363,8 @@
 					round_end_countdown = text2num(value)
 				if("log_ooc")
 					log_ooc = 1
+				if("log_looc")
+					log_looc = 1
 				if("log_access")
 					log_access = 1
 				if("log_say")
@@ -586,6 +590,8 @@
 					rename_cyborg			= 1
 				if("ooc_during_round")
 					ooc_during_round			= 1
+				if("looc_during_round")
+					looc_during_round = TRUE
 				if("emojis")
 					emojis					= 1
 				if("run_delay")

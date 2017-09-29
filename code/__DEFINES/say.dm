@@ -50,3 +50,4 @@
 #define LOGASAY "adminsay"
 #define LOGCOMMENT "comment"
 #define LOGOOC "ooc"
+#define LOGLOOC "looc"
