@@ -45,5 +45,5 @@
 /datum/species/unathi/ashwalker
 	name = "Ash Walker"
 	id = "ashlizard"
-	limbs_id = "lizard"
+	limbs_id = "unathi"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,NOBREATH,NOGUNS,DIGITIGRADE)
