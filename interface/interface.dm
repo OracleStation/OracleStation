@@ -54,7 +54,7 @@
 	set desc = "Report an issue"
 	set hidden = 1
 	if(config.githuburl)
-		var/message = "This will open the Github issue reporter in your browser. Are you sure?"
+		var/message = "This will open the GitHub issue reporter in your browser. Are you sure?"
 		if(GLOB.revdata.testmerge.len)
 			message += "<br>The following experimental changes are active and are probably the cause of any new or sudden issues you may experience. If possible, please try to find a specific thread for your issue instead of posting to the general issue tracker:<br>"
 			message += GLOB.revdata.GetTestMergeInfo(FALSE)
@@ -62,7 +62,20 @@
 			return
 		src << link("[config.githuburl]/issues/new")
 	else
-		to_chat(src, "<span class='danger'>The Github URL is not set in the server configuration.</span>")
+		to_chat(src, "<span class='danger'>The GitHub URL is not set in the server configuration.</span>")
+	return
+
+/client/verb/joindiscord()
+	set name = "discord"
+	set desc = "Join Discord Server"
+	set hidden = 1
+	if(config.discordurl)
+		var/message = "This will open the Discord server in your browser. Are you sure?"
+		if(tgalert(src, message, "Join Discord Server","Yes","No")=="No")
+			return
+		src << link(config.discordurl)
+	else
+		to_chat(src, "<span class='danger'>The Discord URL is not set in the server configuration.</span>")
 	return
 
 /client/verb/hotkeys_help()
