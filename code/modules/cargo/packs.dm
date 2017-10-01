@@ -1564,6 +1564,7 @@
 					/obj/item/clothing/head/collectable/kitty,
 					/obj/item/clothing/head/collectable/rabbitears,
 					/obj/item/clothing/head/collectable/wizard,
+					/obj/item/clothing/head/crown/fancy,
 					/obj/item/clothing/head/collectable/hardhat,
 					/obj/item/clothing/head/collectable/HoS,
 					/obj/item/clothing/head/collectable/HoP,
