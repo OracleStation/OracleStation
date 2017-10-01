@@ -71,7 +71,7 @@
 	set hidden = 1
 	if(config.discordurl)
 		var/message = "This will open the Discord server in your browser. Are you sure?"
-		if(tgalert(src, message, "Join Discord Server","Yes","No")=="No")
+		if(alert(src, message, "Join Discord","Yes","No")=="No")
 			return
 		src << link(config.discordurl)
 	else

@@ -80,7 +80,7 @@
 	var/wikiurl = "https://www.oraclestation.com/wiki/Main_Page" // Default wiki link.
 	var/wikibooksurl = "http://www.oraclestation.com" // Default wiki link.
 	var/forumurl = "https://www.oraclestation.com/forum/" //default forums
-	var/discordurl = "https://discord.gg/TsjA9wp" //default forums
+	var/discordurl = "https://discord.gg/TsjA9wp" //Discord invite link
 	var/rulesurl = "https://www.oraclestation.com/wiki/Rules" // default rules
 	var/githuburl = "https://github.com/OracleStation/OracleStation" //default github
 	var/githubrepoid
@@ -428,6 +428,8 @@
 					wikibooksurl = value
 				if("forumurl")
 					forumurl = value
+				if("discordurl")
+					discordurl = value
 				if("rulesurl")
 					rulesurl = value
 				if("githuburl")
