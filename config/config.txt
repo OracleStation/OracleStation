@@ -198,6 +198,9 @@ CHECK_RANDOMIZER
 ## Ban appeals URL - usually for a forum or wherever people should go to contact your admins.
 # BANAPPEALS http://justanotherday.example.com
 
+## Discord invite link
+# DISCORDURL https://discord.gg/TsjA9wp
+
 ## In-game features
 ##Toggle for having jobs load up from the .txt
 # LOAD_JOBS_FROM_TXT
