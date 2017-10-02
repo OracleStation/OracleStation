@@ -337,7 +337,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			any non-operatives in the area."
 	item = /obj/item/grenade/spawnergrenade/manhacks
 	cost = 5
-	surplus = 0 //this literally was able to spawn for traitors
+	surplus = 0 //self explanatory
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/dangerous/bioterrorfoam
