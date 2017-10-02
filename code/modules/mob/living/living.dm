@@ -461,7 +461,7 @@
 		s_active.close(src)
 
 /mob/living/movement_delay(ignorewalk = 0)
-	. = ..()
+	. = 0
 	if(isopenturf(loc) && !is_flying())
 		var/turf/open/T = loc
 		. += T.slowdown

@@ -439,6 +439,7 @@
 			name = "The Orion Trail"
 			desc = "Learn how our ancestors got to Orion, and have fun in the process!"
 
+		dat += "<P ALIGN=Right><a href='byond://?src=\ref[src];menu=1'>May They Rest In Peace</a></P>"
 	else if(event)
 		dat = eventdat
 	else if(gameStatus == ORION_STATUS_NORMAL)

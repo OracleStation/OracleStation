@@ -108,3 +108,10 @@
 		. = ..()
 	else
 		return QDEL_HINT_LETMELIVE
+
+/obj/structure/ladder/unbreakable/singularity_pull()
+	return
+
+/obj/structure/ladder/singularity_pull()
+	visible_message("<span class='danger'>[src] is torn to pieces by the gravitational pull!</span>")
+	qdel(src)
