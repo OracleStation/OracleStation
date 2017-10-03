@@ -224,7 +224,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			This deadly weapon has a massive 50-round magazine of devastating 1.95x129mm ammunition."
 	item = /obj/item/gun/ballistic/automatic/l6_saw
 	cost = 18
-	surplus = 25
+	surplus = 0
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/dangerous/grenadier
@@ -642,7 +642,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			The pen holds one dose of the mixture, and cannot be refilled. Note that before the target \
 			falls asleep, they will be able to move and act."
 	item = /obj/item/pen/sleepy
-	cost = 4 
+	cost = 4
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
 
 /datum/uplink_item/stealthy_weapons/soap
@@ -1073,7 +1073,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "Use to select the landing zone of your assault pod."
 	item = /obj/item/device/assault_pod
 	cost = 30
-	surplus = 0 //redundant since nukeops cannot order surplus.
+	surplus = 0 
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/device_tools/shield
@@ -1133,7 +1133,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	name = "Codespeak Manual"
 	desc = "Syndicate agents can be trained to use a series of codewords to convey complex information, which sounds like random concepts and drinks to anyone listening. This manual teaches you this Codespeak. You can also hit someone else with the manual in order to teach them. One use."
 	item = /obj/item/codespeak_manual
-	cost = 1 //lowered its outclassed by comms
+	cost = 2 
 	exclude_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/device_tools/codespeak_manual_deluxe
