@@ -269,7 +269,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			stations. Make a statement by roasting the filth in their own greed. Use with caution."
 	item = /obj/item/flamethrower/full/tank
 	cost = 4
-	surplus = 35
+	surplus = 40
 	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
 
 /datum/uplink_item/dangerous/sword
@@ -1312,7 +1312,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "A syringe gun that fires DNA injectors instead of normal syringes."
 	item = /obj/item/gun/syringe/dna
 	cost = 14
-	surplus = 5 //lowe chance, hope you can get a job change if you get this 
+	surplus = 5 //low chance, hope you can get a job change if you get this 
 	restricted_roles = list("Geneticist", "Chief Medical Officer")
 
 /datum/uplink_item/role_restricted/magillitis_serum
@@ -1320,7 +1320,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "A single-use autoinjector which contains an experimental serum that causes rapid muscular growth in basic primates."
 	item = /obj/item/reagent_containers/hypospray/magillitis
 	cost = 15
-	surplus = 0 //Hulk that doesnt wear off. Turns you into a monkey too.
+	surplus = 5 
 	restricted_roles = list("Geneticist", "Chief Medical Officer")
 
 /datum/uplink_item/role_restricted/pressure_mod
