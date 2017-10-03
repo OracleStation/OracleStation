@@ -215,7 +215,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			20-round magazine and is compatible with suppressors."
 	item = /obj/item/gun/ballistic/automatic/c20r
 	cost = 10
-	surplus = 0
+	surplus = 40
 	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
 
 /datum/uplink_item/dangerous/machinegun
@@ -224,7 +224,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			This deadly weapon has a massive 50-round magazine of devastating 1.95x129mm ammunition."
 	item = /obj/item/gun/ballistic/automatic/l6_saw
 	cost = 18
-	surplus = 0
+	surplus = 25
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/dangerous/grenadier
@@ -240,7 +240,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "Ranged fury, Syndicate style. Guaranteed to cause shock and awe or your TC back!"
 	item = /obj/item/gun/ballistic/automatic/sniper_rifle/syndicate
 	cost = 16
-	surplus = 0
+	surplus = 25
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/dangerous/bolt_action
@@ -248,7 +248,6 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "A horribly outdated bolt action weapon. You've got to be desperate to use this."
 	item = /obj/item/gun/ballistic/shotgun/boltaction
 	cost = 2
-	surplus = 0
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/dangerous/crossbow
@@ -270,7 +269,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			stations. Make a statement by roasting the filth in their own greed. Use with caution."
 	item = /obj/item/flamethrower/full/tank
 	cost = 4
-	surplus = 0 //Can be crafted.
+	surplus = 35
 	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
 
 /datum/uplink_item/dangerous/sword
@@ -337,7 +336,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			any non-operatives in the area."
 	item = /obj/item/grenade/spawnergrenade/manhacks
 	cost = 5
-	surplus = 0 //self explanatory
+	surplus = 35
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/dangerous/bioterrorfoam
@@ -347,7 +346,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			using additional spore toxin. Ensure suit is sealed before use."
 	item = /obj/item/grenade/chem_grenade/bioterrorfoam
 	cost = 5
-	surplus = 0
+	surplus = 35
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/dangerous/bioterror
@@ -367,7 +366,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			the BVAK solution."
 	item = /obj/item/storage/box/syndie_kit/tuberculosisgrenade
 	cost = 12
-	surplus = 0
+	surplus = 35
 	include_modes = list(/datum/game_mode/nuclear)
 
 // Ammunition
@@ -603,7 +602,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			deflecting all ranged weapon fire, but you also refuse to use dishonorable ranged weaponry."
 	item = /obj/item/sleeping_carp_scroll
 	cost = 17
-	surplus = 45 //less likely than the revolver so people dont see it in every other surplus crate
+	surplus = 0
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
 
 /datum/uplink_item/stealthy_weapons/cqc
@@ -643,7 +642,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			The pen holds one dose of the mixture, and cannot be refilled. Note that before the target \
 			falls asleep, they will be able to move and act."
 	item = /obj/item/pen/sleepy
-	cost = 4 //this is the not refillable one should port the refillable one over and raise price
+	cost = 4 
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
 
 /datum/uplink_item/stealthy_weapons/soap
@@ -692,7 +691,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "Fitted for use on any small caliber weapon with a threaded barrel, this suppressor will silence the \
 			shots of the weapon for increased stealth and superior ambushing capability."
 	item = /obj/item/suppressor
-	cost = 2 //was 3, considering it only silences your gun and increases its size it should be a little cheaper
+	cost = 3 
 	surplus = 10
 
 /datum/uplink_item/stealthy_weapons/pizza_bomb
@@ -715,7 +714,6 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "A traditional clusterbang grenade with a payload consisting entirely of Syndicate soap. Useful in any scenario!"
 	item = /obj/item/grenade/clusterbuster/soap
 	cost = 6
-	surplus = 30 //so you dont wind up with 3 of those in one surplus
 
 // Stealth Items
 /datum/uplink_item/stealthy_tools
@@ -751,7 +749,6 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			telecrystals normally."
 	item = /obj/item/cartridge/virus/frame
 	cost = 4
-	surplus = 10 //so you dont wind up with 3 of them in one crate besides its pretty powerfull if used right
 
 /datum/uplink_item/stealthy_tools/syndigaloshes/nuke
 	name = "Stealthy No-Slip Chameleon Shoes"
@@ -835,7 +832,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "It's just a normal disk. Visually it's identical to the real deal, but it won't hold up under closer scrutiny. Don't try to give this to us to complete your objective, we know better!"
 	item = /obj/item/disk/fakenucleardisk
 	cost = 1
-	surplus = 0 //absolutly useless this item will get metaed so easily since the captains pinpointer aims for the real deal
+	surplus = 1
 
 //Space Suits and Hardsuits
 /datum/uplink_item/suits
@@ -1085,7 +1082,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			against other attacks. Pair with an Energy Sword for a killer combination."
 	item = /obj/item/shield/energy
 	cost = 16
-	surplus = 0 //considering I am not absolutly certain if game mode exclusion affects this var better set it to 0
+	surplus = 20
 	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
 
 /datum/uplink_item/device_tools/medgun
