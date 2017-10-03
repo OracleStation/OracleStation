@@ -206,7 +206,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			quarter anti-personnel engagements."
 	item = /obj/item/gun/ballistic/automatic/shotgun/bulldog
 	cost = 8
-	surplus = 0
+	surplus = 40
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/dangerous/smg
