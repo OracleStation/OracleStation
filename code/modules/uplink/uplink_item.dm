@@ -665,6 +665,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "A highly experimental bioterror agent which creates dormant nodules to be etched into the grey matter of the brain. On death, these nodules take control of the dead body, causing limited revivification, along with slurred speech, aggression, and the ability to infect others with this agent."
 	item = /obj/item/storage/box/syndie_kit/romerol
 	cost = 25
+	surplus = 0 //this fucking thing could spawn in surplus previously
 	cant_discount = TRUE
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
 
@@ -690,7 +691,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "Fitted for use on any small caliber weapon with a threaded barrel, this suppressor will silence the \
 			shots of the weapon for increased stealth and superior ambushing capability."
 	item = /obj/item/suppressor
-	cost = 3
+	cost = 3 
 	surplus = 10
 
 /datum/uplink_item/stealthy_weapons/pizza_bomb
@@ -972,7 +973,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	name = "Briefcase Launchpad"
 	desc = "A briefcase containing a launchpad, a device able to teleport items and people to and from targets up to three tiles away from the briefcase. \
 			Also includes a remote control. Touch the briefcase with the remote to link it."
-	surplus = 0
+	surplus = 10 //was 0 before adjusted it so you have a slight chance of getting it
 	item = /obj/item/briefcase_launchpad
 	cost = 6
 
@@ -1034,6 +1035,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			sends you a small beacon that will teleport the larger beacon to your location upon activation."
 	item = /obj/item/device/sbeacondrop
 	cost = 14
+	surplus = 0 //to prevent engine releases without hijack
 	exclude_modes = list(/datum/game_mode/gang)
 
 /datum/uplink_item/device_tools/syndicate_bomb
@@ -1045,6 +1047,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			be defused, and some crew may attempt to do so."
 	item = /obj/item/device/sbeacondrop/bomb
 	cost = 11
+	surplus = 22 //bombs are expensive Syndicate probably wont give them out like candy in the equivalent of a trashbox.
 
 /datum/uplink_item/device_tools/syndicate_detonator
 	name = "Syndicate Detonator"
@@ -1070,7 +1073,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "Use to select the landing zone of your assault pod."
 	item = /obj/item/device/assault_pod
 	cost = 30
-	surplus = 0
+	surplus = 0 
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/device_tools/shield
@@ -1102,7 +1105,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "A telecrystal in its rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
 	item = /obj/item/stack/telecrystal
 	cost = 1
-	surplus = 0
+	surplus = 0 //makes sense
 	cant_discount = TRUE
 	// Don't add telecrystals to the purchase_log since
 	// it's just used to buy more items (including itself!)
@@ -1130,13 +1133,13 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	name = "Codespeak Manual"
 	desc = "Syndicate agents can be trained to use a series of codewords to convey complex information, which sounds like random concepts and drinks to anyone listening. This manual teaches you this Codespeak. You can also hit someone else with the manual in order to teach them. One use."
 	item = /obj/item/codespeak_manual
-	cost = 2
+	cost = 2 
 	exclude_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/device_tools/codespeak_manual_deluxe
 	name = "Deluxe Codespeak Manual"
 	desc = "Syndicate agents can be trained to use a series of codewords to convey complex information, which sounds like random concepts and drinks to anyone listening. This manual teaches you this Codespeak. You can also hit someone else with the manual in order to teach them. This is the deluxe edition, which has unlimited uses."
-	cost = 8
+	cost = 4 //Was 8 before lowered so Ops got a reason to buy it
 	include_modes = list(/datum/game_mode/nuclear)
 
 // Implants
@@ -1251,6 +1254,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	cost = 14
 	item = /obj/item/storage/box/hug/reverse_revolver
 	restricted_roles = list("Clown")
+	surplus = 0 //clown exclusive sorry other traitors
 
 /datum/uplink_item/role_restricted/mimery
 	name = "Guide to Advanced Mimery Series"
@@ -1258,7 +1262,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	cost = 12
 	item = /obj/item/storage/box/syndie_kit/mimery
 	restricted_roles = list("Mime")
-	surplus = 0
+	surplus = 0 //mime exclusive sorry clown
 
 /datum/uplink_item/role_restricted/ez_clean_bundle
 	name = "EZ Clean Grenade Bundle"
@@ -1277,7 +1281,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/his_grace
 	cost = 20
 	restricted_roles = list("Chaplain")
-	surplus = 0 //Fuck no.
+	surplus = 0 //Fuck no. Can we add a hijack only var when we have some time?
 
 /datum/uplink_item/role_restricted/pie_cannon
 	name = "Banana Cream Pie Cannon"
@@ -1293,7 +1297,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/clothing/under/color/grey/glorf
 	cost = 20
 	restricted_roles = list("Assistant")
-	surplus = 0
+	surplus = 0 
 
 /datum/uplink_item/role_restricted/haunted_magic_eightball
 	name = "Haunted Magic Eightball"
@@ -1308,6 +1312,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "A syringe gun that fires DNA injectors instead of normal syringes."
 	item = /obj/item/gun/syringe/dna
 	cost = 14
+	surplus = 5 //low chance, hope you can get a job change if you get this 
 	restricted_roles = list("Geneticist", "Chief Medical Officer")
 
 /datum/uplink_item/role_restricted/magillitis_serum
@@ -1315,6 +1320,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "A single-use autoinjector which contains an experimental serum that causes rapid muscular growth in basic primates."
 	item = /obj/item/reagent_containers/hypospray/magillitis
 	cost = 15
+	surplus = 5 
 	restricted_roles = list("Geneticist", "Chief Medical Officer")
 
 /datum/uplink_item/role_restricted/pressure_mod
@@ -1352,6 +1358,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "Strong flavor, dense smoke, infused with omnizine."
 	item = /obj/item/storage/fancy/cigarettes/cigpack_syndicate
 	cost = 2
+	surplus = 20
 
 /datum/uplink_item/badass/balloon
 	name = "Syndicate Balloon"
@@ -1377,7 +1384,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			but you never know. Contents are sorted to always be worth 50 TC."
 	item = /obj/structure/closet/crate
 	cost = 20
-	player_minimum = 25
+	player_minimum = 20 //lowered, the times you get screwed over by this thing happens far too often
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
 	cant_discount = TRUE
 
