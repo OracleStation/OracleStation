@@ -658,7 +658,6 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		if(1.0) //Main Menu
 			dat += "<div class='statusDisplay'>"
 			dat += "<h3>Main Menu:</h3><BR>"
-			dat += "<A href='?src=\ref[src];menu=1.1'>Current Research Levels</A><BR>"
 			if(t_disk)
 				dat += "<A href='?src=\ref[src];menu=1.2'>Disk Operations</A><BR>"
 			else if(d_disk)
@@ -678,18 +677,14 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			else
 				dat += "<span class='linkOff'>Circuit Construction Menu</span><BR>"
 			dat += "<A href='?src=\ref[src];menu=1.6'>Settings</A>"
-			dat += "</div>"
-
-		if(1.1) //Research viewer
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A>"
+			dat += "<div>"
 			dat += "<h3>Current Research Levels:</h3><BR><div class='statusDisplay'>"
 			for(var/v in files.known_tech)
 				var/datum/tech/T = files.known_tech[v]
 				if(T.level <= 0)
 					continue
-				dat += "[T.name]<BR>"
-				dat +=  "* Level: [T.level]<BR>"
-				dat +=  "* Summary: [T.desc]<HR>"
+				dat += "[T.name]: [T.level]<br>"
+			dat += "</div>"
 			dat += "</div>"
 
 		if(1.2) //Technology Disk Menu
@@ -699,9 +694,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 				dat += "<div class='statusDisplay'>"
 				if(t_disk.tech_stored[i])
 					var/datum/tech/tech = t_disk.tech_stored[i]
-					dat += "Name: [tech.name]<BR>"
-					dat += "Level: [tech.level]<BR>"
-					dat += "Description: [tech.desc]<BR>"
+					dat += "[tech.name]: [tech.level]"
 					dat += "Operations: <A href='?src=\ref[src];updt_tech=[i]'>Upload to Database</A><A href='?src=\ref[src];clear_tech=[i]'>Clear Slot</A>"
 				else
 					dat += "Empty Slot<BR>Operations: <A href='?src=\ref[src];menu=1.3;disk_slot=[i]'>Load Tech to Slot</A>"
