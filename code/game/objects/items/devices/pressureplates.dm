@@ -1,7 +1,7 @@
 
 /obj/item/device/pressure_plate
 	name = "pressure plate"
-	desc = "Useful for autismforts"
+	desc = "Useful in defensive applications which have nothing to do with mental disorders."
 	item_state = "flash"
 	icon_state = "pressureplate"
 	level = 1
