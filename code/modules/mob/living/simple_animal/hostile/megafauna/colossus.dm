@@ -277,29 +277,19 @@ Difficulty: Very Hard
 		WriteMemory()
 
 /obj/machinery/smartfridge/black_box/proc/WriteMemory()
-	var/json_file = file("data/npc_saves/Blackbox.json")
+	var/savefile/S = new /savefile("data/npc_saves/Blackbox.sav")
 	stored_items = list()
 
 	for(var/obj/O in (contents-component_parts))
 		stored_items += O.type
-	var/list/file_data = list()
-	file_data["data"] = stored_items
-	fdel(json_file)
-	WRITE_FILE(json_file, json_encode(file_data))
+
+	WRITE_FILE(S["stored_items"], stored_items)
 	memory_saved = TRUE
 
 /obj/machinery/smartfridge/black_box/proc/ReadMemory()
-	if(fexists("data/npc_saves/Blackbox.sav")) //legacy compatability to convert old format to new
-		var/savefile/S = new /savefile("data/npc_saves/Blackbox.sav")
-		S["stored_items"] >> stored_items
-		fdel("data/npc_saves/Blackbox.sav")
-	else
-		var/json_file = file("data/npc_saves/Blackbox.json")
-		if(!fexists(json_file))
-			return
-		var/list/json = list()
-		json = json_decode(file2text(json_file))
-		stored_items = json["data"]
+	var/savefile/S = new /savefile("data/npc_saves/Blackbox.sav")
+	S["stored_items"] 		>> stored_items
+
 	if(isnull(stored_items))
 		stored_items = list()
 
