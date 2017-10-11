@@ -289,10 +289,6 @@
 /obj/effect/mob_spawn/human/engineer/rig
 	outfit = /datum/outfit/job/engineer/gloved/rig
 
-/obj/effect/mob_spawn/human/clown
-	name = "Clown"
-	outfit = /datum/outfit/job/clown
-
 /obj/effect/mob_spawn/human/scientist
 	name = "Scientist"
 	outfit = /datum/outfit/job/scientist

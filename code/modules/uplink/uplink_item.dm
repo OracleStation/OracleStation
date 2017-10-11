@@ -1247,23 +1247,6 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	exclude_modes = list(/datum/game_mode/nuclear)
 	surplus = 0
 
-/datum/uplink_item/role_restricted/reverse_revolver
-	name = "Reverse Revolver"
-	desc = "A revolver that always fires at its user. \"Accidentally\" drop your weapon, then watch as the greedy corporate pigs blow their own brains all over the wall. \
-	The revolver itself is actually real. Only clumsy people, and clowns, can fire it normally. Comes in a box of hugs. Honk."
-	cost = 14
-	item = /obj/item/storage/box/hug/reverse_revolver
-	restricted_roles = list("Clown")
-	surplus = 0 //clown exclusive sorry other traitors
-
-/datum/uplink_item/role_restricted/mimery
-	name = "Guide to Advanced Mimery Series"
-	desc = "The classical two part series on how to further hone your mime skills. Upon studying the series, the user should be able to make 3x1 invisible walls, and shoot bullets out of their fingers. Obviously only works for Mimes."
-	cost = 12
-	item = /obj/item/storage/box/syndie_kit/mimery
-	restricted_roles = list("Mime")
-	surplus = 0 //mime exclusive sorry clown
-
 /datum/uplink_item/role_restricted/ez_clean_bundle
 	name = "EZ Clean Grenade Bundle"
 	desc = "A box with three cleaner grenades using the trademark Waffle Co. formula. Serves as a cleaner and causes acid damage to anyone standing nearby. The acid only affects carbon-based creatures."
@@ -1282,14 +1265,6 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	cost = 20
 	restricted_roles = list("Chaplain")
 	surplus = 0 //Fuck no. Can we add a hijack only var when we have some time?
-
-/datum/uplink_item/role_restricted/pie_cannon
-	name = "Banana Cream Pie Cannon"
-	desc = "A special pie cannon for a special clown, this gadget can hold up to 20 pies and automatically fabricates one every two seconds!"
-	cost = 10
-	item = /obj/item/pneumatic_cannon/pie/selfcharge
-	restricted_roles = list("Clown")
-	surplus = 0 //No fun unless you're the clown!
 
 /datum/uplink_item/role_restricted/ancient_jumpsuit
 	name = "Ancient Jumpsuit"

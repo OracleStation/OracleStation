@@ -148,14 +148,6 @@
 	access = list(ACCESS_JANITOR, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS)
 	minimal_access = list(ACCESS_JANITOR, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS)
 
-
-//Civilian
-
-/datum/job/clown/New()
-	..()
-	MAP_JOB_CHECK
-	supervisors = "nobody but yourself" //Honk
-
 MAP_REMOVE_JOB(hos)
 MAP_REMOVE_JOB(chief_engineer)
 MAP_REMOVE_JOB(qm)
