@@ -87558,10 +87558,6 @@
 /turf/closed/wall,
 /area/maintenance/starboard/fore)
 "dpP" = (
-/obj/machinery/door/airlock/maintenance/abandoned{
-	name = "Storage Room";
-	req_access_txt = "12"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
