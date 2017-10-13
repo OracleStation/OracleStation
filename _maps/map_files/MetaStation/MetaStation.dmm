@@ -8940,41 +8940,39 @@
 	},
 /area/security/main)
 "aru" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security{
-	name = "Interrogation Monitoring";
-	req_access = null;
-	req_access_txt = "0";
-	req_one_access_txt = "1;4"
-	},
-/turf/open/floor/plasteel/grimy,
-/area/security/main)
+/turf/closed/wall/r_wall,
+/area/security/brig/medbay)
 "arv" = (
-/turf/open/floor/plasteel/grimy,
-/area/security/main)
+/obj/machinery/power/apc{
+	areastring = "/area/maintenance/fore";
+	dir = 1;
+	name = "Brig Medbay APC";
+	pixel_y = 24
+	},
+/obj/structure/cable/yellow{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/structure/closet/secure_closet/brig_phys,
+/turf/open/floor/plasteel/whiteblue/corner,
+/area/security/brig/medbay)
 "arw" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/plasteel/grimy,
-/area/security/main)
+/obj/structure/table/glass,
+/obj/machinery/computer/med_data/laptop,
+/turf/open/floor/plasteel/whiteblue/side,
+/area/security/brig/medbay)
 "arx" = (
-/obj/item/phone{
-	desc = "Supposedly a direct line to Nanotrasen Central Command. It's not even plugged in.";
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/cigbutt/cigarbutt{
-	pixel_x = 5;
-	pixel_y = -1
-	},
-/obj/structure/table/wood,
 /obj/machinery/firealarm{
 	dir = 4;
 	pixel_x = 28
 	},
-/turf/open/floor/plasteel/grimy,
-/area/security/main)
+/obj/structure/table/glass,
+/obj/item/storage/box/gloves,
+/obj/item/storage/box/masks,
+/turf/open/floor/plasteel/whiteblue/corner{
+	dir = 8
+	},
+/area/security/brig/medbay)
 "ary" = (
 /obj/structure/rack,
 /obj/item/clothing/suit/hazardvest,
@@ -9784,38 +9782,32 @@
 	},
 /area/security/main)
 "asM" = (
-/obj/structure/chair,
-/turf/open/floor/plasteel/grimy,
-/area/security/main)
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/whiteblue/side{
+	dir = 4
+	},
+/area/security/brig/medbay)
 "asN" = (
-/obj/structure/chair,
-/obj/machinery/computer/security/telescreen{
-	desc = "Used for watching proceedings in the interrogation room.";
-	dir = 1;
-	layer = 4;
-	name = "interrogation monitor";
-	network = list("interrogation");
-	pixel_y = -30
-	},
-/turf/open/floor/plasteel/grimy,
-/area/security/main)
+/obj/effect/landmark/start/brig_phys,
+/turf/open/floor/plasteel/white,
+/area/security/brig/medbay)
 "asO" = (
-/obj/item/paper_bin{
-	pixel_x = -3;
-	pixel_y = 7
+/obj/structure/rack{
+	dir = 8;
+	layer = 2.9;
+	pixel_y = 2
 	},
-/obj/structure/table/wood,
-/obj/item/device/radio/intercom{
-	anyai = 1;
-	broadcasting = 0;
-	freerange = 1;
-	frequency = 1424;
-	listening = 1;
-	name = "Interrogation Intercom";
-	pixel_y = -31
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/turf/open/floor/plasteel/whiteblue/side{
+	dir = 8
 	},
-/turf/open/floor/plasteel/grimy,
-/area/security/main)
+/area/security/brig/medbay)
 "asP" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
@@ -10454,9 +10446,18 @@
 /turf/open/floor/plating,
 /area/security/main)
 "atZ" = (
-/obj/effect/spawner/structure/window/reinforced/tinted,
-/turf/open/floor/plating,
-/area/security/main)
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plasteel/whiteblue/side{
+	dir = 4
+	},
+/area/security/brig/medbay)
 "aua" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable/yellow{
@@ -11051,8 +11052,14 @@
 /area/security/brig)
 "avj" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
-/turf/open/floor/plasteel/black,
-/area/security/brig)
+/obj/structure/table/glass,
+/obj/item/storage/firstaid,
+/obj/item/storage/firstaid/brute,
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/toxin,
+/turf/open/floor/plasteel/whiteblue/corner,
+/area/security/brig/medbay)
 "avk" = (
 /turf/open/floor/plasteel/black,
 /area/security/brig)
@@ -11795,14 +11802,29 @@
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable/yellow{
+	icon_state = "4-8";
+	d1 = 4;
+	d2 = 8
+	},
 /turf/open/floor/plasteel,
 /area/security/brig)
 "aws" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8";
+	d1 = 4;
+	d2 = 8
+	},
 /turf/open/floor/plasteel,
 /area/security/brig)
 "awt" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 5
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8";
+	d1 = 4;
+	d2 = 8
 	},
 /turf/open/floor/plasteel/red/side{
 	dir = 4
@@ -11811,7 +11833,7 @@
 "awu" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security{
-	name = "Interrogation";
+	name = "Brig Medbay";
 	req_access = null;
 	req_access_txt = "63";
 	req_one_access_txt = "0"
@@ -11819,25 +11841,37 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel/black,
-/area/security/brig)
+/obj/structure/cable/yellow{
+	icon_state = "4-8";
+	d1 = 4;
+	d2 = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/security/brig/medbay)
 "awv" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
 	},
-/turf/open/floor/plasteel/black,
-/area/security/brig)
-"aww" = (
-/obj/structure/chair{
+/obj/structure/cable/yellow{
+	icon_state = "4-8";
+	d1 = 4;
+	d2 = 8
+	},
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 4
 	},
-/turf/open/floor/plasteel/black,
-/area/security/brig)
+/area/security/brig/medbay)
+"aww" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel/white,
+/area/security/brig/medbay)
 "awx" = (
-/obj/structure/table,
-/obj/item/device/flashlight/lamp,
-/turf/open/floor/plasteel/black,
-/area/security/brig)
+/turf/open/floor/plasteel/white,
+/area/security/brig/medbay)
 "awy" = (
 /obj/structure/chair{
 	dir = 8
@@ -11850,8 +11884,13 @@
 	dir = 8;
 	network = list("interrogation")
 	},
-/turf/open/floor/plasteel/black,
-/area/security/brig)
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/turf/open/floor/plasteel/whiteblue/side{
+	dir = 8
+	},
+/area/security/brig/medbay)
 "awA" = (
 /obj/structure/closet/crate{
 	icon_state = "crateopen";
@@ -12340,22 +12379,31 @@
 	dir = 4
 	},
 /turf/closed/wall/r_wall,
-/area/security/brig)
+/area/security/brig/medbay)
 "axx" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel/black,
-/area/security/brig)
-"axy" = (
-/obj/structure/chair{
+/obj/machinery/airalarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/turf/open/floor/plasteel/whiteblue/corner{
 	dir = 4
 	},
+/area/security/brig/medbay)
+"axy" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel/black,
-/area/security/brig)
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/turf/open/floor/plasteel/whiteblue/side{
+	dir = 1
+	},
+/area/security/brig/medbay)
 "axz" = (
 /obj/structure/table,
 /obj/item/folder/red,
@@ -12375,20 +12423,25 @@
 /turf/open/floor/plasteel/black,
 /area/security/brig)
 "axA" = (
-/obj/structure/chair{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel/black,
-/area/security/brig)
+/obj/machinery/light,
+/turf/open/floor/plasteel/whiteblue/side{
+	dir = 1
+	},
+/area/security/brig/medbay)
 "axB" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/open/floor/plasteel/black,
-/area/security/brig)
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/turf/open/floor/plasteel/whiteblue/corner{
+	dir = 1
+	},
+/area/security/brig/medbay)
 "axC" = (
 /turf/closed/wall,
 /area/crew_quarters/toilet/restrooms)
@@ -87505,7 +87558,7 @@
 /turf/closed/wall,
 /area/maintenance/starboard/fore)
 "dpP" = (
-/obj/machinery/door/airlock/maintenance{
+/obj/machinery/door/airlock/maintenance/abandoned{
 	name = "Storage Room";
 	req_access_txt = "12"
 	},
@@ -90798,6 +90851,122 @@
 	dir = 1
 	},
 /area/construction/mining/aux_base)
+"dDL" = (
+/obj/docking_port/stationary{
+	dheight = 9;
+	dir = 2;
+	dwidth = 5;
+	height = 24;
+	id = "syndicate_nw";
+	name = "northwest of station";
+	turf_type = /turf/open/space;
+	width = 18
+	},
+/turf/open/space/basic,
+/area/space)
+"dDM" = (
+/obj/effect/decal/cleanable/dirt{
+	desc = "A thin layer of dust coating the floor.";
+	name = "dust"
+	},
+/obj/effect/decal/cleanable/dirt{
+	desc = "A thin layer of dust coating the floor.";
+	name = "dust"
+	},
+/obj/structure/chair/office/light{
+	dir = 1
+	},
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/abandoned)
+"dDN" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt{
+	desc = "A thin layer of dust coating the floor.";
+	name = "dust"
+	},
+/obj/structure/chair/office/light,
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/abandoned)
+"dDO" = (
+/obj/effect/decal/cleanable/dirt{
+	desc = "A thin layer of dust coating the floor.";
+	name = "dust"
+	},
+/obj/structure/table,
+/obj/item/device/megaphone,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/abandoned)
+"dDP" = (
+/turf/closed/wall/r_wall,
+/area/security/brig/medbay)
+"dDQ" = (
+/turf/closed/wall/r_wall,
+/area/security/brig/medbay)
+"dDR" = (
+/turf/closed/wall/r_wall,
+/area/security/brig/medbay)
+"dDS" = (
+/turf/closed/wall/r_wall,
+/area/security/brig/medbay)
+"dDT" = (
+/turf/closed/wall/r_wall,
+/area/security/brig/medbay)
+"dDU" = (
+/turf/closed/wall/r_wall,
+/area/security/brig/medbay)
+"dDV" = (
+/obj/structure/table/glass,
+/obj/item/storage/belt/medical,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/clothing/neck/stethoscope,
+/turf/open/floor/plasteel/whiteblue/side,
+/area/security/brig/medbay)
+"dDW" = (
+/turf/open/floor/plasteel/white,
+/area/security/brig/medbay)
+"dDX" = (
+/turf/open/floor/plasteel/white,
+/area/security/brig/medbay)
+"dDY" = (
+/turf/open/floor/plasteel/white,
+/area/security/brig/medbay)
+"dDZ" = (
+/obj/item/device/radio/intercom{
+	broadcasting = 0;
+	freerange = 1;
+	listening = 1;
+	name = "Common Channel";
+	pixel_x = 27
+	},
+/turf/open/floor/plasteel/whiteblue/side{
+	dir = 8
+	},
+/area/security/brig/medbay)
+"dEa" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/whiteblue/side{
+	dir = 6
+	},
+/area/security/brig/medbay)
+"dEb" = (
+/turf/open/floor/plasteel/white,
+/area/security/brig/medbay)
+"dEc" = (
+/obj/machinery/holopad,
+/turf/open/floor/plasteel/white,
+/area/security/brig/medbay)
+"dEd" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel/whiteblue/side{
+	dir = 8
+	},
+/area/security/brig/medbay)
 
 (1,1,1) = {"
 aaa
@@ -95706,12 +95875,12 @@ dkp
 dkp
 dky
 aae
-dkx
+cTZ
 cTJ
-dkf
-dkf
+dhm
+dhm
 cUy
-dkf
+dhm
 dbx
 cUK
 cUO
@@ -95957,11 +96126,11 @@ aaa
 aaa
 aaa
 aae
-dkf
-dkf
-dkf
-dkf
-dkf
+dhm
+dhm
+dhm
+dhm
+dhm
 dkE
 cUk
 cTJ
@@ -96214,11 +96383,11 @@ cTM
 aaa
 aaa
 aae
-dkf
-dkf
-dkf
-dkf
-dkf
+dhm
+dhm
+dhm
+dhm
+dhm
 aae
 cUc
 cTJ
@@ -96474,7 +96643,7 @@ aae
 cTW
 cTY
 cTI
-dkx
+cTZ
 dkz
 aae
 cUl
@@ -96988,10 +97157,10 @@ dki
 dkg
 dkg
 cUg
-dkf
-dkf
-dkf
-dkf
+dhm
+dhm
+dhm
+dhm
 dkI
 dkM
 dku
@@ -97239,13 +97408,13 @@ cRQ
 bPB
 cTJ
 cTN
-dkf
+dhm
 dka
 dka
 dka
-dkf
+dhm
 cTU
-dkf
+dhm
 dka
 dka
 dka
@@ -97502,10 +97671,10 @@ dkk
 cTS
 cTS
 cUg
-dkf
-dkf
-dkf
-dkf
+dhm
+dhm
+dhm
+dhm
 dkK
 dkM
 dku
@@ -98016,7 +98185,7 @@ aaa
 aaa
 aae
 dkt
-dkf
+dhm
 dkB
 aae
 cUo
@@ -98273,7 +98442,7 @@ aaa
 aaa
 cTl
 dku
-dkf
+dhm
 dkB
 aae
 cUn
@@ -98530,7 +98699,7 @@ aaa
 aaa
 cTv
 dkv
-dkf
+dhm
 dkD
 dke
 cUq
@@ -98538,7 +98707,7 @@ cTJ
 dkT
 dle
 cUB
-dkf
+dhm
 abd
 cUK
 cUP
@@ -98792,10 +98961,10 @@ aae
 aae
 cUp
 cTJ
-dkf
-dkf
+dhm
+dhm
 dlf
-dkf
+dhm
 dbA
 cUK
 cUO
@@ -122499,7 +122668,7 @@ apZ
 art
 asL
 aqa
-ajm
+aru
 awu
 axw
 ayF
@@ -122752,14 +122921,14 @@ akW
 amp
 aiJ
 aoJ
-aqa
+dDP
 aru
-aqa
-aqa
+aru
+aru
 avj
 awv
 axx
-ayJ
+ayF
 ayJ
 ayJ
 ayJ
@@ -123009,14 +123178,14 @@ akX
 amq
 aiJ
 aoK
-aqa
+dDQ
 arv
 asM
 atZ
-avk
+dEa
 aww
 axy
-ahx
+aru
 azW
 aBq
 aCy
@@ -123266,14 +123435,14 @@ akY
 amr
 anD
 aoL
-ajD
-arv
+dDR
+dDV
 asN
-atZ
-avk
+dDX
+dEb
 awx
-axz
-ahx
+axy
+aru
 azX
 dsg
 axC
@@ -123523,14 +123692,14 @@ akZ
 ams
 aey
 aoM
-ajD
+dDS
 arw
-asM
-atZ
-avk
-awy
+dDW
+dDY
+dEc
+awx
 axA
-ahx
+aru
 dhz
 aoP
 axC
@@ -123780,14 +123949,14 @@ aey
 aey
 aey
 aoN
-ajD
+dDT
 arx
 asO
-ajD
-avk
+dDZ
+dEd
 awz
 axB
-ahx
+aru
 azY
 aoP
 axC
@@ -124037,14 +124206,14 @@ ala
 amt
 agq
 dhr
-ajD
-ajD
-ajD
-ajD
-ahx
-ahx
-ahx
-ahx
+dDU
+aru
+aru
+aru
+aru
+aru
+aru
+aru
 aGE
 aBr
 aCz
@@ -129953,7 +130122,7 @@ arI
 atd
 bai
 ate
-dpP
+dqM
 axP
 dnS
 axY
@@ -131750,7 +131919,7 @@ ape
 dnS
 arL
 ate
-dpP
+dqM
 avt
 awJ
 axS
