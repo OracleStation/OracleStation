@@ -997,6 +997,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Brig"
 	icon_state = "brig"
 
+/area/security/brig/medbay
+	name = "Brig Medbay"
+	icon_state = "medbay"
+
 /area/security/courtroom
 	name = "Courtroom"
 	icon_state = "courtroom"
