@@ -14,21 +14,16 @@
 /obj/item/clothing/suit/armor/vest
 	name = "armor vest"
 	desc = "A slim Type I armored vest that provides decent protection against most types of damage."
-	icon_state = "armoralt"
-	item_state = "armoralt"
-	blood_overlay_type = "armor"
-	dog_fashion = /datum/dog_fashion/back
-
-/obj/item/clothing/suit/armor/vest/alt
-	desc = "A Type I armored vest that provides decent protection against most types of damage."
 	icon_state = "armor"
 	item_state = "armor"
+	blood_overlay_type = "armor"
+	dog_fashion = /datum/dog_fashion/back
 
 /obj/item/clothing/suit/armor/vest/old
 	name = "degrading armor vest"
 	desc = "Older generation Type 1 armored vest. Due to degradation over time the vest is far less maneuverable to move in."
-	icon_state = "armor"
-	item_state = "armor"
+	icon_state = "armor-old"
+	item_state = "armor-old"
 	slowdown = 1
 
 /obj/item/clothing/suit/armor/vest/blueshirt

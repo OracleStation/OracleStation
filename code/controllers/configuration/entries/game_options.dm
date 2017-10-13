@@ -108,6 +108,8 @@ CONFIG_DEF(number/shuttle_refuel_delay)
 	value = 12000
 	min_val = 0
 
+CONFIG_DEF(flag/no_credits_round_end)
+
 CONFIG_DEF(flag/show_game_type_odds)	//if set this allows players to see the odds of each roundtype on the get revision screen
 
 CONFIG_DEF(flag/join_with_mutant_race)	//players can choose their mutant race before joining the game
