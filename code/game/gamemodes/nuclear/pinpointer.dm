@@ -1,7 +1,7 @@
-/obj/item/weapon/pinpointer/nuke
+/obj/item/pinpointer/nuke
 	var/mode = TRACK_NUKE_DISK
 
-/obj/item/weapon/pinpointer/nuke/examine(mob/user)
+/obj/item/pinpointer/nuke/examine(mob/user)
 	..()
 	var/msg = "Its tracking indicator reads "
 	switch(mode)
@@ -18,7 +18,7 @@
 		if(bomb.timing)
 			to_chat(user, "Extreme danger. Arming signal detected. Time remaining: [bomb.get_time_left()]")
 
-/obj/item/weapon/pinpointer/nuke/process()
+/obj/item/pinpointer/nuke/process()
 	..()
 	if(active) // If shit's going down
 		for(var/obj/machinery/nuclearbomb/bomb in GLOB.nuke_list)
@@ -30,7 +30,7 @@
 						var/mob/living/L = loc
 						to_chat(L, "<span class='userdanger'>Your [name] vibrates and lets out a tinny alarm. Uh oh.</span>")
 
-/obj/item/weapon/pinpointer/nuke/scan_for_target()
+/obj/item/pinpointer/nuke/scan_for_target()
 	target = null
 	switch(mode)
 		if(TRACK_NUKE_DISK)
@@ -49,7 +49,7 @@
 			target = SSshuttle.getShuttle("syndicate")
 	..()
 
-/obj/item/weapon/pinpointer/nuke/proc/switch_mode_to(new_mode)
+/obj/item/pinpointer/nuke/proc/switch_mode_to(new_mode)
 	if(isliving(loc))
 		var/mob/living/L = loc
 		to_chat(L, "<span class='userdanger'>Your [name] beeps as it reconfigures its tracking algorithms.</span>")
@@ -57,17 +57,17 @@
 	mode = new_mode
 	scan_for_target()
 
-/obj/item/weapon/pinpointer/nuke/syndicate // Syndicate pinpointers automatically point towards the infiltrator once the nuke is active.
+/obj/item/pinpointer/nuke/syndicate // Syndicate pinpointers automatically point towards the infiltrator once the nuke is active.
 	name = "syndicate pinpointer"
 	desc = "A handheld tracking device that locks onto certain signals. It's configured to switch tracking modes once it detects the activation signal of a nuclear device."
 	icon_state = "pinpointer_syndicate"
 
-/obj/item/weapon/pinpointer/syndicate_cyborg // Cyborg pinpointers just look for a random operative.
+/obj/item/pinpointer/syndicate_cyborg // Cyborg pinpointers just look for a random operative.
 	name = "cyborg syndicate pinpointer"
 	desc = "An integrated tracking device, jury-rigged to search for living Syndicate operatives."
-	flags = NODROP
+	flags_1 = NODROP_1
 
-/obj/item/weapon/pinpointer/syndicate_cyborg/scan_for_target()
+/obj/item/pinpointer/syndicate_cyborg/scan_for_target()
 	target = null
 	var/list/possible_targets = list()
 	var/turf/here = get_turf(src)
@@ -80,26 +80,12 @@
 		target = closest_operative
 	..()
 
-/obj/item/weapon/pinpointer/crew
+/obj/item/pinpointer/crew
 	name = "crew pinpointer"
 	desc = "A handheld tracking device that points to crew suit sensors."
 	icon_state = "pinpointer_crew"
 
-/obj/item/weapon/pinpointer/crew/proc/trackable(mob/living/carbon/human/H)
-	var/turf/here = get_turf(src)
-	if((H.z == 0 || H.z == here.z) && istype(H.w_uniform, /obj/item/clothing/under))
-		var/obj/item/clothing/under/U = H.w_uniform
-
-		// Suit sensors must be on maximum.
-		if(!U.has_sensor || U.sensor_mode < SENSOR_COORDS)
-			return FALSE
-
-		var/turf/there = get_turf(H)
-		return (H.z != 0 || (there && there.z == H.z))
-
-	return FALSE
-
-/obj/item/weapon/pinpointer/crew/attack_self(mob/living/user)
+/obj/item/pinpointer/crew/attack_self(mob/living/user)
 	if(active)
 		active = FALSE
 		user.visible_message("<span class='notice'>[user] deactivates their pinpointer.</span>", "<span class='notice'>You deactivate your pinpointer.</span>")
@@ -118,7 +104,7 @@
 
 		var/name = "Unknown"
 		if(H.wear_id)
-			var/obj/item/weapon/card/id/I = H.wear_id.GetID()
+			var/obj/item/card/id/I = H.wear_id.GetID()
 			name = I.registered_name
 
 		while(name in name_counts)
@@ -142,7 +128,7 @@
 	START_PROCESSING(SSfastprocess, src)
 	update_pointer_overlay()
 
-/obj/item/weapon/pinpointer/crew/scan_for_target()
+/obj/item/pinpointer/crew/scan_for_target()
 	if(target)
 		if(ishuman(target))
 			var/mob/living/carbon/human/H = target
@@ -151,7 +137,7 @@
 	if(!target)
 		active = FALSE
 
-/obj/item/weapon/pinpointer/process()
+/obj/item/pinpointer/process()
 	if(!active)
 		STOP_PROCESSING(SSfastprocess, src)
 		return
