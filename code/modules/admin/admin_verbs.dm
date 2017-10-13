@@ -397,7 +397,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	set name = "Unban Panel"
 	set category = "Admin"
 	if(holder)
-		if(config.ban_legacy_system)
+		if(CONFIG_GET(flag/ban_legacy_system))
 			holder.unbanpanel()
 		else
 			holder.DB_ban_panel()

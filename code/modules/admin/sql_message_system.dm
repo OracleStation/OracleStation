@@ -33,8 +33,9 @@
 	if(!timestamp)
 		timestamp = SQLtime()
 	if(!server)
-		if (config && config.server_sql_name)
-			server = config.server_sql_name
+		var/ssqlname = CONFIG_GET(string/serversqlname)
+		if (ssqlname)
+			server = ssqlname
 	server = sanitizeSQL(server)
 	if(isnull(secret))
 		switch(alert("Hide note from being viewed by players?", "Secret note?","Yes","No","Cancel"))
@@ -329,8 +330,9 @@ proc/get_message_output(type, target_ckey)
 		var/notetext
 		notesfile >> notetext
 		var/server
-		if(config && config.server_sql_name)
-			server = config.server_sql_name
+		var/ssqlname = CONFIG_GET(string/serversqlname)
+		if (ssqlname)
+			server = ssqlname
 		var/regex/note = new("^(\\d{2}-\\w{3}-\\d{4}) \\| (.+) ~(\\w+)$", "i")
 		note.Find(notetext)
 		var/timestamp = note.group[1]

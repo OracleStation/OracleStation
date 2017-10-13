@@ -32,10 +32,10 @@
 /datum/admins/proc/makeTraitors()
 	var/datum/game_mode/traitor/temp = new
 
-	if(config.protect_roles_from_antagonist)
+	if(CONFIG_GET(flag/protect_roles_from_antagonist))
 		temp.restricted_jobs += temp.protected_jobs
 
-	if(config.protect_assistant_from_antagonist)
+	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
 		temp.restricted_jobs += "Assistant"
 
 	var/list/mob/living/carbon/human/candidates = list()
@@ -68,10 +68,10 @@
 /datum/admins/proc/makeChanglings()
 
 	var/datum/game_mode/changeling/temp = new
-	if(config.protect_roles_from_antagonist)
+	if(CONFIG_GET(flag/protect_roles_from_antagonist))
 		temp.restricted_jobs += temp.protected_jobs
 
-	if(config.protect_assistant_from_antagonist)
+	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
 		temp.restricted_jobs += "Assistant"
 
 	var/list/mob/living/carbon/human/candidates = list()
@@ -101,10 +101,10 @@
 /datum/admins/proc/makeRevs()
 
 	var/datum/game_mode/revolution/temp = new
-	if(config.protect_roles_from_antagonist)
+	if(CONFIG_GET(flag/protect_roles_from_antagonist))
 		temp.restricted_jobs += temp.protected_jobs
 
-	if(config.protect_assistant_from_antagonist)
+	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
 		temp.restricted_jobs += "Assistant"
 
 	var/list/mob/living/carbon/human/candidates = list()
@@ -143,10 +143,10 @@
 
 /datum/admins/proc/makeCult()
 	var/datum/game_mode/cult/temp = new
-	if(config.protect_roles_from_antagonist)
+	if(CONFIG_GET(flag/protect_roles_from_antagonist))
 		temp.restricted_jobs += temp.protected_jobs
 
-	if(config.protect_assistant_from_antagonist)
+	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
 		temp.restricted_jobs += "Assistant"
 
 	var/list/mob/living/carbon/human/candidates = list()
@@ -176,10 +176,10 @@
 
 /datum/admins/proc/makeClockCult()
 	var/datum/game_mode/clockwork_cult/temp = new
-	if(config.protect_roles_from_antagonist)
+	if(CONFIG_GET(flag/protect_roles_from_antagonist))
 		temp.restricted_jobs += temp.protected_jobs
 
-	if(config.protect_assistant_from_antagonist)
+	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
 		temp.restricted_jobs += "Assistant"
 
 	var/list/mob/living/carbon/human/candidates = list()
@@ -341,7 +341,7 @@
 			missiondesc += "<BR><B>Your Mission</B>: [mission]"
 			to_chat(Commando, missiondesc)
 
-			if(config.enforce_human_authority)
+			if(CONFIG_GET(flag/enforce_human_authority))
 				Commando.set_species(/datum/species/human)
 
 			//Logging and cleanup
@@ -362,10 +362,10 @@
 /datum/admins/proc/makeGangsters()
 
 	var/datum/game_mode/gang/temp = new
-	if(config.protect_roles_from_antagonist)
+	if(CONFIG_GET(flag/protect_roles_from_antagonist))
 		temp.restricted_jobs += temp.protected_jobs
 
-	if(config.protect_assistant_from_antagonist)
+	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
 		temp.restricted_jobs += "Assistant"
 
 	var/list/mob/living/carbon/human/candidates = list()
@@ -420,7 +420,7 @@
 		missionobj.completed = 1
 		newmob.mind.objectives += missionobj
 
-		if(config.enforce_human_authority)
+		if(CONFIG_GET(flag/enforce_human_authority))
 			newmob.set_species(/datum/species/human)
 
 		//Greet the official
@@ -535,7 +535,7 @@
 			missiondesc += "<BR><B>Your Mission</B>: [mission]"
 			to_chat(ERTOperative, missiondesc)
 
-			if(config.enforce_human_authority)
+			if(CONFIG_GET(flag/enforce_human_authority))
 				ERTOperative.set_species(/datum/species/human)
 
 			//Logging and cleanup

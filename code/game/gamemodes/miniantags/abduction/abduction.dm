@@ -25,7 +25,7 @@
 	to_chat(world, "<b>Crew</b> - don't get abducted and stop the abductors.")
 
 /datum/game_mode/abduction/pre_setup()
-	abductor_teams = max(1, min(max_teams,round(num_players()/config.abductor_scaling_coeff)))
+	abductor_teams = max(1, min(max_teams,round(num_players()/CONFIG_GET(number/abductor_scaling_coeff))))
 	var/possible_teams = max(1,round(antag_candidates.len / 2))
 	abductor_teams = min(abductor_teams,possible_teams)
 
