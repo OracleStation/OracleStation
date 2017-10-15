@@ -443,6 +443,12 @@
 	message_param = "beeps at %t."
 	sound = 'sound/machines/twobeep.ogg'
 
+/datum/emote/sound/snap
+	key = "snap"
+	key_third_person = "snaps"
+	message = "snaps their fingers."
+	sound = 'sound/effects/fingersnap.ogg'
+
 /datum/emote/living/spin
 	key = "spin"
 	key_third_person = "spins"
