@@ -275,6 +275,16 @@
 	key_third_person = "smugs"
 	message = "grins smugly."
 
+/datum/emote/living/snap
+	key = "snap"
+	key_third_person = "snaps"
+	message = "snaps their fingers."
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/snap/run_emote(mob/user, params)
+	if(..())
+		playsound(user.loc, 'sound/effects/fingersnap.ogg', 50)
+
 /datum/emote/living/sniff
 	key = "sniff"
 	key_third_person = "sniffs"
@@ -442,12 +452,6 @@
 	message = "beeps."
 	message_param = "beeps at %t."
 	sound = 'sound/machines/twobeep.ogg'
-
-/datum/emote/sound/snap
-	key = "snap"
-	key_third_person = "snaps"
-	message = "snaps their fingers."
-	sound = 'sound/effects/fingersnap.ogg'
 
 /datum/emote/living/spin
 	key = "spin"
