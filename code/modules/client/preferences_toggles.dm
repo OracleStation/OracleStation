@@ -78,6 +78,16 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_ghost_pda)()
 /datum/verbs/menu/Settings/Ghost/chatterbox/toggle_ghost_pda/Get_checked(client/C)
 	return C.prefs.chat_toggles & CHAT_GHOSTPDA
 
+TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_anon_dchat)()
+	set name = "Toggle Anon Dchat"
+	set category = "Preferences"
+	set desc = "Toggle Anonymouse Dead Chat"
+	usr.client.prefs.chat_toggles ^= CHAT_ANONDCHAT
+	to_chat(usr, "You will now [(usr.client.prefs.chat_toggles & CHAT_ANONDCHAT) ? "hide your Ckey when talking in dead chat" : "show your Ckey when talking in dead chat"].")
+	SSblackbox.add_details("preferences_verb","Toggle Anon Dchat|[usr.client.prefs.chat_toggles & CHAT_ANONDCHAT]") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc! //social experiment, increase the generation whenever you copypaste this shamelessly GENERATION 2
+/datum/verbs/menu/Settings/Ghost/chatterbox/toggle_anon_dchat/Get_checked(client/C)
+	return C.prefs.chat_toggles & CHAT_ANONDCHAT
+
 /datum/verbs/menu/Settings/Ghost/chatterbox/Events
 	name = "Events"
 
