@@ -67,6 +67,16 @@
 	key_third_person = "shrugs"
 	message = "shrugs."
 
+/datum/emote/living/carbon/human/snap
+	key = "snap"
+	key_third_person = "snaps"
+	message = "snaps their fingers."
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/carbon/human/snap/run_emote(mob/user, params)
+	if(..())
+		playsound(user.loc, 'sound/effects/fingersnap.ogg', 50)
+
 /datum/emote/living/carbon/human/wag
 	key = "wag"
 	key_third_person = "wags"
