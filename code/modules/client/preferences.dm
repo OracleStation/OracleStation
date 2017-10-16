@@ -408,6 +408,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Ghost whispers:</b> <a href='?_src_=prefs;preference=ghost_whispers'>[(chat_toggles & CHAT_GHOSTWHISPER) ? "All Speech" : "Nearest Creatures"]</a><br>"
 			dat += "<b>Ghost radio:</b> <a href='?_src_=prefs;preference=ghost_radio'>[(chat_toggles & CHAT_GHOSTRADIO) ? "Yes" : "No"]</a><br>"
 			dat += "<b>Ghost pda:</b> <a href='?_src_=prefs;preference=ghost_pda'>[(chat_toggles & CHAT_GHOSTPDA) ? "All Messages" : "Nearest Creatures"]</a><br>"
+			dat += "<b>Anonymous Dead Chat</b> <a href='?_src_=prefs;preference=anon_dchat'>[(chat_toggles & CHAT_ANONDCHAT) ? "Anonymous" : "Visible"]</a><br>"
 			dat += "<b>Pull requests:</b> <a href='?_src_=prefs;preference=pull_requests'>[(chat_toggles & CHAT_PULLR) ? "Yes" : "No"]</a><br>"
 			dat += "<b>Midround Antagonist:</b> <a href='?_src_=prefs;preference=allow_midround_antag'>[(toggles & MIDROUND_ANTAG) ? "Yes" : "No"]</a><br>"
 			if(config.allow_Metadata)
@@ -1261,6 +1262,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("ghost_pda")
 					chat_toggles ^= CHAT_GHOSTPDA
+
+				if("anon_dchat")
+					chat_toggles ^= CHAT_ANONDCHAT
 
 				if("pull_requests")
 					chat_toggles ^= CHAT_PULLR
