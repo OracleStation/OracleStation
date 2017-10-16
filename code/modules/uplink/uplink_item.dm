@@ -1384,7 +1384,6 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			but you never know. Contents are sorted to always be worth 50 TC."
 	item = /obj/structure/closet/crate
 	cost = 20
-	player_minimum = 20 //lowered, the times you get screwed over by this thing happens far too often
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
 	cant_discount = TRUE
 
