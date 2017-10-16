@@ -8,6 +8,8 @@
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/fly
 	disliked_food = null
 	liked_food = GROSS
+	examine_text = "a Fly Person"
+	species_text_color = "#2e2e2e"
 
 /datum/species/fly/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
 	if(chem.id == "pestkiller")

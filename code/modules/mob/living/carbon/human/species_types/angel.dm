@@ -10,6 +10,8 @@
 	blacklisted = 1
 	limbs_id = "human"
 	skinned_type = /obj/item/stack/sheet/animalhide/human
+	examine_text = "an Angel"
+	species_text_color = "#e2b903"
 
 	var/datum/action/innate/flight/fly
 

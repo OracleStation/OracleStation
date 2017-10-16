@@ -11,3 +11,5 @@
 	damage_overlay_type = ""//let's not show bloody wounds or burns over bones.
 	disliked_food = NONE
 	liked_food = GROSS | MEAT | RAW
+	examine_text = "a Skeleton"
+	species_text_color = "#999999"

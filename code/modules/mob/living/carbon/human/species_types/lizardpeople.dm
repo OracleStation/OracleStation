@@ -19,6 +19,8 @@
 	disliked_food = GRAIN | DAIRY
 	liked_food = GROSS | MEAT
 	ass_pic = "unathi"
+	examine_text = "a Unathi"
+	species_text_color = "#3d0000"
 
 /datum/species/unathi/after_equip_job(datum/job/J, mob/living/carbon/human/H)
 	H.grant_language(/datum/language/draconic)
