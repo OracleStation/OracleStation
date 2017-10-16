@@ -767,7 +767,8 @@ GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 				"default" = 'icons/mob/ai.dmi',
 				"floating face" = 'icons/mob/ai.dmi',
 				"xeno queen" = 'icons/mob/alien.dmi',
-				"horror" = 'icons/mob/ai.dmi'
+				"horror" = 'icons/mob/ai.dmi',
+				"ancient machine" = 'icons/mob/ancient_machine.dmi',
 				)
 
 			input = input("Please select a hologram:") as null|anything in icon_list
@@ -776,6 +777,8 @@ GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 				switch(input)
 					if("xeno queen")
 						holo_icon = getHologramIcon(icon(icon_list[input],"alienq"))
+					if("ancient machine")
+						holo_icon = getHologramIcon(icon(icon_list[input],"ancient_machine"))
 					else
 						holo_icon = getHologramIcon(icon(icon_list[input], input))
 	return
