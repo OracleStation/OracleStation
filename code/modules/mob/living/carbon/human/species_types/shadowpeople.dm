@@ -10,6 +10,8 @@
 
 	dangerous_existence = 1
 	mutanteyes = /obj/item/organ/eyes/night_vision
+	examine_text = "a Shadow Person"
+	species_text_color = "#000000"
 
 
 /datum/species/shadow/spec_life(mob/living/carbon/human/H)

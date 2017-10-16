@@ -15,6 +15,8 @@
 	var/name	// this is the fluff name. these will be left generic (such as 'Lizardperson' for the lizard race) so servers can change them to whatever
 	var/roundstart = 0	// can this mob be chosen at roundstart? (assuming the config option is checked?)
 	var/default_color = "#FFF"	// if alien colors are disabled, this is the color that will be used by that race
+	var/examine_text = null
+	var/species_text_color = "#000000"//the color that represents the species whenever it shows up on a list or whatever
 
 	var/sexes = 1		// whether or not the race has sexual characteristics. at the moment this is only 0 for skeletons and shadows
 
@@ -114,6 +116,8 @@
 
 	return randname
 
+/datum/species/proc/get_examine_text()
+	return examine_text
 
 //Please override this locally if you want to define when what species qualifies for what rank if human authority is enforced.
 /datum/species/proc/qualifies_for_rank(rank, list/features)

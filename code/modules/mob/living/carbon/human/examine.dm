@@ -7,10 +7,18 @@
 	var/t_has = p_have()
 	var/t_is = p_are()
 
-	var/msg = "<span class='info'>*---------*\nThis is <EM>[src.name]</EM>!\n"
+	var/msg = "<span class='info'>*---------*\nThis is <EM>[src.name]</EM>"
 
 	var/list/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+
+
+	var/examine_text = dna.species.get_examine_text()
+	if((!skipface || !(slot_w_uniform in obscured)) && examine_text)//if you can see their face or their body AND there's something to see
+		msg += "<span class='bold'>, <font color='[dna.species.species_text_color]'>[examine_text]</font></span>"
+
+	msg += "!\n"
+
 
 	//uniform
 	if(w_uniform && !(slot_w_uniform in obscured))

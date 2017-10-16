@@ -19,6 +19,8 @@
 	disliked_food = GRAIN | FRUIT | TOXIC
 	liked_food = MEAT | DAIRY | JUNKFOOD
 	ass_pic = "ethari"
+	examine_text = "an Ethari"
+	species_text_color = "#e23f03"
 
 /datum/species/ethari/after_equip_job(datum/job/J, mob/living/carbon/human/H)
 	H.grant_language(/datum/language/canilunzt)
