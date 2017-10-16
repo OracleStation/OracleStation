@@ -73,7 +73,7 @@
 	message = "snaps their fingers."
 	emote_type = EMOTE_AUDIBLE
 
-/datum/emote/living/snap/run_emote(mob/user, params)
+/datum/emote/living/carbon/human/snap/run_emote(mob/user, params)
 	if(..())
 		playsound(user.loc, 'sound/effects/fingersnap.ogg', 50)
 
