@@ -7,7 +7,6 @@ CONFIG_DEF(string/comms_key)
     return str_val != "default_pwd" && length(str_val) > 6 && ..()
 
 CONFIG_DEF(string/cross_server_address)
-	protection = CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/string/cross_server_address/ValidateAndSet(str_val)
     return str_val != "byond:\\address:port" && ..()

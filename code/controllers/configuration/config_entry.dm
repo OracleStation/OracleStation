@@ -8,7 +8,7 @@
 	var/name	//read-only, this is determined by the last portion of the derived entry type
 	var/value
 	var/default	//read-only, just set value directly
-	
+
 	var/resident_file	//the file which this belongs to, must be set
 	var/modified = FALSE	//set to TRUE if the default has been overridden by a config entry
 
@@ -21,7 +21,7 @@
 	if(!resident_file)
 		CRASH("Config entry [type] has no resident_file set")
 	if(type == abstract_type)
-		CRASH("Abstract config entry [type] instatiated!")	
+		CRASH("Abstract config entry [type] instatiated!")
 	name = lowertext(type2top(type))
 	if(islist(value))
 		var/list/L = value
@@ -41,8 +41,6 @@
 /datum/config_entry/vv_edit_var(var_name, var_value)
 	var/static/list/banned_edits = list("name", "default", "resident_file", "protection", "abstract_type", "modified", "dupes_allowed")
 	if(var_name == "value")
-		if(protection & CONFIG_ENTRY_LOCKED)
-			return FALSE
 		. = ValidateAndSet("[var_value]")
 		if(.)
 			var_edited = TRUE
