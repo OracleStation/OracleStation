@@ -222,6 +222,16 @@ LINEN BINS
 	item_color = "ian"
 	dream_messages = list("a dog", "a corgi", "woof", "bark", "arf")
 
+/obj/item/bedsheet/cosmos
+	name = "cosmic space blankie"
+	desc = "Made of the dreams of space children everywhere."
+	icon_state = "sheetcosmos"
+	item_color = "cosmos"
+	dream_messages = list("the infinite cosmos", "hanz zimmer music", "a flight through space", "the galaxy", "being fabulous", "shooting stars")
+	luminosity = 1
+	light_power = 2
+	light_range = 1.4
+
 
 /obj/item/bedsheet/random
 	icon_state = "sheetrainbow"
