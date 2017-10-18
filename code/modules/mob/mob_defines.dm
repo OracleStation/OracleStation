@@ -145,3 +145,5 @@
 	var/list/can_ride_typecache = list()
 
 	var/list/mousemove_intercept_objects
+
+	var/ventcrawl_layer = PIPING_LAYER_DEFAULT
