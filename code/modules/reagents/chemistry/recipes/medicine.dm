@@ -16,7 +16,7 @@
 	name = "Rezadone"
 	id = "rezadone"
 	results = list("rezadone" = 3)
-	required_reagents = list("carpotoxin" = 1, "spaceacillin" = 1, "copper" = 1)
+	required_reagents = list("omnizine" = 1, "spaceacillin" = 1, "copper" = 1)
 
 /datum/chemical_reaction/spaceacillin
 	name = "Spaceacillin"
