@@ -29071,6 +29071,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/landmark/start/brig_phys,
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "bgw" = (
@@ -29931,11 +29932,11 @@
 /turf/open/floor/plasteel/whitered/side,
 /area/security/brig)
 "bip" = (
-/obj/structure/bed/roller,
 /obj/item/device/radio/intercom{
 	name = "Station Intercom";
 	pixel_y = -26
 	},
+/obj/structure/closet/secure_closet/brig_phys,
 /turf/open/floor/plasteel/whitered/side,
 /area/security/brig)
 "biq" = (
@@ -30338,8 +30339,6 @@
 /obj/item/stack/sheet/metal{
 	amount = 50
 	},
-/obj/item/grenade/chem_grenade/metalfoam,
-/obj/item/grenade/chem_grenade/metalfoam,
 /obj/machinery/newscaster{
 	pixel_y = -32
 	},
@@ -30348,6 +30347,8 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 4
 	},
+/obj/item/grenade/chem_grenade/smart_metal_foam,
+/obj/item/grenade/chem_grenade/smart_metal_foam,
 /turf/open/floor/plasteel,
 /area/engine/atmos)
 "bjk" = (
@@ -46499,6 +46500,7 @@
 /obj/structure/chair/office/dark{
 	dir = 8
 	},
+/obj/effect/landmark/start/blueshield,
 /turf/open/floor/plasteel/grimy,
 /area/tcommsat/computer)
 "bMw" = (
@@ -46747,9 +46749,6 @@
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "bMX" = (
-/obj/machinery/computer/security/wooden_tv{
-	density = 0
-	},
 /obj/structure/table/wood,
 /obj/machinery/button/door{
 	id = "detectivewindows";
@@ -46763,15 +46762,18 @@
 	pixel_y = -26
 	},
 /obj/structure/disposalpipe/segment,
+/obj/item/device/flashlight/lamp,
+/obj/item/reagent_containers/food/drinks/flask/det,
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "bMY" = (
 /obj/structure/table/wood,
-/obj/item/device/flashlight/lamp,
 /obj/item/storage/secure/safe{
 	pixel_x = 32
 	},
-/obj/item/reagent_containers/food/drinks/flask/det,
+/obj/machinery/computer/security/wooden_tv{
+	density = 0
+	},
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "bMZ" = (
@@ -46871,6 +46873,10 @@
 /obj/item/gun/ballistic/shotgun/riot,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/effect/turf_decal/bot,
+/obj/item/gun/ballistic/shotgun/riot{
+	pixel_x = 3;
+	pixel_y = -3
+	},
 /turf/open/floor/plasteel,
 /area/ai_monitored/security/armory)
 "bNh" = (
@@ -47493,7 +47499,7 @@
 /turf/open/floor/plasteel/grimy,
 /area/tcommsat/computer)
 "bOs" = (
-/obj/structure/filingcabinet/security,
+/obj/structure/closet/secure_closet/blueshield,
 /turf/open/floor/plasteel/grimy,
 /area/tcommsat/computer)
 "bOt" = (
@@ -47549,6 +47555,7 @@
 	dir = 1;
 	layer = 2.9
 	},
+/obj/item/melee/chainofcommand,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/captain)
 "bOz" = (
@@ -72103,7 +72110,9 @@
 	id_tag = "Dorm6";
 	name = "Cabin 6"
 	},
-/turf/open/floor/plasteel/grimy,
+/turf/open/floor/plasteel/vault{
+	dir = 5
+	},
 /area/crew_quarters/dorms)
 "cIP" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -72786,6 +72795,7 @@
 	dir = 4;
 	name = "medbay camera"
 	},
+/obj/structure/closet/wardrobe/white/medical/paramedic,
 /turf/open/floor/plasteel/neutral/side{
 	dir = 4
 	},
@@ -73029,35 +73039,20 @@
 /turf/open/floor/carpet,
 /area/crew_quarters/dorms)
 "cKN" = (
-/obj/structure/table/wood,
-/obj/item/folder/blue,
-/obj/item/pen/blue,
-/obj/machinery/button/door{
-	id = "Dorm6";
-	name = "Dormitory Door Lock";
-	normaldoorcontrol = 1;
-	pixel_x = -26;
-	pixel_y = 7;
-	req_access_txt = "0";
-	specialfunctions = 4
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
 	},
-/turf/open/floor/plasteel/grimy,
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/turf/open/floor/plasteel/black,
 /area/crew_quarters/dorms)
 "cKO" = (
-/obj/structure/table/wood,
-/obj/item/device/flashlight/lamp,
-/obj/item/device/radio/intercom{
-	name = "Station Intercom";
-	pixel_x = 26;
-	pixel_y = 26
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
 	},
-/turf/open/floor/plasteel/grimy,
+/obj/machinery/cryopod,
+/turf/open/floor/plasteel/black,
 /area/crew_quarters/dorms)
 "cKP" = (
 /obj/machinery/vending/cola/random,
@@ -73644,21 +73639,21 @@
 /turf/open/floor/carpet,
 /area/crew_quarters/dorms)
 "cMl" = (
-/obj/structure/chair/office/dark{
-	dir = 1
-	},
 /obj/machinery/newscaster{
 	pixel_x = -32
 	},
-/turf/open/floor/plasteel/grimy,
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/turf/open/floor/plasteel/black,
 /area/crew_quarters/dorms)
 "cMm" = (
-/obj/item/twohanded/required/kirbyplants/random,
 /obj/structure/sign/nanotrasen{
 	pixel_x = 32;
 	pixel_y = -32
 	},
-/turf/open/floor/plasteel/grimy,
+/obj/machinery/cryopod,
+/turf/open/floor/plasteel/black,
 /area/crew_quarters/dorms)
 "cMn" = (
 /obj/machinery/vending/snack/random,
@@ -74523,9 +74518,8 @@
 /turf/open/floor/wood,
 /area/crew_quarters/dorms)
 "cNU" = (
-/obj/structure/bed,
-/obj/item/bedsheet/mime,
-/turf/open/floor/plasteel/grimy,
+/obj/machinery/cryopod,
+/turf/open/floor/plasteel/black,
 /area/crew_quarters/dorms)
 "cNV" = (
 /obj/structure/table,
@@ -75491,32 +75485,21 @@
 /turf/open/floor/carpet,
 /area/crew_quarters/dorms)
 "cPQ" = (
-/obj/structure/closet/secure_closet/personal/cabinet,
-/obj/machinery/light,
-/obj/item/clothing/suit/jacket{
-	desc = "All the class of a trenchcoat without the security fibers.";
-	icon_state = "greydet";
-	name = "trenchcoat"
-	},
-/obj/item/clothing/suit/toggle/lawyer/black,
 /obj/machinery/status_display{
 	pixel_y = -32
 	},
-/obj/item/clothing/head/fedora,
-/obj/item/clothing/under/redeveninggown,
-/obj/item/clothing/head/rabbitears,
-/turf/open/floor/plasteel/grimy,
+/obj/machinery/light,
+/turf/open/floor/plasteel/vault{
+	dir = 5
+	},
 /area/crew_quarters/dorms)
 "cPR" = (
-/obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/poppy/lily,
-/obj/item/reagent_containers/food/snacks/grown/poppy/lily,
-/obj/item/reagent_containers/food/snacks/grown/poppy/lily,
 /obj/machinery/airalarm{
 	dir = 1;
 	pixel_y = -22
 	},
-/turf/open/floor/plasteel/grimy,
+/obj/machinery/cryopod,
+/turf/open/floor/plasteel/black,
 /area/crew_quarters/dorms)
 "cPS" = (
 /obj/structure/table,
@@ -113140,6 +113123,45 @@
 /obj/structure/ore_box,
 /turf/open/floor/plating,
 /area/shuttle/auxillary_base)
+"esz" = (
+/obj/effect/landmark/start/brig_phys,
+/turf/open/floor/plasteel/white,
+/area/security/prison)
+"esA" = (
+/obj/machinery/computer/cryopod{
+	pixel_x = 32;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/vault{
+	dir = 5
+	},
+/area/crew_quarters/dorms)
+"esB" = (
+/obj/effect/landmark/start/paramedic,
+/turf/open/floor/plasteel/cmo,
+/area/medical/storage)
+"esC" = (
+/turf/open/floor/plasteel/vault{
+	dir = 5
+	},
+/area/crew_quarters/dorms)
+"esD" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/turf/open/floor/plasteel/black,
+/area/crew_quarters/dorms)
+"esE" = (
+/turf/open/floor/plasteel/vault{
+	dir = 5
+	},
+/area/crew_quarters/dorms)
+"esF" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/turf/open/floor/plasteel/black,
+/area/crew_quarters/dorms)
 
 (1,1,1) = {"
 aaa
@@ -141055,9 +141077,9 @@ cHW
 cHW
 cHW
 cOy
-cQx
-cRP
-cTA
+epl
+epm
+epn
 cOy
 cHW
 cHS
@@ -160070,7 +160092,7 @@ cFQ
 cHj
 cIG
 cKz
-cLY
+esB
 cNM
 cLY
 cRl
@@ -164378,7 +164400,7 @@ aBU
 aBU
 aNn
 aOT
-aOT
+esz
 aOT
 aTW
 aVA
@@ -165468,8 +165490,8 @@ cHy
 eiT
 cKN
 cMl
-cyT
-cxt
+esD
+esF
 cvP
 cSY
 cUI
@@ -165723,9 +165745,9 @@ cEt
 cGc
 cHx
 cIO
-cyT
-cyT
-cyT
+esA
+esC
+esE
 cPQ
 cvP
 cSZ
