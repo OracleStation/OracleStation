@@ -1017,6 +1017,7 @@
 	name = "2maintenance loot spawner"
 	},
 /obj/effect/turf_decal/bot,
+/obj/item/device/pda/clown,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central{
 	name = "Primary Hallway"
@@ -1477,6 +1478,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/old,
+/obj/item/clothing/under/rank/mime,
 /turf/open/floor/plating,
 /area/ruin/unpowered{
 	name = "Asteroid"
@@ -1973,6 +1975,7 @@
 	opened = 1
 	},
 /obj/effect/spawner/lootdrop/maintenance,
+/obj/item/device/pda/mime,
 /turf/open/floor/plating/astplate,
 /area/ruin/unpowered{
 	name = "Asteroid"
@@ -7415,6 +7418,7 @@
 /obj/machinery/light_switch{
 	pixel_y = 24
 	},
+/obj/item/reagent_containers/food/snacks/grown/banana/mime,
 /turf/open/floor/plating,
 /area/hallway/primary/central{
 	name = "Primary Hallway"
@@ -13088,6 +13092,10 @@
 "ava" = (
 /obj/structure/table/wood,
 /obj/item/device/instrument/guitar,
+/obj/item/bikehorn{
+	pixel_x = -12;
+	pixel_y = 12
+	},
 /turf/open/floor/plasteel/vault{
 	dir = 5
 	},
@@ -18502,6 +18510,7 @@
 /area/crew_quarters/dorms)
 "aEM" = (
 /obj/structure/closet/crate/bin,
+/obj/item/storage/backpack/clown,
 /turf/open/floor/plasteel/vault{
 	dir = 5
 	},
@@ -18614,6 +18623,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
+/obj/item/storage/backpack/duffelbag/clown,
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},
@@ -20941,6 +20951,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/bot,
+/obj/item/clothing/under/rank/clown,
 /turf/open/floor/plasteel,
 /area/maintenance/port/central)
 "aIF" = (
@@ -25075,6 +25086,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/item/clothing/mask/gas/clown_hat,
 /turf/open/floor/plating,
 /area/maintenance/starboard)
 "aPC" = (
@@ -25238,6 +25250,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/delivery,
+/obj/item/clothing/shoes/sneakers/mime,
 /turf/open/floor/plasteel,
 /area/maintenance/port)
 "aPT" = (
@@ -27736,6 +27749,7 @@
 	pixel_x = -26
 	},
 /obj/structure/closet/crate/bin,
+/obj/item/storage/backpack/mime,
 /turf/open/floor/plasteel/vault{
 	dir = 5
 	},
@@ -28482,6 +28496,7 @@
 /obj/item/stock_parts/console_screen,
 /obj/item/circuitboard/machine/microwave,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/toy/figure/mime,
 /turf/open/floor/wood,
 /area/maintenance/starboard)
 "aWy" = (
@@ -29150,6 +29165,10 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line,
+/obj/item/storage/box/syndie_kit/mimery,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/maintenance/starboard)
 "aXL" = (
@@ -30992,11 +31011,13 @@
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
 "bbb" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable/white{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 8
 	},
 /turf/open/floor/plasteel/neutral/corner{
 	dir = 1
@@ -31011,6 +31032,7 @@
 /obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/item/pen,
+/obj/item/toy/figure/clown,
 /turf/open/floor/plasteel/black,
 /area/maintenance/port)
 "bbe" = (
@@ -31029,6 +31051,9 @@
 	dir = 5
 	},
 /obj/effect/turf_decal/delivery,
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel,
 /area/maintenance/port)
 "bbg" = (
@@ -31446,14 +31471,15 @@
 /turf/open/floor/wood,
 /area/maintenance/port)
 "bbS" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
+	dir = 6
+	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken6"
 	},
 /area/maintenance/port)
 "bbT" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 5
-	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/visible,
 /turf/closed/wall,
 /area/maintenance/port)
 "bbU" = (
@@ -31469,6 +31495,9 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 2
+	},
+/obj/structure/cable/white{
+	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/port)
@@ -31799,7 +31828,7 @@
 /turf/open/floor/wood,
 /area/maintenance/port)
 "bcH" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /turf/open/floor/wood,
 /area/maintenance/port)
 "bcI" = (
@@ -31901,6 +31930,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/item/clothing/mask/gas/mime,
 /turf/open/floor/plasteel,
 /area/maintenance/port)
 "bcU" = (
@@ -32305,6 +32335,12 @@
 /area/maintenance/port)
 "bdF" = (
 /obj/structure/chair/stool/bar,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 6
+	},
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken5"
 	},
@@ -32312,6 +32348,9 @@
 "bdG" = (
 /obj/structure/chair/stool/bar,
 /obj/effect/landmark/revenantspawn,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken2"
 	},
@@ -32323,6 +32362,9 @@
 	pixel_y = 6
 	},
 /obj/machinery/light/small{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -32339,14 +32381,15 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},
 /area/maintenance/port)
 "bdJ" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 5
-	},
+/obj/machinery/atmospherics/pipe/manifold/supply/visible,
 /turf/open/floor/plasteel/vault{
 	dir = 5
 	},
@@ -32749,7 +32792,22 @@
 "beu" = (
 /obj/structure/table/wood,
 /obj/item/storage/pill_bottle,
-/obj/effect/decal/cleanable/dirt,
+/obj/item/coin/iron{
+	icon_state = "coin_bananium_heads";
+	name = "arcade coin";
+	pixel_y = 6
+	},
+/obj/item/coin/iron{
+	icon_state = "coin_bananium_heads";
+	name = "arcade coin";
+	pixel_y = 6
+	},
+/obj/item/coin/iron{
+	icon_state = "coin_bananium_heads";
+	name = "arcade coin";
+	pixel_x = -3;
+	pixel_y = 3
+	},
 /turf/open/floor/plating,
 /area/maintenance/port)
 "bev" = (
@@ -32764,23 +32822,7 @@
 	},
 /area/maintenance/port)
 "bew" = (
-/obj/structure/table/wood,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/coin/iron{
-	icon_state = "coin_bananium_heads";
-	name = "arcade coin";
-	pixel_x = 6
-	},
-/obj/item/coin/iron{
-	icon_state = "coin_bananium_heads";
-	name = "arcade coin";
-	pixel_x = -6
-	},
-/obj/item/coin/iron{
-	icon_state = "coin_bananium_heads";
-	name = "arcade coin";
-	pixel_y = 6
-	},
 /turf/open/floor/plating,
 /area/maintenance/port)
 "bex" = (
@@ -32800,6 +32842,7 @@
 /obj/item/newspaper,
 /obj/item/clothing/head/bowler,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/toy/figure/clown,
 /turf/open/floor/plating,
 /area/maintenance/port)
 "bez" = (
@@ -36924,7 +36967,9 @@
 	})
 "bmx" = (
 /turf/closed/wall,
-/area/space)
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
 "bmy" = (
 /turf/open/floor/plasteel,
 /area/space)
@@ -40660,6 +40705,541 @@
 "byH" = (
 /turf/closed/wall,
 /area/security/checkpoint)
+"byI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate{
+	icon_state = "crateopen";
+	opened = 1
+	},
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/item/stamp/clown,
+/turf/open/floor/plating/astplate,
+/area/ruin/unpowered{
+	name = "Asteroid"
+	})
+"byJ" = (
+/obj/item/clothing/shoes/clown_shoes,
+/turf/open/floor/plating/asteroid,
+/area/ruin/unpowered{
+	name = "Asteroid"
+	})
+"byK" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 8
+	},
+/turf/closed/wall/r_wall,
+/area/science/research)
+"byL" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable/white{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/starboard)
+"byM" = (
+/obj/structure/sign/poster/contraband/random,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/closed/wall,
+/area/maintenance/starboard)
+"byN" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/closed/wall,
+/area/maintenance/starboard)
+"byO" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/closed/wall,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"byP" = (
+/obj/effect/decal/cleanable/cobweb,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/structure/closet,
+/turf/open/floor/plasteel/airless/black,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"byQ" = (
+/obj/structure/table/wood,
+/turf/open/floor/plasteel/airless/white,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"byR" = (
+/obj/structure/chair/comfy/brown{
+	dir = 8
+	},
+/obj/machinery/camera{
+	c_tag = "Starboard Evicted Office";
+	dir = 2;
+	pixel_x = 23
+	},
+/turf/open/floor/plasteel/airless/black,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"byS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/radio/intercom{
+	name = "Station Intercom";
+	pixel_x = -28
+	},
+/turf/open/floor/plasteel/airless/white,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"byT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/seeds/banana/mime,
+/obj/structure/table/wood,
+/turf/open/floor/plasteel/airless/black,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"byU" = (
+/obj/structure/chair/comfy/brown{
+	dir = 8
+	},
+/turf/open/floor/plasteel/airless/white,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"byV" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"byW" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable/white{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable/white{
+	icon_state = "1-4"
+	},
+/turf/open/floor/plating,
+/area/maintenance/starboard)
+"byX" = (
+/obj/structure/barricade/wooden,
+/obj/structure/girder,
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/maintenance/starboard)
+"byY" = (
+/obj/machinery/door/airlock/silver{
+	desc = "A silent reminder of better days.";
+	name = "Evicted Office"
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"byZ" = (
+/obj/structure/cable/white{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/floor/plasteel/airless/black,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"bza" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/airless/white,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"bzb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/airless/black,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"bzc" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/space)
+"bzd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/cable/white,
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -22
+	},
+/turf/open/floor/plasteel/airless/white,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"bze" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/airless/black,
+/area/ruin/unpowered{
+	name = "Asteroid"
+	})
+"bzf" = (
+/turf/open/floor/plasteel/airless/white,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"bzg" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/space)
+"bzh" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/closed/wall,
+/area/maintenance/starboard)
+"bzi" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/closed/wall,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"bzj" = (
+/obj/structure/table/wood,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/obj/item/clothing/head/soft/mime,
+/turf/open/floor/plasteel/airless/black,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"bzk" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/airless/white,
+/area/ruin/unpowered{
+	name = "Asteroid"
+	})
+"bzl" = (
+/obj/item/bedsheet/mime,
+/obj/item/toy/crayon/mime,
+/obj/structure/bed,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plasteel/airless/black,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"bzm" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/turf/open/floor/wood,
+/area/maintenance/port)
+"bzn" = (
+/obj/structure/sign/poster/contraband/random,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/closed/wall,
+/area/maintenance/port)
+"bzo" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
+/obj/machinery/computer/slot_machine,
+/turf/open/floor/plasteel/vault{
+	dir = 8
+	},
+/area/maintenance/port)
+"bzp" = (
+/obj/machinery/computer/slot_machine,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/maintenance/port)
+"bzq" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
+/turf/closed/wall,
+/area/maintenance/port)
+"bzr" = (
+/obj/structure/girder,
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating,
+/area/maintenance/port)
+"bzs" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/turf/closed/wall,
+/area/maintenance/port)
+"bzt" = (
+/turf/closed/wall,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzu" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/closed/wall,
+/area/maintenance/port)
+"bzv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/maintenance/port)
+"bzw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/structure/chair/wood/normal,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 10
+	},
+/turf/open/floor/wood{
+	icon_state = "wood-broken2"
+	},
+/area/maintenance/port)
+"bzx" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
+/obj/machinery/airalarm,
+/turf/closed/wall,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzy" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/turf/open/floor/wood,
+/area/maintenance/port)
+"bzz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/snacks/soup/clownstears,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/maintenance/port)
+"bzA" = (
+/obj/structure/sign/poster/contraband/clown,
+/turf/closed/wall,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzB" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
+/obj/structure/closet,
+/turf/open/floor/wood,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzC" = (
+/turf/open/floor/plating,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzD" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 5
+	},
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/item/device/radio/intercom{
+	name = "Station Intercom";
+	pixel_y = 24
+	},
+/turf/open/floor/plating,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/structure/chair/wood/normal,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/blood/old,
+/obj/machinery/camera{
+	c_tag = "Port Evicted Office";
+	dir = 2;
+	pixel_x = 23
+	},
+/turf/open/floor/wood{
+	icon_state = "wood-broken2"
+	},
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzF" = (
+/obj/item/device/megaphone/clown,
+/turf/open/floor/plating,
+/area/ruin/unpowered{
+	name = "Asteroid"
+	})
+"bzG" = (
+/turf/closed/wall,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"bzH" = (
+/turf/closed/wall,
+/area/maintenance/starboard{
+	name = "Starboard Evicted Office"
+	})
+"bzI" = (
+/turf/closed/wall,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzJ" = (
+/turf/closed/wall,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzK" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzL" = (
+/obj/machinery/door/airlock/clown{
+	desc = "A relic from long ago...";
+	name = "Evicted Office"
+	},
+/turf/open/floor/plating,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzM" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/closed/wall,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzO" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzP" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
+/turf/open/floor/wood{
+	icon_state = "wood-broken5"
+	},
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzQ" = (
+/turf/open/floor/wood,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzR" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/turf/open/floor/wood,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/snacks/soup/clownstears,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/table/wood,
+/obj/item/clothing/gloves/color/rainbow/clown,
+/turf/open/floor/plating,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzU" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/structure/statue/bananium/clown,
+/turf/open/floor/plating,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzV" = (
+/obj/item/bedsheet/clown,
+/obj/structure/bed,
+/obj/item/seeds/banana,
+/turf/open/floor/wood,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzW" = (
+/obj/machinery/light,
+/obj/structure/cable/white,
+/turf/open/floor/plating,
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
+"bzX" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/structure/chair/wood/normal{
+	dir = 1
+	},
+/turf/open/floor/wood{
+	icon_state = "wood-broken2"
+	},
+/area/maintenance/port{
+	name = "Port Evicted Office"
+	})
 
 (1,1,1) = {"
 aaa
@@ -71642,7 +72222,7 @@ aad
 aad
 aad
 aad
-aad
+aac
 aac
 aaa
 aaa
@@ -71900,8 +72480,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+aac
+aac
 aaa
 aaa
 aaa
@@ -72103,7 +72683,7 @@ aad
 aad
 aad
 aad
-adv
+byI
 abj
 abj
 abu
@@ -72158,8 +72738,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+aac
+aac
 aaa
 aaa
 aaa
@@ -72415,7 +72995,7 @@ aad
 aad
 aad
 aad
-aad
+aac
 aac
 aac
 aaa
@@ -72673,7 +73253,7 @@ aad
 aad
 aad
 aad
-aad
+aac
 aac
 aac
 aaa
@@ -72930,8 +73510,8 @@ baj
 aad
 aad
 aad
-aad
-aad
+aac
+aac
 aac
 aaa
 aaa
@@ -73139,7 +73719,7 @@ aad
 abi
 aad
 aad
-aaV
+byJ
 awL
 aqz
 aqz
@@ -73186,9 +73766,9 @@ beu
 baj
 aad
 aad
-aad
-aad
-aad
+aac
+aac
+aac
 aac
 aad
 aaa
@@ -73440,13 +74020,13 @@ bbR
 bcG
 bdE
 bev
-baj
+bzI
 aad
-aad
-aad
-aad
-aad
-aad
+bzt
+bzt
+bzO
+bzt
+bzt
 aad
 aad
 aaa
@@ -73695,16 +74275,16 @@ bam
 bbe
 bbS
 bcH
-bcG
-bcF
-baj
-aad
-aad
-aad
-aad
-aad
-aad
-aad
+bcH
+bzo
+bzq
+bzq
+bzx
+bzB
+bzP
+bzU
+bzt
+bzF
 aad
 aac
 aaa
@@ -73954,13 +74534,13 @@ bbT
 bcI
 bar
 bew
-aZo
-aad
-aad
-aad
-aad
-aad
-aad
+bzr
+bar
+bzL
+bzC
+bzQ
+bzV
+bzt
 aad
 aad
 aac
@@ -74208,16 +74788,16 @@ aZt
 bao
 bbf
 bbU
-bbR
+bzm
 bdF
-bcK
-baj
-aad
-aad
-aad
-aad
-aad
-aad
+bzp
+bzs
+bzu
+bzM
+bzD
+bzR
+bzW
+bzt
 aad
 aad
 aad
@@ -74468,13 +75048,13 @@ aZz
 bcJ
 bdG
 bev
-baj
+bzJ
 aad
-aad
-aad
-aad
-aad
-aad
+bzt
+bzN
+bzS
+bzC
+bzt
 aad
 aad
 aad
@@ -74725,13 +75305,13 @@ aPV
 bcK
 bdH
 bex
-baj
+bzt
 aad
-aad
-aad
-aad
-aad
-aad
+bzA
+bzE
+bzT
+bzX
+bzt
 aad
 aad
 aad
@@ -74980,15 +75560,15 @@ aQW
 bbh
 aPV
 baj
-bca
+bzn
 baj
-aZo
+bzK
 aad
-aad
-aad
-aad
-aad
-aad
+bzt
+bzt
+bzt
+bzt
+bzt
 aad
 aad
 aad
@@ -81915,12 +82495,12 @@ aSs
 aYc
 aYW
 byv
-byy
+byv
 bbx
 bcm
 bdd
 beb
-byD
+byv
 aZT
 bfK
 bgg
@@ -82171,14 +82751,14 @@ aWQ
 aXv
 aYc
 aYW
-byw
+byv
 baI
 bby
 bcn
 bde
 bec
 beH
-byF
+byv
 bfK
 bgg
 bgU
@@ -82685,14 +83265,14 @@ aWS
 aXv
 aYe
 aYW
-byx
+byv
 baK
 bbA
 bcp
 bdg
 bee
 beJ
-byG
+byv
 bfK
 bgi
 bgU
@@ -82943,13 +83523,13 @@ aSq
 aYc
 aYW
 aZT
-byz
-byA
-byB
+byv
+byv
+byv
 bdh
-byC
-byE
-byH
+byv
+byv
+byv
 bfM
 bgi
 bgV
@@ -87051,7 +87631,7 @@ aUJ
 aVE
 aVE
 aVE
-aVE
+byK
 aVE
 aZk
 baf
@@ -87308,7 +87888,7 @@ aUK
 aVF
 aWv
 aXb
-aXJ
+byL
 aYt
 aZl
 bag
@@ -87565,7 +88145,7 @@ aSH
 aVG
 aSH
 aRz
-aSH
+byM
 aYu
 aZm
 bah
@@ -87824,7 +88404,7 @@ aWw
 aRz
 aXK
 aYv
-aZn
+byW
 bai
 bbb
 bbP
@@ -88079,11 +88659,11 @@ aUM
 aVI
 aWx
 aRz
+byN
 aRz
+byX
 aRz
-aRz
-aRz
-aRz
+bzh
 aRz
 aSH
 bdA
@@ -88335,13 +88915,13 @@ aTW
 aUN
 aVJ
 aWy
-aRz
-aad
-aad
-aad
-aad
-aad
-aRz
+bzG
+byO
+bmx
+byY
+bmx
+bzi
+bmx
 bcD
 bdB
 bes
@@ -88592,13 +89172,13 @@ aRy
 aRy
 aRy
 aRy
-aRz
-aad
-aac
-aad
-aad
-aad
-aRz
+bzH
+byP
+byS
+byZ
+bzd
+bzj
+bmx
 bcE
 bdC
 bet
@@ -88849,13 +89429,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aac
-aac
-aad
-aRz
+bmx
+byQ
+byT
+bza
+bzb
+bza
+bmx
 aRz
 aRz
 aRz
@@ -89106,13 +89686,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aac
-aac
-aac
+bmx
+byR
+byU
+bzb
+bzf
+bzl
+bmx
 aac
 aad
 aad
@@ -89363,13 +89943,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bmx
+bmx
+byV
+byV
+byV
+bmx
+bmx
 aac
 aac
 aac

@@ -139,18 +139,12 @@
 	rev_mind.special_role = "Head Revolutionary"
 	rev_mind.announce_objectives()
 
-/////////////////////////////////////////////////////////////////////////////////
-//This are equips the rev heads with their gear, and makes the clown not clumsy//
-/////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//This are equips the rev heads with their gear, and does nothing to the clown because we're pretending the no longer exist. >:C //
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /datum/game_mode/proc/equip_revolutionary(mob/living/carbon/human/mob)
 	if(!istype(mob))
 		return
-
-	if (mob.mind)
-		if (mob.mind.assigned_role == "Clown")
-			to_chat(mob, "Your training has allowed you to overcome your clownish nature, allowing you to wield weapons without harming yourself.")
-			mob.dna.remove_mutation(CLOWNMUT)
-
 
 	var/obj/item/device/assembly/flash/T = new(mob)
 	var/obj/item/toy/crayon/spraycan/R = new(mob)

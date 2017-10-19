@@ -137,7 +137,7 @@
 	glass_desc = "The raw essence of a banana. HONK."
 
 /datum/reagent/consumable/banana/on_mob_life(mob/living/M)
-	if((ishuman(M) && M.job in list("Clown") ) || ismonkey(M))
+	if(ismonkey(M))
 		M.heal_bodypart_damage(1,1, 0)
 		. = 1
 	..()
@@ -151,12 +151,6 @@
 	glass_name = "Nothing"
 	glass_desc = "Absolutely nothing."
 	shot_glass_icon_state = "shotglass"
-
-/datum/reagent/consumable/nothing/on_mob_life(mob/living/M)
-	if(ishuman(M) && M.job in list("Mime"))
-		M.heal_bodypart_damage(1,1, 0)
-		. = 1
-	..()
 
 /datum/reagent/consumable/laughter
 	name = "Laughter"

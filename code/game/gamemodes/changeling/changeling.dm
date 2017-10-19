@@ -202,12 +202,6 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	to_chat(changeling.current, "<b>You must complete the following tasks:</b>")
 	changeling.current.playsound_local(get_turf(changeling.current), 'sound/ambience/antag/ling_aler.ogg', 100, FALSE, pressure_affected = FALSE)
 
-	if (changeling.current.mind)
-		var/mob/living/carbon/human/H = changeling.current
-		if(H.mind.assigned_role == "Clown")
-			to_chat(H, "You have evolved beyond your clownish nature, allowing you to wield weapons without harming yourself.")
-			H.dna.remove_mutation(CLOWNMUT)
-
 	var/obj_count = 1
 	for(var/datum/objective/objective in changeling.objectives)
 		to_chat(changeling.current, "<b>Objective #[obj_count]</b>: [objective.explanation_text]")
