@@ -18,7 +18,9 @@
 	origin_tech = "biotech=1"
 
 /obj/item/reagent_containers/food/snacks/grown/New(newloc, var/obj/item/seeds/new_seed = null)
-	tastes = list(name = 1) // apples taste of apple, silly.
+	//for whatever reason BYOND will not let you just use `name` here, it has to be `src.name`
+	//don't ask why, BYOND BYOND is BYOND
+	tastes = list(src.name = 1) // apples taste of apple, silly.
 	..()
 	if(new_seed)
 		seed = new_seed.Copy()
