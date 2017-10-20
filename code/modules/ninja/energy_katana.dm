@@ -68,7 +68,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	block_chance = 50
 	slot_flags = SLOT_BELT
 	sharpness = IS_SHARP
 	max_integrity = 200
@@ -76,7 +75,7 @@
 	bypass_density = TRUE
 	var/datum/effect_system/spark_spread/spark_system
 
-/obj/item/dash/energy_katana/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/dash/energy_katana/afterattack(atom/target, mob/user, proximity_flag, click_parameters) //there should be a cooldown for this, it can be spammed for LOTS OF NOISE and LOTS OF SPARKS
 	if(dash_toggled)
 		return ..()
 	if(proximity_flag && (isobj(target) || issilicon(target)))
