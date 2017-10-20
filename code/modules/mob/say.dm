@@ -80,3 +80,8 @@
 
 /mob/proc/lingcheck()
 	return 0
+
+if(findtext(message, "~"))
+	adjustBrainLoss(10) // tildes actually cause brain damage, it's a fact of nature.
+	to_chat(src, "<span class='warning'>You feel dumber for having spoken in such a mannerism.</span>")
+	var/robot = isSynthetic()
