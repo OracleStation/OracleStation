@@ -48,4 +48,5 @@
 	name = "Ash Walker"
 	id = "ashlizard"
 	limbs_id = "unathi"
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,NOBREATH,NOGUNS,DIGITIGRADE)
+	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,NOBREATH,NOGUNS,DIGITIGRADE,NO_BONES)
+	examine_text = "an Ash Walker"
