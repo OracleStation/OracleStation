@@ -206,13 +206,10 @@
 /obj/docking_port/mobile/emergency/request(obj/docking_port/stationary/S, area/signalOrigin, reason, redAlert, set_coefficient=null)
 	if(!isnum(set_coefficient))
 		var/security_num = seclevel2num(get_security_level())
-		switch(security_num)
-			if(SEC_LEVEL_GREEN)
-				set_coefficient = 2
-			if(SEC_LEVEL_BLUE)
-				set_coefficient = 1
-			else
-				set_coefficient = 0.5
+		if(security_num == SEC_LEVEL_GREEN || security_num == SEC_LEVEL_BLUE)
+			set_coefficient = 1
+		else
+			set_coefficient = 0.5
 	var/call_time = SSshuttle.emergencyCallTime * set_coefficient * engine_coeff
 	switch(mode)
 		// The shuttle can not normally be called while "recalling", so
