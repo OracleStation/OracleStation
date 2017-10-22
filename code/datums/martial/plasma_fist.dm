@@ -66,22 +66,21 @@
 	add_to_streak("H",D)
 	if(check_streak(A,D))
 		return 1
-	basic_hit(A,D)
-	return 1
+	add_logs(A, D, "punched with Plasma Fist")
+	..()
 
 /datum/martial_art/plasma_fist/disarm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	add_to_streak("D",D)
 	if(check_streak(A,D))
-		return 1
-	basic_hit(A,D)
-	return 1
+		add_logs(A, D, "disarmed with Plasma Fist")
+	..()
 
 /datum/martial_art/plasma_fist/grab_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	add_to_streak("G",D)
 	if(check_streak(A,D))
 		return 1
-	basic_hit(A,D)
-	return 1
+		add_logs(A, D, "grabbed with Plasma Fist")
+	..()
 
 /mob/living/carbon/human/proc/plasma_fist_help()
 	set name = "Recall Teachings"
