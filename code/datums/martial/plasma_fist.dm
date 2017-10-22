@@ -72,6 +72,7 @@
 /datum/martial_art/plasma_fist/disarm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	add_to_streak("D",D)
 	if(check_streak(A,D))
+		return 1
 		add_logs(A, D, "disarmed with Plasma Fist")
 	..()
 
