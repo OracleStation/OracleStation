@@ -149,13 +149,6 @@
 	minimal_access = list(ACCESS_JANITOR, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS)
 
 
-//Civilian
-
-/datum/job/clown/New()
-	..()
-	MAP_JOB_CHECK
-	supervisors = "nobody but yourself" //Honk
-
 MAP_REMOVE_JOB(hos)
 MAP_REMOVE_JOB(chief_engineer)
 MAP_REMOVE_JOB(qm)
@@ -167,3 +160,5 @@ MAP_REMOVE_JOB(warden)
 MAP_REMOVE_JOB(lawyer)
 MAP_REMOVE_JOB(brig_phys)
 MAP_REMOVE_JOB(blueshield)
+MAP_REMOVE_JOB(clown)
+MAP_REMOVE_JOB(mime)
