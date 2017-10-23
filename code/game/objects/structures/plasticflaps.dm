@@ -7,6 +7,7 @@
 	density = FALSE
 	anchored = TRUE
 	layer = ABOVE_MOB_LAYER
+	CanAtmosPass = ATMOS_PASS_NO
 	var/state = PLASTIC_FLAPS_NORMAL
 
 /obj/structure/plasticflaps/examine(mob/user)
