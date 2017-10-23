@@ -40,7 +40,7 @@
 	key = "choke"
 	key_third_person = "chokes"
 	message = "chokes!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/cross
 	key = "cross"
@@ -52,7 +52,7 @@
 	key = "chuckle"
 	key_third_person = "chuckles"
 	message = "chuckles."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/collapse
 	key = "collapse"
@@ -153,13 +153,13 @@
 	key = "gag"
 	key_third_person = "gags"
 	message = "gags."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/gasp
 	key = "gasp"
 	key_third_person = "gasps"
 	message = "gasps!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 	stat_allowed = UNCONSCIOUS
 
 /datum/emote/living/giggle
@@ -167,14 +167,13 @@
 	key_third_person = "giggles"
 	message = "giggles."
 	message_mime = "giggles silently!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/glare
 	key = "glare"
 	key_third_person = "glares"
 	message = "glares."
 	message_param = "glares at %t."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/grin
 	key = "grin"
@@ -186,6 +185,7 @@
 	key_third_person = "groans"
 	message = "groans!"
 	message_mime = "appears to groan!"
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/grimace
 	key = "grimace"
@@ -209,7 +209,7 @@
 	key = "laugh"
 	key_third_person = "laughs"
 	message = "laughs."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/look
 	key = "look"
@@ -234,31 +234,27 @@
 	key = "pout"
 	key_third_person = "pouts"
 	message = "pouts."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/scowl
 	key = "scowl"
 	key_third_person = "scowls"
 	message = "scowls."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/shake
 	key = "shake"
 	key_third_person = "shakes"
 	message = "shakes their head."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/shiver
 	key = "shiver"
 	key_third_person = "shiver"
 	message = "shivers."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/sigh
 	key = "sigh"
 	key_third_person = "sighs"
 	message = "sighs."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/sit
 	key = "sit"
@@ -286,7 +282,7 @@
 	key_third_person = "snores"
 	message = "snores."
 	message_mime = "sleeps soundly."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/stare
 	key = "stare"
@@ -345,6 +341,7 @@
 	key_third_person = "whimpers"
 	message = "whimpers."
 	message_mime = "appears hurt."
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/wsmile
 	key = "wsmile"
@@ -355,7 +352,7 @@
 	key = "yawn"
 	key_third_person = "yawns"
 	message = "yawns."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/custom
 	key = "me"
@@ -479,11 +476,11 @@
 	key_third_person = "screams"
 	message = "screams."
 	message_mime = "acts out a scream!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 	cooldown = 100
 
 /datum/emote/living/scream/run_emote(mob/user, params)
-	if(!..())
+	if(!..() || !user.can_speak())
 		return
 
 	var/sound_to_play = 'sound/effects/mob_effects/goonstation/male_scream.ogg'
@@ -506,7 +503,7 @@
 	key_third_person = "coughs"
 	message = "coughs."
 	message_mime = "seems to be coughing!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 	cooldown = 60
 
 /datum/emote/living/cough/run_emote(mob/user, params)
@@ -529,7 +526,7 @@
 	key_third_person = "sneezes"
 	message = "sneezes!"
 	message_mime = "seems to be sneezing!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 	cooldown = 60
 
 /datum/emote/living/sneeze/run_emote(mob/user, params)
