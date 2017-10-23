@@ -507,7 +507,7 @@
 	cooldown = 60
 
 /datum/emote/living/cough/run_emote(mob/user, params)
-	if(!..())
+	if(!..() || !user.can_speak())
 		return
 	var/sound_to_play = 'sound/effects/mob_effects/m_cough.ogg'
 	var/mob/living/carbon/human/H = user
@@ -530,7 +530,7 @@
 	cooldown = 60
 
 /datum/emote/living/sneeze/run_emote(mob/user, params)
-	if(!..())
+	if(!..() || !user.can_speak())
 		return
 	var/sound_to_play = 'sound/effects/mob_effects/sneeze.ogg'
 	var/mob/living/carbon/human/H = user
