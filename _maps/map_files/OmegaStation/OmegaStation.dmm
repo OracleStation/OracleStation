@@ -5040,7 +5040,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/highsecurity{
 	locked = 1;
-	name = "MiniSat Chamber";
+	name = "AI Chamber";
 	req_access_txt = "16"
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
