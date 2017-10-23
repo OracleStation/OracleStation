@@ -306,7 +306,6 @@
 		return FALSE
 
 	setDir(target_dir)
-	air_update_turf(1)
 	ini_dir = dir
 	add_fingerprint(usr)
 	return TRUE
