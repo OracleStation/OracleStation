@@ -1,8 +1,8 @@
 /datum/objective/sintouched
 	completed = 1
 
-/datum/objective/sintouched/lust
-	explanation_text = "Go get married, then immediately cheat on your new spouse by marrying an object... like a welding fuel tank." 
+/datum/objective/sintouched/hypocrisy
+	explanation_text = "You feel an urge to criticise the way other people work. After criticising them proceed to work exactly how they do." 
 
 /datum/objective/sintouched/gluttony
 	explanation_text = "Everything is so delicious. Go eat everything."
