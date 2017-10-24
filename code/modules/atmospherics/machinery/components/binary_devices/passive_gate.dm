@@ -21,6 +21,9 @@ Passive gate is similar to the regular pump except:
 	var/id = null
 	var/datum/radio_frequency/radio_connection
 
+	construction_type = /obj/item/pipe/directional
+	pipe_state = "passivegate"
+
 /obj/machinery/atmospherics/components/binary/passive_gate/Destroy()
 	SSradio.remove_object(src,frequency)
 	return ..()
@@ -171,4 +174,3 @@ Passive gate is similar to the regular pump except:
 			to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first!</span>")
 		else
 			return 1
-

@@ -1,6 +1,7 @@
 /obj/machinery/atmospherics/components/trinary/filter
 	name = "gas filter"
 	icon_state = "filter_off"
+	desc = "Very useful for filtering gasses."
 	density = FALSE
 	can_unwrench = 1
 	var/on = FALSE
@@ -8,6 +9,9 @@
 	var/filter_type = ""
 	var/frequency = 0
 	var/datum/radio_frequency/radio_connection
+
+	construction_type = /obj/item/pipe/trinary/flippable
+	pipe_state = "filter"
 
 /obj/machinery/atmospherics/components/trinary/filter/flipped
 	icon_state = "filter_off_f"
