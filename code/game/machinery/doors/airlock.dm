@@ -816,6 +816,8 @@
 					//drop door bolts
 					if(wires.is_cut(WIRE_BOLTS))
 						to_chat(usr, "You can't drop the door bolts - The door bolt dropping wire has been cut.")
+					else if(!src.hasPower())
+						to_chat(usr, "Can't drop the door bolts - Power failure.")
 					else
 						bolt()
 				if(5)
