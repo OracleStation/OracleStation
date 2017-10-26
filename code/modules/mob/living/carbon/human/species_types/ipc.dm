@@ -4,11 +4,13 @@
 	id = "ipc"
 	say_mod = "states"
 	heatmod = 2 // Went cheap with Aircooling
-	burnmod = 2.5 // BODYPART_ROBOTIC has some inherent burn reduction we have to overcome, as well as apply weakness. Variable.
-	brutemod = 1.2 // Here to be adjusted for balance.
-	species_traits = list(NOBREATH,NOBLOOD,RADIMMUNE,VIRUSIMMUNE,EASYDISMEMBER,EASYLIMBATTACHMENT,NOPAIN,NO_BONES,NOCLONE,NOLIVER,TOXINLOVER,NOTRANSSTING,MUTCOLORS,NOHUNGER,NOSTOMACH) // NOHUNGER is temporary
+	coldmod = 2 // Don't put your computer in the freezer.
+	burnmod = 1.5 // Overcoming augmented damage reduction
+	brutemod = 1.5
+	species_traits = list(NOBREATH,NOBLOOD,RADIMMUNE,VIRUSIMMUNE,EASYDISMEMBER,EASYLIMBATTACHMENT,NOPAIN,NO_BONES,NOCLONE,NOLIVER,TOXINLOVER,NOTRANSSTING,MUTCOLORS,NOHUNGER,NOSTOMACH) // NOHUNGER is temporary. A liver is needed to process chems (LIKE HOLY WATER)
+	mutant_bodyparts = list("ipc_screen", "ipc_antenna")
 	meat = null
-	damage_overlay_type = "synth"
+	damage_overlay_type = "robotic"
 	mutanteyes = /obj/item/organ/eyes/robotic
 	mutanttongue = /obj/item/organ/tongue/robot
 	// mutantears = /obj/item/organ/ears/robot // Haven't made these yet.
@@ -22,7 +24,19 @@
 		var/obj/item/bodypart/Z = X
 		Z.change_bodypart_status(BODYPART_ROBOTIC, FALSE, TRUE) // Makes all Bodyparts robotic
 		Z.icon = 'icons/mob/augmentation/augments_ipc.dmi' // Overrides the augmentation icons
-		Z.species_color = fixed_mut_color // This pulls forward the color and adds it to the limb.
+
+/* /datum/species/ipc/proc/handle_emp // Special EMP Effects TBD
+		if(prob(1) && owner.stat == CONSCIOUS)
+		owner.visible_message("<span class='danger'>[owner] starts having a seizure!</span>", "<span class='userdanger'>You have a seizure!</span>")
+		owner.Unconscious(200)
+		owner.Jitter(1000)
+		playsound(src, "sparks", 50, 1)
+*/
+
+/* /datum/species/ipc/proc/handle_emag // Unlocks Breadslot
+
+*/
+
 
 /datum/species/ipc/on_species_loss(mob/living/carbon/C)
 	. = ..()
