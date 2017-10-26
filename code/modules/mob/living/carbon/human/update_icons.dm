@@ -218,7 +218,7 @@ There are several things that need to be remembered:
 	var/list/standing = list()
 	for(var/obj/item/bodypart/B in bodyparts)
 		if(B.splinted)
-			var/mutable_appearance/some_overlay_thing = mutable_appearance('icons/mob/splints.dmi', B.body_zone, SPLINT_LAYER)
+			var/mutable_appearance/some_overlay_thing = mutable_appearance('icons/mob/splints.dmi', B.body_zone, -SPLINT_LAYER)
 			standing += some_overlay_thing
 
 	overlays_standing[SPLINT_LAYER] = standing

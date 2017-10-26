@@ -20,6 +20,8 @@
 	disliked_food = FRUIT
 	liked_food = VEGETABLES
 	ass_pic = "plasmaman"
+	examine_text = "a Plasmaman"
+	species_text_color = "#800064"
 
 /datum/species/plasmaman/spec_life(mob/living/carbon/human/H)
 	var/datum/gas_mixture/environment = H.loc.return_air()

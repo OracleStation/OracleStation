@@ -12,6 +12,8 @@
 	var/list/initial_species_traits = list(NOTRANSSTING,NOBREATH,VIRUSIMMUNE,NODISMEMBER,NOHUNGER,NOPAIN) //for getting these values back for assume_disguise()
 	var/disguise_fail_health = 75 //When their health gets to this level their synthflesh partially falls off
 	var/datum/species/fake_species = null //a species to do most of our work for us, unless we're damaged
+	examine_text = "a Synth"
+	species_text_color = "#555555"
 
 /datum/species/synth/military
 	name = "Military Synth"
@@ -21,6 +23,8 @@
 	punchdamagehigh = 19
 	punchstunthreshold = 14 //about 50% chance to stun
 	disguise_fail_health = 50
+	examine_text = "a Synth"
+	species_text_color = "#333333"
 
 /datum/species/synth/on_species_gain(mob/living/carbon/human/H, datum/species/old_species)
 	..()
@@ -33,6 +37,13 @@
 		return 1
 	else
 		return ..()
+
+/datum/species/synth/get_examine_text()
+	if(fake_species)
+		return fake_species.get_examine_text()
+	else
+		..()
+
 
 
 /datum/species/synth/proc/assume_disguise(datum/species/S, mob/living/carbon/human/H)

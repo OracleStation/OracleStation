@@ -11,6 +11,8 @@
 	var/static/list/spooks = list('sound/hallucinations/growl1.ogg','sound/hallucinations/growl2.ogg','sound/hallucinations/growl3.ogg','sound/hallucinations/veryfar_noise.ogg','sound/hallucinations/wail.ogg')
 	disliked_food = NONE
 	liked_food = GROSS | MEAT | RAW
+	examine_text = "a Zombie"
+	species_text_color = "#165f07"
 
 /datum/species/zombie/infectious
 	name = "Infectious Zombie"

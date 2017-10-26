@@ -22,6 +22,8 @@
 	limbs_id = "golem"
 	fixed_mut_color = "aaa"
 	var/info_text = "As an <span class='danger'>Iron Golem</span>, you don't have any special traits."
+	examine_text = "an Iron Golem"
+	species_text_color = "#7e7e7e"
 
 	var/prefix = "Iron"
 	var/list/special_names
@@ -61,6 +63,8 @@
 	fixed_mut_color = "4ed"
 	info_text = "As an <span class='danger'>Adamantine Golem</span>, you possess special vocal cords allowing you to \"resonate\" messages to all golems."
 	prefix = "Adamantine"
+	examine_text = "an Adamantine Golem"
+	species_text_color = "#0be557"
 
 //The suicide bombers of golemkind
 /datum/species/golem/plasma
@@ -76,6 +80,8 @@
 	special_names = list("Flood","Fire","Bar","Man")
 	var/boom_warning = FALSE
 	var/datum/action/innate/ignite/ignite
+	examine_text = "a Plasma Golem"
+	species_text_color = "#e50bb9"
 
 /datum/species/golem/plasma/spec_life(mob/living/carbon/human/H)
 	if(H.bodytemperature > 750)
@@ -131,6 +137,8 @@
 	info_text = "As a <span class='danger'>Diamond Golem</span>, you are more resistant than the average golem."
 	prefix = "Diamond"
 	special_names = list("Back")
+	examine_text = "a Diamond Golem"
+	species_text_color = "#0bd6e5"
 
 //Faster but softer and less armoured
 /datum/species/golem/gold
@@ -142,6 +150,8 @@
 	meat = /obj/item/ore/gold
 	info_text = "As a <span class='danger'>Gold Golem</span>, you are faster but less resistant than the average golem."
 	prefix = "Golden"
+	examine_text = "a Gold Golem"
+	species_text_color = "#e5b20b"
 
 //Heavier, thus higher chance of stunning when punching
 /datum/species/golem/silver
@@ -153,6 +163,8 @@
 	info_text = "As a <span class='danger'>Silver Golem</span>, your attacks are heavier and have a higher chance of stunning."
 	prefix = "Silver"
 	special_names = list("Surfer", "Chariot", "Lining")
+	examine_text = "a Silver Golem"
+	species_text_color = "#91855f"
 
 //Harder to stun, deals more damage, but it's even slower
 /datum/species/golem/plasteel
@@ -169,6 +181,8 @@
 	attack_verb = "smash"
 	attack_sound = 'sound/effects/meteorimpact.ogg' //hits pretty hard
 	prefix = "Plasteel"
+	examine_text = "a Plasteel Golem"
+	species_text_color = "#413c2a"
 
 //Immune to ash storms
 /datum/species/golem/titanium
@@ -179,6 +193,8 @@
 	info_text = "As a <span class='danger'>Titanium Golem</span>, you are immune to ash storms, and slightly more resistant to burn damage."
 	burnmod = 0.9
 	prefix = "Titanium"
+	examine_text = "a Titanium Golem"
+	species_text_color = "#9f9f9f"
 
 /datum/species/golem/titanium/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	. = ..()
@@ -197,6 +213,8 @@
 	info_text = "As a <span class='danger'>Plastitanium Golem</span>, you are immune to both ash storms and lava, and slightly more resistant to burn damage."
 	burnmod = 0.8
 	prefix = "Plastitanium"
+	examine_text = "a Plastitanium Golem"
+	species_text_color = "#413c2a"
 
 /datum/species/golem/plastitanium/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	. = ..()
@@ -219,6 +237,8 @@
 	info_text = "As an <span class='danger'>Alloy Golem</span>, you are made of advanced alien materials: you are faster and regenerate over time. You are, however, only able to be heard by other alloy golems."
 	prefix = "Alien"
 	special_names = list("Outsider", "Technology", "Watcher", "Stranger") //ominous and unknown
+	examine_text = "an Alien Alloy Golem"
+	species_text_color = "#412a40"
 
 //Regenerates because self-repairing super-advanced alien tech
 /datum/species/golem/alloy/spec_life(mob/living/carbon/human/H)
@@ -244,6 +264,8 @@
 	special_names = list("Tomato", "Potato", "Broccoli", "Carrot", "Ambrosia", "Pumpkin", "Ivy", "Kudzu", "Banana", "Moss", "Flower", "Bloom", "Root", "Bark", "Glowshroom", "Petal", "Leaf", "Venus", "Sprout","Cocoa", "Strawberry", "Citrus", "Oak", "Cactus", "Pepper", "Juniper")
 	human_surname_chance = 0
 	special_name_chance = 100
+	examine_text = "a Wood Golem"
+	species_text_color = "#6e4411"
 
 /datum/species/golem/wood/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	. = ..()
@@ -290,6 +312,8 @@
 	var/last_event = 0
 	var/active = null
 	prefix = "Uranium"
+	examine_text = "a Uranium Golem"
+	species_text_color = "#399a18"
 
 /datum/species/golem/uranium/spec_life(mob/living/carbon/human/H)
 	if(!active)
@@ -312,6 +336,8 @@
 	info_text = "As a <span class='danger'>Sand Golem</span>, you are immune to physical bullets and take very little brute damage, but are extremely vulnerable to burn damage. You will also turn to sand when dying, preventing any form of recovery."
 	attack_sound = 'sound/effects/shovel_dig.ogg'
 	prefix = "Sand"
+	examine_text = "a Sand Golem"
+	species_text_color = "#e5c157"
 
 /datum/species/golem/sand/spec_death(gibbed, mob/living/carbon/human/H)
 	H.visible_message("<span class='danger'>[H] turns into a pile of sand!</span>")
@@ -342,6 +368,8 @@
 	info_text = "As a <span class='danger'>Glass Golem</span>, you reflect lasers and energy weapons, and are very resistant to burn damage, but you are extremely vulnerable to brute damage. On death, you'll shatter beyond any hope of recovery."
 	attack_sound = 'sound/effects/glassbr2.ogg'
 	prefix = "Glass"
+	examine_text = "a Glass Golem"
+	species_text_color = "#99b3b8"
 
 /datum/species/golem/glass/spec_death(gibbed, mob/living/carbon/human/H)
 	playsound(H, "shatter", 70, 1)
@@ -384,6 +412,8 @@
 	attack_sound = 'sound/effects/phasein.ogg'
 	prefix = "Bluespace"
 	special_names = list("Crystal", "Polycrystal")
+	examine_text = "a Bluespace Golem"
+	species_text_color = "#408dba"
 
 	var/datum/action/innate/unstable_teleport/unstable_teleport
 	var/teleport_cooldown = 100
@@ -484,6 +514,8 @@
 	var/last_banana = 0
 	var/banana_cooldown = 100
 	var/active = null
+	examine_text = "a Bananium Golem"
+	species_text_color = "#d6c100"
 
 /datum/species/golem/bananium/random_name(gender,unique,lastname)
 	var/clown_name = pick(GLOB.clown_names)
@@ -544,6 +576,8 @@
 	info_text = "As a <span class='danger'>Runic Golem</span>, you possess eldritch powers granted by the Elder God Nar'Sie."
 	species_traits = list(NOBREATH,RESISTHOT,RESISTCOLD,RESISTPRESSURE,NOFIRE,NOGUNS,NOBLOOD,RADIMMUNE,VIRUSIMMUNE,PIERCEIMMUNE,NODISMEMBER,NO_UNDERWEAR) //no mutcolors
 	prefix = "Runic"
+	examine_text = "a Runic Golem"
+	species_text_color = "#751700"
 
 	var/obj/effect/proc_holder/spell/targeted/ethereal_jaunt/shift/golem/phase_shift
 	var/obj/effect/proc_holder/spell/targeted/abyssal_gaze/abyssal_gaze
@@ -599,6 +633,8 @@
 	punchstunthreshold = 7
 	punchdamagehigh = 8 // not as heavy as stone
 	prefix = "Cloth"
+	examine_text = "a Cloth Golem"
+	species_text_color = "#9f9f9f"
 
 /datum/species/golem/cloth/random_name(gender,unique,lastname)
 	var/pharaoh_name = pick("Neferkare", "Hudjefa", "Khufu", "Mentuhotep", "Ahmose", "Amenhotep", "Thutmose", "Hatshepsut", "Tutankhamun", "Ramses", "Seti", \
@@ -688,6 +724,8 @@
 	prefix = "Plastic"
 	fixed_mut_color = "fff"
 	info_text = "As a <span class='danger'>Plastic Golem</span>, you are capable of ventcrawling, and passing through plastic flaps."
+	examine_text = "a Plastic Golem"
+	species_text_color = "#9f9f9f"
 
 /datum/species/golem/plastic/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	. = ..()
