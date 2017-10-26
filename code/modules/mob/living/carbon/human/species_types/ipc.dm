@@ -9,6 +9,7 @@
 	brutemod = 1.5
 	species_traits = list(NOBREATH,NOBLOOD,RADIMMUNE,VIRUSIMMUNE,EASYDISMEMBER,EASYLIMBATTACHMENT,NOPAIN,NO_BONES,NOCLONE,NOLIVER,TOXINLOVER,NOTRANSSTING,MUTCOLORS,NOHUNGER,NOSTOMACH) // NOHUNGER is temporary. A liver is needed to process chems (LIKE HOLY WATER)
 	mutant_bodyparts = list("ipc_screen", "ipc_antenna")
+	default_features = list("mcolor" = "#7D7D7D", "ipc_screen" = "Blue", "ipc_antenna" = "None")
 	meat = null
 	damage_overlay_type = "robotic"
 	mutanteyes = /obj/item/organ/eyes/robotic
@@ -23,7 +24,7 @@
 	for(var/X in C.bodyparts)
 		var/obj/item/bodypart/Z = X
 		Z.change_bodypart_status(BODYPART_ROBOTIC, FALSE, TRUE) // Makes all Bodyparts robotic
-		Z.icon = 'icons/mob/augmentation/augments_ipc.dmi' // Overrides the augmentation icons
+		Z.icon = 'icons/mob/augmentation/ipc.dmi' // Overrides the augmentation icons
 
 /* /datum/species/ipc/proc/handle_emp // Special EMP Effects TBD
 		if(prob(1) && owner.stat == CONSCIOUS)

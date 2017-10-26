@@ -1518,6 +1518,132 @@
 	name = "Aquatic"
 	icon_state = "aqua"
 
+/datum/sprite_accessory/ipc_screens
+	icon = 'icons/mob/mutant_bodyparts.dmi'
+
+/datum/sprite_accessory/ipc_screens/blue
+	name = "Blue"
+	icon_state = "blue"
+
+/datum/sprite_accessory/ipc_screens/breakout
+	name = "Breakout"
+	icon_state = "breakout"
+
+/datum/sprite_accessory/ipc_screens/eight
+	name = "Eight"
+	icon_state = "eight"
+
+/datum/sprite_accessory/ipc_screens/goggles
+	name = "Goggles"
+	icon_state = "goggles"
+
+/datum/sprite_accessory/ipc_screens/green
+	name = "Green"
+	icon_state = "green"
+
+/datum/sprite_accessory/ipc_screens/heart
+	name = "Heart"
+	icon_state = "heart"
+
+/datum/sprite_accessory/ipc_screens/monoeye
+	name = "Mono-eye"
+	icon_state = "monoeye"
+
+/datum/sprite_accessory/ipc_screens/nature
+	name = "Nature"
+	icon_state = "nature"
+
+/datum/sprite_accessory/ipc_screens/orange
+	name = "Orange"
+	icon_state = "orange"
+
+/datum/sprite_accessory/ipc_screens/pink
+	name = "Pink"
+	icon_state = "pink"
+
+/datum/sprite_accessory/ipc_screens/purple
+	name = "Purple"
+	icon_state = "purple"
+
+/datum/sprite_accessory/ipc_screens/red
+	name = "Red"
+	icon_state = "red"
+
+/datum/sprite_accessory/ipc_screens/shower
+	name = "Shower"
+	icon_state = "shower"
+
+/datum/sprite_accessory/ipc_screens/static
+	name = "Static"
+	icon_state = "static"
+
+/datum/sprite_accessory/ipc_screens/yellow
+	name = "Yellow"
+	icon_state = "yellow"
+
+/datum/sprite_accessory/ipc_screens/scroll
+	name = "Scroll"
+	icon_state = "scroll"
+
+/datum/sprite_accessory/ipc_screens/console
+	name = "Console"
+	icon_state = "console"
+
+/datum/sprite_accessory/ipc_screens/rgb
+	name = "RGB"
+	icon_state = "rgb"
+
+/datum/sprite_accessory/ipc_screens/glider
+	name = "Glider"
+	icon_state = "glider"
+
+/datum/sprite_accessory/ipc_screens/rainbow
+	name = "Rainbow"
+	icon_state = "rainbow"
+
+/datum/sprite_accessory/ipc_antennas
+	icon = 'icons/mob/mutant_bodyparts.dmi'
+
+/datum/sprite_accessory/ipc_antennas/none
+	name = "None"
+	icon_state = "None"
+
+/datum/sprite_accessory/ipc_antennas/angled
+	name = "Angled"
+	icon_state = "antennae"
+
+/datum/sprite_accessory/ipc_antennas/tv
+	name = "TV Antenna"
+	icon_state = "tvantennae"
+
+/datum/sprite_accessory/ipc_antennas/tesla
+	name = "Tesla"
+	icon_state = "tesla"
+
+/datum/sprite_accessory/ipc_antennas/light
+	name = "Light"
+	icon_state = "light"
+
+/datum/sprite_accessory/ipc_antennas/cyberhead
+	name = "Cyberhead"
+	icon_state = "cyberhead"
+
+/datum/sprite_accessory/ipc_antennas/sidelights
+	name = "Sidelights"
+	icon_state = "sidelights"
+
+/datum/sprite_accessory/ipc_antennas/antlers
+	name = "Antlers"
+	icon_state = "antlers"
+
+/datum/sprite_accessory/ipc_antennas/droneeyes
+	name = "Drone Eyes"
+	icon_state = "droneeyes"
+
+/datum/sprite_accessory/ipc_antennas/crowned
+	name = "Crowned"
+	icon_state = "crowned"
+
 /datum/sprite_accessory/legs 	//legs are a special case, they aren't actually sprite_accessories but are updated with them.
 	icon = null					//These datums exist for selecting legs on preference, and little else
 

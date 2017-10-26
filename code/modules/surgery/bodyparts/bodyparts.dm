@@ -361,7 +361,7 @@
 	if((body_zone != "head" && body_zone != "chest"))
 		should_draw_gender = FALSE
 
-	if(status == BODYPART_ORGANIC || icon == 'icons/mob/augmentation/augments_ipc.dmi' ) // S.N.O.W.F.L.A.K.E.
+	if(status == BODYPART_ORGANIC || icon == 'icons/mob/augmentation/ipc.dmi' ) // S.N.O.W.F.L.A.K.E.
 		if(should_draw_greyscale)
 			limb.icon = 'icons/mob/human_parts_greyscale.dmi'
 			if(should_draw_gender)

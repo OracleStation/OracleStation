@@ -288,6 +288,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_unathi_body_markings"]	>> features["body_markings"]
 	S["feature_unathi_legs"]			>> features["legs"]
 	S["feature_ears_ethari"]			>> features["ears_ethari"]
+	S["feature_ipc_screen"]			>> features["ipc_screens"]
+	S["feature_ipc_antenna"]				>> features["ipc_antennas"]
 	if(!config.mutant_humans)
 		features["tail_human"] = "none"
 		features["ears"] = "none"
