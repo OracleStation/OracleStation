@@ -26,7 +26,7 @@
 		Z.change_bodypart_status(BODYPART_ROBOTIC, FALSE, TRUE) // Makes all Bodyparts robotic
 		Z.icon = 'icons/mob/augmentation/ipc.dmi' // Overrides the augmentation icons
 
-/* /datum/species/ipc/proc/handle_emp // Special EMP Effects TBD
+/* /datum/species/ipc/proc/handle_emp // This is what I want it to do, but all I did was copy+paste garbage. This is just here to remind me.
 		if(prob(1) && owner.stat == CONSCIOUS)
 		owner.visible_message("<span class='danger'>[owner] starts having a seizure!</span>", "<span class='userdanger'>You have a seizure!</span>")
 		owner.Unconscious(200)
@@ -37,7 +37,6 @@
 /* /datum/species/ipc/proc/handle_emag // Unlocks Breadslot
 
 */
-
 
 /datum/species/ipc/on_species_loss(mob/living/carbon/C)
 	. = ..()

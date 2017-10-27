@@ -1582,7 +1582,7 @@
 	icon_state = "yellow"
 
 /datum/sprite_accessory/ipc_screens/scroll
-	name = "Scroll"
+	name = "Scanline"
 	icon_state = "scroll"
 
 /datum/sprite_accessory/ipc_screens/console
