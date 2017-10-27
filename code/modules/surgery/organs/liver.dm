@@ -86,3 +86,21 @@
 			damage+=100
 		if(2)
 			damage+=50
+
+/obj/item/organ/liver/ipc  // It's a liver because a liver is needed to process chems (Like holywater) but it doesn't make sense for a robot to have a liver.
+	name = "IPC Morality Core"
+	icon_state = "null" // TBD
+	origin_tech = "engineering=2"
+	attack_verb = list("morally struck", "core'd")
+	desc = "A device installed on all IPCs in order to protect against code exploits."
+	alcohol_tolerance = 0
+	toxTolerance = -1
+	toxLethality = 0
+	filterToxins = TRUE
+
+/obj/item/organ/liver/ipc/emp_act(severity)
+	switch(severity)
+		if(1)
+			to_chat(owner, "<span class='warning'>Heavy EMP Detected. Morality Core rebooted to prevent damage.</span>")
+		if(2)
+			to_chat(owner, "<span class='warning'>EMP Detected. Morality Core unaffected</span>")

@@ -64,3 +64,22 @@
 	name = "digestive crystal"
 	icon_state = "pstomach"
 	desc = "A strange crystal that is responsible for metabolizing the unseen energy force that feeds plasmamen."
+
+/obj/item/organ/stomach/ipc
+	name = "IPC Micro-cell"
+	icon_state = "null" // TBD
+	origin_tech = "engineering=2"
+	w_class = WEIGHT_CLASS_NORMAL
+	zone = "chest"
+	slot = "stomach"
+	attack_verb = list("assault and battery'd")
+	desc = "A S.N.O.W.F.L.A.K.E Corporation Micro-cell, for IPC use only. Do not swallow."
+
+/obj/item/organ/stomach/ipc/emp_act(severity)
+	switch(severity)
+		if(1)
+			owner.nutrition =- 600
+			to_chat(owner, "<span class='warning'>Your internal battery shorts out. Switching to backup power.</span>")
+		if(2)
+			owner.nutrition =- 250
+			to_chat(owner, "<span class='warning'>Your internal battery shorts out. Recharge as soon as possible.</span>")

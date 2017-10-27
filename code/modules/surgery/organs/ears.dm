@@ -94,3 +94,24 @@
 	color = H.hair_color
 	H.dna.features["ears"] = "None"
 	H.update_body()
+
+/obj/item/organ/ears/robot
+	name = "robotic ears"
+	icon_state = null
+	origin_tech = "engineering=2"
+	desc = "A pair of microphones, installed in the head, that grant the ability to hear."
+	zone = "head"
+	slot = "ears"
+	gender = PLURAL
+
+/obj/item/organ/ears/robot/emp_act(severity)
+	switch(severity)
+		if(1)
+			owner.Jitter(120)
+			owner.Dizzy(120)
+			deaf = 1
+			to_chat(owner, "<span class='warning'>Your robotic ears are ringing, uselessly.</span>")
+		if(2)
+			owner.Jitter(60)
+			owner.Dizzy(60)
+			to_chat(owner, "<span class='warning'>Your robotic ears buzz.</span>")
