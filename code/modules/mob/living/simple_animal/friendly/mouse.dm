@@ -60,21 +60,6 @@
 			playsound(src, 'sound/effects/mousesqueek.ogg', 100, 1)
 	..()
 
-/mob/living/simple_animal/mouse/handle_automated_action()
-	if(prob(chew_probability))
-		var/turf/open/floor/F = get_turf(src)
-		if(istype(F) && !F.intact)
-			var/obj/structure/cable/C = locate() in F
-			if(C && prob(15))
-				if(C.avail())
-					visible_message("<span class='warning'>[src] chews through the [C]. It's toast!</span>")
-					playsound(src, 'sound/effects/sparks2.ogg', 100, 1)
-					C.deconstruct()
-					death(toast=1)
-				else
-					C.deconstruct()
-					visible_message("<span class='warning'>[src] chews through the [C].</span>")
-
 /*
  * Mouse types
  */
