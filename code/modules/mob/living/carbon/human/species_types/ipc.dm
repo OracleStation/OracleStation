@@ -17,7 +17,7 @@
 	mutantliver = /obj/item/organ/liver/ipc // Morality core. No EMP effect. Interactions with emagging.
 	mutantstomach = /obj/item/organ/stomach/ipc // The power cell of the IPC. Dumps nutrition when EMP'd.
 	mutantears = /obj/item/organ/ears/robot // Jitters, deafens, dizzys when EMP'd.
-	// mutant_brain = /obj/item/device/mmi/posibrain // 'Mutant_brain' exists further downstream. Not even sure if it's actually what I'd need.
+	// mutant_brain = /var/obj/item/device/mmi/mmi // 'Mutant_brain' exists further downstream. Not even sure if it's actually what I'd need.
 	examine_text = "an IPC"
 	species_text_color = "#2e2e2e"
 
