@@ -274,10 +274,10 @@
 	return
 
 /*
-	Middle click
+	Shift Middle click
 	Only used for swapping hands
 */
-/mob/proc/MiddleClickOn(atom/A)
+/mob/proc/ShiftMiddleClickOn(atom/A)
 	return
 
 /mob/living/carbon/MiddleClickOn(atom/A)
@@ -285,9 +285,8 @@
 		next_click = world.time + 5
 		mind.changeling.chosen_sting.try_to_sting(src, A)
 	else
-		swap_hand()
 
-/mob/living/simple_animal/drone/MiddleClickOn(atom/A)
+/mob/living/simple_animal/drone/ShiftMiddleClickOn(atom/A)
 	swap_hand()
 
 // In case of use break glass
@@ -368,7 +367,7 @@
 	A.CtrlShiftClick(src)
 	return
 
-/mob/proc/ShiftMiddleClickOn(atom/A)
+/mob/proc/MiddleClickOn(atom/A)
 	src.pointed(A)
 	return
 
