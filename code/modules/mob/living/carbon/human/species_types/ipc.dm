@@ -12,9 +12,9 @@
 	default_features = list("mcolor" = "#7D7D7D", "ipc_screen" = "Static", "ipc_antenna" = "None")
 	meat = null
 	damage_overlay_type = "robotic"
-	mutanteyes = /obj/item/organ/eyes/robotic // Vision is obfruscated when EMP'd
-	mutanttongue = /obj/item/organ/tongue/robot // Screams and stutters when EMP'd. - NOT WORKING CURRENTLY
-	mutantliver = /obj/item/organ/liver/ipc // Takes damage when EMP'd. Morality core. Interactions with emagging.
+	mutanteyes = /obj/item/organ/eyes/robotic // NOT WORKING?: Vision is obfruscated when EMP'd
+	mutanttongue = /obj/item/organ/tongue/robot // TO DO: Screams and stutters when EMP'd.
+	mutantliver = /obj/item/organ/liver/ipc // Morality core. No EMP effect. Interactions with emagging.
 	mutantstomach = /obj/item/organ/stomach/ipc // The power cell of the IPC. Dumps nutrition when EMP'd.
 	mutantears = /obj/item/organ/ears/robot // Jitters, deafens, dizzys when EMP'd.
 	// mutant_brain = /obj/item/device/mmi/posibrain // 'Mutant_brain' exists further downstream. Not even sure if it's actually what I'd need.

@@ -201,3 +201,142 @@
 		var/turf/T = loc
 		T.Entered(src)
 //Ayy lmao
+
+// IPC Emotes.
+
+/datum/emote/living/carbon/human/beep
+	key = "beep"
+	key_third_person = "beeps"
+	message = "beeps."
+	message_param = "beeps at %t."
+
+/datum/emote/living/carbon/human/beep/run_emote(mob/user, params)
+	if(..())
+		playsound(user.loc, 'sound/machines/twobeep.ogg', 50)
+
+/datum/emote/living/carbon/human/beep/can_run_emote(mob/user)
+	if(!..())
+		return FALSE
+	if(isipc(user))
+		return TRUE
+
+/datum/emote/living/carbon/human/buzz
+	key = "buzz"
+	key_third_person = "buzzes"
+	message = "buzzes."
+	message_param = "buzzes at %t."
+
+/datum/emote/living/carbon/human/buzz/run_emote(mob/user, params)
+	if(..())
+		playsound(user.loc, 'sound/machines/buzz-sigh.ogg', 50)
+
+/datum/emote/living/carbon/human/buzz/can_run_emote(mob/user)
+	if(!..())
+		return FALSE
+	if(isipc(user))
+		return TRUE
+
+/datum/emote/living/carbon/human/buzz2
+	key = "buzz2"
+	message = "buzzes twice."
+
+/datum/emote/living/carbon/human/buzz2/run_emote(mob/user, params)
+	if(..())
+		playsound(user.loc, 'sound/machines/buzz-two.ogg', 50)
+
+/datum/emote/living/carbon/human/buzz2/can_run_emote(mob/user)
+	if(!..())
+		return FALSE
+	if(isipc(user))
+		return TRUE
+
+/datum/emote/living/carbon/human/chime
+	key = "chime"
+	key_third_person = "chimes"
+	message = "chimes."
+
+/datum/emote/living/carbon/human/chime/run_emote(mob/user, params)
+	if(..())
+		playsound(user.loc, 'sound/machines/chime.ogg', 50)
+
+/datum/emote/living/carbon/human/chime/can_run_emote(mob/user)
+	if(!..())
+		return FALSE
+	if(isipc(user))
+		return TRUE
+
+/datum/emote/living/carbon/human/ping
+	key = "ping"
+	key_third_person = "pings"
+	message = "pings."
+	message_param = "pings at %t."
+
+/datum/emote/living/carbon/human/ping/run_emote(mob/user, params)
+	if(..())
+		playsound(user.loc, 'sound/machines/ping.ogg', 50)
+
+/datum/emote/living/carbon/human/ping/can_run_emote(mob/user)
+	if(!..())
+		return FALSE
+	if(isipc(user))
+		return TRUE
+
+/datum/emote/living/carbon/human/yes
+	key = "yes"
+	message = "blips affirmatively."
+
+/datum/emote/living/carbon/human/yes/run_emote(mob/user, params)
+	if(..())
+		playsound(user.loc, 'sound/effects/mob_effects/synth_yes.ogg', 50)
+
+/datum/emote/living/carbon/human/yes/can_run_emote(mob/user)
+	if(!..())
+		return FALSE
+	if(isipc(user))
+		return TRUE
+
+/datum/emote/living/carbon/human/no
+	key = "no"
+	message = "buzzes negatively."
+
+/datum/emote/living/carbon/human/no/run_emote(mob/user, params)
+	if(..())
+		playsound(user.loc, 'sound/effects/mob_effects/synth_no.ogg', 50)
+
+/datum/emote/living/carbon/human/no/can_run_emote(mob/user)
+	if(!..())
+		return FALSE
+	if(isipc(user))
+		return TRUE
+
+ // MAKE THESE LIMITED TO CLOWNS ONLY. SOMEHOW.
+/*
+/datum/emote/living/carbon/human/honk
+	key = "honk"
+	key_third_person = "honks"
+	message = "honks."
+
+/datum/emote/living/carbon/human/honk/run_emote(mob/user, params)
+	if(..())
+		playsound(user.loc, 'sound/items/bikehorn.ogg', 50)
+
+/datum/emote/living/carbon/human/honk/can_run_emote(mob/user)
+	if(!..())
+		return FALSE
+	if(isipc(user))
+		return TRUE
+
+/datum/emote/living/carbon/human/species/sad
+	key = "sad"
+	message = "plays a sad trombone..."
+
+/datum/emote/living/carbon/human/sad/run_emote(mob/user, params)
+	if(..())
+		playsound(user.loc, 'sound/misc/sadtrombone.ogg', 50)
+
+/datum/emote/living/carbon/human/sad/can_run_emote(mob/user)
+	if(!..())
+		return FALSE
+	if(isipc(user))
+		return TRUE
+*/
