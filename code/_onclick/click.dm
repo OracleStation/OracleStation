@@ -274,8 +274,7 @@
 	return
 
 /*
-	Middle click out of sight
-	Only used for swapping hands
+	Middle click for pointing
 */
 /mob/proc/ShiftMiddleClickOn(atom/A)
 	return
@@ -456,8 +455,6 @@
 /obj/screen/click_catcher/Click(location, control, params)
 	var/list/modifiers = params2list(params)
 	if(modifiers["middle"] && iscarbon(usr))
-		var/mob/living/carbon/C = usr
-		C.swap_hand()
 	else
 		var/turf/T = params2turf(modifiers["screen-loc"], get_turf(usr))
 		params += "&catcher=1"
