@@ -274,7 +274,7 @@
 	return
 
 /*
-	Shift Middle click
+	Middle click out of sight
 	Only used for swapping hands
 */
 /mob/proc/ShiftMiddleClickOn(atom/A)
