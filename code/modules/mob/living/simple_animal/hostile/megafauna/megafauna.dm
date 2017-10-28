@@ -100,7 +100,7 @@
 		return
 	visible_message(
 		"<span class='danger'>[src] devours [L]!</span>",
-		"<span class='userdanger'>You feast on [L], restoring your health!</span>")
+		"<span class='userdanger'>You devour [L]!</span>")
 	if(z != ZLEVEL_STATION && !client) //NPC monsters won't heal while on station
 		adjustBruteLoss(-L.maxHealth/2)
 	L.gib()
