@@ -285,6 +285,7 @@
 		next_click = world.time + 5
 		mind.changeling.chosen_sting.try_to_sting(src, A)
 	else
+		..()
 
 /mob/living/simple_animal/drone/ShiftMiddleClickOn(atom/A)
 	swap_hand()
