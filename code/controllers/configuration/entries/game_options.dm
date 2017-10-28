@@ -193,11 +193,17 @@ CONFIG_DEF(number/walk_delay)
 
 
 CONFIG_DEF(number/human_delay)	//Mob specific modifiers. NOTE: These will affect different mob types in different ways
+	integer = FALSE
 CONFIG_DEF(number/robot_delay)
+	integer = FALSE
 CONFIG_DEF(number/monkey_delay)
+	integer = FALSE
 CONFIG_DEF(number/alien_delay)
+	integer = FALSE
 CONFIG_DEF(number/slime_delay)
+	integer = FALSE
 CONFIG_DEF(number/animal_delay)
+	integer = FALSE
 
 CONFIG_DEF(number/gateway_delay)	//How long the gateway takes before it activates. Default is half an hour.
 	value = 18000
