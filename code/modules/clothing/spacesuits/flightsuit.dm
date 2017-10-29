@@ -50,14 +50,14 @@
 	var/momentum_y = 0
 	var/momentum_max = 250
 	var/momentum_impact_coeff = 0.5	//At this speed you'll start coliding with people resulting in momentum loss and them being knocked back, but no injuries or knockdowns
-	var/momentum_impact_loss = 50
+	var/momentum_impact_loss = 25
 	var/momentum_crash_coeff = 0.8	//At this speed if you hit a dense object, you will careen out of control, while that object will be knocked flying.
 	var/momentum_drift_coeff = 0.04
 	var/momentum_speed = 0	//How fast we are drifting around
 	var/momentum_speed_x = 0
 	var/momentum_speed_y = 0
 	var/momentum_passive_loss = 4
-	var/momentum_gain = 20
+	var/momentum_gain = 10
 	var/drift_tolerance = 2
 
 	var/stabilizer = TRUE
