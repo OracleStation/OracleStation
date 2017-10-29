@@ -454,13 +454,11 @@
 
 /obj/screen/click_catcher/Click(location, control, params)
 	var/list/modifiers = params2list(params)
-	if(modifiers["middle"] && iscarbon(usr))
-	else
-		var/turf/T = params2turf(modifiers["screen-loc"], get_turf(usr))
-		params += "&catcher=1"
-		if(T)
-			T.Click(location, control, params)
-	. = 1
+	var/turf/T = params2turf(modifiers["screen-loc"], get_turf(usr))
+	params += "&catcher=1"
+	if(T)
+		T.Click(location, control, params)
+	return 1
 
 /* MouseWheelOn */
 
