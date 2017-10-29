@@ -274,10 +274,9 @@
 	return
 
 /*
-	Middle click
-	Only used for swapping hands
+	Middle click for pointing
 */
-/mob/proc/MiddleClickOn(atom/A)
+/mob/proc/ShiftMiddleClickOn(atom/A)
 	return
 
 /mob/living/carbon/MiddleClickOn(atom/A)
@@ -285,9 +284,9 @@
 		next_click = world.time + 5
 		mind.changeling.chosen_sting.try_to_sting(src, A)
 	else
-		swap_hand()
+		..()
 
-/mob/living/simple_animal/drone/MiddleClickOn(atom/A)
+/mob/living/simple_animal/drone/ShiftMiddleClickOn(atom/A)
 	swap_hand()
 
 // In case of use break glass
@@ -368,7 +367,7 @@
 	A.CtrlShiftClick(src)
 	return
 
-/mob/proc/ShiftMiddleClickOn(atom/A)
+/mob/proc/MiddleClickOn(atom/A)
 	src.pointed(A)
 	return
 
@@ -455,15 +454,11 @@
 
 /obj/screen/click_catcher/Click(location, control, params)
 	var/list/modifiers = params2list(params)
-	if(modifiers["middle"] && iscarbon(usr))
-		var/mob/living/carbon/C = usr
-		C.swap_hand()
-	else
-		var/turf/T = params2turf(modifiers["screen-loc"], get_turf(usr))
-		params += "&catcher=1"
-		if(T)
-			T.Click(location, control, params)
-	. = 1
+	var/turf/T = params2turf(modifiers["screen-loc"], get_turf(usr))
+	params += "&catcher=1"
+	if(T)
+		T.Click(location, control, params)
+	return 1
 
 /* MouseWheelOn */
 
