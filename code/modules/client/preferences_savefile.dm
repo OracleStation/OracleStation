@@ -362,7 +362,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["body_markings"] 	= sanitize_inlist(features["body_markings"], GLOB.body_markings_list)
 	features["feature_unathi_legs"]	= sanitize_inlist(features["legs"], GLOB.legs_list, "Normal Legs")
 	features["ipc_screen"]	= sanitize_inlist(features["ipc_screen"], GLOB.ipc_screens_list)
-	features["ipc_antenna"]	 = sanitize_inlist(features["ipc_antenna"],GLOB.ipc_antennas_list)
+	features["ipc_antenna"]	 = sanitize_inlist(features["ipc_antenna"], GLOB.ipc_antennas_list)
 
 	joblessrole	= sanitize_integer(joblessrole, 1, 3, initial(joblessrole))
 	job_civilian_high = sanitize_integer(job_civilian_high, 0, 65535, initial(job_civilian_high))

@@ -1519,7 +1519,8 @@
 	icon_state = "aqua"
 
 /datum/sprite_accessory/ipc_screens
-	icon = 'icons/mob/mutant_bodyparts.dmi'
+	icon = 'icons/mob/ipc_accessories.dmi'
+	color_src = FACEHAIR
 
 /datum/sprite_accessory/ipc_screens/blue
 	name = "Blue"
@@ -1602,7 +1603,8 @@
 	icon_state = "rainbow"
 
 /datum/sprite_accessory/ipc_antennas
-	icon = 'icons/mob/mutant_bodyparts.dmi'
+	icon = 'icons/mob/ipc_accessories.dmi'
+	color_src = HAIR
 
 /datum/sprite_accessory/ipc_antennas/none
 	name = "None"

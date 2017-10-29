@@ -309,8 +309,8 @@
 	if(isipc(user))
 		return TRUE
 
- // MAKE THESE LIMITED TO CLOWNS ONLY. SOMEHOW.
-/*
+ // Clown IPC only. Henk.
+
 /datum/emote/living/carbon/human/honk
 	key = "honk"
 	key_third_person = "honks"
@@ -323,11 +323,12 @@
 /datum/emote/living/carbon/human/honk/can_run_emote(mob/user)
 	if(!..())
 		return FALSE
-	if(isipc(user))
+	if(isipc(user) && user.mind.assigned_role == "Clown")
 		return TRUE
 
-/datum/emote/living/carbon/human/species/sad
+/datum/emote/living/carbon/human/sad
 	key = "sad"
+	key_third_person = "plays a sad trombone..."
 	message = "plays a sad trombone..."
 
 /datum/emote/living/carbon/human/sad/run_emote(mob/user, params)
@@ -337,6 +338,5 @@
 /datum/emote/living/carbon/human/sad/can_run_emote(mob/user)
 	if(!..())
 		return FALSE
-	if(isipc(user))
+	if(isipc(user) && user.mind.assigned_role == "Clown")
 		return TRUE
-*/

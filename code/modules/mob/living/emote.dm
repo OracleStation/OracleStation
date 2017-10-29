@@ -497,7 +497,7 @@
 			sound_to_play = H.dna.species.female_scream_sound
 		else
 			sound_to_play = H.dna.species.male_scream_sound
-	if(issilicon(user) || isipc(user))
+	if(issilicon(user))
 		sound_to_play = 'sound/effects/mob_effects/goonstation/robot_scream.ogg'
 
 	playsound(user.loc, sound_to_play, 50, frequency = frequency_to_use)
@@ -520,7 +520,7 @@
 			sound_to_play = H.dna.species.female_cough_sound
 		else
 			sound_to_play = H.dna.species.male_cough_sound
-	if(iscyborg(user) || isipc(user))
+	if(iscyborg(user))
 		sound_to_play = 'sound/effects/mob_effects/machine_cough.ogg'
 
 	playsound(user.loc, sound_to_play, 50)
@@ -543,7 +543,7 @@
 			sound_to_play = H.dna.species.female_sneeze_sound
 		else
 			sound_to_play = H.dna.species.male_sneeze_sound
-	if(iscyborg(user) || isipc(user))
+	if(iscyborg(user))
 		sound_to_play = 'sound/effects/mob_effects/machine_sneeze.ogg'
 
 	playsound(user.loc, sound_to_play, 50)

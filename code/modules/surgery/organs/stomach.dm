@@ -79,7 +79,7 @@
 	switch(severity)
 		if(1)
 			owner.nutrition =- 600
-			to_chat(owner, "<span class='warning'>Your internal battery shorts out. Switching to backup power.</span>")
+			to_chat(owner, "<span class='warning'>Alert: Your internal battery has shorted out. Switching to backup power.</span>")
 		if(2)
 			owner.nutrition =- 250
-			to_chat(owner, "<span class='warning'>Your internal battery shorts out. Recharge as soon as possible.</span>")
+			to_chat(owner, "<span class='warning'>Alter: Your internal has shorted out. Recharge as soon as possible.</span>")
