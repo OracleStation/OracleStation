@@ -36351,9 +36351,11 @@
 /turf/open/floor/plasteel,
 /area/shuttle/arrival)
 "bkN" = (
+/obj/structure/closet/wardrobe/grey,
 /turf/open/floor/plasteel/neutral/side,
 /area/shuttle/arrival)
 "bkO" = (
+/obj/structure/closet/wardrobe/black,
 /turf/open/floor/plasteel/blue/corner,
 /area/shuttle/arrival)
 "bkP" = (
@@ -36364,6 +36366,7 @@
 	c_tag = "Arrivals Shuttle 2";
 	dir = 1
 	},
+/obj/structure/closet/wardrobe/yellow,
 /turf/open/floor/plasteel/blue/corner{
 	dir = 8
 	},
