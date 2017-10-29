@@ -73,10 +73,10 @@
 
 /datum/emote/proc/select_message_type(mob/user)
 	. = message
+	if(!user.can_speak() && emote_type == EMOTE_SPEAK || user.is_muzzled() && emote_type == EMOTE_SPEAK)
+		return "makes a [pick("strong ", "weak ", "loud ")]noise."
 	if(user.mind && user.mind.miming && message_mime)
 		. = message_mime
-	if(!user.can_speak() && !message_mime && emote_type == EMOTE_SPEAK || user.is_muzzled() && emote_type == EMOTE_SPEAK)
-		return "makes a [pick("strong ", "weak ", "loud ")]noise."
 	if(isalienadult(user) && message_alien)
 		. = message_alien
 	else if(islarva(user) && message_larva)
