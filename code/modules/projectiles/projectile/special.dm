@@ -204,7 +204,7 @@
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/purple_laser
 	var/pressure_decrease_active = FALSE
 	var/pressure_decrease = 0.25
-	var/mine_range = 3 //mines this many additional tiles of rock
+	var/mine_range = 1 //mines this many additional tiles of rock
 
 /obj/item/projectile/plasma/Initialize()
 	. = ..()
@@ -227,7 +227,7 @@
 /obj/item/projectile/plasma/adv
 	damage = 28
 	range = 5
-	mine_range = 5
+	mine_range = 3
 
 /obj/item/projectile/plasma/adv/mech
 	damage = 40
