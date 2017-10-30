@@ -65,8 +65,8 @@
 	icon_state = "pstomach"
 	desc = "A strange crystal that is responsible for metabolizing the unseen energy force that feeds plasmamen."
 
-/obj/item/organ/stomach/ipc
-	name = "IPC Micro-cell"
+/obj/item/organ/stomach/cell
+	name = "Machine Micro-cell"
 	icon_state = "null" // TBD
 	origin_tech = "engineering=2"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -74,12 +74,13 @@
 	slot = "stomach"
 	attack_verb = list("assault and battery'd")
 	desc = "A S.N.O.W.F.L.A.K.E Corporation Micro-cell, for IPC use only. Do not swallow."
+	status = ORGAN_ROBOTIC
 
-/obj/item/organ/stomach/ipc/emp_act(severity)
+/obj/item/organ/stomach/cell/emp_act(severity)
 	switch(severity)
 		if(1)
 			owner.nutrition =- 600
-			to_chat(owner, "<span class='warning'>Alert: Your internal battery has shorted out. Switching to backup power.</span>")
+			to_chat(owner, "<span class='warning'>Alert: Heavy EMP Detected. Rebooting power cell to prevent damage.</span>")
 		if(2)
 			owner.nutrition =- 250
-			to_chat(owner, "<span class='warning'>Alter: Your internal has shorted out. Recharge as soon as possible.</span>")
+			to_chat(owner, "<span class='warning'>Alert: EMP Detected. Cycling battery.</span>")

@@ -3,10 +3,11 @@
 	name = "IPC"
 	id = "ipc"
 	say_mod = "states"
-	heatmod = 2 // Went cheap with Aircooling
-	coldmod = 2 // Don't put your computer in the freezer.
+	heatmod = 3 // Went cheap with Aircooling
+	coldmod = 1.5 // Don't put your computer in the freezer.
 	burnmod = 1.5 // Overcoming augmented damage reduction - 1.5 puts it on par with unaugged organics.
 	brutemod = 1.5
+	toxmod = 0
 	species_traits = list(NOBREATH,NOBLOOD,RADIMMUNE,VIRUSIMMUNE,EASYDISMEMBER,EASYLIMBATTACHMENT,NOPAIN,NO_BONES,NOCLONE,NOTRANSSTING,MUTCOLORS)
 	mutant_bodyparts = list("ipc_screen", "ipc_antenna")
 	default_features = list("mcolor" = "#7D7D7D", "ipc_screen" = "Static", "ipc_antenna" = "None")
@@ -22,7 +23,7 @@
 	mutanteyes = /obj/item/organ/eyes/robotic // Temporary Blindness when EMP'd.
 	mutanttongue = /obj/item/organ/tongue/robot // TO DO: Screams and stutters when EMP'd.
 	mutantliver = /obj/item/organ/liver/cybernetic/upgraded/ipc // Damaged when EMP'd.
-	mutantstomach = /obj/item/organ/stomach/ipc // Dumps nutrition when EMP'd.
+	mutantstomach = /obj/item/organ/stomach/cell // Dumps nutrition when EMP'd.
 	mutantears = /obj/item/organ/ears/robot // Jitters, deafens, dizzys when EMP'd.
 	// mutant_brain = /var/obj/item/device/mmi/mmi // 'Mutant_brain' exists further downstream. Not even sure if it's actually what I'd need.
 	examine_text = "an IPC"
@@ -33,10 +34,13 @@
 	for(var/X in C.bodyparts)
 		var/obj/item/bodypart/Z = X
 		Z.change_bodypart_status(BODYPART_ROBOTIC, FALSE, TRUE) // Makes all Bodyparts robotic
-		Z.icon = 'icons/mob/augmentation/ipc.dmi' // Overrides the augmentation icons
+		Z.icon = 'icons/mob/augmentation/ipc.dmi' // Overrides the augmentation icons.
 
-/*
-datum/species/ipc/emp_act()
+/* // Some day, IPCs will be knocked down, spark, and scream when EMP'd. But that day is not today.
+/datum/species/emp_act()
+    return
+
+/datum/species/ipc/emp_act(mob/living/carbon/)
     ..()
     Knockdown(5)
     visible_message("<span class='danger'>[owner] emits a shower of sparks!</span>", "<span class='userdanger'>!#%$*^ERROR:EMP DETECTED%@$%</span>")

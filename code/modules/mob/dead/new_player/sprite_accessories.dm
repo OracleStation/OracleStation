@@ -1520,7 +1520,7 @@
 
 /datum/sprite_accessory/ipc_screens
 	icon = 'icons/mob/ipc_accessories.dmi'
-	color_src = FACEHAIR
+	color_src = EYECOLOR
 
 /datum/sprite_accessory/ipc_screens/blue
 	name = "Blue"

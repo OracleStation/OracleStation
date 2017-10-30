@@ -47,6 +47,7 @@
 	var/brutemod = 1	// multiplier for brute damage
 	var/burnmod = 1		// multiplier for burn damage
 	var/coldmod = 1		// multiplier for cold damage
+	var/toxmod = 1		//multiplier for toxin damage
 	var/heatmod = 1		// multiplier for heat damage
 	var/stunmod = 1		// multiplier for stun duration
 	var/punchdamagelow = 0       //lowest possible punch damage
@@ -1393,7 +1394,7 @@
 			else
 				H.adjustFireLoss(damage * hit_percent* burnmod)
 		if(TOX)
-			H.adjustToxLoss(damage * hit_percent)
+			H.adjustToxLoss(damage * hit_percent * toxmod)
 		if(OXY)
 			H.adjustOxyLoss(damage * hit_percent)
 		if(CLONE)
