@@ -1,6 +1,6 @@
-/* Layered manifolds not to be confused with layermanifold.dm that's something diffirent I'm so sorry */
+/* Layered manifolds not to be confused with layermanifold.dm */
 
-/*===== The Big Cheeses =====*/
+/*===== Maine Pipes =====*/
 //Supply 
 
 /obj/machinery/atmospherics/pipe/manifold/supply/visible/bottom
@@ -80,7 +80,7 @@
 	pixel_y = 5
 
 	
-/*===== Other delicacies =====*/
+/*===== Other delightful colors =====*/
 	
 //Grey/General
 

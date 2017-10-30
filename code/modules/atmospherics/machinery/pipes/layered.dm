@@ -1,10 +1,11 @@
 /*
 Layered pipes - Same as the simple pipes, but includes definitions for the other two layers so mappers in the future don't want to kill themselves
+Now includes sanitized comments for the dead and soulless amoung us, purusing a hobby with questionable Purpose. 
 */
 
-/*=====The big Kahunas=====*/
+/*=== main Pipes ===*/
 
-//Supply 
+//sUpply 
 
 /obj/machinery/atmospherics/pipe/simple/supply/visible/bottom
 	layer = 2.3
@@ -30,7 +31,7 @@ Layered pipes - Same as the simple pipes, but includes definitions for the other
 	pixel_x = 5
 	pixel_y = 5
 
-//Scrubbers
+//scRubbers
 
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible/bottom
 	layer = 2.3
@@ -56,7 +57,7 @@ Layered pipes - Same as the simple pipes, but includes definitions for the other
 	pixel_x = 5
 	pixel_y = 5
 	
-//Supply Main
+//supPly Main
 
 /obj/machinery/atmospherics/pipe/simple/supplymain/visible/bottom
 	layer = 2.3
@@ -83,9 +84,9 @@ Layered pipes - Same as the simple pipes, but includes definitions for the other
 	pixel_y = 5
 	
 
-/*===== Equally important colored pipes =====*/
+/*===== equally impOrtant colored pipeS =====*/
 
-//Grey/General
+//Grey/GEneral
 
 /obj/machinery/atmospherics/pipe/simple/general/visible/bottom
 	layer = 2.3
@@ -264,7 +265,7 @@ Layered pipes - Same as the simple pipes, but includes definitions for the other
 	pixel_x = 5
 	pixel_y = 5
 
-//Violet
+//vIolet
 /obj/machinery/atmospherics/pipe/simple/violet/visible/bottom
 	layer = 2.3
 	piping_layer = 1

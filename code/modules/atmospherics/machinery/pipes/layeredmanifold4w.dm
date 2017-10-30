@@ -1,10 +1,9 @@
 /* Four-way manifolds */
 
-/*===== Haute tayau *kisses fingers* ===== */
+/*===== Main Pipes =====*/
 //Supply
 
 /obj/machinery/atmospherics/pipe/manifold4w/supply/visible/bottom
-	level = PIPE_VISIBLE_LEVEL
 	layer = 2.3
 	piping_layer = 1
 	pixel_x = -5
@@ -59,7 +58,6 @@
 //Supply Main
 
 /obj/machinery/atmospherics/pipe/manifold4w/supplymain/visible/bottom
-	level = PIPE_VISIBLE_LEVEL
 	layer = 2.3
 	piping_layer = 1
 	pixel_x = -5
@@ -83,7 +81,7 @@
 	piping_layer = 3
 	pixel_x = 5
 	
-/*===== Amor colores =====*/ 
+/*===== Additional, equally interesting colors =====*/ 
 
 //Grey/General
 
