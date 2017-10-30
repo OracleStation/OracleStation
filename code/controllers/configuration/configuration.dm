@@ -248,6 +248,9 @@ GLOBAL_PROTECT(config_dir)
 			M.required_players = min_pop[M.config_tag]
 		if(max_pop[M.config_tag])
 			M.maximum_players = max_pop[M.config_tag]
+		if(M.can_start())
+			runnable_modes[M] = probabilities[M.config_tag]
+
 	return runnable_modes
 
 /datum/controller/configuration/proc/get_runnable_midround_modes(crew)

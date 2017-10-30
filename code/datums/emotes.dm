@@ -1,5 +1,6 @@
 #define EMOTE_VISIBLE 1
 #define EMOTE_AUDIBLE 2
+#define EMOTE_SPEAK 3
 
 /datum/emote
 	var/key = "" //What calls the emote
@@ -15,7 +16,6 @@
 	var/message_param = "" //Message to display if a param was given
 	var/emote_type = EMOTE_VISIBLE //Whether the emote is visible or audible
 	var/restraint_check = FALSE //Checks if the mob is restrained before performing the emote
-	var/muzzle_ignore = FALSE //Will only work if the emote is EMOTE_AUDIBLE
 	var/list/mob_type_allowed_typecache //Types that are allowed to use that emote
 	var/list/mob_type_blacklist_typecache //Types that are NOT allowed to use that emote
 	var/stat_allowed = CONSCIOUS
@@ -73,8 +73,8 @@
 
 /datum/emote/proc/select_message_type(mob/user)
 	. = message
-	if(!muzzle_ignore && user.is_muzzled() && emote_type == EMOTE_AUDIBLE)
-		return "makes a [pick("strong ", "weak ", "")]noise."
+	if(!user.can_speak() && emote_type == EMOTE_SPEAK || user.is_muzzled() && emote_type == EMOTE_SPEAK)
+		return "makes a [pick("strong ", "weak ", "loud ")]noise."
 	if(user.mind && user.mind.miming && message_mime)
 		. = message_mime
 	if(isalienadult(user) && message_alien)

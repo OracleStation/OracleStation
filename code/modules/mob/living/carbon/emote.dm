@@ -19,7 +19,6 @@
 	key = "clap"
 	key_third_person = "claps"
 	message = "claps."
-	muzzle_ignore = TRUE
 	restraint_check = TRUE
 	emote_type = EMOTE_AUDIBLE
 
@@ -34,7 +33,7 @@
 	key_third_person = "moans"
 	message = "moans!"
 	message_mime = "appears to moan!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/carbon/roll
 	key = "roll"
@@ -55,6 +54,7 @@
 	key_third_person = "screeches"
 	message = "screeches."
 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey)
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/carbon/screech/run_emote(mob/user, params)
 	if(..())
