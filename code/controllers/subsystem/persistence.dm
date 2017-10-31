@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(persistence)
 		expanded_old_satchels.len = 0
 
 	var/list/free_satchels = list()
-	for(var/turf/T in shuffle(block(locate(TRANSITIONEDGE,TRANSITIONEDGE,ZLEVEL_STATION), locate(world.maxx-TRANSITIONEDGE,world.maxy-TRANSITIONEDGE,ZLEVEL_STATION)))) //Nontrivially expensive but it's roundstart only
+	for(var/turf/T in shuffle(block(locate(TRANSITIONEDGE,TRANSITIONEDGE,ZLEVEL_STATION_PRIMARY), locate(world.maxx-TRANSITIONEDGE,world.maxy-TRANSITIONEDGE,ZLEVEL_STATION_PRIMARY)))) //Nontrivially expensive but it's roundstart only
 		if(isfloorturf(T) && !istype(T, /turf/open/floor/plating/))
 			free_satchels += new /obj/item/storage/backpack/satchel/flat/secret(T)
 			if(!isemptylist(free_satchels) && ((free_satchels.len + placed_satchels) >= (50 - expanded_old_satchels.len) * 0.1)) //up to six tiles, more than enough to kill anything that moves
@@ -62,7 +62,7 @@ SUBSYSTEM_DEF(persistence)
 	var/obj/item/storage/backpack/satchel/flat/F = new()
 	F.x = text2num(chosen_satchel[1])
 	F.y = text2num(chosen_satchel[2])
-	F.z = ZLEVEL_STATION
+	F.z = ZLEVEL_STATION_PRIMARY
 	if(isfloorturf(F.loc) && !istype(F.loc, /turf/open/floor/plating/))
 		F.hide(1)
 	new path(F)
@@ -158,7 +158,7 @@ SUBSYSTEM_DEF(persistence)
 /datum/controller/subsystem/persistence/proc/CollectSecretSatchels()
 	for(var/A in new_secret_satchels)
 		var/obj/item/storage/backpack/satchel/flat/F = A
-		if(QDELETED(F) || F.z != ZLEVEL_STATION || F.invisibility != INVISIBILITY_MAXIMUM)
+		if(QDELETED(F) || F.z != ZLEVEL_STATION_PRIMARY || F.invisibility != INVISIBILITY_MAXIMUM)
 			continue
 		var/list/savable_obj = list()
 		for(var/obj/O in F)

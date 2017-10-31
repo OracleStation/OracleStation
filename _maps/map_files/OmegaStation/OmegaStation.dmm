@@ -1017,19 +1017,26 @@
 	name = "2maintenance loot spawner"
 	},
 /obj/effect/turf_decal/bot,
+/obj/structure/cable/white{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc{
+	areastring = "/area/maintenance/fore";
+	dir = 8;
+	name = "Fore Starboard Maintenance APC";
+	pixel_x = -26;
+	pixel_y = 3
+	},
 /turf/open/floor/plasteel,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore)
 "abM" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore)
 "abN" = (
 /obj/structure/sign/vacuum,
 /turf/closed/wall,
@@ -1105,9 +1112,7 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plasteel,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore/secondary)
 "abX" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -1385,10 +1390,13 @@
 	dir = 6
 	},
 /obj/effect/turf_decal/delivery,
+/obj/structure/cable/white{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore)
 "acv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -1559,9 +1567,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore/secondary)
 "acO" = (
 /obj/structure/mirror{
 	pixel_x = -26
@@ -1911,13 +1917,16 @@
 "adm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable/white{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel/neutral/corner{
 	dir = 8;
 	heat_capacity = 1e+006
 	},
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore)
 "adn" = (
 /turf/closed/wall,
 /area/quartermaster/storage)
@@ -2047,9 +2056,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore/secondary)
 "adG" = (
 /obj/structure/toilet{
 	dir = 4
@@ -2269,10 +2276,13 @@
 "adY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable/white{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/plating,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore)
 "adZ" = (
 /obj/machinery/conveyor{
 	dir = 8;
@@ -2495,10 +2505,19 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/power/apc{
+	areastring = "/area/maintenance/fore/secondary";
+	dir = 8;
+	name = "Fore Port Maintenance APC";
+	pixel_x = -26;
+	pixel_y = 3
+	},
+/obj/structure/cable/white{
+	d2 = 2;
+	icon_state = "0-2"
+	},
 /turf/open/floor/plasteel,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore/secondary)
 "aeu" = (
 /obj/structure/sign/nanotrasen,
 /turf/closed/wall,
@@ -2992,10 +3011,13 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/turf_decal/delivery,
+/obj/structure/cable/white{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore/secondary)
 "afk" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -26
@@ -3278,10 +3300,13 @@
 "afB" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/landmark/blobstart,
+/obj/structure/cable/white{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/plating,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore)
 "afC" = (
 /obj/machinery/airalarm{
 	dir = 4;
@@ -3462,10 +3487,13 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/turf_decal/delivery,
 /obj/effect/landmark/event_spawn,
+/obj/structure/cable/white{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore/secondary)
 "afW" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
@@ -3760,13 +3788,16 @@
 "agu" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/cable/white{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel/neutral/corner{
 	dir = 8;
 	heat_capacity = 1e+006
 	},
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore)
 "agv" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -26
@@ -3940,9 +3971,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plating,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore/secondary)
 "agO" = (
 /obj/machinery/light{
 	dir = 8
@@ -4246,10 +4275,13 @@
 "ahj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable/white{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel/neutral/corner,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore)
 "ahk" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -4565,9 +4597,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore/secondary)
 "ahH" = (
 /obj/structure/sign/securearea{
 	pixel_x = -32
@@ -5011,9 +5041,7 @@
 	dir = 2
 	},
 /turf/open/floor/plasteel,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore/secondary)
 "aiy" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_command{
@@ -5134,10 +5162,13 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 2
 	},
+/obj/structure/cable/white{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore)
 "aiI" = (
 /obj/structure/filingcabinet/filingcabinet,
 /obj/machinery/airalarm{
@@ -6671,6 +6702,11 @@
 	icon_state = "2-8"
 	},
 /obj/effect/turf_decal/delivery,
+/obj/structure/cable/white{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central{
 	name = "Primary Hallway"
@@ -10296,9 +10332,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/astplate,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "aqH" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10
@@ -10898,9 +10932,7 @@
 /area/engine/atmos)
 "arB" = (
 /turf/open/floor/plating/astplate,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "arC" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall/r_wall,
@@ -11609,9 +11641,7 @@
 	pixel_x = -32
 	},
 /turf/open/floor/plating,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "asJ" = (
 /obj/structure/closet/wardrobe/red,
 /obj/item/clothing/under/rank/security/grey,
@@ -12259,9 +12289,7 @@
 /turf/open/floor/plasteel/caution/corner{
 	dir = 1
 	},
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "atL" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Security Maintenance";
@@ -12793,9 +12821,7 @@
 "auD" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /turf/open/floor/plating,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "auE" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/space_heater,
@@ -12808,18 +12834,14 @@
 	dir = 10
 	},
 /turf/open/floor/plasteel,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "auF" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
 /obj/structure/sign/poster/contraband/random,
 /turf/closed/wall,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "auG" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/decal/cleanable/dirt,
@@ -12827,9 +12849,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "auH" = (
 /obj/structure/cable/white{
 	d1 = 2;
@@ -12842,9 +12862,7 @@
 	},
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/plasteel/red/corner,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "auI" = (
 /obj/structure/cable/white{
 	d1 = 4;
@@ -12857,9 +12875,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "auJ" = (
 /obj/structure/cable/white{
 	d1 = 1;
@@ -12875,9 +12891,7 @@
 /obj/effect/landmark/revenantspawn,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /turf/open/floor/plating,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "auK" = (
 /obj/structure/cable/white{
 	d1 = 4;
@@ -12892,9 +12906,7 @@
 /turf/open/floor/plasteel/neutral/corner{
 	dir = 1
 	},
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "auL" = (
 /obj/effect/landmark/blobstart,
 /obj/structure/cable/white{
@@ -12911,9 +12923,7 @@
 	icon_state = "2-4"
 	},
 /turf/open/floor/plasteel/red/corner,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "auM" = (
 /obj/structure/cable/white{
 	d1 = 4;
@@ -12932,9 +12942,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "auN" = (
 /obj/structure/cable/white{
 	d1 = 4;
@@ -13416,10 +13424,19 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 6
 	},
+/obj/machinery/power/apc{
+	areastring = "/area/maintenance/port/fore";
+	dir = 8;
+	name = "Port Maintenance APC";
+	pixel_x = -26;
+	pixel_y = 3
+	},
+/obj/structure/cable/white{
+	d2 = 4;
+	icon_state = "0-4"
+	},
 /turf/open/floor/plasteel/caution,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "avJ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable/white{
@@ -13431,9 +13448,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/caution,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "avK" = (
 /obj/structure/cable/white{
 	d1 = 4;
@@ -13452,9 +13467,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "avL" = (
 /obj/structure/cable/white{
 	d1 = 4;
@@ -13466,9 +13479,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "avM" = (
 /obj/structure/cable/white{
 	d1 = 1;
@@ -13483,18 +13494,14 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "avN" = (
 /obj/structure/girder,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "avO" = (
 /obj/structure/rack,
 /obj/item/clothing/gloves/color/black,
@@ -13510,9 +13517,7 @@
 	dir = 9
 	},
 /turf/open/floor/plasteel,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "avP" = (
 /obj/structure/closet/crate{
 	icon_state = "crateopen";
@@ -13532,9 +13537,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "avQ" = (
 /obj/structure/table,
 /obj/item/clothing/under/rank/security,
@@ -13549,9 +13552,7 @@
 	dir = 5
 	},
 /turf/open/floor/plasteel,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/port/fore)
 "avR" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -14085,7 +14086,7 @@
 	dir = 2
 	},
 /turf/open/floor/plasteel,
-/area/engine/atmos)
+/area/maintenance/port/fore)
 "awN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/plasticflaps{
@@ -36351,9 +36352,11 @@
 /turf/open/floor/plasteel,
 /area/shuttle/arrival)
 "bkN" = (
+/obj/structure/closet/wardrobe/grey,
 /turf/open/floor/plasteel/neutral/side,
 /area/shuttle/arrival)
 "bkO" = (
+/obj/structure/closet/wardrobe/black,
 /turf/open/floor/plasteel/blue/corner,
 /area/shuttle/arrival)
 "bkP" = (
@@ -36364,6 +36367,7 @@
 	c_tag = "Arrivals Shuttle 2";
 	dir = 1
 	},
+/obj/structure/closet/wardrobe/yellow,
 /turf/open/floor/plasteel/blue/corner{
 	dir = 8
 	},
@@ -36553,11 +36557,6 @@
 "bll" = (
 /obj/structure/chair{
 	dir = 8
-	},
-/obj/machinery/camera{
-	c_tag = "Shuttle Docking Foyer";
-	dir = 8;
-	network = list("MINE")
 	},
 /obj/machinery/camera{
 	c_tag = "Escape Arm Airlocks";
@@ -40239,10 +40238,13 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/landmark/event_spawn,
+/obj/structure/cable/white{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/plating,
-/area/hallway/primary/central{
-	name = "Primary Hallway"
-	})
+/area/maintenance/fore)
 "bxx" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable/white{
@@ -40654,6 +40656,85 @@
 "byH" = (
 /turf/closed/wall,
 /area/security/checkpoint)
+"byI" = (
+/turf/closed/wall,
+/area/maintenance/fore)
+"byJ" = (
+/turf/closed/wall,
+/area/maintenance/fore)
+"byK" = (
+/turf/closed/wall,
+/area/maintenance/fore)
+"byL" = (
+/turf/closed/wall,
+/area/maintenance/fore)
+"byM" = (
+/turf/closed/wall,
+/area/maintenance/fore)
+"byN" = (
+/turf/closed/wall,
+/area/maintenance/fore/secondary)
+"byO" = (
+/obj/structure/sign/vacuum,
+/turf/closed/wall,
+/area/maintenance/fore)
+"byP" = (
+/obj/structure/closet/emcloset/anchored,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel,
+/area/maintenance/fore)
+"byQ" = (
+/obj/structure/sign/vacuum,
+/turf/closed/wall,
+/area/maintenance/fore)
+"byR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel,
+/area/maintenance/fore)
+"byS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/external{
+	name = "External Airlock";
+	req_access_txt = "13"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/maintenance/fore)
+"byT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/obj/effect/landmark/xeno_spawn,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel,
+/area/maintenance/fore)
+"byU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/external{
+	name = "External Airlock";
+	req_access_txt = "13"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/maintenance/fore)
 
 (1,1,1) = {"
 aaa
@@ -78513,7 +78594,7 @@ aad
 aad
 aad
 aad
-abt
+byN
 abW
 acN
 adF
@@ -86222,7 +86303,7 @@ aad
 aad
 aad
 aad
-abt
+byI
 abL
 acu
 adm
@@ -86233,7 +86314,7 @@ agu
 ahj
 adY
 aiH
-ajG
+alz
 akK
 alz
 amu
@@ -86479,9 +86560,9 @@ aad
 aad
 aad
 aad
-abt
+byJ
 abM
-acv
+byR
 adn
 adn
 adn
@@ -86736,9 +86817,9 @@ aad
 aad
 aad
 aad
-abt
-abN
-acw
+byK
+byO
+byS
 adn
 adZ
 aeP
@@ -86993,9 +87074,9 @@ aac
 aad
 aad
 aad
-abt
-abO
-acx
+byL
+byP
+byT
 adn
 aea
 aeQ
@@ -87250,9 +87331,9 @@ aad
 aad
 aad
 aad
-abt
-abN
-acy
+byM
+byQ
+byU
 adn
 aeb
 aeR
