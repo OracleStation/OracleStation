@@ -315,59 +315,6 @@
 	mob_species = /datum/species/plasmaman
 	outfit = /datum/outfit/plasmaman
 
-
-/obj/effect/mob_spawn/human/bartender
-	name = "Space Bartender"
-	id_job = "Bartender"
-	id_access_list = list(ACCESS_BAR)
-	outfit = /datum/outfit/spacebartender
-
-/obj/effect/mob_spawn/human/bartender/alive
-	death = FALSE
-	roundstart = FALSE
-	random = TRUE
-	name = "bartender sleeper"
-	icon = 'icons/obj/Cryogenic2.dmi'
-	icon_state = "sleeper"
-	flavour_text = "You are a space bartender!"
-	assignedrole = "Space Bartender"
-
-/datum/outfit/spacebartender
-	name = "Space Bartender"
-	uniform = /obj/item/clothing/under/rank/bartender
-	back = /obj/item/storage/backpack
-	shoes = /obj/item/clothing/shoes/sneakers/black
-	suit = /obj/item/clothing/suit/armor/vest
-	glasses = /obj/item/clothing/glasses/sunglasses/reagent
-	id = /obj/item/card/id
-
-
-/obj/effect/mob_spawn/human/beach
-	outfit = /datum/outfit/beachbum
-
-/obj/effect/mob_spawn/human/beach/alive
-	death = FALSE
-	roundstart = FALSE
-	random = TRUE
-	mob_name = "Beach Bum"
-	name = "beach bum sleeper"
-	icon = 'icons/obj/Cryogenic2.dmi'
-	icon_state = "sleeper"
-	flavour_text = "You are a beach bum!"
-	assignedrole = "Beach Bum"
-
-/datum/outfit/beachbum
-	name = "Beach Bum"
-	glasses = /obj/item/clothing/glasses/sunglasses
-	uniform = /obj/item/clothing/under/shorts/red
-	r_pocket = /obj/item/storage/wallet/random
-
-/datum/outfit/beachbum/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	..()
-	if(visualsOnly)
-		return
-	H.dna.add_mutation(STONER)
-
 /////////////////Officers+Nanotrasen Security//////////////////////
 
 /obj/effect/mob_spawn/human/bridgeofficer
@@ -495,6 +442,15 @@
 	uses = -1
 	outfit = /datum/outfit/spacebartender
 	assignedrole = "Space Bar Patron"
+
+/datum/outfit/spacebartender
+	name = "Space Bartender"
+	uniform = /obj/item/clothing/under/rank/bartender
+	back = /obj/item/storage/backpack
+	shoes = /obj/item/clothing/shoes/sneakers/black
+	suit = /obj/item/clothing/suit/armor/vest
+	glasses = /obj/item/clothing/glasses/sunglasses/reagent
+	id = /obj/item/card/id
 
 /obj/effect/mob_spawn/human/alive/space_bar_patron/attack_hand(mob/user)
 	var/despawn = alert("Return to cryosleep? (Warning, Your mob will be deleted!)",,"Yes","No")
