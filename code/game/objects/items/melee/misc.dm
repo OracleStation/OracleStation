@@ -130,7 +130,7 @@
 				if(check_martial_counter(H, user))
 					return
 			playsound(get_turf(src), 'sound/effects/woodhit.ogg', 75, 1, -1)
-			target.Knockdown(60)
+			target.Knockdown(40)
 			add_logs(user, target, "stunned", src)
 			src.add_fingerprint(user)
 			target.visible_message("<span class ='danger'>[user] has knocked down [target] with [src]!</span>", \
@@ -139,7 +139,7 @@
 				target.LAssailant = null
 			else
 				target.LAssailant = user
-			cooldown = world.time + 40
+			cooldown = world.time + 50
 
 /obj/item/melee/classic_baton/telescopic
 	name = "telescopic baton"
