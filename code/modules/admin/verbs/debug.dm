@@ -518,7 +518,7 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 	for(var/area/A in world)
 		if(on_station)
 			var/turf/picked = safepick(get_area_turfs(A.type))
-			if(picked && (picked.z == ZLEVEL_STATION))
+			if(picked && (picked.z in GLOB.station_z_levels))
 				if(!(A.type in areas_all) && !is_type_in_typecache(A, station_areas_blacklist))
 					areas_all.Add(A.type)
 		else if(!(A.type in areas_all))
@@ -773,7 +773,7 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 
 /client/proc/cmd_display_init_log()
 	set category = "Debug"
-	set name = "Display Initialzie() Log"
+	set name = "Display Initialize() Log"
 	set desc = "Displays a list of things that didn't handle Initialize() properly"
 
 	usr << browse(replacetext(SSatoms.InitLog(), "\n", "<br>"), "window=initlog")
