@@ -76,16 +76,21 @@
 	else
 		icon_state = "computer"
 
+	update_icon()
+
 /obj/machinery/computer/update_icon()
 	cut_overlays()
 	if(stat & NOPOWER)
 		add_overlay("[icon_keyboard]_off")
 		return
 	add_overlay(icon_keyboard)
+	if(copytext(icon_state,1,10) == "computer-")
+		add_overlay("blinkenlights" + copytext(icon_state,-2))
 	if(stat & BROKEN)
 		add_overlay("[icon_state]_broken")
 	else
 		add_overlay(icon_screen)
+
 
 /obj/machinery/computer/power_change()
 	..()
