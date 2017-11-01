@@ -1,15 +1,8 @@
 /datum/objective/sintouched
 	completed = 1
 
-/*  NO ERP OBJECTIVE FOR YOU.
-/datum/objective/sintouched/lust
-
-/datum/objective/sintouched/lust/New()
-	var/mob/dead/D = pick(dead_mob_list)
-	if(prob(50) && D)
-		explanation_text = "You know that [D] has perished.... and you think [D] is kinda cute.  Make sure everyone knows how HOT [D]'s lifeless body is."
-	else
-		explanation_text = "Go get married, then immediately cheat on your new spouse." */
+/datum/objective/sintouched/hypocrisy
+	explanation_text = "You feel an urge to criticise the way other people work. After criticising them proceed to work exactly how they do." 
 
 /datum/objective/sintouched/gluttony
 	explanation_text = "Everything is so delicious. Go eat everything."
