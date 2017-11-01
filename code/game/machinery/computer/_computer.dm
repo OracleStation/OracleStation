@@ -19,9 +19,12 @@
 /obj/machinery/computer/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()
 	power_change()
+	smooth_others()
+	smooth_self()
 
 /obj/machinery/computer/Destroy()
 	QDEL_NULL(circuit)
+	smooth_others()
 	return ..()
 
 /obj/machinery/computer/process()
@@ -44,6 +47,34 @@
 		icon_keyboard = initial(icon_keyboard)
 		icon_state = initial(icon_state)
 		update_icon()
+
+/obj/machinery/computer/proc/smooth_others()
+	for(dir in list(EAST,WEST))
+		var/obj/machinery/computer/other = locate(/obj/machinery/computer, get_step(src, dir))
+		if(!isnull(other))
+			spawn(1) other.smooth_self() //Delay it slightly for when this gets deleted
+
+/obj/machinery/computer/proc/smooth_self()
+	// For the fancy console bank sprites
+	if(copytext(icon_state,1,9) != "computer")
+		return //No point doing it if we're not one a terminal
+
+	var/obj/machinery/computer/left = locate(/obj/machinery/computer, get_step(src, EAST))
+	var/obj/machinery/computer/right = locate(/obj/machinery/computer, get_step(src, WEST))
+
+	if (!isnull(left) && copytext(left.icon_state,1,9) != "computer")
+		left = null
+	if (!isnull(right) && copytext(right.icon_state,1,9) != "computer")
+		right = null
+
+	if(isnull(left) && !isnull(right))
+		icon_state = "computer-r"
+	else if(!isnull(left) && !isnull(right))
+		icon_state = "computer-c"
+	else if(!isnull(left) && isnull(right))
+		icon_state = "computer-l"
+	else
+		icon_state = "computer"
 
 /obj/machinery/computer/update_icon()
 	cut_overlays()
