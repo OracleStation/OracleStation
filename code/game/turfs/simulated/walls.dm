@@ -170,7 +170,8 @@
 	//the istype cascade has been spread among various procs for easy overriding
 	if(try_wallmount(W,user,T) || try_decon(W,user,T) || try_destroy(W,user,T))
 		return
-
+	
+	return ..()
 
 /turf/closed/wall/proc/try_wallmount(obj/item/W, mob/user, turf/T)
 	//check for wall mounted frames
