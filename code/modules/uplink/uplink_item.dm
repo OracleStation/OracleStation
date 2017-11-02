@@ -717,13 +717,8 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 
 /datum/uplink_item/stealthy_weapons/rubberduck
 	name = "Druggy Ducky"
-<<<<<<< HEAD
 	desc = "A seemingly innocent rubber ducky. Squeaking it will start a timer that will set off a chemical payload containing drugs. \
 	 		Careful you don't breathe it in, unless you want to go on a trip as well."
-=======
-	desc = "A seemingly innocent rubber ducky. Squeeking it will start a timer that will set off a chemical payload containing drugs. \
-	 		Careful you don't breath it in, unless you want to go on a trip as well."
->>>>>>> 343db51f945f5f7253def6138afba229fd949fb3
 	item = /obj/item/grenade/chem_grenade/rubberduck
 	cost = 3
 
@@ -1396,7 +1391,6 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			but you never know. Contents are sorted to always be worth 50 TC."
 	item = /obj/structure/closet/crate
 	cost = 20
-	player_minimum = 20 //lowered, the times you get screwed over by this thing happens far too often
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
 	cant_discount = TRUE
 
