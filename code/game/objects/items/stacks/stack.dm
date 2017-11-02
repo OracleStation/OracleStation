@@ -162,6 +162,11 @@
 			W.ini_dir = W.dir
 		//END: oh fuck i'm so sorry
 
+		else if(istype(O, /obj/item/restraints/handcuffs/cable))
+			var/obj/item/cuffs = O
+			cuffs.item_color = item_color
+			cuffs.update_icon()
+
 		//is it a stack ?
 		if (R.max_res_amount > 1)
 			var/obj/item/stack/new_item = O
@@ -259,7 +264,7 @@
 	if (user.get_inactive_held_item() == src)
 		if(zero_amount())
 			return
-		change_stack(user,1)
+		return change_stack(user,1)
 	else
 		..()
 
