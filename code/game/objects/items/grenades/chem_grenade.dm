@@ -39,7 +39,7 @@
 			message_admins("[ADMIN_LOOKUPFLW(usr)] has primed a [name] for detonation at [A.name][ADMIN_JMP(bombturf)].")
 			log_game("[key_name(usr)] has primed a [name] for detonation at [A.name] [COORD(bombturf)].")
 			to_chat(user, "<span class='warning'>You prime the [name]! [det_time / 10] second\s!</span>")
-			playsound(user.loc, 'sound/weapons/armbomb.ogg', 60, 1)
+			playsound(user.loc, arming_sound, 60, 1)
 			active = 1
 			icon_state = initial(icon_state) + "_active"
 			if(iscarbon(user))
@@ -562,6 +562,32 @@
 	B1.reagents.add_reagent("fungalspores", 200)
 	B2.reagents.add_reagent("blood", 250)
 	B2.reagents.add_reagent("sugar", 50)
+
+	beakers += B1
+	beakers += B2
+
+
+/obj/item/grenade/chem_grenade/rubberduck
+	name = "rubber ducky"
+	desc = "Rubber ducky you're so fine, you make bathtime lots of fuuun. Rubber ducky I'm awfully fooooond of yooooouuuu~"
+	icon_state = "rubberduck"
+	item_state = "rubberduck"
+	arming_sound = 'sound/items/squeaktoy.ogg'
+	stage = READY
+	want_timer = FALSE
+
+/obj/item/grenade/chem_grenade/rubberduck/Initialize()
+	. = ..()
+	var/obj/item/reagent_containers/glass/beaker/bluespace/B1 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/bluespace/B2 = new(src)
+
+	B1.reagents.add_reagent("space_drugs", 20)
+	B1.reagents.add_reagent("phosphorus", 30)
+	B1.reagents.add_reagent("potassium", 30)
+	B2.reagents.add_reagent("lsd", 8)
+	B2.reagents.add_reagent("sugar", 30)
+	B2.reagents.add_reagent("colorful_reagent", 1)
+	B2.reagents.add_reagent("concentrated_barbers_aid",1)
 
 	beakers += B1
 	beakers += B2
