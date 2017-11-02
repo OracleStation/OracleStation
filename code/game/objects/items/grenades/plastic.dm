@@ -7,6 +7,7 @@
 	flags_2 = NO_EMP_WIRES_2
 	det_time = 10
 	display_timer = 0
+	arming_sound = null
 	var/atom/target = null
 	var/mutable_appearance/plastic_overlay
 	var/obj/item/device/assembly_holder/nadeassembly = null

@@ -7,6 +7,7 @@
 	desc = "A custom made grenade."
 	icon_state = "chemg"
 	item_state = "flashbang"
+	arming_sound = 'sound/weapons/armbomb.ogg'
 	w_class = WEIGHT_CLASS_SMALL
 	force = 2
 	var/stage = EMPTY

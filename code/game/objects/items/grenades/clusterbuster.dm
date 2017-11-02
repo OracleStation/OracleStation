@@ -6,6 +6,7 @@
 	name = "clusterbang"
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "clusterbang"
+	arming_sound = 'sound/weapons/armbomb.ogg'
 	var/payload = /obj/item/grenade/flashbang/cluster
 
 /obj/item/grenade/clusterbuster/prime()
@@ -23,7 +24,7 @@
 
 	new /obj/effect/payload_spawner(loc, payload, numspawned)//Launches payload
 
-	playsound(loc, 'sound/weapons/armbomb.ogg', 75, 1, -3)
+	playsound(loc, arming_sound, 75, 1, -3)
 
 	qdel(src)
 
