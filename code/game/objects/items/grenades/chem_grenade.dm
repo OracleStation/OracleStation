@@ -587,7 +587,7 @@
 	B2.reagents.add_reagent("lsd", 8)
 	B2.reagents.add_reagent("sugar", 30)
 	B2.reagents.add_reagent("colorful_reagent", 1)
-	B2.reagents.add_reagent("concentrated_barbers_aid",1)
+	B2.reagents.add_reagent("concentrated_barbers_aid", 1)
 
 	beakers += B1
 	beakers += B2
