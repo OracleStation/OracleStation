@@ -717,8 +717,8 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 
 /datum/uplink_item/stealthy_weapons/rubberduck
 	name = "Druggy Ducky"
-	desc = "A seemingly innocent rubber ducky. Squeaking it will start a timer that will set off a chemical payload containing drugs. \
-	 		Careful you don't breathe it in, unless you want to go on a trip as well."
+	desc = "A seemingly innocent rubber ducky. Squeaking it will start a timer that will set off a chemical payload which creates \
+	 		a large amount of smoke that debilitates and causes hallucinations for everyone breathing it in."
 	item = /obj/item/grenade/chem_grenade/rubberduck
 	cost = 3
 
