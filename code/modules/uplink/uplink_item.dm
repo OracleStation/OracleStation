@@ -691,7 +691,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "Fitted for use on any small caliber weapon with a threaded barrel, this suppressor will silence the \
 			shots of the weapon for increased stealth and superior ambushing capability."
 	item = /obj/item/suppressor
-	cost = 3 
+	cost = 3
 	surplus = 10
 
 /datum/uplink_item/stealthy_weapons/pizza_bomb
@@ -714,6 +714,13 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "A traditional clusterbang grenade with a payload consisting entirely of Syndicate soap. Useful in any scenario!"
 	item = /obj/item/grenade/clusterbuster/soap
 	cost = 6
+
+/datum/uplink_item/stealthy_weapons/rubberduck
+	name = "Druggy Ducky"
+	desc = "A seemingly innocent rubber ducky. Squeaking it will start a timer that will set off a chemical payload containing drugs. \
+	 		Careful you don't breathe it in, unless you want to go on a trip as well."
+	item = /obj/item/grenade/chem_grenade/rubberduck
+	cost = 3
 
 // Stealth Items
 /datum/uplink_item/stealthy_tools
@@ -1073,7 +1080,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "Use to select the landing zone of your assault pod."
 	item = /obj/item/device/assault_pod
 	cost = 30
-	surplus = 0 
+	surplus = 0
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/device_tools/shield
@@ -1133,7 +1140,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	name = "Codespeak Manual"
 	desc = "Syndicate agents can be trained to use a series of codewords to convey complex information, which sounds like random concepts and drinks to anyone listening. This manual teaches you this Codespeak. You can also hit someone else with the manual in order to teach them. One use."
 	item = /obj/item/codespeak_manual
-	cost = 2 
+	cost = 2
 	exclude_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/device_tools/codespeak_manual_deluxe
@@ -1297,7 +1304,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/clothing/under/color/grey/glorf
 	cost = 20
 	restricted_roles = list("Assistant")
-	surplus = 0 
+	surplus = 0
 
 /datum/uplink_item/role_restricted/haunted_magic_eightball
 	name = "Haunted Magic Eightball"
@@ -1312,7 +1319,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "A syringe gun that fires DNA injectors instead of normal syringes."
 	item = /obj/item/gun/syringe/dna
 	cost = 14
-	surplus = 5 //low chance, hope you can get a job change if you get this 
+	surplus = 5 //low chance, hope you can get a job change if you get this
 	restricted_roles = list("Geneticist", "Chief Medical Officer")
 
 /datum/uplink_item/role_restricted/magillitis_serum
@@ -1320,7 +1327,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "A single-use autoinjector which contains an experimental serum that causes rapid muscular growth in basic primates."
 	item = /obj/item/reagent_containers/hypospray/magillitis
 	cost = 15
-	surplus = 5 
+	surplus = 5
 	restricted_roles = list("Geneticist", "Chief Medical Officer")
 
 /datum/uplink_item/role_restricted/pressure_mod

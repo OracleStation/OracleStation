@@ -7,6 +7,7 @@
 	item_state = "flashbang"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
+	var/arming_sound = 'sound/weapons/armbomb.ogg'
 	throw_speed = 3
 	throw_range = 7
 	flags_1 = CONDUCT_1
@@ -15,7 +16,8 @@
 	max_integrity = 40
 	var/active = 0
 	var/det_time = 50
-	var/display_timer = 1
+	var/display_timer = TRUE
+	var/want_timer = TRUE
 
 /obj/item/grenade/deconstruct(disassembled = TRUE)
 	if(!disassembled)
@@ -28,7 +30,7 @@
 		to_chat(user, "<span class='warning'>Huh? How does this thing work?</span>")
 		active = 1
 		icon_state = initial(icon_state) + "_active"
-		playsound(loc, 'sound/weapons/armbomb.ogg', 75, 1, -3)
+		playsound(loc, arming_sound, 75, 1, -3)
 		spawn(5)
 			if(user)
 				user.drop_item()
@@ -39,7 +41,7 @@
 
 /obj/item/grenade/examine(mob/user)
 	..()
-	if(display_timer)
+	if(display_timer && want_timer)
 		if(det_time > 1)
 			to_chat(user, "The timer is set to [det_time/10] second\s.")
 		else
@@ -57,7 +59,7 @@
 /obj/item/grenade/proc/preprime(mob/user)
 	if(user)
 		to_chat(user, "<span class='warning'>You prime the [name]! [det_time/10] seconds!</span>")
-	playsound(loc, 'sound/weapons/armbomb.ogg', 60, 1)
+	playsound(loc, arming_sound, 60, 1)
 	active = TRUE
 	icon_state = initial(icon_state) + "_active"
 	add_fingerprint(user)
