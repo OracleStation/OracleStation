@@ -119,3 +119,4 @@
 #define NOSTOMACH		28
 #define NO_BONES		29
 #define NOPAIN			30
+#define REVIVESBYHEALING 31
