@@ -331,3 +331,18 @@
 	desc = "You sit in this. Either by will or force. Looks REALLY uncomfortable."
 	icon_state = "chairold"
 	item_chair = null
+
+/obj/structure/chair/sofa
+	name = "old ratty sofa"
+	icon_state = "sofaconnectors"
+	item_chair = null
+	anchored = 1
+	buildstackamount = 1
+
+/obj/structure/chair/sofa/spin()
+	setDir(turn(dir, 45))
+
+/obj/structure/chair/sofa/left
+	icon_state = "sofaend_left"
+/obj/structure/chair/sofa/right
+	icon_state = "sofaend_right"
