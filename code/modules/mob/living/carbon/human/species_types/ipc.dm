@@ -27,10 +27,9 @@
 	mutantliver = /obj/item/organ/liver/cybernetic/upgraded/ipc
 	mutantstomach = /obj/item/organ/stomach/cell
 	mutantears = /obj/item/organ/ears/robot
-	// mutant_brain = /obj/item/organ/brain/mmi_holder // Not in the current fork.
+	mutant_brain = /obj/item/organ/brain/mmi_holder/posibrain
 	examine_text = "an IPC"
 	species_text_color = "#2e2e2e"
-
 
 /datum/species/ipc/random_name(unique)
 	var/ipc_name = "[pick(GLOB.posibrain_names)]-[rand(100, 999)]"
@@ -49,6 +48,9 @@
 			Z.icon = 'icons/mob/ipc/ipc_morpheus_cyberkinetics_greyscale.dmi'
 		if(("ipc_chassis" in C.dna.species.mutant_bodyparts) && C.dna.features["ipc_chassis"] == "Morpheus Cyberkinetics(Black)")
 			Z.icon = 'icons/mob/ipc/ipc_morpheus_cyberkinetics_black.dmi'
+
+/datum/species/ipc/spec_death(gibbed, mob/living/carbon/human/H) // Normal gibs still appear in addition to robot gibs, though. Hmmm.
+	new /obj/effect/gibspawner/robot(get_turf(H))
 
 /datum/species/ipc/on_species_loss(mob/living/carbon/C)
 	. = ..()
