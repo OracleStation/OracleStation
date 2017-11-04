@@ -3411,6 +3411,11 @@
 	pixel_x = 64;
 	pixel_y = 32
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/bottom{
+	tag = "icon-vent_map_on (WEST)";
+	icon_state = "vent_map_on";
+	dir = 8
+	},
 /turf/open/floor/plasteel/vault{
 	dir = 5
 	},
@@ -25555,6 +25560,7 @@
 	dir = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /turf/open/floor/plasteel,
 /area/maintenance/starboard/central)
 "aOv" = (
@@ -28642,6 +28648,11 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
+	tag = "icon-intact (EAST)";
+	icon_state = "intact";
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/science/research)
@@ -33180,9 +33191,9 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
+	areastring = "/area/security/checkpoint";
 	dir = 4;
 	name = "Security Checkpoint APC";
-	areastring = "/area/hallway/primary/central";
 	pixel_x = 26
 	},
 /turf/open/floor/plasteel/red/side{
@@ -36647,6 +36658,11 @@
 "bhm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/xeno_spawn,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/bottom{
+	tag = "icon-vent_map_on (NORTH)";
+	icon_state = "vent_map_on";
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/maintenance/starboard)
 "bhn" = (
@@ -44166,6 +44182,23 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
+"bAu" = (
+/obj/structure/grille,
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden{
+	dir = 6
+	},
+/turf/closed/wall/r_wall,
+/area/engine/atmos)
+"bAv" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/top{
+	tag = "icon-scrub_map_on (EAST)";
+	icon_state = "scrub_map_on";
+	dir = 4
+	},
+/turf/open/floor/plasteel/neutral,
+/area/hallway/secondary/exit{
+	name = "\improper Departure Lounge"
+	})
 
 (1,1,1) = {"
 aaa
@@ -72822,7 +72855,7 @@ aRB
 aPG
 aQG
 aUO
-aRB
+buK
 aRB
 buR
 aMJ
@@ -73336,7 +73369,7 @@ aRB
 aPG
 buG
 buI
-aRB
+buK
 aRB
 buR
 aMJ
@@ -73820,7 +73853,7 @@ aad
 aad
 abi
 aqz
-anx
+bAu
 asx
 aty
 aur
@@ -73832,7 +73865,7 @@ avx
 aAi
 aty
 aCs
-aqz
+aDn
 aEn
 aFq
 aEt
@@ -74089,7 +74122,7 @@ avy
 aAj
 blk
 aCt
-aqz
+aDo
 aEo
 aFr
 aEt
@@ -74346,7 +74379,7 @@ azj
 aAk
 aBq
 aCu
-aqz
+aDp
 aEp
 aFs
 aGh
@@ -74603,7 +74636,7 @@ azk
 ayd
 aBr
 aCv
-aqz
+aDp
 aEq
 aFt
 aGh
@@ -74860,7 +74893,7 @@ axl
 aAm
 aBs
 aCw
-aqz
+aDp
 aEr
 aFu
 aGi
@@ -75117,7 +75150,7 @@ azl
 azl
 aBt
 aCx
-aqz
+aDp
 aEs
 aFv
 aGj
@@ -75374,7 +75407,7 @@ azm
 azm
 aBu
 aCy
-aqz
+aDp
 aEt
 aEt
 aEt
@@ -75631,7 +75664,7 @@ atH
 aAn
 aBv
 aCz
-aqz
+aDq
 aEu
 aFw
 aGk
@@ -85126,7 +85159,7 @@ amf
 amZ
 abt
 awe
-apS
+bzM
 ara
 asd
 ati
@@ -93874,7 +93907,7 @@ aaa
 aaa
 axW
 ayX
-azW
+bAv
 aBd
 aCj
 aDe
