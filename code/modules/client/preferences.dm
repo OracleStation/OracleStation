@@ -118,7 +118,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(istype(C))
 		if(!IsGuestKey(C.key))
 			load_path(C.ckey)
-			unlock_content = C.IsByondMember()
+			unlock_content = TRUE
 			if(unlock_content)
 				max_save_slots = 8
 	var/loaded_preferences_successfully = load_preferences()
