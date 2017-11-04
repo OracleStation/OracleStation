@@ -80,10 +80,6 @@
 /datum/reagent/proc/on_tick(data)
 	return
 
-// Called when the reagent container is hit by an explosion
-/datum/reagent/proc/on_ex_act(severity)
-	return
-
 // Called if the reagent has passed the overdose threshold and is set to be triggering overdose effects
 /datum/reagent/proc/overdose_process(mob/living/M)
 	return
