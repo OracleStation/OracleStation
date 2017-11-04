@@ -76,8 +76,8 @@
 /datum/reagent/proc/on_update(atom/A)
 	return
 
-// Called every time reagent containers process.
-/datum/reagent/proc/on_tick(data)
+// Called when the reagent container is hit by an explosion
+/datum/reagent/proc/on_ex_act(severity)
 	return
 
 // Called if the reagent has passed the overdose threshold and is set to be triggering overdose effects
