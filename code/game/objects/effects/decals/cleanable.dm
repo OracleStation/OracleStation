@@ -14,9 +14,13 @@
 		for(var/obj/effect/decal/cleanable/C in src.loc)
 			if(C != src && C.type == src.type)
 				replace_decal(C)
+	queue_smooth(src)
+	queue_smooth_neighbors(src)
 	..()
 
-
+/obj/effect/decal/cleanable/Destroy()
+	queue_smooth_neighbors(src)
+	return ..()
 
 /obj/effect/decal/cleanable/proc/replace_decal(obj/effect/decal/cleanable/C)
 	if(mergeable_decal)
