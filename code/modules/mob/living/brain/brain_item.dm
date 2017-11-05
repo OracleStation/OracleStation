@@ -147,58 +147,14 @@
 	icon_state = "brain-x"
 	origin_tech = "biotech=6"
 
-// IPC Brain fuckery. Ported from Paradise. A lot of problems currently, but we're getting there.
 
-/obj/item/organ/brain/mmi_holder
-	name = "brain"
+/obj/item/organ/brain/ipc
+	name = "IPC posibrain"
 	slot = "brain"
-	zone = "chest" // Holy shit this actually works!
+	desc = "A cube of shining metal, four inches to a side and covered in shallow grooves. This particular model seems specific to IPCs, due to lack of foresight."
+	zone = "chest"
+	icon = 'icons/obj/assemblies.dmi'
+	icon_state = "posibrain-occupied"
 	status = ORGAN_ROBOTIC
-	var/obj/item/device/mmi/stored_mmi
-
-/obj/item/organ/brain/mmi_holder/Destroy()
-	QDEL_NULL(stored_mmi)
-	return
-	..()
-
-/obj/item/organ/brain/mmi_holder/Insert(var/mob/living/target,special = 0)
-	..()
-	// To supersede the over-writing of the MMI's name from `insert`
-	update_from_mmi()
-
-/obj/item/organ/brain/mmi_holder/Remove(var/mob/living/owner,special = 0)
-	if(!special)
-		if(stored_mmi)
-			. = stored_mmi
-			if(owner.mind)
-				owner.mind.transfer_to(stored_mmi.brainmob)
-			stored_mmi.forceMove(get_turf(src))
-			stored_mmi = null
-	..()
-	qdel(src)
-
-/obj/item/organ/brain/mmi_holder/proc/update_from_mmi()
-	if(!stored_mmi)
-		return
-	name = stored_mmi.name
-	desc = stored_mmi.desc
-	icon = stored_mmi.icon
-	icon_state = stored_mmi.icon_state
-	//set_dna(stored_mmi.brainmob.dna) // what does this do?
-	brainmob.stored_dna = new /datum/dna/stored(brainmob)
-
-/obj/item/organ/brain/mmi_holder/posibrain/New()
-	stored_mmi = new /obj/item/device/mmi/posibrain(src)
-//	robotize() // what does this do?
-	..()
-	spawn(1)
-		if(owner)
-			stored_mmi.name = "positronic brain ([owner.real_name])"
-			stored_mmi.brainmob.real_name = owner.real_name
-			stored_mmi.brainmob.name = stored_mmi.brainmob.real_name
-			stored_mmi.icon_state = "posibrain-occupied"
-			stored_mmi.brainmob.stat = CONSCIOUS
-			update_from_mmi()
-		else
-			stored_mmi.loc = get_turf(src)
-			qdel(src)
+	w_class = WEIGHT_CLASS_NORMAL
+	origin_tech = "biotech=3;programming=3;plasmatech=2"

@@ -27,7 +27,7 @@
 	mutantliver = /obj/item/organ/liver/cybernetic/upgraded/ipc
 	mutantstomach = /obj/item/organ/stomach/cell
 	mutantears = /obj/item/organ/ears/robot
-	mutant_brain = /obj/item/organ/brain/mmi_holder/posibrain
+	mutant_brain = /obj/item/organ/brain/ipc
 	examine_text = "an IPC"
 	species_text_color = "#2e2e2e"
 
