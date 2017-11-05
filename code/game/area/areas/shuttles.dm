@@ -51,6 +51,7 @@
 /area/shuttle/syndicate
 	name = "Syndicate Infiltrator"
 	blob_allowed = FALSE
+	ambientsounds = HIGHSEC
 
 /area/shuttle/assault_pod
 	name = "Steel Rain"
