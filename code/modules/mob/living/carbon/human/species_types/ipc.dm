@@ -1,6 +1,6 @@
 /datum/species/ipc
 	// shitty toasters why do we need them
-	name = "IPC"
+	name = "Machine"
 	id = "ipc"
 	say_mod = "states"
 	heatmod = 3 // Went cheap with Aircooling
@@ -28,9 +28,9 @@
 	mutantstomach = /obj/item/organ/stomach/cell
 	mutantears = /obj/item/organ/ears/robot
 	mutant_brain = /obj/item/organ/brain/ipc
-	examine_text = "an IPC"
+	examine_text = "a Machine"
 	species_text_color = "#2e2e2e"
-
+	reagent_tag = PROCESS_SYN
 
 /datum/species/ipc/random_name(unique)
 	var/ipc_name = "[pick(GLOB.posibrain_names)]-[rand(100, 999)]"
@@ -44,7 +44,6 @@
 	for(var/X in C.bodyparts)
 		var/obj/item/bodypart/O = X
 		O.change_bodypart_status(BODYPART_ROBOTIC, FALSE, TRUE) // Makes all Bodyparts robotic. And the rest of this string works on selecting your chassis. Color currently doesn't work.
-		O.species_color = fixed_mut_color
 		if( C.dna.features["ipc_chassis"] == "Morpheus Cyberkinetics(Greyscale)")
 			O.icon = 'icons/mob/ipc/ipc_morpheus_cyberkinetics_greyscale.dmi'
 		if(C.dna.features["ipc_chassis"] == "Morpheus Cyberkinetics(Black)")

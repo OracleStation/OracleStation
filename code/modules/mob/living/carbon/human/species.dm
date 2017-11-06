@@ -56,6 +56,7 @@
 	var/siemens_coeff = 1 //base electrocution coefficient
 	var/damage_overlay_type = "human" //what kind of damage overlays (if any) appear on our species when wounded?
 	var/fixed_mut_color = "" //to use MUTCOLOR with a fixed color that's independent of dna.feature["mcolor"]
+	var/reagent_tag = PROCESS_ORG //Used for metabolizing reagents. We're going to assume you're a meatbag unless you say otherwise.
 
 	// species flags. these can be found in flags.dm
 	var/list/species_traits = list()
@@ -950,6 +951,17 @@
 		H.reagents.del_reagent(chem.id)
 		return 1
 	return 0
+
+// Do species-specific reagent handling here
+// Return 1 if it should do normal processing too
+// Return 0 if it shouldn't deplete and do its normal effect
+// Other return values will cause weird badness
+/datum/species/proc/handle_reagents(mob/living/carbon/human/H, datum/reagent/R)
+	if(R.id == exotic_blood)
+		H.blood_volume = min(H.blood_volume + round(R.volume, 0.1), BLOOD_VOLUME_NORMAL)
+		H.reagents.del_reagent(R.id)
+		return 0
+	return 1
 
 /datum/species/proc/handle_speech(message, mob/living/carbon/human/H)
 	return message

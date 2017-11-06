@@ -14,6 +14,7 @@
 	var/datum/species/fake_species = null //a species to do most of our work for us, unless we're damaged
 	examine_text = "a Synth"
 	species_text_color = "#555555"
+	reagent_tag = PROCESS_DUO
 
 /datum/species/synth/military
 	name = "Military Synth"

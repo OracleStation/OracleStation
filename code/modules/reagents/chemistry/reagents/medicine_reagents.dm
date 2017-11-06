@@ -359,6 +359,7 @@
 	color = "#000000"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	taste_description = "ash"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/medicine/charcoal/on_mob_life(mob/living/M)
 	M.adjustToxLoss(-2*REM, 0)
@@ -867,6 +868,7 @@
 	description = "Miniature medical robots that swiftly restore bodily damage."
 	reagent_state = SOLID
 	color = "#555555"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/medicine/syndicate_nanites/on_mob_life(mob/living/M)
 	M.adjustBruteLoss(-5*REM, 0) //A ton of healing - this is a 50 telecrystal investment.
