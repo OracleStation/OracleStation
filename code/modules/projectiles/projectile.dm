@@ -99,6 +99,11 @@
 				splatter_dir = get_dir(starting, target_loca)
 			if(isalien(L))
 				new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target_loca, splatter_dir)
+			if(isipc(L)) // Not the right solution. I need it to check if the location hit is BODYPART_ROBOTIC, but I don't know how to do that.
+				var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
+				spark_system.set_up(1, 0, target_loca)
+				spark_system.attach(target_loca)
+				spark_system.start()
 			else
 				new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_loca, splatter_dir)
 			if(prob(33))

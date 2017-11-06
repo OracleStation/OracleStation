@@ -147,14 +147,14 @@
 	icon_state = "brain-x"
 	origin_tech = "biotech=6"
 
+// IPC brain fuckery.
 
 /obj/item/organ/brain/ipc
 	name = "IPC posibrain"
 	slot = "brain"
-	desc = "A cube of shining metal, four inches to a side and covered in shallow grooves. This particular model seems specific to IPCs, due to lack of foresight."
+	desc = "A cube of shining metal, three inches to a side and covered in shallow grooves. This particular model seems specific to IPCs, due to lack of foresight. It will need an MMI adapter to be slotted into cyborgs or AI cores."
 	zone = "chest"
 	icon = 'icons/obj/assemblies.dmi'
 	icon_state = "posibrain-occupied"
 	status = ORGAN_ROBOTIC
-	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = "biotech=3;programming=3;plasmatech=2"

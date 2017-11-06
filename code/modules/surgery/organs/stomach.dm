@@ -66,14 +66,14 @@
 	desc = "A strange crystal that is responsible for metabolizing the unseen energy force that feeds plasmamen."
 
 /obj/item/organ/stomach/cell
-	name = "Machine Micro-cell"
+	name = "micro-cell"
 	icon_state = "null" // TBD
 	origin_tech = "engineering=2"
 	w_class = WEIGHT_CLASS_NORMAL
 	zone = "chest"
 	slot = "stomach"
 	attack_verb = list("assault and battery'd")
-	desc = "A S.N.O.W.F.L.A.K.E Corporation Micro-cell, for IPC use only. Do not swallow."
+	desc = "A Micro-cell, for IPC use only. Do not swallow."
 	status = ORGAN_ROBOTIC
 
 /obj/item/organ/stomach/cell/emp_act(severity)

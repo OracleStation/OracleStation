@@ -88,7 +88,7 @@
 			damage+=50
 
 /obj/item/organ/liver/cybernetic/upgraded/ipc
-	name = "Machine Substance Processor"
+	name = "substance processor"
 	icon_state = "null" // TBD
 	origin_tech = "engineering=2"
 	attack_verb = list("processed")

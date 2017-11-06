@@ -202,7 +202,7 @@
 		T.Entered(src)
 //Ayy lmao
 
-// IPC Emotes.
+// Robotic Tongue emotes. Beep!
 
 /datum/emote/living/carbon/human/beep
 	key = "beep"
@@ -217,7 +217,8 @@
 /datum/emote/living/carbon/human/beep/can_run_emote(mob/user)
 	if(!..())
 		return FALSE
-	if(isipc(user))
+	var/obj/item/organ/tongue/T = user.getorganslot("tongue")
+	if(T.status == ORGAN_ROBOTIC)
 		return TRUE
 
 /datum/emote/living/carbon/human/buzz
@@ -233,7 +234,8 @@
 /datum/emote/living/carbon/human/buzz/can_run_emote(mob/user)
 	if(!..())
 		return FALSE
-	if(isipc(user))
+	var/obj/item/organ/tongue/T = user.getorganslot("tongue")
+	if(T.status == ORGAN_ROBOTIC)
 		return TRUE
 
 /datum/emote/living/carbon/human/buzz2
@@ -247,7 +249,8 @@
 /datum/emote/living/carbon/human/buzz2/can_run_emote(mob/user)
 	if(!..())
 		return FALSE
-	if(isipc(user))
+	var/obj/item/organ/tongue/T = user.getorganslot("tongue")
+	if(T.status == ORGAN_ROBOTIC)
 		return TRUE
 
 /datum/emote/living/carbon/human/chime
@@ -262,7 +265,8 @@
 /datum/emote/living/carbon/human/chime/can_run_emote(mob/user)
 	if(!..())
 		return FALSE
-	if(isipc(user))
+	var/obj/item/organ/tongue/T = user.getorganslot("tongue")
+	if(T.status == ORGAN_ROBOTIC)
 		return TRUE
 
 /datum/emote/living/carbon/human/ping
@@ -278,7 +282,8 @@
 /datum/emote/living/carbon/human/ping/can_run_emote(mob/user)
 	if(!..())
 		return FALSE
-	if(isipc(user))
+	var/obj/item/organ/tongue/T = user.getorganslot("tongue")
+	if(T.status == ORGAN_ROBOTIC)
 		return TRUE
 
 /datum/emote/living/carbon/human/yes
@@ -292,7 +297,8 @@
 /datum/emote/living/carbon/human/yes/can_run_emote(mob/user)
 	if(!..())
 		return FALSE
-	if(isipc(user))
+	var/obj/item/organ/tongue/T = user.getorganslot("tongue")
+	if(T.status == ORGAN_ROBOTIC)
 		return TRUE
 
 /datum/emote/living/carbon/human/no
@@ -306,10 +312,11 @@
 /datum/emote/living/carbon/human/no/can_run_emote(mob/user)
 	if(!..())
 		return FALSE
-	if(isipc(user))
+	var/obj/item/organ/tongue/T = user.getorganslot("tongue")
+	if(T.status == ORGAN_ROBOTIC)
 		return TRUE
 
- // Clown IPC only. Henk.
+ // Clown Robotic Tongue ONLY. Henk.
 
 /datum/emote/living/carbon/human/honk
 	key = "honk"
@@ -323,7 +330,8 @@
 /datum/emote/living/carbon/human/honk/can_run_emote(mob/user)
 	if(!..())
 		return FALSE
-	if(isipc(user) && user.mind.assigned_role == "Clown")
+	var/obj/item/organ/tongue/T = user.getorganslot("tongue")
+	if(T.status == ORGAN_ROBOTIC && user.mind.assigned_role == "Clown")
 		return TRUE
 
 /datum/emote/living/carbon/human/sad
@@ -338,5 +346,6 @@
 /datum/emote/living/carbon/human/sad/can_run_emote(mob/user)
 	if(!..())
 		return FALSE
-	if(isipc(user) && user.mind.assigned_role == "Clown")
+	var/obj/item/organ/tongue/T = user.getorganslot("tongue")
+	if(T.status == ORGAN_ROBOTIC && user.mind.assigned_role == "Clown")
 		return TRUE
