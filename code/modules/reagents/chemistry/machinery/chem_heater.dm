@@ -3,7 +3,7 @@
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/chemical.dmi'
-	icon_state = "mixer0b"
+	icon_state = "heater"
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 40
 	resistance_flags = FIRE_PROOF | ACID_PROOF
@@ -21,19 +21,24 @@
 /obj/machinery/chem_heater/process()
 	..()
 	if(stat & NOPOWER)
+		icon_state = "heater"
 		return
 	if(on)
 		if(beaker)
 			if(beaker.reagents.chem_temp > target_temperature)
 				beaker.reagents.chem_temp += min(-1, (target_temperature - beaker.reagents.chem_temp) * heater_coefficient)
-			if(beaker.reagents.chem_temp < target_temperature)
+				icon_state = "heater-cool"
+			else if(beaker.reagents.chem_temp < target_temperature)
 				beaker.reagents.chem_temp += max(1, (target_temperature - beaker.reagents.chem_temp) * heater_coefficient)
+				icon_state = "heater-heat"
+			else
+				icon_state = "heater"
 
 			beaker.reagents.chem_temp = round(beaker.reagents.chem_temp)
 			beaker.reagents.handle_reactions()
 
 /obj/machinery/chem_heater/attackby(obj/item/I, mob/user, params)
-	if(default_deconstruction_screwdriver(user, "mixer0b", "mixer0b", I))
+	if(default_deconstruction_screwdriver(user, "heater", "heater", I))
 		return
 
 	if(exchange_parts(user, I))
@@ -52,7 +57,7 @@
 			return
 		beaker = I
 		to_chat(user, "<span class='notice'>You add [I] to [src].</span>")
-		icon_state = "mixer1b"
+		add_overlay("heater-beaker")
 		return
 	return ..()
 
@@ -114,4 +119,4 @@
 		beaker.loc = get_turf(src)
 		beaker.reagents.handle_reactions()
 		beaker = null
-		icon_state = "mixer0b"
+		cut_overlays()

@@ -181,8 +181,16 @@
 	illustration = "beaker"
 
 /obj/item/storage/box/beakers/PopulateContents()
-	for(var/i in 1 to 7)
+	for(var/i in 1 to 4)
+		new /obj/item/reagent_containers/glass/beaker/vial( src )
+	for(var/i in 1 to 2)
 		new /obj/item/reagent_containers/glass/beaker( src )
+	for(var/i in 1 to 2)
+		new /obj/item/reagent_containers/glass/beaker/erlenmeyer( src )
+	for(var/i in 1 to 2)
+		new /obj/item/reagent_containers/glass/beaker/round( src )
+	new /obj/item/reagent_containers/glass/beaker/large( src )
+	new /obj/item/reagent_containers/glass/beaker/round/large( src )
 
 /obj/item/storage/box/injectors
 	name = "box of DNA injectors"
