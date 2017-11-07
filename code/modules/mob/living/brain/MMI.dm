@@ -25,9 +25,9 @@
 		if(istype(brain, /obj/item/organ/brain/ipc))
 			icon = 'icons/obj/assemblies.dmi'
 			if(brainmob && brainmob.stat == DEAD)
-				icon_state = "posibrain"
+				icon_state = "posibrain_mmi_red"
 			else
-				icon_state = "posibrain-occupied"
+				icon_state = "posibrain_mmi_green"
 			braintype = "Android"
 		else
 			if(brainmob && brainmob.stat == DEAD)

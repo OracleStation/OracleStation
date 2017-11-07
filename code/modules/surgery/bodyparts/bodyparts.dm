@@ -363,7 +363,7 @@
 	if((body_zone != "head" && body_zone != "chest"))
 		should_draw_gender = FALSE
 
-	if(status == BODYPART_ORGANIC || isipc(owner)) // I cannot find another way to make BODYPART_ROBOTIC take color. Help.
+	if(status == BODYPART_ORGANIC)
 		if(should_draw_greyscale)
 			limb.icon = 'icons/mob/human_parts_greyscale.dmi'
 			if(should_draw_gender)

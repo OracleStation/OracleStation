@@ -52,3 +52,11 @@
 			H.nutrition = NUTRITION_LEVEL_FULL
 		H.reagents.remove_reagent(chem.id, REAGENTS_METABOLISM)
 		return 1
+
+/datum/species/ipc/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, intent, mob/living/carbon/human/H)
+	..()
+	if(I.force && I.damtype != STAMINA)
+		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
+		spark_system.set_up(1, 0, H)
+		spark_system.attach(H)
+		spark_system.start()

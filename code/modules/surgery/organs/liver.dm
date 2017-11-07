@@ -89,7 +89,7 @@
 
 /obj/item/organ/liver/cybernetic/upgraded/ipc
 	name = "substance processor"
-	icon_state = "null" // TBD
+	icon_state = "substance_processor"
 	origin_tech = "engineering=2"
 	attack_verb = list("processed")
 	desc = "A machine component, installed in the chest. This grants the Machine the ability to process chemicals that enter its systems."
