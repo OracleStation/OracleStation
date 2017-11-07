@@ -15,13 +15,20 @@
 	var/icon_keyboard = "generic_key"
 	var/icon_screen = "generic"
 	var/clockwork = FALSE
+	var/console_bank_prefix = null
 
 /obj/machinery/computer/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()
+	if (can_smooth())
+		console_bank_prefix = icon_state
+		smooth_others()
+		smooth_self()
 	power_change()
 
 /obj/machinery/computer/Destroy()
 	QDEL_NULL(circuit)
+	if(can_smooth())
+		smooth_others()
 	return ..()
 
 /obj/machinery/computer/process()
@@ -45,16 +52,54 @@
 		icon_state = initial(icon_state)
 		update_icon()
 
+/obj/machinery/computer/proc/can_smooth()
+	// Determine whether we can smooth and form a console bank.
+	var/list/states = icon_states(icon)
+	var/teststate = icon_state + "-c"
+	return teststate in states
+
+/obj/machinery/computer/proc/smooth_others()
+	for(dir in list(EAST,WEST))
+		var/obj/machinery/computer/other = locate(/obj/machinery/computer, get_step(src, dir))
+		if(!isnull(other))
+			spawn(1) other.smooth_self() //Delay it slightly for when this gets deleted
+
+/obj/machinery/computer/proc/smooth_self()
+	if(isnull(console_bank_prefix))
+		return //Sanity check to see if we have a prefix set
+
+	var/obj/machinery/computer/left = locate(/obj/machinery/computer, get_step(src, EAST))
+	var/obj/machinery/computer/right = locate(/obj/machinery/computer, get_step(src, WEST))
+
+	if (!isnull(left) && isnull(left.console_bank_prefix))
+		left = null
+	if (!isnull(right) && isnull(right.console_bank_prefix))
+		right = null
+
+	if(isnull(left) && !isnull(right))
+		icon_state = "[console_bank_prefix]-r"
+	else if(!isnull(left) && !isnull(right))
+		icon_state = "[console_bank_prefix]-c"
+	else if(!isnull(left) && isnull(right))
+		icon_state = "[console_bank_prefix]-l"
+	else
+		icon_state = console_bank_prefix
+
+	update_icon()
+
 /obj/machinery/computer/update_icon()
 	cut_overlays()
 	if(stat & NOPOWER)
 		add_overlay("[icon_keyboard]_off")
 		return
 	add_overlay(icon_keyboard)
+	if(console_bank_prefix && icon_state != console_bank_prefix)
+		add_overlay("[console_bank_prefix]-lights" + copytext(icon_state,-2))
 	if(stat & BROKEN)
 		add_overlay("[icon_state]_broken")
 	else
 		add_overlay(icon_screen)
+
 
 /obj/machinery/computer/power_change()
 	..()
