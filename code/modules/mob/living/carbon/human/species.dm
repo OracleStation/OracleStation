@@ -632,8 +632,6 @@
 					S = GLOB.ipc_screens_list[H.dna.features["ipc_screen"]]
 				if("ipc_antenna")
 					S = GLOB.ipc_antennas_list[H.dna.features["ipc_antenna"]]
-				if("ipc_chassis")
-					S = GLOB.ipc_chassis_list[H.dna.features["ipc_chassis"]]
 				if("wings")
 					S = GLOB.wings_list[H.dna.features["wings"]]
 				if("wingsopen")

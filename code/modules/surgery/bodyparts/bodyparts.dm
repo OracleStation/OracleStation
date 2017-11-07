@@ -66,6 +66,8 @@
 		if(EASYLIMBATTACHMENT in H.dna.species.species_traits)
 			if(!H.get_bodypart(body_zone) && !animal_origin)
 				if(H == user)
+					H.visible_message("<span class='notice'>[H] is attempting to re-attach [src]...</span>")
+					do_mob(user, H, 60)
 					H.visible_message("<span class='warning'>[H] jams [src] into [H.p_their()] empty socket!</span>",\
 					"<span class='notice'>You force [src] into your empty socket, and it locks into place!</span>")
 				else
@@ -361,7 +363,7 @@
 	if((body_zone != "head" && body_zone != "chest"))
 		should_draw_gender = FALSE
 
-	if(status == BODYPART_ORGANIC)
+	if(status == BODYPART_ORGANIC || isipc(owner)) // I cannot find another way to make BODYPART_ROBOTIC take color. Help.
 		if(should_draw_greyscale)
 			limb.icon = 'icons/mob/human_parts_greyscale.dmi'
 			if(should_draw_gender)
