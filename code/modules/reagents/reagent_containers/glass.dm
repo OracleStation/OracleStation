@@ -206,8 +206,8 @@
 	name = "large round-bottomed flask"
 	desc = "A large round-bottomed flask. Can hold up to 150 units."
 	icon_state = "bigflask"
-	materials = list(MAT_GLASS=3000)
-	volume = 150
+	materials = list(MAT_GLASS=2500)
+	volume = 100
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,20,25,30,50,75,100,150)
 	flags_1 = OPENCONTAINER_1
