@@ -785,6 +785,18 @@
 	M.adjustBrainLoss(-3*REM)
 	..()
 
+/datum/reagent/medicine/liquid_solder
+	name = "Liquid Solder"
+	id = "liquid_solder"
+	description = "Repairs brain damage in synthetics."
+	color = "#727272"
+	taste_description = "metallic"
+	process_flags = SYNTHETIC
+
+/datum/reagent/medicine/liquid_solder/on_mob_life(mob/living/M)
+	M.adjustBrainLoss(-3*REM)
+	..()
+
 /datum/reagent/medicine/mutadone
 	name = "Mutadone"
 	id = "mutadone"

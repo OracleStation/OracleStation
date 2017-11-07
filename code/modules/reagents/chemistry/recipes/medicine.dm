@@ -160,6 +160,14 @@
 	required_reagents = list("sugar" = 1, "hydrogen" = 1, "water" = 1)
 	mix_message = "The solution slightly bubbles, becoming thicker."
 
+/datum/chemical_reaction/liquid_solder
+	name = "Liquid Solder"
+	id = "liquid_solder"
+	results = list("liquid_solder" = 3)
+	required_reagents = list("ethanol" = 1, "copper" = 1, "silver" = 1)
+	required_temp = 370
+	mix_message = "The mixture becomes a metallic slurry."
+
 /datum/chemical_reaction/mutadone
 	name = "Mutadone"
 	id = "mutadone"
