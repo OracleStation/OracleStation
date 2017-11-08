@@ -31,6 +31,7 @@
 	examine_text = "a Machine"
 	species_text_color = "#2e2e2e"
 	reagent_tag = PROCESS_SYN
+	species_gibs = "robotic"
 
 /datum/species/ipc/random_name(unique)
 	var/ipc_name = "[pick(GLOB.posibrain_names)]-[rand(100, 999)]"

@@ -1,20 +1,29 @@
 /mob/living/carbon/human/gib_animation()
-	new /obj/effect/temp_visual/gib_animation(loc, "gibbed-h")
-
-/mob/living/carbon/human/dust_animation()
-	new /obj/effect/temp_visual/dust_animation(loc, "dust-h")
+	if(dna.species.species_gibs == "human")
+		new /obj/effect/temp_visual/gib_animation(loc, "gibbed-h")
+	if(dna.species.species_gibs == "robotic")
+		new /obj/effect/temp_visual/gib_animation(loc, "gibbed-r")
 
 /mob/living/carbon/human/spawn_gibs(with_bodyparts)
 	if(with_bodyparts)
-		new /obj/effect/gibspawner/human(get_turf(src), dna)
+		if(dna.species.species_gibs == "human")
+			new /obj/effect/gibspawner/human(get_turf(src), dna)
+		if(dna.species.species_gibs == "robotic")
+			new /obj/effect/gibspawner/robot(get_turf(src))
 	else
-		new /obj/effect/gibspawner/humanbodypartless(get_turf(src), dna)
+		if(dna.species.species_gibs == "human")
+			new /obj/effect/gibspawner/humanbodypartless(get_turf(src), dna)
+		if(dna.species.species_gibs == "robotic")
+			new /obj/effect/gibspawner/robot(get_turf(src))
 
 /mob/living/carbon/human/spawn_dust(just_ash = FALSE)
 	if(just_ash)
 		new /obj/effect/decal/cleanable/ash(loc)
 	else
-		new /obj/effect/decal/remains/human(loc)
+		if(dna.species.species_gibs == "human")
+			new /obj/effect/decal/remains/human(loc)
+		if(dna.species.species_gibs == "robotic")
+			new /obj/effect/decal/remains/robot(loc)
 
 /mob/living/carbon/human/death(gibbed)
 	if(stat == DEAD)
