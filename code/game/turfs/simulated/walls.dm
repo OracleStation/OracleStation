@@ -170,7 +170,7 @@
 	//the istype cascade has been spread among various procs for easy overriding
 	if(try_wallmount(W,user,T) || try_decon(W,user,T) || try_destroy(W,user,T))
 		return
-	
+
 	return ..()
 
 /turf/closed/wall/proc/try_wallmount(obj/item/W, mob/user, turf/T)
@@ -253,6 +253,7 @@
 		QDEL_IN(O, 50)
 
 /turf/closed/wall/singularity_pull(S, current_size)
+	..()
 	if(current_size >= STAGE_FIVE)
 		if(prob(50))
 			dismantle_wall()
