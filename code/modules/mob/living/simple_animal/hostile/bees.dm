@@ -28,6 +28,7 @@
 	response_harm   = "squashes"
 	maxHealth = 10
 	health = 10
+	spacewalk = TRUE
 	faction = list("hostile")
 	move_to_delay = 0
 	obj_damage = 0
@@ -49,11 +50,6 @@
 	var/idle = 0
 	var/isqueen = FALSE
 	var/icon_base = "bee"
-
-
-/mob/living/simple_animal/hostile/poison/bees/Process_Spacemove(movement_dir = 0)
-	return 1
-
 
 /mob/living/simple_animal/hostile/poison/bees/Initialize()
 	..()
@@ -282,4 +278,3 @@
 /obj/item/queen_bee/Destroy()
 	QDEL_NULL(queen)
 	return ..()
-
