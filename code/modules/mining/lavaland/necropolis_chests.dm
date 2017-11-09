@@ -906,6 +906,8 @@
 	name = "bubblegum chest"
 
 /obj/structure/closet/crate/necropolis/bubblegum/PopulateContents()
+	new /obj/item/clothing/suit/space/hostile_environment(src)
+	new /obj/item/clothing/head/helmet/space/hostile_environment(src)
 	var/loot = rand(1,3)
 	switch(loot)
 		if(1)
@@ -980,6 +982,52 @@
 			H.put_in_hands_or_del(new /obj/item/kitchen/knife/butcher(H))
 
 	qdel(src)
+
+/obj/item/clothing/suit/space/hostile_environment
+	name = "H.E.C.K. suit"
+	desc = "Hostile Environiment Cross-Kinetic Suit: A suit designed to withstand the wide variety of hazards from Lavaland. It wasn't enough for its last owner."
+	icon_state = "hostile_env"
+	item_state = "hostile_env"
+	flags_1 = THICKMATERIAL_1 //not spaceproof
+	max_heat_protection_temperature = FIRE_IMMUNITY_SUIT_MAX_TEMP_PROTECT
+	resistance_flags = FIRE_PROOF | LAVA_PROOF
+	slowdown = 0
+	armor = list("melee" = 70, "bullet" = 40, "laser" = 10, "energy" = 10, "bomb" = 50, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100)
+	allowed = list(/obj/item/device/flashlight, /obj/item/tank/internals, /obj/item/resonator, /obj/item/device/mining_scanner, /obj/item/device/t_scanner/adv_mining_scanner, /obj/item/gun/energy/kinetic_accelerator, /obj/item/pickaxe)
+
+/obj/item/clothing/suit/space/hostile_environment/process()
+	var/mob/living/carbon/C = loc
+	if(istype(C) && prob(2)) //cursed by bubblegum
+		if(prob(15))
+			new /datum/hallucination/oh_yeah(C)
+			to_chat(C, "<span class='colossus'><b>[pick("I AM IMMORTAL.","I SHALL TAKE BACK WHAT'S MINE.","I SEE YOU.","YOU CANNOT ESCAPE ME FOREVER.","DEATH CANNOT HOLD ME.")]</b></span>")
+		else
+			to_chat(C, "<span class='warning'>[pick("You hear faint whispers.","You smell ash.","You feel hot.","You hear a roar in the distance.")]</span>")
+
+/obj/item/clothing/head/helmet/space/hostile_environment
+	name = "H.E.C.K. helmet"
+	desc = "Hostile Environiment Cross-Kinetic Helmet: A helmet designed to withstand the wide variety of hazards from Lavaland. It wasn't enough for its last owner."
+	icon_state = "hostile_env"
+	item_state = "hostile_env"
+	w_class = WEIGHT_CLASS_NORMAL
+	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
+	flags_1 = THICKMATERIAL_1 // no space protection
+	armor = list("melee" = 70, "bullet" = 40, "laser" = 10, "energy" = 10, "bomb" = 50, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100)
+	resistance_flags = FIRE_PROOF | LAVA_PROOF
+
+/obj/item/clothing/head/helmet/space/hostile_environment/update_icon()
+	..()
+	cut_overlays()
+	var/mutable_appearance/glass_overlay = mutable_appearance(icon, "hostile_env_glass")
+	glass_overlay.appearance_flags = RESET_COLOR
+	add_overlay(glass_overlay)
+
+/obj/item/clothing/head/helmet/space/hostile_environment/worn_overlays(isinhands)
+	. = ..()
+	if(!isinhands)
+		var/mutable_appearance/M = mutable_appearance('icons/mob/head.dmi', "hostile_env_glass")
+		M.appearance_flags = RESET_COLOR
+		. += M
 
 //Colossus
 /obj/structure/closet/crate/necropolis/colossus
