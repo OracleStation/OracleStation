@@ -2597,10 +2597,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -2610,6 +2606,10 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/starboard/fore)
@@ -3524,10 +3524,6 @@
 /area/maintenance/starboard/fore)
 "ahQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/structure/barricade/wooden,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -3537,6 +3533,10 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/starboard/fore)
@@ -6619,10 +6619,6 @@
 /turf/open/floor/plasteel,
 /area/engine/atmospherics_engine)
 "aoN" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable/white{
 	d1 = 1;
@@ -6636,13 +6632,13 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/plasteel,
-/area/crew_quarters/electronic_marketing_den)
-"aoO" = (
-/obj/machinery/door/airlock/maintenance_hatch{
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
 	name = "Maintenance Hatch";
 	req_access_txt = "12"
 	},
+/turf/open/floor/plasteel,
+/area/crew_quarters/electronic_marketing_den)
+"aoO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/barricade/wooden,
@@ -6651,6 +6647,10 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/electronic_marketing_den)
@@ -7662,16 +7662,16 @@
 /area/maintenance/starboard/fore)
 "aqK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/structure/barricade/wooden,
 /obj/effect/turf_decal/stripes/line{
 	dir = 2
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/starboard/fore)
@@ -8007,10 +8007,6 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "arq" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/turf_decal/stripes/line{
@@ -8019,19 +8015,23 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/plasteel,
-/area/maintenance/port/fore)
-"arr" = (
-/obj/machinery/door/airlock/maintenance_hatch{
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
 	name = "Maintenance Hatch";
 	req_access_txt = "12"
 	},
+/turf/open/floor/plasteel,
+/area/maintenance/port/fore)
+"arr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
 	dir = 2
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/port/fore)
@@ -9187,10 +9187,6 @@
 /turf/open/floor/wood,
 /area/maintenance/port/fore)
 "atE" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -9199,6 +9195,10 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/port/fore)
@@ -20363,16 +20363,16 @@
 /turf/open/floor/engine/air,
 /area/engine/atmos)
 "aPC" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/structure/barricade/wooden,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/abandoned_gambling_den)
@@ -20421,10 +20421,6 @@
 /turf/open/floor/plating,
 /area/crew_quarters/abandoned_gambling_den)
 "aPI" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/structure/cable/white{
 	d1 = 4;
 	d2 = 8;
@@ -20439,6 +20435,10 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/abandoned_gambling_den)
@@ -57967,10 +57967,6 @@
 /turf/open/floor/plasteel,
 /area/maintenance/port)
 "chF" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -57979,6 +57975,10 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/port)
@@ -67164,10 +67164,6 @@
 /turf/open/floor/plasteel,
 /area/maintenance/port)
 "czB" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -67177,6 +67173,10 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/port)
@@ -73058,6 +73058,9 @@
 /obj/machinery/vending/cola/random,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/turf_decal/delivery,
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -26
+	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
 "cKQ" = (
@@ -73657,9 +73660,6 @@
 /area/crew_quarters/dorms)
 "cMn" = (
 /obj/machinery/vending/snack/random,
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -26
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
@@ -80798,10 +80798,6 @@
 /area/maintenance/starboard/aft)
 "daD" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/structure/cable/white{
 	d1 = 4;
 	d2 = 8;
@@ -80816,6 +80812,10 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/medical/abandoned)
@@ -80863,16 +80863,16 @@
 /area/medical/abandoned)
 "daJ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/structure/barricade/wooden,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/medical/abandoned)
@@ -83119,10 +83119,6 @@
 /area/maintenance/starboard/aft)
 "dfA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -83131,6 +83127,10 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/starboard/aft)
@@ -85632,15 +85632,15 @@
 	dir = 4
 	},
 /obj/structure/barricade/wooden,
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/science/research/abandoned)
@@ -87010,16 +87010,16 @@
 /area/science/research/abandoned)
 "dnC" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/structure/barricade/wooden,
 /obj/effect/turf_decal/stripes/line{
 	dir = 2
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/science/research/abandoned)
@@ -87456,10 +87456,6 @@
 /area/maintenance/starboard/aft)
 "doy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/structure/cable/white{
 	d1 = 4;
 	d2 = 8;
@@ -87473,6 +87469,10 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/construction)
@@ -87511,15 +87511,15 @@
 /area/hallway/secondary/construction)
 "doE" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/construction)
@@ -90160,15 +90160,15 @@
 	dir = 4
 	},
 /obj/structure/barricade/wooden,
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/science/research/abandoned)
@@ -90644,10 +90644,6 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
 "duA" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable/white{
 	d1 = 1;
@@ -90659,6 +90655,10 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/construction)
@@ -92635,10 +92635,6 @@
 /turf/closed/wall,
 /area/security/detectives_office/private_investigators_office)
 "dyt" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable/white{
 	d1 = 1;
@@ -92652,6 +92648,10 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/security/detectives_office/private_investigators_office)
@@ -95183,10 +95183,6 @@
 /area/maintenance/starboard/aft)
 "dDr" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/structure/cable/white{
 	d1 = 4;
 	d2 = 8;
@@ -95201,6 +95197,10 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/theatre/abandoned)
@@ -97961,10 +97961,6 @@
 /turf/open/floor/plating,
 /area/library/abandoned)
 "dIM" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden,
@@ -97974,13 +97970,13 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/plasteel,
-/area/library/abandoned)
-"dIN" = (
-/obj/machinery/door/airlock/maintenance_hatch{
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
 	name = "Maintenance Hatch";
 	req_access_txt = "12"
 	},
+/turf/open/floor/plasteel,
+/area/library/abandoned)
+"dIN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable/white{
@@ -97994,6 +97990,10 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/library/abandoned)
@@ -112282,10 +112282,6 @@
 /area/engine/atmospherics_engine)
 "eqd" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -112295,6 +112291,10 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/starboard/fore)
@@ -112310,16 +112310,16 @@
 /turf/open/floor/plasteel,
 /area/engine/gravity_generator)
 "eqf" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
 	dir = 2
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/construction)
@@ -113161,6 +113161,14 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/black,
+/area/crew_quarters/dorms)
+"esG" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/crew_quarters/dorms)
+"esH" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
 /area/crew_quarters/dorms)
 
 (1,1,1) = {"
@@ -158203,7 +158211,7 @@ afu
 aeX
 aeX
 aeX
-ahW
+eqd
 aeX
 aeX
 aaf
@@ -165491,7 +165499,7 @@ eiT
 cKN
 cMl
 esD
-esF
+esD
 cvP
 cSY
 cUI
@@ -165747,7 +165755,7 @@ cHx
 cIO
 esA
 esC
-esE
+esC
 cPQ
 cvP
 cSZ
@@ -166003,7 +166011,7 @@ cGg
 ejl
 eiU
 cKO
-cMm
+cNU
 cNU
 cPR
 cvP
@@ -166260,8 +166268,8 @@ cGa
 cHz
 cvP
 cvP
-cvP
-cvP
+esG
+esH
 cvP
 cvP
 cTb
