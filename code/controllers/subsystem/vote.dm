@@ -190,7 +190,7 @@ SUBSYSTEM_DEF(vote)
 			text += "\n[question]"
 		log_vote(text)
 		var/vp = CONFIG_GET(number/vote_period)
-		to_chat(world, "\n<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [DisplayTimeText(config.vote_period)] to vote.</font>")
+		to_chat(world, "\n<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [DisplayTimeText(vp)] to vote.</font>")
 		time_remaining = round(vp/10)
 		for(var/c in GLOB.clients)
 			var/client/C = c
