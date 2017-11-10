@@ -904,8 +904,8 @@ window "infowindow"
 		type = BUTTON
 		pos = 329,5
 		size = 38x20
-		anchor1 = 51,1
-		anchor2 = 57,5
+		anchor1 = 51,0
+		anchor2 = 64,0
 		background-color = none
 		saved-params = "is-checked"
 		text = "Web Map"
