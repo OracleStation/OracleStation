@@ -120,6 +120,10 @@
 				continue
 			if(ismegafauna(H) || (!H.mind && H.AIStatus == AI_OFF))
 				continue
+		else if(isrevenant(L))
+			var/mob/living/simple_animal/revenant/R = L
+			if(R.stasis) //Don't target any revenants that are respawning
+				continue
 		else if(!L.mind)
 			continue
 		. += L
