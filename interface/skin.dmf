@@ -900,12 +900,12 @@ window "infowindow"
 		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
-	elem "maps"
+	elem "button2"
 		type = BUTTON
-		pos = 334,5
-		size = 36x20
-		anchor1 = none
-		anchor2 = none
+		pos = 330,5
+		size = 39x20
+		anchor1 = 45,0
+		anchor2 = 58,0
 		background-color = none
 		saved-params = "is-checked"
 		text = "Maps"
