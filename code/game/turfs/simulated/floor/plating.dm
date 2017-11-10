@@ -75,6 +75,7 @@
 				icon_state = icon_plating
 				burnt = 0
 				broken = 0
+				update_icon()
 
 /turf/open/floor/plating/foam
 	name = "metal foam plating"
