@@ -22,13 +22,6 @@
 			else
 				icon_state = "mmi_alien"
 			braintype = "Xenoborg" //HISS....Beep.
-		if(istype(brain, /obj/item/organ/brain/ipc))
-			icon = 'icons/obj/assemblies.dmi'
-			if(brainmob && brainmob.stat == DEAD)
-				icon_state = "posibrain_mmi_red"
-			else
-				icon_state = "posibrain_mmi_green"
-			braintype = "Android"
 		else
 			if(brainmob && brainmob.stat == DEAD)
 				icon_state = "mmi_dead"

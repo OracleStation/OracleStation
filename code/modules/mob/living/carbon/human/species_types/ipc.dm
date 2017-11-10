@@ -48,6 +48,24 @@
 			C.dna.species.limbs_id = "mcgipc"
 		if(C.dna.features["ipc_chassis"] == "Morpheus Cyberkinetics(Black)")
 			C.dna.species.limbs_id = "mcbipc"
+		if(C.dna.features["ipc_chassis"] == "Bishop Cyberkinetics")
+			C.dna.species.limbs_id = "bshipc"
+		if(C.dna.features["ipc_chassis"] == "Bishop Cyberkinetics 2.0")
+			C.dna.species.limbs_id = "bs2ipc"
+		if(C.dna.features["ipc_chassis"] == "Hephaestus Industries")
+			C.dna.species.limbs_id = "hsiipc"
+		if(C.dna.features["ipc_chassis"] == "Hephaestus Industries 2.0")
+			C.dna.species.limbs_id = "hi2ipc"
+		if(C.dna.features["ipc_chassis"] == "Shellguard Munitions")
+			C.dna.species.limbs_id = "sgmipc"
+		if(C.dna.features["ipc_chassis"] == "Ward-Takahashi Manufacturing")
+			C.dna.species.limbs_id = "wtmipc"
+		if(C.dna.features["ipc_chassis"] == "Xion Manufacturing Group")
+			C.dna.species.limbs_id = "xmgipc"
+		if(C.dna.features["ipc_chassis"] == "Xion Manufacturing Group 2.0")
+			C.dna.species.limbs_id = "xm2ipc"
+		if(C.dna.features["ipc_chassis"] == "Zeng-Hu Pharmaceuticals")
+			C.dna.species.limbs_id = "zhpipc"
 
 /datum/species/ipc/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
 	if(chem.id == ("plasma" || "stable_plasma")) // Delicious Plasma

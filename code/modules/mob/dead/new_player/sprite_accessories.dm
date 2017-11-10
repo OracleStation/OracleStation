@@ -1649,11 +1649,38 @@
 /datum/sprite_accessory/ipc_chassis // Used for changing limb icons, doesn't need to hold the actual icon. That's handled in ipc.dm
 	icon = null
 
-/datum/sprite_accessory/ipc_chassis/MCGreyscale
+/datum/sprite_accessory/ipc_chassis/mcgreyscale
 	name = "Morpheus Cyberkinetics(Greyscale)"
 
-/datum/sprite_accessory/ipc_chassis/MCBlack
+/datum/sprite_accessory/ipc_chassis/mcblack
 	name = "Morpheus Cyberkinetics(Black)"
+
+/datum/sprite_accessory/ipc_chassis/bishopcyberkinetics
+	name = "Bishop Cyberkinetics"
+
+/datum/sprite_accessory/ipc_chassis/bishopcyberkinetics2
+	name = "Bishop Cyberkinetics 2.0"
+
+/datum/sprite_accessory/ipc_chassis/hephaestussindustries
+	name = "Hephaestus Industries"
+
+/datum/sprite_accessory/ipc_chassis/hephaestussindustries2
+	name = "Hephaestus Industries 2.0"
+
+/datum/sprite_accessory/ipc_chassis/shellguardmunitions
+	name = "Shellguard Munitions"
+
+/datum/sprite_accessory/ipc_chassis/wardtakahashimanufacturing
+	name = "Ward-Takahashi Manufacturing"
+
+/datum/sprite_accessory/ipc_chassis/xionmanufacturinggroup
+	name = "Xion Manufacturing Group"
+
+/datum/sprite_accessory/ipc_chassis/xionmanufacturinggroup2
+	name = "Xion Manufacturing Group 2.0"
+
+/datum/sprite_accessory/ipc_chassis/zenghupharmaceuticals
+	name = "Zeng-Hu Pharmaceuticals"
 
 /datum/sprite_accessory/legs 	//legs are a special case, they aren't actually sprite_accessories but are updated with them.
 	icon = null					//These datums exist for selecting legs on preference, and little else
