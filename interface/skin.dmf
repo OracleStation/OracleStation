@@ -900,7 +900,7 @@ window "infowindow"
 		pos = 329,5
 		size = 38x20
 		anchor1 = 51,0
-		anchor2 = 64,0
+		anchor2 = 57,0
 		background-color = none
 		saved-params = "is-checked"
 		text = "Web Map"
@@ -910,7 +910,7 @@ window "infowindow"
 		pos = 286,5
 		size = 38x20
 		anchor1 = 45,0
-		anchor2 = 58,0
+		anchor2 = 51,0
 		background-color = none
 		saved-params = "is-checked"
 		text = "Wiki"
