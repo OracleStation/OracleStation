@@ -16,9 +16,9 @@
 
 /turf/open/floor/plating/Initialize()
 	if (!broken_states)
-		broken_states = list("platingdmg1", "platingdmg2", "platingdmg3")
+		broken_states = list("damaged1", "damaged2", "damaged4", "damaged5")
 	if (!burnt_states)
-		burnt_states = list("panelscorched")
+		burnt_states = list("floorscorched1", "floorscorched2")
 	..()
 	icon_plating = icon_state
 
