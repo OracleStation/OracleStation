@@ -9,10 +9,9 @@
 	brutemod = 2 // Thin metal, cheap materials.
 	toxmod = 0
 	siemens_coeff = 1.5 // Overload!
-	species_traits = list(NOBREATH,NOBLOOD,RADIMMUNE,VIRUSIMMUNE,EASYDISMEMBER,EASYLIMBATTACHMENT,NOPAIN,NO_BONES,NOCLONE,NOTRANSSTING,MUTCOLORS,REVIVESBYHEALING)
-	mutant_bodyparts = list("ipc_screen", "ipc_antenna")
-	default_features = list("mcolor" = "#7D7D7D", "ipc_screen" = "Static", "ipc_antenna" = "None")
-	damage_overlay_type = "robotic"
+	species_traits = list(NOBREATH,NOBLOOD,RADIMMUNE,VIRUSIMMUNE,NOZOMBIE,EASYDISMEMBER,EASYLIMBATTACHMENT,NOPAIN,NO_BONES,NOCLONE,NOTRANSSTING,MUTCOLORS,REVIVESBYHEALING)
+	mutant_bodyparts = list("ipc_screen", "ipc_antenna", "ipc_chassis")
+	default_features = list("mcolor" = "#7D7D7D", "ipc_screen" = "Static", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)")
 	meat = /obj/item/stack/sheet/plasteel{amount = 5}
 	skinned_type = /obj/item/stack/sheet/metal{amount = 10}
 	male_scream_sound = 'sound/effects/mob_effects/goonstation/robot_scream.ogg'
@@ -37,14 +36,18 @@
 	var/ipc_name = "[pick(GLOB.posibrain_names)]-[rand(100, 999)]"
 	return ipc_name
 
-/datum/species/ipc/on_species_gain(mob/living/carbon/C)
+/datum/species/ipc/on_species_gain(mob/living/carbon/C) // I am so sorry for this.
 	. = ..()
-	var/obj/item/organ/appendix/appendix = C.getorganslot("appendix")
+	var/obj/item/organ/appendix/appendix = C.getorganslot("appendix") // Easiest way to remove it.
 	appendix.Remove(C)
 	qdel(appendix)
 	for(var/X in C.bodyparts)
 		var/obj/item/bodypart/O = X
-		O.change_bodypart_status(BODYPART_ROBOTIC, FALSE, FALSE) // Makes all Bodyparts robotic. And the rest of this string works on selecting your chassis.
+		O.change_bodypart_status(BODYPART_ROBOTIC) // Makes all Bodyparts robotic. The rest of the string interacts with the "ipc_chassis" feature.
+		if(C.dna.features["ipc_chassis"] == "Morpheus Cyberkinetics(Greyscale)")
+			C.dna.species.limbs_id = "mcgipc"
+		if(C.dna.features["ipc_chassis"] == "Morpheus Cyberkinetics(Black)")
+			C.dna.species.limbs_id = "mcbipc"
 
 /datum/species/ipc/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
 	if(chem.id == ("plasma" || "stable_plasma")) // Delicious Plasma

@@ -1646,6 +1646,15 @@
 	name = "Crowned"
 	icon_state = "crowned"
 
+/datum/sprite_accessory/ipc_chassis // Used for changing limb icons, doesn't need to hold the actual icon. That's handled in ipc.dm
+	icon = null
+
+/datum/sprite_accessory/ipc_chassis/MCGreyscale
+	name = "Morpheus Cyberkinetics(Greyscale)"
+
+/datum/sprite_accessory/ipc_chassis/MCBlack
+	name = "Morpheus Cyberkinetics(Black)"
+
 /datum/sprite_accessory/legs 	//legs are a special case, they aren't actually sprite_accessories but are updated with them.
 	icon = null					//These datums exist for selecting legs on preference, and little else
 

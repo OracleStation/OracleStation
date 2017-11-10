@@ -363,7 +363,7 @@
 	if((body_zone != "head" && body_zone != "chest"))
 		should_draw_gender = FALSE
 
-	if(status == BODYPART_ORGANIC)
+	if(status == BODYPART_ORGANIC || (status == BODYPART_ROBOTIC && limb.icon != "icon/mob/augmentation")) // So IPC augments can be colorful without disrupting normal BODYPART_ROBOTIC render code.
 		if(should_draw_greyscale)
 			limb.icon = 'icons/mob/human_parts_greyscale.dmi'
 			if(should_draw_gender)
