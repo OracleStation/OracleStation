@@ -902,18 +902,18 @@ window "infowindow"
 		is-pane = true
 	elem "button2"
 		type = BUTTON
-		pos = 330,5
-		size = 39x20
-		anchor1 = 45,0
-		anchor2 = 58,0
+		pos = 329,5
+		size = 38x20
+		anchor1 = 51,1
+		anchor2 = 57,5
 		background-color = none
 		saved-params = "is-checked"
-		text = "Maps"
+		text = "Web Map"
 		command = "webmap"
 	elem "button1"
 		type = BUTTON
 		pos = 286,5
-		size = 39x20
+		size = 38x20
 		anchor1 = 45,0
 		anchor2 = 58,0
 		background-color = none
@@ -923,7 +923,7 @@ window "infowindow"
 	elem "info"
 		type = CHILD
 		pos = 0,30
-		size = 638x420
+		size = 636x395
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = none
@@ -934,7 +934,7 @@ window "infowindow"
 	elem "discord"
 		type = BUTTON
 		pos = 192,5
-		size = 87x20
+		size = 86x20
 		anchor1 = 30,0
 		anchor2 = 44,0
 		background-color = none
@@ -954,7 +954,7 @@ window "infowindow"
 	elem "rules"
 		type = BUTTON
 		pos = 96,5
-		size = 87x20
+		size = 86x20
 		anchor1 = 15,0
 		anchor2 = 29,0
 		background-color = none
@@ -963,7 +963,7 @@ window "infowindow"
 		command = "rules"
 	elem "forum"
 		type = BUTTON
-		pos = 375,5
+		pos = 374,5
 		size = 80x20
 		anchor1 = 59,0
 		anchor2 = 71,0
@@ -973,7 +973,7 @@ window "infowindow"
 		command = "forum"
 	elem "github"
 		type = BUTTON
-		pos = 463,5
+		pos = 462,5
 		size = 80x20
 		anchor1 = 73,0
 		anchor2 = 85,0
@@ -983,7 +983,7 @@ window "infowindow"
 		command = "github"
 	elem "report-issue"
 		type = BUTTON
-		pos = 550,5
+		pos = 548,5
 		size = 80x20
 		anchor1 = 86,0
 		anchor2 = 99,0
@@ -995,10 +995,11 @@ window "infowindow"
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
-		pos = 0,0
+		pos = 281,0
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
 	elem "browseroutput"
