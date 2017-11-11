@@ -88,7 +88,7 @@
 
 /turf/open/floor/proc/update_icon()
 	update_visuals()
-	cut_overlays()
+	cut_overlay(current_overlay)
 	if (current_overlay)
 		add_overlay(current_overlay)
 	return 1
