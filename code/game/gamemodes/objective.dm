@@ -452,7 +452,7 @@ GLOBAL_LIST_EMPTY(possible_items)
 /datum/objective/steal/find_target()
 	var/approved_targets = list()
 	for(var/datum/objective_item/possible_item in GLOB.possible_items)
-		if(is_unique_objective(possible_item.targetitem) && !(owner.current.mind.assigned_role in possible_item.excludefromjob))
+		if(	is_unique_objective(possible_item.targetitem) && !(owner.current.mind.assigned_role in possible_item.excludefromjob) &&	possible_item.TargetExists())
 			approved_targets += possible_item
 	return set_target(safepick(approved_targets))
 
@@ -876,6 +876,3 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 /datum/objective/changeling_team_objective/impersonate_department/impersonate_heads
 	explanation_text = "Have X or more heads of staff escape on the shuttle disguised as heads, while the real heads are dead"
 	command_staff_only = TRUE
-
-
-
