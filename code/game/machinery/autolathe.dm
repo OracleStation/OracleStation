@@ -122,9 +122,9 @@
 		busy = FALSE
 		return 1
 
-		return ..()
+	return ..()
 
-/obj/machinery/mecha_part_fabricator/ComponentActivated(datum/component/C)
+/obj/machinery/autolathe/ComponentActivated(datum/component/C)
 	..()
 	if(istype(C, /datum/component/material_container))
 		var/datum/component/material_container/M = C
