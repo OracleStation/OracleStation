@@ -14,6 +14,11 @@
 /datum/objective_item/proc/TargetExists()
 	return TRUE
 
+/datum/objective_item/steal/TargetExists()
+	if (locate(targetitem))
+		return TRUE
+	return FALSE
+
 /datum/objective_item/steal/New()
 	..()
 	if(TargetExists())
