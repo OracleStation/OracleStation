@@ -1,6 +1,6 @@
 // Yes, glass/plastic. We need to use the methods from glassware. >:|
 /obj/item/reagent_containers/glass/plastic
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	materials = list()
 	flags_1 = OPENCONTAINER_1
 
@@ -24,7 +24,7 @@
 	list_reagents = list("cleaner" = 150)
 
 /obj/item/reagent_containers/glass/metal
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	materials = list()
 	flags_1 = OPENCONTAINER_1
 

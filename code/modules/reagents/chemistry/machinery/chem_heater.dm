@@ -2,7 +2,7 @@
 	name = "chemical heater"
 	density = TRUE
 	anchored = TRUE
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "heater"
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 40

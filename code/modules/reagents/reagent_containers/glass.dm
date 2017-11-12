@@ -117,7 +117,7 @@
 /obj/item/reagent_containers/glass/beaker
 	name = "beaker"
 	desc = "A beaker. It can hold up to 50 units."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "beaker"
 	item_state = "beaker"
 	materials = list(MAT_GLASS=500)
@@ -158,7 +158,7 @@
 /obj/item/reagent_containers/glass/beaker/jar
 	name = "honey jar"
 	desc = "A jar for honey. It can hold up to 50 units of sweet delight."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "vapour"
 
 /obj/item/reagent_containers/glass/beaker/large
