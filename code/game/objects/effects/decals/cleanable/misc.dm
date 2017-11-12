@@ -30,12 +30,16 @@
 	name = "dirt"
 	desc = "Someone should clean that up."
 	icon = 'icons/effects/dirt.dmi'
-	icon_state = "" //Because we're using icon smoothing
+	icon_state = "dirt"
 	canSmoothWith = list(/obj/effect/decal/cleanable/dirt,
 	/turf/closed/wall,
 	/obj/structure/falsewall)
 	smooth = SMOOTH_MORE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/effect/decal/cleanable/dirt/Initialize()
+	..()
+	icon_state = ""
 
 /obj/effect/decal/cleanable/flour
 	name = "flour"
