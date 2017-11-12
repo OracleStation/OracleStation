@@ -204,7 +204,7 @@
 
 /obj/item/reagent_containers/glass/beaker/round/large
 	name = "large round-bottomed flask"
-	desc = "A large round-bottomed flask. Can hold up to 150 units."
+	desc = "A large round-bottomed flask. Can hold up to 100 units."
 	icon_state = "bigflask"
 	materials = list(MAT_GLASS=2500)
 	volume = 100
