@@ -53,6 +53,19 @@
 		to_chat(src, "<span class='danger'>The Github URL is not set in the server configuration.</span>")
 	return
 
+/client/verb/webmap()
+	set name = "webmap"
+	set desc = "Visit The WebMap"
+	set hidden = 1
+	var/webmapurl = "https://joseph-case.github.io/SS13WebMap/OracleStation/" // PR to change if neccassary
+	if(webmapurl)
+		if(alert("This will open the Web-Map in your browser. Are you sure?",,"Yes","No")=="No")
+			return
+		src << link(webmapurl)
+	else
+		to_chat(src, "<span class='danger'>If this appears BYOND has broke.</span>")
+	return
+
 /client/verb/reportissue()
 	set name = "report-issue"
 	set desc = "Report an issue"
