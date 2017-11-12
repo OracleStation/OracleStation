@@ -1,0 +1,8 @@
+{
+    "map_name": "LambdaStation",
+    "map_path": "map_files/LambdaStation",
+    "map_file": "LambdaStation.dmm",
+    "minetype": "lavaland",
+    "transition_config": "default",
+    "allow_custom_shuttles": "yes"
+}
