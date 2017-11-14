@@ -128,6 +128,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "EVA Maintenance"
 	icon_state = "fpmaint"
 
+/area/maintenance/department/genetics
+	name = "Genetics Maintenance"
+	icon_state = "fpmaint"
+
 /area/maintenance/department/electrical
 	name = "Electrical Maintenance"
 	icon_state = "yellow"
@@ -170,6 +174,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 
 //Maintenance - Generic
+
+/area/maintenance/abandonedbar
+	name = "Abandoned Bar"
+	icon_state = "yellow"
 
 /area/maintenance/arrivals/north
 	name = "Arrivals North Maintenance"
@@ -240,8 +248,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "disposal"
 
 /area/maintenance/disposal/incinerator
-//	/area/maintenance/incinerator
 	name = "Incinerator"
+	icon_state = "disposal"
+
+/area/maintenance/disposal/turbine
+	name = "Turbine"
 	icon_state = "disposal"
 
 
@@ -353,6 +364,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Starboard Primary Hallway"
 	icon_state = "hallS"
 
+/area/hallway/primary/starboard/east
+
+/area/hallway/primary/starboard/west
+
 /area/hallway/primary/starboard/aft
 	name = "Starboard Quarter Primary Hallway"
 	icon_state = "hallAS"
@@ -376,6 +391,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/hallway/primary/central
 	name = "Central Primary Hallway"
 	icon_state = "hallC"
+
+/area/hallway/primary/central/ne
+
+/area/hallway/primary/central/nw
+
+/area/hallway/primary/central/se
+
+/area/hallway/primary/central/sw
 
 /area/hallway/secondary/command
 	name = "Command Hallway"
@@ -511,6 +534,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Research Director's Private Quarters"
 	icon_state = "rd_private"
 
+/area/crew_quarters/sleeping
+	name = "Dormitories"
+	icon_state = "Sleep"
+
 /area/mint
 	name = "Mint"
 	icon_state = "green"
@@ -534,6 +561,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Male Dorm"
 	icon_state = "Sleep"
 
+/area/crew_quarters/vacant_room
+	name = "Vacant Small Office"
+	icon_state = "yellow"
+
+/area/crew_quarters/storage_room
+	name = "Storage Room"
+	icon_state = "blue"
+
 /area/crew_quarters/dorms/female
 	name = "Female Dorm"
 	icon_state = "Sleep"
@@ -545,6 +580,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/crew_quarters/toilet
 	name = "Dormitory Toilets"
 	icon_state = "toilet"
+
+/area/crew_quarters/clown
+	name = "Clown Office"
+	icon_state = "yellow"
+
+/area/crew_quarters/mime
+	name = "Mime Office"
+	icon_state = "blue"
 
 /area/crew_quarters/toilet/auxiliary
 	name = "Auxiliary Restrooms"
@@ -581,6 +624,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/crew_quarters/fitness
 	name = "Fitness Room"
 	icon_state = "fitness"
+
+/area/crew_quarters/changs
+	name = "Mr Changs"
+	icon_state = "blue"
+
+/area/crew_quarters/barber
+	name = "Barber Shop"
+	icon_state = "yellow"
 
 /area/crew_quarters/fitness/recreation
 	name = "Recreation Area"
@@ -667,6 +718,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Law Office"
 	icon_state = "law"
 
+/area/lawoffice/magistrate
+	name = "Magistrate's Office"
+	icon_state = "law"
 
 //Engineering
 
@@ -681,10 +735,26 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Engineering"
 	icon_state = "engine"
 
+/area/engine/lobby
+	name = "Engineering Lobby"
+	icon_state = "engine"
+
+/area/engine/assembly_line
+	name = "Assembly Line"
+	icon_state = "engine"
+
 /area/engine/atmos
  	name = "Atmospherics"
  	icon_state = "atmos"
  	flags_1 = NONE
+
+/area/engine/atmos/distribution
+ 	name = "Atmospherics Distribution"
+ 	icon_state = "atmos"
+
+/area/engine/atmos/control
+ 	name = "Atmospherics Control Room"
+ 	icon_state = "atmos"
 
 /area/engine/atmospherics_engine
 	name = "Atmospherics Engine"
@@ -710,10 +780,28 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Engineering Storage"
 	icon_state = "engi_storage"
 
+/area/engine/hardsuitstorage
+	name = "\improper Engineering Hardsuit Storage"
+	icon_state = "storage"
+
+/area/engine/equipmentstorage
+	name = "\improper Engineering Equipment Storage"
+	icon_state = "storage"
+
+/area/engine/controlroom
+	name = "\improper Engineering Control Room"
+	icon_state = "engine_control"
+
 /area/engine/transit_tube
 	name = "Transit Tube"
 	icon_state = "transit_tube"
 
+/area/assembly/assembly_line //Derelict Assembly Line
+	name = "\improper Assembly Line"
+	icon_state = "ass_line"
+	power_equip = 0
+	power_light = 0
+	power_environ = 0
 
 //Solars
 
@@ -935,6 +1023,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Patient Room B"
 	icon_state = "patients"
 
+/area/medical/patients_rooms/room_c
+	name = "Patient Room C"
+	icon_state = "patients"
+
 /area/medical/virology
 	name = "Virology"
 	icon_state = "virology"
@@ -951,6 +1043,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/medical/surgery
 	name = "Surgery"
+	icon_state = "surgery"
+
+/area/medical/surgery/a
+	name = "Operating Room One"
+	icon_state = "surgery"
+
+/area/medical/surgery/b
+	name = "Operating Room Two"
 	icon_state = "surgery"
 
 /area/medical/cryo
@@ -977,6 +1077,13 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Paramedic Room"
 	icon_state = "medbay2"
 
+/area/medical/psych_office
+	name = "Psychiatrist's Office"
+	icon_state = "medbay2"
+
+/area/medical/break_room
+	name = "Medical Break Room"
+	icon_state = "exam_room"
 
 //Security
 
@@ -1001,20 +1108,57 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Prison Wing"
 	icon_state = "sec_prison"
 
+/area/security/prison/storage
+	name = "Prison Storage"
+
+/area/security/office
+	name = "Security Office"
+
+/area/security/storage
+	name = "Contraband Storage"
+
+/area/security/secpod
+	name = "Pod Pilot's Office"
+
 /area/security/processing
 	name = "Labor Shuttle Dock"
+	icon_state = "sec_prison"
+
+/area/security/processing/box
+	name = "Security Processing"
 	icon_state = "sec_prison"
 
 /area/security/processing/cremation
 	name = "Security Crematorium"
 	icon_state = "sec_prison"
 
+/area/security/cells
+	name = "Security Cells"
+	icon_state = "sec_prison"
+
+/area/security/cells/port
+	name = "Port Cells"
+
+/area/security/cells/starboard
+	name = "Starboard Cells"
+
+/area/security/interrogation
+	name = "Security Interrogation"
+
 /area/security/warden
 	name = "Brig Control"
 	icon_state = "Warden"
 
+/area/security/brig_doc
+	name = "Brig Medbay"
+	icon_state = "blue"
+
 /area/security/armory
 	name = "Armory"
+	icon_state = "armory"
+
+/area/security/armory/secure
+	name = "Secure Armory"
 	icon_state = "armory"
 
 /area/security/detectives_office
@@ -1202,6 +1346,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/science/server
 	name = "Research Division Server Room"
+	icon_state = "server"
+
+/area/science/server/coldroom
+	name = "Research Division Cold Room"
 	icon_state = "server"
 
 /area/science/explab
@@ -1442,6 +1590,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "AI Main New"
 	icon_state = "storage"
 
+
+// Misc
+/area/escapepodbay
+	name = "Escape Shuttle Hallway Podbay"
+	icon_state = "escape"
 
 
 // Telecommunications Satellite
