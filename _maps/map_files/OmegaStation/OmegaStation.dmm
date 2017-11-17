@@ -399,12 +399,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plasteel/vault{
@@ -417,12 +415,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -440,12 +436,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault,
@@ -459,12 +453,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel/vault,
@@ -472,12 +464,10 @@
 "aaQ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault,
@@ -490,12 +480,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault,
@@ -506,12 +494,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault,
@@ -522,12 +508,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -552,12 +536,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel/vault{
@@ -1405,7 +1389,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plasteel,
@@ -1428,7 +1411,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -1592,7 +1574,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plasteel/white,
@@ -1603,7 +1584,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/white,
@@ -1611,7 +1591,6 @@
 "acQ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/grimy,
@@ -1624,7 +1603,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/grimy,
@@ -1637,7 +1615,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
@@ -1664,12 +1642,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/vault{
@@ -1684,12 +1660,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -1717,12 +1691,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -1751,7 +1723,6 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/grimy,
@@ -1764,12 +1735,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/carpet,
@@ -1789,12 +1758,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/carpet,
@@ -1805,12 +1772,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/carpet,
@@ -1828,7 +1793,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top,
@@ -1855,12 +1819,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -1892,12 +1854,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -1937,7 +1897,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
@@ -1961,7 +1920,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/wood,
@@ -1981,7 +1939,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/white,
@@ -1996,7 +1953,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plasteel/white,
@@ -2106,12 +2062,10 @@
 "adB" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/wood,
@@ -2119,12 +2073,10 @@
 "adC" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/wood,
@@ -2135,7 +2087,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/white,
@@ -2150,7 +2101,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plasteel/white,
@@ -2245,7 +2195,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
@@ -2276,7 +2225,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/vault{
@@ -2351,7 +2299,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -3064,7 +3011,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
@@ -3078,7 +3024,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/wood,
@@ -3166,7 +3111,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/wood,
@@ -3285,12 +3229,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/vault{
@@ -3324,12 +3266,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -3342,12 +3282,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -3390,7 +3328,6 @@
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -3722,7 +3659,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
@@ -3827,7 +3763,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -3956,7 +3891,6 @@
 "agw" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
@@ -3965,7 +3899,6 @@
 "agx" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -3974,7 +3907,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -3982,7 +3914,6 @@
 "agz" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plasteel/neutral,
@@ -4083,7 +4014,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/grimy,
@@ -4094,7 +4024,6 @@
 /obj/item/hand_labeler,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/grimy,
@@ -4182,7 +4111,6 @@
 /obj/effect/landmark/start/captain,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/carpet,
@@ -4200,7 +4128,6 @@
 /obj/item/stamp/captain,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/carpet,
@@ -4222,7 +4149,6 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plasteel/grimy,
@@ -4235,12 +4161,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/wood,
@@ -4272,12 +4196,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -4295,12 +4217,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -4368,12 +4288,11 @@
 /obj/effect/landmark/start/cyborg,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel/vault{
@@ -4655,12 +4574,11 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plasteel,
@@ -4675,7 +4593,6 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -5523,7 +5440,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/red/corner,
@@ -5536,7 +5452,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/side{
@@ -5557,7 +5472,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/red/corner{
@@ -5572,7 +5486,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -5587,7 +5500,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/red/side{
@@ -5641,12 +5553,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plasteel/red/corner{
@@ -5672,12 +5582,10 @@
 "ajf" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/red/corner{
@@ -5689,12 +5597,10 @@
 "ajg" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/red/corner{
@@ -5706,12 +5612,10 @@
 "ajh" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -5723,12 +5627,10 @@
 "aji" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -5746,7 +5648,6 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -5762,12 +5663,10 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -5783,12 +5682,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -5806,12 +5703,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -5830,12 +5725,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -5859,12 +5752,10 @@
 "ajp" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/blue/corner{
@@ -5879,12 +5770,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -5899,12 +5788,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -5923,12 +5810,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -5956,12 +5841,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -5975,12 +5858,10 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -5996,12 +5877,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -6019,12 +5898,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -6036,12 +5913,10 @@
 "ajy" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/blue/corner{
@@ -6077,12 +5952,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -6107,12 +5980,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel/blue/corner{
@@ -6129,12 +6000,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/blue/corner{
@@ -6146,12 +6015,10 @@
 "ajE" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -6171,12 +6038,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -6304,7 +6169,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plasteel,
@@ -6375,7 +6239,6 @@
 "ajW" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
@@ -6396,7 +6259,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/red/side{
@@ -6411,7 +6273,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/side{
@@ -6435,7 +6296,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/red/side{
@@ -7176,7 +7036,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/red/corner,
@@ -7497,12 +7356,11 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel/brown/corner{
@@ -7539,12 +7397,10 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -7554,7 +7410,6 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -7562,12 +7417,10 @@
 "alD" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -7581,12 +7434,12 @@
 /obj/effect/landmark/lightsout,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel/neutral,
@@ -7650,7 +7503,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
@@ -7689,7 +7541,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/neutral/side{
@@ -7704,7 +7555,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/red/side{
@@ -7717,7 +7567,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/red/corner{
@@ -7734,7 +7583,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/red/side{
@@ -7769,7 +7617,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/red/corner{
@@ -7820,7 +7667,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plasteel,
@@ -7834,7 +7680,6 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -7848,7 +7693,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plating,
@@ -8073,7 +7918,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plasteel,
@@ -8086,7 +7930,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -8099,7 +7942,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel,
@@ -8152,7 +7995,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
@@ -8306,7 +8148,6 @@
 "amL" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
@@ -8325,7 +8166,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/side{
@@ -8349,7 +8189,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/red/side{
@@ -9311,7 +9150,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/red/side,
@@ -9341,12 +9179,10 @@
 "aow" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/red/corner{
@@ -9365,12 +9201,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -9379,12 +9213,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel,
@@ -9401,12 +9233,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel,
@@ -9423,12 +9253,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -9436,12 +9264,10 @@
 "aoB" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/red/corner{
@@ -9607,7 +9433,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -9625,7 +9450,6 @@
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/neutral,
@@ -9640,12 +9464,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -9663,12 +9485,10 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -9691,12 +9511,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -9711,12 +9529,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -9729,12 +9545,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel/caution{
@@ -9813,12 +9629,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/brown/corner,
@@ -9837,12 +9651,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -9857,12 +9669,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/brown/corner{
@@ -9879,7 +9689,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top,
@@ -9898,12 +9707,10 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/brown,
@@ -9919,7 +9726,6 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/brown/corner,
@@ -9953,12 +9759,10 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -9981,12 +9785,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -10000,12 +9802,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -10018,12 +9818,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel/brown{
@@ -10395,12 +10194,10 @@
 /obj/item/storage/box/lights/mixed,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plasteel/yellow/side{
@@ -10417,12 +10214,10 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -10443,7 +10238,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -10458,12 +10252,10 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -10488,12 +10280,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -10507,7 +10297,6 @@
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -10517,7 +10306,6 @@
 "apW" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner,
@@ -11522,12 +11310,10 @@
 /obj/effect/landmark/start/security_officer,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plasteel/vault{
@@ -11542,7 +11328,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top,
@@ -11576,12 +11361,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -11599,12 +11382,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel/red/side{
@@ -11619,12 +11400,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plasteel/neutral/side{
@@ -11807,12 +11586,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plasteel/yellow/side{
@@ -11835,12 +11612,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -11863,12 +11638,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -11881,12 +11654,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -11899,12 +11670,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner,
@@ -11918,12 +11687,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -11948,12 +11715,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -11967,12 +11732,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plating,
@@ -12023,7 +11786,6 @@
 "ash" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -12057,12 +11819,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plating,
@@ -12075,12 +11835,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner,
@@ -12094,12 +11852,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -12126,12 +11882,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -12144,12 +11898,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -12163,12 +11915,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel/neutral/corner,
@@ -12521,12 +12273,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -12551,12 +12301,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -12574,12 +12322,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/yellow/corner{
@@ -12598,12 +12344,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -12620,7 +12364,6 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel/neutral,
@@ -12633,12 +12376,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/yellow/side{
@@ -12656,12 +12397,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -12694,12 +12433,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plasteel/yellow/side{
@@ -12825,7 +12562,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
@@ -12844,7 +12580,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -12855,7 +12590,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -12867,7 +12601,6 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -12880,7 +12613,6 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -13008,7 +12740,6 @@
 "atH" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/bottom{
 	tag = "icon-vent_map_on (EAST)";
-	icon_state = "vent_map_on";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -13033,7 +12764,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/caution{
@@ -13043,7 +12773,6 @@
 "atJ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/closed/wall/r_wall,
@@ -13055,7 +12784,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -13571,7 +13300,6 @@
 "auD" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -13588,7 +13316,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -13615,12 +13343,10 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plasteel/red/corner,
@@ -13635,12 +13361,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -13671,12 +13395,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -13697,12 +13419,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/red/corner,
@@ -13723,12 +13443,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -13741,12 +13459,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -13777,12 +13493,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -13799,12 +13513,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -13821,12 +13533,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -13843,12 +13553,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -13934,7 +13642,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
@@ -13992,7 +13699,6 @@
 "avi" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
@@ -14080,7 +13786,6 @@
 "avt" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/top{
 	tag = "icon-scrub_map_on (EAST)";
-	icon_state = "scrub_map_on";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -14099,7 +13804,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner,
@@ -14220,7 +13924,6 @@
 "avH" = (
 /obj/machinery/atmospherics/pipe/layer_manifold{
 	tag = "icon-manifoldlayer (EAST)";
-	icon_state = "manifoldlayer";
 	dir = 4
 	},
 /turf/closed/wall/r_wall,
@@ -14246,12 +13949,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plasteel/caution,
@@ -14266,7 +13967,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/caution,
@@ -14299,12 +13999,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -14318,12 +14016,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plating,
@@ -14581,12 +14277,10 @@
 /obj/item/storage/bag/tray,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -14597,12 +14291,10 @@
 /obj/structure/chair/stool,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -14612,12 +14304,10 @@
 "awn" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -14628,12 +14318,10 @@
 /obj/structure/chair/stool/bar,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -14648,12 +14336,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -14669,7 +14355,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
@@ -14683,12 +14368,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -14711,12 +14394,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -14742,7 +14423,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
@@ -14782,12 +14462,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -14810,12 +14488,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -14925,7 +14601,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -14948,7 +14623,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/caution{
@@ -14976,7 +14650,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -15037,7 +14710,6 @@
 "awT" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/bottom{
 	tag = "icon-vent_map_on (EAST)";
-	icon_state = "vent_map_on";
 	dir = 4
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -15053,7 +14725,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -15066,7 +14737,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -15284,7 +14954,6 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/layer_manifold{
 	tag = "icon-manifoldlayer (EAST)";
-	icon_state = "manifoldlayer";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -15299,7 +14968,6 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plasteel,
@@ -15887,12 +15555,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -15989,7 +15655,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/carpet,
@@ -16031,7 +15696,6 @@
 "ayK" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -16328,7 +15992,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -16336,7 +15999,6 @@
 "azo" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -16350,7 +16012,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -16363,7 +16024,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel/neutral,
@@ -16375,7 +16035,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -16388,7 +16047,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -16396,7 +16054,6 @@
 "azt" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/loadingarea,
@@ -16409,7 +16066,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel/loadingarea,
@@ -16422,7 +16078,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/loadingarea,
@@ -16451,7 +16106,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/caution{
@@ -16640,12 +16294,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -16661,12 +16313,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -16676,12 +16326,10 @@
 "azT" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -16722,7 +16370,6 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -16737,7 +16384,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/bottom,
@@ -17067,12 +16714,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -17083,12 +16728,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -17103,12 +16746,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -17122,12 +16763,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -17246,12 +16886,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -17266,12 +16904,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -17319,12 +16955,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -17339,12 +16973,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -17362,12 +16994,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/side{
@@ -17387,12 +17017,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -18003,7 +17631,6 @@
 "aCg" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/bottom{
 	tag = "icon-vent_map_on (EAST)";
-	icon_state = "vent_map_on";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -18908,7 +18535,6 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plasteel/grimy,
@@ -18926,12 +18552,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -18954,12 +18578,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -18982,12 +18604,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -18999,7 +18619,6 @@
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -19010,7 +18629,6 @@
 /obj/structure/chair/stool/bar,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -19035,7 +18653,6 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -19043,7 +18660,6 @@
 "aDS" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/white,
@@ -19051,7 +18667,6 @@
 "aDT" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/red,
@@ -19060,12 +18675,11 @@
 /obj/effect/landmark/start/cook,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plasteel/white,
@@ -19458,12 +19072,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/neutral,
@@ -19473,12 +19085,10 @@
 "aED" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -19497,7 +19107,6 @@
 "aEF" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
@@ -19508,12 +19117,10 @@
 "aEG" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/yellow/corner{
@@ -19532,12 +19139,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -19552,12 +19157,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -19729,7 +19332,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -19748,7 +19350,6 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -19757,7 +19358,6 @@
 /obj/effect/landmark/start/cook,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/red,
@@ -19768,7 +19368,6 @@
 /obj/item/kitchen/rollingpin,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/white,
@@ -19787,7 +19386,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/red,
@@ -20071,7 +19669,6 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -20280,7 +19877,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -20328,7 +19924,6 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
@@ -20369,12 +19964,10 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel,
@@ -20397,7 +19990,6 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
@@ -20410,12 +20002,10 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -20627,7 +20217,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
@@ -20710,7 +20299,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plating,
@@ -20724,7 +20312,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner,
@@ -20738,7 +20325,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -20757,7 +20343,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
@@ -20777,12 +20362,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -20801,12 +20384,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel,
@@ -20822,12 +20403,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -20844,12 +20423,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -20865,12 +20442,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -20894,12 +20469,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -20918,12 +20491,10 @@
 /obj/item/kitchen/fork,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -21099,7 +20670,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -21119,7 +20689,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -21139,7 +20708,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -21158,7 +20726,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -21180,7 +20747,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
@@ -21208,7 +20774,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -21253,7 +20818,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -21278,7 +20842,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -21301,7 +20864,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -21318,7 +20880,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -21361,7 +20922,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel/caution{
@@ -21501,7 +21062,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -21519,7 +21079,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner,
@@ -21536,7 +21095,6 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -21559,7 +21117,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -21575,7 +21132,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -21602,7 +21158,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel,
@@ -21619,7 +21174,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -21636,7 +21190,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -21655,7 +21208,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -21673,7 +21225,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner,
@@ -22416,7 +21967,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
@@ -22892,7 +22442,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
@@ -22985,7 +22534,6 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plasteel/freezer,
@@ -22998,12 +22546,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel/freezer,
@@ -23016,12 +22562,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /mob/living/simple_animal/hostile/retaliate/goat{
@@ -23038,12 +22582,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -23067,12 +22609,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -23277,7 +22817,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plasteel,
@@ -23306,7 +22845,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plasteel,
@@ -23385,7 +22923,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plasteel,
@@ -23416,7 +22953,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -23429,7 +22965,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/yellow/side{
@@ -23449,12 +22984,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -23470,7 +23003,6 @@
 /obj/item/reagent_containers/food/drinks/soda_cans/thirteenloko,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/yellow,
@@ -23494,7 +23026,6 @@
 /obj/item/twohanded/rcl/pre_loaded,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -23515,7 +23046,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plasteel/yellow,
@@ -23929,7 +23459,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -23939,7 +23468,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -23954,7 +23482,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -23970,7 +23497,6 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -23994,7 +23520,6 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -24004,7 +23529,6 @@
 /obj/structure/cable/white,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -24124,7 +23648,6 @@
 "aLZ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plasteel/yellow,
@@ -24277,7 +23800,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/greenblue/side,
@@ -24291,7 +23813,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/greenblue/side,
@@ -24362,12 +23883,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -24383,12 +23902,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -24401,12 +23918,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plating,
@@ -25017,12 +24534,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plating,
@@ -25036,12 +24551,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -25073,12 +24586,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -25091,12 +24602,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plating,
@@ -25711,12 +25220,10 @@
 /obj/effect/decal/cleanable/cobweb,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plating,
@@ -25729,12 +25236,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner,
@@ -25751,12 +25256,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -25772,12 +25275,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -25794,12 +25295,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -25821,12 +25320,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -25843,12 +25340,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -25870,12 +25365,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -26512,7 +26005,6 @@
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/top{
 	tag = "icon-scrub_map_on (EAST)";
-	icon_state = "scrub_map_on";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -26526,7 +26018,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -26534,7 +26025,6 @@
 "aPO" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/closed/wall/r_wall,
@@ -26550,7 +26040,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -26631,12 +26120,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -26649,12 +26136,10 @@
 "aPY" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -26672,12 +26157,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -26691,7 +26174,6 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -26705,7 +26187,6 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -26722,12 +26203,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -26763,7 +26242,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
@@ -26777,12 +26255,10 @@
 "aQg" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/yellow/corner{
@@ -26798,12 +26274,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -26818,12 +26292,10 @@
 "aQj" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/yellow/corner{
@@ -26837,12 +26309,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/yellow/corner{
@@ -26865,12 +26335,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel{
@@ -26880,7 +26348,6 @@
 "aQn" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
@@ -26892,12 +26359,10 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel{
@@ -26916,12 +26381,10 @@
 "aQq" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel{
@@ -26932,7 +26395,6 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel{
@@ -26942,12 +26404,10 @@
 "aQs" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel{
@@ -26957,12 +26417,10 @@
 "aQt" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/purple/corner,
@@ -26974,12 +26432,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/purple/corner,
@@ -26993,12 +26449,10 @@
 "aQw" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/purple/corner,
@@ -27025,7 +26479,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
@@ -27040,12 +26493,10 @@
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner,
@@ -27579,7 +27030,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -27597,7 +27047,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/yellow,
@@ -27610,7 +27059,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -28382,7 +27830,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
@@ -28627,7 +28074,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
@@ -28651,7 +28097,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -28689,7 +28134,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -28703,7 +28147,6 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -28718,7 +28161,6 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -28732,7 +28174,7 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel,
@@ -28983,7 +28425,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/yellow,
@@ -28998,12 +28439,11 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel,
@@ -29155,7 +28595,6 @@
 "aUM" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/wood,
@@ -29252,7 +28691,6 @@
 "aUW" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top,
@@ -29261,12 +28699,10 @@
 "aUX" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/grimy,
@@ -29274,12 +28710,10 @@
 "aUY" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/grimy,
@@ -29288,7 +28722,6 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plasteel/grimy,
@@ -29301,7 +28734,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel/black,
@@ -29338,12 +28771,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/vault{
@@ -29354,12 +28785,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -29377,12 +28806,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -29390,12 +28817,10 @@
 "aVg" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/whiteblue/side{
@@ -29408,12 +28833,11 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -29477,7 +28901,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
@@ -29486,7 +28909,6 @@
 "aVp" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/bottom{
 	tag = "icon-vent_map_on (WEST)";
-	icon_state = "vent_map_on";
 	dir = 8
 	},
 /turf/open/floor/plasteel/grimy,
@@ -29506,7 +28928,6 @@
 "aVs" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
@@ -29584,7 +29005,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/whitepurple/corner{
@@ -29636,7 +29056,6 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel,
@@ -29648,7 +29067,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/door/airlock/maintenance_hatch/abandoned{
@@ -29660,7 +29078,6 @@
 "aVH" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/wood{
@@ -29670,7 +29087,6 @@
 "aVI" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/wood,
@@ -29852,7 +29268,6 @@
 "aWd" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
@@ -29974,7 +29389,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plasteel/whitepurple/corner,
@@ -29986,7 +29400,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plasteel/whitepurple/corner,
@@ -30569,12 +29982,10 @@
 "aXw" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/side{
@@ -30592,12 +30003,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -30606,12 +30015,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -30636,12 +30043,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel/whitepurple/corner{
@@ -30656,12 +30061,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/whitepurple/corner{
@@ -30676,12 +30079,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/whitepurple/corner{
@@ -30707,12 +30108,10 @@
 /obj/effect/landmark/lightsout,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel/whitepurple/corner{
@@ -30747,12 +30146,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -30765,13 +30162,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/general/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -30791,12 +30186,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel/vault{
@@ -31015,12 +30409,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/neutral,
@@ -31028,12 +30420,10 @@
 "aYc" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/side,
@@ -31044,12 +30434,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/side,
@@ -31060,12 +30448,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/side,
@@ -31073,12 +30459,10 @@
 "aYf" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -31231,7 +30615,6 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plasteel,
@@ -31253,7 +30636,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -31268,7 +30650,7 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel,
@@ -31311,12 +30693,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plating,
@@ -31330,12 +30710,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -31353,12 +30731,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -31372,12 +30748,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -31392,12 +30766,10 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -31418,7 +30790,6 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -31434,12 +30805,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel,
@@ -31764,12 +31135,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plasteel/grimy,
@@ -31882,12 +31251,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/cmo,
@@ -31908,12 +31275,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -31927,12 +31292,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -31957,12 +31320,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -31986,12 +31347,10 @@
 /obj/effect/landmark/lightsout,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel/blue,
@@ -32006,12 +31365,10 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -32025,12 +31382,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/blue,
@@ -32043,7 +31398,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
@@ -32073,12 +31427,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel/whiteblue/corner,
@@ -32100,12 +31452,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -32118,12 +31468,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/side{
@@ -32151,12 +31499,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -32375,7 +31721,6 @@
 /obj/effect/landmark/xeno_spawn,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/bottom{
 	tag = "icon-vent_map_on (EAST)";
-	icon_state = "vent_map_on";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -32385,7 +31730,6 @@
 "bam" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/black,
@@ -32397,7 +31741,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/door/airlock/maintenance_hatch/abandoned{
@@ -32416,7 +31759,6 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
@@ -32678,7 +32020,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel,
@@ -32695,7 +32036,6 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel,
@@ -32711,12 +32051,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -32738,12 +32076,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -32756,12 +32092,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/whitepurple/side{
@@ -32786,12 +32120,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/whitepurple/corner{
@@ -32818,7 +32150,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plasteel,
@@ -32899,12 +32230,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plasteel,
@@ -32917,12 +32246,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -32937,12 +32264,10 @@
 /obj/effect/landmark/blobstart,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -32958,12 +32283,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -32978,12 +32301,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -33000,12 +32321,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plasteel,
@@ -33100,7 +32419,6 @@
 "bbv" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/top{
 	tag = "icon-scrub_map_on (EAST)";
-	icon_state = "scrub_map_on";
 	dir = 4
 	},
 /turf/open/floor/plasteel/blue/corner{
@@ -33131,12 +32449,10 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -33148,12 +32464,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/red/side{
@@ -33175,12 +32489,11 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel,
@@ -33223,7 +32536,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plasteel,
@@ -33232,7 +32544,6 @@
 /obj/machinery/computer/mech_bay_power_console,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/circuit,
@@ -33272,12 +32583,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/whitepurple/side{
@@ -33300,12 +32609,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -33321,12 +32628,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -33341,12 +32646,10 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -33355,7 +32658,6 @@
 /obj/effect/landmark/start/roboticist,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -33365,7 +32667,6 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -33376,7 +32677,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -33592,7 +32892,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
@@ -33636,7 +32935,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/neutral,
@@ -33957,7 +33255,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plasteel/whiteblue/side{
@@ -34045,12 +33342,10 @@
 "bdi" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/neutral,
@@ -34066,12 +33361,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -34093,12 +33386,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -34110,12 +33401,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel,
@@ -34124,7 +33413,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/circuit/green,
@@ -34133,7 +33421,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/circuit/green,
@@ -34173,7 +33460,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
@@ -34261,7 +33547,6 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel,
@@ -34272,7 +33557,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/door/airlock/maintenance_hatch/abandoned{
@@ -34358,7 +33642,6 @@
 "bdJ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plasteel/vault{
@@ -34373,7 +33656,6 @@
 /obj/effect/landmark/revenantspawn,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -34386,7 +33668,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/bar,
@@ -34467,12 +33748,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -34490,12 +33769,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -34507,12 +33784,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/whiteblue/corner,
@@ -34525,12 +33800,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/whiteblue/side,
@@ -35054,12 +34327,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plating,
@@ -35083,12 +34354,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel,
@@ -35102,12 +34371,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner,
@@ -35121,12 +34388,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -35150,12 +34415,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -35169,12 +34432,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -35200,12 +34461,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -35220,12 +34479,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -35261,12 +34518,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -35325,12 +34582,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/purple/corner,
@@ -35345,12 +34600,10 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -35370,12 +34623,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -35390,12 +34641,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -35409,12 +34658,10 @@
 /obj/effect/landmark/blobstart,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -35428,12 +34675,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -35464,7 +34709,6 @@
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -35500,7 +34744,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner,
@@ -35513,7 +34756,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -35527,7 +34769,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -35558,7 +34799,7 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel,
@@ -35699,7 +34940,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plasteel/barber,
@@ -35711,12 +34951,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plasteel/barber,
@@ -35733,12 +34971,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -35751,12 +34987,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/blue/corner{
@@ -35781,12 +35015,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -35942,7 +35174,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -36299,7 +35530,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
@@ -36337,7 +35567,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/plasteel{
@@ -36749,12 +35979,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/grimy,
@@ -36767,12 +35995,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/grimy,
@@ -36785,12 +36011,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -36812,12 +36036,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -36835,12 +36057,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/side,
@@ -37062,7 +36282,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+
 	dir = 10
 	},
 /turf/open/floor/wood,
@@ -37139,7 +36359,6 @@
 "bij" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
@@ -37197,12 +36416,10 @@
 "bip" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/arrival{
@@ -37217,12 +36434,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/side{
@@ -37238,12 +36453,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/arrival{
@@ -37268,12 +36481,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/side{
@@ -37294,7 +36505,6 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/arrival{
@@ -37309,12 +36519,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/side{
@@ -37337,7 +36545,6 @@
 "biw" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top,
@@ -37349,12 +36556,10 @@
 "bix" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/arrival{
@@ -37364,12 +36569,10 @@
 "biy" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plasteel/arrival{
@@ -37411,7 +36614,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plasteel,
@@ -37433,7 +36635,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plasteel,
@@ -37463,7 +36664,6 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plasteel/grimy,
@@ -37478,12 +36678,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -37491,12 +36689,10 @@
 "biI" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/grimy,
@@ -37505,12 +36701,10 @@
 /obj/structure/chair/office/dark,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/grimy,
@@ -37553,12 +36747,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -37575,12 +36767,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/black,
@@ -37604,12 +36794,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plasteel{
@@ -38203,7 +37391,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel,
@@ -38754,12 +37941,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -38825,12 +38010,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -38936,12 +38119,10 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/whitepurple/corner{
@@ -38967,12 +38148,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -38994,12 +38173,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/side{
@@ -39192,12 +38369,10 @@
 "bmb" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -39207,7 +38382,6 @@
 "bmh" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom,
@@ -41168,7 +40342,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plasteel/brown{
@@ -41186,7 +40359,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -41201,7 +40373,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
@@ -42342,7 +41513,6 @@
 "bwW" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/closed/wall/r_wall,
@@ -42558,12 +41728,10 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/open/floor/plasteel/vault{
@@ -42610,12 +41778,10 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner,
@@ -42624,12 +41790,10 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/red/corner{
@@ -42658,7 +41822,6 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/bottom{
 	tag = "icon-vent_map_on (EAST)";
-	icon_state = "vent_map_on";
 	dir = 4
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -42674,7 +41837,6 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -42704,12 +41866,10 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -42725,7 +41885,6 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -42746,12 +41905,10 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -42778,12 +41935,10 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/grimy,
@@ -42792,7 +41947,6 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
@@ -42830,7 +41984,6 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -42839,12 +41992,10 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/side{
@@ -42905,7 +42056,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -42918,7 +42068,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -42928,7 +42077,6 @@
 "byo" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -43065,7 +42213,6 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -43081,7 +42228,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -43132,12 +42278,10 @@
 "byX" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -43149,12 +42293,10 @@
 "byY" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -43171,12 +42313,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/blue/corner{
@@ -43189,7 +42329,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/neutral,
@@ -43224,12 +42363,10 @@
 "bze" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plasteel/neutral,
@@ -43269,12 +42406,10 @@
 "bzh" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/red/corner,
@@ -43287,12 +42422,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/side{
@@ -43338,7 +42471,6 @@
 "bzn" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/closed/wall/r_wall,
@@ -43363,12 +42495,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner,
@@ -43384,7 +42514,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/grimy,
@@ -43398,7 +42527,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner,
@@ -43457,12 +42585,10 @@
 "bzw" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -43475,7 +42601,6 @@
 /obj/structure/chair/stool/bar,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -43485,12 +42610,10 @@
 "bzy" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -43506,12 +42629,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -43521,12 +42642,10 @@
 "bzA" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -43536,12 +42655,10 @@
 "bzB" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -43551,12 +42668,10 @@
 "bzC" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -43566,12 +42681,10 @@
 "bzD" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -43581,12 +42694,10 @@
 "bzE" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -43596,12 +42707,10 @@
 "bzF" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -43611,12 +42720,10 @@
 "bzG" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -43626,12 +42733,10 @@
 "bzH" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -43648,12 +42753,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -43664,12 +42767,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -43688,12 +42789,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -43708,7 +42807,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -43729,12 +42827,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -43749,7 +42845,6 @@
 "bzO" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/greenblue/side{
@@ -43772,12 +42867,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -43792,7 +42885,6 @@
 "bzR" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral,
@@ -43805,12 +42897,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/redyellow,
@@ -43862,12 +42952,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -43880,12 +42968,10 @@
 "bzX" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (NORTH)";
-	icon_state = "manifold";
 	dir = 1
 	},
 /turf/open/floor/plasteel/neutral/corner,
@@ -43900,12 +42986,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner,
@@ -43924,12 +43008,10 @@
 "bAa" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /turf/open/floor/plasteel/grimy,
@@ -43937,12 +43019,10 @@
 "bAb" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/neutral,
@@ -43973,7 +43053,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/whiteblue/corner,
@@ -44016,12 +43095,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -44035,12 +43112,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -44054,12 +43129,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -44079,7 +43152,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -44094,7 +43166,6 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -44115,12 +43186,10 @@
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel/grimy,
@@ -44135,7 +43204,6 @@
 "bAp" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top,
@@ -44154,7 +43222,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plasteel,
@@ -44176,7 +43243,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
@@ -44206,7 +43272,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/door/airlock/maintenance_hatch/abandoned{
