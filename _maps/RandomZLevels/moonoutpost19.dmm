@@ -4944,7 +4944,6 @@
 	})
 "gI" = (
 /obj/structure/table,
-/obj/item/surgical_drapes,
 /obj/machinery/light/small{
 	active_power_usage = 0;
 	dir = 4;

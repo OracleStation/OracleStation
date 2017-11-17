@@ -354,7 +354,6 @@
 	new /obj/item/circular_saw(src)
 	new /obj/item/surgicaldrill(src)
 	new /obj/item/cautery(src)
-	new /obj/item/surgical_drapes(src)
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/razor(src)
 
@@ -375,7 +374,6 @@
 	new /obj/item/circular_saw(src)
 	new /obj/item/surgicaldrill(src)
 	new /obj/item/cautery(src)
-	new /obj/item/surgical_drapes(src)
 	new /obj/item/clothing/mask/surgical(src)
 
 /obj/item/storage/backpack/duffelbag/engineering
@@ -453,7 +451,6 @@
 	new /obj/item/circular_saw(src)
 	new /obj/item/surgicaldrill(src)
 	new /obj/item/cautery(src)
-	new /obj/item/surgical_drapes(src)
 	new /obj/item/clothing/suit/straight_jacket(src)
 	new /obj/item/clothing/mask/muzzle(src)
 	new /obj/item/device/mmi/syndie(src)

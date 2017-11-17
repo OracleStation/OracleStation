@@ -1180,7 +1180,7 @@
 /area/ruin/powered/syndicate_lava_base)
 "cR" = (
 /obj/structure/table/optable,
-/obj/item/surgical_drapes,
+
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},

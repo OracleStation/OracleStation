@@ -92,7 +92,7 @@
 /area/shuttle/escape)
 "as" = (
 /obj/structure/table/optable,
-/obj/item/surgical_drapes,
+
 /obj/item/clothing/gloves/color/latex,
 /obj/item/clothing/mask/surgical,
 /turf/open/floor/plasteel/darkpurple/side{
