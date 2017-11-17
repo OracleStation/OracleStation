@@ -61839,7 +61839,7 @@
 	icon_state = "0-2"
 	},
 /obj/structure/table,
-/obj/item/surgical_drapes,
+
 /turf/open/floor/plasteel/white/side{
 	dir = 8
 	},
@@ -72918,7 +72918,7 @@
 "cIL" = (
 /obj/structure/table,
 /obj/item/clothing/gloves/color/latex,
-/obj/item/surgical_drapes,
+
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -73399,7 +73399,7 @@
 /area/science/robotics/lab)
 "cJI" = (
 /obj/structure/table/optable,
-/obj/item/surgical_drapes,
+
 /obj/item/storage/firstaid/regular,
 /obj/effect/decal/cleanable/dirt{
 	desc = "A thin layer of dust coating the floor.";
@@ -81526,7 +81526,7 @@
 /area/shuttle/escape)
 "cZz" = (
 /obj/structure/table/optable,
-/obj/item/surgical_drapes,
+
 /obj/machinery/light{
 	dir = 8
 	},
@@ -82258,7 +82258,7 @@
 /area/science/xenobiology)
 "dbx" = (
 /obj/structure/table/optable,
-/obj/item/surgical_drapes,
+
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},

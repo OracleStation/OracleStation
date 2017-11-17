@@ -25249,7 +25249,7 @@
 /area/shuttle/escape)
 "aNQ" = (
 /obj/structure/table/optable,
-/obj/item/surgical_drapes,
+
 /turf/open/floor/plasteel/cmo,
 /area/shuttle/escape)
 "aNR" = (
@@ -33533,7 +33533,7 @@
 /obj/item/clothing/gloves/color/latex,
 /obj/item/clothing/suit/apron/surgical,
 /obj/item/clothing/mask/surgical,
-/obj/item/surgical_drapes,
+
 /obj/structure/table/reinforced,
 /turf/open/floor/plasteel/vault{
 	dir = 8
@@ -34224,7 +34224,7 @@
 	dir = 8
 	},
 /obj/item/clothing/gloves/color/latex,
-/obj/item/surgical_drapes,
+
 /obj/item/cautery,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,
@@ -40545,7 +40545,7 @@
 /area/shuttle/syndicate)
 "brI" = (
 /obj/structure/table/optable,
-/obj/item/surgical_drapes,
+
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},

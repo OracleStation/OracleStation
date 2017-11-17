@@ -6521,7 +6521,6 @@
 /area/shuttle/syndicate)
 "aoA" = (
 /obj/structure/table/optable,
-/obj/item/surgical_drapes,
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},
@@ -81602,7 +81601,7 @@
 /obj/structure/table/optable,
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/surgical_drapes,
+
 /turf/open/floor/plasteel/blue,
 /area/medical/abandoned)
 "dco" = (
@@ -86899,7 +86898,7 @@
 /obj/item/clothing/gloves/color/latex,
 /obj/item/clothing/suit/apron/surgical,
 /obj/item/clothing/mask/surgical,
-/obj/item/surgical_drapes,
+
 /obj/structure/table/reinforced,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -94245,7 +94244,7 @@
 	dir = 8
 	},
 /obj/item/clothing/gloves/color/latex,
-/obj/item/surgical_drapes,
+
 /obj/item/cautery,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,
@@ -99649,7 +99648,7 @@
 /area/shuttle/escape)
 "dMc" = (
 /obj/structure/table/optable,
-/obj/item/surgical_drapes,
+
 /turf/open/floor/plasteel/cmo,
 /area/shuttle/escape)
 "dMd" = (
@@ -111413,7 +111412,7 @@
 /area/space)
 "eop" = (
 /obj/structure/table/optable,
-/obj/item/surgical_drapes,
+
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},
