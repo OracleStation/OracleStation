@@ -22813,6 +22813,10 @@
 	icon_state = "0-2"
 	},
 /obj/effect/turf_decal/bot,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/plasteel,
 /area/janitor)
 "aJK" = (
@@ -22825,15 +22829,21 @@
 	},
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/janitor)
 "aJL" = (
-/obj/structure/closet/crate/bin,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 26
 	},
 /obj/effect/turf_decal/bot,
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/janitor)
 "aJM" = (
@@ -23578,6 +23588,7 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/top,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel/green/side{
 	dir = 9
 	},
@@ -23594,7 +23605,6 @@
 	},
 /area/janitor)
 "aKS" = (
-/obj/structure/janitorialcart,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small{
 	dir = 4
@@ -23602,6 +23612,7 @@
 /obj/machinery/newscaster{
 	pixel_x = 32
 	},
+/obj/structure/closet/crate/trashcart,
 /turf/open/floor/plating,
 /area/janitor)
 "aKT" = (
@@ -24182,6 +24193,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel/purple/side{
 	dir = 10
 	},
@@ -24206,6 +24218,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/mop,
 /obj/effect/turf_decal/bot,
+/obj/structure/janitorialcart,
 /turf/open/floor/plasteel,
 /area/janitor)
 "aMi" = (
@@ -24853,6 +24866,7 @@
 	},
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/janitor)
 "aNl" = (
@@ -25249,7 +25263,6 @@
 /area/shuttle/escape)
 "aNQ" = (
 /obj/structure/table/optable,
-
 /turf/open/floor/plasteel/cmo,
 /area/shuttle/escape)
 "aNR" = (
@@ -25424,6 +25437,7 @@
 	dir = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/janitor)
 "aOg" = (
@@ -25719,6 +25733,10 @@
 	icon_state = "intact";
 	dir = 6
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/plating,
 /area/maintenance/port)
 "aOJ" = (
@@ -25735,6 +25753,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
 	icon_state = "intact";
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner,
@@ -25759,6 +25780,9 @@
 	icon_state = "intact";
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/maintenance/port)
 "aOL" = (
@@ -25778,6 +25802,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
 	icon_state = "intact";
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -25800,6 +25827,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
 	icon_state = "intact";
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -25829,6 +25859,9 @@
 	icon_state = "intact";
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/maintenance/port)
 "aOO" = (
@@ -25849,6 +25882,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	tag = "icon-intact (EAST)";
 	icon_state = "intact";
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/plasteel/vault{
@@ -25876,6 +25912,9 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/top{
 	tag = "icon-manifold (EAST)";
 	icon_state = "manifold";
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/plasteel/neutral/corner{
@@ -25908,6 +25947,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/plasteel/neutral/corner{
 	dir = 1
 	},
@@ -25921,6 +25963,9 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/bottom,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/plasteel/neutral/corner{
 	dir = 1
 	},
@@ -25939,6 +25984,10 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/plasteel/neutral/corner{
 	dir = 1
 	},
@@ -26553,6 +26602,7 @@
 	icon_state = "manifold";
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/maintenance/port)
 "aPQ" = (
@@ -27268,6 +27318,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel/neutral/corner{
 	dir = 1
 	},
@@ -28304,6 +28355,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/maintenance/port)
 "aTc" = (
@@ -28809,6 +28861,7 @@
 /obj/effect/landmark/blobstart,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel/neutral/corner,
 /area/maintenance/port)
 "aUc" = (
@@ -29707,6 +29760,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/maintenance/port)
 "aVN" = (
@@ -30405,6 +30459,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel/neutral/corner,
 /area/maintenance/port)
 "aXe" = (
@@ -31733,6 +31788,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/maintenance/port)
 "aZu" = (
@@ -32420,6 +32476,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/maintenance/port)
 "bap" = (
@@ -32907,6 +32964,7 @@
 	icon_state = "intact";
 	dir = 5
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/maintenance/port)
 "bbg" = (
@@ -33403,6 +33461,9 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard)
 "bbQ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken5"
 	},
@@ -33411,6 +33472,9 @@
 /turf/open/floor/wood,
 /area/maintenance/port)
 "bbS" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken6"
 	},
@@ -33533,7 +33597,6 @@
 /obj/item/clothing/gloves/color/latex,
 /obj/item/clothing/suit/apron/surgical,
 /obj/item/clothing/mask/surgical,
-
 /obj/structure/table/reinforced,
 /turf/open/floor/plasteel/vault{
 	dir = 8
@@ -34224,7 +34287,6 @@
 	dir = 8
 	},
 /obj/item/clothing/gloves/color/latex,
-
 /obj/item/cautery,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,
@@ -40545,7 +40607,6 @@
 /area/shuttle/syndicate)
 "brI" = (
 /obj/structure/table/optable,
-
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},
@@ -42770,6 +42831,7 @@
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel/neutral/corner{
 	dir = 1
 	},
@@ -44231,6 +44293,155 @@
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/starboard)
+"bAy" = (
+/obj/structure/cable/white{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plasteel/neutral/corner{
+	dir = 4
+	},
+/area/hallway/primary/central{
+	name = "Primary Hallway"
+	})
+"bAz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable/white{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating,
+/area/maintenance/port)
+"bAA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable/white{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating,
+/area/maintenance/port)
+"bAB" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/structure/disposaloutlet{
+	dir = 8
+	},
+/turf/open/floor/plating/asteroid/airless,
+/area/ruin/unpowered{
+	name = "Asteroid"
+	})
+"bAC" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroid/airless,
+/area/ruin/unpowered{
+	name = "Asteroid"
+	})
+"bAD" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroid/airless,
+/area/ruin/unpowered{
+	name = "Asteroid"
+	})
+"bAE" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroid/airless,
+/area/ruin/unpowered{
+	name = "Asteroid"
+	})
+"bAF" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroid/airless,
+/area/ruin/unpowered{
+	name = "Asteroid"
+	})
+"bAG" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroid/airless,
+/area/ruin/unpowered{
+	name = "Asteroid"
+	})
+"bAH" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroid/airless,
+/area/ruin/unpowered{
+	name = "Asteroid"
+	})
+"bAI" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroid/airless,
+/area/ruin/unpowered{
+	name = "Asteroid"
+	})
+"bAJ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroid/airless,
+/area/ruin/unpowered{
+	name = "Asteroid"
+	})
+"bAK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/closed/wall,
+/area/maintenance/port)
+"bAL" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/maintenance/port)
+"bAM" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/closed/wall,
+/area/maintenance/port)
+"bAN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
+/obj/machinery/door/airlock/maintenance_hatch/abandoned{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plasteel,
+/area/maintenance/port)
 
 (1,1,1) = {"
 aaa
@@ -74180,7 +74391,7 @@ aad
 aad
 aac
 aac
-aac
+bAB
 aac
 aac
 aaa
@@ -74437,7 +74648,7 @@ ahu
 aad
 aad
 aac
-aac
+bAC
 aac
 aad
 aad
@@ -74694,7 +74905,7 @@ ahu
 aad
 aac
 bvI
-aad
+bAD
 aac
 aad
 aad
@@ -74951,7 +75162,7 @@ ahu
 bvh
 bvg
 aad
-aad
+bAE
 aad
 aad
 aad
@@ -75208,7 +75419,7 @@ bvo
 aad
 aad
 aad
-aad
+bAF
 aad
 aad
 aad
@@ -75465,7 +75676,7 @@ bvh
 aad
 aad
 aad
-aad
+bAG
 aad
 aad
 aad
@@ -75722,7 +75933,7 @@ bvo
 aad
 aad
 aad
-aad
+bAH
 aad
 aad
 aad
@@ -75979,7 +76190,7 @@ aad
 aad
 aad
 aad
-aad
+bAI
 aad
 aad
 aad
@@ -76236,7 +76447,7 @@ aad
 aad
 aad
 aad
-aad
+bAJ
 aad
 aad
 aad
@@ -76493,7 +76704,7 @@ aOH
 aZo
 baj
 baj
-baj
+bAK
 aZo
 aZo
 baj
@@ -77007,7 +77218,7 @@ aOH
 aZq
 bal
 bbd
-bbR
+bAL
 bcG
 bdE
 bev
@@ -77521,7 +77732,7 @@ aOH
 bca
 ban
 baj
-baj
+bAM
 bcI
 bar
 bew
@@ -77766,10 +77977,10 @@ aEt
 aOI
 aPP
 bxR
-aRS
+bAz
 aTb
 aUb
-aRS
+bAA
 aVM
 aTb
 aXd
@@ -77778,7 +77989,7 @@ aTb
 aZt
 bao
 bbf
-bbZ
+bAN
 bbR
 bdF
 bcK
@@ -80076,7 +80287,7 @@ bxP
 amk
 aNi
 ank
-aOQ
+bAy
 aPY
 aQY
 aSa
