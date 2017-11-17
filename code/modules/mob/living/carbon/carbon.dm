@@ -82,7 +82,7 @@
 	var/be_nice = FALSE
 	if(lying && user.a_intent == INTENT_HELP)
 
-		if(I.sharpness)
+		if(I.sharpness && can_operate(src))
 			attempt_initiate_surgery(I, src, user)
 			be_nice = TRUE
 		if(surgeries.len && user != src)
