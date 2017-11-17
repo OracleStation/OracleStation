@@ -370,7 +370,7 @@
 	var/list/holy_heck_the_ouch_list = list("PLEASE, JUST END THE PAIN!", "GOOD GOD, MAKE THE PAIN STOP!", "AGH, IT HURTS!!!")
 
 	stuttering = max(stuttering, 4)
-	blur_eyes(50)
+	blur_eyes(3)
 
 	switch(shock_stage)
 		if(30)
