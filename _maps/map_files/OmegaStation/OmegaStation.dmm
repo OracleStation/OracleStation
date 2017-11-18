@@ -5824,10 +5824,10 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 
+	dir = 1 
 	},
 /turf/open/floor/plasteel/blue/corner{
 	dir = 4
@@ -9936,7 +9936,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 
+	dir = 1 
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/port/central)
@@ -33548,10 +33548,10 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 
+	dir = 1 
 	},
 /turf/open/floor/plating,
 /area/maintenance/port)
@@ -33728,10 +33728,10 @@
 	},
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 
+	dir = 1 
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/starboard)
@@ -41538,10 +41538,10 @@
 	})
 "bzB" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 
+	dir = 1 
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit{
@@ -41549,10 +41549,10 @@
 	})
 "bzC" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 
+	dir = 1 
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit{
@@ -41560,10 +41560,10 @@
 	})
 "bzD" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 
+	dir = 1 
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit{
@@ -41571,10 +41571,10 @@
 	})
 "bzE" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 
+	dir = 1 
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit{
@@ -41582,10 +41582,10 @@
 	})
 "bzF" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 
+	dir = 1 
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit{
@@ -41593,10 +41593,10 @@
 	})
 "bzG" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 
+	dir = 1 
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit{
@@ -41604,10 +41604,10 @@
 	})
 "bzH" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 
+	dir = 1 
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit{
