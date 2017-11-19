@@ -417,8 +417,6 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 				H.update_damage_overlays()
 			user.visible_message("[user] has fixed some of the [dam ? "dents on" : "burnt wires in"] [H]'s [affecting.name].", \
 			"<span class='notice'>You fix some of the [dam ? "dents on" : "burnt wires in"] [H]'s [affecting.name].</span>")
-			if(H.health >= 0 && REVIVESBYHEALING in H.dna.species.species_traits)
-				H.revive(0)
 			return 1 //successful heal
 		else
 			to_chat(user, "<span class='warning'>[affecting] is already in good condition!</span>")
