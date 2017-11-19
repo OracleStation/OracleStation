@@ -24,7 +24,7 @@ Iconnery
 */
 
 /obj/machinery/atmospherics/components/proc/icon_addintact(var/obj/machinery/atmospherics/node)
-	var/image/img = getpipeimage('icons/obj/atmospherics/components/binary_devices.dmi', "pipe_intact", get_dir(src,node), node.pipe_color)
+	var/image/img = getpipeimage('icons/obj/atmospherics/components/binary_devices.dmi', "pipe_intact[node.piping_layer]", get_dir(src,node), node.pipe_color)
 	underlays += img
 
 	return img.dir
@@ -169,4 +169,3 @@ UI Stuff
 		return ..()
 	to_chat(user, "<span class='danger'>Access denied.</span>")
 	return UI_CLOSE
-

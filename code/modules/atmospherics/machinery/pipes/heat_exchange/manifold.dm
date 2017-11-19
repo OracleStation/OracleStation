@@ -27,14 +27,14 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/manifold/update_icon()
 	var/invis = invisibility ? "-f" : ""
 
-	icon_state = "manifold_center[invis]"
+	icon_state = "manifold_center[piping_layer][invis]"
 
 	cut_overlays()
 
 	//Add non-broken pieces
 	for(DEVICE_TYPE_LOOP)
 		if(NODE_I)
-			add_overlay(getpipeimage('icons/obj/atmospherics/pipes/heat.dmi', "manifold_intact[invis]", get_dir(src, NODE_I)))
+			add_overlay(getpipeimage('icons/obj/atmospherics/pipes/heat.dmi', "manifold_intact[piping_layer]", get_dir(src, NODE_I)))
 
 //4-way manifold
 /obj/machinery/atmospherics/pipe/heat_exchanging/manifold4w

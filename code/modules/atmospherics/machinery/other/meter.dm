@@ -37,8 +37,6 @@
 
 /obj/machinery/meter/proc/setAttachLayer(var/new_layer)
 	target_layer = new_layer
-	pixel_x = (new_layer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_P_X
-	pixel_y = (new_layer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_P_Y
 
 /obj/machinery/meter/process_atmos()
 	if(!target)
