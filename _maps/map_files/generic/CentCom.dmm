@@ -525,7 +525,7 @@
 /area/holodeck/rec_center/pet_lounge)
 "bI" = (
 /obj/structure/table/glass,
-/obj/item/surgical_drapes,
+
 /obj/item/razor,
 /turf/open/floor/holofloor{
 	icon_state = "white";
@@ -6419,7 +6419,7 @@
 "qX" = (
 /obj/structure/table,
 /obj/item/toy/katana,
-/obj/item/toy/carpplushie,
+/obj/item/toy/plush/carpplushie,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -8718,7 +8718,7 @@
 /area/centcom/control)
 "wT" = (
 /obj/structure/table/optable,
-/obj/item/surgical_drapes,
+
 /turf/open/floor/plasteel/cmo,
 /area/centcom/control)
 "wU" = (
@@ -12517,7 +12517,7 @@
 	},
 /area/abductor_ship)
 "GS" = (
-/obj/item/surgical_drapes,
+
 /obj/item/paper/guides/antag/abductor,
 /obj/item/scalpel/alien,
 /obj/structure/table/abductor,

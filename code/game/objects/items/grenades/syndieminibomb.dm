@@ -4,6 +4,7 @@
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "syndicate"
 	item_state = "flashbang"
+	arming_sound = 'sound/weapons/armbomb.ogg'
 	origin_tech = "materials=3;magnets=4;syndicate=3"
 
 

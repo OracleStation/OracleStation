@@ -30,8 +30,8 @@
 /datum/round_event_control/New()
 	..()
 	if(config && !wizardevent) // Magic is unaffected by configs
-		earliest_start = Ceiling(earliest_start * config.events_min_time_mul)
-		min_players = Ceiling(min_players * config.events_min_players_mul)
+		earliest_start = Ceiling(earliest_start * CONFIG_GET(number/events_min_time_mul))
+		min_players = Ceiling(min_players * CONFIG_GET(number/events_min_players_mul))
 
 /datum/round_event_control/wizard
 	wizardevent = 1
@@ -41,7 +41,7 @@
 /datum/round_event_control/proc/canSpawnEvent(var/players_amt, var/gamemode)
 	if(occurrences >= max_occurrences)
 		return FALSE
-	if(earliest_start >= world.time)
+	if(earliest_start >= world.time-SSticker.round_start_time)
 		return FALSE
 	if(wizardevent != SSevents.wizardmode)
 		return FALSE
@@ -158,19 +158,28 @@
 		return
 
 	if(activeFor == startWhen)
+		processing = FALSE
 		start()
+		processing = TRUE
 
 	if(activeFor == announceWhen)
+		processing = FALSE
 		announce()
+		processing = TRUE
 
 	if(startWhen < activeFor && activeFor < endWhen)
+		processing = FALSE
 		tick()
+		processing = TRUE
 
 	if(activeFor == endWhen)
+		processing = FALSE
 		end()
+		processing = TRUE
 
 	// Everything is done, let's clean up.
 	if(activeFor >= endWhen && activeFor >= announceWhen && activeFor >= startWhen)
+		processing = FALSE
 		kill()
 
 	activeFor++

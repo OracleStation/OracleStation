@@ -202,7 +202,7 @@
 /datum/mind/proc/remove_wizard()
 	if(src in SSticker.mode.wizards)
 		SSticker.mode.wizards -= src
-		current.spellremove(current)
+		RemoveAllSpells()
 	special_role = null
 	remove_antag_equip()
 
@@ -531,7 +531,7 @@
 				if(I == src)
 					continue
 				var/mob/M = I
-				if(M.z == ZLEVEL_STATION && !M.stat)
+				if((M.z in GLOB.station_z_levels) && !M.stat)
 					last_healthy_headrev = FALSE
 					break
 			text += "head | not mindshielded | <a href='?src=\ref[src];revolution=clear'>employee</a> | <b>[last_healthy_headrev ? "<font color='red'>LAST </font> " : ""]HEADREV</b> | <a href='?src=\ref[src];revolution=rev'>rev</a>"
@@ -1645,6 +1645,10 @@
 		if(istype(S, spell))
 			spell_list -= S
 			qdel(S)
+
+/datum/mind/proc/RemoveAllSpells()
+	for(var/obj/effect/proc_holder/S in spell_list)
+		RemoveSpell(S)
 
 /datum/mind/proc/transfer_martial_arts(mob/living/new_character)
 	if(!ishuman(new_character))

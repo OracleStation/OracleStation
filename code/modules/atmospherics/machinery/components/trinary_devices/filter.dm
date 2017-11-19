@@ -1,6 +1,7 @@
 /obj/machinery/atmospherics/components/trinary/filter
 	name = "gas filter"
 	icon_state = "filter_off"
+	desc = "Very useful for filtering gasses."
 	density = FALSE
 	can_unwrench = 1
 	var/on = FALSE
@@ -8,6 +9,9 @@
 	var/filter_type = ""
 	var/frequency = 0
 	var/datum/radio_frequency/radio_connection
+
+	construction_type = /obj/item/pipe/trinary/flippable
+	pipe_state = "filter"
 
 /obj/machinery/atmospherics/components/trinary/filter/flipped
 	icon_state = "filter_off_f"
@@ -107,7 +111,8 @@
 			removed.gases[filter_type][MOLES] = 0
 			removed.garbage_collect()
 
-			air2.merge(filtered_out)
+			var/datum/gas_mixture/target = (air2.return_pressure() < target_pressure ? air2 : air1) //if there's no room for the filtered gas; just leave it in air1
+			target.merge(filtered_out)
 
 		air3.merge(removed)
 

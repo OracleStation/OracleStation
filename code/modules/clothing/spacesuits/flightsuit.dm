@@ -48,16 +48,16 @@
 
 	var/momentum_x = 0		//Realistic physics. No more "Instant stopping while barreling down a hallway at Mach 1".
 	var/momentum_y = 0
-	var/momentum_max = 500
+	var/momentum_max = 250
 	var/momentum_impact_coeff = 0.5	//At this speed you'll start coliding with people resulting in momentum loss and them being knocked back, but no injuries or knockdowns
-	var/momentum_impact_loss = 50
+	var/momentum_impact_loss = 25
 	var/momentum_crash_coeff = 0.8	//At this speed if you hit a dense object, you will careen out of control, while that object will be knocked flying.
 	var/momentum_drift_coeff = 0.04
 	var/momentum_speed = 0	//How fast we are drifting around
 	var/momentum_speed_x = 0
 	var/momentum_speed_y = 0
 	var/momentum_passive_loss = 4
-	var/momentum_gain = 20
+	var/momentum_gain = 10
 	var/drift_tolerance = 2
 
 	var/stabilizer = TRUE
@@ -1233,7 +1233,7 @@
 	armor = list(melee = 20, bullet = 20, laser = 20, energy = 10, bomb = 30, bio = 100, rad = 75, fire = 100, acid = 100)
 	max_heat_protection_temperature = FIRE_HELM_MAX_TEMP_PROTECT
 	var/list/datahuds = list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL_ADVANCED, DATA_HUD_DIAGNOSTIC)
-	var/zoom_range = 14
+	var/zoom_range = 12
 	var/zoom = FALSE
 	actions_types = list(/datum/action/item_action/toggle_helmet_light, /datum/action/item_action/flightpack/zoom)
 

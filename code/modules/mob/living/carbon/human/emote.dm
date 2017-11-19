@@ -5,7 +5,7 @@
 	key = "cry"
 	key_third_person = "cries"
 	message = "cries."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/carbon/human/dap
 	key = "dap"
@@ -22,7 +22,7 @@
 	key = "grumble"
 	key_third_person = "grumbles"
 	message = "grumbles!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/carbon/human/handshake
 	key = "handshake"
@@ -43,7 +43,7 @@
 	key = "mumble"
 	key_third_person = "mumbles"
 	message = "mumbles!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/carbon/human/pale
 	key = "pale"

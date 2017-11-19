@@ -45,6 +45,7 @@
 	var/slurring = 0		//Carbon
 	var/cultslurring = 0	//Carbon
 	var/real_name = null
+	var/spacewalk = FALSE
 	var/druggy = 0			//Carbon
 	var/confused = 0		//Carbon
 	var/resting = 0			//Carbon
@@ -145,3 +146,5 @@
 	var/list/can_ride_typecache = list()
 
 	var/list/mousemove_intercept_objects
+
+	var/ventcrawl_layer = PIPING_LAYER_DEFAULT

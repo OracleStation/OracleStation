@@ -106,10 +106,7 @@
 		if (!newname)
 			newname = randomname
 
-		wizard_mob.real_name = newname
-		wizard_mob.name = newname
-		if(wizard_mob.mind)
-			wizard_mob.mind.name = newname
+		wizard_mob.fully_replace_character_name(wizard_mob.real_name, newname)
 
 		/* Wizards by nature cannot be too young. */
 		if(wizard_mob.age < WIZARD_AGE_MIN)
@@ -239,15 +236,6 @@
 	return 1
 
 //OTHER PROCS
-
-//To batch-remove wizard spells. Linked to mind.dm.
-/mob/proc/spellremove(mob/M)
-	if(!mind)
-		return
-	for(var/X in src.mind.spell_list)
-		var/obj/effect/proc_holder/spell/spell_to_remove = X
-		qdel(spell_to_remove)
-		mind.spell_list -= spell_to_remove
 
 //returns whether the mob is a wizard (or apprentice)
 /proc/iswizard(mob/living/M)

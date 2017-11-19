@@ -5,6 +5,7 @@
 	icon_state = "smokewhite"
 	det_time = 20
 	item_state = "flashbang"
+	arming_sound = 'sound/weapons/armbomb.ogg'
 	slot_flags = SLOT_BELT
 	var/datum/effect_system/smoke_spread/bad/smoke
 

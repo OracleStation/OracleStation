@@ -43,7 +43,7 @@ SUBSYSTEM_DEF(mapping)
 	loading_ruins = TRUE
 	var/mining_type = config.minetype
 	if (mining_type == "lavaland")
-		seedRuins(list(ZLEVEL_LAVALAND), global.config.lavaland_budget, /area/lavaland/surface/outdoors/unexplored, lava_ruins_templates)
+		seedRuins(list(ZLEVEL_LAVALAND), CONFIG_GET(number/lavaland_budget), /area/lavaland/surface/outdoors/unexplored, lava_ruins_templates)
 		spawn_rivers()
 
 	// deep space ruins
@@ -55,7 +55,7 @@ SUBSYSTEM_DEF(mapping)
 			else
 				space_zlevels += i
 
-	seedRuins(space_zlevels, global.config.space_budget, /area/space, space_ruins_templates)
+	seedRuins(space_zlevels, CONFIG_GET(number/space_budget), /area/space, space_ruins_templates)
 	loading_ruins = FALSE
 	repopulate_sorted_areas()
 	// Set up Z-level transistions.
@@ -117,14 +117,14 @@ SUBSYSTEM_DEF(mapping)
 	var/start_time = REALTIMEOFDAY
 
 	INIT_ANNOUNCE("Loading [config.map_name]...")
-	TryLoadZ(config.GetFullMapPath(), FailedZs, ZLEVEL_STATION)
+	TryLoadZ(config.GetFullMapPath(), FailedZs, ZLEVEL_STATION_PRIMARY)
 	INIT_ANNOUNCE("Loaded station in [(REALTIMEOFDAY - start_time)/10]s!")
 	if(SSdbcore.Connect())
 		var/datum/DBQuery/query_round_map_name = SSdbcore.NewQuery("UPDATE [format_table_name("round")] SET map_name = '[config.map_name]' WHERE id = [GLOB.round_id]")
 		query_round_map_name.Execute()
 
 	if(config.minetype != "lavaland")
-		INIT_ANNOUNCE("WARNING: A map without lavaland set as it's minetype was loaded! This is being ignored! Update the maploader code!")
+		INIT_ANNOUNCE("WARNING: A map without lavaland set as its minetype was loaded! This is being ignored! Update the maploader code!")
 
 	CreateSpace(ZLEVEL_SPACEMAX)
 
@@ -141,7 +141,8 @@ SUBSYSTEM_DEF(mapping)
 	var/players = GLOB.clients.len
 	var/list/mapvotes = list()
 	//count votes
-	if(global.config.allow_map_voting)
+	var/amv = CONFIG_GET(flag/allow_map_voting)
+	if(amv)
 		for (var/client/c in GLOB.clients)
 			var/vote = c.prefs.preferred_map
 			if (!vote)
@@ -174,7 +175,7 @@ SUBSYSTEM_DEF(mapping)
 			mapvotes.Remove(map)
 			continue
 
-		if(global.config.allow_map_voting)
+		if(amv)
 			mapvotes[map] = mapvotes[map]*VM.voteweight
 
 	var/pickedmap = pickweight(mapvotes)

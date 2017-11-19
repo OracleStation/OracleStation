@@ -53,16 +53,17 @@
 	mob.log_message("[key]: [raw_msg]", INDIVIDUAL_OOC_LOG)
 
 	var/keyname = key
-	if(prefs.unlock_content)
-		if(prefs.toggles & MEMBER_PUBLIC)
-			keyname = "<font color='[prefs.ooccolor ? prefs.ooccolor : GLOB.normal_ooc_colour]'>[icon2html('icons/member_content.dmi', world, "blag")][keyname]</font>"
+	//if(prefs.unlock_content)
+	//	if(prefs.toggles & MEMBER_PUBLIC)
+	//		keyname = "<font color='[prefs.ooccolor ? prefs.ooccolor : GLOB.normal_ooc_colour]'>[icon2html('icons/member_content.dmi', world, "blag")][keyname]</font>"
+	//Uncomment the above when we implement our own membership
 
 	for(var/client/C in GLOB.clients)
 		if(C.prefs.chat_toggles & CHAT_OOC)
 			if(holder)
 				if(!holder.fakekey || C.holder)
 					if(check_rights_for(src, R_ADMIN))
-						to_chat(C, "<span class='adminooc'>[config.allow_admin_ooccolor && prefs.ooccolor ? "<font color=[prefs.ooccolor]>" :"" ]<span class='prefix'>OOC:</span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></span></font>")
+						to_chat(C, "<span class='adminooc'>[CONFIG_GET(flag/allow_admin_ooccolor) && prefs.ooccolor ? "<font color=[prefs.ooccolor]>" :"" ]<span class='prefix'>OOC:</span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></span></font>")
 					else
 						to_chat(C, "<span class='adminobserverooc'><span class='prefix'>OOC:</span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></span>")
 				else
@@ -113,10 +114,6 @@
 
 	msg = emoji_parse(msg)
 
-	if((copytext(msg, 1, 2) in list(".",";",":","#")) || (findtext(lowertext(copytext(msg, 1, 5)), "say")))
-		if(alert("Your message \"[raw_msg]\" looks like it was meant for in game communication, say it in LOOC?", "Meant for OOC?", "No", "Yes") != "Yes")
-			return
-
 	if(!holder)
 		if(handle_spam_prevention(msg, MUTE_LOOC))
 			return
@@ -143,20 +140,20 @@
 		stuff_that_hears += M
 
 	for(var/mob/M in stuff_that_hears)
-		if(!M.client && (((M.client_mobs_in_contents) && (M.client_mobs_in_contents.len <= 0)) || !M.client_mobs_in_contents))
+		if((((M.client_mobs_in_contents) && (M.client_mobs_in_contents.len <= 0)) || !M.client_mobs_in_contents))
 			continue
-		if(M.client.prefs.chat_toggles & CHAT_LOOC)
+		if(M.client && M.client.prefs.chat_toggles & CHAT_LOOC)
 			clients_to_hear += M.client
 		for(var/mob/mob in M.client_mobs_in_contents)
-			if(mob.client.prefs.chat_toggles & CHAT_LOOC)
+			if(mob.client && mob.client.prefs && mob.client.prefs.chat_toggles & CHAT_LOOC)
 				clients_to_hear += mob.client
 
 	for(var/client/C in GLOB.clients)
 		if(C in GLOB.admins)
 			if(C in clients_to_hear)
-				to_chat(C, "<span class='looc'>LOOC: [ADMIN_LOOKUPFLW(src)]: [msg]</span>")
+				to_chat(C, "<span class='looc'>LOOC: [ADMIN_LOOKUPFLW(mob)]: [msg]</span>")
 			else
-				to_chat(C, "<span class='looc'><font color='black'>(R)</font>LOOC: [ADMIN_LOOKUPFLW(src)]: [msg]</span>")
+				to_chat(C, "<span class='looc'><font color='black'>(R)</font>LOOC: [ADMIN_LOOKUPFLW(mob)]: [msg]</span>")
 		else if(C in clients_to_hear)
 			to_chat(C, "<span class='looc'>LOOC: [mob.name]: [msg]</span>")
 
@@ -191,33 +188,6 @@ GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 	set desc = "Returns player OOC Color to default"
 	set category = "Fun"
 	GLOB.normal_ooc_colour = OOC_COLOR
-
-/client/verb/colorooc()
-	set name = "Set Your OOC Color"
-	set category = "Preferences"
-
-	if(!holder || check_rights_for(src, R_ADMIN))
-		if(!is_content_unlocked())
-			return
-
-	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color", prefs.ooccolor) as color|null
-	if(new_ooccolor)
-		prefs.ooccolor = sanitize_ooccolor(new_ooccolor)
-		prefs.save_preferences()
-	SSblackbox.add_details("admin_verb","Set OOC Color") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	return
-
-/client/verb/resetcolorooc()
-	set name = "Reset Your OOC Color"
-	set desc = "Returns your OOC Color to default"
-	set category = "Preferences"
-
-	if(!holder || check_rights_for(src, R_ADMIN))
-		if(!is_content_unlocked())
-			return
-
-		prefs.ooccolor = initial(prefs.ooccolor)
-		prefs.save_preferences()
 
 //Checks admin notice
 /client/verb/admin_notice()
@@ -328,7 +298,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 	set category = "OOC"
 	set desc = "View the notes that admins have written about you"
 
-	if(!config.see_own_notes)
+	if(!CONFIG_GET(flag/see_own_notes))
 		to_chat(usr, "<span class='notice'>Sorry, that function is not enabled on this server.</span>")
 		return
 
