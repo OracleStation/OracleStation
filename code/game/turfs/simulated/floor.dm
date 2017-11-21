@@ -12,6 +12,7 @@
 	intact = 1
 	var/broken = 0
 	var/burnt = 0
+	var/current_overlay = null
 	var/floor_tile = null //tile that this floor drops
 	var/list/broken_states
 	var/list/burnt_states
@@ -86,7 +87,11 @@
 	return
 
 /turf/open/floor/proc/update_icon()
+	cut_overlays()
+	atmos_overlay_types = null
 	update_visuals()
+	if (current_overlay)
+		add_overlay(current_overlay)
 	return 1
 
 /turf/open/floor/attack_paw(mob/user)
@@ -102,17 +107,19 @@
 /turf/open/floor/proc/break_tile()
 	if(broken)
 		return
-	icon_state = pick(broken_states)
+	current_overlay = pick(broken_states)
 	broken = 1
+	update_icon()
 
 /turf/open/floor/burn_tile()
 	if(broken || burnt)
 		return
 	if(burnt_states.len)
-		icon_state = pick(burnt_states)
+		current_overlay = pick(burnt_states)
 	else
-		icon_state = pick(broken_states)
+		current_overlay = pick(broken_states)
 	burnt = 1
+	update_icon()
 
 /turf/open/floor/proc/make_plating()
 	return ChangeTurf(/turf/open/floor/plating)
@@ -160,6 +167,7 @@
 	if(broken || burnt)
 		broken = 0
 		burnt = 0
+		current_overlay = null
 		if(user && !silent)
 			to_chat(user, "<span class='danger'>You remove the broken plating.</span>")
 	else
@@ -170,6 +178,7 @@
 	return make_plating()
 
 /turf/open/floor/singularity_pull(S, current_size)
+	..()
 	if(current_size == STAGE_THREE)
 		if(prob(30))
 			if(floor_tile)

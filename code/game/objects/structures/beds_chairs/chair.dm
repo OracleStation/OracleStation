@@ -15,7 +15,7 @@
 	layer = OBJ_LAYER
 
 /obj/structure/chair/Initialize()
-	..()
+	. = ..()
 	if(!anchored)	//why would you put these on the shuttle?
 		addtimer(CALLBACK(src, .proc/RemoveFromLatejoin), 0)
 
@@ -331,3 +331,41 @@
 	desc = "You sit in this. Either by will or force. Looks REALLY uncomfortable."
 	icon_state = "chairold"
 	item_chair = null
+
+/obj/structure/chair/sofa
+	name = "old ratty sofa"
+	icon_state = "sofamiddle"
+	item_chair = null
+	anchored = TRUE
+	buildstackamount = 1
+
+/obj/structure/chair/sofa/spin()
+	setDir(turn(dir, 45))
+
+/obj/structure/chair/sofa/left
+	icon_state = "sofaend_left"
+
+/obj/structure/chair/sofa/right
+	icon_state = "sofaend_right"
+
+/obj/structure/chair/flight
+	name = "flight seat"
+	desc = "In the quite likely event of an emergency, place your head between your legs and kiss your rear goodbye."
+	icon_state = "shuttle_chair"
+
+/obj/structure/chair/folding
+	icon = 'goon/icons/obj/chairs.dmi' //'cause different licence
+	name = "folding chair"
+	desc = "Can be folded neatly away when not in use. In theory."
+
+/obj/structure/chair/folding/blue
+	icon_state = "chair-b"
+
+/obj/structure/chair/folding/yellow
+	icon_state = "chair-y"
+
+/obj/structure/chair/folding/red
+	icon_state = "chair-r"
+
+/obj/structure/chair/folding/green
+	icon_state = "chair-g"

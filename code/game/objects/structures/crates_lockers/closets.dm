@@ -1,7 +1,7 @@
 /obj/structure/closet
 	name = "closet"
 	desc = "It's a basic storage unit."
-	icon = 'icons/obj/closet.dmi'
+	icon = 'goon/icons/obj/closet.dmi'
 	icon_state = "generic"
 	density = TRUE
 	var/icon_door = null

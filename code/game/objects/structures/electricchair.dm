@@ -1,6 +1,7 @@
 /obj/structure/chair/e_chair
 	name = "electric chair"
 	desc = "Looks absolutely SHOCKING!\n<span class='notice'>Alt-click to rotate it clockwise.</span>"
+	icon = 'goon/icons/obj/chairs.dmi'
 	icon_state = "echair0"
 	var/obj/item/assembly/shock_kit/part = null
 	var/last_time = 1
@@ -8,7 +9,7 @@
 
 /obj/structure/chair/e_chair/New()
 	..()
-	add_overlay(mutable_appearance('icons/obj/chairs.dmi', "echair_over", MOB_LAYER + 1))
+	add_overlay(mutable_appearance('goon/icons/obj/chairs.dmi', "echair_over", MOB_LAYER + 1))
 
 /obj/structure/chair/e_chair/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/wrench))
