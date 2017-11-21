@@ -3,16 +3,23 @@
 	set name = "Say"
 	set category = "IC"
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, "<span class='danger'>Speech has currently been disabled by the admins.</span>")
 		return
-	usr.say(message)
+	if(findtext(message, ".w", 1, 3))
+		if(findtext(message, " ", 3, 4))
+			message = copytext(message, 4, 0)
+		else
+			message = copytext(message, 3, 0)
+		whisper(message)
+	else
+		usr.say(message)
 
 
 /mob/verb/whisper_verb(message as text)
 	set name = "Whisper"
 	set category = "IC"
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, "<span class='danger'>Speech has currently been disabled by the admins.</span>")
 		return
 	whisper(message)
 
@@ -24,7 +31,7 @@
 	set category = "IC"
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, "<span class='danger'>Speech has currently been disabled by the admins.</span>")
 		return
 
 	message = trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
@@ -36,7 +43,7 @@
 	var/alt_name = ""
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, "<span class='danger'>Speech has currently been disabled by the admins.</span>")
 		return
 
 	if(jobban_isbanned(src, "OOC"))
