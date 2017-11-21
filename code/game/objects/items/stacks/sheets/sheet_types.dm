@@ -18,8 +18,17 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	new/datum/stack_recipe("stool", /obj/structure/chair/stool, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("bar stool", /obj/structure/chair/stool/bar, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("chair", /obj/structure/chair, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("folding chair", /obj/structure/chair/folding, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("blue folding chair", /obj/structure/chair/folding/blue, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("yellow folding chair", /obj/structure/chair/folding/yellow, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("red folding chair", /obj/structure/chair/folding/red, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("green folding chair", /obj/structure/chair/folding/yellow, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("flight seat", /obj/structure/chair/flight, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("swivel chair", /obj/structure/chair/office/dark, 5, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("comfy chair", /obj/structure/chair/comfy/beige, 2, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("sofa (middle)", /obj/structure/chair/sofa, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("sofa (left)", /obj/structure/chair/sofa/left, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("sofa (right)", /obj/structure/chair/sofa/right, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("bed", /obj/structure/bed, 2, one_per_turf = TRUE, on_floor = TRUE), \
 	null, \
 	new/datum/stack_recipe("rack parts", /obj/item/rack_parts), \
@@ -159,7 +168,7 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	desc = "One can only guess that this is a bunch of wood."
 	singular_name = "wood plank"
 	icon_state = "sheet-wood"
-	icon = 'icons/obj/items_and_weapons.dmi'
+	icon = 'icons/obj/stack_objects.dmi'
 	origin_tech = "materials=1;biotech=1"
 	sheettype = "wood"
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0, fire = 50, acid = 0)

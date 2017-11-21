@@ -131,7 +131,7 @@
 /area/shuttle/escape)
 "al" = (
 /obj/structure/table/optable,
-/obj/item/surgical_drapes,
+
 /turf/open/floor/plasteel/cmo,
 /area/shuttle/escape)
 "am" = (

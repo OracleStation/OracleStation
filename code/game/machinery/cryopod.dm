@@ -134,7 +134,6 @@
 	density = TRUE
 	anchored = TRUE
 	state_open = TRUE
-	unsecuring_tool = null
 
 	var/on_store_message = "has entered long-term storage."
 	var/on_store_name = "Cryogenic Oversight"

@@ -3495,7 +3495,7 @@
 /area/awaymission/research/interior/medbay)
 "jS" = (
 /obj/structure/table,
-/obj/item/surgical_drapes,
+
 /turf/open/floor/plasteel/whiteblue/side{
 	dir = 4
 	},
