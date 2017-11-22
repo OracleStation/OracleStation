@@ -141,16 +141,22 @@
 	restraint_check = TRUE
 
 /datum/emote/living/flip/can_run_emote(mob/user, help_check)
-	if(..(user, help_check))
-		if(!user.incapacitated())
-			return TRUE
-	return FALSE
+	if(!..(user, help_check))
+		return FALSE
+	if(user.incapacitated())
+		return FALSE
+	if(user.buckled)
+		return FALSE
+	return TRUE
+
 
 /datum/emote/living/flip/run_emote(mob/user, params)
 	//the emote doesn't need much magic, so I'm overwriting everything. Bite me.
 	if(!can_run_emote(user))
 		return FALSE
 
+
+	var/mob/M = user.pulling
 	if(istype(user.loc, /obj))
 		var/obj/container = user.loc
 		to_chat(user, "<span class='warning'>You flip and smack your face into [container]!</span>")
@@ -177,7 +183,7 @@
 	else if(user.IsKnockdown() || user.lying)
 		user.visible_message("<b>[user]</b> flops and flails on the floor!")
 		//don't do anything! D:
-	else if(user.pulling && isliving(user.pulling))
+	else if(M && isliving(M) && !M.buckled && istype(M.loc, /turf/) && istype(user.loc, /turf/))
 		var/mob/living/L = user.pulling
 		var/turf/tmp = get_turf(L)
 		var/turf/T = get_turf(user)
