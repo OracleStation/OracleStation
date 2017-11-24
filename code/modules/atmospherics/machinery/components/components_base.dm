@@ -33,7 +33,7 @@ Iconnery
 	var/unconnected = (~connected) & initialize_directions
 	for(var/direction in GLOB.cardinals)
 		if(unconnected & direction)
-			underlays += getpipeimage('icons/obj/atmospherics/components/binary_devices.dmi', "pipe_exposed", direction)
+			underlays += getpipeimage('icons/obj/atmospherics/components/binary_devices.dmi', "pipe_exposed[piping_layer]", direction)
 
 /obj/machinery/atmospherics/components/proc/update_icon_nopipes()
 	return

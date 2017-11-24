@@ -40,10 +40,10 @@ Thus, the two variables affect pump operation are set in New():
 
 /obj/machinery/atmospherics/components/binary/pump/update_icon_nopipes()
 	if(stat & NOPOWER)
-		icon_state = "pump_off"
+		icon_state = "pump_off[piping_layer]"
 		return
 
-	icon_state = "pump_[on?"on":"off"]"
+	icon_state = "pump_[on?"on":"off"][piping_layer]"
 
 /obj/machinery/atmospherics/components/binary/pump/process_atmos()
 //	..()

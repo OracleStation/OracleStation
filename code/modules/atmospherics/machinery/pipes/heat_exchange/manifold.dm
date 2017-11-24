@@ -25,9 +25,9 @@
 			initialize_directions_he = NORTH|EAST|SOUTH
 
 /obj/machinery/atmospherics/pipe/heat_exchanging/manifold/update_icon()
-	var/invis = invisibility ? "-f" : ""
+	alpha = invisibility ? 128 : 255
 
-	icon_state = "manifold_center[piping_layer][invis]"
+	icon_state = "manifold_center[piping_layer]"
 
 	cut_overlays()
 
