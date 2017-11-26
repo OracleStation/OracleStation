@@ -4,7 +4,7 @@
 	set category = "IC"
 	var/regex/whisper_finder = regex("^\\.w\\s+|^\\.w")
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech has currently been disabled by the admins.</span>")
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 	if(findtext(message, ".w", 1, 3))
 		whisper(whisper_finder.Replace(message, ""))
@@ -16,7 +16,7 @@
 	set name = "Whisper"
 	set category = "IC"
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech has currently been disabled by the admins.</span>")
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 	whisper(message)
 
@@ -28,7 +28,7 @@
 	set category = "IC"
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech has currently been disabled by the admins.</span>")
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 
 	message = trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
@@ -40,7 +40,7 @@
 	var/alt_name = ""
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech has currently been disabled by the admins.</span>")
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 
 	if(jobban_isbanned(src, "OOC"))
