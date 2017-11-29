@@ -856,3 +856,5 @@ SUBSYSTEM_DEF(ticker)
 		)
 
 	SEND_SOUND(world, sound(round_end_sound))
+
+	sleep(50)
