@@ -8,6 +8,10 @@ if [ "$BUILD_TESTING" = true ] && [ "$TRAVIS_PULL_REQUEST" = false ]; then
 	zip -r resources tgstation.rsc > /dev/null
 	echo "resources.zip completed"
 
+	echo "Verifying archives..."
+	zip -T tgstation.zip
+	zip -T resources.zip
+
 	echo "Uploading to S3..."
 	aws s3 cp tgstation.zip "s3://s3.oraclestation.com/$TRAVIS_BRANCH/$TRAVIS_JOB_NUMBER/tgstation.zip"
 	aws s3 cp resources.zip "s3://s3.oraclestation.com/$TRAVIS_BRANCH/$TRAVIS_JOB_NUMBER/resources.zip"
