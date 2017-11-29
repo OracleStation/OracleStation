@@ -13,10 +13,10 @@ if [ "$BUILD_TESTING" = true ] && [ "$TRAVIS_PULL_REQUEST" = false ]; then
 	zip -T resources.zip
 
 	echo "Uploading to S3..."
-	aws s3 cp tgstation.zip "s3://s3.oraclestation.com/$TRAVIS_BRANCH/$TRAVIS_JOB_NUMBER/tgstation.zip"
-	aws s3 cp resources.zip "s3://s3.oraclestation.com/$TRAVIS_BRANCH/$TRAVIS_JOB_NUMBER/resources.zip"
-	aws s3 cp COMMIT_HASH   "s3://s3.oraclestation.com/$TRAVIS_BRANCH/$TRAVIS_JOB_NUMBER/COMMIT_HASH"
-	aws s3 cp tgstation.zip "s3://s3.oraclestation.com/$TRAVIS_BRANCH/latest/tgstation.zip"
-	aws s3 cp resources.zip "s3://s3.oraclestation.com/$TRAVIS_BRANCH/latest/resources.zip"
-	aws s3 cp COMMIT_HASH   "s3://s3.oraclestation.com/$TRAVIS_BRANCH/latest/COMMIT_HASH"
+	aws s3 cp tgstation.zip "s3://s3.us-east-1.oraclestation.com/$TRAVIS_BRANCH/$TRAVIS_JOB_NUMBER/tgstation.zip"
+	aws s3 cp resources.zip "s3://s3.us-east-1.oraclestation.com/$TRAVIS_BRANCH/$TRAVIS_JOB_NUMBER/resources.zip"
+	aws s3 cp COMMIT_HASH   "s3://s3.us-east-1.oraclestation.com/$TRAVIS_BRANCH/$TRAVIS_JOB_NUMBER/COMMIT_HASH"
+	aws s3 cp tgstation.zip "s3://s3.us-east-1.oraclestation.com/$TRAVIS_BRANCH/latest/tgstation.zip"
+	aws s3 cp resources.zip "s3://s3.us-east-1.oraclestation.com/$TRAVIS_BRANCH/latest/resources.zip"
+	aws s3 cp COMMIT_HASH   "s3://s3.us-east-1.oraclestation.com/$TRAVIS_BRANCH/latest/COMMIT_HASH"
 fi
