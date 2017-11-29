@@ -29,6 +29,7 @@ addons:
       - libstdc++6:i386
       - python
       - python-pip
+      - zip
 
 before_install:
   - pip install --user awscli
