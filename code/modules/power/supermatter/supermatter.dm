@@ -569,6 +569,9 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_shard)
 	Consume(AM)
 
 /obj/machinery/power/supermatter_shard/proc/Consume(atom/movable/AM)
+	if(istype(AM, /mob/living/simple_animal/hostile/megafauna))
+		var/mob/living/simple_animal/hostile/megafauna/MF = AM
+		MF.health = 0 //Snowflakey, but this makes them vulnerable to being dusted. >:)
 	if(isliving(AM))
 		var/mob/living/user = AM
 		message_admins("[src] has consumed [key_name_admin(user)] [ADMIN_JMP(src)].")

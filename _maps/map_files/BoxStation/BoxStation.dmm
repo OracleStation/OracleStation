@@ -1484,7 +1484,6 @@
 /obj/item/circular_saw,
 /obj/item/hemostat,
 /obj/item/retractor,
-/obj/item/surgical_drapes,
 /obj/item/razor,
 /turf/open/floor/plasteel/black,
 /area/security/execution/transfer)
@@ -28388,7 +28387,7 @@
 "bor" = (
 /obj/structure/table,
 /obj/item/clothing/gloves/color/latex,
-/obj/item/surgical_drapes,
+
 /obj/item/razor,
 /turf/open/floor/plasteel/black,
 /area/science/robotics/lab)
@@ -30513,7 +30512,7 @@
 /obj/structure/table/optable{
 	name = "Robotics Operating Table"
 	},
-/obj/item/surgical_drapes,
+
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "bsV" = (
@@ -34243,7 +34242,7 @@
 /area/medical/sleeper)
 "bBc" = (
 /obj/structure/table,
-/obj/item/surgical_drapes,
+
 /obj/item/razor,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -52647,7 +52646,7 @@
 /area/engine/engineering)
 "cpF" = (
 /obj/structure/table/optable,
-/obj/item/surgical_drapes,
+
 /turf/open/floor/mineral/titanium,
 /area/shuttle/syndicate)
 "cpG" = (
@@ -61635,7 +61634,7 @@
 /area/shuttle/syndicate)
 "cLl" = (
 /obj/structure/table/optable,
-/obj/item/surgical_drapes,
+
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},

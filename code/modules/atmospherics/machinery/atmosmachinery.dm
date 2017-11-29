@@ -113,8 +113,6 @@ Pipelines + Other Objects -> Pipe network
 	if(pipe_flags & PIPING_DEFAULT_LAYER_ONLY)
 		new_layer = PIPING_LAYER_DEFAULT
 	piping_layer = new_layer
-	pixel_x = (piping_layer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_P_X
-	pixel_y = (piping_layer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_P_Y
 	layer = initial(layer) + ((piping_layer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_LCHANGE)
 
 /obj/machinery/atmospherics/proc/can_be_node(obj/machinery/atmospherics/target)
@@ -277,9 +275,9 @@ Pipelines + Other Objects -> Pipe network
 	return ..()
 
 /obj/machinery/atmospherics/singularity_pull(S, current_size)
+	..()
 	if(current_size >= STAGE_FIVE)
 		deconstruct(FALSE)
-		return ..()
 
 #define VENT_SOUND_DELAY 30
 

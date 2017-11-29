@@ -4,6 +4,9 @@
 	var/wet = 0
 	var/wet_time = 0 // Time in seconds that this floor will be wet for.
 	var/mutable_appearance/wet_overlay
+	var/postdig_icon_change = FALSE
+	var/postdig_icon
+	var/list/archdrops
 
 /turf/open/indestructible
 	name = "floor"
@@ -325,4 +328,3 @@
 	UpdateSlip()
 	if(wet_overlay)
 		cut_overlay(wet_overlay)
-
