@@ -234,7 +234,11 @@
 		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
 		Master.Shutdown()	//run SS shutdowns
 	log_world("World rebooted at [time_stamp()]")
-	..()
+
+	if(CONFIG_GET(flag/shutdown_on_reboot))
+		shutdown()
+	else
+		..()
 
 /world/proc/load_motd()
 	GLOB.join_motd = file2text("config/motd.txt") + "<br>" + GLOB.revdata.GetTestMergeInfo()

@@ -493,3 +493,6 @@ ARRIVALS_SHUTTLE_DOCK_WINDOW 55
 ## How many wirechewing rodents you want to spawn on exposed maintenane wires at the start of the round. You may wish to set this to 0 if you're testing powernets.
 
 MICE_ROUNDSTART 10
+
+## Shutdown the world instead of rebooting
+#SHUTDOWN_ON_REBOOT
