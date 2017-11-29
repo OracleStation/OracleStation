@@ -274,4 +274,4 @@ CONFIG_DEF(number/bombcap)
 		GLOB.MAX_EX_FLASH_RANGE = value
 		GLOB.MAX_EX_FLAME_RANGE = value
 
-CONFIG_DEF(flag/shutdown_on_reboot)	// Dhuts down the world instead of reboot
+CONFIG_DEF(flag/shutdown_on_reboot)	// Shuts down the world instead of reboot
