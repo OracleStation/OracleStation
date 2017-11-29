@@ -236,8 +236,7 @@
 	log_world("World rebooted at [time_stamp()]")
 
 	if(CONFIG_GET(flag/shutdown_on_reboot))
-		sleep(50)
-		shutdown()
+		spawn(50) shutdown()
 	else
 		..()
 
