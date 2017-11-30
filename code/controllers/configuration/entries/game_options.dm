@@ -274,4 +274,6 @@ CONFIG_DEF(number/bombcap)
 		GLOB.MAX_EX_FLASH_RANGE = value
 		GLOB.MAX_EX_FLAME_RANGE = value
 
-CONFIG_DEF(flag/shutdown_on_reboot)	// Shuts down the world instead of reboot
+CONFIG_DEF(flag/shutdown_for_update)			// Shuts down the world instead of reboot
+CONFIG_DEF(string/update_version_string_uri)	// Location of the hash to compare against COMMIT_HASH
+	value = "http://s3.us-east-1.oraclestation.com/master/latest/COMMIT_HASH"

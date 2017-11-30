@@ -495,4 +495,5 @@ ARRIVALS_SHUTTLE_DOCK_WINDOW 55
 MICE_ROUNDSTART 10
 
 ## Shutdown the world instead of rebooting
-#SHUTDOWN_ON_REBOOT
+#SHUTDOWN_FOR_UPDATE
+#UPDATE_VERSION_STRING_URI http://s3.us-east-1.oraclestation.com/master/latest/COMMIT_HASH
