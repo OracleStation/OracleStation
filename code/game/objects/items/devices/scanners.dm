@@ -102,6 +102,7 @@ MASS SPECTROMETER
 		chemscan(user, M)
 
 	add_fingerprint(user)
+	flick("health2", src)
 
 
 // Used by the PDA medical scanner too
@@ -272,6 +273,8 @@ MASS SPECTROMETER
 	origin_tech = "magnets=1;engineering=1"
 
 /obj/item/device/analyzer/attack_self(mob/user)
+
+	flick("atmos2", src)
 
 	add_fingerprint(user)
 
