@@ -234,6 +234,17 @@
 		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
 		Master.Shutdown()	//run SS shutdowns
 	log_world("World rebooted at [time_stamp()]")
+
+	if(CONFIG_GET(flag/shutdown_for_update))
+		var/http = world.Export(CONFIG_GET(string/update_version_string_uri))
+		if (http)
+			var/local_hash = file2text(file("COMMIT_HASH"))
+			var/remote_hash = file2text(http["CONTENT"])
+
+			if(local_hash != remote_hash)
+				to_chat(world, "<span class='boldannounce'>Server is updating! You may need to reconnect! '[local_hash]' to '[remote_hash]'</span>")
+				shutdown()
+				return
 	..()
 
 /world/proc/load_motd()
