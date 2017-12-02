@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(ticker)
 	var/selected_tip						// What will be the tip of the day?
 
 	var/timeLeft						//pregame timer
-	var/start_at
+	var/start_at = 3000
 
 	var/gametime_offset = 432000 // equal to 12 hours, making gametime at roundstart 12:00:00
 
@@ -74,7 +74,6 @@ SUBSYSTEM_DEF(ticker)
 	if(!GLOB.syndicate_code_response)
 		GLOB.syndicate_code_response = generate_code_phrase()
 	..()
-	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 
 /datum/controller/subsystem/ticker/fire()
 	switch(current_state)
@@ -89,7 +88,9 @@ SUBSYSTEM_DEF(ticker)
 			create_observers()
 			fire()
 		if(GAME_STATE_PREGAME)
-				//lobby stats for statpanels
+			//lobby stats for statpanels
+			if(isnull(start_at))
+				start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 			if(isnull(timeLeft))
 				timeLeft = max(0,start_at - world.time)
 			totalPlayers = 0
