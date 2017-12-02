@@ -5,11 +5,11 @@
 	say_mod = "states"
 	heatmod = 3 // Went cheap with Aircooling
 	coldmod = 1.5 // Don't put your computer in the freezer.
-	burnmod = 2 // Wiring doesn't hold up to heat well.
-	brutemod = 2 // Thin metal, cheap materials.
+	burnmod = 2 // Wiring doesn't hold up to fire well.
+	brutemod = 1.6 // Thin metal, cheap materials.
 	toxmod = 0
 	siemens_coeff = 1.5 // Overload!
-	species_traits = list(NOBREATH,NOBLOOD,RADIMMUNE,VIRUSIMMUNE,NOZOMBIE,EASYDISMEMBER,EASYLIMBATTACHMENT,NOPAIN,NO_BONES,NOCLONE,NOTRANSSTING,MUTCOLORS,REVIVESBYHEALING)
+	species_traits = list(NOBREATH,NOBLOOD,RADIMMUNE,VIRUSIMMUNE,NOZOMBIE,EASYDISMEMBER,EASYLIMBATTACHMENT,NOPAIN,NO_BONES,NOTRANSSTING,MUTCOLORS,REVIVESBYHEALING,NOSCAN,NOSOUL)
 	mutant_bodyparts = list("ipc_screen", "ipc_antenna", "ipc_chassis")
 	default_features = list("mcolor" = "#7D7D7D", "ipc_screen" = "Static", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)")
 	meat = /obj/item/stack/sheet/plasteel{amount = 5}
@@ -26,11 +26,12 @@
 	mutantliver = /obj/item/organ/liver/cybernetic/upgraded/ipc
 	mutantstomach = /obj/item/organ/stomach/cell
 	mutantears = /obj/item/organ/ears/robot
-	mutant_brain = /obj/item/organ/brain/ipc
+	mutant_brain = /obj/item/organ/brain/mmi_holder/posibrain
 	examine_text = "a Machine"
 	species_text_color = "#2e2e2e"
 	reagent_tag = PROCESS_SYN
 	species_gibs = "robotic"
+	attack_sound = 'sound/items/trayhit1.ogg'
 
 /datum/species/ipc/random_name(unique)
 	var/ipc_name = "[pick(GLOB.posibrain_names)]-[rand(100, 999)]"
@@ -46,26 +47,37 @@
 		O.change_bodypart_status(BODYPART_ROBOTIC) // Makes all Bodyparts robotic. The rest of the string interacts with the "ipc_chassis" feature.
 		if(C.dna.features["ipc_chassis"] == "Morpheus Cyberkinetics(Greyscale)")
 			C.dna.species.limbs_id = "mcgipc"
+			C.dna.species.species_traits += MUTCOLORS
 		if(C.dna.features["ipc_chassis"] == "Morpheus Cyberkinetics(Black)")
 			C.dna.species.limbs_id = "mcbipc"
+			C.dna.species.species_traits. -= MUTCOLORS
 		if(C.dna.features["ipc_chassis"] == "Bishop Cyberkinetics")
 			C.dna.species.limbs_id = "bshipc"
+			C.dna.species.species_traits. -= MUTCOLORS
 		if(C.dna.features["ipc_chassis"] == "Bishop Cyberkinetics 2.0")
 			C.dna.species.limbs_id = "bs2ipc"
+			C.dna.species.species_traits. -= MUTCOLORS
 		if(C.dna.features["ipc_chassis"] == "Hephaestus Industries")
 			C.dna.species.limbs_id = "hsiipc"
+			C.dna.species.species_traits. -= MUTCOLORS
 		if(C.dna.features["ipc_chassis"] == "Hephaestus Industries 2.0")
 			C.dna.species.limbs_id = "hi2ipc"
+			C.dna.species.species_traits. -= MUTCOLORS
 		if(C.dna.features["ipc_chassis"] == "Shellguard Munitions")
 			C.dna.species.limbs_id = "sgmipc"
+			C.dna.species.species_traits. -= MUTCOLORS
 		if(C.dna.features["ipc_chassis"] == "Ward-Takahashi Manufacturing")
 			C.dna.species.limbs_id = "wtmipc"
+			C.dna.species.species_traits. -= MUTCOLORS
 		if(C.dna.features["ipc_chassis"] == "Xion Manufacturing Group")
 			C.dna.species.limbs_id = "xmgipc"
+			C.dna.species.species_traits. -= MUTCOLORS
 		if(C.dna.features["ipc_chassis"] == "Xion Manufacturing Group 2.0")
 			C.dna.species.limbs_id = "xm2ipc"
+			C.dna.species.species_traits. -= MUTCOLORS
 		if(C.dna.features["ipc_chassis"] == "Zeng-Hu Pharmaceuticals")
 			C.dna.species.limbs_id = "zhpipc"
+			C.dna.species.species_traits. -= MUTCOLORS
 
 /datum/species/ipc/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
 	if(chem.id == ("plasma" || "stable_plasma")) // Delicious Plasma
@@ -77,7 +89,7 @@
 
 /datum/species/ipc/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, intent, mob/living/carbon/human/H)
 	..()
-	if(I.force && I.damtype != STAMINA)
+	if(I.force && I.damtype != STAMINA) // IPCs spark when hit, but only when it does real damage. Much like borgs!
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
 		spark_system.set_up(1, 0, H)
 		spark_system.attach(H)

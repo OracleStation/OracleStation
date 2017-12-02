@@ -455,12 +455,16 @@
 		scantemp = "<font class='bad'>Subject no longer contains the fundamental materials required to create a living clone.</font>"
 		playsound(src, 'sound/machines/terminal_alert.ogg', 50, 0)
 		return
-	if ((!mob_occupant.ckey) || (!mob_occupant.client))
+	if((!mob_occupant.ckey) || (!mob_occupant.client))
 		scantemp = "<font class='bad'>Mental interface failure.</font>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 		return
-	if (find_record("ckey", mob_occupant.ckey, records))
+	if(find_record("ckey", mob_occupant.ckey, records))
 		scantemp = "<font class='average'>Subject already in database.</font>"
+		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
+		return
+	if(dna && dna.species && (NOSCAN in dna.species.species_traits))
+		scantemp = "<font class='bad'>Subject has no DNA, or has DNA that cannot be scanned.</font>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 		return
 

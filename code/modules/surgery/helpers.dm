@@ -2,6 +2,8 @@
 	if(!istype(M))
 		return
 
+
+
 	var/mob/living/carbon/C
 	var/obj/item/bodypart/affecting
 	var/selected_zone = user.zone_selected
@@ -11,6 +13,11 @@
 		affecting = C.get_bodypart(check_zone(selected_zone))
 
 	if(!M.lying && !isslime(M))	//if they're prone or a slime
+		return
+
+	if((affecting.status == ORGAN_ROBOTIC && !istype(I, /obj/item/screwdriver)) && (affecting.status == ORGAN_ORGANIC && !I.sharpness))
+	//if it's a robotic organ and you're not using a screwdriver OR an organic organ and you're not using something sharp.
+	//shoot me, I know.
 		return
 
 	var/datum/surgery/current_surgery
@@ -29,7 +36,7 @@
 			if(affecting)
 				if(!S.requires_bodypart)
 					continue
-				if(S.requires_organic_bodypart && affecting.status == BODYPART_ROBOTIC)
+				if(!(S.bodypart_types & affecting.status))
 					continue
 				if(S.requires_real_bodypart && affecting.is_pseudopart)
 					continue
@@ -56,7 +63,7 @@
 			if(affecting)
 				if(!S.requires_bodypart)
 					return
-				if(S.requires_organic_bodypart && affecting.status == BODYPART_ROBOTIC)
+				if(!(S.bodypart_types & affecting.status))
 					return
 			else if(C && S.requires_bodypart)
 				return

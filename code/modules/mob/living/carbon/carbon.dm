@@ -82,7 +82,7 @@
 	var/be_nice = FALSE
 	if(lying && user.a_intent == INTENT_HELP)
 
-		if(I.sharpness && can_operate(src))
+		if((I.sharpness || istype(I, /obj/item/screwdriver)) && can_operate(src))//sorry for the snowflake, kids! At least the istype() check won't proc if the item is sharp to start with
 			attempt_initiate_surgery(I, src, user)
 			be_nice = TRUE
 		if(surgeries.len && user != src)

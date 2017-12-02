@@ -148,13 +148,87 @@
 	origin_tech = "biotech=6"
 
 // IPC brain fuckery.
-
-/obj/item/organ/brain/ipc
-	name = "IPC posibrain"
+/obj/item/organ/brain/mmi_holder
+	name = "brain"
 	slot = "brain"
-	desc = "A cube of shining metal, three inches to a side and covered in shallow grooves. This particular model seems specific to IPCs, due to lack of foresight. It will need an MMI adapter to be slotted into cyborgs or AI cores."
 	zone = "chest"
-	icon = 'icons/obj/assemblies.dmi'
-	icon_state = "posibrain-occupied"
 	status = ORGAN_ROBOTIC
-	origin_tech = "biotech=3;programming=3;plasmatech=2"
+	remove_on_qdel = FALSE
+	var/obj/item/device/mmi/stored_mmi
+
+/obj/item/organ/brain/mmi_holder/Destroy()
+	QDEL_NULL(stored_mmi)
+	return ..()
+
+/obj/item/organ/brain/mmi_holder/Insert(mob/living/carbon/C, special = 0,no_id_transfer = FALSE)
+
+	owner = C
+	C.internal_organs |= src
+	C.internal_organs_slot[slot] = src
+	loc = null
+	//the above bits are copypaste from organ/proc/Insert, because I couldn't go through the parent here.
+
+	if(stored_mmi.brainmob)
+		if(C.key)
+			C.ghostize()
+		var/mob/living/brain/B = stored_mmi.brainmob
+		if(stored_mmi.brainmob.mind)
+			B.mind.transfer_to(C)
+		else
+			C.key = B.key
+
+	if(ishuman(C))
+		var/mob/living/carbon/human/H = C
+		if(H.dna && H.dna.species && (REVIVESBYHEALING in H.dna.species.species_traits))
+			if(H.health > 0)
+				H.revive(0)
+	//	QDEL_NULL(stored_mmi.brainmob)
+	// :v
+
+	update_from_mmi()
+
+/obj/item/organ/brain/mmi_holder/Remove(var/mob/living/user, special = 0)
+	if(!special)
+		if(stored_mmi)
+			. = stored_mmi
+			if(owner.mind)
+				owner.mind.transfer_to(stored_mmi.brainmob)
+			stored_mmi.loc = owner.loc
+			if(stored_mmi.brainmob)
+				var/mob/living/brain/B = stored_mmi.brainmob
+				spawn(0)
+					if(B)
+						B.stat = 0//why the fuck this works I have no idea, but it actually does
+						//don't ask questions you don't want to know the answers to
+			stored_mmi = null
+
+	..()
+	spawn(0)//so it can properly keep surgery going
+		qdel(src)
+
+/obj/item/organ/brain/mmi_holder/proc/update_from_mmi()
+	if(!stored_mmi)
+		return
+	name = stored_mmi.name
+	desc = stored_mmi.desc
+	icon = stored_mmi.icon
+	icon_state = stored_mmi.icon_state
+
+/obj/item/organ/brain/mmi_holder/posibrain/New(var/obj/item/device/mmi/MMI)
+	..()
+	if(MMI)
+		stored_mmi = MMI
+		to_chat(world, "this passed through this point")
+		MMI.loc = src
+		to_chat(world, MMI.loc)
+		MMI.forceMove(src)
+		to_chat(world, MMI.loc)
+	else
+		stored_mmi = new /obj/item/device/mmi/posibrain/ipc(src)
+	spawn(5)
+		if(owner && stored_mmi)
+			stored_mmi.name = "positronic brain ([owner.real_name])"
+			stored_mmi.brainmob.real_name = owner.real_name
+			stored_mmi.brainmob.name = stored_mmi.brainmob.real_name
+			stored_mmi.icon_state = "posibrain-occupied"
+			update_from_mmi()
