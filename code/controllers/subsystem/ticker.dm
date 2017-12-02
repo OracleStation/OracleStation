@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(ticker)
 	var/selected_tip						// What will be the tip of the day?
 
 	var/timeLeft						//pregame timer
-	var/start_at = 3000
+	var/start_at
 
 	var/gametime_offset = 432000 // equal to 12 hours, making gametime at roundstart 12:00:00
 
