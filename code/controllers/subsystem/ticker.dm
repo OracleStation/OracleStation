@@ -84,6 +84,7 @@ SUBSYSTEM_DEF(ticker)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, "<span class='boldnotice'>Welcome to [station_name()]!</span>")
 			current_state = GAME_STATE_PREGAME
+			timeLeft = null
 			//Everyone who wants to be an observer is now spawned
 			create_observers()
 			fire()
