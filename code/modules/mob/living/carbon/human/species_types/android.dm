@@ -9,7 +9,7 @@
 	limbs_id = "synth"
 	examine_text = "an Android"
 	species_text_color = "#2e2e2e"
-	reagent_tag = PROCESS_SYN
+	reagent_tag = PROCESS_SYNTHETIC
 
 /datum/species/android/on_species_gain(mob/living/carbon/C)
 	. = ..()

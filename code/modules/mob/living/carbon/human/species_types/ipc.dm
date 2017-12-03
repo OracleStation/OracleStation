@@ -29,7 +29,7 @@
 	mutant_brain = /obj/item/organ/brain/mmi_holder/posibrain
 	examine_text = "a Machine"
 	species_text_color = "#2e2e2e"
-	reagent_tag = PROCESS_SYN
+	reagent_tag = PROCESS_SYNTHETIC
 	species_gibs = "robotic"
 	attack_sound = 'sound/items/trayhit1.ogg'
 

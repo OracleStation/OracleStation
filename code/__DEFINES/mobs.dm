@@ -43,8 +43,8 @@
 #define BODYPART_ROBOTIC   2
 
 //Reagent Metabolization flags, defines the type of reagents that affect this mob
-#define PROCESS_ORG 1		//Only processes reagents with "ORGANIC" or "ORGANIC | SYNTHETIC"
-#define PROCESS_SYN 2		//Only processes reagents with "SYNTHETIC" or "ORGANIC | SYNTHETIC"
+#define PROCESS_ORGANIC 1		//Only processes reagents with "ORGANIC" or "ORGANIC | SYNTHETIC"
+#define PROCESS_SYNTHETIC 2		//Only processes reagents with "SYNTHETIC" or "ORGANIC | SYNTHETIC"
 #define PROCESS_DUO 4		//Only processes reagents with "ORGANIC | SYNTHETIC"
 
 // Reagent type flags, defines the types of mobs this reagent will affect

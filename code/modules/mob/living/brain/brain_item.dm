@@ -18,7 +18,7 @@
 	vital = FALSE
 	decoy_override = TRUE
 
-/obj/item/organ/brain/Insert(mob/living/carbon/C, special = 0,no_id_transfer = FALSE)
+/obj/item/organ/brain/Insert(mob/living/carbon/C, special = 0, no_id_transfer = FALSE)
 	..()
 
 	name = "brain"
@@ -44,7 +44,7 @@
 	//Update the body's icon so it doesnt appear debrained anymore
 	C.update_hair()
 
-/obj/item/organ/brain/Remove(mob/living/carbon/C, special = 0,no_id_transfer = FALSE)
+/obj/item/organ/brain/Remove(mob/living/carbon/C, special = 0, no_id_transfer = FALSE)
 	..()
 	if((!gc_destroyed || (owner && !owner.gc_destroyed)) && !no_id_transfer)
 		transfer_identity(C)
@@ -160,8 +160,7 @@
 	QDEL_NULL(stored_mmi)
 	return ..()
 
-/obj/item/organ/brain/mmi_holder/Insert(mob/living/carbon/C, special = 0,no_id_transfer = FALSE)
-
+/obj/item/organ/brain/mmi_holder/Insert(mob/living/carbon/C, special = 0, no_id_transfer = FALSE)
 	owner = C
 	C.internal_organs |= src
 	C.internal_organs_slot[slot] = src
@@ -182,8 +181,6 @@
 		if(H.dna && H.dna.species && (REVIVESBYHEALING in H.dna.species.species_traits))
 			if(H.health > 0 && !H.hellbound)
 				H.revive(0)
-	//	QDEL_NULL(stored_mmi.brainmob)
-	// :v
 
 	update_from_mmi()
 
@@ -218,11 +215,7 @@
 	..()
 	if(MMI)
 		stored_mmi = MMI
-		to_chat(world, "this passed through this point")
-		MMI.loc = src
-		to_chat(world, MMI.loc)
 		MMI.forceMove(src)
-		to_chat(world, MMI.loc)
 	else
 		stored_mmi = new /obj/item/device/mmi/posibrain/ipc(src)
 	spawn(5)

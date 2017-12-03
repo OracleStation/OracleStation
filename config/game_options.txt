@@ -400,10 +400,10 @@ ROUNDSTART_RACES human
 
 ## Races that are okay-ish on the station. Safe to enable.
 ROUNDSTART_RACES unathi
-ROUNDSTART_RACES plasmaman
-ROUNDSTART_RACES slime
+#ROUNDSTART_RACES plasmaman
+#ROUNDSTART_RACES slime
 ROUNDSTART_RACES ethari
-ROUNDSTART_RACES pod
+#ROUNDSTART_RACES pod
 ROUNDSTART_RACES ipc
 
 ## Races that aren't on the station by default.
