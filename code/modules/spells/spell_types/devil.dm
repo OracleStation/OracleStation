@@ -47,10 +47,7 @@
 
 /obj/effect/proc_holder/spell/targeted/summon_contract/cast(list/targets, mob/user = usr)
 	for(var/mob/living/carbon/C in targets)
-		if(C.dna && C.dna.species && (NOSOUL in C.dna.species.species_traits))
-			to_chat(user, "<span class='notice'>[C] has no soul. You cannot summon a contract for [C.p_them()].</span>")
-			return
-		if(C.mind && user.mind && !(C.dna && C.dna.species && (NOSOUL in C.dna.species.species_traits)))
+		if(C.mind && user.mind)
 			if(C.stat == DEAD)
 				if(user.drop_item())
 					var/obj/item/paper/contract/infernal/revive/contract = new(user.loc, C.mind, user.mind)
@@ -74,7 +71,6 @@
 				C.put_in_hands(contract)
 		else
 			to_chat(user, "<span class='notice'>[C] seems to not be sentient.  You cannot summon a contract for [C.p_them()].</span>")
-
 
 /obj/effect/proc_holder/spell/aimed/fireball/hellish
 	name = "Hellfire"

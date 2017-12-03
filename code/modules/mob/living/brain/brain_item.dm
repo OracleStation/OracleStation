@@ -180,7 +180,7 @@
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
 		if(H.dna && H.dna.species && (REVIVESBYHEALING in H.dna.species.species_traits))
-			if(H.health > 0)
+			if(H.health > 0 && !H.hellbound)
 				H.revive(0)
 	//	QDEL_NULL(stored_mmi.brainmob)
 	// :v
