@@ -949,8 +949,8 @@
 	if(chem.id == exotic_blood)
 		H.blood_volume = min(H.blood_volume + round(chem.volume, 0.1), BLOOD_VOLUME_MAXIMUM)
 		H.reagents.del_reagent(chem.id)
-		return FALSE
-	return TRUE
+		return 0
+	return 1
 
 // Do species-specific reagent handling here
 // Return 1 if it should do normal processing too
@@ -960,8 +960,8 @@
 	if(R.id == exotic_blood)
 		H.blood_volume = min(H.blood_volume + round(R.volume, 0.1), BLOOD_VOLUME_NORMAL)
 		H.reagents.del_reagent(R.id)
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /datum/species/proc/handle_speech(message, mob/living/carbon/human/H)
 	return message
