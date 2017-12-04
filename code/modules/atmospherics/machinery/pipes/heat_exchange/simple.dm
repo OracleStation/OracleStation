@@ -1,5 +1,5 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple
-	icon_state = "intact2"
+	icon_state = "intact"
 
 	name = "pipe"
 	desc = "A one meter section of heat-exchanging pipe"

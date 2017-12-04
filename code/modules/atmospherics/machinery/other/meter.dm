@@ -26,18 +26,6 @@
 	SSair.atmos_machinery += src
 	if(!target)
 		reattach_to_layer()
-
-	switch(target_layer)
-		if (PIPING_LAYER_MIN)
-			pixel_x = -6
-			pixel_y = -6
-		if (PIPING_LAYER_DEFAULT)
-			pixel_x = 0
-			pixel_y = 0
-		if (PIPING_LAYER_MAX)
-			pixel_x = 6
-			pixel_y = 6
-
 	return ..()
 
 /obj/machinery/meter/proc/reattach_to_layer()
@@ -49,6 +37,8 @@
 
 /obj/machinery/meter/proc/setAttachLayer(var/new_layer)
 	target_layer = new_layer
+	pixel_x = (new_layer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_P_X
+	pixel_y = (new_layer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_P_Y
 
 /obj/machinery/meter/process_atmos()
 	if(!target)
@@ -62,9 +52,6 @@
 	use_power(5)
 
 	var/datum/gas_mixture/environment = target.return_air()
-
-	cut_overlays()
-
 	if(!environment)
 		icon_state = "meterX"
 		return 0
@@ -83,16 +70,6 @@
 		icon_state = "meter3_[val]"
 	else
 		icon_state = "meter4"
-
-
-	var/env_temp = environment.return_temperature()
-
-	if (env_temp < 273.2)
-		add_overlay("cold")
-	else if(env_temp < 360)
-		add_overlay("normal")
-	else
-		add_overlay("hot")
 
 	if(frequency)
 		var/datum/radio_frequency/radio_connection = SSradio.return_frequency(frequency)

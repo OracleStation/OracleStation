@@ -2,14 +2,10 @@
 /mob/verb/say_verb(message as text)
 	set name = "Say"
 	set category = "IC"
-	var/regex/whisper_finder = regex("^\\.w\\s+|^\\.w")
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
-	if(findtext(message, ".w", 1, 3))
-		whisper(whisper_finder.Replace(message, ""))
-	else
-		usr.say(message)
+	usr.say(message)
 
 
 /mob/verb/whisper_verb(message as text)

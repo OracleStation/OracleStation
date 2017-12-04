@@ -57,7 +57,7 @@
 
 /obj/item/storage/firstaid/fire/Initialize(mapload)
 	..()
-	icon_state = pick("ointment")
+	icon_state = pick("ointment","firefirstaid")
 
 /obj/item/storage/firstaid/fire/PopulateContents()
 	if(empty)
@@ -75,7 +75,7 @@
 
 /obj/item/storage/firstaid/toxin/Initialize(mapload)
 	. = ..()
-	icon_state = pick("antitoxin")
+	icon_state = pick("antitoxin","antitoxfirstaid","antitoxfirstaid2","antitoxfirstaid3")
 
 /obj/item/storage/firstaid/toxin/PopulateContents()
 	if(empty)

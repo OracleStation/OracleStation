@@ -14,8 +14,8 @@
 /obj/machinery/atmospherics/components/unary/portables_connector/New()
 	..()
 	var/datum/gas_mixture/air_contents = AIR1
+
 	air_contents.volume = 0
-	icon_state = pipe_state
 
 /obj/machinery/atmospherics/components/unary/portables_connector/visible
 	level = 2

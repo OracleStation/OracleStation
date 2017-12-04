@@ -24,8 +24,8 @@ It's like a regular ol' straight pipe, but you can turn it on and off.
 /obj/machinery/atmospherics/components/binary/valve/update_icon_nopipes(animation = 0)
 	normalize_dir()
 	if(animation)
-		flick("[valve_type]valve_[open][!open][piping_layer]",src)
-	icon_state = "[valve_type]valve_[open?"on":"off"][piping_layer]"
+		flick("[valve_type]valve_[open][!open]",src)
+	icon_state = "[valve_type]valve_[open?"on":"off"]"
 
 /obj/machinery/atmospherics/components/binary/valve/proc/open()
 	open = TRUE
@@ -71,6 +71,6 @@ It's like a regular ol' straight pipe, but you can turn it on and off.
 /obj/machinery/atmospherics/components/binary/valve/digital/update_icon_nopipes(animation)
 	if(stat & NOPOWER)
 		normalize_dir()
-		icon_state = "[valve_type]valve_nopower[piping_layer]"
+		icon_state = "dvalve_nopower"
 		return
 	..()

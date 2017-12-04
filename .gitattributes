@@ -6,8 +6,7 @@
 # needs additional setup, see tools/dmitool/merging.txt
 *.dmi merge=merge-dmi
 
-# shell scripts need just lf
-*.sh eol=lf
-
 # force changelog merging to use union
 html/changelog.html merge=union
+
+
