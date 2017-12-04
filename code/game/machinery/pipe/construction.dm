@@ -75,8 +75,6 @@ Buildable meters
 		new_layer = PIPING_LAYER_DEFAULT
 	piping_layer = new_layer
 
-	pixel_x += (piping_layer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_P_X
-	pixel_y += (piping_layer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_P_Y
 	layer = initial(layer) + ((piping_layer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_LCHANGE)
 
 /obj/item/pipe/proc/update()
@@ -238,5 +236,3 @@ Buildable meters
 
 /obj/item/pipe_meter/proc/setAttachLayer(new_layer = PIPING_LAYER_DEFAULT)
 	piping_layer = new_layer
-	pixel_x = (new_layer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_P_X
-	pixel_y = (new_layer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_P_Y

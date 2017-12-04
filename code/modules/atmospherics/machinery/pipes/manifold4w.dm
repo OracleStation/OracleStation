@@ -21,14 +21,14 @@
 /obj/machinery/atmospherics/pipe/manifold4w/update_icon()
 	var/invis = invisibility ? "-f" : ""
 
-	icon_state = "manifold4w_center[invis]"
+	icon_state = "manifold4w_center[piping_layer][invis]"
 
 	cut_overlays()
 
 	//Add non-broken pieces
 	for(DEVICE_TYPE_LOOP)
 		if(NODE_I)
-			add_overlay(getpipeimage('icons/obj/atmospherics/pipes/manifold.dmi', "manifold_full[invis]", get_dir(src, NODE_I)))
+			add_overlay(getpipeimage('icons/obj/atmospherics/pipes/manifold.dmi', "manifold_full[piping_layer][invis]", get_dir(src, NODE_I)))
 
 //Colored pipes, use these for mapping
 /obj/machinery/atmospherics/pipe/manifold4w/general
