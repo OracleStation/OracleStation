@@ -152,7 +152,7 @@
 
 /obj/item/reagent_containers/spray/medical
 	name = "medical spray"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "medspray"
 	volume = 100
 
