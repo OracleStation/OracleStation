@@ -96,10 +96,10 @@
 	H.update_body()
 
 /obj/item/organ/ears/robot
-	name = "robotic ears"
+	name = "auditory sensors"
 	icon_state = "robotic_ears"
 	origin_tech = "engineering=2"
-	desc = "A pair of microphones, installed in the head, that grant the ability to hear."
+	desc = "A pair of microphones intended to be installed in an IPC head, that grant the ability to hear."
 	zone = "head"
 	slot = "ears"
 	gender = PLURAL

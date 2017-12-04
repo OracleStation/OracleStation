@@ -370,7 +370,7 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 		if(verbose)
 			to_chat(user, "<span class='warning'>We already have this DNA in storage!</span>")
 		return
-	if(!target.has_dna())
+	if(!target.has_dna() || (SYNTHETICSPECIES in target.dna.species.species_traits))
 		if(verbose)
 			to_chat(user, "<span class='warning'>[target] is not compatible with our biology.</span>")
 		return

@@ -8,7 +8,7 @@
 	brutemod = 1.6 // Thin metal, cheap materials.
 	toxmod = 0
 	siemens_coeff = 1.5 // Overload!
-	species_traits = list(NOBREATH,NOBLOOD,RADIMMUNE,VIRUSIMMUNE,NOZOMBIE,EASYDISMEMBER,EASYLIMBATTACHMENT,NOPAIN,NO_BONES,NOTRANSSTING,MUTCOLORS,REVIVESBYHEALING,NOSCAN)
+	species_traits = list(NOBREATH,NOBLOOD,RADIMMUNE,VIRUSIMMUNE,NOZOMBIE,EASYDISMEMBER,EASYLIMBATTACHMENT,NOPAIN,NO_BONES,NOTRANSSTING,MUTCOLORS,REVIVESBYHEALING,NOSCAN,SYNTHETICSPECIES)
 	mutant_bodyparts = list("ipc_screen", "ipc_antenna", "ipc_chassis")
 	default_features = list("mcolor" = "#7D7D7D", "ipc_screen" = "Static", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)")
 	meat = /obj/item/stack/sheet/plasteel{amount = 5}
@@ -44,6 +44,7 @@
 	for(var/X in C.bodyparts)
 		var/obj/item/bodypart/O = X
 		O.change_bodypart_status(BODYPART_ROBOTIC) // Makes all Bodyparts robotic.
+		O.render_like_organic = TRUE
 		var/chassis = C.dna.features["ipc_chassis"]
 		if(chassis == "Morpheus Cyberkinetics(Greyscale)") // If it's a greyscale chassis, we use MUTCOLOR.
 			C.dna.species.species_traits += MUTCOLORS

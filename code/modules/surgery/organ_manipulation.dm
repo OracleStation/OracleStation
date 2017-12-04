@@ -76,6 +76,9 @@
 		if(affected.status != ORGAN_ROBOTIC)
 			to_chat(user, "<span class='notice'>You can't put [tool] into a meat enclosure!</span>")
 			return -1
+		if(!isipc(target))
+			to_chat(user, "<span class='notice'>[target] does not have the proper connectors to interface with [tool].</span>")
+			return -1
 		if(target_zone != "chest")
 			to_chat(user, "<span class='notice'>You have to install [tool] in [target]'s chest!</span>")
 		if(target.internal_organs_slot["brain"])

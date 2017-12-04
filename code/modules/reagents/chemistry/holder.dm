@@ -249,9 +249,6 @@
 					can_process = TRUE
 				if((R.process_flags & ORGANIC) && (H.dna.species.reagent_tag & PROCESS_ORGANIC))		//ORGANIC-oriented reagents require PROCESS_ORGANIC
 					can_process = TRUE
-				//Species with PROCESS_DUO are only affected by reagents that affect both organics and synthetics, like acid and hellwater
-				if((R.process_flags & ORGANIC) && (R.process_flags & SYNTHETIC) && (H.dna.species.reagent_tag & PROCESS_DUO))
-					can_process = TRUE
 
 			//If handle_reagents returns 0, it's doing the reagent removal on its own
 			var/species_handled = !(H.dna.species.handle_reagents(H, R))
@@ -514,9 +511,6 @@
 				can_process = TRUE
 			if((R.process_flags & ORGANIC) && (H.dna.species.reagent_tag & PROCESS_ORGANIC))		//ORGANIC-oriented reagents require PROCESS_ORGANIC
 				can_process = TRUE
-			//Species with PROCESS_DUO are only affected by reagents that affect both organics and synthetics, like acid and hellwater
-			if((R.process_flags & ORGANIC) && (R.process_flags & SYNTHETIC) && (H.dna.species.reagent_tag & PROCESS_DUO))
-				can_process = TRUE
 	//We'll assume that non-human mobs lack the ability to process synthetic-oriented reagents (adjust this if we need to change that assumption)
 	else
 		if(R.process_flags != SYNTHETIC)
@@ -541,6 +535,10 @@
 		var/datum/reagent/R = reagent
 		switch(react_type)
 			if("LIVING")
+				var/check = reaction_check(A, R)
+				if(!check)
+					continue
+				R.reaction_mob(A, method, R.volume * volume_modifier)
 				var/touch_protection = 0
 				if(method == VAPOR)
 					var/mob/living/L = A

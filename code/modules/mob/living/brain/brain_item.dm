@@ -196,7 +196,6 @@
 				spawn(0)
 					if(B)
 						B.stat = 0//why the fuck this works I have no idea, but it actually does
-						//don't ask questions you don't want to know the answers to
 			stored_mmi = null
 
 	..()

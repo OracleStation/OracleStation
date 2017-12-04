@@ -60,7 +60,7 @@
 	var/dimension_x = 32
 	var/dimension_y = 32
 	var/center = FALSE	//Should we center the sprite?
-	var/fake_limbs_id //Used for features that switch out limb icons
+	var/fake_limbs_id // The "limbs_id" of the icon set that this feature is tied to.
 
 //////////////////////
 // Hair Definitions //

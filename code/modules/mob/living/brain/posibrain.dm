@@ -50,7 +50,6 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 	if(!brainmob)
 		brainmob = new(src)
 	if(is_occupied())
-		to_chat(user, "<span class='warning'>This [name] is already active!</span>")
 		silenced = !silenced
 		to_chat(user, "<span class='notice'>You toggle the speaker [silenced ? "off" : "on"].</span>")
 		if(brainmob && brainmob.key)
