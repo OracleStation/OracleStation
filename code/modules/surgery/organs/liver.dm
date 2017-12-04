@@ -103,4 +103,4 @@
 		if(1)
 			to_chat(owner, "<span class='warning'>Alert: Your Substance Processor is nonfunctional and requires repairs or replacement.</span>")
 		if(2)
-			to_chat(owner, "<span class='warning'>Alert: Your Subtance Processor is damaged and requires repairs.</span>")
+			to_chat(owner, "<span class='warning'>Alert: Your Substance Processor is damaged and requires repairs.</span>")

@@ -126,14 +126,14 @@
 //Please override this locally if you want to define when what species qualifies for what rank if human authority is enforced.
 /datum/species/proc/qualifies_for_rank(rank, list/features)
 	if(rank in GLOB.command_positions)
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /datum/species/proc/get_age_frequency(var/age)
 	return (1.0 + 0.5*(30 - age)/80)
 
 //Will regenerate missing organs
-/datum/species/proc/regenerate_organs(mob/living/carbon/C,datum/species/old_species,replace_current=TRUE)
+/datum/species/proc/regenerate_organs(mob/living/carbon/C, datum/species/old_species, replace_current=TRUE)
 	var/obj/item/organ/brain/brain = C.getorganslot("brain")
 	var/obj/item/organ/heart/heart = C.getorganslot("heart")
 	var/obj/item/organ/lungs/lungs = C.getorganslot("lungs")
@@ -156,7 +156,7 @@
 
 	if(brain && (replace_current || !should_have_brain))
 		if(!brain.decoy_override)//Just keep it if it's fake
-			brain.Remove(C,TRUE,TRUE)
+			brain.Remove(C, TRUE, TRUE)
 			QDEL_NULL(brain)
 	if(should_have_brain && !brain)
 		brain = new mutant_brain()

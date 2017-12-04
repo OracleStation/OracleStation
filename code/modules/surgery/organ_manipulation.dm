@@ -28,8 +28,8 @@
 	var/implements_extract = list(/obj/item/hemostat = 100, /obj/item/crowbar = 55)
 	var/implements_mend = list(/obj/item/cautery = 100, /obj/item/weldingtool = 70, /obj/item/lighter = 45, /obj/item/match = 20)
 	var/current_type
-	var/mends_the_incision = "mends the incision in"
 	var/mend_the_incision = "mend the incision in"//so we can reuse the whole thing for robotic surgery
+	var/mends_the_incision = "mends the incision in"
 	var/obj/item/organ/I = null
 
 /datum/surgery_step/manipulate_organs/New()

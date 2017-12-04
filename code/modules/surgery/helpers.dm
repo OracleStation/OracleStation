@@ -2,8 +2,6 @@
 	if(!istype(M))
 		return
 
-
-
 	var/mob/living/carbon/C
 	var/obj/item/bodypart/affecting
 	var/selected_zone = user.zone_selected
@@ -17,7 +15,6 @@
 
 	if((affecting.status == ORGAN_ROBOTIC && !istype(I, /obj/item/screwdriver)) && (affecting.status == ORGAN_ORGANIC && !I.sharpness))
 	//if it's a robotic organ and you're not using a screwdriver OR an organic organ and you're not using something sharp.
-	//shoot me, I know.
 		return
 
 	var/datum/surgery/current_surgery

@@ -1,5 +1,4 @@
 /datum/species/ipc
-	// shitty toasters why do we need them
 	name = "Machine"
 	id = "ipc"
 	say_mod = "states"
@@ -41,46 +40,41 @@
 	. = ..()
 	var/obj/item/organ/appendix/appendix = C.getorganslot("appendix") // Easiest way to remove it.
 	appendix.Remove(C)
-	qdel(appendix)
+	QDEL_NULL(appendix)
 	for(var/X in C.bodyparts)
 		var/obj/item/bodypart/O = X
-		O.change_bodypart_status(BODYPART_ROBOTIC) // Makes all Bodyparts robotic. The rest of the string interacts with the "ipc_chassis" feature.
-		if(C.dna.features["ipc_chassis"] == "Morpheus Cyberkinetics(Greyscale)")
-			C.dna.species.limbs_id = "mcgipc"
+		O.change_bodypart_status(BODYPART_ROBOTIC) // Makes all Bodyparts robotic.
+		var/chassis = C.dna.features["ipc_chassis"]
+		if(chassis == "Morpheus Cyberkinetics(Greyscale)") // If it's a greyscale chassis, we use MUTCOLOR.
 			C.dna.species.species_traits += MUTCOLORS
-		if(C.dna.features["ipc_chassis"] == "Morpheus Cyberkinetics(Black)")
-			C.dna.species.limbs_id = "mcbipc"
-			C.dna.species.species_traits. -= MUTCOLORS
-		if(C.dna.features["ipc_chassis"] == "Bishop Cyberkinetics")
-			C.dna.species.limbs_id = "bshipc"
-			C.dna.species.species_traits. -= MUTCOLORS
-		if(C.dna.features["ipc_chassis"] == "Bishop Cyberkinetics 2.0")
-			C.dna.species.limbs_id = "bs2ipc"
-			C.dna.species.species_traits. -= MUTCOLORS
-		if(C.dna.features["ipc_chassis"] == "Hephaestus Industries")
-			C.dna.species.limbs_id = "hsiipc"
-			C.dna.species.species_traits. -= MUTCOLORS
-		if(C.dna.features["ipc_chassis"] == "Hephaestus Industries 2.0")
-			C.dna.species.limbs_id = "hi2ipc"
-			C.dna.species.species_traits. -= MUTCOLORS
-		if(C.dna.features["ipc_chassis"] == "Shellguard Munitions")
-			C.dna.species.limbs_id = "sgmipc"
-			C.dna.species.species_traits. -= MUTCOLORS
-		if(C.dna.features["ipc_chassis"] == "Ward-Takahashi Manufacturing")
-			C.dna.species.limbs_id = "wtmipc"
-			C.dna.species.species_traits. -= MUTCOLORS
-		if(C.dna.features["ipc_chassis"] == "Xion Manufacturing Group")
-			C.dna.species.limbs_id = "xmgipc"
-			C.dna.species.species_traits. -= MUTCOLORS
-		if(C.dna.features["ipc_chassis"] == "Xion Manufacturing Group 2.0")
-			C.dna.species.limbs_id = "xm2ipc"
-			C.dna.species.species_traits. -= MUTCOLORS
-		if(C.dna.features["ipc_chassis"] == "Zeng-Hu Pharmaceuticals")
-			C.dna.species.limbs_id = "zhpipc"
-			C.dna.species.species_traits. -= MUTCOLORS
+		else
+			C.dna.species.species_traits -= MUTCOLORS // If it's not, we remove it
+		switch(chassis) // And then we hard swap the icons based on the feature
+			if("Morpheus Cyberkinetics(Greyscale)")
+				C.dna.species.limbs_id = "mcgipc"
+			if("Morpheus Cyberkinetics(Black)")
+				C.dna.species.limbs_id = "mcbipc"
+			if("Bishop Cyberkinetics")
+				C.dna.species.limbs_id = "bshipc"
+			if("Bishop Cyberkinetics 2.0")
+				C.dna.species.limbs_id = "bs2ipc"
+			if("Hephaestus Industries")
+				C.dna.species.limbs_id = "hsiipc"
+			if("Hephaestus Industries 2.0")
+				C.dna.species.limbs_id = "hi2ipc"
+			if("Shellguard Munitions")
+				C.dna.species.limbs_id = "sgmipc"
+			if("Ward-Takahashi Manufacturing")
+				C.dna.species.limbs_id = "wtmipc"
+			if("Xion Manufacturing Group")
+				C.dna.species.limbs_id = "xmgipc"
+			if("Xion Manufacturing Group 2.0")
+				C.dna.species.limbs_id = "xm2ipc"
+			if("Zeng-Hu Pharmaceuticals")
+				C.dna.species.limbs_id = "zhpipc"
 
 /datum/species/ipc/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
-	if(chem.id == ("plasma" || "stable_plasma")) // Delicious Plasma
+	if(chem.id in list("plasma", "stable_plasma")) // IPCs have plasma batteries
 		H.nutrition += 5
 		if(H.nutrition > NUTRITION_LEVEL_FULL)
 			H.nutrition = NUTRITION_LEVEL_FULL
