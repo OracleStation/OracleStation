@@ -949,8 +949,8 @@
 	if(chem.id == exotic_blood)
 		H.blood_volume = min(H.blood_volume + round(chem.volume, 0.1), BLOOD_VOLUME_MAXIMUM)
 		H.reagents.del_reagent(chem.id)
-		return 1
-	return 0
+		return FALSE
+	return TRUE
 
 // Do species-specific reagent handling here
 // Return 1 if it should do normal processing too
