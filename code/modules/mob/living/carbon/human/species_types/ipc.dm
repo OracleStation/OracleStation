@@ -92,3 +92,5 @@
 		spark_system.set_up(1, 0, H)
 		spark_system.attach(H)
 		spark_system.start()
+		if(prob(25)) // It's here because NOBLOOD makes them not interact with add_splatter_floor
+			new /obj/effect/decal/cleanable/oil(H.loc)
