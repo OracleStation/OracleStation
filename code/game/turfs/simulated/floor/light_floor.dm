@@ -17,7 +17,7 @@
 	to_chat(user, "<span class='notice'>There's a <b>small crack</b> on the edge of it.</span>")
 
 /turf/open/floor/light/Initialize()
-	..()
+	. = ..()
 	update_icon()
 
 /turf/open/floor/light/break_tile()

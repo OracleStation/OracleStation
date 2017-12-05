@@ -62,7 +62,7 @@
 	icon = 'icons/obj/smooth_structures/lattice_clockwork.dmi'
 
 /obj/structure/lattice/clockwork/Initialize(mapload)
-	..()
+	. = ..()
 	ratvar_act()
 
 /obj/structure/lattice/clockwork/ratvar_act()
@@ -70,7 +70,7 @@
 		new /obj/structure/lattice/clockwork/large(loc) // deletes old one
 
 /obj/structure/lattice/clockwork/large/Initialize(mapload)
-	..()
+	. = ..()
 	icon = 'icons/obj/smooth_structures/lattice_clockwork_large.dmi'
 	pixel_x = -9
 	pixel_y = -9
@@ -111,7 +111,7 @@
 	icon = 'icons/obj/smooth_structures/catwalk_clockwork.dmi'
 
 /obj/structure/lattice/catwalk/clockwork/Initialize(mapload)
-	..()
+	. = ..()
 	new /obj/effect/temp_visual/ratvar/floor/catwalk(loc)
 	new /obj/effect/temp_visual/ratvar/beam/catwalk(loc)
 
