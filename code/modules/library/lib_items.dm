@@ -39,7 +39,7 @@
 			to_chat(user, "<span class='notice'>There's a <b>small crack</b> visible on the shelf.</span>")
 
 /obj/structure/bookcase/Initialize(mapload)
-	..()
+	. = ..()
 	if(!mapload)
 		return
 	state = 2

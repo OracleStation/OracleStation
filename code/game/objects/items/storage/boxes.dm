@@ -721,7 +721,7 @@
 	illustration = "donk_kit"
 
 /obj/item/storage/box/ingredients/Initialize()
-	..()
+	. = ..()
 	if(icon_state)
 		name = "[name] ([icon_state])"
 		desc = "A box containing supplementary ingredients for the aspiring chef. This box's theme is '[icon_state]'."
