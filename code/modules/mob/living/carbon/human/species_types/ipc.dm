@@ -1,5 +1,5 @@
 /datum/species/ipc
-	name = "Machine"
+	name = "IPC"
 	id = "ipc"
 	say_mod = "states"
 	heatmod = 3 // Went cheap with Aircooling
@@ -26,7 +26,7 @@
 	mutantstomach = /obj/item/organ/stomach/cell
 	mutantears = /obj/item/organ/ears/robot
 	mutant_brain = /obj/item/organ/brain/mmi_holder/posibrain
-	examine_text = "a Machine"
+	examine_text = "an IPC"
 	species_text_color = "#2e2e2e"
 	reagent_tag = PROCESS_SYNTHETIC
 	species_gibs = "robotic"
@@ -73,6 +73,9 @@
 				C.dna.species.limbs_id = "xm2ipc"
 			if("Zeng-Hu Pharmaceuticals")
 				C.dna.species.limbs_id = "zhpipc"
+
+/datum/species/ipc/after_equip_job(datum/job/J, mob/living/carbon/human/H)
+	H.grant_language(/datum/language/machine)
 
 /datum/species/ipc/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
 	if(chem.id in list("plasma", "stable_plasma")) // IPCs have plasma batteries

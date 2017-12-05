@@ -60,7 +60,6 @@
 	var/dimension_x = 32
 	var/dimension_y = 32
 	var/center = FALSE	//Should we center the sprite?
-	var/fake_limbs_id // The "limbs_id" of the icon set that this feature is tied to.
 
 //////////////////////
 // Hair Definitions //
@@ -1649,52 +1648,39 @@
 
 /datum/sprite_accessory/ipc_chassis // Used for changing limb icons, doesn't need to hold the actual icon. That's handled in ipc.dm
 	icon = null
-	color_src = 0 // Most of them are set in the colors, so we don't allow them to be rendered with MUTCOLORS. Exceptions should be flagged as such.
 
 /datum/sprite_accessory/ipc_chassis/mcgreyscale
 	name = "Morpheus Cyberkinetics(Greyscale)"
-	color_src = MUTCOLORS
-	fake_limbs_id = "mcgipc"
 
 /datum/sprite_accessory/ipc_chassis/mcblack
 	name = "Morpheus Cyberkinetics(Black)"
-	fake_limbs_id = "mcbipc"
 
 /datum/sprite_accessory/ipc_chassis/bishopcyberkinetics
 	name = "Bishop Cyberkinetics"
-	fake_limbs_id = "bshipc"
 
 /datum/sprite_accessory/ipc_chassis/bishopcyberkinetics2
 	name = "Bishop Cyberkinetics 2.0"
-	fake_limbs_id = "bs2ipc"
 
 /datum/sprite_accessory/ipc_chassis/hephaestussindustries
 	name = "Hephaestus Industries"
-	fake_limbs_id = "hsiipc"
 
 /datum/sprite_accessory/ipc_chassis/hephaestussindustries2
 	name = "Hephaestus Industries 2.0"
-	fake_limbs_id = "hi2ipc"
 
 /datum/sprite_accessory/ipc_chassis/shellguardmunitions
 	name = "Shellguard Munitions"
-	fake_limbs_id = "sgmipc"
 
 /datum/sprite_accessory/ipc_chassis/wardtakahashimanufacturing
 	name = "Ward-Takahashi Manufacturing"
-	fake_limbs_id = "wtmipc"
 
 /datum/sprite_accessory/ipc_chassis/xionmanufacturinggroup
 	name = "Xion Manufacturing Group"
-	fake_limbs_id = "xmgipc"
 
 /datum/sprite_accessory/ipc_chassis/xionmanufacturinggroup2
 	name = "Xion Manufacturing Group 2.0"
-	fake_limbs_id = "xm2ipc"
 
 /datum/sprite_accessory/ipc_chassis/zenghupharmaceuticals
 	name = "Zeng-Hu Pharmaceuticals"
-	fake_limbs_id = "zhpipc"
 
 /datum/sprite_accessory/legs 	//legs are a special case, they aren't actually sprite_accessories but are updated with them.
 	icon = null					//These datums exist for selecting legs on preference, and little else
