@@ -29,7 +29,11 @@
 	Master.Initialize(10, FALSE)
 
 	if(CONFIG_GET(flag/irc_announce_new_game))
-		IRCBroadcast("New round starting on [SSmapping.config.map_name]!")
+		if(CONFIG_GET(string/server))
+			var/address = CONFIG_GET(string/server)
+			IRCBroadcast("New round starting on [SSmapping.config.map_name]! <byond://[address]>")
+		else
+			IRCBroadcast("New round starting on [SSmapping.config.map_name]!")
 
 /world/proc/SetupExternalRSC()
 #if (PRELOAD_RSC == 0)
