@@ -248,3 +248,15 @@
 	build_path = /obj/item/gun/energy/kinetic_accelerator/crossbow/large
 	category = list("Weapons")
 	lockbox_access = list(ACCESS_ARMORY)
+	
+/datum/design/lasercannon
+	name = "Accelerator Laser Cannon"
+	desc = "A heavy duty laser cannon. It does more damage the farther away the target is."
+	id = "lasercannon"
+	req_tech = list("combat" = 5, "magnets" = 5, "powerstorage" = 5, engineering = 5)
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 10000, MAT_GLASS = 3500, MAT_URANIUM = 2000, MAT_SILVER = 2000, MAT_GOLD = 500)
+	build_path = /obj/item/weapon/gun/energy/lasercannon
+	category = list("Weapons")
+	lockbox_access = list(ACCESS_ARMORY)
+	
