@@ -117,7 +117,7 @@
 /obj/item/reagent_containers/glass/beaker
 	name = "beaker"
 	desc = "A beaker. It can hold up to 50 units."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "beaker"
 	item_state = "beaker"
 	materials = list(MAT_GLASS=500)
@@ -158,7 +158,7 @@
 /obj/item/reagent_containers/glass/beaker/jar
 	name = "honey jar"
 	desc = "A jar for honey. It can hold up to 50 units of sweet delight."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "vapour"
 
 /obj/item/reagent_containers/glass/beaker/large
@@ -168,8 +168,50 @@
 	materials = list(MAT_GLASS=2500)
 	volume = 100
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,25,30,50,100)
+	possible_transfer_amounts = list(5,10,15,20,25,30,50,75,100)
 	flags_1 = OPENCONTAINER_1
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/reagent_containers/glass/beaker/vial
+	name = "vial"
+	desc = "A vial. Can hold up to 25 units."
+	icon_state = "minivial"
+	materials = list(MAT_GLASS=250)
+	volume = 25
+	amount_per_transfer_from_this = 10
+	possible_transfer_amounts = list(5,10,15,20,25)
+	flags_1 = OPENCONTAINER_1
+
+/obj/item/reagent_containers/glass/beaker/erlenmeyer
+	name = "erlenmeyer flask"
+	desc = "An erlenmeyer flask. Can hold up to 75 units."
+	icon_state = "eflask"
+	materials = list(MAT_GLASS=1000)
+	volume = 75
+	amount_per_transfer_from_this = 10
+	possible_transfer_amounts = list(5,10,15,20,25,30,50,75)
+	flags_1 = OPENCONTAINER_1
+
+/obj/item/reagent_containers/glass/beaker/round
+	name = "round-bottomed flask"
+	desc = "A round-bottomed flask. Can hold up to 75 units."
+	icon_state = "rflask"
+	materials = list(MAT_GLASS=1000)
+	volume = 75
+	amount_per_transfer_from_this = 10
+	possible_transfer_amounts = list(5,10,15,20,25,30,50,75)
+	flags_1 = OPENCONTAINER_1
+
+/obj/item/reagent_containers/glass/beaker/round/large
+	name = "large round-bottomed flask"
+	desc = "A large round-bottomed flask. Can hold up to 100 units."
+	icon_state = "bigflask"
+	materials = list(MAT_GLASS=2500)
+	volume = 100
+	amount_per_transfer_from_this = 10
+	possible_transfer_amounts = list(5,10,15,20,25,30,50,75,100,150)
+	flags_1 = OPENCONTAINER_1
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/reagent_containers/glass/beaker/noreact
 	name = "cryostasis beaker"

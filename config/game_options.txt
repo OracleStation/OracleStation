@@ -400,10 +400,10 @@ ROUNDSTART_RACES human
 
 ## Races that are okay-ish on the station. Safe to enable.
 ROUNDSTART_RACES unathi
-ROUNDSTART_RACES plasmaman
-ROUNDSTART_RACES slime
+#ROUNDSTART_RACES plasmaman
+#ROUNDSTART_RACES slime
 ROUNDSTART_RACES ethari
-ROUNDSTART_RACES pod
+#ROUNDSTART_RACES pod
 
 ## Races that aren't on the station by default.
 #ROUNDSTART_RACES jelly
@@ -493,3 +493,7 @@ ARRIVALS_SHUTTLE_DOCK_WINDOW 55
 ## How many wirechewing rodents you want to spawn on exposed maintenane wires at the start of the round. You may wish to set this to 0 if you're testing powernets.
 
 MICE_ROUNDSTART 10
+
+## Shutdown the world instead of rebooting
+#SHUTDOWN_FOR_UPDATE
+#UPDATE_VERSION_STRING_URI http://s3.us-east-1.oraclestation.com/master/latest/COMMIT_HASH

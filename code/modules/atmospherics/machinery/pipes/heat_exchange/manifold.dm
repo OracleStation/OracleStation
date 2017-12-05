@@ -1,6 +1,6 @@
 //3-way manifold
 /obj/machinery/atmospherics/pipe/heat_exchanging/manifold
-	icon_state = "manifold"
+	icon_state = "manifold2"
 
 	name = "pipe manifold"
 	desc = "A manifold composed of regular pipes"
@@ -25,20 +25,20 @@
 			initialize_directions_he = NORTH|EAST|SOUTH
 
 /obj/machinery/atmospherics/pipe/heat_exchanging/manifold/update_icon()
-	var/invis = invisibility ? "-f" : ""
+	alpha = invisibility ? 128 : 255
 
-	icon_state = "manifold_center[invis]"
+	icon_state = "manifold_center[piping_layer]"
 
 	cut_overlays()
 
 	//Add non-broken pieces
 	for(DEVICE_TYPE_LOOP)
 		if(NODE_I)
-			add_overlay(getpipeimage('icons/obj/atmospherics/pipes/heat.dmi', "manifold_intact[invis]", get_dir(src, NODE_I)))
+			add_overlay(getpipeimage('icons/obj/atmospherics/pipes/heat.dmi', "manifold_intact[piping_layer]", get_dir(src, NODE_I)))
 
 //4-way manifold
 /obj/machinery/atmospherics/pipe/heat_exchanging/manifold4w
-	icon_state = "manifold4w"
+	icon_state = "manifold4w2"
 
 	name = "4-way pipe manifold"
 	desc = "A manifold composed of heat-exchanging pipes"

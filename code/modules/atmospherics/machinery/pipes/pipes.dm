@@ -34,11 +34,12 @@
 
 /obj/machinery/atmospherics/pipe/update_icon() //overridden by manifolds
 	if(NODE1&&NODE2)
-		icon_state = "intact[invisibility ? "-f" : "" ]"
+		icon_state = "intact[piping_layer]"
 	else
 		var/have_node1 = NODE1?1:0
 		var/have_node2 = NODE2?1:0
-		icon_state = "exposed[have_node1][have_node2][invisibility ? "-f" : "" ]"
+		icon_state = "exposed[piping_layer][have_node1][have_node2]"
+	alpha = invisibility ? 128 : 255
 
 /obj/machinery/atmospherics/pipe/atmosinit()
 	var/turf/T = loc			// hide if turf is not intact

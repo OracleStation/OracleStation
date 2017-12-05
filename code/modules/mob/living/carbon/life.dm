@@ -15,6 +15,9 @@
 	if(..()) //not dead
 		handle_blood()
 
+	if(!client && key && stat != DEAD)//if you're disconnected, you're going to sleep
+		SetSleeping(40)
+
 	if(stat != DEAD)
 		handle_liver()
 
@@ -430,6 +433,13 @@
 	if(reagents.get_reagent_amount("corazone"))//corazone is processed here an not in the liver because a failing liver can't metabolize reagents
 		reagents.remove_reagent("corazone", 0.4) //corazone slowly deletes itself.
 		return
-	adjustToxLoss(8)
+	var/dealt_damage = FALSE
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
+		if(TOXINLOVER in H.dna.species.species_traits)
+			adjustToxLoss(-8)
+			dealt_damage = TRUE
+	if(!dealt_damage)
+		adjustToxLoss(8)
 	if(prob(30))
 		to_chat(src, "<span class='notice'>You feel confused and nauseous...</span>")//actual symptoms of liver failure

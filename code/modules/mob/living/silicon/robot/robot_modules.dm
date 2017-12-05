@@ -266,7 +266,7 @@
 		/obj/item/reagent_containers/glass/beaker/large,
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/syringe,
-		/obj/item/surgical_drapes,
+		
 		/obj/item/retractor,
 		/obj/item/hemostat,
 		/obj/item/cautery,
@@ -536,7 +536,7 @@
 		/obj/item/reagent_containers/borghypo/syndicate,
 		/obj/item/twohanded/shockpaddles/syndicate,
 		/obj/item/device/healthanalyzer,
-		/obj/item/surgical_drapes,
+		
 		/obj/item/retractor,
 		/obj/item/hemostat,
 		/obj/item/cautery,

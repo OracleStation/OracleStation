@@ -323,12 +323,12 @@
 	var/obj/item/bodypart/L = get_bodypart("l_arm")
 	var/obj/item/bodypart/R = get_bodypart("r_arm")
 
-	if(L.broken && held_items[1] && prob(30))
+	if(istype(L) && L.broken && held_items[1] && prob(30))
 		emote("scream")
 		visible_message("<span class='warning'><b>[src]</b> screams and lets go of [held_items[1]] in pain.</span>", "<span class='userdanger'>A horrible pain in your [parse_zone(L)] makes it impossible to hold [held_items[1]]!</span>")
 		dropItemToGround(held_items[1])
 
-	if(R.broken && held_items[2] && prob(30))
+	if(istype(R) && R.broken && held_items[2] && prob(30))
 		emote("scream")
 		visible_message("<span class='warning'><b>[src]</b> screams and lets go of [held_items[2]] in pain.</span>", "<span class='userdanger'>A horrible pain in your [parse_zone(R)] makes it impossible to hold [held_items[2]]!</span>")
 		dropItemToGround(held_items[2])
@@ -370,7 +370,7 @@
 	var/list/holy_heck_the_ouch_list = list("PLEASE, JUST END THE PAIN!", "GOOD GOD, MAKE THE PAIN STOP!", "AGH, IT HURTS!!!")
 
 	stuttering = max(stuttering, 4)
-	blur_eyes(50)
+	blur_eyes(3)
 
 	switch(shock_stage)
 		if(30)

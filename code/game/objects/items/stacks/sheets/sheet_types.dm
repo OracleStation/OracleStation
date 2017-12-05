@@ -18,6 +18,12 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	new/datum/stack_recipe("stool", /obj/structure/chair/stool, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("bar stool", /obj/structure/chair/stool/bar, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("chair", /obj/structure/chair, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("folding chair", /obj/structure/chair/folding, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("blue folding chair", /obj/structure/chair/folding/blue, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("yellow folding chair", /obj/structure/chair/folding/yellow, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("red folding chair", /obj/structure/chair/folding/red, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("green folding chair", /obj/structure/chair/folding/yellow, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("flight seat", /obj/structure/chair/flight, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("swivel chair", /obj/structure/chair/office/dark, 5, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("comfy chair", /obj/structure/chair/comfy/beige, 2, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("sofa (middle)", /obj/structure/chair/sofa, one_per_turf = TRUE, on_floor = TRUE), \
