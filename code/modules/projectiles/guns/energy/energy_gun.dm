@@ -131,12 +131,12 @@
 			if(0 to 200)
 				fail_tick += (2*(fail_chance))
 				M.rad_act(20)
-				to_chat(M, "<span class='userdanger'>Your [name] feels warmer.</span>")
+				to_chat(M, "<span class='userdanger'>Your [name] emits alot of heat...</span>")
 			if(201 to INFINITY)
 				SSobj.processing.Remove(src)
 				M.rad_act(40)
 				crit_fail = 1
-				to_chat(M, "<span class='userdanger'>Your [name]'s reactor overloads!</span>")
+				to_chat(M, "<span class='userdanger'>Your [name]'s micro-breeder reactor overloads!</span>")
 
 /obj/item/gun/energy/e_gun/nuclear/emp_act(severity)
 	..()
