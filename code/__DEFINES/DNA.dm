@@ -119,6 +119,6 @@
 #define NOSTOMACH		28
 #define NO_BONES		29
 #define NOPAIN			30
-#define REVIVESBYHEALING 31 // Mob will revive on heal when healing past a certain point.
+#define REVIVESBYHEALING 31 // Will revive on heal when healing and total HP > 0.
 #define NOSCAN			32 // Cannot be scanned by DNA scanner/Cloner scanner.
-#define SYNTHETICSPECIES	33
+#define NOCHANGELING	33 // Cannot be absorbed by clings

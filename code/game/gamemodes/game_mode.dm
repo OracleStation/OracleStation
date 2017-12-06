@@ -334,7 +334,7 @@
 						candidates += player.mind				// Get a list of all the people who want to be the antagonist for this round
 
 	if(protected_species)
-		for(var/mob/dead/new_player/player in players)
+		for(var/mob/dead/new_player/player in candidates)
 			if(player.client.prefs.pref_species in protected_species)
 				candidates -= player
 

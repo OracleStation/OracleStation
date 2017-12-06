@@ -279,8 +279,7 @@
 /datum/emote/living/carbon/human/robot_tongue/clown/can_run_emote(mob/user)
 	if(!..())
 		return FALSE
-	var/obj/item/organ/tongue/T = user.getorganslot("tongue")
-	if(T.status == ORGAN_ROBOTIC && user.mind.assigned_role == "Clown")
+	if(user.mind.assigned_role == "Clown")
 		return TRUE
 
 /datum/emote/living/carbon/human/robot_tongue/clown/honk
