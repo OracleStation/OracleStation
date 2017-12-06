@@ -148,3 +148,5 @@
 	var/list/mousemove_intercept_objects
 
 	var/ventcrawl_layer = PIPING_LAYER_DEFAULT
+
+	var/player_logged = FALSE //keep track at login and logout; used for SSD

@@ -8,6 +8,9 @@
 	for(var/obj/item/implant/mindshield/L in implants)
 		return 1
 
+/mob/proc/isLivingSSD()
+	if(player_logged && stat != DEAD)
+		return TRUE
 
 /proc/check_zone(zone)
 	if(!zone)

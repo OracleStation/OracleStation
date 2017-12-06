@@ -348,4 +348,6 @@ CONFIG_DEF(number/error_msg_delay)	// How long to wait between messaging admins 
 
 CONFIG_DEF(flag/irc_announce_new_game)
 
+CONFIG_DEF(string/service_command)
+
 CONFIG_DEF(flag/debug_admin_hrefs)
