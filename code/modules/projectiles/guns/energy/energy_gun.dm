@@ -134,7 +134,7 @@
 				to_chat(M, "<span class='userdanger'>Your [name] emits alot of heat...</span>")
 			if(201 to INFINITY)
 				SSobj.processing.Remove(src)
-				M.rad_act(60)
+				M.rad_act(80)
 				crit_fail = 1
 				to_chat(M, "<span class='userdanger'>Your [name]'s micro-breeder reactor overloads!</span>")
 
