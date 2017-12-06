@@ -580,11 +580,14 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			final = "[msg] - All admins stealthed\[[english_list(stealthmins)]\], AFK\[[english_list(afkmins)]\], or lacks +BAN\[[english_list(powerlessmins)]\]! Total: [allmins.len] "
 		send2irc(source,final)
 		send2otherserver(source,final)
+	else
+		send2irc(source,msg)
+		send2otherserver(source,msg)
 
 
 /proc/send2irc(msg,msg2)
 	if(world.RunningService())
-		world.ExportService("[SERVICE_REQUEST_IRC_ADMIN_CHANNEL_MESSAGE] [msg] | [msg2]")
+		world.ExportService("[SERVICE_REQUEST_IRC_ADMIN_CHANNEL_MESSAGE] \"[msg]\" \"[msg2]\"")
 	else if(CONFIG_GET(flag/useircbot))
 		shell("python nudge.py [msg] [msg2]")
 
