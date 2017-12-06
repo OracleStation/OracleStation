@@ -484,7 +484,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!M.adminfrozen)
 		var/sleepies = M.AmountSleeping()
 		M.adminfrozen = sleepies ? sleepies : 1
-		M.SetSleeping(20000)//2k seconds to get your admin shit together
+		M.SetSleeping(200000)//20k seconds to get your admin shit together
 		M.adminfreezeoverlay = new()
 		M.add_overlay(M.adminfreezeoverlay)
 		log_admin("[key_name(usr)] froze [key_name(M)]!")

@@ -44,7 +44,7 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shieldsparkles"
 
-/obj/effect/overlay/bad_boy
+/obj/effect/overlay/adminfrozen
 	name = "FROZEN"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "adminfreeze"
