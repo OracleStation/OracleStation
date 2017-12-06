@@ -25,8 +25,6 @@
 	max_integrity = 300
 	block_open_while_equipped = 1
 
-/obj/item/storage/attack_hand(mob/user)
-
 /*
  * Backpack Types
  */
