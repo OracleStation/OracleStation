@@ -9,14 +9,14 @@ GLOBAL_PROTECT(reboot_mode)
 		return world.params[SERVICE_VERSION_PARAM]
 
 /world/proc/ExportService(command)
-	if (world.RunningService())
+	if(world.RunningService())
 		var/script = CONFIG_GET(string/service_command)
 		var/status = shell("[script] [command]")
 		log_world("SERVICE COMMAND: [script] [command]")
-		if (status == null)
+		if(status == null)
 			log_world("Unknown error invoking external service!")
 			return FALSE
-		else if (status != 0)
+		else if(status != 0)
 			log_world("Error invoking external service! Status code = [status]")
 			return FALSE
 		return TRUE
