@@ -25,7 +25,7 @@
 	var/collection_mode = 1;  //0 = pick one at a time, 1 = pick all on tile, 2 = pick all of a type
 	var/preposition = "in" // You put things 'in' a bag, but trays need 'on'.
 	var/rustle_jimmies = TRUE	//Play the rustle sound on insertion
-
+	var/block_open_while_equipped = FALSE // Can we open this storage container while we're wearing it?
 
 /obj/item/storage/MouseDrop(atom/over_object)
 	if(ismob(usr)) //all the check for item manipulation are in other places, you can safely open any storages as anything and its not buggy, i checked
@@ -445,6 +445,9 @@
 			H.r_store = null
 			return
 
+
+
+
 	orient2hud(user)
 	if(loc == user)
 		if(user.s_active)
@@ -581,3 +584,12 @@
 //Cyberboss says: "USE THIS TO FILL IT, NOT INITIALIZE OR NEW"
 
 /obj/item/storage/proc/PopulateContents()
+
+/obj/item/storage/BlockReach(atom/user)
+	if(istype(user, /mob/living/carbon))
+		var/mob/living/carbon/m = user
+		if(m.s_active == src || m.s_active in src.contents)
+			if(block_open_while_equipped && slot_flags && (src in m.get_all_slots()))
+				to_chat(m, "<span class='warning'>You can't reach the contents of [src].</span>")
+				return TRUE
+	return ..()

@@ -8,6 +8,8 @@
 	for(var/obj/item/implant/mindshield/L in implants)
 		return 1
 
+/mob/proc/get_all_slots() // Override this for mobs that have body slots.
+	return 0
 
 /proc/check_zone(zone)
 	if(!zone)
