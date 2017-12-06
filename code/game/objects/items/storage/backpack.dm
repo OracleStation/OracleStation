@@ -23,6 +23,7 @@
 	storage_slots = 21
 	resistance_flags = 0
 	max_integrity = 300
+	block_open_while_equipped = TRUE
 
 /*
  * Backpack Types
@@ -101,6 +102,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	max_w_class = WEIGHT_CLASS_NORMAL
 	max_combined_w_class = 60
+	block_open_while_equipped = FALSE // Santa needs to be fast.
 
 /obj/item/storage/backpack/santabag/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] places [src] over their head and pulls it tight! It looks like they aren't in the Christmas spirit...</span>")
@@ -197,6 +199,9 @@
 	desc = "A trendy looking satchel."
 	icon_state = "satchel-norm"
 	species_exception = list(/datum/species/angel) //satchels can be equipped since they are on the side, not back
+	block_open_while_equipped = FALSE
+	max_combined_w_class = 9
+	storage_slots = 9
 
 /obj/item/storage/backpack/satchel/leather
 	name = "leather satchel"
@@ -275,7 +280,6 @@
 	desc = "A very slim satchel that can easily fit into tight spaces."
 	icon_state = "satchel-flat"
 	w_class = WEIGHT_CLASS_NORMAL //Can fit in backpacks itself.
-	max_combined_w_class = 15
 	level = 1
 	cant_hold = list(/obj/item/storage/backpack/satchel/flat) //muh recursive backpacks
 

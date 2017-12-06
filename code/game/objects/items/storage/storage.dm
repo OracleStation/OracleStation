@@ -25,7 +25,7 @@
 	var/collection_mode = 1;  //0 = pick one at a time, 1 = pick all on tile, 2 = pick all of a type
 	var/preposition = "in" // You put things 'in' a bag, but trays need 'on'.
 	var/rustle_jimmies = TRUE	//Play the rustle sound on insertion
-
+	var/block_open_while_equipped = 0 // Can we open this storage container while we're wearing it?
 
 /obj/item/storage/MouseDrop(atom/over_object)
 	if(ismob(usr)) //all the check for item manipulation are in other places, you can safely open any storages as anything and its not buggy, i checked
@@ -42,7 +42,7 @@
 			orient2hud(M)
 			if(M.s_active)
 				M.s_active.close(M)
-			show_to(M)
+			attack_hand(M)
 			return
 
 		if(!M.incapacitated())
@@ -444,6 +444,11 @@
 			H.put_in_hands(src)
 			H.r_store = null
 			return
+		if(block_open_while_equipped && slot_flags && (src in H.get_all_slots()))
+			to_chat(H, "<span class='warning'>You can't reach the contents of [src]!</span>")
+			return
+
+
 
 	orient2hud(user)
 	if(loc == user)
