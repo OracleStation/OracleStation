@@ -569,7 +569,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/list/activemins = adm["present"]
 	. = activemins.len
 	if(. <= 0)
-		var/final = "@here "
+		var/final = ""
 		var/list/afkmins = adm["afk"]
 		var/list/stealthmins = adm["stealth"]
 		var/list/powerlessmins = adm["noflags"]
