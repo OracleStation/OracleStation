@@ -130,11 +130,11 @@
 		switch(fail_tick)
 			if(0 to 200)
 				fail_tick += (2*(fail_chance))
-				M.rad_act(20)
+				M.rad_act(40)
 				to_chat(M, "<span class='userdanger'>Your [name] emits alot of heat...</span>")
 			if(201 to INFINITY)
 				SSobj.processing.Remove(src)
-				M.rad_act(40)
+				M.rad_act(60)
 				crit_fail = 1
 				to_chat(M, "<span class='userdanger'>Your [name]'s micro-breeder reactor overloads!</span>")
 
