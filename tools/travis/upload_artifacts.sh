@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$BUILD_TESTING" = true ] && [ "$TRAVIS_PULL_REQUEST" = false ]; then
+if [ "$BUILD_TESTING" = true ] && [ "$TRAVIS_PULL_REQUEST" = false ] && [ $AWS_SECRET_ACCESS_KEY ]; then
 	echo "Creating archives..."
 	echo "$TRAVIS_COMMIT" > COMMIT_HASH
 	zip -r tgstation _maps tgstation.dmb tgstation.rsc COMMIT_HASH > /dev/null

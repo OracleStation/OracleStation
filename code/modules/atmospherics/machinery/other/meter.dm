@@ -62,6 +62,9 @@
 	use_power(5)
 
 	var/datum/gas_mixture/environment = target.return_air()
+
+	cut_overlays()
+
 	if(!environment)
 		icon_state = "meterX"
 		return 0
@@ -80,6 +83,16 @@
 		icon_state = "meter3_[val]"
 	else
 		icon_state = "meter4"
+
+
+	var/env_temp = environment.return_temperature()
+
+	if (env_temp < 273.2)
+		add_overlay("cold")
+	else if(env_temp < 360)
+		add_overlay("normal")
+	else
+		add_overlay("hot")
 
 	if(frequency)
 		var/datum/radio_frequency/radio_connection = SSradio.return_frequency(frequency)

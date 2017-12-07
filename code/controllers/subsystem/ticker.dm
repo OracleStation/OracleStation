@@ -29,8 +29,7 @@ SUBSYSTEM_DEF(ticker)
 	var/list/availablefactions = list()		//list of factions with openings
 	var/list/scripture_states = list(SCRIPTURE_DRIVER = TRUE, \
 	SCRIPTURE_SCRIPT = FALSE, \
-	SCRIPTURE_APPLICATION = FALSE, \
-	SCRIPTURE_JUDGEMENT = FALSE) //list of clockcult scripture states for announcements
+	SCRIPTURE_APPLICATION = FALSE) //list of clockcult scripture states for announcements
 
 	var/delay_end = 0						//if set true, the round will not restart on it's own
 
@@ -74,7 +73,6 @@ SUBSYSTEM_DEF(ticker)
 	if(!GLOB.syndicate_code_response)
 		GLOB.syndicate_code_response = generate_code_phrase()
 	..()
-	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 
 /datum/controller/subsystem/ticker/fire()
 	switch(current_state)
@@ -85,11 +83,14 @@ SUBSYSTEM_DEF(ticker)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, "<span class='boldnotice'>Welcome to [station_name()]!</span>")
 			current_state = GAME_STATE_PREGAME
+			timeLeft = null
 			//Everyone who wants to be an observer is now spawned
 			create_observers()
 			fire()
 		if(GAME_STATE_PREGAME)
-				//lobby stats for statpanels
+			//lobby stats for statpanels
+			if(isnull(start_at))
+				start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 			if(isnull(timeLeft))
 				timeLeft = max(0,start_at - world.time)
 			totalPlayers = 0
@@ -121,6 +122,8 @@ SUBSYSTEM_DEF(ticker)
 			if(!setup())
 				//setup failed
 				current_state = GAME_STATE_STARTUP
+				start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
+				timeLeft = null
 				Master.SetRunLevel(RUNLEVEL_LOBBY)
 
 		if(GAME_STATE_PLAYING)
