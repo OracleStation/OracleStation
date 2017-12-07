@@ -243,7 +243,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 			if(!I || I.loc != src) //no item, no limb, or item is not in limb or in the person anymore
 				return
 			var/time_taken = I.embedded_unsafe_removal_time*I.w_class
-			usr.visible_message("<span class='warning'>[usr] attempts to remove [I] from their [L.name].</span>","<span class='notice'>You attempt to remove [I] from your [L.name]... (It will take [time_taken/10] seconds.)</span>")
+			usr.visible_message("<span class='warning'>[usr] attempts to remove [I] from their [L.name].</span>","<span class='notice'>You attempt to remove [I] from your [L.name]... (It will take [DisplayTimeText(time_taken)].)</span>")
 			if(do_after(usr, time_taken, needhand = 1, target = src))
 				if(!I || !L || I.loc != src || !(I in L.embedded_objects))
 					return
@@ -904,12 +904,12 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 /mob/living/carbon/human/vv_get_dropdown()
 	. = ..()
 	. += "---"
-	.["Make monkey"] = "?_src_=vars;makemonkey=\ref[src]"
-	.["Set Species"] = "?_src_=vars;setspecies=\ref[src]"
-	.["Make cyborg"] = "?_src_=vars;makerobot=\ref[src]"
-	.["Make alien"] = "?_src_=vars;makealien=\ref[src]"
-	.["Make slime"] = "?_src_=vars;makeslime=\ref[src]"
-	.["Toggle Purrbation"] = "?_src_=vars;purrbation=\ref[src]"
+	.["Make monkey"] = "?_src_=vars;[HrefToken()];makemonkey=\ref[src]"
+	.["Set Species"] = "?_src_=vars;[HrefToken()];setspecies=\ref[src]"
+	.["Make cyborg"] = "?_src_=vars;[HrefToken()];makerobot=\ref[src]"
+	.["Make alien"] = "?_src_=vars;[HrefToken()];makealien=\ref[src]"
+	.["Make slime"] = "?_src_=vars;[HrefToken()];makeslime=\ref[src]"
+	.["Toggle Purrbation"] = "?_src_=vars;[HrefToken()];purrbation=\ref[src]"
 
 /mob/living/carbon/human/MouseDrop_T(mob/living/target, mob/living/user)
 	if((target != pulling) || (grab_state < GRAB_AGGRESSIVE) || (user != target) || !isliving(user) || stat || user.stat)//Get consent first :^)
