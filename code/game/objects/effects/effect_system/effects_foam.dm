@@ -50,6 +50,8 @@
 	create_reagents(1000) //limited by the size of the reagent holder anyway.
 	START_PROCESSING(SSfastprocess, src)
 	playsound(src, 'sound/effects/bubbles2.ogg', 80, 1, -3)
+	alpha = 0
+	animate(src, alpha = 255, time = 5)
 
 /obj/effect/particle_effect/foam/proc/MakeSlippery()
 	AddComponent(/datum/component/slippery, 100)
@@ -68,7 +70,7 @@
 			new /obj/structure/foamedmetal/iron(get_turf(src))
 		if(RESIN_FOAM)
 			new /obj/structure/foamedmetal/resin(get_turf(src))
-	flick("[icon_state]-disolve", src)
+	animate(src, alpha = 0, time = 5)
 	QDEL_IN(src, 5)
 
 /obj/effect/particle_effect/foam/smart/kill_foam() //Smart foam adheres to area borders for walls
@@ -82,7 +84,7 @@
 			if(get_area(cardinal_turf) != get_area(T)) //We're at an area boundary, so let's block off this turf!
 				new/obj/structure/foamedmetal(T)
 				break
-	flick("[icon_state]-disolve", src)
+	animate(src, alpha = 0, time = 5)
 	QDEL_IN(src, 5)
 
 /obj/effect/particle_effect/foam/process()
