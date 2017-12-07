@@ -55,7 +55,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 
 /mob/dead/observer/Initialize()
 	set_invisibility(GLOB.observer_default_invisibility)
-
+	alpha = 0
 	verbs += list(
 		/mob/dead/observer/proc/dead_tele,
 		/mob/dead/observer/proc/open_spawners_menu)
@@ -116,8 +116,8 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	if(!fun_verbs)
 		verbs -= /mob/dead/observer/verb/boo
 		verbs -= /mob/dead/observer/verb/possess
-
-	animate(src, pixel_y = 2, time = 10, loop = -1)
+	animate(src, alpha = 255, time = 5)
+	animate(src, pixel_y = 2, time = 10, loop = -1, easing = QUAD_EASING)
 
 	GLOB.dead_mob_list += src
 

@@ -44,9 +44,11 @@
 			Remove(owner)
 		owner = M
 		M.actions += src
+		button.alpha = 0
 		if(M.client)
 			M.client.screen += button
 			button.locked = M.client.prefs.buttons_locked
+		animate(button, alpha = 255, time = 5)
 		M.update_action_buttons()
 	else
 		Remove(owner)
