@@ -1574,7 +1574,7 @@
 	name = "Shower"
 	icon_state = "shower"
 
-/datum/sprite_accessory/ipc_screens/static
+/datum/sprite_accessory/ipc_screens/static_screen
 	name = "Static"
 	icon_state = "static"
 

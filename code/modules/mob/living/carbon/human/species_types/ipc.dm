@@ -5,7 +5,7 @@
 	heatmod = 3 // Went cheap with Aircooling
 	coldmod = 1.5 // Don't put your computer in the freezer.
 	burnmod = 2 // Wiring doesn't hold up to fire well.
-	brutemod = 1.6 // Thin metal, cheap materials.
+	brutemod = 1.8 // Thin metal, cheap materials.
 	toxmod = 0
 	siemens_coeff = 1.5 // Overload!
 	species_traits = list(NOBREATH,NOBLOOD,RADIMMUNE,VIRUSIMMUNE,NOZOMBIE,EASYDISMEMBER,EASYLIMBATTACHMENT,NOPAIN,NO_BONES,NOTRANSSTING,MUTCOLORS,REVIVESBYHEALING,NOSCAN,NOCHANGELING)
@@ -36,7 +36,7 @@
 	var/ipc_name = "[pick(GLOB.posibrain_names)]-[rand(100, 999)]"
 	return ipc_name
 
-/datum/species/ipc/on_species_gain(mob/living/carbon/C) // I am so sorry for this.
+/datum/species/ipc/on_species_gain(mob/living/carbon/C) // Let's make that IPC actually robotic.
 	. = ..()
 	var/obj/item/organ/appendix/appendix = C.getorganslot("appendix") // Easiest way to remove it.
 	appendix.Remove(C)
@@ -44,7 +44,7 @@
 	for(var/X in C.bodyparts)
 		var/obj/item/bodypart/O = X
 		O.change_bodypart_status(BODYPART_ROBOTIC) // Makes all Bodyparts robotic.
-		O.render_like_organic = TRUE
+		O.render_like_organic = TRUE // Makes limbs render like organic limbs instead of augmented limbs, check bodyparts.dm
 		var/chassis = C.dna.features["ipc_chassis"]
 		if(chassis == "Morpheus Cyberkinetics(Greyscale)") // If it's a greyscale chassis, we use MUTCOLOR.
 			C.dna.species.species_traits += MUTCOLORS
@@ -78,19 +78,9 @@
 	H.grant_language(/datum/language/machine)
 
 /datum/species/ipc/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
-	if(chem.id in list("plasma", "stable_plasma")) // IPCs have plasma batteries. But alcohol will also do.
+	if(chem.id in list("plasma", "stable_plasma")) // IPCs have plasma batteries.
 		H.nutrition += 5
 		if(H.nutrition > NUTRITION_LEVEL_FULL)
 			H.nutrition = NUTRITION_LEVEL_FULL
 		H.reagents.remove_reagent(chem.id, REAGENTS_METABOLISM)
 		return 1
-
-/datum/species/ipc/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, intent, mob/living/carbon/human/H)
-	..()
-	if(I.force && I.damtype != STAMINA) // IPCs spark when hit, but only when it does real damage. Much like borgs!
-		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
-		spark_system.set_up(1, 0, H)
-		spark_system.attach(H)
-		spark_system.start()
-		if(prob(25)) // It's here because NOBLOOD makes them not interact with add_splatter_floor
-			new /obj/effect/decal/cleanable/oil(H.loc)

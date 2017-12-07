@@ -204,6 +204,7 @@
 	if(owner && updating_health)
 		owner.updatehealth()
 	if(owner.health >= 0 && REVIVESBYHEALING in owner.dna.species.species_traits && !owner.hellbound)
+		owner.cure_husk() // If they have REVIVESBYHEALING, they probably can't be cloned, meaning husk is permadeath.
 		owner.revive(0)
 	return update_bodypart_damage_state()
 
