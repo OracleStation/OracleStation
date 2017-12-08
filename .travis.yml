@@ -36,6 +36,7 @@ before_install:
   - pip install --user awscli
   - pip3 install --user requests
   - pip3 install --user pyyaml
+  - pip3 install --user python-dateutil
   - export PATH=$PATH:$HOME/.local/bin
 
 install:
