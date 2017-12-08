@@ -162,7 +162,7 @@
 	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
 		replacementmode.restricted_jobs += "Assistant"
 
-	message_admins("The roundtype will be converted. If you have other plans for the station or feel the station is too messed up to inhabit <A HREF='?_src_=holder;toggle_midround_antag=\ref[usr]'>stop the creation of antags</A> or <A HREF='?_src_=holder;end_round=\ref[usr]'>end the round now</A>.")
+	message_admins("The roundtype will be converted. If you have other plans for the station or feel the station is too messed up to inhabit <A HREF='?_src_=holder;[HrefToken()];toggle_midround_antag=\ref[usr]'>stop the creation of antags</A> or <A HREF='?_src_=holder;[HrefToken()];end_round=\ref[usr]'>end the round now</A>.")
 
 	. = 1
 	sleep(rand(600,1800))
@@ -270,7 +270,7 @@
 		SSblackbox.set_val("escaped_human",escaped_humans)
 	if(escaped_total > 0)
 		SSblackbox.set_val("escaped_total",escaped_total)
-	send2irc("Server", "Round just ended.")
+	world.IRCBroadcast("Round just ended.")
 	if(cult.len && !istype(SSticker.mode, /datum/game_mode/cult))
 		datum_cult_completion()
 

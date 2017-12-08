@@ -29,8 +29,7 @@ SUBSYSTEM_DEF(ticker)
 	var/list/availablefactions = list()		//list of factions with openings
 	var/list/scripture_states = list(SCRIPTURE_DRIVER = TRUE, \
 	SCRIPTURE_SCRIPT = FALSE, \
-	SCRIPTURE_APPLICATION = FALSE, \
-	SCRIPTURE_JUDGEMENT = FALSE) //list of clockcult scripture states for announcements
+	SCRIPTURE_APPLICATION = FALSE) //list of clockcult scripture states for announcements
 
 	var/delay_end = 0						//if set true, the round will not restart on it's own
 
@@ -123,6 +122,8 @@ SUBSYSTEM_DEF(ticker)
 			if(!setup())
 				//setup failed
 				current_state = GAME_STATE_STARTUP
+				start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
+				timeLeft = null
 				Master.SetRunLevel(RUNLEVEL_LOBBY)
 
 		if(GAME_STATE_PLAYING)
@@ -506,7 +507,7 @@ SUBSYSTEM_DEF(ticker)
 	end_state.count()
 	var/station_integrity = min(PERCENT(GLOB.start_state.score(end_state)), 100)
 
-	to_chat(world, "<BR>[GLOB.TAB]Shift Duration: <B>[round(world.time / 36000)]:[add_zero("[world.time / 600 % 60]", 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B>")
+	to_chat(world, "<BR>[GLOB.TAB]Shift Duration: <B>[DisplayTimeText(world.time - SSticker.round_start_time)]</B>")
 	to_chat(world, "<BR>[GLOB.TAB]Station Integrity: <B>[mode.station_was_nuked ? "<font color='red'>Destroyed</font>" : "[station_integrity]%"]</B>")
 	if(mode.station_was_nuked)
 		SSticker.news_report = STATION_DESTROYED_NUKE

@@ -141,9 +141,65 @@
 	message = "does a flip!"
 	restraint_check = TRUE
 
+/datum/emote/living/flip/can_run_emote(mob/user, help_check)
+	if(!..(user, help_check))
+		return FALSE
+	if(user.incapacitated())
+		return FALSE
+	if(user.buckled)
+		return FALSE
+	return TRUE
+
+
 /datum/emote/living/flip/run_emote(mob/user, params)
-	if(..())
+	//the emote doesn't need much magic, so I'm overwriting everything. Bite me.
+	if(!can_run_emote(user))
+		return FALSE
+
+
+	var/mob/M = user.pulling
+	if(istype(user.loc, /obj))
+		var/obj/container = user.loc
+		to_chat(user, "<span class='warning'>You flip and smack your face into [container]!</span>")
+		container.visible_message("<span class='warning'><b>[container]</b> emits a loud thump and rattles a bit.")
+		if(isliving(user))
+			var/mob/living/L = user
+			L.Knockdown(100)//10 seconds
+		playsound(user.loc, "sound/effects/bang.ogg", 50, 1)
+		var/original_x = container.pixel_x
+		var/original_y = container.pixel_y
+		var/wiggle = 6
+		while(wiggle > 0)
+			wiggle--
+			container.pixel_x = rand(-3,3)
+			container.pixel_y = rand(-3,3)
+			sleep(1)
+		container.pixel_x = original_x
+		container.pixel_y = original_y
+		if(prob(2) && istype(container, /obj/structure/closet))
+			var/obj/structure/closet/C = container
+			if(C.locked)
+				C.bust_open()
+
+	else if(user.IsKnockdown() || user.lying)
+		user.visible_message("<b>[user]</b> flops and flails on the floor!")
+		//don't do anything! D:
+	else if(M && isliving(M) && !M.buckled && istype(M.loc, /turf/) && istype(user.loc, /turf/))
+		var/mob/living/L = user.pulling
+		var/turf/tmp = get_turf(L)
+		var/turf/T = get_turf(user)
+		if(tmp && T)
+			user.visible_message("<b>[user]</b> flips over [user.pulling]!")
+			L.forceMove(T)
+			user.forceMove(tmp)//*flip
+			user.SpinAnimation(5,1)
+
+	else
+		user.visible_message("<b>[user]</b> does a flip!")
 		user.SpinAnimation(5,1)
+
+	user.emote_cooldown = world.time + cooldown
+
 
 /datum/emote/living/frown
 	key = "frown"

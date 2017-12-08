@@ -176,7 +176,7 @@ SUBSYSTEM_DEF(shuttle)
 		emergency = backup_shuttle
 	var/srd = CONFIG_GET(number/shuttle_refuel_delay)
 	if(world.time - SSticker.round_start_time < srd)
-		to_chat(user, "The emergency shuttle is refueling. Please wait [(world.time - SSticker.round_start_time) - srd] seconds before trying again.")
+		to_chat(user, "The emergency shuttle is refueling. Please wait [DisplayTimeText(srd - (world.time - SSticker.round_start_time))] before trying again.")
 		return
 
 	switch(emergency.mode)
@@ -218,7 +218,7 @@ SUBSYSTEM_DEF(shuttle)
 	if(call_reason)
 		SSblackbox.add_details("shuttle_reason", call_reason)
 		log_game("Shuttle call reason: [call_reason]")
-	message_admins("[key_name_admin(user)] has called the shuttle. (<A HREF='?_src_=holder;trigger_centcom_recall=1'>TRIGGER CENTCOM RECALL</A>)")
+	message_admins("[key_name_admin(user)] has called the shuttle. (<A HREF='?_src_=holder;[HrefToken()];trigger_centcom_recall=1'>TRIGGER CENTCOM RECALL</A>)")
 
 /datum/controller/subsystem/shuttle/proc/centcom_recall(old_timer, admiral_message)
 	if(emergency.mode != SHUTTLE_CALL || emergency.timer != old_timer)

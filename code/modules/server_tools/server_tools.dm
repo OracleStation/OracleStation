@@ -2,17 +2,28 @@ GLOBAL_VAR_INIT(reboot_mode, REBOOT_MODE_NORMAL)	//if the world should request t
 GLOBAL_PROTECT(reboot_mode)
 
 /world/proc/RunningService()
-	return params[SERVICE_WORLD_PARAM]
+	return CONFIG_GET(string/service_command) != null
 
 /proc/ServiceVersion()
 	if(world.RunningService())
 		return world.params[SERVICE_VERSION_PARAM]
 
 /world/proc/ExportService(command)
-	return RunningService() && shell("python code/modules/server_tools/nudge.py \"[command]\"") == 0
+	if(world.RunningService())
+		var/script = CONFIG_GET(string/service_command)
+		var/status = shell("[script] [command]")
+		log_world("SERVICE COMMAND: [script] [command]")
+		if(status == null)
+			log_world("Unknown error invoking external service!")
+			return FALSE
+		else if(status != 0)
+			log_world("Error invoking external service! Status code = [status]")
+			return FALSE
+		return TRUE
+	return FALSE
 
 /world/proc/IRCBroadcast(msg)
-	ExportService("[SERVICE_REQUEST_IRC_BROADCAST] [msg]")
+	ExportService("[SERVICE_REQUEST_IRC_BROADCAST] \"[msg]\"")
 
 /world/proc/ServiceEndProcess()
 	log_world("Sending shutdown request!");
@@ -90,4 +101,3 @@ GLOBAL_PROTECT(reboot_mode)
 			return ircadminwho()
 		else
 			return "Unknown command: [command]"
-
