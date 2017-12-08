@@ -35,7 +35,7 @@ addons:
 before_install:
   - pip install --user awscli
   - pip3 install --user requests
-  - pip3 install --user yaml
+  - pip3 install --user pyyaml
   - export PATH=$PATH:$HOME/.local/bin
 
 install:
