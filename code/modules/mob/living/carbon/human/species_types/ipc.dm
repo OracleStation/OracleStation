@@ -46,33 +46,12 @@
 		O.change_bodypart_status(BODYPART_ROBOTIC) // Makes all Bodyparts robotic.
 		O.render_like_organic = TRUE // Makes limbs render like organic limbs instead of augmented limbs, check bodyparts.dm
 		var/chassis = C.dna.features["ipc_chassis"]
-		if(chassis == "Morpheus Cyberkinetics(Greyscale)") // If it's a greyscale chassis, we use MUTCOLOR.
+		var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.ipc_chassis_list[chassis]
+		C.dna.species.limbs_id = chassis_of_choice.limbs_id
+		if(chassis_of_choice.color_src == MUTCOLORS) // If it's a colorable(Greyscale) chassis, we use MUTCOLORS.
 			C.dna.species.species_traits += MUTCOLORS
 		else
-			C.dna.species.species_traits -= MUTCOLORS // If it's not, we remove it
-		switch(chassis) // And then we hard swap the icons based on the feature
-			if("Morpheus Cyberkinetics(Greyscale)")
-				C.dna.species.limbs_id = "mcgipc"
-			if("Morpheus Cyberkinetics(Black)")
-				C.dna.species.limbs_id = "mcbipc"
-			if("Bishop Cyberkinetics")
-				C.dna.species.limbs_id = "bshipc"
-			if("Bishop Cyberkinetics 2.0")
-				C.dna.species.limbs_id = "bs2ipc"
-			if("Hephaestus Industries")
-				C.dna.species.limbs_id = "hsiipc"
-			if("Hephaestus Industries 2.0")
-				C.dna.species.limbs_id = "hi2ipc"
-			if("Shellguard Munitions")
-				C.dna.species.limbs_id = "sgmipc"
-			if("Ward-Takahashi Manufacturing")
-				C.dna.species.limbs_id = "wtmipc"
-			if("Xion Manufacturing Group")
-				C.dna.species.limbs_id = "xmgipc"
-			if("Xion Manufacturing Group 2.0")
-				C.dna.species.limbs_id = "xm2ipc"
-			if("Zeng-Hu Pharmaceuticals")
-				C.dna.species.limbs_id = "zhpipc"
+			C.dna.species.species_traits -= MUTCOLORS
 
 /datum/species/ipc/after_equip_job(datum/job/J, mob/living/carbon/human/H)
 	H.grant_language(/datum/language/machine)
