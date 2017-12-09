@@ -37,6 +37,7 @@ before_install:
   - pip3 install --user requests
   - pip3 install --user pyyaml
   - pip3 install --user python-dateutil
+  - pip3 install --user bs4
   - export PATH=$PATH:$HOME/.local/bin
 
 install:

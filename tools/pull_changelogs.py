@@ -1,4 +1,4 @@
-import requests, dateutil.parser, sys, html
+import requests, dateutil.parser, sys, html, re
 from requests.auth import HTTPBasicAuth
 from copy import deepcopy
 
@@ -42,6 +42,7 @@ def parse_issue(pull_request):
 		change_label = ":".join(change_split[1:]).strip()
 
 		change_label = html.escape(change_label) # XSS
+		change_label = re.sub(r'[^\x00-\x7f]',r'', change_label) #Remove emoji
 		change_label = change_label.replace("'", "\"") # Quoting
 
 		change_str = "  - {0}: '{1}'".format(change_tag, change_label)
