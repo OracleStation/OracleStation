@@ -25,7 +25,9 @@ def parse_issue(pull_request):
 	body_full = body_split[1][:-1]
 
 	changes = body_full.split("\n")
-	author = pull_request["user"]["login"]
+	author = changes.pop(0).strip()
+	if (len(author) < 2):
+		author = pull_request["user"]["login"]
 	author_str = "  {0}:".format(author)
 
 	if author_str not in data_structure[date_str]:
