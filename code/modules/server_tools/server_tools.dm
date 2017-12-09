@@ -2,7 +2,10 @@ GLOBAL_VAR_INIT(reboot_mode, REBOOT_MODE_NORMAL)	//if the world should request t
 GLOBAL_PROTECT(reboot_mode)
 
 /world/proc/RunningService()
-	return CONFIG_GET(string/service_command) != null
+	if(CONFIG_GET(string/service_command))
+		return TRUE
+	else
+		return FALSE
 
 /proc/ServiceVersion()
 	if(world.RunningService())
