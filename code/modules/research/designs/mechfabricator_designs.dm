@@ -848,3 +848,12 @@
 	materials = list(MAT_METAL=2000, MAT_GLASS=1000)
 	construction_time = 100
 	category = list("IPC Components")
+
+/datum/design/power_cord
+	name = "Recharging Electronics"
+	id = "power_cord"
+	build_type = MECHFAB
+	build_path = /obj/item/organ/cyberimp/arm/power_cord
+	materials = list(MAT_METAL=2000, MAT_GLASS=1000)
+	construction_time = 100
+	category = list("IPC Components")
