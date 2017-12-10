@@ -628,8 +628,7 @@ GLOBAL_LIST_EMPTY(mutations_list)
 /datum/mutation/human/laser_eyes
 	name = "Laser Eyes"
 	quality = POSITIVE
-	get_chance = 15
-	lowest_value = 256 * 12
+	dna_block = NON_SCANNABLE
 	text_gain_indication = "<span class='notice'>You feel pressure building up behind your eyes.</span>"
 	layer_used = FRONT_MUTATIONS_LAYER
 	limb_req = "head"
