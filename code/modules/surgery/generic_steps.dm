@@ -116,3 +116,43 @@
 	user.visible_message("[user] drills into [target]'s [parse_zone(target_zone)]!",
 		"<span class='notice'>You drill into [target]'s [parse_zone(target_zone)].</span>")
 	return 1
+
+///////////////ROBOTIC STEPS///////////////
+/datum/surgery_step/unscrew
+	name = "unscrew cover"
+	implements = list(/obj/item/screwdriver = 100, /obj/item/coin = 30)
+	time = 20
+
+/datum/surgery_step/unscrew/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	user.visible_message("[user] begins to unscrew the cover panel on [target]'s [parse_zone(target_zone)].",
+		"<span class='notice'>You begin to unscrew the cover panel on [target]'s [parse_zone(target_zone)]...</span>")
+
+/datum/surgery_step/pry_off
+	name = "pry off cover"
+	implements = list(/obj/item/crowbar = 100)
+	time = 30
+
+/datum/surgery_step/pry_off/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	user.visible_message("[user] begins to pry open the cover panel on [target]'s [parse_zone(target_zone)].",
+		"<span class='notice'>You begin to pry open the cover panel on [target]'s [parse_zone(target_zone)]...</span>")
+
+/datum/surgery_step/close_hatch
+	name = "close cover"
+	implements = list(/obj/item/crowbar = 100)
+	time = 30
+
+/datum/surgery_step/close_hatch/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	user.visible_message("[user] begins to put the cover panel on [target]'s [parse_zone(target_zone)] back in place.",
+	"<span class='notice'>You begin to put the cover panel on [target]'s [parse_zone(target_zone)] back in place...</span>")
+
+/datum/surgery_step/robotic_amputation
+	name = "disconnect limb"
+	implements = list(/obj/item/device/multitool = 100, /obj/item/wirecutters = 10)
+	time = 64
+
+/datum/surgery_step/robotic_amputation/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	if(!istype(tool, /obj/item/device/multitool))
+		user.visible_message("[user] begins to cut through the circuitry in [target]'s [parse_zone(target_zone)]!", "<span class='notice'>You begin to cut through the circuitry in [target]'s [parse_zone(target_zone)]...</span>")
+	else
+		var/pro = pick("neatly", "calmly", "professionally", "carefully", "swiftly", "proficiently")
+		user.visible_message("[user] begins to [pro] disconnect [target]'s [parse_zone(target_zone)]!", "<span class='notice'>You begin to [pro] disconnect [target]'s [parse_zone(target_zone)]...</span>")

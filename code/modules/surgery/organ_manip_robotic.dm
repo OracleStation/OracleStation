@@ -5,24 +5,6 @@
 	possible_locs = list("chest", "head", "groin", "eyes", "mouth", "l_arm", "r_arm")
 	bodypart_types = BODYPART_ROBOTIC
 
-/datum/surgery_step/unscrew
-	name = "unscrew cover"
-	implements = list(/obj/item/screwdriver = 100, /obj/item/coin = 30)
-	time = 20
-
-/datum/surgery_step/unscrew/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	user.visible_message("[user] begins to unscrew the cover panel on [target]'s [parse_zone(target_zone)].",
-		"<span class='notice'>You begin to unscrew the cover panel on [target]'s [parse_zone(target_zone)]...</span>")
-
-/datum/surgery_step/pry_off
-	name = "pry off cover"
-	implements = list(/obj/item/crowbar = 100)
-	time = 30
-
-/datum/surgery_step/pry_off/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	user.visible_message("[user] begins to pry open the cover panel on [target]'s [parse_zone(target_zone)].",
-		"<span class='notice'>You begin to pry open the cover panel on [target]'s [parse_zone(target_zone)]...</span>")
-
 /datum/surgery_step/manipulate_organs/robotic
 	time = 64
 	name = "manipulate robotic organs"
