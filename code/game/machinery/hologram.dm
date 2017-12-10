@@ -267,7 +267,8 @@ Possible to do for anyone motivated enough:
 			if(outgoing_call)
 				HC.Disconnect(src)//can't answer calls while calling
 			else
-				playsound(src, 'sound/machines/twobeep.ogg', 100)	//bring, bring!
+				flick("holopad3", src)
+				playsound(src, 'sound/machines/triple_beep.ogg', 100)	//bring, bring!
 
 /obj/machinery/holopad/proc/activate_holo(mob/living/user)
 	var/mob/living/silicon/ai/AI = user

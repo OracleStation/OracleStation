@@ -149,4 +149,8 @@
 
 	var/ventcrawl_layer = PIPING_LAYER_DEFAULT
 
+	var/adminfrozen = 0 //handle for someone's sleeping time from before they got frozen
+	var/obj/effect/overlay/adminfrozen/adminfreezeoverlay = null
+
 	var/player_logged = FALSE //keep track at login and logout; used for SSD
+

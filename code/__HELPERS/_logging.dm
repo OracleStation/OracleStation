@@ -100,6 +100,9 @@
 	if (CONFIG_GET(flag/log_pda))
 		WRITE_FILE(GLOB.world_game_log, "\[[time_stamp()]]CHAT: [text]")
 
+/proc/log_qdel(text)
+	WRITE_FILE(GLOB.world_qdel_log, "\[[time_stamp()]]QDEL: [text]")
+
 /proc/log_sql(text)
 	if(CONFIG_GET(flag/sql_enabled))
 		WRITE_FILE(GLOB.world_game_log, "\[[time_stamp()]]SQL: [text]")
