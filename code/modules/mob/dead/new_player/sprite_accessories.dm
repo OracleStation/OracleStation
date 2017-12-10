@@ -1603,6 +1603,10 @@
 	name = "Rainbow"
 	icon_state = "rainbow"
 
+/datum/sprite_accessory/ipc_screens/orangeeyes
+	name = "Orange Eyes"
+	icon_state = "orangeeyes"
+
 /datum/sprite_accessory/ipc_antennas
 	icon = 'icons/mob/ipc_accessories.dmi'
 	color_src = HAIR
@@ -1656,10 +1660,6 @@
 	name = "Morpheus Cyberkinetics(Greyscale)"
 	limbs_id = "mcgipc"
 	color_src = MUTCOLORS
-
-/datum/sprite_accessory/ipc_chassis/mcblack
-	name = "Morpheus Cyberkinetics(Black)"
-	limbs_id = "mcbipc"
 
 /datum/sprite_accessory/ipc_chassis/bishopcyberkinetics
 	name = "Bishop Cyberkinetics"

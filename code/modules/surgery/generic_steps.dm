@@ -156,3 +156,10 @@
 	else
 		var/pro = pick("neatly", "calmly", "professionally", "carefully", "swiftly", "proficiently")
 		user.visible_message("[user] begins to [pro] disconnect [target]'s [parse_zone(target_zone)]!", "<span class='notice'>You begin to [pro] disconnect [target]'s [parse_zone(target_zone)]...</span>")
+
+/datum/surgery_step/robotic_amputation/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	var/mob/living/carbon/human/L = target
+	user.visible_message("[user] removes [L]'s [parse_zone(target_zone)]!", "<span class='notice'>You remove [L]'s [parse_zone(target_zone)].</span>")
+	if(surgery.operated_bodypart)
+		var/obj/item/bodypart/target_limb = surgery.operated_bodypart
+		target_limb.drop_limb()

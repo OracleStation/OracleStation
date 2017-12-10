@@ -8,7 +8,7 @@
 	brutemod = 1.8 // Thin metal, cheap materials.
 	toxmod = 0
 	siemens_coeff = 1.5 // Overload!
-	species_traits = list(NOBREATH,NOBLOOD,RADIMMUNE,VIRUSIMMUNE,NOZOMBIE,EASYDISMEMBER,EASYLIMBATTACHMENT,NOPAIN,NO_BONES,NOTRANSSTING,MUTCOLORS,REVIVESBYHEALING,NOSCAN,NOCHANGELING)
+	species_traits = list(NOBREATH, NOBLOOD, RADIMMUNE, VIRUSIMMUNE, NOZOMBIE, EASYDISMEMBER, EASYLIMBATTACHMENT, NOPAIN, NO_BONES, NOTRANSSTING, MUTCOLORS, REVIVESBYHEALING, NOSCAN, NOCHANGELING)
 	mutant_bodyparts = list("ipc_screen", "ipc_antenna", "ipc_chassis")
 	default_features = list("mcolor" = "#7D7D7D", "ipc_screen" = "Static", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)")
 	meat = /obj/item/stack/sheet/plasteel{amount = 5}
@@ -31,6 +31,7 @@
 	reagent_tag = PROCESS_SYNTHETIC
 	species_gibs = "robotic"
 	attack_sound = 'sound/items/trayhit1.ogg'
+	var/datum/action/innate/change_screen/change_screen
 
 /datum/species/ipc/random_name(unique)
 	var/ipc_name = "[pick(GLOB.posibrain_names)]-[rand(100, 999)]"
@@ -41,6 +42,9 @@
 	var/obj/item/organ/appendix/appendix = C.getorganslot("appendix") // Easiest way to remove it.
 	appendix.Remove(C)
 	QDEL_NULL(appendix)
+	if(ishuman(C) && !change_screen)
+		change_screen = new
+		change_screen.Grant(C)
 	for(var/X in C.bodyparts)
 		var/obj/item/bodypart/O = X
 		O.change_bodypart_status(BODYPART_ROBOTIC) // Makes all Bodyparts robotic.
@@ -53,6 +57,11 @@
 		else
 			C.dna.species.species_traits -= MUTCOLORS
 
+datum/species/ipc/on_species_loss(mob/living/carbon/C)
+	. = ..()
+	if(change_screen)
+		change_screen.Remove(C)
+
 /datum/species/ipc/after_equip_job(datum/job/J, mob/living/carbon/human/H)
 	H.grant_language(/datum/language/machine)
 
@@ -63,3 +72,19 @@
 			H.nutrition = NUTRITION_LEVEL_FULL
 		H.reagents.remove_reagent(chem.id, REAGENTS_METABOLISM)
 		return 1
+
+/datum/action/innate/change_screen
+	name = "Change Display"
+	check_flags = AB_CHECK_CONSCIOUS
+	icon_icon = 'icons/mob/actions/actions_items.dmi'
+	button_icon_state = "ipc_screen"
+
+/datum/action/innate/change_screen/Activate()
+	var/choice = input(usr, "Which screen do you want to use?", "Screen Change") as null | anything in GLOB.ipc_screens_list
+	if(!choice)
+		return
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/H = owner
+	H.dna.features["ipc_screen"] = choice
+	H.update_body()
