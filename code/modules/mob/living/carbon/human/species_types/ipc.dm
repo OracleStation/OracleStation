@@ -53,9 +53,9 @@
 		var/chassis = C.dna.features["ipc_chassis"]
 		var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.ipc_chassis_list[chassis]
 		C.dna.species.limbs_id = chassis_of_choice.limbs_id
-		if(chassis_of_choice.color_src == MUTCOLORS) // If it's a colorable(Greyscale) chassis, we use MUTCOLORS.
+		if(chassis_of_choice.color_src == MUTCOLORS && !(MUTCOLORS in C.dna.species.species_traits)) // If it's a colorable(Greyscale) chassis, we use MUTCOLORS.
 			C.dna.species.species_traits += MUTCOLORS
-		else
+		else if(MUTCOLORS in C.dna.species.species_traits)
 			C.dna.species.species_traits -= MUTCOLORS
 
 datum/species/ipc/on_species_loss(mob/living/carbon/C)
