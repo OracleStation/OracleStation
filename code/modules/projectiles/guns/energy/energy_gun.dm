@@ -111,8 +111,8 @@
 	ammo_x_offset = 1
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode, /obj/item/ammo_casing/energy/laser, /obj/item/ammo_casing/energy/disabler)
 	selfcharge = 1
-	var/fail_tick = 0
-	var/fail_chance = 0
+	var/fail_tick = 1
+	var/fail_chance = 1
 
 /obj/item/gun/energy/e_gun/nuclear/process()
 	if(fail_tick > 0)
@@ -131,12 +131,12 @@
 			if(0 to 200)
 				fail_tick += (2*(fail_chance))
 				M.rad_act(40)
-				to_chat(M, "<span class='userdanger'>Your [name] feels warmer.</span>")
+				to_chat(M, "<span class='userdanger'>Your [name] emits alot of heat...</span>")
 			if(201 to INFINITY)
 				SSobj.processing.Remove(src)
 				M.rad_act(80)
 				crit_fail = 1
-				to_chat(M, "<span class='userdanger'>Your [name]'s reactor overloads!</span>")
+				to_chat(M, "<span class='userdanger'>Your [name]'s micro-breeder reactor overloads!</span>")
 
 /obj/item/gun/energy/e_gun/nuclear/emp_act(severity)
 	..()
