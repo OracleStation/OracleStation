@@ -262,7 +262,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	cost = 12
 	surplus = 50
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
-		
+
 /datum/uplink_item/dangerous/guardian
  	name = "Holoparasites"
  	desc = "Incredibly potent Nanomachines capable of projecting a spirit like entity to do the hosts bidding \
