@@ -273,7 +273,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
  	item = /obj/item/storage/box/syndie_kit/guardian
  	cost = 14
  	exclude_modes = list(/datum/game_mode/nuclear)
-	player_minimum = 25
+    player_minimum = 25
 
 /datum/uplink_item/dangerous/flamethrower
 	name = "Flamethrower"
