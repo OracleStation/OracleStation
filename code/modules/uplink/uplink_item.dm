@@ -371,8 +371,11 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 
 /datum/uplink_item/dangerous/guardian
 	name = "Holoparasites"
-	desc = "Though capable of near sorcerous feats via use of hardlight holograms and nanomachines, they require an \
-			organic host as a home base and source of fuel."
+	desc = "Incredibly potent Nanomachines capable of projecting a spirit like entity to do the hosts bidding \ 
+			and assisting them in their plans. They come in many different variants and have a reboot option \
+			in case your nano-swarm malfunctions and disobeys your orders. \
+			They require you as a fuel source and as a hive to operate from so cooperation is paramount. \
+			There is a small captial greek Omega engraved on the injector..."
 	item = /obj/item/storage/box/syndie_kit/guardian
 	cost = 14
 	exclude_modes = list(/datum/game_mode/nuclear)
