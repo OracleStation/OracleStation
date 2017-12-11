@@ -25,7 +25,7 @@
 			text_output = pick("spiders","dreams","nightmares","the future","the past","victory",\
 			"defeat","pain","bliss","revenge","poison","time","space","death","life","truth","lies","justice","memory",\
 			"regrets","your soul","suffering","music","noise","blood","hunger","the american way")
-		if(text_output != last_taste_text || last_taste_time + 100 < world.time)
+		if((text_output != last_taste_text || last_taste_time + 100 < world.time) && taste_sensitivity < 101) // 101 means literally no taste ability.
 			to_chat(src, "<span class='notice'>You can taste [text_output].</span>")
 			// "somthing indescribable" -> too many tastes, not enough flavor.
 

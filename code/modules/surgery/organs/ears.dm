@@ -110,11 +110,11 @@
 		if(1)
 			owner.Jitter(30)
 			owner.Dizzy(30)
-			owner.Knockdown(30)
+			owner.Knockdown(200)
 			deaf = 30
 			to_chat(owner, "<span class='warning'>Your robotic ears are ringing, uselessly.</span>")
 		if(2)
 			owner.Jitter(15)
 			owner.Dizzy(15)
-			owner.Knockdown(15)
+			owner.Knockdown(100)
 			to_chat(owner, "<span class='warning'>Your robotic ears buzz.</span>")

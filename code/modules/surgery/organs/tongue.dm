@@ -188,10 +188,10 @@
 	icon_state = "tonguerobot"
 	say_mod = "states"
 	attack_verb = list("beeped", "booped")
-	taste_sensitivity = 25 // not as good as an organic tongue
+	taste_sensitivity = 101 // Can't actually taste anything
 
 /obj/item/organ/tongue/robot/emp_act(severity)
-	owner.apply_effect(STUTTER, 60)
+	owner.apply_effect(STUTTER, 120)
 	owner.emote("scream")
 	to_chat(owner, "<span class='warning'>Alert: Vocal cords are malfunctioning.</span>")
 

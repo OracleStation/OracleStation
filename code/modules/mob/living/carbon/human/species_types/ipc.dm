@@ -6,9 +6,10 @@
 	coldmod = 1.5 // Don't put your computer in the freezer.
 	burnmod = 2 // Wiring doesn't hold up to fire well.
 	brutemod = 1.8 // Thin metal, cheap materials.
-	toxmod = 0
+	toxmod = 0.5 // Although they can't be poisoned, toxins can damage components
+	clonemod = 0
 	siemens_coeff = 1.5 // Overload!
-	species_traits = list(NOBREATH, NOBLOOD, RADIMMUNE, VIRUSIMMUNE, NOZOMBIE, EASYDISMEMBER, EASYLIMBATTACHMENT, NOPAIN, NO_BONES, NOTRANSSTING, MUTCOLORS, REVIVESBYHEALING, NOSCAN, NOCHANGELING)
+	species_traits = list(NOBREATH, NOBLOOD, RADIMMUNE, VIRUSIMMUNE, NOZOMBIE, EASYDISMEMBER, EASYLIMBATTACHMENT, NOPAIN, NO_BONES, NOTRANSSTING, MUTCOLORS, REVIVESBYHEALING, NOSCAN, NOCHANGELING, NOHUSK)
 	mutant_organs = list(/obj/item/organ/cyberimp/arm/power_cord/)
 	mutant_bodyparts = list("ipc_screen", "ipc_antenna", "ipc_chassis")
 	default_features = list("mcolor" = "#7D7D7D", "ipc_screen" = "Static", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)")
@@ -32,6 +33,7 @@
 	reagent_tag = PROCESS_SYNTHETIC
 	species_gibs = "robotic"
 	attack_sound = 'sound/items/trayhit1.ogg'
+	allow_numbers_in_name = TRUE
 	var/datum/action/innate/change_screen/change_screen
 
 /datum/species/ipc/random_name(unique)
@@ -130,9 +132,9 @@ datum/species/ipc/on_species_loss(mob/living/carbon/C)
 			to_chat(H, "<span class='warning'>\The [A] has no more charge.</span>")
 			break
 		A.charging = 1
-		if(A.cell.charge >= 500)
+		if(A.cell.charge >= 250)
 			H.nutrition += 50
-			A.cell.charge -= 500
+			A.cell.charge -= 250
 			to_chat(H, "<span class='notice'>You siphon off some of the stored charge for your own use.</span>")
 		else
 			H.nutrition += A.cell.charge/10

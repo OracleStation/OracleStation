@@ -924,7 +924,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							ghost_others = GHOST_OTHERS_SIMPLE
 
 				if("name")
-					var/new_name = reject_bad_name( input(user, "Choose your character's name:", "Character Preference")  as text|null )
+					var/new_name =  reject_bad_name( input(user, "Choose your character's name:", "Character Preference")  as text|null , pref_species.allow_numbers_in_name)
 					if(new_name)
 						real_name = new_name
 					else

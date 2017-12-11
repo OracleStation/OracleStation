@@ -482,6 +482,9 @@
 				if(2)
 					L.receive_damage(0,5)
 					Stun(100)
+			if((EASYDISMEMBER in L.owner.dna.species.species_traits) && L.body_zone != "chest")
+				if(prob(20))
+					L.dismember(BRUTE)
 	..()
 
 /mob/living/carbon/human/acid_act(acidpwr, acid_volume, bodyzone_hit)

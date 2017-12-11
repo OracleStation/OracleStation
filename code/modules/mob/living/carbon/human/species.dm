@@ -47,7 +47,8 @@
 	var/brutemod = 1	// multiplier for brute damage
 	var/burnmod = 1		// multiplier for burn damage
 	var/coldmod = 1		// multiplier for cold damage
-	var/toxmod = 1		//multiplier for toxin damage
+	var/toxmod = 1		// multiplier for toxin damage
+	var/clonemod = 1	/// multiplier for clone damage
 	var/heatmod = 1		// multiplier for heat damage
 	var/stunmod = 1		// multiplier for stun duration
 	var/punchdamagelow = 0       //lowest possible punch damage
@@ -58,6 +59,7 @@
 	var/fixed_mut_color = "" //to use MUTCOLOR with a fixed color that's independent of dna.feature["mcolor"]
 	var/reagent_tag = PROCESS_ORGANIC //Used for metabolizing reagents. We're going to assume you're a meatbag unless you say otherwise.
 	var/species_gibs = "human"
+	var/allow_numbers_in_name // Can this species use numbers in it's name?
 
 	// species flags. these can be found in flags.dm
 	var/list/species_traits = list()
@@ -1448,7 +1450,7 @@
 		if(OXY)
 			H.adjustOxyLoss(damage * hit_percent)
 		if(CLONE)
-			H.adjustCloneLoss(damage * hit_percent)
+			H.adjustCloneLoss(damage * hit_percent * clonemod)
 		if(STAMINA)
 			H.adjustStaminaLoss(damage * hit_percent)
 		if(BRAIN)
