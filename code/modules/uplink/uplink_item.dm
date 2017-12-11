@@ -265,9 +265,11 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 		
 /datum/uplink_item/dangerous/guardian
  	name = "Holoparasites"
- 	desc = "Incredibly potent Nanomachines capable of projecting a spirit like entity to do the hosts bidding and assisting him in his plans.
-			They come in many different variants and have a reboot option in case your nano-swarm malfunctions or disobeys your orders.
-			They require you as a fuel source and as a hive so cooperation with them is paramount. On the injector is a small capital Omega engraved..."
+ 	desc = "Incredibly potent Nanomachines capable of projecting a spirit like entity to do the hosts bidding \
+			and assisting him in his plans. They come in many different variants and have a reboot option \
+			in case your nano-swarm malfunctions or disobeys your orders. \
+			They require you as a fuel source and as a hive so cooperation with them is paramount. \
+			On the injector is a small capital Omega engraved..."
  	item = /obj/item/storage/box/syndie_kit/guardian
  	cost = 14
  	exclude_modes = list(/datum/game_mode/nuclear)
