@@ -263,18 +263,6 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	surplus = 50
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
 
-/datum/uplink_item/dangerous/guardian
- 	name = "Holoparasites"
- 	desc = "Incredibly potent Nanomachines capable of projecting a spirit like entity to do the hosts bidding \
-			and assisting him in his plans. They come in many different variants and have a reboot option \
-			in case your nano-swarm malfunctions or disobeys your orders. \
-			They require you as a fuel source and as a hive so cooperation with them is paramount. \
-			On the injector is a small capital Omega engraved..."
- 	item = /obj/item/storage/box/syndie_kit/guardian
- 	cost = 14
- 	exclude_modes = list(/datum/game_mode/nuclear)
-    player_minimum = 25
-
 /datum/uplink_item/dangerous/flamethrower
 	name = "Flamethrower"
 	desc = "A flamethrower, fueled by a portion of highly flammable biotoxins stolen previously from Nanotrasen \
@@ -283,7 +271,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	cost = 4
 	surplus = 40
 	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
-	
+
 /datum/uplink_item/dangerous/sword
 	name = "Energy Sword"
 	desc = "The energy sword is an edged weapon with a blade of pure energy. The sword is small enough to be \
