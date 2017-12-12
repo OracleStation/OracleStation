@@ -25,7 +25,7 @@
 	var/collection_mode = 1;  //0 = pick one at a time, 1 = pick all on tile, 2 = pick all of a type
 	var/preposition = "in" // You put things 'in' a bag, but trays need 'on'.
 	var/rustle_jimmies = TRUE	//Play the rustle sound on insertion
-
+	var/block_open_while_equipped = FALSE // Can we open this storage container while we're wearing it?
 
 /obj/item/storage/MouseDrop(atom/over_object)
 	if(ismob(usr)) //all the check for item manipulation are in other places, you can safely open any storages as anything and its not buggy, i checked
@@ -46,7 +46,7 @@
 			return
 
 		if(!M.incapacitated())
-			if(!istype(over_object, /obj/screen))
+			if(!istype(over_object, /obj/screen) && !BlockReach(M))
 				return dump_content_at(over_object, M)
 
 			if(loc != usr || (loc && loc.loc == usr))
@@ -122,6 +122,9 @@
 		L += S.return_inv()
 	return L
 
+/obj/item/storage/proc/sum_w_class()
+	for(var/obj/item/I in contents)
+		. += I.w_class
 
 /obj/item/storage/proc/show_to(mob/user)
 	if(!user.client)
@@ -262,9 +265,12 @@
 
 	//var/mob/living/carbon/human/H = user
 	var/row_num = 0
-	var/col_count = min(7,storage_slots) -1
+	var/col_count = min(7, min(storage_slots, (max_combined_w_class - sum_w_class() + adjusted_contents))) -1 /* OK, I made this expression kind of a nightmare to read, so I'll explain it.
+                                                                                                             * With an upper limit of 7, take either the amount of storage slots the storage item has
+	                                                                                                           * Or the number of functional slots it has left after adjusting for w_class. Whichever is lower.*/
 	if(adjusted_contents > 7)
 		row_num = round((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
+		col_count = min(7, storage_slots) -1
 	standard_orient_objs(row_num, col_count, numbered_contents)
 
 
@@ -297,11 +303,7 @@
 			to_chat(usr, "<span class='warning'>[W] is too big for [src]!</span>")
 		return 0
 
-	var/sum_w_class = W.w_class
-	for(var/obj/item/I in contents)
-		sum_w_class += I.w_class //Adds up the combined w_classes which will be in the storage item if the item is added to it.
-
-	if(sum_w_class > max_combined_w_class)
+	if((W.w_class + sum_w_class()) > max_combined_w_class)
 		if(!stop_messages)
 			to_chat(usr, "<span class='warning'>[W] won't fit in [src], make some space!</span>")
 		return 0
@@ -445,6 +447,9 @@
 			H.r_store = null
 			return
 
+
+
+
 	orient2hud(user)
 	if(loc == user)
 		if(user.s_active)
@@ -581,3 +586,16 @@
 //Cyberboss says: "USE THIS TO FILL IT, NOT INITIALIZE OR NEW"
 
 /obj/item/storage/proc/PopulateContents()
+
+/obj/item/storage/BlockReach(atom/user)
+	if(istype(user, /mob/living/carbon))
+		var/mob/living/carbon/m = user
+		if(block_open_while_equipped && slot_flags && src in m.get_all_slots())
+			if(m.s_active == src)
+				return TRUE
+			if(m.s_active in src.GetAllContents())
+				m.s_active.close(m)
+				orient2hud(m)
+				show_to(m)
+				return TRUE
+	return ..()

@@ -118,12 +118,13 @@
 	//These are always reachable.
 	//User itself, current loc, and user inventory
 	if(DirectAccess(A))
-		if(W)
-			W.melee_attack_chain(src, A, params)
-		else
-			if(ismob(A))
-				changeNext_move(CLICK_CD_MELEE)
-			UnarmedAttack(A)
+		if(!A.BlockReach(src))
+			if(W)
+				W.melee_attack_chain(src, A, params)
+			else
+				if(ismob(A))
+					changeNext_move(CLICK_CD_MELEE)
+				UnarmedAttack(A)
 		return
 
 	//Can't reach anything else in lockers or other weirdness
@@ -131,7 +132,7 @@
 		return
 
 	//Standard reach turf to turf or reaching inside storage
-	if(CanReach(A,W))
+	if(CanReach(A,W) && !A.BlockReach(src))
 		if(W)
 			W.melee_attack_chain(src, A, params)
 		else
@@ -186,6 +187,16 @@
 		depth--
 		if(target == src)
 			return TRUE
+	return FALSE
+
+
+// Do we block user from clicking src?
+// Recursively calls the BlockReach of loc until we hit a turf, so if an object
+// blocks reach, it blocks the reach of its contents as well.
+/atom/proc/BlockReach(atom/user)
+	return loc.BlockReach(user)
+
+/turf/BlockReach(atom/user)
 	return FALSE
 
 /atom/movable/proc/DirectAccess(atom/target)
