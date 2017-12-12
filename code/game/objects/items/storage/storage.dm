@@ -42,7 +42,7 @@
 			orient2hud(M)
 			if(M.s_active)
 				M.s_active.close(M)
-			attack_hand(M)
+			show_to(M)
 			return
 
 		if(!M.incapacitated())
@@ -445,9 +445,6 @@
 			H.r_store = null
 			return
 
-	if(block_open_while_equipped && slot_flags && (src in user.get_all_slots()))
-		to_chat(user, "<span class='warning'>You can't reach the contents of [src]!</span>")
-		return
 
 
 
@@ -587,3 +584,12 @@
 //Cyberboss says: "USE THIS TO FILL IT, NOT INITIALIZE OR NEW"
 
 /obj/item/storage/proc/PopulateContents()
+
+/obj/item/storage/BlockReach(atom/user)
+	if(istype(user, /mob/living/carbon))
+		var/mob/living/carbon/m = user
+		if(m.s_active == src || m.s_active in src.contents)
+			if(block_open_while_equipped && slot_flags && (src in m.get_all_slots()))
+				to_chat(m, "<span class='warning'>You can't reach the contents of [src].</span>")
+				return TRUE
+	return ..()
