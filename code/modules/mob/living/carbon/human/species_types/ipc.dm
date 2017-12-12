@@ -34,6 +34,7 @@
 	species_gibs = "robotic"
 	attack_sound = 'sound/items/trayhit1.ogg'
 	allow_numbers_in_name = TRUE
+	ass_pic = "ipc"
 	var/datum/action/innate/change_screen/change_screen
 
 /datum/species/ipc/random_name(unique)
