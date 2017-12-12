@@ -690,7 +690,7 @@ BLIND     // can't see anything
 		return
 	sensor_mode = modes.Find(switchMode) - 1
 
-	if (src.loc == usr)
+	if (loc == usr)
 		switch(sensor_mode)
 			if(0)
 				to_chat(usr, "<span class='notice'>You disable your suit's remote sensing equipment.</span>")
@@ -700,20 +700,20 @@ BLIND     // can't see anything
 				to_chat(usr, "<span class='notice'>Your suit will now only report your exact vital lifesigns.</span>")
 			if(3)
 				to_chat(usr, "<span class='notice'>Your suit will now report your exact vital lifesigns as well as your coordinate position.</span>")
-	else if(istype(src.loc, /mob))
+	else if(istype(loc, /mob))
 		switch(sensor_mode)
 			if(0)
 				for(var/mob/V in viewers(1, usr))
-					V.show_message("<span class='warning'>[usr] disables [src.loc]'s remote sensing equipment.</span>", 1)
+					V.show_message("<span class='warning'>[usr] disables [loc]'s remote sensing equipment.</span>", 1)
 			if(1)
 				for(var/mob/V in viewers(1, usr))
-					V.show_message("[usr] turns [src.loc]'s remote sensors to binary.", 1)
+					V.show_message("[usr] turns [loc]'s remote sensors to binary.", 1)
 			if(2)
 				for(var/mob/V in viewers(1, usr))
-					V.show_message("[usr] sets [src.loc]'s sensors to track vitals.", 1)
+					V.show_message("[usr] sets [loc]'s sensors to track vitals.", 1)
 			if(3)
 				for(var/mob/V in viewers(1, usr))
-					V.show_message("[usr] sets [src.loc]'s sensors to maximum.", 1)
+					V.show_message("[usr] sets [loc]'s sensors to maximum.", 1)
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
