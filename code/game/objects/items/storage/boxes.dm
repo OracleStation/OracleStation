@@ -89,6 +89,10 @@
 		new /obj/item/disk/plantgene(src)
 
 // Ordinary survival box
+/obj/item/storage/box/survival
+	max_combined_w_class = 8
+	storage_slots = 4
+
 /obj/item/storage/box/survival/PopulateContents()
 	new /obj/item/clothing/mask/breath(src)
 	new /obj/item/tank/internals/emergency_oxygen(src)
