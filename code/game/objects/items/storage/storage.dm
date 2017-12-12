@@ -592,6 +592,7 @@
 		var/mob/living/carbon/m = user
 		if(block_open_while_equipped && slot_flags && src in m.get_all_slots())
 			if(m.s_active == src)
+				to_chat(m, "<span class='warning'>You can't reach the contents of [src].</span>")
 				return TRUE
 			if(m.s_active in src.GetAllContents())
 				m.s_active.close(m)

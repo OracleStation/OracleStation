@@ -140,7 +140,7 @@
 	var/backpack = /obj/item/storage/backpack
 	var/satchel  = /obj/item/storage/backpack/satchel
 	var/duffelbag = /obj/item/storage/backpack/duffelbag
-	var/box = /obj/item/storage/box/survival
+	var/box = /obj/item/storage/box/survival/normal
 
 /datum/outfit/job/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	switch(H.backbag)

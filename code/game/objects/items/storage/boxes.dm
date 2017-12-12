@@ -90,19 +90,21 @@
 
 // Ordinary survival box
 /obj/item/storage/box/survival
+	icon_state = "smallbox"
+	desc = "It's a cute little box!"
 	max_combined_w_class = 8
 	storage_slots = 4
 
-/obj/item/storage/box/survival/PopulateContents()
+/obj/item/storage/box/survival/normal/PopulateContents()
 	new /obj/item/clothing/mask/breath(src)
 	new /obj/item/tank/internals/emergency_oxygen(src)
 	new /obj/item/reagent_containers/hypospray/medipen(src)
 
-/obj/item/storage/box/survival/radio/PopulateContents()
+/obj/item/storage/box/survival/normal/radio/PopulateContents()
 	..() // we want the survival stuff too.
 	new /obj/item/device/radio/off(src)
 
-/obj/item/storage/box/survival_mining/PopulateContents()
+/obj/item/storage/box/survival/mining/PopulateContents()
 	new /obj/item/clothing/mask/gas/explorer(src)
 	new /obj/item/tank/internals/emergency_oxygen/engi(src)
 	new /obj/item/crowbar/red(src)
@@ -110,27 +112,27 @@
 
 
 // Engineer survival box
-/obj/item/storage/box/engineer/PopulateContents()
+/obj/item/storage/box/survival/engineer/PopulateContents()
 	new /obj/item/clothing/mask/breath(src)
 	new /obj/item/tank/internals/emergency_oxygen/engi(src)
 	new /obj/item/reagent_containers/hypospray/medipen(src)
 
-/obj/item/storage/box/engineer/radio/PopulateContents()
+/obj/item/storage/box/survival/engineer/radio/PopulateContents()
 	..() // we want the regular items too.
 	new /obj/item/device/radio/off(src)
 
 // Syndie survival box
-/obj/item/storage/box/syndie/PopulateContents()
+/obj/item/storage/box/survival/syndie/PopulateContents()
 	new /obj/item/clothing/mask/gas/syndicate(src)
 	new /obj/item/tank/internals/emergency_oxygen/engi(src)
 
 // Security survival box
-/obj/item/storage/box/security/PopulateContents()
+/obj/item/storage/box/survival/security/PopulateContents()
 	new /obj/item/clothing/mask/gas/sechailer(src)
 	new /obj/item/tank/internals/emergency_oxygen(src)
 	new /obj/item/reagent_containers/hypospray/medipen(src)
 
-/obj/item/storage/box/security/radio/PopulateContents()
+/obj/item/storage/box/survival/security/radio/PopulateContents()
 	..() // we want the regular stuff too
 	new /obj/item/device/radio/off(src)
 
