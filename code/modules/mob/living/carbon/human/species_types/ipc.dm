@@ -76,6 +76,10 @@ datum/species/ipc/on_species_loss(mob/living/carbon/C)
 		H.reagents.remove_reagent(chem.id, REAGENTS_METABOLISM)
 		return 1
 
+/datum/species/ipc/spec_death(gibbed, mob/living/carbon/C)
+	C.dna.features["ipc_screen"] = null // Turns off their monitor on death.
+	C.update_body()
+
 /datum/action/innate/change_screen
 	name = "Change Display"
 	check_flags = AB_CHECK_CONSCIOUS
@@ -83,13 +87,17 @@ datum/species/ipc/on_species_loss(mob/living/carbon/C)
 	button_icon_state = "ipc_screen"
 
 /datum/action/innate/change_screen/Activate()
-	var/choice = input(usr, "Which screen do you want to use?", "Screen Change") as null | anything in GLOB.ipc_screens_list
-	if(!choice)
+	var/screen_choice = input(usr, "Which screen do you want to use?", "Screen Change") as null | anything in GLOB.ipc_screens_list
+	var/color_choice = input(usr, "Which color do you want your screen to be?", "Color Change") as null | color
+	if(!screen_choice)
+		return
+	if(!color_choice)
 		return
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
-	H.dna.features["ipc_screen"] = choice
+	H.dna.features["ipc_screen"] = screen_choice
+	H.eye_color = sanitize_hexcolor(color_choice)
 	H.update_body()
 
 /obj/item/apc_powercord

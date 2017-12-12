@@ -1526,14 +1526,28 @@
 /datum/sprite_accessory/ipc_screens/blue
 	name = "Blue"
 	icon_state = "blue"
+	color_src = 0
+
+/datum/sprite_accessory/ipc_screens/bsod
+	name = "BSOD"
+	icon_state = "bsod"
+	color_src = 0
 
 /datum/sprite_accessory/ipc_screens/breakout
 	name = "Breakout"
 	icon_state = "breakout"
 
+/datum/sprite_accessory/ipc_screens/console
+	name = "Console"
+	icon_state = "console"
+
 /datum/sprite_accessory/ipc_screens/eight
 	name = "Eight"
 	icon_state = "eight"
+
+/datum/sprite_accessory/ipc_screens/glider
+	name = "Glider"
+	icon_state = "glider"
 
 /datum/sprite_accessory/ipc_screens/goggles
 	name = "Goggles"
@@ -1546,6 +1560,7 @@
 /datum/sprite_accessory/ipc_screens/heart
 	name = "Heart"
 	icon_state = "heart"
+	color_src = 0
 
 /datum/sprite_accessory/ipc_screens/monoeye
 	name = "Mono-eye"
@@ -1559,6 +1574,10 @@
 	name = "Orange"
 	icon_state = "orange"
 
+/datum/sprite_accessory/ipc_screens/orangeeyes
+	name = "Orange Eyes"
+	icon_state = "orangeeyes"
+
 /datum/sprite_accessory/ipc_screens/pink
 	name = "Pink"
 	icon_state = "pink"
@@ -1567,9 +1586,27 @@
 	name = "Purple"
 	icon_state = "purple"
 
+/datum/sprite_accessory/ipc_screens/rainbow
+	name = "Rainbow"
+	icon_state = "rainbow"
+	color_src = 0
+
+/datum/sprite_accessory/ipc_screens/rooster
+	name = "Rooster"
+	icon_state = "rooster"
+	color_src = 0
+
 /datum/sprite_accessory/ipc_screens/red
 	name = "Red"
 	icon_state = "red"
+
+/datum/sprite_accessory/ipc_screens/rgb
+	name = "RGB"
+	icon_state = "rgb"
+
+/datum/sprite_accessory/ipc_screens/scroll
+	name = "Scanline"
+	icon_state = "scroll"
 
 /datum/sprite_accessory/ipc_screens/shower
 	name = "Shower"
@@ -1582,30 +1619,6 @@
 /datum/sprite_accessory/ipc_screens/yellow
 	name = "Yellow"
 	icon_state = "yellow"
-
-/datum/sprite_accessory/ipc_screens/scroll
-	name = "Scanline"
-	icon_state = "scroll"
-
-/datum/sprite_accessory/ipc_screens/console
-	name = "Console"
-	icon_state = "console"
-
-/datum/sprite_accessory/ipc_screens/rgb
-	name = "RGB"
-	icon_state = "rgb"
-
-/datum/sprite_accessory/ipc_screens/glider
-	name = "Glider"
-	icon_state = "glider"
-
-/datum/sprite_accessory/ipc_screens/rainbow
-	name = "Rainbow"
-	icon_state = "rainbow"
-
-/datum/sprite_accessory/ipc_screens/orangeeyes
-	name = "Orange Eyes"
-	icon_state = "orangeeyes"
 
 /datum/sprite_accessory/ipc_antennas
 	icon = 'icons/mob/ipc_accessories.dmi'
