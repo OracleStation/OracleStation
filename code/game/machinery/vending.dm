@@ -374,7 +374,7 @@
 				dat += "<tr><td>" + GetIconForProduct(R) + "</td>"
 				dat += "<td style=\"width: 100%\"><b>[sanitize(R.product_name)]</b></td>"
 				if(R.amount > 0)
-					dat += "<td><b>[R.amount]&nbsp;</b></td><td><a href='byond://?src=\ref[src];vend=\ref[R]'>Vend</a></td>"
+					dat += "<td><b>[R.amount]&nbsp;</b></td><td><a href='byond://?src=[REF(src)];vend=[REF(R)]'>Vend</a></td>"
 				else
 					dat += "<td>0&nbsp;</td><td><span class='linkOff'>Vend</span></td>"
 				dat += "</tr>"
@@ -383,7 +383,7 @@
 		if(premium.len > 0)
 			dat += "<b>Change Return:</b> "
 			if (coin || bill)
-				dat += "[(coin ? coin : "")][(bill ? bill : "")]&nbsp;&nbsp;<a href='byond://?src=\ref[src];remove_coin=1'>Remove</a>"
+				dat += "[(coin ? coin : "")][(bill ? bill : "")]&nbsp;&nbsp;<a href='byond://?src=[REF(src)];remove_coin=1'>Remove</a>"
 			else
 				dat += "<i>No money</i>&nbsp;&nbsp;<span class='linkOff'>Remove</span>"
 		if(istype(src, /obj/machinery/vending/snack))
@@ -392,7 +392,7 @@
 			for (var/O in dish_quants)
 				if(dish_quants[O] > 0)
 					var/N = dish_quants[O]
-					dat += "<a href='byond://?src=\ref[src];dispense=[sanitize(O)]'>Dispense</A> "
+					dat += "<a href='byond://?src=[REF(src)];dispense=[sanitize(O)]'>Dispense</A> "
 					dat += "<B>[capitalize(O)]: [N]</B><br>"
 			dat += "</div>"
 	user.set_machine(src)

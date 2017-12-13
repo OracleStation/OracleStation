@@ -8,7 +8,4 @@
 	if(loc)
 		loc.on_log(FALSE)
 
-	if(mind && mind.active)
-		player_logged = TRUE
-
 	return TRUE

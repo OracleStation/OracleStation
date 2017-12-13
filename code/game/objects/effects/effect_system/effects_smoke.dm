@@ -17,22 +17,11 @@
 	var/lifetime = 5
 	var/opaque = 1 //whether the smoke can block the view when in enough amount
 
-
-/obj/effect/particle_effect/smoke/proc/fade_out(frames = 16)
-	if(alpha == 0) //Handle already transparent case
-		return
-	if(frames == 0)
-		frames = 1 //We will just assume that by 0 frames, the coder meant "during one frame".
-	var/step = alpha / frames
-	for(var/i = 0, i < frames, i++)
-		alpha -= step
-		if(alpha < 160)
-			set_opacity(0) //if we were blocking view, we aren't now because we're fading out
-		stoplag()
-
 /obj/effect/particle_effect/smoke/New()
 	..()
+	alpha = 0
 	create_reagents(500)
+	animate(src, alpha = 255, time = 5)
 	START_PROCESSING(SSobj, src)
 
 
@@ -42,7 +31,9 @@
 
 /obj/effect/particle_effect/smoke/proc/kill_smoke()
 	STOP_PROCESSING(SSobj, src)
-	INVOKE_ASYNC(src, .proc/fade_out)
+	if(opaque)
+		opacity = 0
+	animate(src, alpha = 0, time = 10)
 	QDEL_IN(src, 10)
 
 /obj/effect/particle_effect/smoke/process()
@@ -289,7 +280,7 @@
 			var/mob/M = get_mob_by_key(carry.my_atom.fingerprintslast)
 			var/more = ""
 			if(M)
-				more = "(<A HREF='?_src_=holder;[HrefToken()];adminmoreinfo=\ref[M]'>?</a>) (<A HREF='?_src_=holder;[HrefToken()];adminplayerobservefollow=\ref[M]'>FLW</A>) "
+				more = "(<A HREF='?_src_=holder;[HrefToken()];adminmoreinfo=[REF(M)]'>?</a>) (<A HREF='?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(M)]'>FLW</A>) "
 			message_admins("Smoke: ([whereLink])[contained]. Key: [carry.my_atom.fingerprintslast][more].", 0, 1)
 			log_game("A chemical smoke reaction has taken place in ([where])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
 		else
