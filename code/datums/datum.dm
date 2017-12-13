@@ -1,8 +1,9 @@
 /datum
-    var/gc_destroyed //Time when this object was destroyed.
-    var/list/active_timers  //for SStimer
-    var/list/datum_components //for /datum/components
-    var/ui_screen = "home"  //for tgui
+	var/gc_destroyed //Time when this object was destroyed.
+	var/list/active_timers  //for SStimer
+	var/list/datum_components //for /datum/components
+	var/ui_screen = "home"  //for tgui
+	var/use_tag = FALSE
 
 #ifdef TESTING
     var/running_find_references

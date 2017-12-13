@@ -1473,3 +1473,16 @@ GLOBAL_PROTECT(valid_HTTPSGet)
 			break
 	if(!.)
 		to_chat(user, "<span class='warning'>No mob located in [A].</span>")
+
+// \ref behaviour got changed in 512 so this is necesary to replicate old behaviour.
+// If it ever becomes necesary to get a more performant REF(), this lies here in wait
+// #define REF(thing) (thing && istype(thing, /datum) && thing:use_tag && thing:tag ? "[thing:tag]" : "\ref[thing]")
+/proc/REF(input)
+	if(istype(input, /datum))
+		var/datum/thing = input
+		if(thing.use_tag)
+			if(!thing.tag)
+				WARNING("A ref was requested of an object with use_tag set but no tag: [thing]")
+			else
+				return thing.tag
+	return "\ref[input]" 
