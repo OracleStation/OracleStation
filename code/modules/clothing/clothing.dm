@@ -705,11 +705,11 @@ BLIND     // can't see anything
 			if(0)
 				usr.visible_message("<span class='warning'>[usr] disables [loc]'s remote sensing equipment.</span>")
 			if(1)
-				usr.visible_message("[usr] turns [loc]'s remote sensors to binary.")
+				usr.visible_message("<span class='notice'>[usr] turns [loc]'s remote sensors to binary.</span>")
 			if(2)
-				usr.visible_message("[usr] sets [loc]'s sensors to track vitals.")
+				usr.visible_message("<span class='notice'>[usr] sets [loc]'s sensors to track vitals.</span>")
 			if(3)
-				usr.visible_message("[usr] sets [loc]'s sensors to maximum.")
+				usr.visible_message("<span class='notice'>[usr] sets [loc]'s sensors to maximum.</span>")
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
