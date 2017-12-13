@@ -76,7 +76,7 @@
 	desc = "A mysterious structure that allows for instant communication between users. Pretty impressive until you need to eat something."
 	icon_state = "tongueayylmao"
 	say_mod = "gibbers"
-	taste_sensitivity = 101 // ayys cannot taste anything.
+	taste_sensitivity = NO_TASTE_SENSITIVITY // ayys cannot taste anything.
 
 /obj/item/organ/tongue/abductor/TongueSpeech(var/message)
 	//Hacks
@@ -147,7 +147,7 @@
 	icon_state = "tonguebone"
 	say_mod = "rattles"
 	attack_verb = list("bitten", "chattered", "chomped", "enamelled", "boned")
-	taste_sensitivity = 101 // skeletons cannot taste anything
+	taste_sensitivity = NO_TASTE_SENSITIVITY // skeletons cannot taste anything
 
 	var/chattering = FALSE
 	var/phomeme_type = "sans"
@@ -188,7 +188,7 @@
 	icon_state = "tonguerobot"
 	say_mod = "states"
 	attack_verb = list("beeped", "booped")
-	taste_sensitivity = 101 // Can't actually taste anything
+	taste_sensitivity = NO_TASTE_SENSITIVITY // Robots have no taste.
 
 /obj/item/organ/tongue/robot/emp_act(severity)
 	owner.apply_effect(STUTTER, 120)

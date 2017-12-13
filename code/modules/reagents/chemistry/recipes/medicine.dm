@@ -41,7 +41,7 @@
 /datum/chemical_reaction/system_cleaner
 	name = "System Cleaner"
 	id = "system_cleaner"
-	results = list("system_cleaner" = 2)
+	results = list("system_cleaner" = 4)
 	required_reagents = list("ethanol" = 1, "chlorine" = 1, "phenol" = 1, "potassium" = 1)
 
 /datum/chemical_reaction/silver_sulfadiazine

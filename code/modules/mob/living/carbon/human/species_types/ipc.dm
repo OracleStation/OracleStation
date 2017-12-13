@@ -71,9 +71,7 @@ datum/species/ipc/on_species_loss(mob/living/carbon/C)
 
 /datum/species/ipc/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
 	if(chem.id in list("plasma", "stable_plasma")) // IPCs have plasma batteries.
-		H.nutrition += 5
-		if(H.nutrition > NUTRITION_LEVEL_FULL)
-			H.nutrition = NUTRITION_LEVEL_FULL
+		H.nutrition = min(H.nutrition + 5, NUTRITION_LEVEL_FULL)
 		H.reagents.remove_reagent(chem.id, REAGENTS_METABOLISM)
 		return 1
 
@@ -115,13 +113,13 @@ datum/species/ipc/on_species_loss(mob/living/carbon/C)
 	var/mob/living/carbon/human/H = user
 	var/obj/item/organ/stomach/cell/cell = H.internal_organs_slot["stomach"]
 	if(!cell)
-		to_chat(H, "<span class='warning'>You try to siphon energy from [A], but your powercell is gone!</span>")
+		to_chat(H, "<span class='warning'>You try to siphon energy from the [A], but your powercell is gone!</span>")
 		return
 	if(A.emagged || A.stat & BROKEN)
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, A)
 		s.start()
-		to_chat(H, "<span class='warning'>The APC power currents surge erratically, damaging your chassis!</span>")
+		to_chat(H, "<span class='warning'>The [A] power currents surge erratically, damaging your chassis!</span>")
 		H.adjustFireLoss(10)
 	else if(A.cell && A.cell.charge > 0)
 		if(H.nutrition >= NUTRITION_LEVEL_WELL_FED)
@@ -132,25 +130,25 @@ datum/species/ipc/on_species_loss(mob/living/carbon/C)
 		to_chat(user, "<span class='warning'>There is no charge to draw from that APC.</span>")
 
 /obj/item/apc_powercord/proc/powerdraw_loop(obj/machinery/power/apc/A, mob/living/carbon/human/H)
-	H.visible_message("<span class='notice'>[H] inserts a power connector into \the [A].</span>", "<span class='notice'>You begin to draw power from \the [A].</span>")
+	H.visible_message("<span class='notice'>[H] inserts a power connector into the [A].</span>", "<span class='notice'>You begin to draw power from the [A].</span>")
 	while(do_after(H, 10, target = A))
 		if(loc != H)
 			to_chat(H, "<span class='warning'>You must keep your connector out while charging!</span>")
 			break
 		if(A.cell.charge == 0)
-			to_chat(H, "<span class='warning'>\The [A] has no more charge.</span>")
+			to_chat(H, "<span class='warning'>The [A] doesn't have enough charge to spare.</span>")
 			break
 		A.charging = 1
-		if(A.cell.charge >= 250)
+		if(A.cell.charge >= 500)
 			H.nutrition += 50
 			A.cell.charge -= 250
 			to_chat(H, "<span class='notice'>You siphon off some of the stored charge for your own use.</span>")
 		else
 			H.nutrition += A.cell.charge/10
 			A.cell.charge = 0
-			to_chat(H, "<span class='notice'>You siphon off the last of \the [A]'s charge.</span>")
+			to_chat(H, "<span class='notice'>You siphon off as much as the [A] can spare.</span>")
 			break
 		if(H.nutrition > NUTRITION_LEVEL_WELL_FED)
 			to_chat(H, "<span class='notice'>You are now fully charged.</span>")
 			break
-	H.visible_message("<span class='notice'>[H] unplugs from \the [A].</span>", "<span class='notice'>You unplug from \the [A].</span>")
+	H.visible_message("<span class='notice'>[H] unplugs from the [A].</span>", "<span class='notice'>You unplug from the [A].</span>")
