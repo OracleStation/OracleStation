@@ -6,8 +6,8 @@
 	var/use_tag = FALSE
 
 #ifdef TESTING
-    var/running_find_references
-    var/last_find_references = 0
+	var/running_find_references
+	var/last_find_references = 0
 #endif
 
 // Default implementation of clean-up code.
