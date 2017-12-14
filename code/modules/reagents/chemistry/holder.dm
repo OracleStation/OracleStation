@@ -538,7 +538,6 @@
 				var/check = reaction_check(A, R)
 				if(!check)
 					continue
-				R.reaction_mob(A, method, R.volume * volume_modifier)
 				var/touch_protection = 0
 				if(method == VAPOR)
 					var/mob/living/L = A
