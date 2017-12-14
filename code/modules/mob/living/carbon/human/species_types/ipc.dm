@@ -152,3 +152,10 @@ datum/species/ipc/on_species_loss(mob/living/carbon/C)
 			to_chat(H, "<span class='notice'>You are now fully charged.</span>")
 			break
 	H.visible_message("<span class='notice'>[H] unplugs from the [A].</span>", "<span class='notice'>You unplug from the [A].</span>")
+
+/datum/species/ipc/spec_life(mob/living/carbon/human/H)
+	if(H.health <= HEALTH_THRESHOLD_CRIT && H.stat != DEAD) // So they die eventually instead of being stuck in crit limbo.
+		H.adjustFireLoss(6) // After bodypart_robotic resistance this is ~2/second
+		if(prob(5))
+			to_chat(H, "<span class='warning'>Alert: Internal temperature regulation systems offline; thermal damage sustained. Shutdown imminent.</span>")
+			H.visible_message("[H]'s cooling system fans stutter and stall. There is a faint, rapid beeping coming from inside their chassis.")
