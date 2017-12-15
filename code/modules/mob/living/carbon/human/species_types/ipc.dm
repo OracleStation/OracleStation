@@ -35,6 +35,8 @@
 	attack_sound = 'sound/items/trayhit1.ogg'
 	allow_numbers_in_name = TRUE
 	ass_pic = "ipc"
+	robotic_limbs = TRUE
+	render_robotic_limbs_as_organic = TRUE
 	var/datum/action/innate/change_screen/change_screen
 
 /datum/species/ipc/random_name(unique)
@@ -49,9 +51,7 @@
 	if(ishuman(C) && !change_screen)
 		change_screen = new
 		change_screen.Grant(C)
-	for(var/X in C.bodyparts)
-		var/obj/item/bodypart/O = X
-		O.change_bodypart_status(BODYPART_ROBOTIC) // Makes all Bodyparts robotic.
+	for(var/obj/item/bodypart/O in C.bodyparts)
 		O.render_like_organic = TRUE // Makes limbs render like organic limbs instead of augmented limbs, check bodyparts.dm
 		var/chassis = C.dna.features["ipc_chassis"]
 		var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.ipc_chassis_list[chassis]

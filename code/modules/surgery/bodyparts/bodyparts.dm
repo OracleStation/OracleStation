@@ -127,7 +127,8 @@
 /obj/item/bodypart/proc/fix_bone()
 	broken = FALSE
 	splinted = FALSE
-	owner.update_inv_splints()
+	if(owner)
+		owner.update_inv_splints()
 
 /obj/item/bodypart/on_mob_move()
 	if(!broken || status == BODYPART_ROBOTIC || !owner || splinted)
