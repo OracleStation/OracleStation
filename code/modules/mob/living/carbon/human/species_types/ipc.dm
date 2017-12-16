@@ -9,7 +9,7 @@
 	toxmod = 0.5 // Although they can't be poisoned, toxins can damage components
 	clonemod = 0
 	siemens_coeff = 1.5 // Overload!
-	species_traits = list(NOBREATH, NOBLOOD, RADIMMUNE, VIRUSIMMUNE, NOZOMBIE, EASYDISMEMBER, EASYLIMBATTACHMENT, NOPAIN, NO_BONES, NOTRANSSTING, MUTCOLORS, REVIVESBYHEALING, NOSCAN, NOCHANGELING, NOHUSK)
+	species_traits = list(NOBREATH, NOBLOOD, RADIMMUNE, VIRUSIMMUNE, NOZOMBIE, EASYDISMEMBER, EASYLIMBATTACHMENT, NOPAIN, NO_BONES, NOTRANSSTING, MUTCOLORS, REVIVESBYHEALING, NOSCAN, NOCHANGELING, NOHUSK, ROBOTIC_LIMBS)
 	mutant_organs = list(/obj/item/organ/cyberimp/arm/power_cord/)
 	mutant_bodyparts = list("ipc_screen", "ipc_antenna", "ipc_chassis")
 	default_features = list("mcolor" = "#7D7D7D", "ipc_screen" = "Static", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)")
@@ -35,8 +35,6 @@
 	attack_sound = 'sound/items/trayhit1.ogg'
 	allow_numbers_in_name = TRUE
 	ass_pic = "ipc"
-	robotic_limbs = TRUE
-	render_robotic_limbs_as_organic = TRUE
 	var/datum/action/innate/change_screen/change_screen
 
 /datum/species/ipc/random_name(unique)

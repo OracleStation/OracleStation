@@ -92,8 +92,7 @@
 	var/obj/item/organ/liver/mutantliver
 	var/obj/item/organ/stomach/mutantstomach
 	var/ass_pic = "human" // self explanatory
-	var/robotic_limbs = FALSE // Does this species have inherently robotic limbs?
-	var/render_robotic_limbs_as_organic = FALSE // Does this species have robotic limbs that need to be rendered like organic?
+
 ///////////
 // PROCS //
 ///////////
@@ -277,18 +276,20 @@
 			else	//Entries in the list should only ever be items or null, so if it's not an item, we can assume it's an empty hand
 				C.put_in_hands(new mutanthands())
 
-	if(robotic_limbs)
+	if(ROBOTIC_LIMBS in species_traits)
 		for(var/obj/item/bodypart/B in C.bodyparts)
 			B.change_bodypart_status(BODYPART_ROBOTIC) // Makes all Bodyparts robotic.
+			B.render_like_organic = TRUE
 
 /datum/species/proc/on_species_loss(mob/living/carbon/C)
 	if(C.dna.species.exotic_bloodtype)
 		C.dna.blood_type = random_blood_type()
 	if(DIGITIGRADE in species_traits)
 		C.Digitigrade_Leg_Swap(TRUE)
-	if(robotic_limbs)
-		for(var/obj/item/bodypart/O in C.bodyparts)
-			O.change_bodypart_status(BODYPART_ORGANIC,FALSE, TRUE)
+	if(ROBOTIC_LIMBS in species_traits)
+		for(var/obj/item/bodypart/B in C.bodyparts)
+			B.change_bodypart_status(BODYPART_ORGANIC,FALSE, TRUE)
+			B.render_like_organic = FALSE
 
 /datum/species/proc/handle_hair(mob/living/carbon/human/H, forced_colour)
 	H.remove_overlay(HAIR_LAYER)
@@ -552,7 +553,7 @@
 			bodyparts_to_add -= "horns"
 
 	if("ipc_screen" in mutant_bodyparts)
-		if(!H.dna.features["ipc_screen"] || H.dna.features["ipc_screen"] == "None" || H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
+		if(!H.dna.features["ipc_screen"] || H.dna.features["ipc_screen"] == "None" || H.head && (H.head.flags_inv & HIDEFACE) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEYES)) || !HD)
 			bodyparts_to_add -= "ipc_screen"
 
 	if("ipc_antenna" in mutant_bodyparts)

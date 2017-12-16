@@ -241,7 +241,6 @@
 	id = "unholywater"
 	description = "Something that shouldn't exist on this plane of existence."
 	taste_description = "suffering"
-	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/fuel/unholywater/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if(method == TOUCH || method == VAPOR)
@@ -495,12 +494,12 @@
 	race = /datum/species/abductor
 	mutationtext = "<span class='danger'>The pain subsides. You feel... alien.</span>"
 
-/datum/reagent/stableslimetoxin/android
-	name = "Android Mutation Toxin"
-	id = "androidmutationtoxin"
+/datum/reagent/stableslimetoxin/robot
+	name = "Robot Mutation Toxin"
+	id = "ipcmutationtoxin"
 	description = "A robotic toxin produced by slimes."
 	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/android
+	race = /datum/species/ipc
 	mutationtext = "<span class='danger'>The pain subsides. You feel... artificial.</span>"
 
 //BLACKLISTED RACES

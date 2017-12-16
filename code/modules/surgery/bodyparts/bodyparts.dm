@@ -394,7 +394,6 @@
 			limb.icon_state = "[body_zone]"
 		return
 
-
 	if(should_draw_greyscale)
 		var/draw_color = mutation_color || species_color || (skin_tone && skintone2hex(skin_tone))
 		if(draw_color)

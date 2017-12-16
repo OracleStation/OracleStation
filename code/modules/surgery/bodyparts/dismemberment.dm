@@ -353,10 +353,9 @@
 			L.burnstate = 0
 		if(ishuman(src))
 			var/mob/living/carbon/human/H = src
-			if(H.dna && H.dna.species && H.dna.species.robotic_limbs)
+			if(H.dna && H.dna.species && (ROBOTIC_LIMBS in H.dna.species.species_traits))
 				L.change_bodypart_status(BODYPART_ROBOTIC)
-				if(H.dna.species.render_robotic_limbs_as_organic)
-					L.render_like_organic = TRUE
+				L.render_like_organic = TRUE
 
 		L.attach_limb(src, 1)
 		return 1
