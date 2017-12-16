@@ -198,11 +198,6 @@ GLOBAL_LIST_INIT(prglass_recipes, list ( \
 	var/cooldown = 0
 	sharpness = IS_SHARP
 
-/obj/item/shard/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is slitting [user.p_their()] [pick("wrists", "throat")] with the shard of glass! It looks like [user.p_theyre()] trying to commit suicide.</span>")
-	return (BRUTELOSS)
-
-
 /obj/item/shard/Initialize()
 	. = ..()
 	icon_state = pick("large", "medium", "small")
