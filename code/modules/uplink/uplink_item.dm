@@ -1192,6 +1192,16 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/storage/box/syndie_kit/imp_microbomb
 	cost = 2
 	include_modes = list(/datum/game_mode/nuclear)
+	
+/datum/uplink_item/implants/microbomb
+	name = "Microbomb Implant"
+	desc = "An implant injected into the body, and later activated either manually or automatically upon death. \
+			The more implants inside of you, the higher the explosive power. \
+			This will permanently destroy your body, however."
+	item = /obj/item/storage/box/syndie_kit/imp_microbomb
+	cost = 3
+	limited_stock = 1
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)	
 
 /datum/uplink_item/implants/macrobomb
 	name = "Macrobomb Implant"
@@ -1200,7 +1210,6 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/storage/box/syndie_kit/imp_macrobomb
 	cost = 20
 	include_modes = list(/datum/game_mode/nuclear)
-
 
 // Cybernetics
 /datum/uplink_item/cyber_implants
