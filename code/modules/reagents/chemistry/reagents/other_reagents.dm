@@ -408,6 +408,7 @@
 	taste_description = "slime"
 	var/datum/species/race = /datum/species/human
 	var/mutationtext = "<span class='danger'>The pain subsides. You feel... human.</span>"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/stableslimetoxin/on_mob_life(mob/living/carbon/human/H)
 	..()

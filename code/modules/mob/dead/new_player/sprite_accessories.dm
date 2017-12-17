@@ -1519,6 +1519,8 @@
 	name = "Aquatic"
 	icon_state = "aqua"
 
+// IPC accessories.
+
 /datum/sprite_accessory/ipc_screens
 	icon = 'icons/mob/ipc_accessories.dmi'
 	color_src = EYECOLOR
@@ -1591,11 +1593,6 @@
 	icon_state = "rainbow"
 	color_src = 0
 
-/datum/sprite_accessory/ipc_screens/rooster
-	name = "Rooster"
-	icon_state = "rooster"
-	color_src = 0
-
 /datum/sprite_accessory/ipc_screens/red
 	name = "Red"
 	icon_state = "red"
@@ -1603,6 +1600,16 @@
 /datum/sprite_accessory/ipc_screens/rgb
 	name = "RGB"
 	icon_state = "rgb"
+
+/datum/sprite_accessory/ipc_screens/rooster
+	name = "Rooster"
+	icon_state = "rooster"
+	color_src = 0
+
+/datum/sprite_accessory/ipc_screens/ruiner
+	name = "Ruiner"
+	icon_state = "ruiner"
+	color_src = 0
 
 /datum/sprite_accessory/ipc_screens/scroll
 	name = "Scanline"
@@ -1632,37 +1639,37 @@
 	name = "Angled"
 	icon_state = "antennae"
 
-/datum/sprite_accessory/ipc_antennas/tv
-	name = "TV Antenna"
-	icon_state = "tvantennae"
+/datum/sprite_accessory/ipc_antennas/antlers
+	name = "Antlers"
+	icon_state = "antlers"
 
-/datum/sprite_accessory/ipc_antennas/tesla
-	name = "Tesla"
-	icon_state = "tesla"
-
-/datum/sprite_accessory/ipc_antennas/light
-	name = "Light"
-	icon_state = "light"
+/datum/sprite_accessory/ipc_antennas/crowned
+	name = "Crowned"
+	icon_state = "crowned"
 
 /datum/sprite_accessory/ipc_antennas/cyberhead
 	name = "Cyberhead"
 	icon_state = "cyberhead"
 
-/datum/sprite_accessory/ipc_antennas/sidelights
-	name = "Sidelights"
-	icon_state = "sidelights"
-
-/datum/sprite_accessory/ipc_antennas/antlers
-	name = "Antlers"
-	icon_state = "antlers"
-
 /datum/sprite_accessory/ipc_antennas/droneeyes
 	name = "Drone Eyes"
 	icon_state = "droneeyes"
 
-/datum/sprite_accessory/ipc_antennas/crowned
-	name = "Crowned"
-	icon_state = "crowned"
+/datum/sprite_accessory/ipc_antennas/light
+	name = "Light"
+	icon_state = "light"
+
+/datum/sprite_accessory/ipc_antennas/sidelights
+	name = "Sidelights"
+	icon_state = "sidelights"
+
+/datum/sprite_accessory/ipc_antennas/tesla
+	name = "Tesla"
+	icon_state = "tesla"
+
+/datum/sprite_accessory/ipc_antennas/tv
+	name = "TV Antenna"
+	icon_state = "tvantennae"
 
 /datum/sprite_accessory/ipc_chassis // Used for changing limb icons, doesn't need to hold the actual icon. That's handled in ipc.dm
 	icon = null

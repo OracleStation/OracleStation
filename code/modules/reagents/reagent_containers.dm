@@ -61,6 +61,10 @@
 		return 0
 	var/mob/living/carbon/C = eater
 	var/covered = ""
+	if(C.dna && C.dna.species && (NOMOUTH in C.dna.species.species_traits))
+		var/verbage = (isnull(user) || eater == user) ? "You can't eat that, you don't have a mouth!" : "[eater] can't eat that. They don't have a mouth!"
+		to_chat(user, "<span class='warning'>[verbage]</span>")
+		return 0
 	if(C.is_mouth_covered(head_only = 1))
 		covered = "headgear"
 	else if(C.is_mouth_covered(mask_only = 1))
