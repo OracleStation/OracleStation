@@ -12,6 +12,12 @@
 	. = ..()
 	SSair.high_pressure_delta -= src
 
+/turf/closed/CanPass(atom/movable/mover, turf/target)
+	if(istype(mover) && mover.checkpass(PASSCLOSEDTURF))
+		return TRUE
+	else
+		..()
+
 /turf/closed/indestructible
 	name = "wall"
 	icon = 'icons/turf/walls.dmi'
