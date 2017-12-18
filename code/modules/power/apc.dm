@@ -633,7 +633,7 @@
 			update_icon()
 		return
 	else if(istype(W, /obj/item/apc_powercord))
-		return
+		return //because we put our fancy code in the right places, and this is all in the powercord's afterattack()
 	else if(panel_open && !opened && is_wire_tool(W))
 		wires.interact(user)
 	else
