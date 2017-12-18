@@ -168,7 +168,7 @@
 		spark_system.attach(src)
 		spark_system.start()
 		if(prob(25))
-			new /obj/effect/decal/cleanable/oil(src.loc)
+			new /obj/effect/decal/cleanable/oil(loc)
 
 	SSblackbox.add_details("item_used_for_combat","[I.type]|[I.force]")
 	SSblackbox.add_details("zone_targeted","[target_area]")

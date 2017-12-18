@@ -88,7 +88,7 @@
 		if(!P.brainmob || !P.brainmob.client)
 			to_chat(user, "<span class='notice'>[tool] has no life in it, this would be pointless!</span>")
 			return -1
-		user.visible_message("[user] begins to insert [tool] into [target]'s [parse_zone(target_zone)].",
+		user.visible_message("<span class='notice'>[user] begins to insert [tool] into [target]'s [parse_zone(target_zone)].</span>",
 			"<span class='notice'>You begin to insert [tool] into [target]'s [parse_zone(target_zone)]...</span>")
 
 	if(isorgan(tool))
@@ -98,7 +98,7 @@
 			to_chat(user, "<span class='notice'>There is no room for [I] in [target]'s [parse_zone(target_zone)]!</span>")
 			return -1
 
-		user.visible_message("[user] begins to insert [tool] into [target]'s [parse_zone(target_zone)].",
+		user.visible_message("<span class='notice'>[user] begins to insert [tool] into [target]'s [parse_zone(target_zone)].</span>",
 			"<span class='notice'>You begin to insert [tool] into [target]'s [parse_zone(target_zone)]...</span>")
 
 	else if(implement_type in implements_extract)
@@ -117,14 +117,14 @@
 			if(I && user && target && user.Adjacent(target) && user.get_active_held_item() == tool)
 				I = organs[I]
 				if(!I) return -1
-				user.visible_message("[user] begins to extract [I] from [target]'s [parse_zone(target_zone)].",
+				user.visible_message("<span class='notice'>[user] begins to extract [I] from [target]'s [parse_zone(target_zone)].</span>",
 					"<span class='notice'>You begin to extract [I] from [target]'s [parse_zone(target_zone)]...</span>")
 			else
 				return -1
 
 	else if(implement_type in implements_mend)
 		current_type = "mend"
-		user.visible_message("[user] begins to [mend_the_incision] [target]'s [parse_zone(target_zone)].",
+		user.visible_message("<span class='notice'>[user] begins to [mend_the_incision] [target]'s [parse_zone(target_zone)].</span>",
 			"<span class='notice'>You begin to [mend_the_incision] [target]'s [parse_zone(target_zone)]...</span>")
 
 	else if(istype(tool, /obj/item/reagent_containers/food/snacks/organ))
@@ -133,7 +133,7 @@
 
 /datum/surgery_step/manipulate_organs/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(current_type == "mend")
-		user.visible_message("[user] [mends_the_incision] [target]'s [parse_zone(target_zone)].",
+		user.visible_message("<span class='notice'>[user] [mends_the_incision] [target]'s [parse_zone(target_zone)].</span>",
 			"<span class='notice'>You [mend_the_incision] [target]'s [parse_zone(target_zone)].</span>")
 		if(locate(/datum/surgery_step/saw) in surgery.steps)
 			target.heal_bodypart_damage(45,0)
@@ -150,7 +150,7 @@
 		spawn(1)
 			I = new /obj/item/organ/brain/mmi_holder/posibrain(tool)
 			I.Insert(target)
-			user.visible_message("[user] inserts [tool] into [target]'s [parse_zone(target_zone)]!",
+			user.visible_message("<span class='notice'>[user] inserts [tool] into [target]'s [parse_zone(target_zone)]!</span>",
 				"<span class='notice'>You insert [tool] into [target]'s [parse_zone(target_zone)].</span>")
 
 	else if(current_type == "insert")
@@ -164,17 +164,17 @@
 			I = tool
 		user.drop_item()
 		I.Insert(target)
-		user.visible_message("[user] inserts [tool] into [target]'s [parse_zone(target_zone)]!",
+		user.visible_message("<span class='notice'>[user] inserts [tool] into [target]'s [parse_zone(target_zone)]!</span>",
 			"<span class='notice'>You insert [tool] into [target]'s [parse_zone(target_zone)].</span>")
 
 	else if(current_type == "extract")
 		if(I && I.owner == target)
-			user.visible_message("[user] successfully extracts [I] from [target]'s [parse_zone(target_zone)]!",
+			user.visible_message("<span class='notice'>[user] successfully extracts [I] from [target]'s [parse_zone(target_zone)]!</span>",
 				"<span class='notice'>You successfully extract [I] from [target]'s [parse_zone(target_zone)].</span>")
 			add_logs(user, target, "surgically removed [I.name] from", addition="INTENT: [uppertext(user.a_intent)]")
 			I.Remove(target)
 			I.loc = get_turf(target)
 		else
-			user.visible_message("[user] can't seem to extract anything from [target]'s [parse_zone(target_zone)]!",
+			user.visible_message("<span class='notice'>[user] can't seem to extract anything from [target]'s [parse_zone(target_zone)]!</span>",
 				"<span class='notice'>You can't extract anything from [target]'s [parse_zone(target_zone)]!</span>")
 	return 0
