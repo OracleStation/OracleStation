@@ -195,7 +195,7 @@
 				var/mob/living/brain/B = stored_mmi.brainmob
 				spawn(0)
 					if(B)
-						B.stat = 0//why the fuck this works I have no idea, but it actually does
+						B.stat = 0
 			stored_mmi = null
 
 	..()

@@ -71,9 +71,9 @@
 		return 0
 	if(!eater.has_mouth())
 		if(eater == user)
-			to_chat(world, "<span class='warning'>How can you hope to eat if you have no mouth, silly?</span>")
+			to_chat(eater, "<span class='warning'>You have no mouth, and cannot eat.</span>")
 		else
-			to_chat(world, "<span class='warning'>You can't feed [eater], because they have no mouth!</span>")
+			to_chat(user, "<span class='warning'>You can't feed [eater], because they have no mouth!</span>")
 		return 0
 	return 1
 

@@ -73,7 +73,7 @@
 	zone = "chest"
 	slot = "stomach"
 	attack_verb = list("assault and battery'd")
-	desc = "A Micro-cell, for IPC use only. Do not swallow."
+	desc = "A micro-cell, for IPC use only. Do not swallow."
 	status = ORGAN_ROBOTIC
 
 /obj/item/organ/stomach/cell/emp_act(severity)

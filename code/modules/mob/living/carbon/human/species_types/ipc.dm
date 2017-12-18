@@ -10,7 +10,7 @@
 	clonemod = 0
 	siemens_coeff = 1.5 // Overload!
 	species_traits = list(NOBREATH, NOBLOOD, RADIMMUNE, VIRUSIMMUNE, NOZOMBIE, EASYDISMEMBER, EASYLIMBATTACHMENT, NOPAIN, NO_BONES, NOTRANSSTING, MUTCOLORS, REVIVESBYHEALING, NOSCAN, NOCHANGELING, NOHUSK, ROBOTIC_LIMBS, NOMOUTH)
-	mutant_organs = list(/obj/item/organ/cyberimp/arm/power_cord/)
+	mutant_organs = list(/obj/item/organ/cyberimp/arm/power_cord)
 	mutant_bodyparts = list("ipc_screen", "ipc_antenna", "ipc_chassis")
 	default_features = list("mcolor" = "#7D7D7D", "ipc_screen" = "Static", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)")
 	meat = /obj/item/stack/sheet/plasteel{amount = 5}
@@ -110,7 +110,7 @@ datum/species/ipc/on_species_loss(mob/living/carbon/C)
 	var/mob/living/carbon/human/H = user
 	var/obj/item/organ/stomach/cell/cell = H.internal_organs_slot["stomach"]
 	if(!cell)
-		to_chat(H, "<span class='warning'>You try to siphon energy from the [A], but your powercell is gone!</span>")
+		to_chat(H, "<span class='warning'>You try to siphon energy from the [A], but your power cell is gone!</span>")
 		return
 	if(A.emagged || A.stat & BROKEN)
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
@@ -155,7 +155,7 @@ datum/species/ipc/on_species_loss(mob/living/carbon/C)
 		H.adjustFireLoss(6) // After bodypart_robotic resistance this is ~2/second
 		if(prob(5))
 			to_chat(H, "<span class='warning'>Alert: Internal temperature regulation systems offline; thermal damage sustained. Shutdown imminent.</span>")
-			H.visible_message("[H]'s cooling system fans stutter and stall. There is a faint, rapid beeping coming from inside their chassis.")
+			H.visible_message("[H]'s cooling system fans stutter and stall. There is a faint, yet rapid beeping coming from inside their chassis.")
 
 /datum/species/ipc/after_equip_job(datum/job/J, mob/living/carbon/human/H)
 	to_chat(H, "<span class='notice'>You are an IPC, a free synthetic! You recharge by using your power cord implant on an APC. If you get damaged, it can be fixed with a welder, or cable coil on the damaged area. You lose limbs easily, but you can plug them back in yourself. Watch out for EMPs!</span>")

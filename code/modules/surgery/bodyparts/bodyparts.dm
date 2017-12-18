@@ -65,7 +65,7 @@
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
 		if(EASYLIMBATTACHMENT in H.dna.species.species_traits)
-			if((src.status == BODYPART_ORGANIC && !(ROBOTIC_LIMBS in H.dna.species.species_traits))) // no meat limbs in robotic sockets, thanks.
+			if((status == BODYPART_ORGANIC && !(ROBOTIC_LIMBS in H.dna.species.species_traits))) // no meat limbs in robotic sockets, thanks.
 				if(!H.get_bodypart(body_zone) && !animal_origin)
 					if(H == user)
 						H.visible_message("<span class='notice'>[H] is attempting to re-attach [src]...</span>")
