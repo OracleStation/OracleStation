@@ -1543,9 +1543,17 @@
 	name = "Console"
 	icon_state = "console"
 
+/datum/sprite_accessory/ipc_screens/crosshair
+	name = "Crosshair"
+	icon_state = "crosshair"
+
 /datum/sprite_accessory/ipc_screens/eight
 	name = "Eight"
 	icon_state = "eight"
+
+/datum/sprite_accessory/ipc_screens/eyes
+	name = "Eyes"
+	icon_state = "eyes"
 
 /datum/sprite_accessory/ipc_screens/glider
 	name = "Glider"
@@ -1575,10 +1583,6 @@
 /datum/sprite_accessory/ipc_screens/orange
 	name = "Orange"
 	icon_state = "orange"
-
-/datum/sprite_accessory/ipc_screens/orangeeyes
-	name = "Orange Eyes"
-	icon_state = "orangeeyes"
 
 /datum/sprite_accessory/ipc_screens/pink
 	name = "Pink"
@@ -1618,6 +1622,10 @@
 /datum/sprite_accessory/ipc_screens/shower
 	name = "Shower"
 	icon_state = "shower"
+
+/datum/sprite_accessory/ipc_screens/sinewave
+	name = "Sinewave"
+	icon_state = "sinewave"
 
 /datum/sprite_accessory/ipc_screens/static_screen
 	name = "Static"

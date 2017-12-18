@@ -101,6 +101,8 @@
 /obj/item/organ/liver/cybernetic/upgraded/ipc/emp_act(severity)
 	switch(severity)
 		if(1)
-			to_chat(owner, "<span class='warning'>Alert: Your Substance Processor is nonfunctional and requires replacement.</span>")
+			to_chat(owner, "<span class='warning'>Alert: Your Substance Procesor has been severely damaged. Uncontained chemicals are affecting performance.</span>")
+			owner.toxloss += 15
 		if(2)
-			to_chat(owner, "<span class='warning'>Alert: Your Substance Processor is damaged.</span>")
+			to_chat(owner, "<span class='warning'>Alert: Your Substance Processor is damaged:Uncontained chemicals are affecting performance.</span>")
+			owner.toxloss += 5

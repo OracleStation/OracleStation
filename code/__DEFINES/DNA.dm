@@ -124,4 +124,4 @@
 #define NOCHANGELING	33 // Cannot be absorbed by clings
 #define NOHUSK			34 // Can't be husked.
 #define ROBOTIC_LIMBS	35 //limbs start out as robotic; but also use organic icons. If you want to use the default ones, you'll have to use on_species_gain
-#define NOMOUTH			36 // and I must scream (can't eat food)
+#define NOMOUTH			36

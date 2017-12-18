@@ -356,6 +356,10 @@
 			if(H.dna && H.dna.species && (ROBOTIC_LIMBS in H.dna.species.species_traits))
 				L.change_bodypart_status(BODYPART_ROBOTIC)
 				L.render_like_organic = TRUE
+			if(limb_zone == "head" && H.dna && H.dna.species && (NOMOUTH in H.dna.species.species_traits))
+				var/obj/item/bodypart/head/head = L
+				if(head)
+					head.mouth = FALSE
 
 		L.attach_limb(src, 1)
 		return 1

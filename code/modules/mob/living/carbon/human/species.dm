@@ -281,6 +281,10 @@
 			B.change_bodypart_status(BODYPART_ROBOTIC) // Makes all Bodyparts robotic.
 			B.render_like_organic = TRUE
 
+	if(NOMOUTH in species_traits)
+		for(var/obj/item/bodypart/head/head in C.bodyparts)
+			head.mouth = FALSE
+
 /datum/species/proc/on_species_loss(mob/living/carbon/C)
 	if(C.dna.species.exotic_bloodtype)
 		C.dna.blood_type = random_blood_type()
@@ -288,8 +292,11 @@
 		C.Digitigrade_Leg_Swap(TRUE)
 	if(ROBOTIC_LIMBS in species_traits)
 		for(var/obj/item/bodypart/B in C.bodyparts)
-			B.change_bodypart_status(BODYPART_ORGANIC,FALSE, TRUE)
+			B.change_bodypart_status(BODYPART_ORGANIC, FALSE, TRUE)
 			B.render_like_organic = FALSE
+	if(NOMOUTH in species_traits)
+		for(var/obj/item/bodypart/head/head in C.bodyparts)
+			head.mouth = TRUE
 
 /datum/species/proc/handle_hair(mob/living/carbon/human/H, forced_colour)
 	H.remove_overlay(HAIR_LAYER)

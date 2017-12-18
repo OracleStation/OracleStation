@@ -459,6 +459,9 @@
 	if(dna && dna.species && NOHUNGER in dna.species.species_traits)
 		return 1
 
+	if(!has_mouth())
+		return 1
+
 	if(nutrition < 100 && !blood)
 		if(message)
 			visible_message("<span class='warning'>[src] dry heaves!</span>", \
@@ -822,3 +825,8 @@
 	.["Modify bodypart"] = "?_src_=vars;[HrefToken()];editbodypart=\ref[src]"
 	.["Modify organs"] = "?_src_=vars;[HrefToken()];editorgans=\ref[src]"
 	.["Hallucinate"] = "?_src_=vars;[HrefToken()];hallucinate=\ref[src]"
+
+/mob/living/carbon/has_mouth()
+	for(var/obj/item/bodypart/head/head in bodyparts)
+		if(head.mouth)
+			return TRUE

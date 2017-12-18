@@ -65,18 +65,19 @@
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
 		if(EASYLIMBATTACHMENT in H.dna.species.species_traits)
-			if(!H.get_bodypart(body_zone) && !animal_origin)
-				if(H == user)
-					H.visible_message("<span class='notice'>[H] is attempting to re-attach [src]...</span>")
-					do_mob(user, H, 60)
-					H.visible_message("<span class='warning'>[H] jams [src] into [H.p_their()] empty socket!</span>",\
-					"<span class='notice'>You force [src] into your empty socket, and it locks into place!</span>")
-				else
-					H.visible_message("<span class='warning'>[user] jams [src] into [H]'s empty socket!</span>",\
-					"<span class='notice'>[user] forces [src] into your empty socket, and it locks into place!</span>")
-				user.temporarilyRemoveItemFromInventory(src, TRUE)
-				attach_limb(C)
-				return
+			if((src.status == BODYPART_ORGANIC && !(ROBOTIC_LIMBS in H.dna.species.species_traits))) // no meat limbs in robotic sockets, thanks.
+				if(!H.get_bodypart(body_zone) && !animal_origin)
+					if(H == user)
+						H.visible_message("<span class='notice'>[H] is attempting to re-attach [src]...</span>")
+						do_mob(user, H, 60)
+						H.visible_message("<span class='warning'>[H] jams [src] into [H.p_their()] empty socket!</span>",\
+						"<span class='notice'>You force [src] into your empty socket, and it locks into place!</span>")
+					else
+						H.visible_message("<span class='warning'>[user] jams [src] into [H]'s empty socket!</span>",\
+						"<span class='notice'>[user] forces [src] into your empty socket, and it locks into place!</span>")
+					user.temporarilyRemoveItemFromInventory(src, TRUE)
+					attach_limb(C)
+					return
 	..()
 
 /obj/item/bodypart/attackby(obj/item/W, mob/user, params)

@@ -70,9 +70,7 @@
 		current_type = "posibrain"
 		var/obj/item/bodypart/affected = target.get_bodypart(check_zone(target_zone))
 		if(!affected)
-			return -1 //???
-		//I'd like to take this comment to point out that it IS possible to put a posibrain into a species that never had one
-		//This might be a terrible idea, but I think it might lead to some entertaining shenanigans
+			return -1
 		if(affected.status != ORGAN_ROBOTIC)
 			to_chat(user, "<span class='notice'>You can't put [tool] into a meat enclosure!</span>")
 			return -1

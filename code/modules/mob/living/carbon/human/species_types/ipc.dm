@@ -21,7 +21,6 @@
 	female_cough_sound = 'sound/effects/mob_effects/machine_cough.ogg'
 	male_sneeze_sound = 'sound/effects/mob_effects/machine_sneeze.ogg'
 	female_sneeze_sound = 'sound/effects/mob_effects/machine_sneeze.ogg'
-	toxic_food = ALL
 	mutanteyes = /obj/item/organ/eyes/robotic
 	mutanttongue = /obj/item/organ/tongue/robot
 	mutantliver = /obj/item/organ/liver/cybernetic/upgraded/ipc
