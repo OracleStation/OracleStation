@@ -1543,9 +1543,9 @@
 	name = "Console"
 	icon_state = "console"
 
-/datum/sprite_accessory/ipc_screens/crosshair
-	name = "Crosshair"
-	icon_state = "crosshair"
+/datum/sprite_accessory/ipc_screens/ecgwave
+	name = "ECG Wave"
+	icon_state = "ecgwave"
 
 /datum/sprite_accessory/ipc_screens/eight
 	name = "Eight"
@@ -1601,19 +1601,14 @@
 	name = "Red"
 	icon_state = "red"
 
+/datum/sprite_accessory/ipc_screens/redtext
+	name = "Red Text"
+	icon_state = "redtext"
+	color_src = 0
+
 /datum/sprite_accessory/ipc_screens/rgb
 	name = "RGB"
 	icon_state = "rgb"
-
-/datum/sprite_accessory/ipc_screens/rooster
-	name = "Rooster"
-	icon_state = "rooster"
-	color_src = 0
-
-/datum/sprite_accessory/ipc_screens/ruiner
-	name = "Ruiner"
-	icon_state = "ruiner"
-	color_src = 0
 
 /datum/sprite_accessory/ipc_screens/scroll
 	name = "Scanline"
@@ -1626,6 +1621,10 @@
 /datum/sprite_accessory/ipc_screens/sinewave
 	name = "Sinewave"
 	icon_state = "sinewave"
+
+/datum/sprite_accessory/ipc_screens/squarewave
+	name = "Square wave"
+	icon_state = "squarewave"
 
 /datum/sprite_accessory/ipc_screens/static_screen
 	name = "Static"

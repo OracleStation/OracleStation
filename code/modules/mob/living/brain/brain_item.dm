@@ -210,8 +210,8 @@
 	icon = stored_mmi.icon
 	icon_state = stored_mmi.icon_state
 
-/obj/item/organ/brain/mmi_holder/posibrain/New(var/obj/item/device/mmi/MMI)
-	..()
+/obj/item/organ/brain/mmi_holder/posibrain/Initialize(var/obj/item/device/mmi/MMI)
+	. = ..()
 	if(MMI)
 		stored_mmi = MMI
 		MMI.forceMove(src)

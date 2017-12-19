@@ -112,19 +112,22 @@ datum/species/ipc/on_species_loss(mob/living/carbon/C)
 	if(!cell)
 		to_chat(H, "<span class='warning'>You try to siphon energy from the [A], but your power cell is gone!</span>")
 		return
+
 	if(A.emagged || A.stat & BROKEN)
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(3, 1, A)
-		s.start()
+		do_sparks(3, FALSE, A)
 		to_chat(H, "<span class='warning'>The [A] power currents surge erratically, damaging your chassis!</span>")
 		H.adjustFireLoss(10)
-	else if(A.cell && A.cell.charge > 0)
+		return
+
+	if(A.cell && A.cell.charge > 0)
 		if(H.nutrition >= NUTRITION_LEVEL_WELL_FED)
 			to_chat(user, "<span class='warning'>You are already fully charged!</span>")
+			return
 		else
 			powerdraw_loop(A, H)
-	else
-		to_chat(user, "<span class='warning'>There is no charge to draw from that APC.</span>")
+			return
+
+	to_chat(user, "<span class='warning'>There is no charge to draw from that APC.</span>")
 
 /obj/item/apc_powercord/proc/powerdraw_loop(obj/machinery/power/apc/A, mob/living/carbon/human/H)
 	H.visible_message("<span class='notice'>[H] inserts a power connector into the [A].</span>", "<span class='notice'>You begin to draw power from the [A].</span>")

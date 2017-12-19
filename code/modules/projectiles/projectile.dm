@@ -99,10 +99,7 @@
 				new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target_loca, splatter_dir)
 			var/obj/item/bodypart/B = L.get_bodypart(def_zone)
 			if(B.status == BODYPART_ROBOTIC) // So if you hit a robotic, it sparks instead of bloodspatters
-				var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
-				spark_system.set_up(1, 0, target_loca)
-				spark_system.attach(target_loca)
-				spark_system.start()
+				do_sparks(2, FALSE, target.loc)
 				if(prob(25))
 					new /obj/effect/decal/cleanable/oil(target_loca)
 			else

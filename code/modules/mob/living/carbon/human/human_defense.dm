@@ -162,13 +162,12 @@
 	else
 		affecting = get_bodypart(ran_zone(user.zone_selected))
 	var/target_area = parse_zone(check_zone(user.zone_selected)) //our intended target
-	if(I.force && I.damtype != STAMINA && affecting.status == BODYPART_ROBOTIC) // Bodpart_robotic sparks when hit, but only when it does real damage
-		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
-		spark_system.set_up(1, 0, src)
-		spark_system.attach(src)
-		spark_system.start()
-		if(prob(25))
-			new /obj/effect/decal/cleanable/oil(loc)
+	if(affecting)
+		if(I.force && I.damtype != STAMINA && affecting.status == BODYPART_ROBOTIC) // Bodpart_robotic sparks when hit, but only when it does real damage
+			if((I.force >= 5) || I.is_sharp())
+				do_sparks(1, FALSE, loc)
+			if(prob(25))
+				new /obj/effect/decal/cleanable/oil(loc)
 
 	SSblackbox.add_details("item_used_for_combat","[I.type]|[I.force]")
 	SSblackbox.add_details("zone_targeted","[target_area]")
