@@ -165,7 +165,7 @@
 		M.visible_message("<span class='warning'>[M]'s [name] starts to fall apart!", "<span class='warning'>Your [name] starts to fall apart!</span>")
 
 /obj/item/clothing/proc/update_clothes_damaged_state(damaging = TRUE)
-	var/index = "\ref[initial(icon)]-[initial(icon_state)]"
+	var/index = "[REF(initial(icon))]-[initial(icon_state)]"
 	var/static/list/damaged_clothes_icons = list()
 	if(damaging)
 		damaged_clothes = 1
@@ -690,7 +690,7 @@ BLIND     // can't see anything
 		return
 	sensor_mode = modes.Find(switchMode) - 1
 
-	if (src.loc == usr)
+	if (loc == usr)
 		switch(sensor_mode)
 			if(0)
 				to_chat(usr, "<span class='notice'>You disable your suit's remote sensing equipment.</span>")
@@ -700,6 +700,18 @@ BLIND     // can't see anything
 				to_chat(usr, "<span class='notice'>Your suit will now only report your exact vital lifesigns.</span>")
 			if(3)
 				to_chat(usr, "<span class='notice'>Your suit will now report your exact vital lifesigns as well as your coordinate position.</span>")
+	else if(istype(loc, /mob))
+		usr.visible_message("<span class='notice'>[usr] attempts to adjust [loc]'s suit sensors...</span>")
+		if(do_after(usr, 15, target = loc))
+			switch(sensor_mode)
+				if(0)
+					usr.visible_message("<span class='warning'>[usr] disables [loc]'s remote sensing equipment.</span>")
+				if(1)
+					usr.visible_message("<span class='notice'>[usr] turns [loc]'s remote sensors to binary.</span>")
+				if(2)
+					usr.visible_message("<span class='notice'>[usr] sets [loc]'s sensors to track vitals.</span>")
+				if(3)
+					usr.visible_message("<span class='notice'>[usr] sets [loc]'s sensors to maximum.</span>")
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
