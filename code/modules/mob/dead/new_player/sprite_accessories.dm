@@ -1705,7 +1705,7 @@
 	limbs_id = "hi2ipc"
 
 /datum/sprite_accessory/ipc_chassis/shellguardmunitions
-	name = "Shellguard Munitions"
+	name = "Shellguard Munitions Standard Series"
 	limbs_id = "sgmipc"
 
 /datum/sprite_accessory/ipc_chassis/wardtakahashimanufacturing
