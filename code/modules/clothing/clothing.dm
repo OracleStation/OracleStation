@@ -68,7 +68,7 @@
 					wearable = TRUE
 
 			if(!wearable)
-				M << "<font color = 'red'>Your species cannot wear [src].</font>"
+				to_chat(M, "<span class='warning'>Your species cannot wear [src].</span>")
 				return FALSE
 
 	return TRUE
