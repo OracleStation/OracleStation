@@ -115,6 +115,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/chem_volume = 30
 	var/list/list_reagents = list("nicotine" = 15)
 	heat = 1000
+	species_fit = list("Unathi", "Ash Walker", "Ethari")
+	sprite_sheets = list(
+		"Unathi" = 'icons/mob/species/unathi/mask.dmi',
+		"Ash Walker" = 'icons/mob/species/unathi/mask.dmi',
+		"Ethari" = 'icons/mob/species/ethari/mask.dmi'
+		)
 
 /obj/item/clothing/mask/cigarette/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is huffing [src] as quickly as [user.p_they()] can! It looks like [user.p_theyre()] trying to give [user.p_them()]self cancer.</span>")

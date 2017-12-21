@@ -7,6 +7,12 @@
 	visor_flags_inv = HIDEFACE|HIDEFACIALHAIR
 	w_class = WEIGHT_CLASS_SMALL
 	actions_types = list(/datum/action/item_action/adjust)
+	species_fit = list("Unathi", "Ash Walker", "Ethari")
+	sprite_sheets = list(
+		"Unathi" = 'icons/mob/species/unathi/mask.dmi',
+		"Ash Walker" = 'icons/mob/species/unathi/mask.dmi',
+		"Ethari" = 'icons/mob/species/ethari/mask.dmi'
+		)
 
 /obj/item/clothing/mask/balaclava/attack_self(mob/user)
 	adjustmask(user)
@@ -18,6 +24,12 @@
 	item_state = "luchag"
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	w_class = WEIGHT_CLASS_SMALL
+	species_fit = list("Unathi", "Ash Walker", "Ethari")
+	sprite_sheets = list(
+		"Unathi" = 'icons/mob/species/unathi/mask.dmi',
+		"Ash Walker" = 'icons/mob/species/unathi/mask.dmi',
+		"Ethari" = 'icons/mob/species/ethari/mask.dmi'
+		)
 
 /obj/item/clothing/mask/luchador/speechModification(message)
 	if(copytext(message, 1, 2) != "*")
