@@ -167,6 +167,10 @@
 	user.set_machine(src)
 	interact(user)
 
+/obj/machinery/microwave/AltClick(mob/user)
+	if(user.canUseTopic(src))
+		cook()
+
 /*******************
 *   Microwave Menu
 ********************/
