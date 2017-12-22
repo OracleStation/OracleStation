@@ -82,7 +82,7 @@
 	var/be_nice = FALSE
 	if(lying && user.a_intent == INTENT_HELP)
 
-		if(I.sharpness && can_operate(src))
+		if((I.sharpness || istype(I, /obj/item/screwdriver) || istype(I, /obj/item/coin)) && can_operate(src))//sorry for the snowflake, kids! At least the istype() check won't proc if the item is sharp to start with
 			attempt_initiate_surgery(I, src, user)
 			be_nice = TRUE
 		if(surgeries.len && user != src)
@@ -459,6 +459,9 @@
 	if(dna && dna.species && NOHUNGER in dna.species.species_traits)
 		return 1
 
+	if(!has_mouth())
+		return 1
+
 	if(nutrition < 100 && !blood)
 		if(message)
 			visible_message("<span class='warning'>[src] dry heaves!</span>", \
@@ -822,3 +825,8 @@
 	.["Modify bodypart"] = "?_src_=vars;[HrefToken()];editbodypart=[REF(src)]"
 	.["Modify organs"] = "?_src_=vars;[HrefToken()];editorgans=[REF(src)]"
 	.["Hallucinate"] = "?_src_=vars;[HrefToken()];hallucinate=[REF(src)]"
+
+/mob/living/carbon/has_mouth()
+	for(var/obj/item/bodypart/head/head in bodyparts)
+		if(head.mouth)
+			return TRUE

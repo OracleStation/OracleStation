@@ -444,23 +444,27 @@
 		dna = B.stored_dna
 
 	if(!istype(dna))
-		scantemp = "<font class='bad'>Unable to locate valid genetic data.</font>"
+		scantemp = "<span class='bad'>Unable to locate valid genetic data.</span>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 		return
 	if(mob_occupant.suiciding || mob_occupant.hellbound)
-		scantemp = "<font class='bad'>Subject's brain is not responding to scanning stimuli.</font>"
+		scantemp = "<span class='bad'>Subject's brain is not responding to scanning stimuli.</span>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 		return
 	if((mob_occupant.disabilities & NOCLONE) && (src.scanner.scan_level < 2))
-		scantemp = "<font class='bad'>Subject no longer contains the fundamental materials required to create a living clone.</font>"
+		scantemp = "<span class='bad'>Subject no longer contains the fundamental materials required to create a living clone.</span>"
 		playsound(src, 'sound/machines/terminal_alert.ogg', 50, 0)
 		return
-	if ((!mob_occupant.ckey) || (!mob_occupant.client))
-		scantemp = "<font class='bad'>Mental interface failure.</font>"
+	if((!mob_occupant.ckey) || (!mob_occupant.client))
+		scantemp = "<span class='bad'>Mental interface failure.</span>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 		return
-	if (find_record("ckey", mob_occupant.ckey, records))
-		scantemp = "<font class='average'>Subject already in database.</font>"
+	if(find_record("ckey", mob_occupant.ckey, records))
+		scantemp = "<span class='average'>Subject already in database.</span>"
+		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
+		return
+	if(dna && dna.species && (NOSCAN in dna.species.species_traits))
+		scantemp = "<span class='bad'>Subject has no DNA, or has DNA that cannot be scanned.</span>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 		return
 

@@ -404,6 +404,7 @@ ROUNDSTART_RACES unathi
 #ROUNDSTART_RACES slime
 ROUNDSTART_RACES ethari
 #ROUNDSTART_RACES pod
+ROUNDSTART_RACES ipc
 
 ## Races that aren't on the station by default.
 #ROUNDSTART_RACES jelly
