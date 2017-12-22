@@ -1193,7 +1193,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	cost = 2
 	include_modes = list(/datum/game_mode/nuclear)
 	
-/datum/uplink_item/implants/microbomb
+/datum/uplink_item/implants/self_destruct
 	name = "Microbomb Implant"
 	desc = "An implant injected into the body, and later activated either manually or automatically upon death. \
 			The more implants inside of you, the higher the explosive power. \
