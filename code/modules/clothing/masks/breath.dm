@@ -36,3 +36,10 @@
 	item_state = "m_mask"
 	permeability_coefficient = 0.01
 	equip_delay_other = 10
+
+/obj/item/clothing/mask/breath/vox
+	desc = "A weirdly-shaped breath mask."
+	name = "vox breath mask"
+	icon_state = "voxmask"
+	item_state = "voxmask"
+	permeability_coefficient = 0.01

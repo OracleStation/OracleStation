@@ -200,3 +200,15 @@
 
 /obj/item/organ/tongue/robot/get_spans()
 	return ..() | SPAN_ROBOT
+
+/obj/item/organ/tongue/vox
+	name = "Vox tongue"
+	desc = "Usually found inside a vox's beak, you almost swear you can hear it shrieking."
+	icon_state = "tongue"
+	taste_sensitivity = 50 // There's not much need for taste when you're a scavenger.
+	attack_verb = list("skreks")
+
+/obj/item/organ/tongue/vox/TongueSpeech(var/message)
+	if(prob(10))
+		playsound(owner, 'sound/voice/shriek1.ogg', 25, 1, 1)
+		return

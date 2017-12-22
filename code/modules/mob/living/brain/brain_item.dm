@@ -147,6 +147,22 @@
 	icon_state = "brain-x"
 	origin_tech = "biotech=6"
 
+/obj/item/organ/brain/cybernetic/vox
+	name = "Vox cortical stack"
+	slot = "brain"
+	desc = "A vox cortical stack - considered to be their brain. Its existance is the center of debate."
+	zone = "head"
+	icon_state = "voxbrain"
+	status = ORGAN_ROBOTIC
+	origin_tech = "biotech=3"
+
+/obj/item/organ/brain/cybernetic/vox/emp_act(severity)
+	switch(severity)
+		if(1)
+			owner.adjustBrainLoss(40)
+		if(2)
+			owner.adjustBrainLoss(20)
+
 // IPC brain fuckery.
 /obj/item/organ/brain/mmi_holder
 	name = "brain"

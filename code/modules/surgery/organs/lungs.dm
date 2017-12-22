@@ -316,6 +316,14 @@
 	safe_toxins_min = 16 //We breath THIS!
 	safe_toxins_max = 0
 
+/obj/item/organ/lungs/vox
+	name = "Vox lungs"
+	desc = "Pretty dusty."
+	safe_oxygen_min = 0 //We don't breathe this
+	safe_oxygen_max = 1 //This is toxic to us
+	safe_nitro_min = 16 //We breathe THIS!
+	oxy_damage_type = TOX //And it poisons us
+
 #undef HUMAN_MAX_OXYLOSS
 #undef HUMAN_CRIT_MAX_OXYLOSS
 #undef HEAT_GAS_DAMAGE_LEVEL_1
