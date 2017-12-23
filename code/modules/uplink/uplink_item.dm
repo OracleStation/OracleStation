@@ -298,7 +298,19 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 		 deal extra damage and hit targets further. Use a screwdriver to take out any attached tanks."
 	item = /obj/item/melee/powerfist
 	cost = 8
-
+	
+/datum/uplink_item/dangerous/mindbatterer
+	name = "Psychic Disruptor"
+	desc = "An Epsilon Psi Corps Disruptor Device, also known as Mind Batterer. Creates an invisible wave \
+		of psychic energy that causes immense pain to people near the user \
+		forcing them to the ground. People can resist the psychic blast. \
+		The device emits a very loud buzz everyone hears in their head. \
+		It has 2 uses, mass produced version of The Epsilon Army." 
+	item = /obj/item/device/batterer
+	cost = 6
+	surplus = 50
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
+	
 /datum/uplink_item/dangerous/emp
 	name = "EMP Grenades and Implanter Kit"
 	desc = "A box that contains two EMP grenades and an EMP implant. Useful to disrupt communication, \
