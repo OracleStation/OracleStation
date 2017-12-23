@@ -4,7 +4,7 @@
 	id = "vox"
 	limbs_id = "grnvox"
 	damage_overlay_type = "vox"
-	mutant_bodyparts = list("vox_quills", "vox_body_markings",  "vox_facial_hair", "vox_tail")
+	mutant_bodyparts = list("vox_quills", "vox_body_markings",  "vox_facial_quills", "vox_tail")
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -20,7 +20,7 @@
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/vox
 	skinned_type = /obj/item/stack/sheet/animalhide/vox
 	toxmod = 2 // Weak immune systems. Removing their masks completely skreks them.
-	stunmod = 1.5 // Take a bit longer to get up than other species.
+	stunmod = 1.2 // Take a bit longer to get up than other species.
 	breathid = "n2" // O2 is for dustlungs
 	examine_text = "A vox"
 
@@ -40,9 +40,9 @@ Vox Lower Caste Subspecies
 	id = "vox_prolitus"
 	say_mod = "shrieks"
 	species_traits = list(RESISTPRESSURE,RESISTHOT,RESISTCOLD, NOSCAN, NO_UNDERWEAR) // Robust, but cannot be cloned.
-	mutant_bodyparts = list("vox_quills", "vox_body_markings", "vox_body", "vox_facial_hair", "vox_tail", "vox_eyes")
+	mutant_bodyparts = list("vox_quills", "vox_body_markings", "vox_body", "vox_facial_quills", "vox_tail", "vox_eyes")
 	examine_text = "A Vox Prolitus"
-	armor = 2 // Slightly tougher hides.
+	armor = 1 // Slightly tougher hides.
 	liked_food = GROSS | MEAT | RAW // Scavengers
 
 /datum/species/vox/prolitus/on_species_gain(mob/living/carbon/C)
@@ -60,7 +60,7 @@ Vox Upper Caste Subspecies
 	id = "vox_auroras"
 	say_mod = "sings"
 	species_traits = list(RESISTPRESSURE, NO_UNDERWEAR) // Not Pressure resistant, like the outcasts
-	mutant_bodyparts = list("vox_quills", "vox_body_markings", "vox_auroras_eyes",  "vox_facial_hair")
+	mutant_bodyparts = list("vox_quills", "vox_body_markings", "vox_auroras_eyes",  "vox_facial_quills")
 	examine_text = "A Vox Auroras"
 	limbs_id = "aurvox"
 	burnmod = 1.3 // Not as tough as the worker caste

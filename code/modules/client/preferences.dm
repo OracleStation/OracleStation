@@ -405,12 +405,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=hair;task=input'>Change</a><BR>"
 					dat += "</td>"
 
-				if("vox_facial_hair" in pref_species.mutant_bodyparts)
+				if("vox_facial_quills" in pref_species.mutant_bodyparts)
 					dat += "<td valign='top' width='14%'>"
 
-					dat += "<h3>Vox Facial Hair Style</h3>"
+					dat += "<h3>Vox Facial Quills Style</h3>"
 
-					dat += "<a href='?_src_=prefs;preference=vox_facial_hair;task=input'>[features["vox_facial_hair"]]</a><BR>"
+					dat += "<a href='?_src_=prefs;preference=vox_facial_quills;task=input'>[features["vox_facial_quills"]]</a><BR>"
 					dat += "<span style='border:1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=facial;task=input'>Change</a><BR>"
 					dat += "</td>"
 
@@ -1189,11 +1189,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_vox_quills)
 						features["vox_quills"] = new_vox_quills
 
-				if("vox_facial_hair")
-					var/new_vox_facial_hair
-					new_vox_facial_hair = input(user, "Choose your character's facial hair", "Character Preference") as null|anything in GLOB.vox_facial_hairs_list
-					if(new_vox_facial_hair)
-						features["vox_facial_hair"] = new_vox_facial_hair
+				if("vox_facial_quills")
+					var/new_vox_facial_quills
+					new_vox_facial_quills = input(user, "Choose your character's facial quills:", "Character Preference") as null|anything in GLOB.vox_facial_quills_list
+					if(new_vox_facial_quills)
+						features["vox_facial_quills"] = new_vox_facial_quills
 
 				if("vox_body_markings")
 					var/new_vox_body_markings

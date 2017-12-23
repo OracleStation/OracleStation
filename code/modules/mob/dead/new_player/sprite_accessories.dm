@@ -1799,27 +1799,27 @@
 	name = "Nights"
 	icon_state = "nights"
 
-/datum/sprite_accessory/vox_facial_hairs
+/datum/sprite_accessory/vox_facial_quills
 	icon = 'icons/mob/vox_accessories.dmi'
 	color_src = FACEHAIR
 
-/datum/sprite_accessory/vox_facial_hairs/none
+/datum/sprite_accessory/vox_facial_quills/none
 	name = "None"
 	icon_state = "none"
 
-/datum/sprite_accessory/vox_facial_hairs/colonel
+/datum/sprite_accessory/vox_facial_quills/colonel
 	name = "Colonel Beard"
 	icon_state = "colonel"
 
-/datum/sprite_accessory/vox_facial_hairs/fu
+/datum/sprite_accessory/vox_facial_quills/fu
 	name = "Fu Beard"
 	icon_state = "fu"
 
-/datum/sprite_accessory/vox_facial_hairs/neck
+/datum/sprite_accessory/vox_facial_quills/neck
 	name = "Neck Quills"
 	icon_state = "neck"
 
-/datum/sprite_accessory/vox_facial_hairs/beard
+/datum/sprite_accessory/vox_facial_quills/beard
 	name = "Beard"
 	icon_state = "beard"
 

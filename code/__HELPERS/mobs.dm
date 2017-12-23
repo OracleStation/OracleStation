@@ -84,8 +84,8 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_bodies, GLOB.vox_bodies_list)
 	if(!GLOB.vox_quills_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_quills, GLOB.vox_quills_list)
-	if(!GLOB.vox_facial_hairs_list.len)
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_facial_hairs, GLOB.vox_facial_hairs_list)
+	if(!GLOB.vox_facial_quills_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_facial_quills, GLOB.vox_facial_quills_list)
 	if(!GLOB.vox_body_markings_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_body_markings, GLOB.vox_body_markings_list)
 
