@@ -37,6 +37,11 @@
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/ipc_screens, GLOB.ipc_screens_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/ipc_antennas, GLOB.ipc_antennas_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/ipc_chassis, GLOB.ipc_chassis_list)
+	// Vox bodyparts
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_bodies, GLOB.vox_bodies_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_quills, GLOB.vox_quills_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_facial_hairs, GLOB.vox_facial_hairs_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_body_markings, GLOB.vox_body_markings_list)
 
 	//Species
 	for(var/spath in subtypesof(/datum/species))

@@ -42,4 +42,5 @@
 	name = "vox breath mask"
 	icon_state = "voxmask"
 	item_state = "voxmask"
+	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01

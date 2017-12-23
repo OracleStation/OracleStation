@@ -4,7 +4,7 @@
 	id = "vox"
 	limbs_id = "grnvox"
 	damage_overlay_type = "vox"
-	mutant_bodyparts = list("vox_quills", "vox_body_markings", "tail_vox",  "vox_facial_hair")
+	mutant_bodyparts = list("vox_quills", "vox_body_markings",  "vox_facial_hair", "vox_tail")
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -28,10 +28,9 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath/vox(H), slot_wear_mask)
 	H.put_in_l_hand(new /obj/item/tank/internals/emergency_oxygen/vox(H))
 	to_chat(H, "<span class='notice'>You are now running on nitrogen internals from the emergency tank in your hand. Your species finds oxygen toxic, so you must breathe nitrogen only.</span>")
-	H.internal = H.get_item_for_held_index(2)
+	H.internal = H.get_item_for_held_index(1)
 	H.update_internals_hud_icon(1)
 
-/*
 /*
 Vox Lower Caste Subspecies
 */
@@ -40,18 +39,18 @@ Vox Lower Caste Subspecies
 	name = "Vox Prolitus"
 	id = "vox_prolitus"
 	say_mod = "shrieks"
-	species_traits = list(RESISTPRESSURE,RESISTHOT,RESISTCOLD,EYECOLOR,NOSCAN) // Robust, but cannot be cloned.
-	mutant_bodyparts = list("vox_quills", "vox_body_markings", "tail_vox", "vox_body", "vox_facial_hair")
+	species_traits = list(RESISTPRESSURE,RESISTHOT,RESISTCOLD, NOSCAN, NO_UNDERWEAR) // Robust, but cannot be cloned.
+	mutant_bodyparts = list("vox_quills", "vox_body_markings", "vox_body", "vox_facial_hair", "vox_tail", "vox_eyes")
 	examine_text = "A Vox Prolitus"
 	armor = 2 // Slightly tougher hides.
 	liked_food = GROSS | MEAT | RAW // Scavengers
 
 /datum/species/vox/prolitus/on_species_gain(mob/living/carbon/C)
 	. = ..()
-	var/vox_body = C.dna.features["vox_prolitus_body"]
-	var/datum/sprite_accessory/vox_prolitus_body/vox_body_of_choice = GLOB.vox_prolitus_body_list[vox_body]
+	var/vox_body = C.dna.features["vox_body"]
+	var/datum/sprite_accessory/vox_bodies/vox_body_of_choice = GLOB.vox_bodies_list[vox_body]
 	C.dna.species.limbs_id = vox_body_of_choice.limbs_id
-*/
+
 /*
 Vox Upper Caste Subspecies
 */
@@ -60,8 +59,8 @@ Vox Upper Caste Subspecies
 	name = "Vox Auroras"
 	id = "vox_auroras"
 	say_mod = "sings"
-	species_traits = list(RESISTPRESSURE) // Not Pressure resistant, like the outcasts
-	mutant_bodyparts = list("vox_quills", "vox_body", "vox_body_markings", "tail_vox", "vox_auroras_eyes",  "vox_facial_hair")
+	species_traits = list(RESISTPRESSURE, NO_UNDERWEAR) // Not Pressure resistant, like the outcasts
+	mutant_bodyparts = list("vox_quills", "vox_body_markings", "vox_auroras_eyes",  "vox_facial_hair")
 	examine_text = "A Vox Auroras"
 	limbs_id = "aurvox"
 	burnmod = 1.3 // Not as tough as the worker caste

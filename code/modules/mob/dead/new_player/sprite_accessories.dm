@@ -1732,3 +1732,127 @@
 
 /datum/sprite_accessory/legs/digitigrade_unathi
 	name = "Digitigrade Legs"
+
+// Vox Accessories
+
+/datum/sprite_accessory/vox_quills
+	icon = 'icons/mob/vox_accessories.dmi'
+	color_src = HAIR
+
+/datum/sprite_accessory/vox_quills/none
+	name = "None"
+	icon_state = "none"
+
+/datum/sprite_accessory/vox_quills/crestedquills
+	name = "Crested Quills"
+	icon_state = "crestedquills"
+
+/datum/sprite_accessory/vox_quills/emperorquills
+	name = "Emperor Quills"
+	icon_state = "emperorquills"
+
+/datum/sprite_accessory/vox_quills/keelquills
+	name = "Keel Quills"
+	icon_state = "keelquills"
+
+/datum/sprite_accessory/vox_quills/keetquills
+	name = "Keet Quills"
+	icon_state = "keetquills"
+
+/datum/sprite_accessory/vox_quills/shortquills
+	name = "Short quills"
+	icon_state = "shortquills"
+
+/datum/sprite_accessory/vox_quills/tielquills
+	name = "Tiel Quills"
+	icon_state = "tielquills"
+
+/datum/sprite_accessory/vox_quills/kingly
+	name = "Kingly Quills"
+	icon_state = "kingly"
+
+/datum/sprite_accessory/vox_quills/afro
+	name = "Afro Quills"
+	icon_state = "afro"
+
+/datum/sprite_accessory/vox_quills/yasu
+	name = "Yasu Quills"
+	icon_state = "yasu"
+
+/datum/sprite_accessory/vox_quills/razor
+	name = "Razor Quills"
+	icon_state = "razor"
+
+/datum/sprite_accessory/vox_quills/clipped
+	name = "Clipped Quills"
+	icon_state = "clipped"
+
+/datum/sprite_accessory/vox_quills/mowhawk
+	name = "Mohawk Quills"
+	icon_state = "mowhawk"
+
+/datum/sprite_accessory/vox_quills/horns
+	name = "Horns"
+	icon_state = "horns"
+
+/datum/sprite_accessory/vox_quills/nights
+	name = "Nights"
+	icon_state = "nights"
+
+/datum/sprite_accessory/vox_facial_hairs
+	icon = 'icons/mob/vox_accessories.dmi'
+	color_src = FACEHAIR
+
+/datum/sprite_accessory/vox_facial_hairs/none
+	name = "None"
+	icon_state = "none"
+
+/datum/sprite_accessory/vox_facial_hairs/colonel
+	name = "Colonel Beard"
+	icon_state = "colonel"
+
+/datum/sprite_accessory/vox_facial_hairs/fu
+	name = "Fu Beard"
+	icon_state = "fu"
+
+/datum/sprite_accessory/vox_facial_hairs/neck
+	name = "Neck Quills"
+	icon_state = "neck"
+
+/datum/sprite_accessory/vox_facial_hairs/beard
+	name = "Beard"
+	icon_state = "beard"
+
+/datum/sprite_accessory/vox_bodies
+	icon_state = "yaya" // In order to pull the body correctly, we need AN icon_state(see line 36-39). PROBABLY NEED TO REFACTOR THIS. SKREK.
+
+/datum/sprite_accessory/vox_bodies/green
+	name = "Green"
+	limbs_id = "grnvox"
+
+/datum/sprite_accessory/vox_bodies/darkgreen
+	name = "Dark Green"
+	limbs_id = "dgrvox"
+
+/datum/sprite_accessory/vox_bodies/brown
+	name = "Brown"
+	limbs_id = "brnvox"
+
+/datum/sprite_accessory/vox_bodies/grey
+	name = "Grey"
+	limbs_id = "gryvox"
+
+/datum/sprite_accessory/vox_bodies/emerald
+	name = "Emerald"
+	limbs_id = "emdvox"
+
+/datum/sprite_accessory/vox_bodies/azure
+	name = "Azure"
+	limbs_id = "azevox"
+
+/datum/sprite_accessory/vox_body_markings
+	icon = 'icons/mob/vox_accessories.dmi'
+
+/datum/sprite_accessory/vox_body_markings/none
+	name = "None"
+	icon_state = "none"

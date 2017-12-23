@@ -387,6 +387,42 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 					dat += "</td>"
 
+				if("vox_body" in pref_species.mutant_bodyparts)
+					dat += "<td valign='top' width='14%'>"
+
+					dat += "<h3>Body Color</h3>"
+
+					dat += "<a href='?_src_=prefs;preference=vox_body;task=input'>[features["vox_body"]]</a><BR>"
+
+					dat += "</td>"
+
+				if("vox_quills" in pref_species.mutant_bodyparts)
+					dat += "<td valign='top' width='14%'>"
+
+					dat += "<h3>Quill Style</h3>"
+
+					dat += "<a href='?_src_=prefs;preference=vox_quills;task=input'>[features["vox_quills"]]</a><BR>"
+					dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=hair;task=input'>Change</a><BR>"
+					dat += "</td>"
+
+				if("vox_facial_hair" in pref_species.mutant_bodyparts)
+					dat += "<td valign='top' width='14%'>"
+
+					dat += "<h3>Vox Facial Hair Style</h3>"
+
+					dat += "<a href='?_src_=prefs;preference=vox_facial_hair;task=input'>[features["vox_facial_hair"]]</a><BR>"
+					dat += "<span style='border:1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=facial;task=input'>Change</a><BR>"
+					dat += "</td>"
+
+				if("vox_body_markings" in pref_species.mutant_bodyparts)
+					dat += "<td valign='top' width='10%'>"
+
+					dat += "<h3>Vox Body Markings</h3>"
+
+					dat += "<a href='?_src_=prefs;preference=vox_body_markings;task=input'>[features["vox_body_markings"]]</a><BR>"
+
+					dat += "</td>"
+
 			if(CONFIG_GET(flag/join_with_mutant_humans))
 
 				if("tail_human" in pref_species.mutant_bodyparts)
@@ -1140,6 +1176,30 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					new_ipc_chassis = input(user, "Choose your character's chassis:", "Character Preference") as null|anything in GLOB.ipc_chassis_list
 					if(new_ipc_chassis)
 						features["ipc_chassis"] = new_ipc_chassis
+
+				if("vox_body")
+					var/new_vox_body
+					new_vox_body = input(user, "Choose your character's body color:", "Character Preference") as null|anything in GLOB.vox_bodies_list
+					if(new_vox_body)
+						features["vox_body"] = new_vox_body
+
+				if("vox_quills")
+					var/new_vox_quills
+					new_vox_quills = input(user, "Choose your character's quills:", "Character Preference") as null|anything in GLOB.vox_quills_list
+					if(new_vox_quills)
+						features["vox_quills"] = new_vox_quills
+
+				if("vox_facial_hair")
+					var/new_vox_facial_hair
+					new_vox_facial_hair = input(user, "Choose your character's facial hair", "Character Preference") as null|anything in GLOB.vox_facial_hairs_list
+					if(new_vox_facial_hair)
+						features["vox_facial_hair"] = new_vox_facial_hair
+
+				if("vox_body_markings")
+					var/new_vox_body_markings
+					new_vox_body_markings = input(user, "Choose your character's body markings", "Character Preference") as null|anything in GLOB.vox_body_markings_list
+					if(new_vox_body_markings)
+						features["vox_body_markings"] = new_vox_body_markings
 
 				if("s_tone")
 					var/new_s_tone = input(user, "Choose your character's skin-tone:", "Character Preference")  as null|anything in GLOB.skin_tones

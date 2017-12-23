@@ -567,6 +567,14 @@
 		if(!H.dna.features["ipc_antenna"] || H.dna.features["ipc_antenna"] == "None" || H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
 			bodyparts_to_add -= "ipc_antenna"
 
+	if("vox_quills" in mutant_bodyparts)
+		if(!H.dna.features["vox_quills"] || H.dna.features["vox_quills"] == "None" || H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
+			bodyparts_to_add -= "vox_quills"
+
+	if("vox_facial_hair" in mutant_bodyparts)
+		if(!H.dna.features["vox_facial_hair"] || H.dna.features["vox_facial_hair"] == "None" || H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
+			bodyparts_to_add -= "vox_facial_hair"
+
 	if("ears" in mutant_bodyparts)
 		if(!H.dna.features["ears"] || H.dna.features["ears"] == "None" || H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
 			bodyparts_to_add -= "ears"
@@ -652,6 +660,14 @@
 					S = GLOB.ipc_antennas_list[H.dna.features["ipc_antenna"]]
 				if("ipc_chassis")
 					S = GLOB.ipc_chassis_list[H.dna.features["ipc_chassis"]]
+				if("vox_body")
+					S = GLOB.vox_bodies_list[H.dna.features["vox_body"]]
+				if("vox_quills")
+					S = GLOB.vox_quills_list[H.dna.features["vox_quills"]]
+				if("vox_facial_hair")
+					S = GLOB.vox_facial_hairs_list[H.dna.features["vox_facial_hair"]]
+				if("vox_body_markings")
+					S = GLOB.vox_body_markings_list[H.dna.features["vox_body_markings"]]
 				if("wings")
 					S = GLOB.wings_list[H.dna.features["wings"]]
 				if("wingsopen")

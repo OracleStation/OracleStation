@@ -202,8 +202,8 @@
 	return ..() | SPAN_ROBOT
 
 /obj/item/organ/tongue/vox
-	name = "Vox tongue"
-	desc = "Usually found inside a vox's beak, you almost swear you can hear it shrieking."
+	name = "vox tongue"
+	desc = "Usually found inside a vox's.. Beak? You almost swear you can hear it shrieking."
 	icon_state = "tongue"
 	taste_sensitivity = 50 // There's not much need for taste when you're a scavenger.
 	attack_verb = list("skreks")

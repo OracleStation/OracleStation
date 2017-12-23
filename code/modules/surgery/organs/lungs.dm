@@ -317,7 +317,7 @@
 	safe_toxins_max = 0
 
 /obj/item/organ/lungs/vox
-	name = "Vox lungs"
+	name = "vox lungs"
 	desc = "Pretty dusty."
 	safe_oxygen_min = 0 //We don't breathe this
 	safe_oxygen_max = 1 //This is toxic to us

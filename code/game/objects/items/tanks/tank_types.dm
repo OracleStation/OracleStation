@@ -196,7 +196,7 @@
 	force = 0 // No, you don't get to break out of the brig using your voxygen tank, shitbird.
 	distribute_pressure = TANK_DEFAULT_RELEASE_PRESSURE
 	volume = 10 //The size of a double-capacity emergency oxygen tank.
-	attack_verb = list("shitbirds")
+	attack_verb = list("shitbirded")
 
 /obj/item/tank/internals/emergency_oxygen/vox/New()
 	..()
