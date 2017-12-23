@@ -298,7 +298,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 		 deal extra damage and hit targets further. Use a screwdriver to take out any attached tanks."
 	item = /obj/item/melee/powerfist
 	cost = 8
-	
+
 /datum/uplink_item/dangerous/mindbatterer
 	name = "Psychic Disruptor"
 	desc = "An Epsilon Psi Corps Disruptor Device, also known as Mind Batterer. Creates an invisible wave \
