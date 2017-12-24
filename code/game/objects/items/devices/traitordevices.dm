@@ -16,8 +16,8 @@ effective or pretty fucking useless.
 */
 
 /obj/item/device/batterer
-	name = "mind batterer"
-	desc = "A strange device with twin antennas."
+	name = "Psychic Disruptor"
+	desc = "A strange device with twin antennas and a blue glowing powercell in the middle."
 	icon_state = "batterer"
 	throwforce = 5
 	w_class = WEIGHT_CLASS_TINY
