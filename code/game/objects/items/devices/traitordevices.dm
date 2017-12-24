@@ -236,7 +236,7 @@ obj/item/device/shadowcloak/emp_act(severity)
 			on = FALSE
 			user = null
 			user.Knockdown(200)
-			user.playsound(loc, 'sound/weapons/flashbang.ogg', 100, 1)	
+			playsound(loc, 'sound/weapons/flashbang.ogg', 100, 1)	
 		if(2)
 			to_chat(user, "<span class='userdanger'>Your [name]'s shuts down!</span>")
 			STOP_PROCESSING(SSobj, src)
