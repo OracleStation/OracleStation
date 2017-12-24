@@ -303,13 +303,12 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	name = "Psychic Disruptor"
 	desc = "A new Epsilon Psi Corps Disruptor Device, also known as Mind Batterer. Creates an invisible wave \
 		of psychic energy that causes immense pain to people near the user \
-		forcing them to the ground. People can resist the psychic blast. \
+		which may force them to the ground, effectivly disabling them for some time. \
 		The device emits a very loud buzz everyone hears in their head. \
 		It has 2 uses, mass produced version of The Epsilon Army." 
 	item = /obj/item/device/batterer
 	cost = 6
 	surplus = 50
-	limited_stock = 1 //prevents from people buying tons of these
 	cant_discount = TRUE //The Epsilon doesnt sell their gear for cheap
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
 	
