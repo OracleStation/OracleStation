@@ -162,6 +162,12 @@
 	else
 		affecting = get_bodypart(ran_zone(user.zone_selected))
 	var/target_area = parse_zone(check_zone(user.zone_selected)) //our intended target
+	if(affecting)
+		if(I.force && I.damtype != STAMINA && affecting.status == BODYPART_ROBOTIC) // Bodpart_robotic sparks when hit, but only when it does real damage
+			if(I.force >= 5)
+				do_sparks(1, FALSE, loc)
+				if(prob(25))
+					new /obj/effect/decal/cleanable/oil(loc)
 
 	SSblackbox.add_details("item_used_for_combat","[I.type]|[I.force]")
 	SSblackbox.add_details("zone_targeted","[target_area]")
@@ -475,6 +481,9 @@
 				if(2)
 					L.receive_damage(0,5)
 					Stun(100)
+			if((EASYDISMEMBER in L.owner.dna.species.species_traits) && L.body_zone != "chest")
+				if(prob(20))
+					L.dismember(BRUTE)
 	..()
 
 /mob/living/carbon/human/acid_act(acidpwr, acid_volume, bodyzone_hit)
