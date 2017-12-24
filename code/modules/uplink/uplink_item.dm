@@ -305,7 +305,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 		of psychic energy that causes immense pain to people near the user \
 		which may force them to the ground, effectivly disabling them for some time. \
 		The device emits a very loud buzz everyone hears in their head. \
-		It has 2 uses, mass produced version of The Epsilon Army." 
+		It has 3 uses, mass produced version of The Epsilon Army." 
 	item = /obj/item/device/batterer
 	cost = 6
 	surplus = 50
