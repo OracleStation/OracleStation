@@ -105288,7 +105288,6 @@
 /area/maintenance/port/aft)
 "dXu" = (
 /obj/structure/table/wood/fancy,
-/obj/item/spellbook/oneuse/smoke/lesser,
 /obj/item/nullrod,
 /obj/item/organ/heart,
 /obj/item/reagent_containers/food/drinks/bottle/holywater,
