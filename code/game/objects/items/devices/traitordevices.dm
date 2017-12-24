@@ -226,10 +226,10 @@ effective or pretty fucking useless.
 			charge = min(max_charge,charge + 50) //Charge in the dark
 		animate(user,alpha = Clamp(255 - charge,0,255),time = 10)
 		
-obj/item/device/shadowcloak/emp_act()
+obj/item/device/shadowcloak/emp_act(severity)
 	switch(severity)
 		if(1)
-			to_chat(M, "<span class='userdanger'>Your [name]'s shuts down!</span>")
+			to_chat(M, "<span class='userdanger'>Your [name]'s overloads and shuts down!</span>")
 			STOP_PROCESSING(SSobj, src)
 			if(user)
 				user.alpha = old_alpha
