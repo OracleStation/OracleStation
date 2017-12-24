@@ -235,9 +235,8 @@ obj/item/device/shadowcloak/emp_act(severity)
 				user.alpha = old_alpha
 			on = FALSE
 			user = null
-			update_mob(user)
-				user.Knockdown(200)
-				user.playsound(loc, 'sound/weapons/flashbang.ogg', 100, 1)	
+			user.Knockdown(200)
+			user.laysound(loc, 'sound/weapons/flashbang.ogg', 100, 1)	
 		if(2)
 			to_chat(M, "<span class='userdanger'>Your [name]'s shuts down!</span>")
 			STOP_PROCESSING(SSobj, src)
