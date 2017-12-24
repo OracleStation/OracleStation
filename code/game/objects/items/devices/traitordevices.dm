@@ -30,7 +30,7 @@ effective or pretty fucking useless.
 	origin_tech = "magnets=3;combat=3;syndicate=3"
 
 	var/times_used = 0 //Number of times it's been used.
-	var/max_uses = 2
+	var/max_uses = 3
 
 
 /obj/item/device/batterer/attack_self(mob/living/carbon/user, flag = 0, emp = 0)
