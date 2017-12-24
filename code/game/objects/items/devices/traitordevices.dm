@@ -264,7 +264,7 @@ obj/item/device/shadowcloak/emp_act()
 			if(user)
 				user.alpha = old_alpha
 			on = FALSE
-		user = null
+			user = null
 
 
 /obj/item/device/jammer
