@@ -301,11 +301,10 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 
 /datum/uplink_item/dangerous/mindbatterer
 	name = "Psychic Disruptor"
-	desc = "A new Epsilon Psi Corps Disruptor Device, also known as Mind Batterer. Creates an invisible wave \
+	desc = "A new Psi Corps Disruptor Device, also known as Mind Batterer. Creates an invisible wave \
 		of psychic energy that causes immense pain to people near the user \
 		which may force them to the ground, effectivly disabling them for some time. \
-		The device emits a very loud buzz everyone hears in their head. \
-		It has 3 uses, mass produced version of The Epsilon Army." 
+		It has 3 uses.
 	item = /obj/item/device/batterer
 	cost = 6
 	surplus = 50
