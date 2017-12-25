@@ -229,7 +229,7 @@ obj/item/device/shadowcloak/emp_act(severity)
 		if(1)
 			user.Knockdown(200)
 			playsound(loc, 'sound/weapons/flashbang.ogg', 100, 1)	
-			to_chat(user, "<span class='userdanger'>Your [name] shocks you, overloads and shuts down!</span>")
+			to_chat(user, "<span class='userdanger'>Your [name] shocks you and shuts down suddenly.</span>")
 			STOP_PROCESSING(SSobj, src)
 			if(user)
 				user.alpha = old_alpha
