@@ -227,10 +227,6 @@
 	cost = 3
 	no_coexistance_typecache = /obj/effect/proc_holder/spell/targeted/infinite_guns/gun
 
-/datum/spellbook_entry/barnyard
-	name = "Barnyard Curse"
-	spell_type = /obj/effect/proc_holder/spell/targeted/barnyardcurse
-
 /datum/spellbook_entry/charge
 	name = "Charge"
 	spell_type = /obj/effect/proc_holder/spell/targeted/charge
@@ -371,6 +367,13 @@
 	desc = "A deck of guardian tarot cards, capable of binding a personal guardian to your body. There are multiple types of guardian available, but all of them will transfer some amount of damage to you. \
 	It would be wise to avoid buying these with anything capable of causing you to swap bodies with others."
 	item_path = /obj/item/guardiancreator/choose/wizard
+	category = "Assistance"
+
+/datum/spellbook_entry/item/holocarp
+	name = "Holocarp Fishsticks"
+	desc = "A tasty treat of fishsticks. On consumption it will grand the user a holocarp guardian spirit, similar to regular guardian spirits. However it is totally possible to have multiple \
+	multiple stands with this, even in conjunction with a regular guardian spirit from a tarrot deck. You cannot choose the type of holocarp you get. "
+	item_path = /obj/item/guardiancreator/carp
 	category = "Assistance"
 
 /datum/spellbook_entry/item/guardian/Buy(mob/living/carbon/human/user,obj/item/spellbook/book)
