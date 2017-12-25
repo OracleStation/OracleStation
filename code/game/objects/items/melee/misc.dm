@@ -59,10 +59,9 @@
 	throwforce = 10
 	w_class = WEIGHT_CLASS_BULKY
 	block_chance = 50
-	armour_penetration = 75
-	sharpness = IS_SHARP
+	armour_penetration = 50
 	origin_tech = "combat=5"
-	attack_verb = list("slashed", "cut")
+	attack_verb = list("stabbed", "pierced", "penetrated")
 	hitsound = 'sound/weapons/rapierhit.ogg'
 	materials = list(MAT_METAL = 1000)
 
