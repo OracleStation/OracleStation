@@ -163,9 +163,7 @@ effective or pretty fucking useless.
 
 /obj/item/device/shadowcloak
 	name = "Belt mounted Cloaking Device"
-	desc = "An utility belt. There are lots of wires attached to it and theres some sort of tiny \
-			device attached to it. On the device is a slowly rotating sphere. Engraved on \
-			the belt is a blue glowing greek Omega."
+	desc = "A military grade belt with some sort of cloaking device attached to it."
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state = "utilitybelt"
 	item_state = "utility"
