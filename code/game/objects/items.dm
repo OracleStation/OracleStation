@@ -583,7 +583,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 /obj/item/proc/get_dismemberment_chance(obj/item/bodypart/affecting)
 	if(affecting.can_dismember(src))
-		if((sharpness || damtype == BURN) && w_class >= 3)
+		if((sharpness || damtype == BURN || (damtype == BRUTE && (affecting.owner.dna && affecting.owner.dna.species && (EASYDISMEMBER in affecting.owner.dna.species.species_traits)))) && w_class >= 3)
 			. = force*(w_class-1)
 
 /obj/item/proc/get_dismember_sound()

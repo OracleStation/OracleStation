@@ -18,6 +18,7 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	antag_flag = ROLE_CHANGELING
 	restricted_jobs = list("AI", "Cyborg")
 	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Blueshield", "Brig Physician")
+	protected_species = list("ipc")
 	required_players = 15
 	required_enemies = 1
 	recommended_enemies = 4
@@ -370,7 +371,7 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 		if(verbose)
 			to_chat(user, "<span class='warning'>We already have this DNA in storage!</span>")
 		return
-	if(!target.has_dna())
+	if(!target.has_dna() || (NOCHANGELING in target.dna.species.species_traits))
 		if(verbose)
 			to_chat(user, "<span class='warning'>[target] is not compatible with our biology.</span>")
 		return

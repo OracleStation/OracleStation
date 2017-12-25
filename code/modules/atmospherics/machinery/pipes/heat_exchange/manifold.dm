@@ -54,13 +54,13 @@
 	initialize_directions_he = initial(initialize_directions_he)
 
 /obj/machinery/atmospherics/pipe/heat_exchanging/manifold4w/update_icon()
-	var/invis = invisibility ? "-f" : ""
+	alpha = invisibility ? 128 : 255
 
-	icon_state = "manifold4w_center[invis]"
+	icon_state = "manifold4w_center"
 
 	cut_overlays()
 
 	//Add non-broken pieces
 	for(DEVICE_TYPE_LOOP)
 		if(NODE_I)
-			add_overlay(getpipeimage('icons/obj/atmospherics/pipes/heat.dmi', "manifold_intact[invis]", get_dir(src, NODE_I)))
+			add_overlay(getpipeimage('icons/obj/atmospherics/pipes/heat.dmi', "manifold_intact", get_dir(src, NODE_I)))

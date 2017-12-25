@@ -31,39 +31,10 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 		set_species(dna.species.type)
 
 	//initialise organs
-	create_internal_organs()
+	create_internal_organs() //most of it is done in set_species now, this is only for parent call
 
 	handcrafting = new()
 
-	..()
-
-/mob/living/carbon/human/create_internal_organs()
-	if(!(NOHUNGER in dna.species.species_traits))
-		internal_organs += new /obj/item/organ/appendix
-	if(!(NOBREATH in dna.species.species_traits))
-		if(dna.species.mutantlungs)
-			internal_organs += new dna.species.mutantlungs()
-		else
-			internal_organs += new /obj/item/organ/lungs()
-	if(!(NOBLOOD in dna.species.species_traits))
-		internal_organs += new /obj/item/organ/heart
-
-	if(!(NOLIVER in dna.species.species_traits))
-		if(dna.species.mutantliver)
-			internal_organs += new dna.species.mutantliver()
-		else
-			internal_organs += new /obj/item/organ/liver()
-
-	if(!(NOSTOMACH in dna.species.species_traits))
-		if(dna.species.mutantstomach)
-			internal_organs += new dna.species.mutantstomach()
-		else
-			internal_organs += new /obj/item/organ/stomach()
-
-	internal_organs += new dna.species.mutanteyes
-	internal_organs += new dna.species.mutantears
-	internal_organs += new dna.species.mutanttongue
-	internal_organs += new /obj/item/organ/brain
 	..()
 
 /mob/living/carbon/human/OpenCraftingMenu()
@@ -209,6 +180,9 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 		dat += "&nbsp;<A href='?src=[REF(src)];pockets=right'>[(r_store && !(r_store.flags_1&ABSTRACT_1)) ? "Right (Full)" : "<font color=grey>Right (Empty)</font>"]</A></td></tr>"
 		dat += "<tr><td>&nbsp;&#8627;<B>ID:</B></td><td><A href='?src=[REF(src)];item=[slot_wear_id]'>[(wear_id && !(wear_id.flags_1&ABSTRACT_1)) ? wear_id : "<font color=grey>Empty</font>"]</A></td></tr>"
 		dat += "<tr><td>&nbsp;&#8627;<B>PDA:</B></td><td><A href='?src=[REF(src)];item=[slot_wear_pda]'>[(wear_pda && !(wear_pda.flags_1&ABSTRACT_1)) ? wear_pda : "<font color=grey>Empty</font>"]</A></td></tr>"
+		if(istype(w_uniform, /obj/item/clothing/under))
+			var/obj/item/clothing/under/U = w_uniform
+			dat += "<tr><td>&nbsp;&#8627;<B>Suit Sensors:</b></td><td><A href='?src=[REF(src)];set_sensor=1'>[U.has_sensor >= 2 ? "<font color=grey>--SENSORS LOCKED--</font></a>" : "Set Sensors</a>"]</td></tr>"
 
 	if(handcuffed)
 		dat += "<tr><td><B>Handcuffed:</B> <A href='?src=[REF(src)];item=[slot_handcuffed]'>Remove</A></td></tr>"
@@ -262,6 +236,11 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 			if(slot in check_obscured_slots())
 				to_chat(usr, "<span class='warning'>You can't reach that! Something is covering it.</span>")
 				return
+
+		if(href_list["set_sensor"])
+			if(istype(w_uniform, /obj/item/clothing/under))
+				var/obj/item/clothing/under/U = w_uniform
+				U.toggle(usr)
 
 		if(href_list["pockets"])
 			var/pocket_side = href_list["pockets"]
