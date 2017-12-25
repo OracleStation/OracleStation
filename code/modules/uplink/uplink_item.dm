@@ -373,8 +373,8 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	name = "Cloaking Device"
 	desc = "A belt mounted Omegacorp cloaking device which grants \
 		invisibilty on activation. Its internal battery discharges quickly in the light \
-		but is capable of self charging in the dark due to its microfusion \
-		breeder cell. The device is very susceptable to Ion Weaponary and \
+		but is capable of self charging in the dark due to its dark matter \
+		power cell. The device is very susceptable to Ion Weaponary and \
 		EMPs. It allows usage of weapons and equipment while cloaked. \
 		Detectable by infrared scanners."
 	item = /obj/item/device/shadowcloak
