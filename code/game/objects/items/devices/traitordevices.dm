@@ -230,14 +230,14 @@ obj/item/device/shadowcloak/emp_act(severity)
 			user.Knockdown(200)
 			playsound(loc, 'sound/weapons/flashbang.ogg', 100, 1)	
 			to_chat(user, "<span class='userdanger'>Your [name] shocks you and shuts down suddenly.</span>")
-			STOP_PROCESSING(SSobj, src)
+			Deactivate(SSobj, src)
 			if(user)
 				user.alpha = old_alpha
 			on = FALSE
 			user = null
 		if(2)
 			to_chat(user, "<span class='userdanger'>Your [name] shuts down!</span>")
-			STOP_PROCESSING(SSobj, src)
+			Deactivate(SSobj, src)
 			if(user)
 				user.alpha = old_alpha
 			on = FALSE
