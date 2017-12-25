@@ -171,8 +171,8 @@ effective or pretty fucking useless.
 	attack_verb = list("whipped", "lashed", "disciplined")
 
 	var/mob/living/carbon/human/user = null
-	var/charge = 500
-	var/max_charge = 500
+	var/charge = 375
+	var/max_charge = 375
 	var/on = FALSE
 	var/old_alpha = 0
 	actions_types = list(/datum/action/item_action/toggle)
