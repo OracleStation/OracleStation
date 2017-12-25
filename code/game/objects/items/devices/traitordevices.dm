@@ -173,8 +173,8 @@ effective or pretty fucking useless.
 	attack_verb = list("whipped", "lashed", "disciplined")
 
 	var/mob/living/carbon/human/user = null
-	var/charge = 300
-	var/max_charge = 300
+	var/charge = 650
+	var/max_charge = 650
 	var/on = FALSE
 	var/old_alpha = 0
 	actions_types = list(/datum/action/item_action/toggle)
@@ -229,14 +229,14 @@ effective or pretty fucking useless.
 obj/item/device/shadowcloak/emp_act(severity)
 	switch(severity)
 		if(1)
+			user.Knockdown(200)
+			playsound(loc, 'sound/weapons/flashbang.ogg', 100, 1)	
 			to_chat(user, "<span class='userdanger'>Your [name]'s shocks you, overloads and shuts down!</span>")
 			STOP_PROCESSING(SSobj, src)
 			if(user)
 				user.alpha = old_alpha
 			on = FALSE
 			user = null
-			user.Knockdown(200)
-			playsound(loc, 'sound/weapons/flashbang.ogg', 100, 1)	
 		if(2)
 			to_chat(user, "<span class='userdanger'>Your [name]'s shuts down!</span>")
 			STOP_PROCESSING(SSobj, src)
