@@ -371,8 +371,8 @@
 
 /datum/spellbook_entry/item/holocarp
 	name = "Holocarp Fishsticks"
-	desc = "A tasty treat of fishsticks. On consumption it will grand the user a holocarp guardian spirit, similar to regular guardian spirits. However it is totally possible to have multiple \
-	multiple stands with this, even in conjunction with a regular guardian spirit from a tarrot deck. You cannot choose the type of holocarp you get. "
+	desc = "A tasty treat of fishsticks. On consumption it will grant the user a holocarp guardian spirit, similar to regular guardian spirits. However it is possible to have multiple \
+	stands with this, even in conjunction with a regular guardian spirit from a tarot deck. You cannot choose the type of holocarp you get."
 	item_path = /obj/item/guardiancreator/carp
 	category = "Assistance"
 
