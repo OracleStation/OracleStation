@@ -166,7 +166,7 @@ effective or pretty fucking useless.
 	desc = "A military grade belt with some sort of cloaking device attached to it. Recharges in the darkness."
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state = "utilitybelt"
-	item_state = "utility"
+	item_state = "military"
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined")
 
