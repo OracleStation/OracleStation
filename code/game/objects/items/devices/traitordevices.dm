@@ -193,6 +193,7 @@ effective or pretty fucking useless.
 	if(!user)
 		return
 	to_chat(user, "<span class='notice'>You activate [src].</span>")
+	playsound(loc, 'sound/magic/charge.ogg', 50, 1)
 	src.user = user
 	START_PROCESSING(SSobj, src)
 	old_alpha = user.alpha
@@ -200,6 +201,7 @@ effective or pretty fucking useless.
 
 /obj/item/device/shadowcloak/proc/Deactivate()
 	to_chat(user, "<span class='notice'>You deactivate [src].</span>")
+	playsound(loc, 'sound/magic/charge.ogg', 25, 1)
 	STOP_PROCESSING(SSobj, src)
 	if(user)
 		user.alpha = old_alpha
