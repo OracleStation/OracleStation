@@ -32,7 +32,7 @@
 /obj/effect/particle_effect/smoke/proc/kill_smoke()
 	STOP_PROCESSING(SSobj, src)
 	if(opaque)
-		opacity = 0
+		set_opacity(0)
 	animate(src, alpha = 0, time = 10)
 	QDEL_IN(src, 10)
 

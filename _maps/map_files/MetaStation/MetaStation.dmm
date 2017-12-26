@@ -74806,9 +74806,6 @@
 /area/chapel/office)
 "cMa" = (
 /obj/structure/table/wood,
-/obj/item/spellbook/oneuse/smoke/lesser{
-	name = "mysterious old book of "
-	},
 /obj/item/reagent_containers/food/drinks/bottle/holywater{
 	name = "flask of holy water";
 	pixel_x = -2;
