@@ -414,6 +414,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<span style='border:1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=facial;task=input'>Change</a><BR>"
 					dat += "</td>"
 
+				if("vox_eyes" in pref_species.mutant_bodyparts)
+					dat += "<td valign='top' width='14%'>"
+
+					dat += "<h3>Vox Eye Color</h3>"
+
+					dat += "<span style='border:1px solid #161616; background-color: #[eye_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=eyes;task=input'>Change</a><BR>"
+
+					dat += "</td>"
+
 				if("vox_body_markings" in pref_species.mutant_bodyparts)
 					dat += "<td valign='top' width='10%'>"
 

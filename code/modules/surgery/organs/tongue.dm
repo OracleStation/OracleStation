@@ -188,7 +188,7 @@
 	icon_state = "tonguerobot"
 	say_mod = "states"
 	attack_verb = list("beeped", "booped")
-	taste_sensitivity = NO_TASTE_SENSITIVITY // Robots have no taste.
+	taste_sensitivity = NO_TASTE_SENSITIVITY
 
 /obj/item/organ/tongue/robot/emp_act(severity)
 	owner.apply_effect(STUTTER, 120)
@@ -204,11 +204,11 @@
 /obj/item/organ/tongue/vox
 	name = "vox tongue"
 	desc = "Usually found inside a vox's.. Beak? You almost swear you can hear it shrieking."
-	icon_state = "tongue"
+	say_mod = "shrieks"
 	taste_sensitivity = 50 // There's not much need for taste when you're a scavenger.
 	attack_verb = list("skreks")
 
 /obj/item/organ/tongue/vox/TongueSpeech(var/message)
 	if(prob(10))
 		playsound(owner, 'sound/voice/shriek1.ogg', 25, 1, 1)
-		return
+	return message

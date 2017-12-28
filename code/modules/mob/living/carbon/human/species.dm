@@ -575,6 +575,14 @@
 		if(!H.dna.features["vox_facial_quills"] || H.dna.features["vox_facial_quills"] == "None" || H.head && (H.head.flags_inv & HIDEFACE) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEYES)) || !HD)
 			bodyparts_to_add -= "vox_facial_quills"
 
+	if("vox_eyes" in mutant_bodyparts)
+		if(!H.dna.features["vox_eyes"] || H.head && (H.head.flags_inv & HIDEFACE) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEYES)) || !HD)
+			bodyparts_to_add -= "vox_eyes"
+
+	if("vox_tail" in mutant_bodyparts)
+		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
+			bodyparts_to_add -= "vox_tail"
+
 	if("ears" in mutant_bodyparts)
 		if(!H.dna.features["ears"] || H.dna.features["ears"] == "None" || H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
 			bodyparts_to_add -= "ears"
@@ -666,6 +674,10 @@
 					S = GLOB.vox_quills_list[H.dna.features["vox_quills"]]
 				if("vox_facial_quills")
 					S = GLOB.vox_facial_quills_list[H.dna.features["vox_facial_quills"]]
+				if("vox_eyes")
+					S = GLOB.vox_eyes_list[H.dna.features["vox_eyes"]]
+				if("vox_tail")
+					S = GLOB.vox_tails_list[H.dna.features["vox_tail"]]
 				if("vox_body_markings")
 					S = GLOB.vox_body_markings_list[H.dna.features["vox_body_markings"]]
 				if("wings")

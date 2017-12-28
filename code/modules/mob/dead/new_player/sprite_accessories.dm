@@ -1825,6 +1825,7 @@
 
 /datum/sprite_accessory/vox_bodies
 	icon_state = "yaya" // In order to pull the body correctly, we need AN icon_state(see line 36-39). PROBABLY NEED TO REFACTOR THIS. SKREK.
+	var/eye_type = "two_eyes"
 
 /datum/sprite_accessory/vox_bodies/green
 	name = "Green"
@@ -1850,9 +1851,56 @@
 	name = "Azure"
 	limbs_id = "azevox"
 
+/datum/sprite_accessory/vox_bodies/auroras
+	name = "Auroras"
+	limbs_id = "aurvox"
+	eye_type = "three_eyes"
+
+/datum/sprite_accessory/vox_eyes
+	icon = 'icons/mob/vox_accessories.dmi'
+	color_src = EYECOLOR
+
+/datum/sprite_accessory/vox_eyes/two_eyes
+	icon_state = "two_eyes"
+
+/datum/sprite_accessory/vox_eyes/three_eyes
+	icon_state = "three_eyes"
+
 /datum/sprite_accessory/vox_body_markings
 	icon = 'icons/mob/vox_accessories.dmi'
 
 /datum/sprite_accessory/vox_body_markings/none
 	name = "None"
 	icon_state = "none"
+
+/datum/sprite_accessory/vox_tails
+	icon = 'icons/mob/vox_accessories.dmi'
+	color_src = 0
+
+/datum/sprite_accessory/vox_tails/grnvox
+	name = "Green"
+	icon_state = "grnvox"
+
+/datum/sprite_accessory/vox_tails/dgrvox
+	name = "Dark Green"
+	icon_state = "dgrvox"
+
+/datum/sprite_accessory/vox_tails/brnvox
+	name = "Brown"
+	icon_state = "brnvox"
+
+/datum/sprite_accessory/vox_tails/gryvox
+	name = "Grey"
+	icon_state = "gryvox"
+
+/datum/sprite_accessory/vox_tails/emdvox
+	name = "Emerald"
+	icon_state = "emdvox"
+
+/datum/sprite_accessory/vox_tails/azevox
+	name = "Azure"
+	icon_state = "azevox"
+
+/datum/sprite_accessory/vox_tails/aurvox
+	name = "Auroras"
+	icon_state = "aurvox"

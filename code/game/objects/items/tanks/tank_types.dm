@@ -149,8 +149,6 @@
 	air_contents.gases["plasma"][MOLES] = (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
 	return
 
-
-
 /*
  * Emergency Oxygen
  */
@@ -189,7 +187,7 @@
 /obj/item/tank/internals/emergency_oxygen/vox
 	name = "vox n2 tank"
 	desc = "A vox nitrogen tank made of a strong, light weight alloy; this tank is capable of holding gasses at high pressures without exploding. Due to it's light weight, don't expect to robust any dustlungs with it, skrek."
-	icon_state = "emergency"
+	icon_state = "emergency_vox"
 	flags_1 = CONDUCT_1
 	slot_flags = SLOT_BELT
 	w_class = WEIGHT_CLASS_SMALL
@@ -202,4 +200,5 @@
 	..()
 	air_contents.assert_gas("n2")
 	air_contents.gases["n2"][MOLES] = (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
+	air_contents.gases["o2"][MOLES] = 0
 	return

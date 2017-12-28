@@ -157,11 +157,12 @@
 	origin_tech = "biotech=3"
 
 /obj/item/organ/brain/cybernetic/vox/emp_act(severity)
+	to_chat(owner, "<span class='warning'>Your cortical stack has been damaged!</span>")
 	switch(severity)
 		if(1)
-			owner.adjustBrainLoss(40)
+			owner.adjustBrainLoss(50)
 		if(2)
-			owner.adjustBrainLoss(20)
+			owner.adjustBrainLoss(25)
 
 // IPC brain fuckery.
 /obj/item/organ/brain/mmi_holder

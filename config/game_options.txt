@@ -405,8 +405,7 @@ ROUNDSTART_RACES unathi
 ROUNDSTART_RACES ethari
 #ROUNDSTART_RACES pod
 ROUNDSTART_RACES ipc
-ROUNDSTART_RACES vox_prolitus
-ROUNDSTART_RACES vox_auroras
+ROUNDSTART_RACES vox
 
 ## Races that aren't on the station by default.
 #ROUNDSTART_RACES jelly
