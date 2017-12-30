@@ -159,6 +159,8 @@ datum/species/ipc/on_species_loss(mob/living/carbon/C)
 		if(prob(5))
 			to_chat(H, "<span class='warning'>Alert: Internal temperature regulation systems offline; thermal damage sustained. Shutdown imminent.</span>")
 			H.visible_message("[H]'s cooling system fans stutter and stall. There is a faint, yet rapid beeping coming from inside their chassis.")
+	if(H.hallucination >= 1)
+		H.hallucination = 0
 
 /datum/species/ipc/after_equip_job(datum/job/J, mob/living/carbon/human/H)
 	to_chat(H, "<span class='notice'>You are an IPC, a free synthetic! You recharge by using your power cord implant on an APC. If you get damaged, it can be fixed with a welder, or cable coil on the damaged area. You lose limbs easily, but you can plug them back in yourself. Watch out for EMPs!</span>")
