@@ -219,10 +219,6 @@
 	icon_state = "fireaxe[wielded]"
 	return
 
-/obj/item/twohanded/fireaxe/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] axes [user.p_them()]self from head to toe! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return (BRUTELOSS)
-
 /obj/item/twohanded/fireaxe/afterattack(atom/A, mob/user, proximity)
 	if(!proximity)
 		return
@@ -605,10 +601,6 @@
 
 /obj/item/twohanded/pitchfork/update_icon()
 	icon_state = "pitchfork[wielded]"
-
-/obj/item/twohanded/pitchfork/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] impales [user.p_them()]self in [user.p_their()] abdomen with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return (BRUTELOSS)
 
 /obj/item/twohanded/pitchfork/demonic/pickup(mob/living/user)
 	if(isliving(user) && user.mind && user.owns_soul() && !is_devil(user))

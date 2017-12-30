@@ -136,10 +136,6 @@ obj/item/construction
 	var/delay_mod = 1
 
 
-/obj/item/construction/rcd/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] sets the RCD to 'Wall' and points it down [user.p_their()] throat! It looks like [user.p_theyre()] trying to commit suicide..</span>")
-	return (BRUTELOSS)
-
 /obj/item/construction/rcd/verb/toggle_window_type()
 	set name = "Toggle Window Type"
 	set category = "Object"

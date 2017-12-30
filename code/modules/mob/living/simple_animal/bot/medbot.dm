@@ -344,9 +344,6 @@
 	if(C.stat == DEAD || (C.status_flags & FAKEDEATH))
 		return 0 //welp too late for them!
 
-	if(C.suiciding)
-		return 0 //Kevorkian school of robotic medical assistants.
-
 	if(emagged == 2) //Everyone needs our medicine. (Our medicine is toxins)
 		return 1
 
