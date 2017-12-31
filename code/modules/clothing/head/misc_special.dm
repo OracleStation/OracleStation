@@ -27,6 +27,12 @@
 	visor_flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	resistance_flags = FIRE_PROOF
+	species_fit = list("Unathi", "Ash Walker", "Ethari")
+	sprite_sheets = list(
+		"Unathi" = 'icons/mob/species/unathi/head.dmi',
+		"Ash Walker" = 'icons/mob/species/unathi/head.dmi',
+		"Ethari" = 'icons/mob/species/ethari/head.dmi'
+		)
 
 /obj/item/clothing/head/welding/attack_self(mob/user)
 	weldingvisortoggle(user)

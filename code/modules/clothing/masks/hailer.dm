@@ -19,6 +19,12 @@
 	var/recent_uses = 0
 	var/broken_hailer = 0
 	var/safety = TRUE
+	species_fit = list("Unathi", "Ash Walker", "Ethari")
+	sprite_sheets = list(
+		"Unathi" = 'icons/mob/species/unathi/mask.dmi',
+		"Ash Walker" = 'icons/mob/species/unathi/mask.dmi',
+		"Ethari" = 'icons/mob/species/ethari/mask.dmi'
+		)
 
 /obj/item/clothing/mask/gas/sechailer/swat
 	name = "\improper SWAT mask"
@@ -29,6 +35,7 @@
 	aggressiveness = 3
 	flags_inv = HIDEFACIALHAIR|HIDEFACE|HIDEEYES|HIDEEARS|HIDEHAIR
 	visor_flags_inv = 0
+
 
 /obj/item/clothing/mask/gas/sechailer/cyborg
 	name = "security hailer"

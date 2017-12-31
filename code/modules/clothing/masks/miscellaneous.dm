@@ -30,6 +30,12 @@
 	permeability_coefficient = 0.01
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 25, rad = 0, fire = 0, acid = 0)
 	actions_types = list(/datum/action/item_action/adjust)
+	species_fit = list("Unathi", "Ash Walker", "Ethari")
+	sprite_sheets = list(
+		"Unathi" = 'icons/mob/species/unathi/mask.dmi',
+		"Ash Walker" = 'icons/mob/species/unathi/mask.dmi',
+		"Ethari" = 'icons/mob/species/ethari/mask.dmi'
+		)
 
 /obj/item/clothing/mask/surgical/attack_self(mob/user)
 	adjustmask(user)
@@ -163,6 +169,12 @@
 	slot_flags = SLOT_MASK
 	adjusted_flags = SLOT_HEAD
 	icon_state = "bandbotany"
+	species_fit = list("Unathi", "Ash Walker", "Ethari")
+	sprite_sheets = list(
+		"Unathi" = 'icons/mob/species/unathi/mask.dmi',
+		"Ash Walker" = 'icons/mob/species/unathi/mask.dmi',
+		"Ethari" = 'icons/mob/species/ethari/mask.dmi'
+		)
 
 /obj/item/clothing/mask/bandana/attack_self(mob/user)
 	adjustmask(user)

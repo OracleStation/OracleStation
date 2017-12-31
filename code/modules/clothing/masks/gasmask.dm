@@ -10,6 +10,12 @@
 	permeability_coefficient = 0.01
 	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH
 	resistance_flags = 0
+	species_fit = list("Unathi", "Ash Walker", "Ethari")
+	sprite_sheets = list(
+		"Unathi" = 'icons/mob/species/unathi/mask.dmi',
+		"Ash Walker" = 'icons/mob/species/unathi/mask.dmi',
+		"Ethari" = 'icons/mob/species/ethari/mask.dmi'
+		)
 
 // **** Welding gas mask ****
 
@@ -42,6 +48,10 @@
 	icon_state = "plaguedoctor"
 	item_state = "gas_mask"
 	armor = list(melee = 0, bullet = 0, laser = 2,energy = 2, bomb = 0, bio = 75, rad = 0, fire = 0, acid = 0)
+	species_fit = list("Ethari")
+	sprite_sheets = list(
+		"Ethari" = 'icons/mob/species/ethari/mask.dmi'
+		)
 
 /obj/item/clothing/mask/gas/syndicate
 	name = "syndicate mask"
@@ -99,7 +109,6 @@
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FLAMMABLE
 	actions_types = list(/datum/action/item_action/adjust)
-
 
 /obj/item/clothing/mask/gas/mime/ui_action_click(mob/user)
 	if(!istype(user) || user.incapacitated())
@@ -163,6 +172,8 @@
 	name = "carp mask"
 	desc = "Gnash gnash."
 	icon_state = "carp_mask"
+	species_fit = null
+	sprite_sheets = null
 
 /obj/item/clothing/mask/gas/tiki_mask
 	name = "tiki mask"
@@ -173,7 +184,8 @@
 	max_integrity = 100
 	actions_types = list(/datum/action/item_action/adjust)
 	dog_fashion = null
-
+	species_fit = null
+	sprite_sheets = null
 
 obj/item/clothing/mask/gas/tiki_mask/ui_action_click(mob/user)
 

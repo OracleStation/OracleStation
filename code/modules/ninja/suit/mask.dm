@@ -7,9 +7,6 @@ Contents:
 
 */
 
-
-
-
 /obj/item/clothing/mask/gas/space_ninja
 	name = "ninja mask"
 	desc = "A close-fitting mask that acts both as an air filter and a post-modern fashion statement."
@@ -17,3 +14,8 @@ Contents:
 	item_state = "s-ninja_mask"
 	strip_delay = 120
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+	sprite_sheets = list(
+		"Unathi" = 'icons/mob/species/unathi/mask.dmi',
+		"Ash Walker" = 'icons/mob/species/unathi/mask.dmi',
+		"Ethari" = 'icons/mob/species/ethari/mask.dmi'
+		)
