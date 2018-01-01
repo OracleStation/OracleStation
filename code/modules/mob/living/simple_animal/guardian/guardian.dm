@@ -179,9 +179,6 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 				forceMove(summoner.loc)
 				new /obj/effect/temp_visual/guardian/phase(loc)
 
-/mob/living/simple_animal/hostile/guardian/canSuicide()
-	return 0
-
 /mob/living/simple_animal/hostile/guardian/AttackingTarget()
 	if(loc == summoner)
 		to_chat(src, "<span class='danger'><B>You must be manifested to attack!</span></B>")

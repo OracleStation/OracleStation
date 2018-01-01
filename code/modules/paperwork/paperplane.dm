@@ -31,14 +31,6 @@
 		internalPaper = null
 	return ..()
 
-/obj/item/paperplane/suicide_act(mob/living/user)
-	user.Stun(200)
-	user.visible_message("<span class='suicide'>[user] jams the [src] in [user.p_their()] nose. It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	user.adjust_blurriness(6)
-	user.adjust_eye_damage(rand(6,8))
-	sleep(10)
-	return (BRUTELOSS)
-
 /obj/item/paperplane/update_icon()
 	cut_overlays()
 	var/list/stamped = internalPaper.stamped

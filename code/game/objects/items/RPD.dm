@@ -167,12 +167,6 @@ GLOBAL_LIST_INIT(RPD_recipes, list(
 /obj/item/pipe_dispenser/attack_self(mob/user)
 	show_menu(user)
 
-/obj/item/pipe_dispenser/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] points the end of the RPD down [user.p_their()] throat and presses a button! It looks like [user.p_theyre()] trying to commit suicide...</span>")
-	playsound(get_turf(user), 'sound/machines/click.ogg', 50, 1)
-	playsound(get_turf(user), 'sound/items/deconstruct.ogg', 50, 1)
-	return(BRUTELOSS)
-
 /obj/item/pipe_dispenser/proc/render_dir_img(_dir,pic,title,flipped=0)
 	var/selected=" class=\"imglink\""
 	if(_dir == p_dir)

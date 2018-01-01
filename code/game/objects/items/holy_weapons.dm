@@ -12,10 +12,6 @@
 	w_class = WEIGHT_CLASS_TINY
 	var/reskinned = FALSE
 
-/obj/item/nullrod/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is killing [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to get closer to god!</span>")
-	return (BRUTELOSS|FIRELOSS)
-
 /obj/item/nullrod/attack_self(mob/user)
 	if(user.mind && (user.mind.isholy) && !reskinned)
 		reskin_holy_weapon(user)
