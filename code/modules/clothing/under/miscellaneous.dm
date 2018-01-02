@@ -623,6 +623,7 @@
 	var/next_extinguish = 0
 	var/extinguish_cooldown = 100
 	var/extinguishes_left = 5
+	species_fit = list("Plasmaman")
 
 
 /obj/item/clothing/under/plasmaman/examine(mob/user)

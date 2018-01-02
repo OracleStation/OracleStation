@@ -318,6 +318,7 @@
 
 /obj/item/organ/lungs/vox
 	name = "vox lungs"
+	icon_state = "lungs-x"
 	desc = "Pretty dusty."
 	safe_oxygen_min = 0 //We don't breathe this
 	safe_oxygen_max = 1 //This is toxic to us

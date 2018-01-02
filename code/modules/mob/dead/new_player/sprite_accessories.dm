@@ -1868,13 +1868,6 @@
 	name = "three_eyes"
 	icon_state = "three_eyes"
 
-/datum/sprite_accessory/vox_body_markings
-	icon = 'icons/mob/vox_accessories.dmi'
-
-/datum/sprite_accessory/vox_body_markings/none
-	name = "None"
-	icon_state = "none"
-
 /datum/sprite_accessory/vox_tails
 	icon = 'icons/mob/vox_accessories.dmi'
 	color_src = 0
@@ -1906,3 +1899,45 @@
 /datum/sprite_accessory/vox_tails/aurvox
 	name = "aurvox"
 	icon_state = "aurvox"
+
+/datum/sprite_accessory/vox_body_markings
+	icon = 'icons/mob/vox_accessories.dmi'
+
+/datum/sprite_accessory/vox_body_markings/none
+	name = "None"
+	icon_state = "none"
+
+/datum/sprite_accessory/vox_body_markings/heart
+	name = "Heart"
+	icon_state = "heart"
+
+/datum/sprite_accessory/vox_body_markings/hive
+	name = "Hive"
+	icon_state = "hive"
+
+/datum/sprite_accessory/vox_body_markings/nightling
+	name = "Nightling"
+	icon_state = "nightling"
+
+/datum/sprite_accessory/vox_body_markings/tiger
+	name = "Tiger"
+	icon_state = "tiger"
+
+/datum/sprite_accessory/vox_tail_markings
+	icon = 'icons/mob/vox_accessories.dmi'
+
+/datum/sprite_accessory/vox_tail_markings/none
+	name = "None"
+	icon_state = "none"
+
+/datum/sprite_accessory/vox_tail_markings/bands
+	name = "Bands"
+	icon_state = "bands"
+
+/datum/sprite_accessory/vox_tail_markings/fade
+	name = "Fade"
+	icon_state = "fade"
+
+/datum/sprite_accessory/vox_tail_markings/stripe
+	name = "Stripe"
+	icon_state = "stripe"

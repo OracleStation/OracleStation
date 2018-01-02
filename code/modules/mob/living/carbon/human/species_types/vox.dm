@@ -4,8 +4,8 @@
 	id = "vox"
 	say_mod = "shrieks"
 	species_traits = list(RESISTPRESSURE,RESISTHOT,RESISTCOLD, NOSCAN, NO_UNDERWEAR) // Robust, but cannot be cloned.
-	damage_overlay_type = "vox"
-	mutant_bodyparts = list("vox_quills", "vox_body_markings",  "vox_facial_quills", "vox_tail", "vox_body", "vox_eyes")
+	damage_overlay_type = "human"
+	mutant_bodyparts = list("vox_quills", "vox_body_markings",  "vox_facial_quills", "vox_tail", "vox_body", "vox_eyes", "vox_tail_markings")
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
