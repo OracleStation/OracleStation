@@ -168,7 +168,8 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_shard)
 	for(var/mob/living/carbon/human/H in viewers(range, src))
 		if(H != user)
 			continue
-		if(!istype(H.glasses, /obj/item/clothing/glasses/meson))
+		var/obj/item/organ/eyes/eyes = H.getorganslot("eye_sight")
+		if(!istype(H.glasses, /obj/item/clothing/glasses/meson) && !istype(eyes, /obj/item/organ/eyes/robotic))
 			to_chat(H, "<span class='danger'>You get headaches just from looking at it.</span>")
 		return
 
@@ -360,7 +361,8 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_shard)
 		air_update_turf()
 
 	for(var/mob/living/carbon/human/l in view(src, HALLUCINATION_RANGE(power))) // If they can see it without mesons on.  Bad on them.
-		if(!istype(l.glasses, /obj/item/clothing/glasses/meson))
+		var/obj/item/organ/eyes/eyes = l.getorganslot("eye_sight")
+		if(!istype(l.glasses, /obj/item/clothing/glasses/meson) && !istype(eyes, /obj/item/organ/eyes/robotic))
 			var/D = sqrt(1 / max(1, get_dist(l, src)))
 			l.hallucination += power * config_hallucination_power * D
 			l.hallucination = Clamp(0, 200, l.hallucination)
