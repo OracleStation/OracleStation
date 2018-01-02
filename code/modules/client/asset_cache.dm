@@ -303,6 +303,9 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /datum/asset/simple/changelog
 	assets = list(
 		"88x31.png" = 'html/88x31.png',
+		"add.png" = 'html/add.png',
+		"arrow_refresh.png" = 'html/arrow_refresh.png',
+		"delete.png" = 'html/delete.png',
 		"bug-minus.png" = 'html/bug-minus.png',
 		"cross-circle.png" = 'html/cross-circle.png',
 		"hard-hat-exclamation.png" = 'html/hard-hat-exclamation.png',

@@ -59,10 +59,12 @@
 
 /obj/effect/hotspot/Initialize()
 	. = ..()
+	alpha = 0
 	SSair.hotspots += src
 	perform_exposure()
 	setDir(pick(GLOB.cardinals))
 	air_update_turf()
+	animate(src, alpha = 255, time = 5)
 
 /obj/effect/hotspot/proc/perform_exposure()
 	var/turf/open/location = loc
@@ -144,6 +146,7 @@
 	return TRUE
 
 /obj/effect/hotspot/Destroy()
+	animate(src, alpha = 0, time = 5)
 	set_light(0)
 	SSair.hotspots -= src
 	var/turf/open/T = loc

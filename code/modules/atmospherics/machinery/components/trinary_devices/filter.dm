@@ -41,9 +41,9 @@
 		if(direction & initialize_directions)
 			var/obj/machinery/atmospherics/node = findConnecting(direction)
 			if(node)
-				add_overlay(getpipeimage('icons/obj/atmospherics/components/trinary_devices.dmi', "cap", direction, node.pipe_color))
+				add_overlay(getpipeimage('icons/obj/atmospherics/components/trinary_devices.dmi', "cap[piping_layer]", direction, node.pipe_color))
 				continue
-			add_overlay(getpipeimage('icons/obj/atmospherics/components/trinary_devices.dmi', "cap", direction))
+			add_overlay(getpipeimage('icons/obj/atmospherics/components/trinary_devices.dmi', "cap[piping_layer]", direction))
 	..()
 
 /obj/machinery/atmospherics/components/trinary/filter/update_icon_nopipes()

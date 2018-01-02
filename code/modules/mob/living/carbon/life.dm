@@ -15,6 +15,10 @@
 	if(..()) //not dead
 		handle_blood()
 
+	if(isLivingSSD())//if you're disconnected, you're going to sleep
+		if(AmountSleeping() < 20)
+			AdjustSleeping(20)
+
 	if(stat != DEAD)
 		handle_liver()
 

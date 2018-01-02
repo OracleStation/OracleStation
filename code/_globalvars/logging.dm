@@ -4,6 +4,8 @@ GLOBAL_VAR(world_game_log)
 GLOBAL_PROTECT(world_game_log)
 GLOBAL_VAR(world_runtime_log)
 GLOBAL_PROTECT(world_runtime_log)
+GLOBAL_VAR(world_qdel_log)
+GLOBAL_PROTECT(world_qdel_log)
 GLOBAL_VAR(world_attack_log)
 GLOBAL_PROTECT(world_attack_log)
 GLOBAL_VAR(world_href_log)
@@ -17,7 +19,7 @@ GLOBAL_LIST_EMPTY(bombers)
 GLOBAL_PROTECT(bombers)
 GLOBAL_LIST_EMPTY(admin_log)
 GLOBAL_PROTECT(admin_log)
-GLOBAL_LIST_EMPTY(lastsignalers)	//keeps last 100 signals here in format: "[src] used \ref[src] @ location [src.loc]: [freq]/[code]"
+GLOBAL_LIST_EMPTY(lastsignalers)	//keeps last 100 signals here in format: "[src] used [REF(src)] @ location [src.loc]: [freq]/[code]"
 GLOBAL_PROTECT(lastsignalers)
 GLOBAL_LIST_EMPTY(lawchanges) //Stores who uploaded laws to which silicon-based lifeform, and what the law was
 GLOBAL_PROTECT(lawchanges)

@@ -1,11 +1,11 @@
 language: generic
 sudo: false
-dist: precise
+dist: trusty
 
 env:
     global:
     - BYOND_MAJOR="511"
-    - BYOND_MINOR="1380"
+    - BYOND_MINOR="1385"
     - NODE_VERSION="4"
     - BUILD_TOOLS=false
     - BUILD_TESTING=false
@@ -29,6 +29,16 @@ addons:
       - libstdc++6:i386
       - python
       - python-pip
+      - python3
+      - python3-pip
+
+before_install:
+  - pip install --user awscli
+  - pip3 install --user requests
+  - pip3 install --user pyyaml
+  - pip3 install --user python-dateutil
+  - pip3 install --user bs4
+  - export PATH=$PATH:$HOME/.local/bin
 
 install:
   - tools/travis/install_build_tools.sh
@@ -39,6 +49,7 @@ before_script:
 
 script:
   - tools/travis/check_filedirs.sh tgstation.dme
+  - tools/travis/build_changelog.sh
   - tools/travis/build_tools.sh
   - tools/travis/build_byond.sh
-
+  - tools/travis/upload_artifacts.sh

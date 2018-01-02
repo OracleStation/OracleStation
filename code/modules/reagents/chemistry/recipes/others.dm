@@ -163,10 +163,10 @@
 	results = list("abductormutationtoxin" = 1)
 	required_reagents = list("unstablemutationtoxin" = 1, "morphine" = 1)
 
-/datum/chemical_reaction/android_mutation_toxin
-	name = "Android Mutation Toxin"
-	id = "androidmutationtoxin"
-	results = list("androidmutationtoxin" = 1)
+/datum/chemical_reaction/robot_mutation_toxin
+	name = "Robot Mutation Toxin"
+	id = "ipcmutationtoxin"
+	results = list("ipcmutationtoxin" = 1)
 	required_reagents = list("unstablemutationtoxin" = 1, "teslium" = 1) //beep boop
 
 /datum/chemical_reaction/pod_mutation_toxin

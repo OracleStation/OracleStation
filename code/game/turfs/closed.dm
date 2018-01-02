@@ -12,6 +12,12 @@
 	. = ..()
 	SSair.high_pressure_delta -= src
 
+/turf/closed/CanPass(atom/movable/mover, turf/target)
+	if(istype(mover) && mover.checkpass(PASSCLOSEDTURF))
+		return TRUE
+	else
+		..()
+
 /turf/closed/indestructible
 	name = "wall"
 	icon = 'icons/turf/walls.dmi'
@@ -50,6 +56,21 @@
 			if("icon")
 				SStitle.icon = icon
 
+/turf/closed/indestructible/reebe
+	name = "void"
+	icon_state = "reebe"
+	opacity = FALSE
+	baseturf = /turf/closed/indestructible/reebe
+
+/turf/closed/indestructible/reebe/ratvar_act()
+	return
+
+/turf/closed/indestructible/reebe/narsie_act()
+	return
+
+/turf/closed/indestructible/reebe/CollidedWith(atom/movable/AM)
+	playsound(src, 'sound/effects/bamf.ogg', 25, TRUE)
+
 /turf/closed/indestructible/riveted
 	icon = 'icons/turf/walls/riveted.dmi'
 	icon_state = "riveted"
@@ -73,7 +94,7 @@
 	icon = 'icons/obj/smooth_structures/reinforced_window.dmi'
 
 /turf/closed/indestructible/fakeglass/Initialize()
-	..()
+	. = ..()
 	icon_state = null //set the icon state to null, so our base state isn't visible
 	underlays += mutable_appearance('icons/obj/structures.dmi', "grille") //add a grille underlay
 	underlays += mutable_appearance('icons/turf/floors.dmi', "plating") //add the plating underlay, below the grille

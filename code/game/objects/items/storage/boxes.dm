@@ -586,10 +586,6 @@
 	illustration = "heart"
 	foldable = null
 
-/obj/item/storage/box/hug/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] clamps the box of hugs on [user.p_their()] jugular! Guess it wasn't such a hugbox after all..</span>")
-	return (BRUTELOSS)
-
 /obj/item/storage/box/hug/attack_self(mob/user)
 	..()
 	user.changeNext_move(CLICK_CD_MELEE)
@@ -721,7 +717,7 @@
 	illustration = "donk_kit"
 
 /obj/item/storage/box/ingredients/Initialize()
-	..()
+	. = ..()
 	if(icon_state)
 		name = "[name] ([icon_state])"
 		desc = "A box containing supplementary ingredients for the aspiring chef. This box's theme is '[icon_state]'."

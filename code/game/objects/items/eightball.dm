@@ -37,10 +37,10 @@
 		"Very doubtful")
 
 /obj/item/toy/eightball/Initialize(mapload)
-	..()
+	. = ..()
 	if(prob(1))
 		new /obj/item/toy/eightball/haunted(get_turf(src))
-		qdel(src)
+		return INITIALIZE_HINT_QDEL
 
 /obj/item/toy/eightball/attack_self(mob/user)
 	if(shaking)
@@ -81,7 +81,7 @@
 	var/fixed_answer
 
 /obj/item/toy/eightball/broken/Initialize(mapload)
-	..()
+	. = ..()
 	fixed_answer = pick(possible_answers)
 
 /obj/item/toy/eightball/broken/get_answer()
@@ -97,7 +97,7 @@
 	var/list/votes
 
 /obj/item/toy/eightball/haunted/Initialize(mapload)
-	..()
+	. = ..()
 	votes = list()
 	GLOB.poi_list |= src
 
@@ -118,7 +118,7 @@
 	// notify ghosts that someone's shaking a haunted eightball
 	// and inform them of the message, (hopefully a yes/no question)
 	selected_message = last_message
-	notify_ghosts("[user] is shaking [src], hoping to get an answer to \"[selected_message]\"", source=src, enter_link="<a href=?src=\ref[src];interact=1>(Click to help)</a>", action=NOTIFY_ATTACK)
+	notify_ghosts("[user] is shaking [src], hoping to get an answer to \"[selected_message]\"", source=src, enter_link="<a href=?src=[REF(src)];interact=1>(Click to help)</a>", action=NOTIFY_ATTACK)
 
 /obj/item/toy/eightball/haunted/Topic(href, href_list)
 	if(href_list["interact"])
