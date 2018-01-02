@@ -23,6 +23,10 @@
 	storage_slots = 21
 	resistance_flags = 0
 	max_integrity = 300
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/back.dmi'
+		)
 
 /*
  * Backpack Types

@@ -17,6 +17,10 @@
 	body_parts_covered = CHEST
 	allowed = list (/obj/item/gun/energy/laser/bluetag)
 	resistance_flags = 0
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		)
 
 /obj/item/clothing/suit/redtag
 	name = "red laser tag armor"
@@ -27,6 +31,10 @@
 	body_parts_covered = CHEST
 	allowed = list (/obj/item/gun/energy/laser/redtag)
 	resistance_flags = 0
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		)
 
 /*
  * Costume
@@ -37,6 +45,11 @@
 	icon_state = "pirate"
 	item_state = "pirate"
 	allowed = list(/obj/item/melee/transforming/energy/sword/pirate, /obj/item/clothing/glasses/eyepatch, /obj/item/reagent_containers/food/drinks/bottle/rum)
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		)
+
 
 /obj/item/clothing/suit/pirate/captain
 	name = "pirate captain coat"
@@ -195,6 +208,10 @@
 	desc = "Your classic, non-racist poncho."
 	icon_state = "classicponcho"
 	item_state = "classicponcho"
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		)
 
 /obj/item/clothing/suit/poncho/green
 	name = "green poncho"
@@ -350,6 +367,10 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		)
 
 /obj/item/clothing/suit/jacket/leather
 	name = "leather jacket"
@@ -436,6 +457,10 @@
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0, fire = 0, acid = 0)
 	allowed = list(/obj/item/device/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter)
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		)
 
 /obj/item/clothing/head/hooded/winterhood
 	name = "winter hood"
@@ -445,6 +470,10 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	flags_inv = HIDEHAIR|HIDEEARS
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/head.dmi'
+		)
 
 /obj/item/clothing/suit/hooded/wintercoat/captain
 	name = "captain's winter coat"

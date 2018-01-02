@@ -205,6 +205,7 @@
 	name = "vox tongue"
 	desc = "Usually found inside a vox's.. Beak? You almost swear you can hear it shrieking."
 	say_mod = "shrieks"
+	icon_state = "tonguezombie" // Close enough
 	taste_sensitivity = 50 // There's not much need for taste when you're a scavenger.
 	attack_verb = list("skreks")
 

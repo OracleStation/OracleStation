@@ -44,4 +44,4 @@
 	item_state = "voxmask"
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
-	species_restricted = "Vox"
+	species_restricted = list("Vox Outcast")

@@ -30,13 +30,8 @@
 	var/vox_body = C.dna.features["vox_body"]
 	var/datum/sprite_accessory/vox_bodies/vox_body_of_choice = GLOB.vox_bodies_list[vox_body]
 	C.dna.species.limbs_id = vox_body_of_choice.limbs_id
-	var/vox_tail = C.dna.features["vox_tail"]
-	var/datum/sprite_accessory/vox_tails/vox_tail_input = GLOB.vox_tails_list[vox_tail]
-	vox_tail_input = vox_body_of_choice.limbs_id
-	var/vox_eyes = C.dna.features["vox_eyes"]
-	var/datum/sprite_accessory/vox_eyes/vox_eyes_input = GLOB.vox_eyes_list[vox_eyes]
-	vox_eyes_input = vox_body_of_choice.eye_type
-
+	C.dna.features["vox_tail"] = vox_body_of_choice.limbs_id
+	C.dna.features["vox_eyes"] = vox_body_of_choice.eye_type
 
 /datum/species/vox/after_equip_job(datum/job/J, mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath/vox(H), slot_wear_mask)

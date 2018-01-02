@@ -1789,7 +1789,7 @@
 
 /datum/sprite_accessory/vox_quills/mowhawk
 	name = "Mohawk Quills"
-	icon_state = "mowhawk"
+	icon_state = "mohawk"
 
 /datum/sprite_accessory/vox_quills/horns
 	name = "Horns"
@@ -1861,9 +1861,11 @@
 	color_src = EYECOLOR
 
 /datum/sprite_accessory/vox_eyes/two_eyes
+	name = "two_eyes"
 	icon_state = "two_eyes"
 
 /datum/sprite_accessory/vox_eyes/three_eyes
+	name = "three_eyes"
 	icon_state = "three_eyes"
 
 /datum/sprite_accessory/vox_body_markings
@@ -1878,29 +1880,29 @@
 	color_src = 0
 
 /datum/sprite_accessory/vox_tails/grnvox
-	name = "Green"
+	name = "grnvox"
 	icon_state = "grnvox"
 
 /datum/sprite_accessory/vox_tails/dgrvox
-	name = "Dark Green"
+	name = "dgrvox"
 	icon_state = "dgrvox"
 
 /datum/sprite_accessory/vox_tails/brnvox
-	name = "Brown"
+	name = "brnvox"
 	icon_state = "brnvox"
 
 /datum/sprite_accessory/vox_tails/gryvox
-	name = "Grey"
+	name = "gryvox"
 	icon_state = "gryvox"
 
 /datum/sprite_accessory/vox_tails/emdvox
-	name = "Emerald"
+	name = "emdvox"
 	icon_state = "emdvox"
 
 /datum/sprite_accessory/vox_tails/azevox
-	name = "Azure"
+	name = "azevox"
 	icon_state = "azevox"
 
 /datum/sprite_accessory/vox_tails/aurvox
-	name = "Auroras"
+	name = "aurvox"
 	icon_state = "aurvox"

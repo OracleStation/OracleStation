@@ -27,6 +27,10 @@
 	strip_delay = 70
 	equip_delay_other = 70
 	resistance_flags = ACID_PROOF
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		)
 
 //Standard biosuit, orange stripe
 /obj/item/clothing/head/bio_hood/general

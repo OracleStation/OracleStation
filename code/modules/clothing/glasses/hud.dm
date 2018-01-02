@@ -37,6 +37,10 @@
 	origin_tech = "magnets=3;biotech=2"
 	hud_type = DATA_HUD_MEDICAL_ADVANCED
 	glass_colour_type = /datum/client_colour/glass_colour/lightblue
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/eyes.dmi'
+		)
 
 /obj/item/clothing/glasses/hud/health/night
 	name = "night vision health scanner HUD"
@@ -65,6 +69,10 @@
 	origin_tech = "magnets=2;engineering=2"
 	hud_type = DATA_HUD_DIAGNOSTIC
 	glass_colour_type = /datum/client_colour/glass_colour/lightorange
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/eyes.dmi'
+		)
 
 /obj/item/clothing/glasses/hud/diagnostic/night
 	name = "night vision diagnostic HUD"
@@ -83,6 +91,10 @@
 	origin_tech = "magnets=3;combat=2"
 	hud_type = DATA_HUD_SECURITY_ADVANCED
 	glass_colour_type = /datum/client_colour/glass_colour/red
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/eyes.dmi'
+		)
 
 /obj/item/clothing/glasses/hud/security/chameleon
 	name = "chameleon security HUD"

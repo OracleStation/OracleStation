@@ -10,6 +10,10 @@
 	max_integrity = 250
 	resistance_flags = 0
 	armor = list(melee = 30, bullet = 30, laser = 30, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 50, acid = 50)
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		)
 
 /obj/item/clothing/suit/armor/vest
 	name = "armor vest"

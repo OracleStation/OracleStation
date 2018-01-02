@@ -7,6 +7,10 @@
 	w_class = WEIGHT_CLASS_SMALL
 	gas_transfer_coefficient = 0.90
 	equip_delay_other = 20
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/mask.dmi'
+		)
 
 /obj/item/clothing/mask/muzzle/attack_paw(mob/user)
 	if(iscarbon(user))
@@ -30,6 +34,10 @@
 	permeability_coefficient = 0.01
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 25, rad = 0, fire = 0, acid = 0)
 	actions_types = list(/datum/action/item_action/adjust)
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/mask.dmi'
+		)
 
 /obj/item/clothing/mask/surgical/attack_self(mob/user)
 	adjustmask(user)
@@ -163,6 +171,10 @@
 	slot_flags = SLOT_MASK
 	adjusted_flags = SLOT_HEAD
 	icon_state = "bandbotany"
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/mask.dmi'
+		)
 
 /obj/item/clothing/mask/bandana/attack_self(mob/user)
 	adjustmask(user)

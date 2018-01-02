@@ -276,7 +276,10 @@ BLIND     // can't see anything
 	var/transfer_prints = FALSE
 	strip_delay = 20
 	equip_delay_other = 40
-
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/gloves.dmi'
+		)
 
 /obj/item/clothing/gloves/worn_overlays(isinhands = FALSE)
 	. = list()
@@ -307,6 +310,10 @@ BLIND     // can't see anything
 	var/blockTracking = 0 //For AI tracking
 	var/can_toggle = null
 	dynamic_hair_suffix = "+generic"
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/head.dmi'
+		)
 
 /obj/item/clothing/head/Initialize()
 	. = ..()
@@ -357,7 +364,10 @@ BLIND     // can't see anything
 	equip_delay_other = 40
 	var/mask_adjusted = 0
 	var/adjusted_flags = null
-
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/mask.dmi'
+		)
 
 /obj/item/clothing/mask/worn_overlays(isinhands = FALSE)
 	. = list()
@@ -415,6 +425,10 @@ BLIND     // can't see anything
 
 	body_parts_covered = FEET
 	slot_flags = SLOT_FEET
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/shoes.dmi'
+		)
 
 	permeability_coefficient = 0.50
 	slowdown = SHOES_SLOWDOWN
@@ -482,6 +496,10 @@ BLIND     // can't see anything
 	slot_flags = SLOT_OCLOTHING
 	var/blood_overlay_type = "suit"
 	var/togglename = null
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		)
 
 
 /obj/item/clothing/suit/worn_overlays(isinhands = FALSE)
@@ -551,6 +569,7 @@ BLIND     // can't see anything
 	strip_delay = 80
 	equip_delay_other = 80
 	resistance_flags = 0
+	species_restricted = list("exclude","Vox Outcast")
 
 //Under clothing
 
@@ -571,6 +590,10 @@ BLIND     // can't see anything
 	var/obj/item/clothing/accessory/attached_accessory
 	var/mutable_appearance/accessory_overlay
 	var/mutantrace_variation = NO_MUTANTRACE_VARIATION //Are there special sprites for specific situations? Don't use this unless you need to.
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/uniform.dmi'
+		)
 
 /obj/item/clothing/under/worn_overlays(isinhands = FALSE)
 	. = list()
