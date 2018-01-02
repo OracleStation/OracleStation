@@ -48,6 +48,7 @@
 	var/burnmod = 1		// multiplier for burn damage
 	var/coldmod = 1		// multiplier for cold damage
 	var/toxmod = 1		// multiplier for toxin damage
+	var/oxymod = 1		// multiplier for oxygen damage
 	var/clonemod = 1	/// multiplier for clone damage
 	var/heatmod = 1		// multiplier for heat damage
 	var/stunmod = 1		// multiplier for stun duration
@@ -1492,7 +1493,7 @@
 		if(TOX)
 			H.adjustToxLoss(damage * hit_percent * toxmod)
 		if(OXY)
-			H.adjustOxyLoss(damage * hit_percent)
+			H.adjustOxyLoss(damage * hit_percent * oxymod)
 		if(CLONE)
 			H.adjustCloneLoss(damage * hit_percent * clonemod)
 		if(STAMINA)

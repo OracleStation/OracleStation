@@ -20,10 +20,21 @@
 	mutant_brain = /obj/item/organ/brain/cybernetic/vox
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/vox
 	skinned_type = /obj/item/stack/sheet/animalhide/vox
-	toxmod = 2 // Weak immune systems. Removing their masks completely skreks them.
+	toxmod = 2 // Weak immune systems.
+	oxymod = 2 // Removing their mask skreks them
 	stunmod = 1.2 // Take a bit longer to get up than other species.
 	breathid = "n2" // O2 is for dustlungs
 	examine_text = "A vox outcast"
+
+/datum/species/vox/random_name(unique)
+	var/sounds = rand(2,8)
+	var/i = 0
+	var/newname = ""
+
+	while(i<=sounds)
+		i++
+		newname += pick("ti","hi","ki","ya","ta","ha","ka","ya","chi","cha","kah")
+	return capitalize(newname)
 
 /datum/species/vox/on_species_gain(mob/living/carbon/C)
 	. = ..()
