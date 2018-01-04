@@ -367,7 +367,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/storage/box/syndie_kit/tuberculosisgrenade
 	cost = 12
 	surplus = 35
-	include_modes = list(/datum/game_mode/nuclear) 
+	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/dangerous/guardian
  	name = "Holoparasites"
@@ -377,7 +377,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
  	cost = 14
  	exclude_modes = list(/datum/game_mode/nuclear)
  	player_minimum = 25
- 
+
 // Ammunition
 /datum/uplink_item/ammo
 	category = "Ammunition"
@@ -610,7 +610,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "This scroll contains the secrets of an ancient martial arts technique. You will master unarmed combat, \
 			deflecting all ranged weapon fire, but you also refuse to use dishonorable ranged weaponry."
 	item = /obj/item/sleeping_carp_scroll
-	cost = 17
+	cost = 16
 	surplus = 0
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
 
@@ -1402,6 +1402,12 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	cost = 20
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
 	cant_discount = TRUE
+
+/datum/uplink_item/badass/rapid
+	name = "Gloves of the North Star"
+	desc = "These gloves greatly enhance the user's punching speed. Incompatible with weaponry or the hulk mutation."
+	item = /obj/item/clothing/gloves/fingerless/rapid
+	cost = 4
 
 /datum/uplink_item/badass/surplus/spawn_item(turf/loc, obj/item/device/uplink/U)
 	var/list/uplink_items = get_uplink_items(SSticker.mode)
