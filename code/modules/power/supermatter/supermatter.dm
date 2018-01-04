@@ -165,13 +165,16 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_shard)
 		return
 
 	var/range = HALLUCINATION_RANGE(power)
-	for(var/mob/living/carbon/human/H in viewers(range, src))
-		if(H != user)
-			continue
-		var/obj/item/organ/eyes/eyes = H.getorganslot("eye_sight")
-		if(!istype(H.glasses, /obj/item/clothing/glasses/meson) && !istype(eyes, /obj/item/organ/eyes/robotic))
-			to_chat(H, "<span class='danger'>You get headaches just from looking at it.</span>")
+
+	if(get_dist(src, user) > range)
 		return
+	var/mob/living/carbon/human/H = user
+	if(istype(H.glasses, /obj/item/clothing/glasses/meson))
+		return
+	var/obj/item/organ/eyes/eyes = H.getorganslot("eye_sight")
+	if(eyes && eyes.status == ORGAN_ROBOTIC)
+		return
+	to_chat(H, "<span class='danger'>You get headaches just from looking at it.</span>")
 
 /obj/machinery/power/supermatter_shard/get_spans()
 	return list(SPAN_ROBOT)
