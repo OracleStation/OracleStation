@@ -363,9 +363,13 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_shard)
 		env.merge(removed)
 		air_update_turf()
 
-	for(var/mob/living/carbon/human/l in view(src, HALLUCINATION_RANGE(power))) // If they can see it without mesons on.  Bad on them.
+	for(var/mob/living/carbon/human/l in view(src, HALLUCINATION_RANGE(power))) // If they can see it with organic eyes and without mesons.  Bad on them.
+		if(istype(l.glasses, /obj/item/clothing/glasses/meson))
+			return
 		var/obj/item/organ/eyes/eyes = l.getorganslot("eye_sight")
-		if(!istype(l.glasses, /obj/item/clothing/glasses/meson) && !istype(eyes, /obj/item/organ/eyes/robotic))
+		if(eyes && eyes.status == ORGAN_ROBOTIC)
+			return
+		else
 			var/D = sqrt(1 / max(1, get_dist(l, src)))
 			l.hallucination += power * config_hallucination_power * D
 			l.hallucination = Clamp(0, 200, l.hallucination)
