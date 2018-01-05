@@ -1722,6 +1722,17 @@
 
 		usr.client.smite(H)
 
+	else if(href_list["adminbless"])
+		if(!check_rights(R_ADMIN|R_FUN))
+			return
+
+		var/mob/living/carbon/human/H = locate(href_list["adminbless"]) in GLOB.mob_list
+		if(!H || !istype(H))
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			return
+
+		usr.client.bless(H)
+
 	else if(href_list["CentComReply"])
 		var/mob/living/carbon/human/H = locate(href_list["CentComReply"]) in GLOB.mob_list
 		if(!istype(H))

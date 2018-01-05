@@ -55,6 +55,7 @@
 #define ADMIN_SYNDICATE_REPLY(user) "(<a href='?_src_=holder;SyndicateReply=\ref[user]'>RPLY</a>)"
 #define ADMIN_SC(user) "(<a href='?_src_=holder;adminspawncookie=\ref[user]'>SC</a>)"
 #define ADMIN_SMITE(user) "(<a href='?_src_=holder;adminsmite=\ref[user]'>SMITE</a>)"
+#define ADMIN_BLESS(user) "(<a href='?_src_=holder;adminbless=\ref[user]'>BLESS</a>)"
 #define ADMIN_LOOKUP(user) "[key_name_admin(user)][ADMIN_QUE(user)]"
 #define ADMIN_LOOKUPFLW(user) "[key_name_admin(user)][ADMIN_QUE(user)] [ADMIN_FLW(user)]"
 #define ADMIN_SET_SD_CODE "(<a href='?_src_=holder;set_selfdestruct_code=1'>SETCODE</a>)"
@@ -69,6 +70,9 @@
 #define ADMIN_PUNISHMENT_BRAINDAMAGE "Brain damage"
 #define ADMIN_PUNISHMENT_GIB "Gib"
 #define ADMIN_PUNISHMENT_BSA "Bluespace Artillery Device"
+
+#define ADMIN_BLESSING_HEAL "Moderate Heal"
+#define ADMIN_BLESSING_REGEN "Regenerate Over Time"
 
 #define AHELP_ACTIVE 1
 #define AHELP_CLOSED 2
