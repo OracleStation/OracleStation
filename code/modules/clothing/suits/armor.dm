@@ -127,6 +127,7 @@
 	blood_overlay_type = "armor"
 	armor = list(melee = 35, bullet = 25, laser = 25, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 50, acid = 50)
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/armor/bulletproof
 	name = "bulletproof armor"
@@ -360,6 +361,7 @@
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
 	armor = list(melee = 80, bullet = 80, laser = 50, energy = 50, bomb = 100, bio = 100, rad = 100, fire = 90, acid = 90)
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/armor/heavy
 	name = "heavy armor"

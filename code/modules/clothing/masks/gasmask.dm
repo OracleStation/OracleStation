@@ -167,6 +167,7 @@
 	name = "carp mask"
 	desc = "Gnash gnash."
 	icon_state = "carp_mask"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/mask/gas/tiki_mask
 	name = "tiki mask"
@@ -177,7 +178,7 @@
 	max_integrity = 100
 	actions_types = list(/datum/action/item_action/adjust)
 	dog_fashion = null
-
+	species_restricted = list("exclude","Vox Outcast")
 
 obj/item/clothing/mask/gas/tiki_mask/ui_action_click(mob/user)
 

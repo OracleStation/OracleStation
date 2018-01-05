@@ -122,6 +122,7 @@
 	item_state = "officerblueclothes"
 	item_color = "officerblueclothes"
 	alt_covers_chest = 1
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/rank/head_of_security/navyblue
 	desc = "The insignia on this uniform tells you that this uniform belongs to the Head of Security."
@@ -130,6 +131,7 @@
 	item_state = "hosblueclothes"
 	item_color = "hosblueclothes"
 	alt_covers_chest = 1
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/rank/warden/navyblue
 	desc = "The insignia on this uniform tells you that this uniform belongs to the Warden."
@@ -138,6 +140,7 @@
 	item_state = "wardenblueclothes"
 	item_color = "wardenblueclothes"
 	alt_covers_chest = 1
+	species_restricted = list("exclude","Vox Outcast")
 
 /*
  *Blueshirt
@@ -149,3 +152,4 @@
 	item_state = "blueshift"
 	item_color = "blueshift"
 	can_adjust = 0
+	species_restricted = list("exclude","Vox Outcast")

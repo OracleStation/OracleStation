@@ -57,6 +57,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	actions_types = list(/datum/action/item_action/toggle_voice_box)
 	var/voicechange = 0
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/mask/pig/attack_self(mob/user)
 	voicechange = !voicechange
@@ -75,6 +76,7 @@
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	w_class = WEIGHT_CLASS_SMALL
 	var/voicechange = 1
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/mask/spig/speechModification(message)
 	if(voicechange)
@@ -90,6 +92,7 @@
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	w_class = WEIGHT_CLASS_SMALL
 	var/voicechange = 1
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/mask/cowmask/speechModification(message)
 	if(voicechange)
@@ -104,6 +107,7 @@
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDEEYES|HIDEEARS
 	w_class = WEIGHT_CLASS_SMALL
 	var/voicechange = 1
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/mask/horsehead/speechModification(message)
 	if(voicechange)
@@ -117,6 +121,7 @@
 	item_state = "rat"
 	flags_inv = HIDEFACE
 	flags_cover = MASKCOVERSMOUTH
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/mask/rat/fox
 	name = "fox mask"
@@ -215,6 +220,7 @@
 	icon_state = "mummy_mask"
 	item_state = "mummy_mask"
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/mask/scarecrow
 	name = "sack mask"
@@ -222,3 +228,4 @@
 	icon_state = "scarecrow_sack"
 	item_state = "scarecrow_sack"
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	species_restricted = list("exclude","Vox Outcast")

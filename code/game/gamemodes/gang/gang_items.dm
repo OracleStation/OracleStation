@@ -131,6 +131,7 @@
 	name = "golden death mask"
 	icon_state = "gskull"
 	desc = "Strike terror, and envy, into the hearts of your enemies."
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/mask/gskull/gang_contraband_value()
 	return 5

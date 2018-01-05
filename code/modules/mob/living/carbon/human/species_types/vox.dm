@@ -50,3 +50,4 @@
 	to_chat(H, "<span class='notice'>You are now running on nitrogen internals from the emergency tank in your hand. Your species finds oxygen toxic, so you must breathe nitrogen only.</span>")
 	H.internal = H.get_item_for_held_index(1)
 	H.update_internals_hud_icon(1)
+	H.grant_language(/datum/language/voxpidgin)

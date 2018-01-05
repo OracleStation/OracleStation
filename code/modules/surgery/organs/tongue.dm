@@ -15,6 +15,7 @@
 		/datum/language/common,
 		/datum/language/draconic,
 		/datum/language/canilunzt,
+		/datum/language/voxpidgin,
 		/datum/language/codespeak,
 		/datum/language/monkey,
 		/datum/language/narsie,
