@@ -54,6 +54,7 @@
 #define ADMIN_CENTCOM_REPLY(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];CentComReply=[REF(user)]'>RPLY</a>)"
 #define ADMIN_SYNDICATE_REPLY(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];SyndicateReply=[REF(user)]'>RPLY</a>)"
 #define ADMIN_SC(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];adminspawncookie=[REF(user)]'>SC</a>)"
+#define ADMIN_BLESS(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];adminbless=[REF(user)]'>BLESS</a>)"
 #define ADMIN_SMITE(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];adminsmite=[REF(user)]'>SMITE</a>)"
 #define ADMIN_LOOKUP(user) "[key_name_admin(user)][ADMIN_QUE(user)]"
 #define ADMIN_LOOKUPFLW(user) "[key_name_admin(user)][ADMIN_QUE(user)] [ADMIN_FLW(user)]"
@@ -69,6 +70,9 @@
 #define ADMIN_PUNISHMENT_BRAINDAMAGE "Brain damage"
 #define ADMIN_PUNISHMENT_GIB "Gib"
 #define ADMIN_PUNISHMENT_BSA "Bluespace Artillery Device"
+
+#define ADMIN_BLESSING_HEAL "Moderate Heal"
+#define ADMIN_BLESSING_REGEN "Regenerate Over Time"
 
 #define AHELP_ACTIVE 1
 #define AHELP_CLOSED 2

@@ -1228,6 +1228,37 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	log_admin("[key_name(usr)] punished [key_name(target)] with [punishment].")
 
 
+/client/proc/bless(mob/living/carbon/human/target as mob)
+	set name = "Bless"
+	set category = "Fun"
+	if(!holder)
+		return
+
+	var/list/blessing_list = list(ADMIN_BLESSING_HEAL, ADMIN_BLESSING_REGEN)
+
+	var/blessing = input("Choose a blessing", "DIVINE BLESSING") as null|anything in blessing_list
+
+	if(QDELETED(target) || !blessing)
+		return
+
+	switch(blessing)
+		if(ADMIN_BLESSING_HEAL)
+			target.adjustBruteLoss(-25)
+			target.adjustFireLoss(-25)
+			target.adjustToxLoss(-25)
+			target.adjustOxyLoss(-25)
+			target.adjustBrainLoss(-50)
+		if(ADMIN_BLESSING_REGEN)
+			target.reagents.add_reagent("salglu_solution", 30)
+			target.reagents.add_reagent("salbutamol", 20)
+			target.reagents.add_reagent("spaceacillin", 20)
+
+	var/msg = "[key_name_admin(usr)] blessed [key_name_admin(target)] with [blessing]."
+	message_admins(msg)
+	admin_ticket_log(target, msg)
+	log_admin("[key_name(usr)] blessed [key_name(target)] with [blessing].")
+
+
 /client/proc/trigger_centcom_recall()
 	if(!holder)
 		return
