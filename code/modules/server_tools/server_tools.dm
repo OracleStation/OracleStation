@@ -2,17 +2,31 @@ GLOBAL_VAR_INIT(reboot_mode, REBOOT_MODE_NORMAL)	//if the world should request t
 GLOBAL_PROTECT(reboot_mode)
 
 /world/proc/RunningService()
-	return params[SERVICE_WORLD_PARAM]
+	if(CONFIG_GET(string/service_command))
+		return TRUE
+	else
+		return FALSE
 
 /proc/ServiceVersion()
 	if(world.RunningService())
 		return world.params[SERVICE_VERSION_PARAM]
 
 /world/proc/ExportService(command)
-	return RunningService() && shell("python code/modules/server_tools/nudge.py \"[command]\"") == 0
+	if(world.RunningService())
+		var/script = CONFIG_GET(string/service_command)
+		var/status = shell("[script] [command]")
+		log_world("SERVICE COMMAND: [script] [command]")
+		if(status == null)
+			log_world("Unknown error invoking external service!")
+			return FALSE
+		else if(status != 0)
+			log_world("Error invoking external service! Status code = [status]")
+			return FALSE
+		return TRUE
+	return FALSE
 
 /world/proc/IRCBroadcast(msg)
-	ExportService("[SERVICE_REQUEST_IRC_BROADCAST] [msg]")
+	ExportService("[SERVICE_REQUEST_IRC_BROADCAST] \"[msg]\"")
 
 /world/proc/ServiceEndProcess()
 	log_world("Sending shutdown request!");
@@ -77,7 +91,8 @@ GLOBAL_PROTECT(reboot_mode)
 			if(rtod - last_irc_status < IRC_STATUS_THROTTLE)
 				return
 			last_irc_status = rtod
-			return "[GLOB.round_id ? "Round #[GLOB.round_id]: " : ""][GLOB.clients.len] players on [SSmapping.config.map_name], Mode: [GLOB.master_mode]; Round [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] -- [config.server ? config.server : "[world.internet_address]:[world.port]"]"
+			var/config_server = CONFIG_GET(string/server)
+			return "[GLOB.round_id ? "Round #[GLOB.round_id]: " : ""][GLOB.clients.len] players on [SSmapping.config.map_name], Mode: [GLOB.master_mode]; Round [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] -- [config_server ? config_server : "[world.internet_address]:[world.port]"]"
 		if(SERVICE_CMD_ADMIN_MSG)
 			return IrcPm(params[SERVICE_CMD_PARAM_TARGET], params[SERVICE_CMD_PARAM_MESSAGE], params[SERVICE_CMD_PARAM_SENDER])
 
@@ -89,4 +104,3 @@ GLOBAL_PROTECT(reboot_mode)
 			return ircadminwho()
 		else
 			return "Unknown command: [command]"
-

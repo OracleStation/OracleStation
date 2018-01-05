@@ -7,6 +7,7 @@
 	flags_2 = NO_EMP_WIRES_2
 	det_time = 10
 	display_timer = 0
+	arming_sound = null
 	var/atom/target = null
 	var/mutable_appearance/plastic_overlay
 	var/obj/item/device/assembly_holder/nadeassembly = null
@@ -119,29 +120,6 @@
 		else
 			qdel(src)	//How?
 
-/obj/item/grenade/plastic/suicide_act(mob/user)
-	message_admins("[ADMIN_LOOKUPFLW(user)] suicided with [src] at [ADMIN_COORDJMP(user)]",0,1)
-	log_game("[key_name(user)] suicided with [src] at [COORD(user)]")
-	user.visible_message("<span class='suicide'>[user] activates the [src] and holds it above [user.p_their()] head! It looks like [user.p_theyre()] going out with a bang!</span>")
-	var/message_say = "FOR NO RAISIN!"
-	if(user.mind)
-		if(user.mind.special_role)
-			var/role = lowertext(user.mind.special_role)
-			if(role == "traitor" || role == "syndicate")
-				message_say = "FOR THE SYNDICATE!"
-			else if(role == "changeling")
-				message_say = "FOR THE HIVE!"
-			else if(role == "cultist")
-				message_say = "FOR NAR-SIE!"
-			else if(role == "revolutionary" || role == "head revolutionary")
-				message_say = "VIVA LA REVOLUTION!"
-			else if(user.mind.gang_datum)
-				message_say = "[uppertext(user.mind.gang_datum.name)] RULES!"
-	user.say(message_say)
-	explosion(user,0,2,0) //Cheap explosion imitation because putting prime() here causes runtimes
-	user.gib(1, 1)
-	qdel(src)
-
 /obj/item/grenade/plastic/update_icon()
 	if(nadeassembly)
 		icon_state = "[item_state]1"
@@ -177,30 +155,6 @@
 	wires = null
 	target = null
 	return ..()
-
-/obj/item/grenade/plastic/c4/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] activates the [src.name] and holds it above [user.p_their()] head! It looks like [user.p_theyre()] going out with a bang!</span>")
-	var/message_say = "FOR NO RAISIN!"
-	if(user.mind)
-		if(user.mind.special_role)
-			var/role = lowertext(user.mind.special_role)
-			if(role == "traitor" || role == "syndicate")
-				message_say = "FOR THE SYNDICATE!"
-			else if(role == "changeling")
-				message_say = "FOR THE HIVE!"
-			else if(role == "cultist")
-				message_say = "FOR NAR-SIE!"
-			else if(role == "revolutionary" || role == "head revolutionary")
-				message_say = "VIVA LA REVOLUTION!"
-			else if(user.mind.gang_datum)
-				message_say = "[uppertext(user.mind.gang_datum.name)] RULES!"
-	user.say(message_say)
-	target = user
-	message_admins("[ADMIN_LOOKUPFLW(user)] suicided with [name] at [ADMIN_COORDJMP(src)]",0,1)
-	message_admins("[key_name(user)] suicided with [name] at ([x],[y],[z])")
-	sleep(10)
-	explode(get_turf(user))
-	user.gib(1, 1)
 
 /obj/item/grenade/plastic/c4/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/screwdriver))

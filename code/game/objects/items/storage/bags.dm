@@ -42,11 +42,6 @@
 	can_hold = list() // any
 	cant_hold = list(/obj/item/disk/nuclear)
 
-/obj/item/storage/bag/trash/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] puts [src] over [user.p_their()] head and starts chomping at the insides! Disgusting!</span>")
-	playsound(loc, 'sound/items/eatfood.ogg', 50, 1, -1)
-	return (TOXLOSS)
-
 /obj/item/storage/bag/trash/update_icon()
 	if(contents.len == 0)
 		icon_state = "[initial(icon_state)]"
@@ -73,6 +68,7 @@
 	origin_tech = "materials=4;bluespace=4;engineering=4;plasmatech=3"
 	max_combined_w_class = 60
 	storage_slots = 60
+	flags_2 = NO_MAT_REDEMPTION_2
 
 // -----------------------------
 //        Mining Satchel
@@ -354,7 +350,7 @@
 
 /obj/item/storage/bag/chemistry
 	name = "chemistry bag"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "bag"
 	desc = "A bag for storing pills, patches, and bottles."
 	storage_slots = 50
@@ -370,7 +366,7 @@
 
 /obj/item/storage/bag/bio
 	name = "bio bag"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "biobag"
 	desc = "A bag for the safe transportation and disposal of biowaste and other biological materials."
 	storage_slots = 25

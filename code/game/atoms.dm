@@ -187,6 +187,7 @@
 
 
 /atom/proc/CollidedWith(atom/movable/AM)
+	set waitfor = FALSE
 	return
 
 // Convenience proc to see if a container is open for chemistry handling
@@ -290,6 +291,7 @@
 				to_chat(user, "[total_volume] units of various reagents")
 		else
 			to_chat(user, "Nothing.")
+	SendSignal(COMSIG_PARENT_EXAMINE, user)
 
 /atom/proc/relaymove()
 	return
@@ -300,6 +302,7 @@
 /atom/proc/ex_act(severity, target)
 	set waitfor = FALSE
 	contents_explosion(severity, target)
+	SendSignal(COMSIG_ATOM_EX_ACT, severity, target)
 
 /atom/proc/blob_act(obj/structure/blob/B)
 	return
@@ -318,7 +321,7 @@
 GLOBAL_LIST_EMPTY(blood_splatter_icons)
 
 /atom/proc/blood_splatter_index()
-	return "\ref[initial(icon)]-[initial(icon_state)]"
+	return "[REF(initial(icon))]-[initial(icon_state)]"
 
 //returns the mob's dna info as a list, to be inserted in an object's blood_DNA list
 /mob/living/proc/get_blood_dna_list()
@@ -464,8 +467,8 @@ GLOBAL_LIST_EMPTY(blood_splatter_icons)
 /atom/proc/singularity_act()
 	return
 
-/atom/proc/singularity_pull()
-	return
+/atom/proc/singularity_pull(obj/singularity/S, current_size)
+	SendSignal(COMSIG_ATOM_SING_PULL, S, current_size)
 
 /atom/proc/acid_act(acidpwr, acid_volume)
 	return
@@ -609,10 +612,10 @@ GLOBAL_LIST_EMPTY(blood_splatter_icons)
 	. += "---"
 	var/turf/curturf = get_turf(src)
 	if (curturf)
-		.["Jump to"] = "?_src_=holder;adminplayerobservecoodjump=1;X=[curturf.x];Y=[curturf.y];Z=[curturf.z]"
-	.["Add reagent"] = "?_src_=vars;addreagent=\ref[src]"
-	.["Trigger EM pulse"] = "?_src_=vars;emp=\ref[src]"
-	.["Trigger explosion"] = "?_src_=vars;explode=\ref[src]"
+		.["Jump to"] = "?_src_=holder;[HrefToken()];adminplayerobservecoodjump=1;X=[curturf.x];Y=[curturf.y];Z=[curturf.z]"
+	.["Add reagent"] = "?_src_=vars;[HrefToken()];addreagent=[REF(src)]"
+	.["Trigger EM pulse"] = "?_src_=vars;[HrefToken()];emp=[REF(src)]"
+	.["Trigger explosion"] = "?_src_=vars;[HrefToken()];explode=[REF(src)]"
 
 /atom/proc/drop_location()
 	var/atom/L = loc

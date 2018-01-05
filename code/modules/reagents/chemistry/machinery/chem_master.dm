@@ -4,7 +4,7 @@
 	density = TRUE
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "mixer0"
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 20
@@ -20,7 +20,6 @@
 
 /obj/machinery/chem_master/Initialize()
 	create_reagents(100)
-	add_overlay("waitlight")
 	. = ..()
 
 /obj/machinery/chem_master/RefreshParts()

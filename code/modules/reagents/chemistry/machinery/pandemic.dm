@@ -6,7 +6,7 @@
 	desc = "Used to work with viruses."
 	density = TRUE
 	anchored = TRUE
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "mixer0"
 	circuit = /obj/item/circuitboard/computer/pandemic
 	use_power = TRUE

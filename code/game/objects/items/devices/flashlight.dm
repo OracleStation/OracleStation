@@ -16,7 +16,7 @@
 	var/flashlight_power = 1 //strength of the light when on
 
 /obj/item/device/flashlight/Initialize()
-	..()
+	. = ..()
 	update_brightness()
 
 /obj/item/device/flashlight/proc/update_brightness(mob/user = null)
@@ -37,12 +37,6 @@
 		var/datum/action/A = X
 		A.UpdateButtonIcon()
 	return 1
-
-/obj/item/device/flashlight/suicide_act(mob/living/carbon/human/user)
-	user.visible_message("<span class='suicide'>[user] is putting [src] close to [user.p_their()] eyes and turning it on! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return (FIRELOSS)
-
-
 
 /obj/item/device/flashlight/attack(mob/living/carbon/M, mob/living/carbon/human/user)
 	add_fingerprint(user)
@@ -152,7 +146,7 @@
 					else
 						to_chat(user, "<span class='notice'>[M] doesn't have any organs in [their] mouth.</span>")
 					if(pill_count)
-						to_chat(user, "<span class='notice'>[M] has [pill_count] pill[pill_count > 1 ? "s" : ""] implanted in [their] teeth.")
+						to_chat(user, "<span class='notice'>[M] has [pill_count] pill[pill_count > 1 ? "s" : ""] implanted in [their] teeth.</span>")
 
 	else
 		return ..()
@@ -409,7 +403,7 @@
 /obj/item/device/flashlight/glowstick/Initialize()
 	fuel = rand(1600, 2000)
 	light_color = color
-	..()
+	. = ..()
 
 /obj/item/device/flashlight/glowstick/Destroy()
 	STOP_PROCESSING(SSobj, src)

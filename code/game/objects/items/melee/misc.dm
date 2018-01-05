@@ -26,10 +26,6 @@
 	hitsound = 'sound/weapons/chainhit.ogg'
 	materials = list(MAT_METAL = 1000)
 
-/obj/item/melee/chainofcommand/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is strangling [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return (OXYLOSS)
-
 /obj/item/melee/synthetic_arm_blade
 	name = "synthetic arm blade"
 	desc = "A grotesque blade that on closer inspection seems made of synthentic flesh, it still feels like it would hurt very badly as a weapon."
@@ -130,7 +126,7 @@
 				if(check_martial_counter(H, user))
 					return
 			playsound(get_turf(src), 'sound/effects/woodhit.ogg', 75, 1, -1)
-			target.Knockdown(60)
+			target.Knockdown(40)
 			add_logs(user, target, "stunned", src)
 			src.add_fingerprint(user)
 			target.visible_message("<span class ='danger'>[user] has knocked down [target] with [src]!</span>", \
@@ -139,7 +135,7 @@
 				target.LAssailant = null
 			else
 				target.LAssailant = user
-			cooldown = world.time + 40
+			cooldown = world.time + 50
 
 /obj/item/melee/classic_baton/telescopic
 	name = "telescopic baton"
@@ -154,24 +150,6 @@
 	needs_permit = 0
 	force = 0
 	on = FALSE
-
-/obj/item/melee/classic_baton/telescopic/suicide_act(mob/user)
-	var/mob/living/carbon/human/H = user
-	var/obj/item/organ/brain/B = H.getorgan(/obj/item/organ/brain)
-
-	user.visible_message("<span class='suicide'>[user] stuffs [src] up [user.p_their()] nose and presses the 'extend' button! It looks like [user.p_theyre()] trying to clear their mind.</span>")
-	if(!on)
-		src.attack_self(user)
-	else
-		playsound(loc, 'sound/weapons/batonextend.ogg', 50, 1)
-		add_fingerprint(user)
-	sleep(3)
-	if (H && !QDELETED(H))
-		if (B && !QDELETED(B))
-			H.internal_organs -= B
-			qdel(B)
-		new /obj/effect/gibspawner/generic(get_turf(H), H.dna)
-		return (BRUTELOSS)
 
 /obj/item/melee/classic_baton/telescopic/attack_self(mob/user)
 	on = !on
@@ -264,11 +242,6 @@
 	visible_message("<span class='danger'>[P] smacks into [src] and rapidly flashes to ash.</span>",\
 	"<span class='italics'>You hear a loud crack as you are washed with a wave of heat.</span>")
 	consume_everything()
-
-/obj/item/melee/supermatter_sword/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] touches [src]'s blade. It looks like [user.p_theyre()] tired of waiting for the radiation to kill [user.p_them()]!</span>")
-	user.drop_item()
-	shard.CollidedWith(user)
 
 /obj/item/melee/supermatter_sword/proc/consume_everything(target)
 	if(isnull(target))

@@ -72,6 +72,8 @@ GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 	/client/proc/deadchat,
 	/client/proc/toggleprayers,
 	/client/proc/toggleadminhelpsound,
+	/client/proc/cmd_admin_rejuvenate,
+	/client/proc/cmd_admin_freeze,
 	/client/proc/respawn_character
 	)
 GLOBAL_PROTECT(admin_verbs_ban)
@@ -397,7 +399,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	set name = "Unban Panel"
 	set category = "Admin"
 	if(holder)
-		if(config.ban_legacy_system)
+		if(CONFIG_GET(flag/ban_legacy_system))
 			holder.unbanpanel()
 		else
 			holder.DB_ban_panel()

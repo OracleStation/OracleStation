@@ -8,6 +8,7 @@
  * Stacks
  */
 /obj/item/stack
+	icon = 'icons/obj/stack_objects.dmi'
 	origin_tech = "materials=1"
 	gender = PLURAL
 	var/list/datum/stack_recipe/recipes
@@ -111,7 +112,7 @@
 			title+= "[R.title]"
 		title+= " ([R.req_amount] [src.singular_name]\s)"
 		if (can_build)
-			t1 += text("<A href='?src=\ref[];make=[];multiplier=1'>[]</A>  ", src, i, title)
+			t1 += text("<A href='?src=[REF(src)];make=[];multiplier=1'>[]</A>  ", i, title)
 		else
 			t1 += text("[]", title)
 			continue
@@ -121,9 +122,9 @@
 			var/list/multipliers = list(5,10,25)
 			for (var/n in multipliers)
 				if (max_multiplier>=n)
-					t1 += " <A href='?src=\ref[src];make=[i];multiplier=[n]'>[n*R.res_amount]x</A>"
+					t1 += " <A href='?src=[REF(src)];make=[i];multiplier=[n]'>[n*R.res_amount]x</A>"
 			if (!(max_multiplier in multipliers))
-				t1 += " <A href='?src=\ref[src];make=[i];multiplier=[max_multiplier]'>[max_multiplier*R.res_amount]x</A>"
+				t1 += " <A href='?src=[REF(src)];make=[i];multiplier=[max_multiplier]'>[max_multiplier*R.res_amount]x</A>"
 
 	t1 += "</TT></body></HTML>"
 	user << browse(t1, "window=stack")
@@ -161,6 +162,11 @@
 			var/obj/structure/window/W = O
 			W.ini_dir = W.dir
 		//END: oh fuck i'm so sorry
+
+		else if(istype(O, /obj/item/restraints/handcuffs/cable))
+			var/obj/item/cuffs = O
+			cuffs.item_color = item_color
+			cuffs.update_icon()
 
 		//is it a stack ?
 		if (R.max_res_amount > 1)
@@ -259,7 +265,7 @@
 	if (user.get_inactive_held_item() == src)
 		if(zero_amount())
 			return
-		change_stack(user,1)
+		return change_stack(user,1)
 	else
 		..()
 

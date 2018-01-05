@@ -40,19 +40,11 @@
 	max_w_class = WEIGHT_CLASS_GIGANTIC
 	max_combined_w_class = 35
 	resistance_flags = FIRE_PROOF
+	flags_2 = NO_MAT_REDEMPTION_2
 	var/pshoom = 'sound/items/pshoom.ogg'
 	var/alt_sound = 'sound/items/pshoom_2.ogg'
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0, fire = 60, acid = 50)
 
-
-/obj/item/storage/backpack/holding/suicide_act(mob/living/user)
-	user.visible_message("<span class='suicide'>[user] is jumping into [src]! It looks like [user.p_theyre()] trying to commit suicide.</span>")
-	user.drop_item()
-	user.Stun(100, ignore_canstun = TRUE)
-	sleep(20)
-	playsound(src, "rustle", 50, 1, -5)
-	qdel(user)
-	return
 
 /obj/item/storage/backpack/holding/dump_content_at(atom/dest_object, mob/user)
 	if(Adjacent(user))
@@ -100,10 +92,6 @@
 	w_class = WEIGHT_CLASS_BULKY
 	max_w_class = WEIGHT_CLASS_NORMAL
 	max_combined_w_class = 60
-
-/obj/item/storage/backpack/santabag/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] places [src] over their head and pulls it tight! It looks like they aren't in the Christmas spirit...</span>")
-	return (OXYLOSS)
 
 /obj/item/storage/backpack/cultpack
 	name = "trophy rack"
@@ -289,7 +277,7 @@
 		icon_state = initial(icon_state)
 
 /obj/item/storage/backpack/satchel/flat/Initialize(mapload)
-	..()
+	. = ..()
 	SSpersistence.new_secret_satchels += src
 
 /obj/item/storage/backpack/satchel/flat/PopulateContents()
@@ -306,7 +294,7 @@
 	var/revealed = 0
 
 /obj/item/storage/backpack/satchel/flat/secret/Initialize()
-	..()
+	. = ..()
 
 	if(isfloorturf(loc) && !istype(loc, /turf/open/floor/plating/))
 		hide(1)
@@ -353,7 +341,6 @@
 	new /obj/item/circular_saw(src)
 	new /obj/item/surgicaldrill(src)
 	new /obj/item/cautery(src)
-	new /obj/item/surgical_drapes(src)
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/razor(src)
 
@@ -374,7 +361,6 @@
 	new /obj/item/circular_saw(src)
 	new /obj/item/surgicaldrill(src)
 	new /obj/item/cautery(src)
-	new /obj/item/surgical_drapes(src)
 	new /obj/item/clothing/mask/surgical(src)
 
 /obj/item/storage/backpack/duffelbag/engineering
@@ -452,7 +438,6 @@
 	new /obj/item/circular_saw(src)
 	new /obj/item/surgicaldrill(src)
 	new /obj/item/cautery(src)
-	new /obj/item/surgical_drapes(src)
 	new /obj/item/clothing/suit/straight_jacket(src)
 	new /obj/item/clothing/mask/muzzle(src)
 	new /obj/item/device/mmi/syndie(src)

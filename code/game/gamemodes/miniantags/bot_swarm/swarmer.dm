@@ -462,7 +462,7 @@
 	if(target == src)
 		return
 
-	if(z != ZLEVEL_STATION && z != ZLEVEL_LAVALAND)
+	if(!(z in GLOB.station_z_levels) && z != ZLEVEL_LAVALAND)
 		to_chat(src, "<span class='warning'>Our bluespace transceiver cannot locate a viable bluespace link, our teleportation abilities are useless in this area.</span>")
 		return
 
@@ -472,11 +472,8 @@
 		return
 
 	var/turf/open/floor/F
-	switch(z) //Only the station/lavaland
-		if(ZLEVEL_STATION)
-			F =find_safe_turf(zlevels = ZLEVEL_STATION, extended_safety_checks = TRUE)
-		if(ZLEVEL_LAVALAND)
-			F = find_safe_turf(zlevels = ZLEVEL_LAVALAND, extended_safety_checks = TRUE)
+	F = find_safe_turf(zlevels = z, extended_safety_checks = TRUE)
+
 	if(!F)
 		return
 	// If we're getting rid of a human, slap some energy cuffs on

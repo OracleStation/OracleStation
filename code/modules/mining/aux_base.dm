@@ -37,7 +37,7 @@ interface with the mining shuttle at the landing site if a mobile beacon is also
 
 	var/list/options = params2list(possible_destinations)
 	var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
-	var/dat = "[z == ZLEVEL_STATION ? "Docking clamps engaged. Standing by." : "Mining Shuttle Uplink: [M ? M.getStatusText() : "*OFFLINE*"]"]<br>"
+	var/dat = "[(z in GLOB.station_z_levels) ? "Docking clamps engaged. Standing by." : "Mining Shuttle Uplink: [M ? M.getStatusText() : "*OFFLINE*"]"]<br>"
 	if(M)
 		var/destination_found
 		for(var/obj/docking_port/stationary/S in SSshuttle.stationary)
@@ -46,11 +46,11 @@ interface with the mining shuttle at the landing site if a mobile beacon is also
 			if(!M.check_dock(S))
 				continue
 			destination_found = 1
-			dat += "<A href='?src=\ref[src];move=[S.id]'>Send to [S.name]</A><br>"
-		if(!destination_found && z == ZLEVEL_STATION) //Only available if miners are lazy and did not set an LZ using the remote.
-			dat += "<A href='?src=\ref[src];random=1'>Prepare for blind drop? (Dangerous)</A><br>"
+			dat += "<A href='?src=[REF(src)];move=[S.id]'>Send to [S.name]</A><br>"
+		if(!destination_found && (z in GLOB.station_z_levels)) //Only available if miners are lazy and did not set an LZ using the remote.
+			dat += "<A href='?src=[REF(src)];random=1'>Prepare for blind drop? (Dangerous)</A><br>"
 	if(LAZYLEN(turrets))
-		dat += "<br><b>Perimeter Defense System:</b> <A href='?src=\ref[src];turrets_power=on'>Enable All</A> / <A href='?src=\ref[src];turrets_power=off'>Disable All</A><br> \
+		dat += "<br><b>Perimeter Defense System:</b> <A href='?src=[REF(src)];turrets_power=on'>Enable All</A> / <A href='?src=[REF(src)];turrets_power=off'>Disable All</A><br> \
 		Units connected: [LAZYLEN(turrets)]<br>\
 		Unit | Condition | Status | Direction | Distance<br>"
 		for(var/PDT in turrets)
@@ -65,10 +65,10 @@ interface with the mining shuttle at the landing site if a mobile beacon is also
 				status = "<span class='average'><b>Firing</b></span>"
 			else
 				status = "<span class='good'>All Clear</span>"
-			dat += "[T.name] | [integrity]% | [status] | [dir2text(get_dir(src, T))] | [get_dist(src, T)]m <A href='?src=\ref[src];single_turret_power=\ref[T]'>Toggle Power</A><br>"
+			dat += "[T.name] | [integrity]% | [status] | [dir2text(get_dir(src, T))] | [get_dist(src, T)]m <A href='?src=[REF(src)];single_turret_power=[REF(T)]'>Toggle Power</A><br>"
 
 
-	dat += "<a href='?src=\ref[user];mach_close=computer'>Close</a>"
+	dat += "<a href='?src=[REF(user)];mach_close=computer'>Close</a>"
 
 	var/datum/browser/popup = new(user, "computer", "base management", 550, 300) //width, height
 	popup.set_content("<center>[dat]</center>")
@@ -86,7 +86,7 @@ interface with the mining shuttle at the landing site if a mobile beacon is also
 		return
 
 	if(href_list["move"])
-		if(z != ZLEVEL_STATION && shuttleId == "colony_drop")
+		if(!(z in GLOB.station_z_levels) && shuttleId == "colony_drop")
 			to_chat(usr, "<span class='warning'>You can't move the base again!</span>")
 			return
 		var/shuttle_error = SSshuttle.moveShuttle(shuttleId, href_list["move"], 1)
@@ -154,7 +154,7 @@ interface with the mining shuttle at the landing site if a mobile beacon is also
 	var/area/A = get_area(T)
 
 	var/obj/docking_port/stationary/landing_zone = new /obj/docking_port/stationary(T)
-	landing_zone.id = "colony_drop(\ref[src])"
+	landing_zone.id = "colony_drop([REF(src)])"
 	landing_zone.name = "Landing Zone ([T.x], [T.y])"
 	landing_zone.dwidth = base_dock.dwidth
 	landing_zone.dheight = base_dock.dheight
@@ -200,7 +200,7 @@ interface with the mining shuttle at the landing site if a mobile beacon is also
 	var/obj/machinery/computer/auxillary_base/AB
 
 	for (var/obj/machinery/computer/auxillary_base/A in GLOB.machines)
-		if(A.z == ZLEVEL_STATION)
+		if(A.z in GLOB.station_z_levels)
 			AB = A
 			break
 	if(!AB)

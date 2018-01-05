@@ -31,7 +31,7 @@ obj/item/construction
 	var/no_ammo_message = "<span class='warning'>The \'Low Ammo\' light on the device blinks yellow.</span>"
 
 /obj/item/construction/Initialize()
-	..()
+	. = ..()
 	desc = "A [src]. It currently holds [matter]/[max_matter] matter-units."
 	spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
@@ -74,7 +74,7 @@ obj/item/construction
 		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>You insert [amount_to_use] [S.name] sheets into the [src]. </span>")
 		return 1
-	to_chat(user, "<span class='warning'>You can't insert any more [S.name] sheets into the [src]!")
+	to_chat(user, "<span class='warning'>You can't insert any more [S.name] sheets into the [src]!</span>")
 	return 0
 
 /obj/item/construction/proc/activate()
@@ -123,6 +123,7 @@ obj/item/construction
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
 	max_matter = 160
+	flags_2 = NO_MAT_REDEMPTION_2
 	var/mode = 1
 	var/canRturf = 0
 	var/ranged = FALSE
@@ -134,10 +135,6 @@ obj/item/construction
 	var/use_one_access = 0 //If the airlock should require ALL or only ONE of the listed accesses.
 	var/delay_mod = 1
 
-
-/obj/item/construction/rcd/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] sets the RCD to 'Wall' and points it down [user.p_their()] throat! It looks like [user.p_theyre()] trying to commit suicide..</span>")
-	return (BRUTELOSS)
 
 /obj/item/construction/rcd/verb/toggle_window_type()
 	set name = "Toggle Window Type"
@@ -171,11 +168,11 @@ obj/item/construction
 
 
 	if(use_one_access)
-		t1 += "Restriction Type: <a href='?src=\ref[src];access=one'>At least one access required</a><br>"
+		t1 += "Restriction Type: <a href='?src=[REF(src)];access=one'>At least one access required</a><br>"
 	else
-		t1 += "Restriction Type: <a href='?src=\ref[src];access=one'>All accesses required</a><br>"
+		t1 += "Restriction Type: <a href='?src=[REF(src)];access=one'>All accesses required</a><br>"
 
-	t1 += "<a href='?src=\ref[src];access=all'>Remove All</a><br>"
+	t1 += "<a href='?src=[REF(src)];access=all'>Remove All</a><br>"
 
 	var/accesses = ""
 	accesses += "<div align='center'><b>Access</b></div>"
@@ -188,15 +185,15 @@ obj/item/construction
 		accesses += "<td style='width:14%' valign='top'>"
 		for(var/A in get_region_accesses(i))
 			if(A in conf_access)
-				accesses += "<a href='?src=\ref[src];access=[A]'><font color=\"red\">[replacetext(get_access_desc(A), " ", "&nbsp")]</font></a> "
+				accesses += "<a href='?src=[REF(src)];access=[A]'><font color=\"red\">[replacetext(get_access_desc(A), " ", "&nbsp")]</font></a> "
 			else
-				accesses += "<a href='?src=\ref[src];access=[A]'>[replacetext(get_access_desc(A), " ", "&nbsp")]</a> "
+				accesses += "<a href='?src=[REF(src)];access=[A]'>[replacetext(get_access_desc(A), " ", "&nbsp")]</a> "
 			accesses += "<br>"
 		accesses += "</td>"
 	accesses += "</tr></table>"
 	t1 += "<tt>[accesses]</tt>"
 
-	t1 += text("<p><a href='?src=\ref[];close=1'>Close</a></p>\n", src)
+	t1 += "<p><a href='?src=[REF(src)];close=1'>Close</a></p>\n"
 
 	var/datum/browser/popup = new(usr, "airlock_electronics", "Access Control", 900, 500)
 	popup.set_content(t1)

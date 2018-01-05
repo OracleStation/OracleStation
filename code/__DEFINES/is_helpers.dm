@@ -1,5 +1,7 @@
 // simple is_type and similar inline helpers
 
+#define isdatum(D) (istype(D, /datum))
+
 #define islist(L) (istype(L, /list))
 
 #define in_range(source, user) (get_dist(source, user) <= 1)
@@ -25,6 +27,8 @@
 
 #define islava(A) (istype(A, /turf/open/lava))
 
+#define isplatingturf(A) (istype(A, /turf/open/floor/plating))
+
 //Mobs
 #define isliving(A) (istype(A, /mob/living))
 
@@ -47,6 +51,7 @@
 #define iszombie(A) (is_species(A, /datum/species/zombie))
 #define ishumanbasic(A) (is_species(A, /datum/species/human))
 #define isethari(A) (is_species(A, /datum/species/ethari))
+#define isipc(A) (is_species(A, /datum/species/ipc))
 
 //more carbon mobs
 #define ismonkey(A) (istype(A, /mob/living/carbon/monkey))

@@ -5,17 +5,22 @@ The regular pipe you see everywhere, including bent ones.
 
 /obj/machinery/atmospherics/pipe/simple
 	icon = 'icons/obj/atmospherics/pipes/simple.dmi'
-	icon_state = "intact"
+	icon_state = "intact2"
 
 	name = "pipe"
 	desc = "A one meter section of regular pipe."
 
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH
+	pipe_flags = PIPING_CARDINAL_AUTONORMALIZE
 
 	device_type = BINARY
 
+	construction_type = /obj/item/pipe/binary/bendable
+	pipe_state = "simple"
+
 /obj/machinery/atmospherics/pipe/simple/SetInitDirections()
+	normalize_cardinal_directions()
 	if(dir in GLOB.diagonals)
 		initialize_directions = dir
 	switch(dir)
@@ -23,20 +28,6 @@ The regular pipe you see everywhere, including bent ones.
 			initialize_directions = SOUTH|NORTH
 		if(EAST,WEST)
 			initialize_directions = EAST|WEST
-
-/obj/machinery/atmospherics/pipe/simple/atmosinit()
-	normalize_dir()
-	..()
-
-/obj/machinery/atmospherics/pipe/simple/proc/normalize_dir()
-	if(dir==SOUTH)
-		setDir(NORTH)
-	else if(dir==WEST)
-		setDir(EAST)
-
-/obj/machinery/atmospherics/pipe/simple/update_icon()
-	normalize_dir()
-	..()
 
 //Colored pipes, use these for mapping
 /obj/machinery/atmospherics/pipe/simple/general

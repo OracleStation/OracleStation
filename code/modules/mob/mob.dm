@@ -1,3 +1,6 @@
+/mob
+	use_tag = TRUE
+
 /mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
 	GLOB.mob_list -= src
 	GLOB.dead_mob_list -= src
@@ -9,8 +12,6 @@
 			var/mob/dead/observe = M
 			observe.reset_perspective(null)
 	qdel(hud_used)
-	if(mind && mind.current == src)
-		spellremove(src)
 	QDEL_LIST(viruses)
 	for(var/cc in client_colours)
 		qdel(cc)
@@ -227,7 +228,7 @@
 
 	if(!slot_priority)
 		slot_priority = list( \
-			slot_back, slot_wear_id, slot_wear_pda,\
+			slot_back, slot_wear_pda, slot_wear_id,\
 			slot_w_uniform, slot_wear_suit,\
 			slot_wear_mask, slot_head, slot_neck,\
 			slot_shoes, slot_gloves,\
@@ -435,7 +436,7 @@
 	set name = "Respawn"
 	set category = "OOC"
 
-	if (!( GLOB.abandon_allowed ))
+	if (CONFIG_GET(flag/norespawn))
 		return
 	if ((stat != 2 || !( SSticker )))
 		to_chat(usr, "<span class='boldnotice'>You must be dead to use this!</span>")
@@ -515,7 +516,7 @@
 		if(Adjacent(usr))
 			show_inv(usr)
 		else
-			usr << browse(null,"window=mob\ref[src]")
+			usr << browse(null,"window=mob[REF(src)]")
 
 // The src mob is trying to strip an item from someone
 // Defined in living.dm
@@ -810,10 +811,10 @@
 	if(exact_match) //if we need an exact match, we need to do some bullfuckery.
 		var/list/faction_src = faction.Copy()
 		var/list/faction_target = target.faction.Copy()
-		if(!("\ref[src]" in faction_target)) //if they don't have our ref faction, remove it from our factions list.
-			faction_src -= "\ref[src]" //if we don't do this, we'll never have an exact match.
-		if(!("\ref[target]" in faction_src))
-			faction_target -= "\ref[target]" //same thing here.
+		if(!("[REF(src)]" in faction_target)) //if they don't have our ref faction, remove it from our factions list.
+			faction_src -= "[REF(src)]" //if we don't do this, we'll never have an exact match.
+		if(!("[REF(target)]" in faction_src))
+			faction_target -= "[REF(target)]" //same thing here.
 		return faction_check(faction_src, faction_target, TRUE)
 	return faction_check(faction, target.faction, FALSE)
 
@@ -942,18 +943,18 @@
 /mob/vv_get_dropdown()
 	. = ..()
 	. += "---"
-	.["Gib"] = "?_src_=vars;gib=\ref[src]"
-	.["Give Spell"] = "?_src_=vars;give_spell=\ref[src]"
-	.["Remove Spell"] = "?_src_=vars;remove_spell=\ref[src]"
-	.["Give Disease"] = "?_src_=vars;give_disease=\ref[src]"
-	.["Toggle Godmode"] = "?_src_=vars;godmode=\ref[src]"
-	.["Drop Everything"] = "?_src_=vars;drop_everything=\ref[src]"
-	.["Regenerate Icons"] = "?_src_=vars;regenerateicons=\ref[src]"
-	.["Make Space Ninja"] = "?_src_=vars;ninja=\ref[src]"
-	.["Show player panel"] = "?_src_=vars;mob_player_panel=\ref[src]"
-	.["Toggle Build Mode"] = "?_src_=vars;build_mode=\ref[src]"
-	.["Assume Direct Control"] = "?_src_=vars;direct_control=\ref[src]"
-	.["Offer Control to Ghosts"] = "?_src_=vars;offer_control=\ref[src]"
+	.["Gib"] = "?_src_=vars;[HrefToken()];gib=[REF(src)]"
+	.["Give Spell"] = "?_src_=vars;[HrefToken()];give_spell=[REF(src)]"
+	.["Remove Spell"] = "?_src_=vars;[HrefToken()];remove_spell=[REF(src)]"
+	.["Give Disease"] = "?_src_=vars;[HrefToken()];give_disease=[REF(src)]"
+	.["Toggle Godmode"] = "?_src_=vars;[HrefToken()];godmode=[REF(src)]"
+	.["Drop Everything"] = "?_src_=vars;[HrefToken()];drop_everything=[REF(src)]"
+	.["Regenerate Icons"] = "?_src_=vars;[HrefToken()];regenerateicons=[REF(src)]"
+	.["Make Space Ninja"] = "?_src_=vars;[HrefToken()];ninja=[REF(src)]"
+	.["Show player panel"] = "?_src_=vars;[HrefToken()];mob_player_panel=[REF(src)]"
+	.["Toggle Build Mode"] = "?_src_=vars;[HrefToken()];build_mode=[REF(src)]"
+	.["Assume Direct Control"] = "?_src_=vars;[HrefToken()];direct_control=[REF(src)]"
+	.["Offer Control to Ghosts"] = "?_src_=vars;[HrefToken()];offer_control=[REF(src)]"
 
 /mob/vv_get_var(var_name)
 	switch(var_name)

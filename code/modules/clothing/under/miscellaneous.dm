@@ -711,3 +711,39 @@
 	item_state = "bl_suit"
 	item_color = "ert_uniform"
 	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+
+/obj/item/clothing/under/victorian_dress
+	name = "black victorian dress"
+	desc = "A victorian style dress, fancy!"
+	icon_state = "victorianblackdress"
+	item_state = "victorianblackdress"
+	item_color = "victorianblackdress"
+	can_adjust = FALSE
+	fitted = NO_FEMALE_UNIFORM
+
+/obj/item/clothing/under/victorian_dress/red
+	name = "red victorian dress"
+	icon_state = "victorianreddress"
+	item_state = "victorianreddress"
+	item_color = "victorianreddress"
+
+/obj/item/clothing/under/victorian_suit
+	name = "victorian suit"
+	desc = "A victorian style suit, fancy!"
+	icon_state = "victorianvest"
+	item_state = "victorianvest"
+	item_color = "victorianvest"
+	can_adjust = FALSE
+	fitted = NO_FEMALE_UNIFORM
+
+/obj/item/clothing/under/victorian_suit/redblack
+	name = "red and black victorian suit"
+	icon_state = "victorianblred"
+	item_state = "victorianblred"
+	item_color = "victorianblred"
+
+/obj/item/clothing/under/victorian_suit/red
+	name = "red victorian suit"
+	icon_state = "victorianredvest"
+	item_state = "victorianredvest"
+	item_color = "victorianredvest"

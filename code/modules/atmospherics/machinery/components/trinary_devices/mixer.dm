@@ -3,13 +3,17 @@
 	density = FALSE
 
 	name = "gas mixer"
-	can_unwrench = 1
+	can_unwrench = TRUE
+	desc = "Very useful for mixing gasses."
 
 	var/on = FALSE
 
 	var/target_pressure = ONE_ATMOSPHERE
 	var/node1_concentration = 0.5
 	var/node2_concentration = 0.5
+
+	construction_type = /obj/item/pipe/trinary/flippable
+	pipe_state = "mixer"
 
 	//node 3 is the outlet, nodes 1 & 2 are intakes
 
@@ -23,9 +27,9 @@
 		if(direction & initialize_directions)
 			var/obj/machinery/atmospherics/node = findConnecting(direction)
 			if(node)
-				add_overlay(getpipeimage('icons/obj/atmospherics/components/trinary_devices.dmi', "cap", direction, node.pipe_color))
+				add_overlay(getpipeimage('icons/obj/atmospherics/components/trinary_devices.dmi', "cap[piping_layer]", direction, node.pipe_color))
 				continue
-			add_overlay(getpipeimage('icons/obj/atmospherics/components/trinary_devices.dmi', "cap", direction))
+			add_overlay(getpipeimage('icons/obj/atmospherics/components/trinary_devices.dmi', "cap[piping_layer]", direction))
 	return ..()
 
 /obj/machinery/atmospherics/components/trinary/mixer/update_icon_nopipes()

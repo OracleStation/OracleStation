@@ -19,7 +19,7 @@
 	 "capsaicin" = list("hotsauce", "hotsauce bottle", "You can almost TASTE the stomach ulcers now!"),
 	 "enzyme" = list("enzyme", "universal enzyme bottle", "Used in cooking various dishes"),
 	 "soysauce" = list("soysauce", "soy sauce bottle", "A salty soy-based flavoring"),
-	 "frostoil" = list("coldsauce", "coldsauce bottle", "Leaves the tongue numb in it's passage"),
+	 "frostoil" = list("coldsauce", "coldsauce bottle", "Leaves the tongue numb in its passage"),
 	 "sodiumchloride" = list("saltshakersmall", "salt shaker", "Salt. From space oceans, presumably"),
 	 "blackpepper" = list("peppermillsmall", "pepper mill", "Often used to flavor food or make people sneeze"),
 	 "cornoil" = list("oliveoil", "corn oil bottle", "A delicious oil used in cooking. Made from corn"),
@@ -130,15 +130,6 @@
 		icon_state = "emptyshaker"
 	else
 		icon_state = "saltshakersmall"
-
-/obj/item/reagent_containers/food/condiment/saltshaker/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] begins to swap forms with the salt shaker! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	var/newname = "[name]"
-	name = "[user.name]"
-	user.name = newname
-	user.real_name = newname
-	desc = "Salt. From dead crew, presumably."
-	return (TOXLOSS)
 
 /obj/item/reagent_containers/food/condiment/saltshaker/afterattack(obj/target, mob/living/user, proximity)
 	if(!proximity)

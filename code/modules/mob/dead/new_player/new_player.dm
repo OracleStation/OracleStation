@@ -1,4 +1,4 @@
-#define LINKIFY_READY(string, value) "<a href='byond://?src=\ref[src];ready=[value]'>[string]</a>"
+#define LINKIFY_READY(string, value) "<a href='byond://?src=[REF(src)];ready=[value]'>[string]</a>"
 
 /mob/dead/new_player
 	var/ready = FALSE
@@ -30,7 +30,7 @@
 	return
 
 /mob/dead/new_player/proc/new_player_panel()
-	var/output = "<center><p><a href='byond://?src=\ref[src];show_preferences=1'>Setup Character</a></p>"
+	var/output = "<center><p><a href='byond://?src=[REF(src)];show_preferences=1'>Setup Character</a></p>"
 
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
 		switch(ready)
@@ -41,8 +41,8 @@
 			if(PLAYER_READY_TO_OBSERVE)
 				output += "<p>\[ [LINKIFY_READY("Ready", PLAYER_READY_TO_PLAY)] | [LINKIFY_READY("Not Ready", PLAYER_NOT_READY)] | <b> Observe </b> \]</p>"
 	else
-		output += "<p><a href='byond://?src=\ref[src];manifest=1'>View the Crew Manifest</a></p>"
-		output += "<p><a href='byond://?src=\ref[src];late_join=1'>Join Game!</a></p>"
+		output += "<p><a href='byond://?src=[REF(src)];manifest=1'>View the Crew Manifest</a></p>"
+		output += "<p><a href='byond://?src=[REF(src)];late_join=1'>Join Game!</a></p>"
 		output += "<p>[LINKIFY_READY("Observe", PLAYER_READY_TO_OBSERVE)]</p>"
 
 	if(!IsGuestKey(src.key))
@@ -57,9 +57,9 @@
 					newpoll = TRUE
 
 				if(newpoll)
-					output += "<p><b><a href='byond://?src=\ref[src];showpoll=1'>Show Player Polls</A> (NEW!)</b></p>"
+					output += "<p><b><a href='byond://?src=[REF(src)];showpoll=1'>Show Player Polls</A> (NEW!)</b></p>"
 				else
-					output += "<p><a href='byond://?src=\ref[src];showpoll=1'>Show Player Polls</A></p>"
+					output += "<p><a href='byond://?src=[REF(src)];showpoll=1'>Show Player Polls</A></p>"
 
 	output += "</center>"
 
@@ -97,10 +97,12 @@
 
 	//Determines Relevent Population Cap
 	var/relevant_cap
-	if(config.hard_popcap && config.extreme_popcap)
-		relevant_cap = min(config.hard_popcap, config.extreme_popcap)
+	var/hpc = CONFIG_GET(number/hard_popcap)
+	var/epc = CONFIG_GET(number/extreme_popcap)
+	if(hpc && epc)
+		relevant_cap = min(hpc, epc)
 	else
-		relevant_cap = max(config.hard_popcap, config.extreme_popcap)
+		relevant_cap = max(hpc, epc)
 
 	if(href_list["show_preferences"])
 		client.prefs.ShowChoices(src)
@@ -133,7 +135,7 @@
 			return
 
 		if(SSticker.queued_players.len || (relevant_cap && living_player_count() >= relevant_cap && !(ckey(key) in GLOB.admin_datums)))
-			to_chat(usr, "<span class='danger'>[config.hard_popcap_message]</span>")
+			to_chat(usr, "<span class='danger'>[CONFIG_GET(string/hard_popcap_message)]</span>")
 
 			var/queue_position = SSticker.queued_players.Find(usr)
 			if(queue_position == 1)
@@ -300,7 +302,7 @@
 		return FALSE
 	if(job.required_playtime_remaining(client))
 		return FALSE
-	if(config.enforce_human_authority && !client.prefs.pref_species.qualifies_for_rank(rank, client.prefs.features))
+	if(CONFIG_GET(flag/enforce_human_authority) && !client.prefs.pref_species.qualifies_for_rank(rank, client.prefs.features))
 		return FALSE
 	if(job.title == "AI")
 		return (GLOB.empty_playable_ai_cores.len != 0)
@@ -328,7 +330,7 @@
 	var/arrivals_docked = TRUE
 	if(SSshuttle.arrivals)
 		close_spawn_windows()	//In case we get held up
-		if(SSshuttle.arrivals.damaged && config.arrivals_shuttle_require_safe_latejoin)
+		if(SSshuttle.arrivals.damaged && CONFIG_GET(flag/arrivals_shuttle_require_safe_latejoin))
 			src << alert("The arrivals shuttle is currently malfunctioning! You cannot join.")
 			return FALSE
 		arrivals_docked = SSshuttle.arrivals.mode != SHUTTLE_CALL
@@ -382,7 +384,7 @@
 
 	GLOB.joined_player_list += character.ckey
 
-	if(config.allow_latejoin_antagonists && humanc)	//Borgs aren't allowed to be antags. Will need to be tweaked if we get true latejoin ais.
+	if(CONFIG_GET(flag/allow_latejoin_antagonists) && humanc)	//Borgs aren't allowed to be antags. Will need to be tweaked if we get true latejoin ais.
 		if(SSshuttle.emergency)
 			switch(SSshuttle.emergency.mode)
 				if(SHUTTLE_RECALL, SHUTTLE_IDLE)
@@ -400,12 +402,7 @@
 
 
 /mob/dead/new_player/proc/LateChoices()
-	var/mills = world.time - SSticker.round_start_time // 1/10 of a second, not real milliseconds but whatever
-	//var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence.. or something
-	var/mins = (mills % 36000) / 600
-	var/hours = mills / 36000
-
-	var/dat = "<div class='notice'>Round Duration: [round(hours)]h [round(mins)]m</div>"
+	var/dat = "<div class='notice'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time)]</div>"
 
 	if(SSshuttle.emergency)
 		switch(SSshuttle.emergency.mode)
@@ -442,11 +439,11 @@
 			var/position_class = "otherPosition"
 			if (job.title in GLOB.command_positions)
 				position_class = "commandPosition"
-			dat += "<a class='[position_class]' href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title] ([job.current_positions])</a><br>"
+			dat += "<a class='[position_class]' href='byond://?src=[REF(src)];SelectedJob=[job.title]'>[job.title] ([job.current_positions])</a><br>"
 	if(!job_count) //if there's nowhere to go, assistant opens up.
 		for(var/datum/job/job in SSjob.occupations)
 			if(job.title != "Assistant") continue
-			dat += "<a class='otherPosition' href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title] ([job.current_positions])</a><br>"
+			dat += "<a class='otherPosition' href='byond://?src=[REF(src)];SelectedJob=[job.title]'>[job.title] ([job.current_positions])</a><br>"
 			break
 	dat += "</div></div>"
 
@@ -466,7 +463,7 @@
 
 	var/mob/living/carbon/human/H = new(loc)
 
-	if(config.force_random_names || jobban_isbanned(src, "appearance"))
+	if(CONFIG_GET(flag/force_random_names) || jobban_isbanned(src, "appearance"))
 		client.prefs.random_character()
 		client.prefs.real_name = client.prefs.pref_species.random_name(gender,1)
 	client.prefs.copy_to(H)

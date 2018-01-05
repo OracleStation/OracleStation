@@ -26,6 +26,9 @@ Thus, the two variables affect pump operation are set in New():
 	var/id = null
 	var/datum/radio_frequency/radio_connection
 
+	construction_type = /obj/item/pipe/directional
+	pipe_state = "volumepump"
+
 /obj/machinery/atmospherics/components/binary/volume_pump/Destroy()
 	SSradio.remove_object(src,frequency)
 	return ..()
@@ -35,10 +38,10 @@ Thus, the two variables affect pump operation are set in New():
 
 /obj/machinery/atmospherics/components/binary/volume_pump/update_icon_nopipes()
 	if(stat & NOPOWER)
-		icon_state = "volpump_off"
+		icon_state = "volpump_off[piping_layer]"
 		return
 
-	icon_state = "volpump_[on?"on":"off"]"
+	icon_state = "volpump_[on?"on":"off"][piping_layer]"
 
 /obj/machinery/atmospherics/components/binary/volume_pump/process_atmos()
 //	..()
@@ -174,4 +177,3 @@ Thus, the two variables affect pump operation are set in New():
 			to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first!</span>")
 		else
 			return 1
-

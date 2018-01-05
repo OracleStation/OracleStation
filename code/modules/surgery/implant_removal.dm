@@ -3,8 +3,11 @@
 	steps = list(/datum/surgery_step/incise, /datum/surgery_step/clamp_bleeders, /datum/surgery_step/retract_skin, /datum/surgery_step/extract_implant, /datum/surgery_step/close)
 	species = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
 	possible_locs = list("chest")
-	requires_organic_bodypart = 0
+	bodypart_types = BODYPART_ORGANIC
 
+/datum/surgery/implant_removal/robotic
+	steps = list(/datum/surgery_step/unscrew, /datum/surgery_step/pry_off, /datum/surgery_step/extract_implant, /datum/surgery_step/close_hatch)
+	bodypart_types = BODYPART_ROBOTIC
 
 //extract implant
 /datum/surgery_step/extract_implant

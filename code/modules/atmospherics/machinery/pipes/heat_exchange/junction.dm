@@ -1,6 +1,6 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction
 	icon = 'icons/obj/atmospherics/pipes/junction.dmi'
-	icon_state = "intact"
+	icon_state = "intact2"
 
 	name = "junction"
 	desc = "A one meter junction that connects regular and heat-exchanging pipe"
@@ -13,6 +13,9 @@
 	initialize_directions_he = SOUTH
 
 	device_type = BINARY
+
+	construction_type = /obj/item/pipe/directional
+	pipe_state = "junction2"
 
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction/SetInitDirections()
 	switch(dir)

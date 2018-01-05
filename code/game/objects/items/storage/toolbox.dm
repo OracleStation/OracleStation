@@ -19,7 +19,7 @@
 	var/has_latches = TRUE
 
 /obj/item/storage/toolbox/Initialize()
-	..()
+	. = ..()
 	if(has_latches)
 		if(prob(10))
 			latches = "double_latch"
@@ -33,10 +33,6 @@
 	if(has_latches)
 		add_overlay(latches)
 
-
-/obj/item/storage/toolbox/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] robusts [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return (BRUTELOSS)
 
 /obj/item/storage/toolbox/emergency
 	name = "emergency toolbox"
@@ -151,6 +147,10 @@
 	new /obj/item/wrench/brass(src)
 	new /obj/item/crowbar/brass(src)
 	new /obj/item/weldingtool/experimental/brass(src)
+
+/obj/item/storage/toolbox/brass/prefilled/servant
+	slot_flags = SLOT_BELT
+	fabricator_type = null
 
 /obj/item/storage/toolbox/brass/prefilled/ratvar
 	var/slab_type = /obj/item/clockwork/slab

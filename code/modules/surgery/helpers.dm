@@ -13,6 +13,10 @@
 	if(!M.lying && !isslime(M))	//if they're prone or a slime
 		return
 
+	if((affecting.status == ORGAN_ROBOTIC && !istype(I, /obj/item/screwdriver)) && (affecting.status == ORGAN_ORGANIC && !I.sharpness))
+	//if it's a robotic organ and you're not using a screwdriver OR an organic organ and you're not using something sharp.
+		return
+
 	var/datum/surgery/current_surgery
 
 	for(var/datum/surgery/S in M.surgeries)
@@ -29,7 +33,7 @@
 			if(affecting)
 				if(!S.requires_bodypart)
 					continue
-				if(S.requires_organic_bodypart && affecting.status == BODYPART_ROBOTIC)
+				if(!(S.bodypart_types & affecting.status))
 					continue
 				if(S.requires_real_bodypart && affecting.is_pseudopart)
 					continue
@@ -56,7 +60,7 @@
 			if(affecting)
 				if(!S.requires_bodypart)
 					return
-				if(S.requires_organic_bodypart && affecting.status == BODYPART_ROBOTIC)
+				if(!(S.bodypart_types & affecting.status))
 					return
 			else if(C && S.requires_bodypart)
 				return
@@ -65,8 +69,8 @@
 
 			if(S.ignore_clothes || get_location_accessible(M, selected_zone))
 				var/datum/surgery/procedure = new S.type(M, selected_zone, affecting)
-				user.visible_message("[user] drapes [I] over [M]'s [parse_zone(selected_zone)] to prepare for \an [procedure.name].", \
-					"<span class='notice'>You drape [I] over [M]'s [parse_zone(selected_zone)] to prepare for \an [procedure.name].</span>")
+				user.visible_message("[user] prepares to perform \an [procedure.name] on [M]'s [parse_zone(selected_zone)].", \
+					"<span class='notice'>You prepare to perform \an [procedure.name] on [M]'s [parse_zone(selected_zone)].</span>")
 
 				add_logs(user, M, "operated", addition="Operation type: [procedure.name], location: [selected_zone]")
 			else
@@ -75,13 +79,13 @@
 	else if(!current_surgery.step_in_progress)
 		if(current_surgery.status == 1)
 			M.surgeries -= current_surgery
-			user.visible_message("[user] removes the drapes from [M]'s [parse_zone(selected_zone)].", \
-				"<span class='notice'>You remove the drapes from [M]'s [parse_zone(selected_zone)].</span>")
+			user.visible_message("[user] stops the surgery on [M]'s [parse_zone(selected_zone)].", \
+				"<span class='notice'>You stop the surgery on [M]'s [parse_zone(selected_zone)].</span>")
 			qdel(current_surgery)
 		else if(istype(user.get_inactive_held_item(), /obj/item/cautery) && current_surgery.can_cancel)
 			M.surgeries -= current_surgery
-			user.visible_message("[user] mends the incision and removes the drapes from [M]'s [parse_zone(selected_zone)].", \
-				"<span class='notice'>You mend the incision and remove the drapes from [M]'s [parse_zone(selected_zone)].</span>")
+			user.visible_message("[user] mends the incision and stops the surgery on [M]'s [parse_zone(selected_zone)].", \
+				"<span class='notice'>You mend the incision and stop the surgery on [M]'s [parse_zone(selected_zone)].</span>")
 			qdel(current_surgery)
 		else if(current_surgery.can_cancel)
 			to_chat(user, "<span class='warning'>You need to hold a cautery in inactive hand to stop [M]'s surgery!</span>")
@@ -90,16 +94,15 @@
 
 
 
-/proc/get_location_modifier(mob/M)
+/proc/can_operate(mob/M)
 	var/turf/T = get_turf(M)
 	if(locate(/obj/structure/table/optable, T))
-		return 1
+		return TRUE
 	else if(locate(/obj/structure/table, T))
-		return 0.8
+		return TRUE
 	else if(locate(/obj/structure/bed, T))
-		return 0.7
-	else
-		return 0.5
+		return TRUE
+
 
 
 /proc/get_location_accessible(mob/M, location)
@@ -161,4 +164,3 @@
 				return 0
 
 	return 1
-

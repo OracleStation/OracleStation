@@ -24,6 +24,7 @@
 	var/list/datum/mind/antag_candidates = list()	// List of possible starting antags goes here
 	var/list/restricted_jobs = list()	// Jobs it doesn't make sense to be.  I.E chaplain or AI cultist
 	var/list/protected_jobs = list()	// Jobs that can't be traitors because
+	var/list/protected_species = list() // Species that can't be traitors
 	var/required_players = 0
 	var/maximum_players = -1 // -1 is no maximum, positive numbers limit the selection of a mode on overstaffed stations
 	var/required_enemies = 0
@@ -78,7 +79,7 @@
 ///Everyone should now be on the station and have their normal gear.  This is the place to give the special roles extra things
 /datum/game_mode/proc/post_setup(report) //Gamemodes can override the intercept report. Passing TRUE as the argument will force a report.
 	if(!report)
-		report = config.intercept
+		report = !CONFIG_GET(flag/no_intercept_report)
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/display_roundstart_logout_report), ROUNDSTART_LOGOUT_REPORT_TIME)
 
 	if(SSdbcore.Connect())
@@ -113,8 +114,9 @@
 	for(var/mob/Player in GLOB.mob_list)
 		if(Player.mind && Player.stat != DEAD && !isnewplayer(Player) && !isbrain(Player) && Player.client)
 			living_crew += Player
-	if(living_crew.len / GLOB.joined_player_list.len <= config.midround_antag_life_check) //If a lot of the player base died, we start fresh
-		message_admins("Convert_roundtype failed due to too many dead people. Limit is [config.midround_antag_life_check * 100]% living crew")
+	var/malc = CONFIG_GET(number/midround_antag_life_check)
+	if(living_crew.len / GLOB.joined_player_list.len <= malc) //If a lot of the player base died, we start fresh
+		message_admins("Convert_roundtype failed due to too many dead people. Limit is [malc * 100]% living crew")
 		return null
 
 	var/list/datum/game_mode/runnable_modes = config.get_runnable_midround_modes(living_crew.len)
@@ -138,8 +140,9 @@
 			if(SSshuttle.emergency.timeLeft(1) < initial(SSshuttle.emergencyCallTime)*0.5)
 				return 1
 
-	if(world.time >= (config.midround_antag_time_check * 600))
-		message_admins("Convert_roundtype failed due to round length. Limit is [config.midround_antag_time_check] minutes.")
+	var/matc = CONFIG_GET(number/midround_antag_time_check)
+	if(world.time >= (matc * 600))
+		message_admins("Convert_roundtype failed due to round length. Limit is [matc] minutes.")
 		return null
 
 	var/list/antag_candidates = list()
@@ -154,12 +157,12 @@
 
 	antag_candidates = shuffle(antag_candidates)
 
-	if(config.protect_roles_from_antagonist)
+	if(CONFIG_GET(flag/protect_roles_from_antagonist))
 		replacementmode.restricted_jobs += replacementmode.protected_jobs
-	if(config.protect_assistant_from_antagonist)
+	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
 		replacementmode.restricted_jobs += "Assistant"
 
-	message_admins("The roundtype will be converted. If you have other plans for the station or feel the station is too messed up to inhabit <A HREF='?_src_=holder;toggle_midround_antag=\ref[usr]'>stop the creation of antags</A> or <A HREF='?_src_=holder;end_round=\ref[usr]'>end the round now</A>.")
+	message_admins("The roundtype will be converted. If you have other plans for the station or feel the station is too messed up to inhabit <A HREF='?_src_=holder;[HrefToken()];toggle_midround_antag=[REF(usr)]'>stop the creation of antags</A> or <A HREF='?_src_=holder;[HrefToken()];end_round=[REF(usr)]'>end the round now</A>.")
 
 	. = 1
 	sleep(rand(600,1800))
@@ -168,7 +171,7 @@
 		round_converted = 0
 		return
 	 //somewhere between 1 and 3 minutes from now
-	if(!config.midround_antag[SSticker.mode.config_tag])
+	if(!CONFIG_GET(keyed_flag_list/midround_antag)[SSticker.mode.config_tag])
 		round_converted = 0
 		return 1
 	for(var/mob/living/carbon/human/H in antag_candidates)
@@ -189,7 +192,9 @@
 		return TRUE
 	if(station_was_nuked)
 		return TRUE
-	if(!round_converted && (!config.continuous[config_tag] || (config.continuous[config_tag] && config.midround_antag[config_tag]))) //Non-continuous or continous with replacement antags
+	var/list/continuous = CONFIG_GET(keyed_flag_list/continuous)
+	var/list/midround_antag = CONFIG_GET(keyed_flag_list/midround_antag)
+	if(!round_converted && (!continuous[config_tag] || (continuous[config_tag] && midround_antag[config_tag]))) //Non-continuous or continous with replacement antags
 		if(!continuous_sanity_checked) //make sure we have antags to be checking in the first place
 			for(var/mob/Player in GLOB.mob_list)
 				if(Player.mind)
@@ -198,8 +203,8 @@
 						return 0
 			if(!continuous_sanity_checked)
 				message_admins("The roundtype ([config_tag]) has no antagonists, continuous round has been defaulted to on and midround_antag has been defaulted to off.")
-				config.continuous[config_tag] = 1
-				config.midround_antag[config_tag] = 0
+				continuous[config_tag] = TRUE
+				midround_antag[config_tag] = FALSE
 				SSshuttle.clearHostileEnvironment(src)
 				return 0
 
@@ -213,7 +218,7 @@
 					living_antag_player = Player
 					return 0
 
-		if(!config.continuous[config_tag] || force_ending)
+		if(!continuous[config_tag] || force_ending)
 			return 1
 
 		else
@@ -222,7 +227,7 @@
 				if(round_ends_with_antag_death)
 					return 1
 				else
-					config.midround_antag[config_tag] = 0
+					midround_antag[config_tag] = 0
 					return 0
 
 	return 0
@@ -265,7 +270,7 @@
 		SSblackbox.set_val("escaped_human",escaped_humans)
 	if(escaped_total > 0)
 		SSblackbox.set_val("escaped_total",escaped_total)
-	send2irc("Server", "Round just ended.")
+	world.IRCBroadcast("Round just ended.")
 	if(cult.len && !istype(SSticker.mode, /datum/game_mode/cult))
 		datum_cult_completion()
 
@@ -327,6 +332,11 @@
 				if(!jobban_isbanned(player, "Syndicate") && !jobban_isbanned(player, role)) //Nodrak/Carn: Antag Job-bans
 					if(age_check(player.client)) //Must be older than the minimum age
 						candidates += player.mind				// Get a list of all the people who want to be the antagonist for this round
+
+	if(protected_species)
+		for(var/mob/dead/new_player/player in candidates)
+			if(player.client.prefs.pref_species in protected_species)
+				candidates -= player
 
 	if(restricted_jobs)
 		for(var/datum/mind/player in candidates)
@@ -448,9 +458,6 @@
 				msg += "<b>[L.name]</b> ([L.ckey]), the [L.job] (<font color='#ffcc00'><b>Connected, Inactive</b></font>)\n"
 				continue //AFK client
 			if(L.stat)
-				if(L.suiciding)	//Suicider
-					msg += "<b>[L.name]</b> ([L.ckey]), the [L.job] (<span class='boldannounce'>Suicide</span>)\n"
-					continue //Disconnected client
 				if(L.stat == UNCONSCIOUS)
 					msg += "<b>[L.name]</b> ([L.ckey]), the [L.job] (Dying)\n"
 					continue //Unconscious
@@ -462,12 +469,8 @@
 		for(var/mob/dead/observer/D in GLOB.mob_list)
 			if(D.mind && D.mind.current == L)
 				if(L.stat == DEAD)
-					if(L.suiciding)	//Suicider
-						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (<span class='boldannounce'>Suicide</span>)\n"
-						continue //Disconnected client
-					else
-						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (Dead)\n"
-						continue //Dead mob, ghost abandoned
+					msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (Dead)\n"
+					continue //Dead mob, ghost abandoned
 				else
 					if(D.can_reenter_corpse)
 						continue //Adminghost, or cult/wizard ghost
@@ -488,7 +491,7 @@
 			text += " <span class='boldannounce'>died</span>"
 		else
 			text += " <span class='greenannounce'>survived</span>"
-		if(fleecheck && ply.current.z > ZLEVEL_STATION)
+		if(fleecheck && (!(ply.current.z in GLOB.station_z_levels)))
 			text += " while <span class='boldannounce'>fleeing the station</span>"
 		if(ply.current.real_name != ply.name)
 			text += " as <b>[ply.current.real_name]</b>"
@@ -517,7 +520,7 @@
 /datum/game_mode/proc/get_remaining_days(client/C)
 	if(!C)
 		return 0
-	if(!config.use_age_restriction_for_jobs)
+	if(!CONFIG_GET(flag/use_age_restriction_for_jobs))
 		return 0
 	if(!isnum(C.player_age))
 		return 0 //This is only a number if the db connection is established, otherwise it is text: "Requires database", meaning these restrictions cannot be enforced

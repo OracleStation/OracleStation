@@ -181,8 +181,13 @@
 	illustration = "beaker"
 
 /obj/item/storage/box/beakers/PopulateContents()
-	for(var/i in 1 to 7)
-		new /obj/item/reagent_containers/glass/beaker( src )
+	for(var/i in 1 to 2)
+		new /obj/item/reagent_containers/glass/beaker/vial( src )
+	new /obj/item/reagent_containers/glass/beaker( src )
+	new /obj/item/reagent_containers/glass/beaker/erlenmeyer( src )
+	new /obj/item/reagent_containers/glass/beaker/round( src )
+	new /obj/item/reagent_containers/glass/beaker/large( src )
+	new /obj/item/reagent_containers/glass/beaker/round/large( src )
 
 /obj/item/storage/box/injectors
 	name = "box of DNA injectors"
@@ -581,10 +586,6 @@
 	illustration = "heart"
 	foldable = null
 
-/obj/item/storage/box/hug/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] clamps the box of hugs on [user.p_their()] jugular! Guess it wasn't such a hugbox after all..</span>")
-	return (BRUTELOSS)
-
 /obj/item/storage/box/hug/attack_self(mob/user)
 	..()
 	user.changeNext_move(CLICK_CD_MELEE)
@@ -716,7 +717,7 @@
 	illustration = "donk_kit"
 
 /obj/item/storage/box/ingredients/Initialize()
-	..()
+	. = ..()
 	if(icon_state)
 		name = "[name] ([icon_state])"
 		desc = "A box containing supplementary ingredients for the aspiring chef. This box's theme is '[icon_state]'."

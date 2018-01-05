@@ -13,18 +13,42 @@
 	active_power_usage = 4
 	max_integrity = 150
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 100, bomb = 0, bio = 100, rad = 100, fire = 40, acid = 0)
-
-
-/obj/machinery/meter/Initialize(mapload)
-	. = ..()
-	SSair.atmos_machinery += src
-	if (!target)
-		target = locate(/obj/machinery/atmospherics/pipe) in loc
+	var/target_layer = PIPING_LAYER_DEFAULT
 
 /obj/machinery/meter/Destroy()
 	SSair.atmos_machinery -= src
-	src.target = null
+	target = null
 	return ..()
+
+/obj/machinery/meter/Initialize(mapload, new_piping_layer)
+	if(!isnull(new_piping_layer))
+		target_layer = new_piping_layer
+	SSair.atmos_machinery += src
+	if(!target)
+		reattach_to_layer()
+
+	switch(target_layer)
+		if (PIPING_LAYER_MIN)
+			pixel_x = -6
+			pixel_y = -6
+		if (PIPING_LAYER_DEFAULT)
+			pixel_x = 0
+			pixel_y = 0
+		if (PIPING_LAYER_MAX)
+			pixel_x = 6
+			pixel_y = 6
+
+	return ..()
+
+/obj/machinery/meter/proc/reattach_to_layer()
+	for(var/obj/machinery/atmospherics/pipe/pipe in loc)
+		if(pipe.piping_layer == target_layer)
+			target = pipe
+			setAttachLayer(pipe.piping_layer)
+			break
+
+/obj/machinery/meter/proc/setAttachLayer(var/new_layer)
+	target_layer = new_layer
 
 /obj/machinery/meter/process_atmos()
 	if(!target)
@@ -38,6 +62,9 @@
 	use_power(5)
 
 	var/datum/gas_mixture/environment = target.return_air()
+
+	cut_overlays()
+
 	if(!environment)
 		icon_state = "meterX"
 		return 0
@@ -56,6 +83,16 @@
 		icon_state = "meter3_[val]"
 	else
 		icon_state = "meter4"
+
+
+	var/env_temp = environment.return_temperature()
+
+	if (env_temp < 273.2)
+		add_overlay("cold")
+	else if(env_temp < 360)
+		add_overlay("normal")
+	else
+		add_overlay("hot")
 
 	if(frequency)
 		var/datum/radio_frequency/radio_connection = SSradio.return_frequency(frequency)
@@ -76,7 +113,7 @@
 
 /obj/machinery/meter/proc/status()
 	var/t = ""
-	if (src.target)
+	if (target)
 		var/datum/gas_mixture/environment = target.return_air()
 		if(environment)
 			t += "The pressure gauge reads [round(environment.return_pressure(), 0.01)] kPa; [round(environment.temperature,0.01)] K ([round(environment.temperature-T0C,0.01)]&deg;C)"
@@ -93,23 +130,23 @@
 
 /obj/machinery/meter/attackby(obj/item/W, mob/user, params)
 	if (istype(W, /obj/item/wrench))
-		playsound(src.loc, W.usesound, 50, 1)
+		playsound(src, W.usesound, 50, 1)
 		to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
 		if (do_after(user, 40*W.toolspeed, target = src))
 			user.visible_message( \
 				"[user] unfastens \the [src].", \
 				"<span class='notice'>You unfasten \the [src].</span>", \
 				"<span class='italics'>You hear ratchet.</span>")
-			new /obj/item/pipe_meter(src.loc)
+			new /obj/item/pipe_meter(loc)
 			qdel(src)
 	else
 		return ..()
 
 /obj/machinery/meter/attack_ai(mob/user)
-	return src.attack_hand(user)
+	return attack_hand(user)
 
 /obj/machinery/meter/attack_paw(mob/user)
-	return src.attack_hand(user)
+	return attack_hand(user)
 
 /obj/machinery/meter/attack_hand(mob/user)
 
@@ -120,6 +157,7 @@
 		return 1
 
 /obj/machinery/meter/singularity_pull(S, current_size)
+	..()
 	if(current_size >= STAGE_FIVE)
 		new /obj/item/pipe_meter(loc)
 		qdel(src)
@@ -130,4 +168,4 @@
 
 /obj/machinery/meter/turf/Initialize()
 	..()
-	src.target = loc
+	target = loc

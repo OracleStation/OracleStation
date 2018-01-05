@@ -144,8 +144,8 @@
 
 	var/time = TIME_LEFT
 	message_admins("[key_name_admin(user.client)] \
-	(<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) \
-	(<A HREF='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</A>) \
+	(<A HREF='?_src_=holder;[HrefToken()];adminmoreinfo=[REF(user)]'>?</A>) \
+	(<A HREF='?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(user)]'>FLW</A>) \
 	has emagged the emergency shuttle [time] seconds before launch.", 0, 1)
 	log_game("[key_name(user)] has emagged the emergency shuttle in \
 		[COORD(src)] [time] seconds before launch.")
@@ -292,7 +292,7 @@
 					return
 				mode = SHUTTLE_DOCKED
 				setTimer(SSshuttle.emergencyDockTime)
-				send2irc("Server", "The Emergency Shuttle has docked with the station.")
+				world.IRCBroadcast("The Emergency Shuttle has docked with the station.")
 				priority_announce("The Emergency Shuttle has docked with the station. You have [timeLeft(600)] minutes to board the Emergency Shuttle.", null, 'sound/ai/shuttledock.ogg', "Priority")
 				if(SSdbcore.Connect())
 					var/datum/DBQuery/query_round_shuttle_name = SSdbcore.NewQuery("UPDATE [format_table_name("round")] SET shuttle_name = '[name]' WHERE id = [GLOB.round_id]")

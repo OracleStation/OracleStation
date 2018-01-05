@@ -3,7 +3,7 @@
 */
 /obj/machinery/atmospherics/pipe/manifold
 	icon = 'icons/obj/atmospherics/pipes/manifold.dmi'
-	icon_state = "manifold"
+	icon_state = "manifold2"
 
 	name = "pipe manifold"
 	desc = "A manifold composed of regular pipes"
@@ -12,6 +12,9 @@
 	initialize_directions = EAST|NORTH|WEST
 
 	device_type = TRINARY
+
+	construction_type = /obj/item/pipe/trinary
+	pipe_state = "manifold"
 
 /obj/machinery/atmospherics/pipe/manifold/SetInitDirections()
 	switch(dir)
@@ -25,16 +28,16 @@
 			initialize_directions = NORTH|EAST|SOUTH
 
 /obj/machinery/atmospherics/pipe/manifold/update_icon()
-	var/invis = invisibility ? "-f" : ""
+	alpha = invisibility ? 128 : 255
 
-	icon_state = "manifold_center[invis]"
+	icon_state = "manifold_center[piping_layer]"
 
 	cut_overlays()
 
 	//Add non-broken pieces
 	for(DEVICE_TYPE_LOOP)
 		if(NODE_I)
-			add_overlay(getpipeimage('icons/obj/atmospherics/pipes/manifold.dmi', "manifold_full[invis]", get_dir(src, NODE_I)))
+			add_overlay(getpipeimage('icons/obj/atmospherics/pipes/manifold.dmi', "manifold_full[piping_layer]", get_dir(src, NODE_I)))
 
 //Colored pipes, use these for mapping
 /obj/machinery/atmospherics/pipe/manifold/general
@@ -125,7 +128,7 @@
 
 /obj/machinery/atmospherics/pipe/manifold/orange/hidden
 	level = PIPE_HIDDEN_LEVEL
-	
+
 /obj/machinery/atmospherics/pipe/manifold/purple
 	pipe_color=rgb(128,0,182)
 	color=rgb(128,0,182)

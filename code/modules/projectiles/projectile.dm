@@ -90,8 +90,6 @@
 			new impact_effect_type(target_loca, target, src)
 		return 0
 	var/mob/living/L = target
-	if(L.buckled && ismob(L.buckled))
-		L = L.buckled
 	if(blocked != 100) // not completely blocked
 		if(damage && L.blood_volume && damage_type == BRUTE)
 			var/splatter_dir = dir
@@ -99,6 +97,11 @@
 				splatter_dir = get_dir(starting, target_loca)
 			if(isalien(L))
 				new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target_loca, splatter_dir)
+			var/obj/item/bodypart/B = L.get_bodypart(def_zone)
+			if(B.status == BODYPART_ROBOTIC) // So if you hit a robotic, it sparks instead of bloodspatters
+				do_sparks(2, FALSE, target.loc)
+				if(prob(25))
+					new /obj/effect/decal/cleanable/oil(target_loca)
 			else
 				new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_loca, splatter_dir)
 			if(prob(33))
@@ -178,6 +181,8 @@
 				var/mob/living/picked_mob = pick(mobs_list)
 				if(!prehit(picked_mob))
 					return FALSE
+				if(ismob(picked_mob.buckled))
+					picked_mob = picked_mob.buckled
 				picked_mob.bullet_act(src, def_zone)
 	qdel(src)
 	return TRUE
@@ -280,7 +285,7 @@
 				if(can_hit_target(original, permutated))
 					Collide(original)
 				Range()
-			sleep(config.run_speed * 0.9)
+			sleep(CONFIG_GET(number/run_delay) * 0.9)
 
 //Returns true if the target atom is on our current turf and above the right layer
 /obj/item/projectile/proc/can_hit_target(atom/target, var/list/passthrough)

@@ -91,7 +91,7 @@
 				for(var/datum/d in objs)
 					world.SDQL_var(d, query_tree["call"][1], source = d)
 					CHECK_TICK
-					
+
 			if("delete")
 				for(var/datum/d in objs)
 					SDQL_qdel_datum(d)
@@ -115,14 +115,14 @@
 	end_time -= start_time
 	to_chat(usr, "<span class='admin'>SDQL query results: [query_text]</span>")
 	to_chat(usr, "<span class='admin'>SDQL query completed: [objs_all] objects selected by path, and [objs_eligible] objects executed on after WHERE filtering if applicable.</span>")
-	to_chat(usr, "<span class='admin'>SDQL query took [end_time/10] seconds to complete.</span>")
+	to_chat(usr, "<span class='admin'>SDQL query took [DisplayTimeText(end_time)] to complete.</span>")
 
 /proc/SDQL_qdel_datum(datum/d)
 	qdel(d)
 
 /proc/SDQL_gen_vv_href(t)
 	var/text = ""
-	text += "<A HREF='?_src_=vars;Vars=\ref[t]'>\ref[t]</A>"
+	text += "<A HREF='?_src_=vars;[HrefToken()];Vars=[REF(t)]'>[REF(t)]</A>"
 	if(istype(t, /atom))
 		var/atom/a = t
 		var/turf/T = a.loc

@@ -15,14 +15,17 @@ It's like a regular ol' straight pipe, but you can turn it on and off.
 	var/open = FALSE
 	var/valve_type = "m" //lets us have a nice, clean, OOP update_icon_nopipes()
 
+	construction_type = /obj/item/pipe/binary
+	pipe_state = "mvalve"
+
 /obj/machinery/atmospherics/components/binary/valve/open
 	open = TRUE
 
 /obj/machinery/atmospherics/components/binary/valve/update_icon_nopipes(animation = 0)
 	normalize_dir()
 	if(animation)
-		flick("[valve_type]valve_[open][!open]",src)
-	icon_state = "[valve_type]valve_[open?"on":"off"]"
+		flick("[valve_type]valve_[open][!open][piping_layer]",src)
+	icon_state = "[valve_type]valve_[open?"on":"off"][piping_layer]"
 
 /obj/machinery/atmospherics/components/binary/valve/proc/open()
 	open = TRUE
@@ -60,6 +63,7 @@ It's like a regular ol' straight pipe, but you can turn it on and off.
 	desc = "A digitally controlled valve."
 	icon_state = "dvalve_map"
 	valve_type = "d"
+	pipe_state = "dvalve"
 
 /obj/machinery/atmospherics/components/binary/valve/digital/attack_ai(mob/user)
 	return src.attack_hand(user)
@@ -67,6 +71,6 @@ It's like a regular ol' straight pipe, but you can turn it on and off.
 /obj/machinery/atmospherics/components/binary/valve/digital/update_icon_nopipes(animation)
 	if(stat & NOPOWER)
 		normalize_dir()
-		icon_state = "dvalve_nopower"
+		icon_state = "[valve_type]valve_nopower[piping_layer]"
 		return
 	..()

@@ -1,7 +1,7 @@
 /obj/item/reagent_containers
 	name = "Container"
 	desc = "..."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = null
 	w_class = WEIGHT_CLASS_TINY
 	var/amount_per_transfer_from_this = 5
@@ -68,6 +68,12 @@
 	if(covered)
 		var/who = (isnull(user) || eater == user) ? "your" : "[eater.p_their()]"
 		to_chat(user, "<span class='warning'>You have to remove [who] [covered] first!</span>")
+		return 0
+	if(!eater.has_mouth())
+		if(eater == user)
+			to_chat(eater, "<span class='warning'>You have no mouth, and cannot eat.</span>")
+		else
+			to_chat(user, "<span class='warning'>You can't feed [eater], because they have no mouth!</span>")
 		return 0
 	return 1
 

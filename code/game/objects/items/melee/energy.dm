@@ -16,10 +16,6 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/melee/transforming/energy/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is [pick("slitting [user.p_their()] stomach open with", "falling on")] [src]! It looks like [user.p_theyre()] trying to commit seppuku!</span>")
-	return (BRUTELOSS|FIRELOSS)
-
 /obj/item/melee/transforming/energy/add_blood(list/blood_dna)
 	return 0
 
@@ -78,10 +74,6 @@
 	attack_verb_off = list("attacked", "chopped", "cleaved", "torn", "cut")
 	attack_verb_on = list()
 	light_color = "#40ceff"
-
-/obj/item/melee/transforming/energy/axe/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] swings [src] towards [user.p_their()] head! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return (BRUTELOSS|FIRELOSS)
 
 /obj/item/melee/transforming/energy/sword
 	name = "energy sword"

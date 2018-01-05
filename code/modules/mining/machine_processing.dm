@@ -10,7 +10,7 @@
 	anchored = TRUE
 	var/obj/machinery/mineral/processing_unit/machine = null
 	var/machinedir = EAST
-	speed_process = 1
+	speed_process = TRUE
 
 /obj/machinery/mineral/processing_unit_console/Initialize()
 	. = ..()
@@ -66,7 +66,6 @@
 	density = TRUE
 	anchored = TRUE
 	var/obj/machinery/mineral/CONSOLE = null
-	var/datum/material_container/materials
 	var/on = FALSE
 	var/selected_material = MAT_METAL
 	var/selected_alloy = null
@@ -75,12 +74,11 @@
 /obj/machinery/mineral/processing_unit/Initialize()
 	. = ..()
 	proximity_monitor = new(src, 1)
-	materials = new(src, list(MAT_METAL, MAT_GLASS, MAT_SILVER, MAT_GOLD, MAT_DIAMOND, MAT_PLASMA, MAT_URANIUM, MAT_BANANIUM, MAT_TITANIUM, MAT_BLUESPACE),INFINITY)
+	AddComponent(/datum/component/material_container, list(MAT_METAL, MAT_GLASS, MAT_SILVER, MAT_GOLD, MAT_DIAMOND, MAT_PLASMA, MAT_URANIUM, MAT_BANANIUM, MAT_TITANIUM, MAT_BLUESPACE),INFINITY)
 	files = new /datum/research/smelter(src)
 
 /obj/machinery/mineral/processing_unit/Destroy()
 	CONSOLE = null
-	QDEL_NULL(materials)
 	QDEL_NULL(files)
 	return ..()
 
@@ -89,6 +87,7 @@
 		process_ore(AM)
 
 /obj/machinery/mineral/processing_unit/proc/process_ore(obj/item/ore/O)
+	GET_COMPONENT(materials, /datum/component/material_container)
 	var/material_amount = materials.get_item_material_amount(O)
 	if(!materials.has_space(material_amount))
 		unload_mineral(O)
@@ -100,13 +99,14 @@
 
 /obj/machinery/mineral/processing_unit/proc/get_machine_data()
 	var/dat = "<b>Smelter control console</b><br><br>"
+	GET_COMPONENT(materials, /datum/component/material_container)
 	for(var/mat_id in materials.materials)
 		var/datum/material/M = materials.materials[mat_id]
 		dat += "<span class=\"res_name\">[M.name]: </span>[M.amount] cm&sup3;"
 		if (selected_material == mat_id)
 			dat += " <i>Smelting</i>"
 		else
-			dat += " <A href='?src=\ref[CONSOLE];material=[mat_id]'><b>Not Smelting</b></A> "
+			dat += " <A href='?src=[REF(CONSOLE)];material=[mat_id]'><b>Not Smelting</b></A> "
 		dat += "<br>"
 
 	dat += "<br><br>"
@@ -118,16 +118,16 @@
 		if (selected_alloy == D.id)
 			dat += " <i>Smelting</i>"
 		else
-			dat += " <A href='?src=\ref[CONSOLE];alloy=[D.id]'><b>Not Smelting</b></A> "
+			dat += " <A href='?src=[REF(CONSOLE)];alloy=[D.id]'><b>Not Smelting</b></A> "
 		dat += "<br>"
 
 	dat += "<br><br>"
 	//On or off
 	dat += "Machine is currently "
 	if (on)
-		dat += "<A href='?src=\ref[CONSOLE];set_on=off'>On</A> "
+		dat += "<A href='?src=[REF(CONSOLE)];set_on=off'>On</A> "
 	else
-		dat += "<A href='?src=\ref[CONSOLE];set_on=on'>Off</A> "
+		dat += "<A href='?src=[REF(CONSOLE)];set_on=on'>Off</A> "
 
 	return dat
 
@@ -165,6 +165,7 @@
 				continue*/
 
 /obj/machinery/mineral/processing_unit/proc/smelt_ore()
+	GET_COMPONENT(materials, /datum/component/material_container)
 	var/datum/material/mat = materials.materials[selected_material]
 	if(mat)
 		var/sheets_to_remove = (mat.amount >= (MINERAL_MATERIAL_AMOUNT * SMELT_AMOUNT) ) ? SMELT_AMOUNT : round(mat.amount /  MINERAL_MATERIAL_AMOUNT)
@@ -187,6 +188,7 @@
 		on = FALSE
 		return
 
+	GET_COMPONENT(materials, /datum/component/material_container)
 	materials.use_amount(alloy.materials, amount)
 
 	generate_mineral(alloy.build_path)
@@ -197,6 +199,7 @@
 
 	var/build_amount = SMELT_AMOUNT
 
+	GET_COMPONENT(materials, /datum/component/material_container)
 
 	for(var/mat_id in D.materials)
 		var/M = D.materials[mat_id]
@@ -214,6 +217,7 @@
 	unload_mineral(O)
 
 /obj/machinery/mineral/processing_unit/on_deconstruction()
+	GET_COMPONENT(materials, /datum/component/material_container)
 	materials.retrieve_all()
 	..()
 

@@ -35,11 +35,11 @@
 			if(promotable && user.mind.gang_datum.bosses.len < 3)
 				dat += "Give this device to another member of your organization to use to promote them to Lieutenant.<br><br>"
 				dat += "If this is meant as a spare device for yourself:<br>"
-			dat += "<a href='?src=\ref[src];register=1'>Register Device as Spare</a><br>"
+			dat += "<a href='?src=[REF(src)];register=1'>Register Device as Spare</a><br>"
 		else if (promotable)
 			if(user.mind.gang_datum.bosses.len < 3)
 				dat += "You have been selected for a promotion!<br>"
-				dat += "<a href='?src=\ref[src];register=1'>Accept Promotion</a><br>"
+				dat += "<a href='?src=[REF(src)];register=1'>Accept Promotion</a><br>"
 			else
 				dat += "No promotions available: All positions filled.<br>"
 		else
@@ -69,7 +69,7 @@
 
 				var/toAdd = G.get_name_display(user, gang, src)
 				if(G.can_buy(user, gang, src))
-					toAdd = "<a href='?src=\ref[src];purchase=[G.id]'>[toAdd]</a>"
+					toAdd = "<a href='?src=[REF(src)];purchase=[G.id]'>[toAdd]</a>"
 				dat += toAdd
 				var/extra = G.get_extra_info(user, gang, src)
 				if(extra)
@@ -77,7 +77,7 @@
 				dat += "<br>"
 			dat += "<br>"
 
-	dat += "<a href='?src=\ref[src];choice=refresh'>Refresh</a><br>"
+	dat += "<a href='?src=[REF(src)];choice=refresh'>Refresh</a><br>"
 
 	var/datum/browser/popup = new(user, "gangtool", "Welcome to GangTool v3.5", 340, 625)
 	popup.set_content(dat)
@@ -199,7 +199,7 @@
 		return 0
 
 	var/turf/userturf = get_turf(user)
-	if(userturf.z != ZLEVEL_STATION) //Shuttle can only be recalled while on station
+	if(userturf.z != ZLEVEL_STATION_PRIMARY) //Shuttle can only be recalled while on station
 		to_chat(user, "<span class='warning'>[icon2html(src, user)]Error: Device out of range of station communication arrays.</span>")
 		recalling = 0
 		return 0
@@ -217,7 +217,7 @@
 	log_game("[key_name(user)] has tried to recall the shuttle with a gangtool.")
 	message_admins("[key_name_admin(user)] has tried to recall the shuttle with a gangtool.", 1)
 	userturf = get_turf(user)
-	if(userturf.z == ZLEVEL_STATION) //Check one more time that they are on station.
+	if(userturf.z == ZLEVEL_STATION_PRIMARY) //Check one more time that they are on station.
 		if(SSshuttle.cancelEvac(user))
 			gang.recalls -= 1
 			return 1
@@ -285,7 +285,7 @@
 
 			var/toAdd = G.get_name_display(user, gang, src)
 			if(G.can_buy(user, gang, src))
-				toAdd = "<a href='?src=\ref[src];purchase=[G.id]'>[toAdd]</a>"
+				toAdd = "<a href='?src=[REF(src)];purchase=[G.id]'>[toAdd]</a>"
 			dat += toAdd
 			var/extra = G.get_extra_info(user, gang, src)
 			if(extra)
@@ -293,7 +293,7 @@
 			dat += "<br>"
 		dat += "<br>"
 
-	dat += "<a href='?src=\ref[src];choice=refresh'>Refresh</a><br>"
+	dat += "<a href='?src=[REF(src)];choice=refresh'>Refresh</a><br>"
 
 	var/datum/browser/popup = new(user, "gangtool", "Welcome to GangTool v3.5", 340, 625)
 	popup.set_content(dat)

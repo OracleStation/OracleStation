@@ -74,7 +74,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	var/mob/thrownby = null
 
-	/obj/item/mouse_drag_pointer = MOUSE_ACTIVE_POINTER //the icon to indicate this object is being dragged
+	mouse_drag_pointer = MOUSE_ACTIVE_POINTER //the icon to indicate this object is being dragged
 
 	//So items can have custom embedd values
 	//Because customisation is king
@@ -158,16 +158,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(B && B.loc == loc)
 		qdel(src)
 
-//user: The mob that is suiciding
-//damagetype: The type of damage the item will inflict on the user
-//BRUTELOSS = 1
-//FIRELOSS = 2
-//TOXLOSS = 4
-//OXYLOSS = 8
-//Output a creative message and then return the damagetype done
-/obj/item/proc/suicide_act(mob/user)
-	return
-
 /obj/item/verb/move_to_top()
 	set name = "Move To Top"
 	set category = "Object"
@@ -215,9 +205,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 /obj/item/proc/speechModification(message)		//For speech modification by mask slot items.
 	return message
-
-/obj/item/attack_self(mob/user)
-	interact(user)
 
 /obj/item/interact(mob/user)
 	add_fingerprint(user)
@@ -549,9 +536,10 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		transfer_blood = 0
 
 /obj/item/singularity_pull(S, current_size)
+	..()
 	if(current_size >= STAGE_FOUR)
 		throw_at(S,14,3, spin=0)
-	else ..()
+	else return
 
 /obj/item/throw_impact(atom/A)
 	if(A && !QDELETED(A))
@@ -595,7 +583,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 /obj/item/proc/get_dismemberment_chance(obj/item/bodypart/affecting)
 	if(affecting.can_dismember(src))
-		if((sharpness || damtype == BURN) && w_class >= 3)
+		if((sharpness || damtype == BURN || (damtype == BRUTE && (affecting.owner.dna && affecting.owner.dna.species && (EASYDISMEMBER in affecting.owner.dna.species.species_traits)))) && w_class >= 3)
 			. = force*(w_class-1)
 
 /obj/item/proc/get_dismember_sound()
@@ -699,4 +687,3 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/MouseExited()
 	deltimer(tip_timer)//delete any in-progress timer if the mouse is moved off the item before it finishes
 	closeToolTip(usr)
-

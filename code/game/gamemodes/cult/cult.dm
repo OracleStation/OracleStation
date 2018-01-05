@@ -54,10 +54,10 @@
 /datum/game_mode/cult/pre_setup()
 	cult_objectives += "sacrifice"
 
-	if(config.protect_roles_from_antagonist)
+	if(CONFIG_GET(flag/protect_roles_from_antagonist))
 		restricted_jobs += protected_jobs
 
-	if(config.protect_assistant_from_antagonist)
+	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
 		restricted_jobs += "Assistant"
 
 	//cult scaling goes here
@@ -104,7 +104,7 @@
 	if(!GLOB.summon_spots.len)
 		while(GLOB.summon_spots.len < SUMMON_POSSIBILITIES)
 			var/area/summon = pick(GLOB.sortedAreas - GLOB.summon_spots)
-			if((summon.z == ZLEVEL_STATION) && summon.valid_territory)
+			if((summon.z in GLOB.station_z_levels) && summon.valid_territory)
 				GLOB.summon_spots += summon
 	cult_objectives += "eldergod"
 
@@ -144,7 +144,7 @@
 		to_chat(mob, "<span class='userdanger'>Unfortunately, you weren't able to get a [item_name]. This is very bad and you should adminhelp immediately (press F1).</span>")
 		return 0
 	else
-		to_chat(mob, "<span class='danger'>You have a [item_name] in your [where].")
+		to_chat(mob, "<span class='danger'>You have a [item_name] in your [where].</span>")
 		if(where == "backpack")
 			var/obj/item/storage/B = mob.back
 			B.orient2hud(mob)

@@ -44,9 +44,11 @@
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	actions_types = list(/datum/action/item_action/organ_action/use)
+	sight_flags = SEE_BLACKNESS
 	var/night_vision = TRUE
 
 /obj/item/organ/eyes/night_vision/ui_action_click()
+	sight_flags = initial(sight_flags)
 	switch(lighting_alpha)
 		if (LIGHTING_PLANE_ALPHA_VISIBLE)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
@@ -56,6 +58,7 @@
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 		else
 			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+			sight_flags &= ~SEE_BLACKNESS
 	owner.update_sight()
 
 /obj/item/organ/eyes/night_vision/alien
@@ -77,7 +80,7 @@
 /obj/item/organ/eyes/robotic
 	name = "robotic eyes"
 	icon_state = "cybernetic_eyeballs"
-	desc = "Your vision is augmented."
+	desc = "A very basic set of optical sensors with no extra vision modes or functions."
 	status = ORGAN_ROBOTIC
 
 /obj/item/organ/eyes/robotic/emp_act(severity)

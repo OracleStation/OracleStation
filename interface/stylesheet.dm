@@ -37,20 +37,20 @@ em						{font-style: normal;	font-weight: bold;}
 .name					{					font-weight: bold;}
 
 .say					{}
-.deadsay				{color: #5c00e6;}
+.deadsay				{color: #5C00E6;}
 .radio					{color: #008000;}
 .sciradio				{color: #993399;}
-.comradio				{color: #948f02;}
-.secradio				{color: #a30000;}
-.medradio				{color: #337296;}
-.engradio				{color: #fb5613;}
-.suppradio				{color: #a8732b;}
-.servradio				{color: #6eaa2c;}
-.syndradio				{color: #6d3f40;}
+.comradio				{color: #204090;}
+.secradio				{color: #A30000;}
+.medradio				{color: #009190;}
+.engradio				{color: #A66300;}
+.suppradio				{color: #7F6539;}
+.servradio				{color: #80A000;}
+.syndradio				{color: #6D3F40;}
 .centcomradio			{color: #686868;}
-.aiprivradio			{color: #ff00ff;}
-.redteamradio           {color: #ff0000;}
-.blueteamradio          {color: #0000ff;}
+.aiprivradio			{color: #FF00FF;}
+.redteamradio           {color: #FF0000;}
+.blueteamradio          {color: #0000FF;}
 
 .yell					{					font-weight: bold;}
 

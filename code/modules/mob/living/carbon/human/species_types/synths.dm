@@ -3,7 +3,7 @@
 	id = "synth"
 	say_mod = "beep boops" //inherited from a user's real species
 	sexes = 0
-	species_traits = list(NOTRANSSTING,NOBREATH,VIRUSIMMUNE,NODISMEMBER,NOHUNGER,NOPAIN,NO_BONES) //all of these + whatever we inherit from the real species
+	species_traits = list(NOTRANSSTING,NOBREATH,VIRUSIMMUNE,NODISMEMBER,NOHUNGER,NOPAIN,NO_BONES,NOCHANGELING) //all of these + whatever we inherit from the real species
 	dangerous_existence = 1
 	blacklisted = 1
 	meat = null
@@ -14,6 +14,7 @@
 	var/datum/species/fake_species = null //a species to do most of our work for us, unless we're damaged
 	examine_text = "a Synth"
 	species_text_color = "#555555"
+	reagent_tag = PROCESS_SYNTHETIC
 
 /datum/species/synth/military
 	name = "Military Synth"

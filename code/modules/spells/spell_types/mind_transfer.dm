@@ -50,10 +50,6 @@ Also, you never added distance checking after target is selected. I've went ahea
 		to_chat(user, "<span class='warning'>[t_He] appear[target.p_s()] to be catatonic! Not even magic can affect [target.p_their()] vacant mind.</span>")
 		return
 
-	if(user.suiciding)
-		to_chat(user, "<span class='warning'>You're killing yourself! You can't concentrate enough to do this!</span>")
-		return
-
 	if((target.mind.special_role in protected_roles) || cmptext(copytext(target.key,1,2),"@"))
 		to_chat(user, "<span class='warning'>[target.p_their(TRUE)] mind is resisting your spell!</span>")
 		return

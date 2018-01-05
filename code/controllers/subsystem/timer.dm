@@ -50,9 +50,9 @@ SUBSYSTEM_DEF(timer)
 			var/datum/timedevent/bucket_head = bucket_list[i]
 			if (!bucket_head)
 				continue
-				
+
 			log_world("Active timers at index [i]:")
-			
+
 			var/datum/timedevent/bucket_node = bucket_head
 			var/anti_loop_check = 1000
 			do
@@ -230,7 +230,7 @@ SUBSYSTEM_DEF(timer)
 	src.timeToRun = timeToRun
 	src.flags = flags
 	src.hash = hash
-	
+
 	if (flags & TIMER_UNIQUE)
 		SStimer.hashes[hash] = src
 	if (flags & TIMER_STOPPABLE)
@@ -241,7 +241,7 @@ SUBSYSTEM_DEF(timer)
 		while(SStimer.timer_id_dict["timerid" + num2text(id, 8)])
 		SStimer.timer_id_dict["timerid" + num2text(id, 8)] = src
 
-	name = "Timer: " + num2text(id, 8) + ", TTR: [timeToRun], Flags: [jointext(bitfield2list(flags, list("TIMER_UNIQUE", "TIMER_OVERRIDE", "TIMER_CLIENT_TIME", "TIMER_STOPPABLE", "TIMER_NO_HASH_WAIT")), ", ")], callBack: \ref[callBack], callBack.object: [callBack.object]\ref[callBack.object]([getcallingtype()]), callBack.delegate:[callBack.delegate]([callBack.arguments ? callBack.arguments.Join(", ") : ""])"
+	name = "Timer: " + num2text(id, 8) + ", TTR: [timeToRun], Flags: [jointext(bitfield2list(flags, list("TIMER_UNIQUE", "TIMER_OVERRIDE", "TIMER_CLIENT_TIME", "TIMER_STOPPABLE", "TIMER_NO_HASH_WAIT")), ", ")], callBack: [REF(callBack)], callBack.object: [callBack.object][REF(callBack.object)]([getcallingtype()]), callBack.delegate:[callBack.delegate]([callBack.arguments ? callBack.arguments.Join(", ") : ""])"
 
 	if (callBack.object != GLOBAL_PROC)
 		LAZYADD(callBack.object.active_timers, src)
@@ -357,9 +357,9 @@ SUBSYSTEM_DEF(timer)
 	if (flags & TIMER_UNIQUE)
 		var/list/hashlist
 		if(flags & TIMER_NO_HASH_WAIT)
-			hashlist = list(callback.object, "(\ref[callback.object])", callback.delegate, flags & TIMER_CLIENT_TIME)
+			hashlist = list(callback.object, "([REF(callback.object)])", callback.delegate, flags & TIMER_CLIENT_TIME)
 		else
-			hashlist = list(callback.object, "(\ref[callback.object])", callback.delegate, wait, flags & TIMER_CLIENT_TIME)
+			hashlist = list(callback.object, "([REF(callback.object)])", callback.delegate, wait, flags & TIMER_CLIENT_TIME)
 		hashlist += callback.arguments
 		hash = hashlist.Join("|||||||")
 
@@ -383,7 +383,7 @@ SUBSYSTEM_DEF(timer)
 		timeToRun = REALTIMEOFDAY + wait
 
 	var/datum/timedevent/timer = new(callback, timeToRun, flags, hash)
-	return timer.id 
+	return timer.id
 
 /proc/deltimer(id)
 	if (!id)

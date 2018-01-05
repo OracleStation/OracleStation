@@ -214,17 +214,28 @@
 /proc/get_hearers_in_view(R, atom/source)
 	// Returns a list of hearers in view(R) from source (ignoring luminosity). Used in saycode.
 	var/turf/T = get_turf(source)
-	var/list/hear = list()
+	. = list()
 
 	if(!T)
-		return hear
+		return
 
-	var/list/range = get_hear(R, T)
-	for(var/atom/movable/A in range)
-		hear |= recursive_hear_check(A)
+	var/list/processing_list = list()
+	if (R == 0) // if the range is zero, we know exactly where to look for, we can skip view
+		processing_list += T.contents // We can shave off one iteration by assuming turfs cannot hear
+	else  // A variation of get_hear inlined here to take advantage of the compiler's fastpath for obj/mob in view
+		var/lum = T.luminosity
+		T.luminosity = 6 // This is the maximum luminosity
+		processing_list = viewers(R, T)
+		for(var/obj/O in view(R, T))
+			processing_list += O
+		T.luminosity = lum
 
-	return hear
-
+	while(processing_list.len) // recursive_hear_check inlined here
+		var/atom/A = processing_list[1]
+		if(A.flags_1 & HEAR_1)
+			. += A
+		processing_list.Cut(1, 2)
+		processing_list += A.contents
 
 /proc/get_mobs_in_radio_ranges(list/obj/item/device/radio/radios)
 
@@ -314,10 +325,11 @@
 
 // Will return a list of active candidates. It increases the buffer 5 times until it finds a candidate which is active within the buffer.
 
-/proc/get_candidates(be_special_type, afk_bracket = config.inactivity_period, jobbanType)
+/proc/get_candidates(be_special_type, afk_bracket = CONFIG_GET(number/inactivity_period), jobbanType)
 	var/list/candidates = list()
 	// Keep looping until we find a non-afk candidate within the time bracket (we limit the bracket to 10 minutes (6000))
-	while(!candidates.len && afk_bracket < config.afk_period)
+	var/afk_period = CONFIG_GET(number/afk_period)
+	while(!candidates.len && afk_bracket < afk_period)
 		for(var/mob/dead/observer/G in GLOB.player_list)
 			if(G.client != null)
 				if(!(G.mind && G.mind.current && G.mind.current.stat != DEAD))
@@ -421,7 +433,7 @@
 	SEND_SOUND(M, 'sound/misc/notice2.ogg') //Alerting them to their consideration
 	if(flashwindow)
 		window_flash(M.client)
-	switch(ignore_category ? askuser(M,Question,"Please answer in [poll_time/10] seconds!","Yes","No","Never for this round", StealFocus=0, Timeout=poll_time) : askuser(M,Question,"Please answer in [poll_time/10] seconds!","Yes","No", StealFocus=0, Timeout=poll_time))
+	switch(ignore_category ? askuser(M,Question,"Please answer in [DisplayTimeText(poll_time)]!","Yes","No","Never for this round", StealFocus=0, Timeout=poll_time) : askuser(M,Question,"Please answer in [DisplayTimeText(poll_time)]!","Yes","No", StealFocus=0, Timeout=poll_time))
 		if(1)
 			to_chat(M, "<span class='notice'>Choice registered: Yes.</span>")
 			if(time_passed + poll_time <= world.time)

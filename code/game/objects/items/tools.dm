@@ -33,11 +33,6 @@
 	toolspeed = 1
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0, fire = 50, acid = 30)
 
-/obj/item/wrench/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is beating [user.p_them()]self to death with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	playsound(loc, 'sound/weapons/genhit.ogg', 50, 1, -1)
-	return (BRUTELOSS)
-
 /obj/item/wrench/cyborg
 	name = "automatic wrench"
 	desc = "An advanced robotic wrench. Can be found in construction cyborgs."
@@ -82,10 +77,6 @@
 	qdel(src)
 	user.put_in_active_hand(s_drill)
 
-/obj/item/wrench/power/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is pressing [src] against [user.p_their()] head! It looks like [user.p_theyre()] trying to commit suicide!")
-	return (BRUTELOSS)
-
 /obj/item/wrench/medical
 	name = "medical wrench"
 	desc = "A medical wrench with common(medical?) uses. Can be found in your hand."
@@ -94,35 +85,6 @@
 	throwforce = 4
 	origin_tech = "materials=1;engineering=1;biotech=3"
 	attack_verb = list("wrenched", "medicaled", "tapped", "jabbed", "whacked")
-
-/obj/item/wrench/medical/suicide_act(mob/living/user)
-	user.visible_message("<span class='suicide'>[user] is praying to the medical wrench to take [user.p_their()] soul. It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	// TODO Make them glow with the power of the M E D I C A L W R E N C H
-	// during their ascension
-
-	// Stun stops them from wandering off
-	user.Stun(100, ignore_canstun = TRUE)
-	playsound(loc, 'sound/effects/pray.ogg', 50, 1, -1)
-
-	// Let the sound effect finish playing
-	sleep(20)
-
-	if(!user)
-		return
-
-	for(var/obj/item/W in user)
-		user.dropItemToGround(W)
-
-	var/obj/item/wrench/medical/W = new /obj/item/wrench/medical(loc)
-	W.add_fingerprint(user)
-	W.desc += " For some reason, it reminds you of [user.name]."
-
-	if(!user)
-		return
-
-	user.dust()
-
-	return OXYLOSS
 
 /*
  * Screwdriver
@@ -158,10 +120,6 @@
 	"cyan" = rgb(24, 162, 213), \
 	"yellow" = rgb(213, 140, 24), \
 	)
-
-/obj/item/screwdriver/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is stabbing [src] into [user.p_their()] [pick("temple", "heart")]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return(BRUTELOSS)
 
 /obj/item/screwdriver/Initialize()
 	. = ..()
@@ -245,10 +203,6 @@
 	toolspeed = 0.25
 	random_color = FALSE
 
-/obj/item/screwdriver/power/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is putting [src] to [user.p_their()] temple. It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return(BRUTELOSS)
-
 /obj/item/screwdriver/power/attack_self(mob/user)
 	playsound(get_turf(user),'sound/items/change_drill.ogg',50,1)
 	var/obj/item/wrench/power/b_drill = new /obj/item/wrench/power
@@ -306,11 +260,6 @@
 	else
 		..()
 
-/obj/item/wirecutters/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is cutting at [user.p_their()] arteries with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	playsound(loc, usesound, 50, 1, -1)
-	return (BRUTELOSS)
-
 /obj/item/wirecutters/brass
 	name = "brass wirecutters"
 	desc = "A pair of wirecutters made of brass. The handle feels freezing cold to the touch."
@@ -340,17 +289,6 @@
 	materials = list(MAT_METAL=150,MAT_SILVER=50,MAT_TITANIUM=25)
 	usesound = 'sound/items/jaws_cut.ogg'
 	toolspeed = 0.25
-
-/obj/item/wirecutters/power/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is wrapping \the [src] around [user.p_their()] neck. It looks like [user.p_theyre()] trying to rip [user.p_their()] head off!</span>")
-	playsound(loc, 'sound/items/jaws_cut.ogg', 50, 1, -1)
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		var/obj/item/bodypart/BP = C.get_bodypart("head")
-		if(BP)
-			BP.drop_limb()
-			playsound(loc,pick('sound/misc/desceration-01.ogg','sound/misc/desceration-02.ogg','sound/misc/desceration-01.ogg') ,50, 1, -1)
-	return (BRUTELOSS)
 
 /obj/item/wirecutters/power/attack_self(mob/user)
 	playsound(get_turf(user), 'sound/items/change_jaws.ogg', 50, 1)
@@ -441,17 +379,20 @@
 	//This is to start fires. process() is only called if the welder is on.
 	open_flame()
 
-
-/obj/item/weldingtool/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] welds [user.p_their()] every orifice closed! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return (FIRELOSS)
-
-
 /obj/item/weldingtool/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/screwdriver))
 		flamethrower_screwdriver(I, user)
 	else if(istype(I, /obj/item/stack/rods))
 		flamethrower_rods(I, user)
+	else if(istype(I, /obj/item/reagent_containers) && I.is_open_container())
+		var/amountNeeded = max_fuel - get_fuel()
+		var/obj/item/reagent_containers/container = I
+		if(length(container.reagents.reagent_list) > 1)
+			to_chat(user, "<span class='warning'>[container] has too many chemicals mixed into it. You wouldn't want to put the wrong chemicals into [src].</span>")
+			return ..()
+		if(amountNeeded > 0 && container.reagents.has_reagent("welding_fuel"))
+			container.reagents.trans_id_to(src, "welding_fuel", amountNeeded)
+			to_chat(user, "<span class='notice'>You transfer some fuel from [container] to [src].</span>")
 	else
 		return ..()
 
@@ -718,11 +659,6 @@
 	toolspeed = 1
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0, fire = 50, acid = 30)
 
-/obj/item/crowbar/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is beating [user.p_them()]self to death with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	playsound(loc, 'sound/weapons/genhit.ogg', 50, 1, -1)
-	return (BRUTELOSS)
-
 /obj/item/crowbar/red
 	icon_state = "crowbar_red"
 	force = 8
@@ -774,11 +710,6 @@
 	usesound = 'sound/items/jaws_pry.ogg'
 	force = 15
 	toolspeed = 0.25
-
-/obj/item/crowbar/power/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is putting [user.p_their()] head in [src], it looks like [user.p_theyre()] trying to commit suicide!</span>")
-	playsound(loc, 'sound/items/jaws_pry.ogg', 50, 1, -1)
-	return (BRUTELOSS)
 
 /obj/item/crowbar/power/attack_self(mob/user)
 	playsound(get_turf(user), 'sound/items/change_jaws.ogg', 50, 1)

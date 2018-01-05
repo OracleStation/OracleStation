@@ -31,6 +31,7 @@
 	var/addiction_threshold = 0
 	var/addiction_stage = 0
 	var/overdosed = 0 // You fucked up and this is now triggering its overdose effects, purge that shit quick.
+	var/process_flags = ORGANIC // What can process this? ORGANIC, SYNTHETIC, or ORGANIC | SYNTHETIC?. We'll assume by default that it affects organics.
 
 /datum/reagent/Destroy() // This should only be called by the holder, so it's already handled clearing its references
 	. = ..()
@@ -74,10 +75,6 @@
 	return
 
 /datum/reagent/proc/on_update(atom/A)
-	return
-
-// Called every time reagent containers process.
-/datum/reagent/proc/on_tick(data)
 	return
 
 // Called when the reagent container is hit by an explosion

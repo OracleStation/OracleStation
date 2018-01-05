@@ -16,8 +16,8 @@
 	throw_range = 5
 	force = 5
 	origin_tech = "combat=1"
-	needs_permit = 1
-	unique_rename = 0
+	needs_permit = TRUE
+	unique_rename = FALSE
 	attack_verb = list("struck", "hit", "bashed")
 
 	var/fire_sound = "gunshot"
@@ -25,7 +25,7 @@
 	var/can_suppress = 0
 	var/can_unsuppress = 1
 	var/recoil = 0						//boom boom shake the room
-	var/clumsy_check = 1
+	var/clumsy_check = TRUE
 	var/obj/item/ammo_casing/chambered = null
 	trigger_guard = TRIGGER_GUARD_NORMAL	//trigger guard on the weapon, hulks can't fire them with their big meaty fingers
 	var/sawn_desc = null				//description change if weapon is sawn-off
@@ -79,19 +79,17 @@
 
 /obj/item/gun/equipped(mob/living/user, slot)
 	. = ..()
-	if(zoomable && user.get_active_held_item() != src)
-		zoom(user, FALSE) //we can only stay zoomed in if it's in our hands
+	if(zoomed && user.get_active_held_item() != src)
+		zoom(user, FALSE) //we can only stay zoomed in if it's in our hands	//yeah and we only unzoom if we're actually zoomed using the gun!!
 
 //called after the gun has successfully fired its chambered ammo.
 /obj/item/gun/proc/process_chamber()
-	return 0
-
+	return FALSE
 
 //check if there's enough ammo/energy/whatever to shoot one time
 //i.e if clicking would make it shoot
 /obj/item/gun/proc/can_shoot()
-	return 1
-
+	return TRUE
 
 /obj/item/gun/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)
 	to_chat(user, "<span class='danger'>*click*</span>")
@@ -136,11 +134,6 @@
 	if(!can_shoot()) //Just because you can pull the trigger doesn't mean it can shoot.
 		shoot_with_empty_chamber(user)
 		return
-
-	if(flag)
-		if(user.zone_selected == "mouth")
-			handle_suicide(user, target, params)
-			return
 
 
 	//Exclude lasertag guns from the CLUMSY check.
@@ -366,40 +359,6 @@
 		azoom.Remove(user)
 	if(alight)
 		alight.Remove(user)
-
-/obj/item/gun/proc/handle_suicide(mob/living/carbon/human/user, mob/living/carbon/human/target, params)
-	if(!ishuman(user) || !ishuman(target))
-		return
-
-	if(semicd)
-		return
-
-	if(user == target)
-		target.visible_message("<span class='warning'>[user] sticks [src] in [user.p_their()] mouth, ready to pull the trigger...</span>", \
-			"<span class='userdanger'>You stick [src] in your mouth, ready to pull the trigger...</span>")
-	else
-		target.visible_message("<span class='warning'>[user] points [src] at [target]'s head, ready to pull the trigger...</span>", \
-			"<span class='userdanger'>[user] points [src] at your head, ready to pull the trigger...</span>")
-
-	semicd = 1
-
-	if(!do_mob(user, target, 120) || user.zone_selected != "mouth")
-		if(user)
-			if(user == target)
-				user.visible_message("<span class='notice'>[user] decided not to shoot.</span>")
-			else if(target && target.Adjacent(user))
-				target.visible_message("<span class='notice'>[user] has decided to spare [target]</span>", "<span class='notice'>[user] has decided to spare your life!</span>")
-		semicd = 0
-		return
-
-	semicd = 0
-
-	target.visible_message("<span class='warning'>[user] pulls the trigger!</span>", "<span class='userdanger'>[user] pulls the trigger!</span>")
-
-	if(chambered && chambered.BB)
-		chambered.BB.damage *= 5
-
-	process_fire(target, user, 1, params)
 
 /////////////
 // ZOOMING //

@@ -7,6 +7,7 @@
 	desc = "A custom made grenade."
 	icon_state = "chemg"
 	item_state = "flashbang"
+	arming_sound = 'sound/weapons/armbomb.ogg'
 	w_class = WEIGHT_CLASS_SMALL
 	force = 2
 	var/stage = EMPTY
@@ -39,7 +40,7 @@
 			message_admins("[ADMIN_LOOKUPFLW(usr)] has primed a [name] for detonation at [A.name][ADMIN_JMP(bombturf)].")
 			log_game("[key_name(usr)] has primed a [name] for detonation at [A.name] [COORD(bombturf)].")
 			to_chat(user, "<span class='warning'>You prime the [name]! [det_time / 10] second\s!</span>")
-			playsound(user.loc, 'sound/weapons/armbomb.ogg', 60, 1)
+			playsound(user.loc, arming_sound, 60, 1)
 			active = 1
 			icon_state = initial(icon_state) + "_active"
 			if(iscarbon(user))
@@ -292,7 +293,7 @@
 		var/mob/last = get_mob_by_ckey(nadeassembly.fingerprintslast)
 		var/turf/T = get_turf(src)
 		var/area/A = get_area(T)
-		message_admins("grenade primed by an assembly, attached by [key_name_admin(M)]<A HREF='?_src_=holder;adminmoreinfo=\ref[M]'>(?)</A> (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[M]'>FLW</A>) and last touched by [key_name_admin(last)]<A HREF='?_src_=holder;adminmoreinfo=\ref[last]'>(?)</A> (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[last]'>FLW</A>) ([nadeassembly.a_left.name] and [nadeassembly.a_right.name]) at <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>[A.name] (JMP)</a>.")
+		message_admins("grenade primed by an assembly, attached by [key_name_admin(M)]<A HREF='?_src_=holder;[HrefToken()];adminmoreinfo=[REF(M)]'>(?)</A> (<A HREF='?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(M)]'>FLW</A>) and last touched by [key_name_admin(last)]<A HREF='?_src_=holder;[HrefToken()];adminmoreinfo=[REF(last)]'>(?)</A> (<A HREF='?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(last)]'>FLW</A>) ([nadeassembly.a_left.name] and [nadeassembly.a_right.name]) at <A HREF='?_src_=holder;[HrefToken()];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>[A.name] (JMP)</a>.")
 		log_game("grenade primed by an assembly, attached by [key_name(M)] and last touched by [key_name(last)] ([nadeassembly.a_left.name] and [nadeassembly.a_right.name]) at [A.name] ([T.x], [T.y], [T.z])")
 	else
 		addtimer(CALLBACK(src, .proc/prime), det_time)
@@ -562,6 +563,32 @@
 	B1.reagents.add_reagent("fungalspores", 200)
 	B2.reagents.add_reagent("blood", 250)
 	B2.reagents.add_reagent("sugar", 50)
+
+	beakers += B1
+	beakers += B2
+
+
+/obj/item/grenade/chem_grenade/rubberduck
+	name = "rubber ducky"
+	desc = "Rubber ducky you're so fine, you make bathtime lots of fuuun. Rubber ducky I'm awfully fooooond of yooooouuuu~"
+	icon_state = "rubberduck"
+	item_state = "rubberduck"
+	arming_sound = 'sound/items/squeaktoy.ogg'
+	stage = READY
+	want_timer = FALSE
+
+/obj/item/grenade/chem_grenade/rubberduck/Initialize()
+	. = ..()
+	var/obj/item/reagent_containers/glass/beaker/bluespace/B1 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/bluespace/B2 = new(src)
+
+	B1.reagents.add_reagent("space_drugs", 20)
+	B1.reagents.add_reagent("phosphorus", 30)
+	B1.reagents.add_reagent("potassium", 30)
+	B2.reagents.add_reagent("lsd", 8)
+	B2.reagents.add_reagent("sugar", 30)
+	B2.reagents.add_reagent("colorful_reagent", 1)
+	B2.reagents.add_reagent("concentrated_barbers_aid", 1)
 
 	beakers += B1
 	beakers += B2

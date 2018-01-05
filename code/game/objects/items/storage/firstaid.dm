@@ -56,8 +56,8 @@
 	item_state = "firstaid-ointment"
 
 /obj/item/storage/firstaid/fire/Initialize(mapload)
-	..()
-	icon_state = pick("ointment","firefirstaid")
+	. = ..()
+	icon_state = pick("ointment")
 
 /obj/item/storage/firstaid/fire/PopulateContents()
 	if(empty)
@@ -75,7 +75,7 @@
 
 /obj/item/storage/firstaid/toxin/Initialize(mapload)
 	. = ..()
-	icon_state = pick("antitoxin","antitoxfirstaid","antitoxfirstaid2","antitoxfirstaid3")
+	icon_state = pick("antitoxin")
 
 /obj/item/storage/firstaid/toxin/PopulateContents()
 	if(empty)
@@ -142,7 +142,7 @@
 	name = "pill bottle"
 	desc = "It's an airtight container for storing medication."
 	icon_state = "pill_canister"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	item_state = "contsolid"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'

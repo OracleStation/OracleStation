@@ -1,5 +1,5 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple
-	icon_state = "intact"
+	icon_state = "intact2"
 
 	name = "pipe"
 	desc = "A one meter section of heat-exchanging pipe"
@@ -8,6 +8,9 @@
 	initialize_directions_he = SOUTH|NORTH
 
 	device_type = BINARY
+
+	construction_type = /obj/item/pipe/binary/bendable
+	pipe_state = "he"
 
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple/SetInitDirections()
 	if(dir in GLOB.diagonals)

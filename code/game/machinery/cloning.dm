@@ -207,7 +207,6 @@
 
 		H.set_cloned_appearance()
 
-		H.suiciding = FALSE
 	attempting = FALSE
 	return TRUE
 
@@ -221,7 +220,7 @@
 			connected_message("Clone Ejected: Loss of power.")
 
 	else if(mob_occupant && (mob_occupant.loc == src))
-		if((mob_occupant.stat == DEAD) || (mob_occupant.suiciding) || mob_occupant.hellbound)  //Autoeject corpses and suiciding dudes.
+		if((mob_occupant.stat == DEAD) || mob_occupant.hellbound)  //Autoeject corpses and unclonables
 			connected_message("Clone Rejected: Deceased.")
 			SPEAK("The cloning of [mob_occupant.real_name] has been \
 				aborted due to unrecoverable tissue failure.")
@@ -229,9 +228,9 @@
 
 		else if(mob_occupant.cloneloss > (100 - heal_level))
 			mob_occupant.Unconscious(80)
-
+			var/dmg_mult = CONFIG_GET(number/damage_multiplier)
 			 //Slowly get that clone healed and finished.
-			mob_occupant.adjustCloneLoss(-((speed_coeff/2) * config.damage_multiplier))
+			mob_occupant.adjustCloneLoss(-((speed_coeff / 2) * dmg_mult))
 			var/progress = CLONE_INITIAL_DAMAGE - mob_occupant.getCloneLoss()
 			// To avoid the default cloner making incomplete clones
 			progress += (100 - MINIMUM_HEAL_LEVEL)
@@ -249,7 +248,7 @@
 					BP.attach_limb(mob_occupant)
 
 			//Premature clones may have brain damage.
-			mob_occupant.adjustBrainLoss(-((speed_coeff/2) * config.damage_multiplier))
+			mob_occupant.adjustBrainLoss(-((speed_coeff / 2) * dmg_mult))
 
 			check_brine()
 
@@ -304,7 +303,7 @@
 			comp.AttachCloner(src)
 		else
 			P.buffer = src
-			to_chat(user, "<font color = #666633>-% Successfully stored \ref[P.buffer] [P.buffer.name] in buffer %-</font color>")
+			to_chat(user, "<font color = #666633>-% Successfully stored [REF(P.buffer)] [P.buffer.name] in buffer %-</font color>")
 		return
 
 	var/mob/living/mob_occupant = occupant

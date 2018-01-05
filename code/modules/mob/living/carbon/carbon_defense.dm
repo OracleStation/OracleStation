@@ -244,12 +244,15 @@
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(on_fire)
-		to_chat(M, "<span class='warning'>You can't put them out with just your bare hands!")
+		to_chat(M, "<span class='warning'>You can't put them out with just your bare hands!</span>")
 		return
 
 	if(health >= 0 && !(status_flags & FAKEDEATH))
 
 		if(lying)
+			if(buckled)
+				to_chat(M, "<span class='warning'>You need to unbuckle [src] first to do that!")
+				return
 			M.visible_message("<span class='notice'>[M] shakes [src] trying to get [p_them()] up!</span>", \
 							"<span class='notice'>You shake [src] trying to get [p_them()] up!</span>")
 		else

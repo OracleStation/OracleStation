@@ -74,9 +74,15 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/body_markings, GLOB.body_markings_list)
 	if(!GLOB.wings_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/wings, GLOB.wings_list)
+	if(!GLOB.ipc_screens_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/ipc_screens, GLOB.ipc_screens_list)
+	if(!GLOB.ipc_antennas_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/ipc_antennas, GLOB.ipc_antennas_list)
+	if(!GLOB.ipc_chassis_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/ipc_chassis, GLOB.ipc_chassis_list)
 
 	//For now we will always return none for tail_human and ears.
-	return(list("mcolor" = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"), "tail_unathi" = pick(GLOB.tails_list_unathi), "tail_ethari" = pick(GLOB.tails_list_ethari), "tail_human" = "None", "wings" = "None", "snout" = pick(GLOB.snouts_list), "snout_ethari" = pick(GLOB.snouts_ethari_list), "ears_ethari" = "Fox", "horns" = pick(GLOB.horns_list), "ears" = "None", "frills" = pick(GLOB.frills_list), "spines" = pick(GLOB.spines_list), "body_markings" = pick(GLOB.body_markings_list), "legs" = "Normal Legs"))
+	return(list("mcolor" = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"), "tail_unathi" = pick(GLOB.tails_list_unathi), "tail_ethari" = pick(GLOB.tails_list_ethari), "tail_human" = "None", "wings" = "None", "snout" = pick(GLOB.snouts_list), "snout_ethari" = pick(GLOB.snouts_ethari_list), "ears_ethari" = "Fox", "horns" = pick(GLOB.horns_list), "ears" = "None", "frills" = pick(GLOB.frills_list), "spines" = pick(GLOB.spines_list), "body_markings" = pick(GLOB.body_markings_list), "legs" = "Normal Legs", "ipc_screen" = pick(GLOB.ipc_screens_list), "ipc_antenna" = pick(GLOB.ipc_antennas_list),"ipc_chassis" = pick(GLOB.ipc_chassis_list)))
 
 /proc/random_hair_style(gender)
 	switch(gender)
@@ -146,7 +152,6 @@ GLOBAL_LIST_INIT(skin_tones, list(
 	))
 
 GLOBAL_LIST_EMPTY(species_list)
-GLOBAL_LIST_EMPTY(roundstart_species)
 
 /proc/age2agedescription(age)
 	switch(age)
