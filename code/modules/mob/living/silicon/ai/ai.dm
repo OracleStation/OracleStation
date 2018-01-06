@@ -173,7 +173,7 @@
 		return
 
 		//if(icon_state == initial(icon_state))
-	var/icontype = input("Please, select a display!", "AI", null/*, null*/) in list("Clown", "Monochrome", "Blue", "Inverted", "Firewall", "Green", "Red", "Static", "Red October", "House", "Heartline", "Hades", "Helios", "President", "Syndicat Meow", "Alien", "Too Deep", "Triumvirate", "Triumvirate-M", "Text", "Matrix", "Dorf", "Bliss", "Not Malf", "Fuzzy", "Goon", "Database", "Glitchman", "Murica", "Nanotrasen", "Gentoo", "Angel")
+	var/icontype = input("Please, select a display!", "AI", null/*, null*/) in list("Clown", "Monochrome", "Blue", "Inverted", "Firewall", "Green", "Red", "Static", "Red October", "House", "Heartline", "Hades", "Helios", "President", "Syndicat Meow", "Alien", "Too Deep", "Triumvirate", "Triumvirate-M", "Text", "Matrix", "Dorf", "Bliss", "Not Malf", "Fuzzy", "Goon", "Database", "Glitchman", "Murica", "Nanotrasen", "Gentoo", "Angel", "Fabulous", "Pirate", "Terminal")
 	if(icontype == "Clown")
 		icon_state = "ai-clown2"
 	else if(icontype == "Monochrome")
@@ -238,6 +238,12 @@
 		icon_state = "ai-gentoo"
 	else if(icontype == "Angel")
 		icon_state = "ai-angel"
+	else if(icontype == "Pirate")
+		icon_state = "ai-pirate"
+	else if(icontype == "Fabulous")
+		icon_state = "ai-fabulous"
+	else if(icontype == "Terminal")
+		icon_state = "ai-terminal"
 	//else
 			//to_chat(usr, "You can only change your display once!")
 			//return
@@ -768,6 +774,7 @@ GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 				"floating face" = 'icons/mob/ai.dmi',
 				"xeno queen" = 'icons/mob/alien.dmi',
 				"horror" = 'icons/mob/ai.dmi',
+				"construct" = 'icons/mob/ai.dmi',
 				"ancient machine" = 'icons/mob/ancient_machine.dmi',
 				)
 
