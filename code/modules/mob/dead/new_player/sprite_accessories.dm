@@ -1900,6 +1900,10 @@
 	name = "aurvox"
 	icon_state = "aurvox"
 
+/datum/sprite_accessory/vox_tails/voxhusk
+	name = "voxhusk"
+	icon_state = "voxhusk"
+
 /datum/sprite_accessory/vox_body_markings
 	icon = 'icons/mob/vox_accessories.dmi'
 

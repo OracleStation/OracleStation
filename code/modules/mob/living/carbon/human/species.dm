@@ -60,6 +60,7 @@
 	var/fixed_mut_color = "" //to use MUTCOLOR with a fixed color that's independent of dna.feature["mcolor"]
 	var/reagent_tag = PROCESS_ORGANIC //Used for metabolizing reagents. We're going to assume you're a meatbag unless you say otherwise.
 	var/species_gibs = "human"
+	var/husk_id = "husk" // For species-specific husk graphics. Currently in use: husk, or voxhusk.
 	var/allow_numbers_in_name // Can this species use numbers in its name?
 
 	// species flags. these can be found in flags.dm
