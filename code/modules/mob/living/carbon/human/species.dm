@@ -93,6 +93,8 @@
 	var/obj/item/organ/stomach/mutantstomach
 	var/ass_pic = "human" // self explanatory
 
+	var/blood_color = "#940000"
+
 ///////////
 // PROCS //
 ///////////

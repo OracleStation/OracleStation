@@ -534,11 +534,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/clean_blood()
 	. = ..()
 	if(.)
-		if(initial(icon) && initial(icon_state))
-			var/index = blood_splatter_index()
-			var/icon/blood_splatter_icon = GLOB.blood_splatter_icons[index]
-			if(blood_splatter_icon)
-				cut_overlay(blood_splatter_icon)
+		if(blood_splatter_icon)
+			cut_overlay(blood_splatter_icon)
 
 /obj/item/clothing/gloves/clean_blood()
 	. = ..()

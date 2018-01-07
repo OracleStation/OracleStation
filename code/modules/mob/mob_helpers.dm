@@ -494,3 +494,15 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 /mob/proc/has_mouth()
 	return FALSE
+
+#warn change the colors; they're only there to test
+/proc/bloodtype_to_color(var/type)
+	. = "#E62525"
+	switch(type)
+		if("F")//Ethari blood; a bit brighter than normal
+			. = "#0000FF"
+		if("L")//lizard, a bit purply
+			. = "#00FF00"
+		if("X*")//xeno blooooood
+			. = "#00FF00"
+		//add more stuff to the switch if you have more blood colors for different types

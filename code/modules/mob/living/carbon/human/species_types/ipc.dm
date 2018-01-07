@@ -15,6 +15,7 @@
 	default_features = list("mcolor" = "#7D7D7D", "ipc_screen" = "Static", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)")
 	meat = /obj/item/stack/sheet/plasteel{amount = 5}
 	skinned_type = /obj/item/stack/sheet/metal{amount = 10}
+	exotic_bloodtype = "Oil"
 	male_scream_sound = 'sound/effects/mob_effects/goonstation/robot_scream.ogg'
 	female_scream_sound = 'sound/effects/mob_effects/goonstation/robot_scream.ogg'
 	male_cough_sound = 'sound/effects/mob_effects/machine_cough.ogg'

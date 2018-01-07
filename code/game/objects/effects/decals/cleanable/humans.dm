@@ -7,21 +7,38 @@
 	blood_DNA = list()
 	blood_state = BLOOD_STATE_HUMAN
 	bloodiness = MAX_SHOE_BLOODINESS
+	use_fade = FALSE
+
+/obj/effect/cleanable/blood/Initialize()
+	. = ..()
+	update_icon()
 
 /obj/effect/decal/cleanable/blood/replace_decal(obj/effect/decal/cleanable/blood/C)
 	if (C.blood_DNA)
 		blood_DNA |= C.blood_DNA.Copy()
+	update_icon()
 	..()
+
+/obj/effect/decal/cleanable/blood/transfer_blood_dna()
+	..()
+	update_icon()
+
+/obj/effect/decal/cleanable/blood/transfer_mob_blood_dna()
+	. = ..()
+	update_icon()
+
+/obj/effect/decal/cleanable/blood/update_icon()
+	color = blood_DNA_to_color()
 
 /obj/effect/decal/cleanable/blood/old
 	name = "dried blood"
-	desc = "Looks like it's been here a while.  Eew."
+	desc = "Looks like it's been here a while. Eew."
 	bloodiness = 0
 
 /obj/effect/decal/cleanable/blood/old/Initialize()
-	..()
+	. = ..()
 	icon_state += "-old" //This IS necessary because the parent /blood type uses icon randomization.
-	blood_DNA["Non-human DNA"] = "A+"
+	add_blood(list(blood_DNA["Non-human DNA"] = "A+"))
 
 /obj/effect/decal/cleanable/blood/splatter
 	random_icon_states = list("gibbl1", "gibbl2", "gibbl3", "gibbl4", "gibbl5")
@@ -38,10 +55,25 @@
 	random_icon_states = null
 	var/list/existing_dirs = list()
 	blood_DNA = list()
+	use_fade = FALSE
 
+/obj/effect/decal/cleanable/trail_holder/update_icon()
+	color = blood_DNA_to_color()
+
+/obj/effect/cleanable/trail_holder/Initialize()
+	. = ..()
+	update_icon()
 
 /obj/effect/decal/cleanable/trail_holder/can_bloodcrawl_in()
 	return 1
+
+/obj/effect/decal/cleanable/trail_holder/transfer_blood_dna()
+	..()
+	update_icon()
+
+/obj/effect/decal/cleanable/trail_holder/transfer_mob_blood_dna()
+	. = ..()
+	update_icon()
 
 
 /obj/effect/decal/cleanable/blood/gibs
@@ -52,9 +84,16 @@
 	layer = LOW_OBJ_LAYER
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6")
 	mergeable_decal = 0
+	var/gib_overlay = FALSE
 
 /obj/effect/decal/cleanable/blood/gibs/Initialize()
-	..()
+	. = ..()
+	if(gib_overlay)
+		var/icon/gibz = new(icon, icon_state + "-overlay")
+		add_overlay(gibz)
+
+/obj/effect/decal/cleanable/blood/gibs/Initialize()
+	. = ..()
 	reagents.add_reagent("liquidgibs", 5)
 
 /obj/effect/decal/cleanable/blood/gibs/ex_act(severity, target)
@@ -72,21 +111,27 @@
 
 /obj/effect/decal/cleanable/blood/gibs/up
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6","gibup1","gibup1","gibup1")
+	gib_overlay = TRUE
 
 /obj/effect/decal/cleanable/blood/gibs/down
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6","gibdown1","gibdown1","gibdown1")
+	gib_overlay = TRUE
 
 /obj/effect/decal/cleanable/blood/gibs/body
 	random_icon_states = list("gibhead", "gibtorso")
+	gib_overlay = TRUE
 
 /obj/effect/decal/cleanable/blood/gibs/torso
 	random_icon_states = list("gibtorso")
+	gib_overlay = TRUE
 
 /obj/effect/decal/cleanable/blood/gibs/limb
 	random_icon_states = list("gibleg", "gibarm")
+	gib_overlay = TRUE
 
 /obj/effect/decal/cleanable/blood/gibs/core
 	random_icon_states = list("gibmid1", "gibmid2", "gibmid3")
+	gib_overlay = TRUE
 
 /obj/effect/decal/cleanable/blood/gibs/old
 	name = "old rotting gibs"
@@ -94,7 +139,7 @@
 	bloodiness = 0
 
 /obj/effect/decal/cleanable/blood/gibs/old/Initialize()
-	..()
+	. = ..()
 	setDir(pick(1,2,4,8))
 	icon_state += "-old"
 	blood_DNA["Non-human DNA"] = "A+"
@@ -130,6 +175,8 @@
 		var/mob/living/carbon/human/H = O
 		var/obj/item/clothing/shoes/S = H.shoes
 		if(S && S.bloody_shoes[blood_state])
+			if(color != bloodtype_to_color(S.last_bloodtype))
+				return
 			S.bloody_shoes[blood_state] = max(S.bloody_shoes[blood_state] - BLOOD_LOSS_PER_STEP, 0)
 			shoe_types |= S.type
 			if (!(entered_dirs & H.dir))
@@ -141,6 +188,8 @@
 		var/mob/living/carbon/human/H = O
 		var/obj/item/clothing/shoes/S = H.shoes
 		if(S && S.bloody_shoes[blood_state])
+			if(color != bloodtype_to_color(S.last_bloodtype))//last entry - we check its color
+				return
 			S.bloody_shoes[blood_state] = max(S.bloody_shoes[blood_state] - BLOOD_LOSS_PER_STEP, 0)
 			shoe_types  |= S.type
 			if (!(exited_dirs & H.dir))
@@ -148,6 +197,7 @@
 				update_icon()
 
 /obj/effect/decal/cleanable/blood/footprints/update_icon()
+	..()
 	cut_overlays()
 
 	for(var/Ddir in GLOB.cardinals)
@@ -162,7 +212,7 @@
 				GLOB.bloody_footprints_cache["exited-[blood_state]-[Ddir]"] = bloodstep_overlay = image(icon, "[blood_state]2", dir = Ddir)
 			add_overlay(bloodstep_overlay)
 
-	alpha = BLOODY_FOOTPRINT_BASE_ALPHA+bloodiness
+	alpha = BLOODY_FOOTPRINT_BASE_ALPHA + bloodiness
 
 
 /obj/effect/decal/cleanable/blood/footprints/examine(mob/user)
@@ -177,6 +227,8 @@
 
 /obj/effect/decal/cleanable/blood/footprints/replace_decal(obj/effect/decal/cleanable/C)
 	if(blood_state != C.blood_state) //We only replace footprints of the same type as us
+		return
+	if(color != C.color)
 		return
 	..()
 
