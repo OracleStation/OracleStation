@@ -2,7 +2,7 @@
 	name = "Vox Outcast"
 	id = "vox"
 	say_mod = "shrieks"
-	species_traits = list(RESISTPRESSURE, NOSCAN, NO_UNDERWEAR) // Robust, but cannot be cloned.
+	species_traits = list(RESISTPRESSURE, RESISTCOLD, NOSCAN, NO_UNDERWEAR) // Robust, but cannot be cloned.
 	damage_overlay_type = "human"
 	mutant_bodyparts = list("vox_quills", "vox_body_markings",  "vox_facial_quills", "vox_tail", "vox_body", "vox_eyes", "vox_tail_markings")
 	attack_verb = "slash"
@@ -21,6 +21,7 @@
 	skinned_type = /obj/item/stack/sheet/animalhide/vox
 	toxmod = 2 // Weak immune systems.
 	oxymod = 2 // Removing their mask skreks them
+	burnmod = 0.7 // Tough hides.
 	stunmod = 1.2 // Take a bit longer to get up than other species.
 	breathid = "n2" // O2 is for dustlungs
 	examine_text = "A vox outcast"
@@ -33,7 +34,7 @@
 
 	while(i<=sounds)
 		i++
-		newname += pick("ti","hi","ki","ya","ta","ha","ka","ya","chi","cha","kah")
+		newname += pick("ti","hi","ki","ya","ta","ha","ka","yi","chi","cha","kah")
 	return capitalize(newname)
 
 /datum/species/vox/on_species_gain(mob/living/carbon/C)

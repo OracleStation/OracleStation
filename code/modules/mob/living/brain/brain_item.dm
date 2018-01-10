@@ -150,19 +150,25 @@
 /obj/item/organ/brain/cybernetic/vox
 	name = "Vox cortical stack"
 	slot = "brain"
-	desc = "A vox cortical stack - considered to be their brain. Its existance is the center of debate."
+	desc = "A vox cortical stack. A truly alien organ made up of both organic and synthetic parts."
 	zone = "head"
 	icon_state = "voxbrain"
 	status = ORGAN_ROBOTIC
 	origin_tech = "biotech=3"
 
 /obj/item/organ/brain/cybernetic/vox/emp_act(severity)
-	to_chat(owner, "<span class='warning'>Your cortical stack has been damaged!</span>")
+	to_chat(owner, "<span class='warning'>Your head hurts.</span>")
 	switch(severity)
 		if(1)
-			owner.adjustBrainLoss(50)
+			owner.Jitter(rand(50,120))
+			owner.Stun(rand(50,100))
+			owner.Dizzy(rand(30,60))
+			owner.adjustBrainLoss(rand(25, 50))
 		if(2)
-			owner.adjustBrainLoss(25)
+			owner.Jitter(rand(25,50))
+			owner.Stun(rand(25,50))
+			owner.Dizzy(rand(25,30))
+			owner.adjustBrainLoss(rand(0, 25))
 
 // IPC brain fuckery.
 /obj/item/organ/brain/mmi_holder

@@ -208,7 +208,7 @@
 	say_mod = "shrieks"
 	icon_state = "tonguezombie" // Close enough
 	taste_sensitivity = 50 // There's not much need for taste when you're a scavenger.
-	attack_verb = list("skreks")
+	attack_verb = list("skree'd")
 
 /obj/item/organ/tongue/vox/TongueSpeech(var/message)
 	if(prob(10))
