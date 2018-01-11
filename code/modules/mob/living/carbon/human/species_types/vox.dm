@@ -46,7 +46,7 @@
 	C.dna.features["vox_eyes"] = vox_body_of_choice.eye_type
 
 /datum/species/vox/after_equip_job(datum/job/J, mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath/vox(H), slot_wear_mask)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), slot_wear_mask)
 	H.put_in_l_hand(new /obj/item/tank/internals/emergency_oxygen/vox(H))
 	to_chat(H, "<span class='notice'>You are now running on nitrogen internals from the emergency tank in your hand. Your species finds oxygen toxic, so you must breathe nitrogen only.</span>")
 	H.internal = H.get_item_for_held_index(1)
