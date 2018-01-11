@@ -271,16 +271,16 @@
 		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-angel"
 	else if(icontype == "Pirate")
-		icon = 'goon/icons/mob/ai.dmi'
+		icon = 'icons/vg/mob/ai.dmi'
 		icon_state = "ai-pirate"
 	else if(icontype == "Fabulous")
-		icon = 'goon/icons/mob/ai.dmi'
+		icon = 'icons/vg/mob/ai.dmi'
 		icon_state = "ai-fabulous"
 	else if(icontype == "Terminal")
-		icon = 'goon/icons/mob/ai.dmi'
+		icon = 'icons/vg/mob/ai.dmi'
 		icon_state = "ai-terminal"
 	else if(icontype == "Fuzz")
-		icon = 'goon/icons/mob/ai.dmi'
+		icon = 'icons/vg//mob/ai.dmi'
 		icon_state = "ai-fuzz"
 	//else
 			//to_chat(usr, "You can only change your display once!")
@@ -812,8 +812,8 @@ GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 				"floating face" = 'icons/mob/ai.dmi',
 				"xeno queen" = 'icons/mob/alien.dmi',
 				"horror" = 'icons/mob/ai.dmi',
-				"construct" = 'goon/icons/mob/ai.dmi',
-				"alternative face" = 'goon/icons/mob/ai.dmi',
+				"construct" = 'icons/vg/mob/ai.dmi',
+				"alternative face" = 'icons/vg/mob/ai.dmi',
 				"ancient machine" = 'icons/mob/ancient_machine.dmi',
 				)
 
