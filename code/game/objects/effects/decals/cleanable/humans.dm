@@ -1,6 +1,6 @@
 /obj/effect/decal/cleanable/blood
 	name = "blood"
-	desc = "It's red and gooey. Perhaps it's the chef's cooking?"
+	desc = "It's gooey. Perhaps it's the chef's cooking?"
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "floor1"
 	random_icon_states = list("floor1", "floor2", "floor3", "floor4", "floor5", "floor6", "floor7")
@@ -105,7 +105,8 @@
 	for(var/i = 0, i < pick(1, 200; 2, 150; 3, 50), i++)
 		sleep(2)
 		if(i > 0)
-			new /obj/effect/decal/cleanable/blood/splatter(loc)
+			var/obj/effect/decal/cleanable/blood/splatter/splat = new(loc)
+			splat.transfer_blood_dna(blood_DNA)
 		if(!step_to(src, get_step(src, direction), 0))
 			break
 
@@ -142,17 +143,15 @@
 	. = ..()
 	setDir(pick(1,2,4,8))
 	icon_state += "-old"
-	blood_DNA["Non-human DNA"] = "A+"
-
+	add_blood(list(blood_DNA["Non-human DNA"] = "A+"))
 
 /obj/effect/decal/cleanable/blood/drip
 	name = "drips of blood"
-	desc = "It's red."
+	desc = "It's sticky."
 	icon_state = "1"
 	random_icon_states = list("drip1","drip2","drip3","drip4","drip5")
 	bloodiness = 0
 	var/drips = 1
-
 
 /obj/effect/decal/cleanable/blood/drip/can_bloodcrawl_in()
 	return 1
