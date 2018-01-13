@@ -66,6 +66,8 @@
 #define ACCESS_CLONING 68 //Cloning room
 #define ACCESS_BLUESHIELD 69 // Blueshield Office
 #define ACCESS_PARAMEDIC 70 // Paramedic
+#define ACCESS_ENTER_GENPOP 71 // Access to enter genpop
+#define ACCESS_LEAVE_GENPOP 72 // Access to enter genpop
 
 	//BEGIN CENTCOM ACCESS
 	/*Should leave plenty of room if we need to add more access levels.
@@ -100,4 +102,3 @@
 	//Special, for anything that's basically internal
 #define ACCESS_BLOODCULT 250
 #define ACCESS_CLOCKCULT 251
-

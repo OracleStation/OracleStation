@@ -14,6 +14,7 @@
 
 // BEGIN_INCLUDE
 #include "_maps\basemap.dm"
+#include "_maps\map_files\OmegaStation\genpop.dm"
 #include "code\_compile_options.dm"
 #include "code\world.dm"
 #include "code\__DATASTRUCTURES\globals.dm"
@@ -582,6 +583,7 @@
 #include "code\game\machinery\syndicatebomb.dm"
 #include "code\game\machinery\teleporter.dm"
 #include "code\game\machinery\transformer.dm"
+#include "code\game\machinery\turnstile.dm"
 #include "code\game\machinery\vending.dm"
 #include "code\game\machinery\washing_machine.dm"
 #include "code\game\machinery\wishgranter.dm"
@@ -972,6 +974,7 @@
 #include "code\game\objects\structures\crates_lockers\closets\secure\cargo.dm"
 #include "code\game\objects\structures\crates_lockers\closets\secure\engineering.dm"
 #include "code\game\objects\structures\crates_lockers\closets\secure\freezer.dm"
+#include "code\game\objects\structures\crates_lockers\closets\secure\genpop.dm"
 #include "code\game\objects\structures\crates_lockers\closets\secure\hydroponics.dm"
 #include "code\game\objects\structures\crates_lockers\closets\secure\medical.dm"
 #include "code\game\objects\structures\crates_lockers\closets\secure\misc.dm"
