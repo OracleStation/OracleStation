@@ -1626,9 +1626,17 @@
 	name = "Square wave"
 	icon_state = "squarewave"
 
+datum/sprite_accessory/ipc_screens/stars
+	name = "Stars"
+	icon_state = "stars"
+
 /datum/sprite_accessory/ipc_screens/static_screen
 	name = "Static"
 	icon_state = "static"
+
+datum/sprite_accessory/ipc_screens/textdrop
+	name = "Text Drop"
+	icon_state = "textdrop"
 
 /datum/sprite_accessory/ipc_screens/yellow
 	name = "Yellow"

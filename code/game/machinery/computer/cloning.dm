@@ -447,7 +447,7 @@
 		scantemp = "<span class='bad'>Unable to locate valid genetic data.</span>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 		return
-	if(mob_occupant.suiciding || mob_occupant.hellbound)
+	if(mob_occupant.hellbound)
 		scantemp = "<span class='bad'>Subject's brain is not responding to scanning stimuli.</span>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 		return

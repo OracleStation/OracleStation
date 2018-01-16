@@ -54,8 +54,6 @@
 		var/datum/mutation/human/race/R = GLOB.mutations_list[RACEMUT]
 		O.dna.struc_enzymes = R.set_se(O.dna.struc_enzymes, on=1)//we don't want to keep the race block inactive
 
-	if(suiciding)
-		O.suiciding = suiciding
 	if(hellbound)
 		O.hellbound = hellbound
 	O.loc = loc
@@ -208,8 +206,6 @@
 		O.dna.struc_enzymes = R.set_se(O.dna.struc_enzymes, on=0)//we don't want to keep the race block active
 		O.domutcheck()
 
-	if(suiciding)
-		O.suiciding = suiciding
 	if(hellbound)
 		O.hellbound = hellbound
 

@@ -134,7 +134,7 @@
 				icon_state = "morgue3"
 				return
 			for(var/mob/living/M in compiled)
-				if(M.client && !M.suiciding)
+				if(M.client)
 					icon_state = "morgue4" // Cloneable
 					break
 
