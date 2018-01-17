@@ -97,5 +97,5 @@
 /datum/emote/sound/silicon/dwoop
 	key = "dwoop"
 	key_third_person = "dwoops"
-	message = "dwoops"
+	message = "dwoops."
 	sound = 'sound/machines/dwoop.ogg'

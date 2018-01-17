@@ -274,6 +274,14 @@
 	if(..())
 		playsound(user.loc, 'sound/effects/mob_effects/synth_no.ogg', 50)
 
+/datum/emote/living/carbon/human/robot_tongue/dwoop
+	key = "dwoop"
+	message = "dwoops."
+
+/datum/emote/living/carbon/human/robot_tongue/dwoop/run_emote(mob/user, params)
+	if(..())
+		playsound(user.loc, 'sound/machines/dwoop.ogg', 50)
+
  // Clown Robotic Tongue ONLY. Henk.
 
 /datum/emote/living/carbon/human/robot_tongue/clown/can_run_emote(mob/user)
@@ -299,11 +307,3 @@
 /datum/emote/living/carbon/human/robot_tongue/clown/sad/run_emote(mob/user, params)
 	if(..())
 		playsound(user.loc, 'sound/misc/sadtrombone.ogg', 50)
-
-/datum/emote/living/carbon/human/robot_tongue/dwoop
-	key = "dwoop"
-	message = "dwoops!"
-
-/datum/emote/living/carbon/human/robot_tongue/dwoop/run_emote(mob/user, params)
-	if(..())
-		playsound(user.loc, 'sound/machines/dwoop.ogg', 50)
