@@ -93,3 +93,9 @@
 	key = "no"
 	message = "buzzes negatively."
 	sound = 'sound/effects/mob_effects/synth_no.ogg'
+
+/datum/emote/sound/silicon/dwoop
+	key = "dwoop"
+	key_third_person = "dwoops"
+	message = "dwoops"
+	sound = 'sound/machines/dwoop.ogg'
