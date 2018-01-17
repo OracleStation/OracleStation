@@ -370,27 +370,13 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/dangerous/guardian
- 	name = "Holoparasites"
- 	desc = "Though capable of near sorcerous feats via use of hardlight holograms and nanomachines, they require an \
- 			organic host as a home base and source of fuel."
- 	item = /obj/item/storage/box/syndie_kit/guardian
- 	cost = 14
- 	exclude_modes = list(/datum/game_mode/nuclear)
- 	player_minimum = 25
-
-/datum/uplink_item/dangerous/syndrone
-	name = "SynDrone"
-	desc = "A Syndicate drone. It has laws to aid you and other operatives. It comes with 10TC for itself, and a syndicate key to communicate with you!"
-	item = /obj/item/drone_shell/syndrone
-	cost = 20
+	name = "Holoparasites"
+	desc = "Though capable of near sorcerous feats via use of hardlight holograms and nanomachines, they require an \
+			organic host as a home base and source of fuel."
+	item = /obj/item/storage/box/syndie_kit/guardian
+	cost = 14
 	exclude_modes = list(/datum/game_mode/nuclear)
-
-/datum/uplink_item/dangerous/badasssyndrone
-	name = "Badass SynDrone"
-	desc = "A badass Syndicate drone. It has laws to aid you and other operatives. It comes with 30TC to equip itself."
-	item = /obj/item/drone_shell/syndrone/badass
-	cost = 50
-	include_modes = list(/datum/game_mode/nuclear)
+	player_minimum = 25
 
 // Ammunition
 /datum/uplink_item/ammo

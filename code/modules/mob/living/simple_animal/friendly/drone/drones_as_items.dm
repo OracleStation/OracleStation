@@ -27,11 +27,6 @@
 	GLOB.poi_list -= src
 	. = ..()
 
-/obj/item/drone_shell/attack_self(mob/user)
-	var/area/A = get_area(src)
-	if(A)
-		notify_ghosts("An empty drone shell has been pinged in \the [A.name].", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE)
-
 /obj/item/drone_shell/attack_ghost(mob/user)
 	if(jobban_isbanned(user,"drone"))
 		return
