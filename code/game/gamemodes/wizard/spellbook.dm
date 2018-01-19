@@ -857,7 +857,7 @@
 	..()
 	to_chat(user,"<span class='warning'>You're knocked down!</span>")
 	user.Knockdown(40)
- 
+
 /obj/item/spellbook/oneuse/barnyard
 	spell = /obj/effect/proc_holder/spell/targeted/barnyardcurse
 	spellname = "barnyard"
