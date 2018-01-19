@@ -276,12 +276,11 @@ update_label("John Doe", "Clowny")
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
 	assignment = "Convict"
-	registered_name = "Prisoner"
 	var/goal = 0 //How far from freedom?
 	var/points = 0
 
 	var/served = 0 //Time served in seconds
-	var/sentence = 15 //Sentance in minutes
+	var/sentence = 0 //Sentance in minutes
 	var/crime = "\[redacted\]"
 
 	access = list(ACCESS_ENTER_GENPOP)
@@ -289,22 +288,27 @@ update_label("John Doe", "Clowny")
 /obj/item/card/id/prisoner/New()
 	. = ..()
 	START_PROCESSING(SSprocessing, src)
+	registered_name = "Prisoner #13-" + num2text(rand(100,999))
 
 /obj/item/card/id/prisoner/process()
-	if (served > (sentence * 60)) //FREEDOM!
+	if (sentence > 0 && served > (sentence * 60)) //FREEDOM!
 		assignment = "Ex-Convict"
 		access = list(ACCESS_LEAVE_GENPOP)
 		update_label(registered_name, assignment)
 		playsound(loc, 'sound/machines/ping.ogg', 50, 1)
 		if(isliving(loc))
-			to_chat(loc, "<b><font size=3>\the [src] buzzes: You have served your sentence! You may now exit prison through the turnstiles and collect your belongings.</font></b>")
+			to_chat(loc, "<span class='boldnotice'>\the [src] buzzes: You have served your sentence! You may now exit prison through the turnstiles and collect your belongings.</span>")
 		STOP_PROCESSING(SSprocessing, src)
 	else
 		served += 1
 
-/obj/item/card/id/prisoner/attack_self(mob/user)
+/obj/item/card/id/prisoner/examine(mob/user)
+	..()
+
 	var/minutesServed = round(served / 60)
-	if (served >= (sentence * 60))
+	if(sentence <= 0)
+		to_chat(usr, "<span class='notice'>You are serving a permanent sentence for [crime].</span>")
+	else if(served >= (sentence * 60))
 		to_chat(usr, "<span class='notice'>You have served your sentence for [crime].</span>")
 	else
 		to_chat(usr, "<span class='notice'>You have served [minutesServed] minutes of your [sentence] minute sentance for [crime].</span>")
