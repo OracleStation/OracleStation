@@ -5988,7 +5988,15 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	dir = 4
 	},
-/obj/structure/closet/secure_closet/genpop,
+/obj/structure/closet/crate{
+	name = "prisoner apparel crate"
+	},
+/obj/item/clothing/under/rank/prisoner,
+/obj/item/clothing/under/rank/prisoner,
+/obj/item/clothing/under/rank/prisoner,
+/obj/item/clothing/under/rank/prisoner,
+/obj/item/clothing/under/rank/prisoner,
+/obj/item/clothing/under/rank/prisoner,
 /turf/open/floor/plasteel/red/corner,
 /area/security/brig)
 "ajZ" = (
@@ -42319,6 +42327,11 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/disposaloutlet{
+	dir = 4;
+	pixel_x = -8
+	},
+/obj/structure/disposalpipe/trunk,
 /turf/open/floor/plasteel/red/side{
 	dir = 8
 	},
@@ -42347,6 +42360,7 @@
 	network = list("SS13")
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel/red/side{
 	dir = 8
 	},
@@ -42399,6 +42413,10 @@
 /area/security/prison)
 "bBK" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/plasteel/red/side{
 	dir = 8
 	},
@@ -42406,8 +42424,7 @@
 "bBL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+	dir = 4
 	},
 /turf/open/floor/plasteel/red/corner,
 /area/security/prison)
@@ -42429,6 +42446,10 @@
 /area/security/prison)
 "bBP" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/flasher{
+	id = "genpop_flash";
+	pixel_x = 20
+	},
 /turf/open/floor/plasteel/red/side{
 	dir = 6
 	},
@@ -42460,22 +42481,10 @@
 /turf/closed/wall/r_wall,
 /area/security/prison)
 "bBU" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel/red/side{
-	dir = 10
-	},
+/turf/closed/wall/r_wall,
 /area/security/prison)
 "bBV" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/disposaloutlet{
-	dir = 8
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/turf/open/floor/plasteel/red/side{
-	dir = 6
-	},
+/turf/closed/wall/r_wall,
 /area/security/prison)
 "bBW" = (
 /obj/machinery/turnstile{
@@ -42499,15 +42508,6 @@
 /turf/open/floor/engine,
 /area/security/brig)
 "bBZ" = (
-/turf/closed/wall/r_wall,
-/area/security/prison)
-"bCa" = (
-/turf/closed/wall/r_wall,
-/area/security/prison)
-"bCb" = (
-/turf/closed/wall/r_wall,
-/area/security/prison)
-"bCc" = (
 /obj/structure/cable{
 	icon_state = "0-2";
 	pixel_y = 1;
@@ -42528,11 +42528,18 @@
 	pixel_y = 25;
 	req_one_access_txt = "2"
 	},
+/obj/machinery/button/flasher{
+	id = "genpop_flash";
+	name = "General Population Flash";
+	pixel_x = -10;
+	pixel_y = 34;
+	req_one_access_txt = "2"
+	},
 /turf/open/floor/plasteel/red/side{
 	dir = 1
 	},
 /area/security/brig)
-"bCd" = (
+"bCa" = (
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -42540,7 +42547,7 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
-"bCe" = (
+"bCb" = (
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 8;
@@ -42548,15 +42555,27 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
-"bCf" = (
+"bCc" = (
 /turf/open/floor/plasteel,
 /area/security/brig)
-"bCg" = (
+"bCd" = (
 /turf/open/floor/plasteel/red/side{
 	dir = 4
 	},
 /area/security/brig)
-"bCh" = (
+"bCe" = (
+/obj/machinery/suit_storage_unit/security,
+/turf/open/floor/plasteel/vault{
+	dir = 8
+	},
+/area/security/brig)
+"bCf" = (
+/obj/machinery/suit_storage_unit/security,
+/turf/open/floor/plasteel/vault{
+	dir = 8
+	},
+/area/security/brig)
+"bCg" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "brigfront";
 	name = "Brig Blast door"
@@ -42566,7 +42585,7 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
-"bCi" = (
+"bCh" = (
 /obj/structure/cable{
 	icon_state = "0-4";
 	d2 = 4
@@ -42574,7 +42593,7 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/security/brig)
-"bCj" = (
+"bCi" = (
 /obj/structure/cable/white{
 	d1 = 4;
 	d2 = 8;
@@ -42587,7 +42606,7 @@
 	dir = 4
 	},
 /area/security/brig)
-"bCk" = (
+"bCj" = (
 /obj/structure/cable/white{
 	d1 = 4;
 	d2 = 8;
@@ -42598,7 +42617,7 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
-"bCl" = (
+"bCk" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	dir = 8
 	},
@@ -75588,8 +75607,8 @@ aad
 aad
 aad
 aad
-afL
 ahu
+agF
 agF
 agF
 agF
@@ -75846,9 +75865,9 @@ bBu
 bBA
 bBJ
 bBT
-bBZ
 aim
 aiR
+bCe
 ajR
 akT
 alH
@@ -76103,8 +76122,8 @@ bBv
 bBB
 bBK
 bBU
-bCa
 ain
+aiS
 aiS
 ajS
 akU
@@ -76360,9 +76379,9 @@ bBw
 bBC
 bBL
 bBV
-bCb
 aio
 aiT
+bCf
 ajT
 ait
 alJ
@@ -76878,7 +76897,7 @@ ahv
 aiq
 aiV
 ajV
-bCi
+bCh
 alL
 akW
 alL
@@ -77141,7 +77160,7 @@ amL
 anD
 bzh
 apz
-bCl
+bCk
 arI
 asO
 agF
@@ -77646,12 +77665,12 @@ adx
 bBP
 bBY
 ahy
-bCd
+bCa
 aiY
 ajY
 akZ
 alO
-bCj
+bCi
 anF
 aow
 apB
@@ -77902,8 +77921,8 @@ aeo
 bBG
 aeo
 agF
-bCc
-bCe
+bBZ
+bCb
 aiY
 ajZ
 ala
@@ -78160,12 +78179,12 @@ bBH
 bBQ
 agF
 ahz
-bCf
+bCc
 aiY
 aka
 ala
 alP
-bCk
+bCj
 ala
 aoy
 apD
@@ -78417,7 +78436,7 @@ afc
 bBR
 agF
 ahA
-bCg
+bCd
 aiY
 akb
 ala
@@ -78675,7 +78694,7 @@ bBS
 agF
 agF
 agF
-bCh
+bCg
 ajc
 aip
 ajc
