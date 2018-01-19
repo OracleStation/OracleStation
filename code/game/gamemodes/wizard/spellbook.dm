@@ -857,6 +857,26 @@
 	..()
 	to_chat(user,"<span class='warning'>You're knocked down!</span>")
 	user.Knockdown(40)
+ 
+/obj/item/spellbook/oneuse/barnyard
+	spell = /obj/effect/proc_holder/spell/targeted/barnyardcurse
+	spellname = "barnyard"
+	icon_state ="bookhorses"
+	desc = "This book is more horse than your mind has room for."
+
+/obj/item/spellbook/oneuse/barnyard/recoil(mob/living/carbon/user)
+	if(ishuman(user))
+		to_chat(user,"<font size='15' color='red'><b>HOR-SIE HAS RISEN</b></font>")
+		var/obj/item/clothing/mask/horsehead/magichead = new /obj/item/clothing/mask/horsehead
+		magichead.flags_1 |= NODROP_1		//curses!
+		magichead.flags_inv &= ~HIDEFACE //so you can still see their face
+		magichead.voicechange = 1	//NEEEEIIGHH
+		if(!user.dropItemToGround(user.wear_mask))
+			qdel(user.wear_mask)
+		user.equip_to_slot_if_possible(magichead, slot_wear_mask, 1, 1)
+		qdel(src)
+	else
+		to_chat(user,"<span class='notice'>I say thee neigh</span>") //It still lives here
 
 /obj/item/spellbook/oneuse/charge
 	spell = /obj/effect/proc_holder/spell/targeted/charge
