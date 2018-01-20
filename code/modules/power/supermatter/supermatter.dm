@@ -165,12 +165,16 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_shard)
 		return
 
 	var/range = HALLUCINATION_RANGE(power)
-	for(var/mob/living/carbon/human/H in viewers(range, src))
-		if(H != user)
-			continue
-		if(!istype(H.glasses, /obj/item/clothing/glasses/meson))
-			to_chat(H, "<span class='danger'>You get headaches just from looking at it.</span>")
+
+	if(get_dist(src, user) > range)
 		return
+	var/mob/living/carbon/human/H = user
+	if(istype(H.glasses, /obj/item/clothing/glasses/meson))
+		return
+	var/obj/item/organ/eyes/eyes = H.getorganslot("eye_sight")
+	if(eyes && eyes.status == ORGAN_ROBOTIC)
+		return
+	to_chat(H, "<span class='danger'>You get headaches just from looking at it.</span>")
 
 /obj/machinery/power/supermatter_shard/get_spans()
 	return list(SPAN_ROBOT)
@@ -359,8 +363,13 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_shard)
 		env.merge(removed)
 		air_update_turf()
 
-	for(var/mob/living/carbon/human/l in view(src, HALLUCINATION_RANGE(power))) // If they can see it without mesons on.  Bad on them.
-		if(!istype(l.glasses, /obj/item/clothing/glasses/meson))
+	for(var/mob/living/carbon/human/l in view(src, HALLUCINATION_RANGE(power))) // If they can see it with organic eyes and without mesons.  Bad on them.
+		if(istype(l.glasses, /obj/item/clothing/glasses/meson))
+			return
+		var/obj/item/organ/eyes/eyes = l.getorganslot("eye_sight")
+		if(eyes && eyes.status == ORGAN_ROBOTIC)
+			return
+		else
 			var/D = sqrt(1 / max(1, get_dist(l, src)))
 			l.hallucination += power * config_hallucination_power * D
 			l.hallucination = Clamp(0, 200, l.hallucination)
