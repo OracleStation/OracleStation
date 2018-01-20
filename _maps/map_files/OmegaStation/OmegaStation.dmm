@@ -1446,7 +1446,9 @@
 "acE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/hydroponics/soil,
-/obj/item/cultivator,
+/obj/item/cultivator{
+	force = 0
+	},
 /turf/open/floor/plasteel/red/side{
 	dir = 5
 	},
@@ -2417,7 +2419,12 @@
 /turf/open/floor/plasteel,
 /area/shuttle/supply)
 "ael" = (
-/obj/structure/chair/folding,
+/obj/machinery/flasher{
+	desc = "A high-power floor-mounted flashbulb device.";
+	id = "genpop_flash";
+	name = "genpop flash";
+	range = 3
+	},
 /turf/open/floor/plasteel,
 /area/security/prison)
 "aem" = (
@@ -5716,10 +5723,10 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 1
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 1
+	dir = 1 
 	},
 /turf/open/floor/plasteel/blue/corner{
 	dir = 4
@@ -9833,7 +9840,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 1
+	dir = 1 
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/port/central)
@@ -33464,10 +33471,10 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 1
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 1
+	dir = 1 
 	},
 /turf/open/floor/plating,
 /area/maintenance/port)
@@ -33644,10 +33651,10 @@
 	},
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 1
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 1
+	dir = 1 
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/starboard)
@@ -41449,10 +41456,10 @@
 	})
 "bzB" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 1
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 1
+	dir = 1 
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit{
@@ -41460,10 +41467,10 @@
 	})
 "bzC" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 1
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 1
+	dir = 1 
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit{
@@ -41471,10 +41478,10 @@
 	})
 "bzD" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 1
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 1
+	dir = 1 
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit{
@@ -41482,10 +41489,10 @@
 	})
 "bzE" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 1
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 1
+	dir = 1 
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit{
@@ -41493,10 +41500,10 @@
 	})
 "bzF" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 1
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 1
+	dir = 1 
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit{
@@ -41504,10 +41511,10 @@
 	})
 "bzG" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 1
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 1
+	dir = 1 
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit{
@@ -41515,10 +41522,10 @@
 	})
 "bzH" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
-	dir = 1
+	dir = 1 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
-	dir = 1
+	dir = 1 
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit{
@@ -42247,8 +42254,7 @@
 /area/security/prison)
 "bBf" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/hydroponics/soil,
-/obj/item/reagent_containers/glass/bucket,
+/obj/structure/holohoop,
 /turf/open/floor/plasteel/red/side{
 	dir = 1
 	},
@@ -42256,7 +42262,12 @@
 "bBg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/hydroponics/soil,
-/obj/item/shovel/spade,
+/obj/item/shovel/spade{
+	force = 0
+	},
+/obj/structure/sign/poster/contraband/random{
+	pixel_y = 32
+	},
 /turf/open/floor/plasteel/red/side{
 	dir = 1
 	},
@@ -42266,6 +42277,7 @@
 	dir = 1
 	},
 /obj/machinery/hydroponics/soil,
+/obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/plasteel/red/side{
 	dir = 1
 	},
@@ -42327,21 +42339,18 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/disposaloutlet{
-	dir = 4;
-	pixel_x = -8
-	},
-/obj/structure/disposalpipe/trunk,
 /turf/open/floor/plasteel/red/side{
 	dir = 8
 	},
 /area/security/prison)
 "bBw" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/folding,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "bBx" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/folding,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "bBy" = (
@@ -42360,16 +42369,15 @@
 	network = list("SS13")
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/disposalpipe/segment,
+/obj/structure/chair/folding{
+	dir = 4
+	},
 /turf/open/floor/plasteel/red/side{
 	dir = 8
 	},
 /area/security/prison)
 "bBC" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/chair/folding{
-	dir = 4
-	},
+/obj/structure/table/reinforced,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "bBD" = (
@@ -42378,25 +42386,16 @@
 /turf/open/floor/plasteel,
 /area/security/prison)
 "bBE" = (
-/obj/structure/table/reinforced,
-/obj/item/dice/d6,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "bBF" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/chair/folding{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/security/prison)
-"bBG" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Genpop Bathroom"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/security/prison)
-"bBH" = (
+"bBG" = (
 /obj/structure/sink/kitchen{
 	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
 	name = "sink";
@@ -42405,61 +42404,54 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/freezer,
 /area/security/prison)
+"bBH" = (
+/turf/closed/wall/r_wall,
+/area/security/prison)
 "bBI" = (
 /turf/closed/wall/r_wall,
 /area/security/prison)
 "bBJ" = (
-/turf/closed/wall/r_wall,
-/area/security/prison)
-"bBK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
 /turf/open/floor/plasteel/red/side{
 	dir = 8
 	},
 /area/security/prison)
-"bBL" = (
+"bBK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/structure/chair/folding{
+	dir = 1
 	},
 /turf/open/floor/plasteel/red/corner,
 /area/security/prison)
-"bBM" = (
+"bBL" = (
 /obj/machinery/light,
-/obj/structure/disposalpipe/segment{
+/turf/open/floor/plasteel/red/side,
+/area/security/prison)
+"bBM" = (
+/obj/structure/disposaloutlet{
+	density = 0;
+	dir = 1
+	},
+/obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
 /turf/open/floor/plasteel/red/side,
 /area/security/prison)
 "bBN" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/open/floor/plasteel/red/side,
 /area/security/prison)
 "bBO" = (
-/turf/open/floor/plasteel/red/side,
-/area/security/prison)
-"bBP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/flasher{
-	id = "genpop_flash";
-	pixel_x = 20
-	},
 /turf/open/floor/plasteel/red/side{
 	dir = 6
 	},
 /area/security/prison)
-"bBQ" = (
+"bBP" = (
 /obj/machinery/light/small,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/freezer,
 /area/security/prison)
-"bBR" = (
+"bBQ" = (
 /obj/machinery/shower{
 	dir = 8;
 	icon_state = "shower";
@@ -42471,8 +42463,11 @@
 	layer = 2.9
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/soap,
+/obj/item/soap/syndie,
 /turf/open/floor/plasteel/freezer,
+/area/security/prison)
+"bBR" = (
+/turf/closed/wall/r_wall,
 /area/security/prison)
 "bBS" = (
 /turf/closed/wall/r_wall,
@@ -42484,9 +42479,6 @@
 /turf/closed/wall/r_wall,
 /area/security/prison)
 "bBV" = (
-/turf/closed/wall/r_wall,
-/area/security/prison)
-"bBW" = (
 /obj/machinery/turnstile{
 	req_access_txt = "71";
 	cuts_off_zipties = 1
@@ -42494,21 +42486,21 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/engine,
 /area/security/brig)
-"bBX" = (
+"bBW" = (
 /obj/machinery/door/poddoor{
 	id = "genpopdoor";
 	name = "Genpop Blast Door"
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
-"bBY" = (
+"bBX" = (
 /obj/machinery/turnstile{
 	dir = 1;
 	req_access_txt = "72"
 	},
 /turf/open/floor/engine,
 /area/security/brig)
-"bBZ" = (
+"bBY" = (
 /obj/structure/cable{
 	icon_state = "0-2";
 	pixel_y = 1;
@@ -42540,7 +42532,7 @@
 	dir = 1
 	},
 /area/security/brig)
-"bCa" = (
+"bBZ" = (
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -42548,7 +42540,7 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
-"bCb" = (
+"bCa" = (
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 8;
@@ -42556,12 +42548,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
-"bCc" = (
+"bCb" = (
 /turf/open/floor/plasteel,
 /area/security/brig)
-"bCd" = (
+"bCc" = (
 /turf/open/floor/plasteel/red/side{
 	dir = 4
+	},
+/area/security/brig)
+"bCd" = (
+/obj/machinery/suit_storage_unit/security,
+/turf/open/floor/plasteel/vault{
+	dir = 8
 	},
 /area/security/brig)
 "bCe" = (
@@ -42571,12 +42569,6 @@
 	},
 /area/security/brig)
 "bCf" = (
-/obj/machinery/suit_storage_unit/security,
-/turf/open/floor/plasteel/vault{
-	dir = 8
-	},
-/area/security/brig)
-"bCg" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "brigfront";
 	name = "Brig Blast door"
@@ -42586,7 +42578,7 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
-"bCh" = (
+"bCg" = (
 /obj/structure/cable{
 	icon_state = "0-4";
 	d2 = 4
@@ -42594,7 +42586,7 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/security/brig)
-"bCi" = (
+"bCh" = (
 /obj/structure/cable/white{
 	d1 = 4;
 	d2 = 8;
@@ -42607,7 +42599,7 @@
 	dir = 4
 	},
 /area/security/brig)
-"bCj" = (
+"bCi" = (
 /obj/structure/cable/white{
 	d1 = 4;
 	d2 = 8;
@@ -42618,7 +42610,7 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
-"bCk" = (
+"bCj" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/bottom{
 	dir = 8
 	},
@@ -75864,11 +75856,11 @@ bBb
 bBl
 bBu
 bBA
-bBJ
-bBT
+bBI
+bBS
 aim
 aiR
-bCe
+bCd
 ajR
 akT
 alH
@@ -76121,8 +76113,8 @@ bBc
 bBm
 bBv
 bBB
-bBK
-bBU
+bBJ
+bBT
 ain
 aiS
 aiS
@@ -76378,11 +76370,11 @@ bBd
 bBn
 bBw
 bBC
-bBL
-bBV
+bBK
+bBU
 aio
 aiT
-bCf
+bCe
 ajT
 ait
 alJ
@@ -76635,7 +76627,7 @@ bBe
 bBo
 bBx
 bBD
-bBM
+bBL
 agF
 agF
 aip
@@ -76892,13 +76884,13 @@ bBf
 bBp
 ael
 bBE
-bBN
+bBM
 agF
 ahv
 aiq
 aiV
 ajV
-bCh
+bCg
 alL
 akW
 alL
@@ -77148,9 +77140,9 @@ bAU
 bBg
 bBq
 bBy
-bBF
+aem
 afN
-bBW
+bBV
 ahw
 air
 air
@@ -77161,7 +77153,7 @@ amL
 anD
 bzh
 apz
-bCk
+bCj
 arI
 asO
 agF
@@ -77406,8 +77398,8 @@ bBh
 bBr
 aem
 afb
-bBO
-bBX
+bBN
+bBW
 ahx
 ais
 aiX
@@ -77663,15 +77655,15 @@ acE
 adx
 aen
 adx
-bBP
-bBY
+bBO
+bBX
 ahy
-bCa
+bBZ
 aiY
 ajY
 akZ
 alO
-bCi
+bCh
 anF
 aow
 apB
@@ -77919,11 +77911,11 @@ bAX
 bBi
 ady
 aeo
-bBG
+bBF
 aeo
 agF
-bBZ
-bCb
+bBY
+bCa
 aiY
 ajZ
 ala
@@ -78176,16 +78168,16 @@ bAY
 bBj
 adz
 aeo
-bBH
-bBQ
+bBG
+bBP
 agF
 ahz
-bCc
+bCb
 aiY
 aka
 ala
 alP
-bCj
+bCi
 ala
 aoy
 apD
@@ -78434,10 +78426,10 @@ acH
 bBs
 aeo
 afc
-bBR
+bBQ
 agF
 ahA
-bCd
+bCc
 aiY
 akb
 ala
@@ -78690,12 +78682,12 @@ bBa
 bBk
 bBt
 bBz
-bBI
-bBS
+bBH
+bBR
 agF
 agF
 agF
-bCg
+bCf
 ajc
 aip
 ajc
