@@ -36,6 +36,7 @@
 /datum/reagent/blood/on_new(list/data)
 	if(istype(data))
 		SetViruses(src, data)
+		color = bloodtype_to_color(data["blood_type"])
 
 /datum/reagent/blood/on_merge(list/mix_data)
 	if(data && mix_data)
