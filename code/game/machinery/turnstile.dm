@@ -4,7 +4,7 @@
 	icon = 'icons/obj/turnstile.dmi'
 	icon_state = "turnstile_map"
 	power_channel = ENVIRON
-	density = TRUE
+	density = FALSE
 	armor = list(melee = 50, bullet = 50, laser = 50, energy = 50, bomb = 10, bio = 100, rad = 100, fire = 90, acid = 70)
 	anchored = TRUE
 	use_power = FALSE
@@ -23,24 +23,27 @@
 /obj/machinery/turnstile/bullet_act(obj/item/projectile/P, def_zone)
 	return -1 //Pass through!
 
-/obj/machinery/turnstile/CollidedWith(atom/movable/AM)
+/obj/machinery/turnstile/CanPass(atom/movable/AM, turf/T)
 	if(ismob(AM))
 		var/mob/B = AM
 		if(isliving(AM))
 			var/mob/living/M = AM
 
 			if(world.time - M.last_bumped <= 10)
-				return
+				return FALSE
 			M.last_bumped = world.time
 
 			var/allowed_access = FALSE
 			var/turf/behind = get_step(src, dir)
 
-			if(AM in behind.contents)
-				allowed_access = allowed(B)
+			if(B in behind.contents)
+				if(B.pulledby && ismob(B.pulledby))
+					allowed_access = allowed(B.pulledby) | allowed(B)
+				else
+					allowed_access = allowed(B)
 			else
 				to_chat(usr, "<span class='notice'>\the [src] resists your efforts.</span>")
-				return
+				return FALSE
 
 			if(allowed_access)
 				var/mob/living/carbon/human/HU = AM
@@ -50,22 +53,30 @@
 						qdel(zipties)
 						to_chat(usr, "<span class='notice'>\the [src] cuts off \the [zipties].</span>")
 				flick("operate", src)
-				sleep(CONFIG_GET(number/run_delay))
-				AM.forceMove(loc)
 				playsound(src,'sound/items/ratchet.ogg',50,0,3)
-				var/outdir = null
-				switch(dir)
-					if(NORTH)
-						outdir = SOUTH
-					if(SOUTH)
-						outdir = NORTH
-					if(EAST)
-						outdir = WEST
-					if(WEST)
-						outdir = EAST
-				var/turf/outturf = get_step(src, outdir)
-				sleep(CONFIG_GET(number/run_delay))
-				AM.forceMove(outturf)
+				return TRUE
 			else
 				flick("deny", src)
 				playsound(src,'sound/machines/deniedbeep.ogg',50,0,3)
+				return FALSE
+	if(ispath(AM, /obj/item/))
+		return TRUE
+	else
+		return FALSE
+
+/obj/machinery/turnstile/CheckExit(atom/movable/AM as mob|obj, target)
+	if(ismob(AM))
+		var/outdir = null
+		switch(dir)
+			if(NORTH)
+				outdir = SOUTH
+			if(SOUTH)
+				outdir = NORTH
+			if(EAST)
+				outdir = WEST
+			if(WEST)
+				outdir = EAST
+		var/turf/outturf = get_step(src, outdir)
+		return (target == src.loc) | (target == outturf)
+	else
+		return TRUE
