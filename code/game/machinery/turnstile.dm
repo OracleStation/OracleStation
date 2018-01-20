@@ -29,7 +29,7 @@
 		if(isliving(AM))
 			var/mob/living/M = AM
 
-			if(world.time - M.last_bumped <= 10)
+			if(world.time - M.last_bumped <= 5)
 				return FALSE
 			M.last_bumped = world.time
 
@@ -65,18 +65,25 @@
 		return FALSE
 
 /obj/machinery/turnstile/CheckExit(atom/movable/AM as mob|obj, target)
-	if(ismob(AM))
-		var/outdir = null
-		switch(dir)
-			if(NORTH)
-				outdir = SOUTH
-			if(SOUTH)
-				outdir = NORTH
-			if(EAST)
-				outdir = WEST
-			if(WEST)
-				outdir = EAST
+	if(isliving(AM))
+		var/mob/living/M = AM
+		var/outdir = dir
+		if(allowed(M))
+			switch(dir)
+				if(NORTH)
+					outdir = SOUTH
+				if(SOUTH)
+					outdir = NORTH
+				if(EAST)
+					outdir = WEST
+				if(WEST)
+					outdir = EAST
 		var/turf/outturf = get_step(src, outdir)
-		return (target == src.loc) | (target == outturf)
+		var/canexit = (target == src.loc) | (target == outturf)
+
+		if(!canexit && world.time - M.last_bumped <= 5)
+			to_chat(usr, "<span class='notice'>\the [src] resists your efforts.</span>")
+		M.last_bumped = world.time
+		return canexit
 	else
 		return TRUE

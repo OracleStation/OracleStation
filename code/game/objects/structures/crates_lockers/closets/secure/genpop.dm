@@ -27,13 +27,13 @@
 
 /obj/structure/closet/secure_closet/genpop/proc/handle_edit_sentence(mob/user)
 	var/prisoner_name = input(user, "Please input the name of the prisoner.", "Prisoner Name", registered_id.registered_name) as text|null
-	if(prisoner_name == null)
+	if(prisoner_name == null | !user.Adjacent(src))
 		return FALSE
 	var/sentence_length = input(user, "Please input the length of their sentence in minutes (0 for perma).", "Sentence Length", registered_id.sentence) as num|null
-	if(sentence_length == null)
+	if(sentence_length == null | !user.Adjacent(src))
 		return FALSE
 	var/crimes = input(user, "Please input their crimes.", "Crimes", registered_id.crime) as text|null
-	if(crimes == null)
+	if(crimes == null | !user.Adjacent(src))
 		return FALSE
 
 	registered_id.registered_name = prisoner_name
@@ -50,6 +50,8 @@
 	if(!broken && locked && registered_id != null)
 		var/name = registered_id.registered_name
 		var/result = alert(user, "This locker currently contains [name]'s personal effects ","Locker In Use","Reset","Amend ID", "Open")
+		if(!user.Adjacent(src))
+			return
 		if(result == "Reset")
 			name = default_name
 			desc = default_desc
