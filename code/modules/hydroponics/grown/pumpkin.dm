@@ -37,7 +37,7 @@
 // Blumpkin
 /obj/item/seeds/pumpkin/blumpkin
 	name = "pack of plasma-pumpkin seeds"
-	desc = "These seeds grow into blumpkin vines."
+	desc = "These seeds grow into plasma-pumpkin vines."
 	icon_state = "seed-blumpkin"
 	species = "blumpkin"
 	plantname = "Plasma-pumpkin Vines"
