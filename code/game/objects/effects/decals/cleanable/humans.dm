@@ -91,9 +91,6 @@
 	if(gib_overlay)
 		var/icon/gibz = new(icon, icon_state + "-overlay")
 		add_overlay(gibz)
-
-/obj/effect/decal/cleanable/blood/gibs/Initialize()
-	. = ..()
 	reagents.add_reagent("liquidgibs", 5)
 
 /obj/effect/decal/cleanable/blood/gibs/ex_act(severity, target)

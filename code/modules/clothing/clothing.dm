@@ -373,9 +373,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/shoes/transfer_blood_dna(list/blood_dna)
 	..()
-	to_chat(world, "Will try to add blood dna to [src]")
 	if(blood_dna.len)
-		to_chat(world, "Will now add [blood_dna[blood_dna[blood_dna.len]]]")
 		last_bloodtype = blood_dna[blood_dna[blood_dna.len]]//trust me this works
 		last_blood_DNA = blood_dna[blood_dna.len]
 
