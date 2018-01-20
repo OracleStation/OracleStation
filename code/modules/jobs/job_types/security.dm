@@ -116,7 +116,7 @@ Detective
 /datum/job/detective
 	title = "Detective"
 	flag = DETECTIVE
-	department_head = list("Head of Security")
+	department_head = list("the Captain")
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 1
@@ -171,7 +171,7 @@ Security Officer
 	faction = "Station"
 	total_positions = 5 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
 	spawn_positions = 5 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
-	supervisors = "the head of security, and the head of your assigned department (if applicable)"
+	supervisors = "the Captain"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 300
