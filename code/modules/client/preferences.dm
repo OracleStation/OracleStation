@@ -66,7 +66,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
-	var/species_looking_at				//used as a helper to keep track of in the species selct thingy
+	var/species_looking_at = "human"	//used as a helper to keep track of in the species selct thingy
 	var/list/features = list("mcolor" = "FFF", "tail_unathi" = "Smooth", "tail_human" = "None", "tail_ethari" = "Bushy", "snout_ethari" = "Sharp", "ears_ethari" = "Fox", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "ipc_screen" = "Blue", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)")
 
 	var/list/custom_names = list("clown", "mime", "ai", "cyborg", "religion", "deity")
@@ -111,8 +111,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/menuoptions
 
 /datum/preferences/New(client/C)
-	if(pref_species)
-		species_looking_at = pref_species.id
 	parent = C
 	custom_names["ai"] = pick(GLOB.ai_names)
 	custom_names["cyborg"] = pick(GLOB.ai_names)
@@ -127,6 +125,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/loaded_preferences_successfully = load_preferences()
 	if(loaded_preferences_successfully)
 		if(load_character())
+			species_looking_at = pref_species.id
 			return
 	//we couldn't load character data so just randomize the character appearance + name
 	random_character()		//let's create a random character then - rather than a fat, bald and naked man.
@@ -157,7 +156,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/sppath = GLOB.species_list[species_looking_at]
 	var/datum/species/S = new sppath()
 
-	datspecies += "<center>[S.loreblurb]</center></div></th><th>"
+	datspecies += "<center><font size=3 style='font-weight:bold'>[S.name]</font><BR><BR>[S.loreblurb]</center></div></th><th>"
 	var/icon/fakeicon = update_preview_icon(S, TRUE)//Q: Is this hacky? A:Yes. Yes, it is.
 	user << browse_rsc(fakeicon, "fakeicon.png")
 	datspecies += "<center>"

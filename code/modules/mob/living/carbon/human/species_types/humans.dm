@@ -11,9 +11,9 @@
 	liked_food = JUNKFOOD | FRIED
 	examine_text = "a Human"
 	species_text_color = "#2e2e2e"
-	loreblurb = "When a Human humans many humans are humaned. It is necessary to point out that humanning is definitely not without non-existent\
-	  side effects which will affect your effects effectively and affectionately. For that very reason, limited, full-scale interactions with the\
-	  least humans of the human Humans are not strongly recommended if you feel like doing something that really isn't recommended."
+	loreblurb = "Originating from Earth and making up the bulk of Nanotrasen's workforce, Humans are known for their adaptability and intelligence. \
+	 As only a limited amount of trust is afforded to non-Human crewmembers, members of this species can enjoy numerous comforts. \
+	 What they lack in scales, claws and tails, they make up for in solidarity and institutionalized racism."
 
 
 /datum/species/human/qualifies_for_rank(rank, list/features)
