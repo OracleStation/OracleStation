@@ -96,6 +96,7 @@
 	new /obj/item/reagent_containers/blood/OPlus(src)
 	new /obj/item/reagent_containers/blood/unathi(src)
 	new /obj/item/reagent_containers/blood/ethari(src)
+	new /obj/item/reagent_containers/blood/vox(src)
 	for(var/i in 1 to 3)
 		new /obj/item/reagent_containers/blood/random(src)
 

@@ -3,7 +3,6 @@
 	id = "vox"
 	say_mod = "shrieks"
 	species_traits = list(RESISTPRESSURE, RESISTCOLD, NOSCAN, NO_UNDERWEAR) // Robust, but cannot be cloned.
-	damage_overlay_type = "human"
 	mutant_bodyparts = list("vox_quills", "vox_body_markings",  "vox_facial_quills", "vox_tail", "vox_body", "vox_eyes", "vox_tail_markings")
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
@@ -26,6 +25,8 @@
 	breathid = "n2" // O2 is for dustlungs
 	examine_text = "A vox outcast"
 	husk_id = "voxhusk"
+	damage_overlay_type = "vox"
+	exotic_bloodtype = "V"
 
 /datum/species/vox/random_name(unique)
 	var/sounds = rand(2,8)

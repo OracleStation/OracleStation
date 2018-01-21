@@ -502,6 +502,8 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 			. = "#DB3300"
 		if("L")//lizard, a bit pink/purple
 			. = "#DB004D"
+		if("V")// Voxys bloods yaya, pale-ish blue.
+			. = "#3498DB"
 		if("X*")//xeno blood; not actually used in many spots
 			. = "#00DB21"
 		//add more stuff to the switch if you have more blood colors for different types

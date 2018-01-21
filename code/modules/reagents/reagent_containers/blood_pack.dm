@@ -56,7 +56,7 @@
 
 
 /obj/item/reagent_containers/blood/random/Initialize()
-	blood_type = pick("A+", "A-", "B+", "B-", "O+", "O-", "L", "F")
+	blood_type = pick("A+", "A-", "B+", "B-", "O+", "O-", "L", "F", "V")
 	. = ..()
 
 /obj/item/reagent_containers/blood/APlus
@@ -82,6 +82,9 @@
 
 /obj/item/reagent_containers/blood/ethari
 	blood_type = "F"
+
+/obj/item/reagent_containers/blood/vox
+	blood_type = "V"
 
 /obj/item/reagent_containers/blood/empty
 	name = "blood pack"
