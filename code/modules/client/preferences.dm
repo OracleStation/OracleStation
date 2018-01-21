@@ -66,6 +66,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
+	var/species_looking_at				//used as a helper to keep track of in the species selct thingy
 	var/list/features = list("mcolor" = "FFF", "tail_unathi" = "Smooth", "tail_human" = "None", "tail_ethari" = "Bushy", "snout_ethari" = "Sharp", "ears_ethari" = "Fox", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "ipc_screen" = "Blue", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)")
 
 	var/list/custom_names = list("clown", "mime", "ai", "cyborg", "religion", "deity")
@@ -110,6 +111,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/menuoptions
 
 /datum/preferences/New(client/C)
+	if(pref_species)
+		species_looking_at = pref_species.id
 	parent = C
 	custom_names["ai"] = pick(GLOB.ai_names)
 	custom_names["cyborg"] = pick(GLOB.ai_names)
@@ -134,10 +137,49 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	menuoptions = list()
 	return
 
+/datum/preferences/proc/ShowSpeciesChoices(mob/user)
+	var/datspecies = "<div><table style='width:100%'><tr><th>"
+	var/roundstart_species = CONFIG_GET(keyed_number_list/roundstart_races)
+	var/exp = 50000//200IQ coding; if we don't track XP there are no restrictions
+	if(CONFIG_GET(flag/use_exp_tracking))
+		exp = parent.calc_exp_type(EXP_TYPE_LIVING)
+		exp /= 60 //in hours, because I'm vindictive
+	datspecies += "<div style='overflow-y:auto;height=180px;width=75px'>"
+	for(var/S in roundstart_species)
+		if(species_looking_at == S)
+			datspecies += "<b>[S]</b><BR><BR>"
+		else if(roundstart_species[S] == 0 || roundstart_species[S] <= exp)
+			datspecies += "<a href='?_src_=prefs;lookatspecies=[S];task=species'>[S]</a><BR><BR>"
+		else
+			datspecies += "<a href='?_src_=prefs;lookatspecies=[S];task=species'><font color='red'>[S]</font></a><BR><BR>"
+
+	datspecies += "</div></th><th><div style='overflow-y:auto;;height=180px;width=420px'>"
+	var/sppath = GLOB.species_list[species_looking_at]
+	var/datum/species/S = new sppath()
+
+	datspecies += "<center>[S.loreblurb]</center></div></th><th>"
+	var/icon/fakeicon = update_preview_icon(S, TRUE)//Q: Is this hacky? A:Yes. Yes, it is.
+	user << browse_rsc(fakeicon, "fakeicon.png")
+	datspecies += "<center>"
+	datspecies += "<img src=fakeicon.png width=[fakeicon.Width()] height=[fakeicon.Height()]><BR>"
+	datspecies += "<a href='?_src_=prefs;setspecies=[species_looking_at];task=species'>Set Species</a> <a href='?_src_=prefs;preference=job;task=close'>Done</a><BR>"
+	if(species_looking_at == pref_species.id)
+		datspecies += "<font size=3>CHOSEN</font>"
+	if(exp >= 0 && roundstart_species[species_looking_at] > exp)
+		datspecies += "<span class='warning'>Need [roundstart_species[species_looking_at] - exp] hours to unlock!</span>"
+	datspecies += "</center></th></tr></table></div>"
+
+	user << browse(null, "window=preferences")
+	var/datum/browser/popup = new(user, "speciespick", "<div align='center'>Species Pick</div>", 700, 230)
+	popup.set_window_options("can_close=0")
+	popup.set_content(datspecies)
+	popup.open(0)
+	QDEL_NULL(S)
+
 /datum/preferences/proc/ShowChoices(mob/user)
 	if(!user || !user.client)
 		return
-	update_preview_icon()
+	preview_icon = update_preview_icon()
 	user << browse_rsc(preview_icon, "previewicon.png")
 	var/dat = "<center>"
 
@@ -838,6 +880,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		switch(href_list["task"])
 			if("close")
 				user << browse(null, "window=mob_occupation")
+				user << browse(null, "window=speciespick")
 				ShowChoices(user)
 			if("reset")
 				ResetJobs()
@@ -889,6 +932,34 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					backbag = pick(GLOB.backbaglist)
 				if("all")
 					random_character()
+
+		if("species")
+			if(href_list["setspecies"])
+				var/sid = href_list["setspecies"]
+				var/let_them = TRUE
+				if(CONFIG_GET(flag/use_exp_tracking))
+					var/roundstart_species = CONFIG_GET(keyed_number_list/roundstart_races)
+					var/exp = parent.calc_exp_type(EXP_TYPE_LIVING)
+					exp /= 60 //in hours, because I'm vindictive
+					if(roundstart_species[sid] != 0 && roundstart_species[sid] > exp)//we're checking against this list to prevent href shenanigans
+						to_chat(parent, "<span class='danger'>You need more playtime to play [capitalize(sid)]!</span>")
+						let_them = FALSE
+				if(let_them)
+					var/newtype = GLOB.species_list[sid]
+					pref_species = new newtype()
+					//Now that we changed our species, we must verify that the mutant colour is still allowed.
+					var/temp_hsv = RGBtoHSV(features["mcolor"])
+					if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
+						features["mcolor"] = pref_species.default_color
+					user << browse(null, "window=speciespick")
+					ShowChoices(user)
+					return 1
+
+			if(href_list["lookatspecies"])
+				species_looking_at = href_list["lookatspecies"]
+
+			ShowSpeciesChoices(user)
+			return 1
 
 		if("input")
 			switch(href_list["preference"])
@@ -1023,16 +1094,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						eye_color = sanitize_hexcolor(new_eyes)
 
 				if("species")
-
-					var/result = input(user, "Select a species", "Species Selection") as null|anything in CONFIG_GET(keyed_flag_list/roundstart_races)
-
-					if(result)
-						var/newtype = GLOB.species_list[result]
-						pref_species = new newtype()
-						//Now that we changed our species, we must verify that the mutant colour is still allowed.
-						var/temp_hsv = RGBtoHSV(features["mcolor"])
-						if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
-							features["mcolor"] = pref_species.default_color
+					ShowSpeciesChoices(user)
+					return 1
 
 				if("mutant_color")
 					var/new_mutantcolor = input(user, "Choose your character's alien/mutant color:", "Character Preference") as color|null

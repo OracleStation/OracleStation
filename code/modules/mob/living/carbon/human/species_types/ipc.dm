@@ -35,6 +35,8 @@
 	allow_numbers_in_name = TRUE
 	ass_pic = "ipc"
 	var/datum/action/innate/change_screen/change_screen
+	loreblurb = "BEEP BOOP BEEP BOOP BEEP BOOP BEEP BOOP BEEP BOOP BEEP BOOP BEEP BOOP BEEP BOOP BEEP BOOP \
+	BEEP BOOP BEEP BOOP BEEP BOOP BEEP BOOP BEEP BOOP BEEP BOOP BEEP BOOP BEEP BOOP BEEP BOOP BEEP BOOP BEEP BOOP"
 
 /datum/species/ipc/random_name(unique)
 	var/ipc_name = "[pick(GLOB.posibrain_names)]-[rand(100, 999)]"

@@ -21,6 +21,7 @@
 	ass_pic = "ethari"
 	examine_text = "an Ethari"
 	species_text_color = "#e23f03"
+	loreblurb = "Rawr x3 nuzzles how are you pounces on you you're so warm o3o notices you have a \[redacted] o: someone's happy ;) nuzzles your necky wecky~ murr~ hehehe rubbies your \[redacted] \[redacted] you're so big :oooo rubbies more on your \[redacted] \[redacted] it doesn't stop \[redacted] ·///· \[redacted] you and \[redacted] your \[redacted]"
 
 /datum/species/ethari/after_equip_job(datum/job/J, mob/living/carbon/human/H)
 	H.grant_language(/datum/language/canilunzt)
