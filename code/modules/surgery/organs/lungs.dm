@@ -33,6 +33,7 @@
 	var/oxy_breath_dam_min = MIN_TOXIC_GAS_DAMAGE
 	var/oxy_breath_dam_max = MAX_TOXIC_GAS_DAMAGE
 	var/oxy_damage_type = OXY
+	var/oxy_damage_multiplier = 1
 	var/nitro_breath_dam_min = MIN_TOXIC_GAS_DAMAGE
 	var/nitro_breath_dam_max = MAX_TOXIC_GAS_DAMAGE
 	var/nitro_damage_type = OXY
@@ -110,7 +111,7 @@
 	if(safe_oxygen_max)
 		if(O2_pp > safe_oxygen_max)
 			var/ratio = (breath_gases["o2"][MOLES]/safe_oxygen_max) * 10
-			H.apply_damage_type(Clamp(ratio, oxy_breath_dam_min, oxy_breath_dam_max), oxy_damage_type)
+			H.apply_damage_type((Clamp(ratio, oxy_breath_dam_min, oxy_breath_dam_max)*oxy_damage_multiplier), oxy_damage_type)
 			H.throw_alert("too_much_oxy", /obj/screen/alert/too_much_oxy)
 		else
 			H.clear_alert("too_much_oxy")
@@ -323,7 +324,8 @@
 	safe_oxygen_min = 0 //We don't breathe this
 	safe_oxygen_max = 1 //This is toxic to us
 	safe_nitro_min = 16 //We breathe THIS!
-	oxy_damage_type = TOX //And it poisons us
+	oxy_damage_type = TOX //Oxygen poisons us
+	oxy_damage_multiplier = 10 // BADLY.
 
 #undef HUMAN_MAX_OXYLOSS
 #undef HUMAN_CRIT_MAX_OXYLOSS
