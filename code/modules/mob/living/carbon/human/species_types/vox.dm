@@ -19,7 +19,6 @@
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/vox
 	skinned_type = /obj/item/stack/sheet/animalhide/vox
 	toxmod = 2 // Weak immune systems.
-	oxymod = 2 // Removing their mask skreks them
 	burnmod = 0.7 // Tough hides.
 	stunmod = 1.2 // Take a bit longer to get up than other species.
 	breathid = "n2" // O2 is for dustlungs
@@ -48,8 +47,12 @@
 
 /datum/species/vox/after_equip_job(datum/job/J, mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), slot_wear_mask)
-	H.put_in_l_hand(new /obj/item/tank/internals/emergency_oxygen/vox(H))
+	H.put_in_r_hand(new /obj/item/tank/internals/emergency_oxygen/vox(H))
 	to_chat(H, "<span class='notice'>You are now running on nitrogen internals from the emergency tank in your hand. Your species finds oxygen toxic, so you must breathe nitrogen only.</span>")
-	H.internal = H.get_item_for_held_index(1)
+	H.internal = H.get_item_for_held_index(2)
 	H.update_internals_hud_icon(1)
 	H.grant_language(/datum/language/voxpidgin)
+
+/datum/species/vox/spec_life(mob/living/carbon/human/H)
+	if(H.disabilities & HUSK)
+		H.dna.features["vox_tail"] = "voxhusk"
