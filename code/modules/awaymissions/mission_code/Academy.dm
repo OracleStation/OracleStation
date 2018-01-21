@@ -17,7 +17,7 @@
 /obj/item/paper/fluff/awaymissions/academy/grade/aplus
 	name = "Summoning Midterm Exam"
 	info = "Grade: A+ Educator's Notes: Excellent form."
-	
+
 /obj/item/paper/fluff/awaymissions/academy/grade/bminus
 	name = "Summoning Midterm Exam"
 	info = "Grade: B- Educator's Notes: Keep applying yourself, you're showing improvement."
@@ -25,7 +25,7 @@
 /obj/item/paper/fluff/awaymissions/academy/grade/dminus
 	name = "Summoning Midterm Exam"
 	info = "Grade: D- Educator's Notes: SEE ME AFTER CLASS."
-	
+
 /obj/item/paper/fluff/awaymissions/academy/grade/failure
 	name = "Pyromancy Evaluation"
 	info = "Current Grade: F. Educator's Notes: No improvement shown despite multiple private lessons.  Suggest additional tutilage."
@@ -146,7 +146,7 @@
 	r_hand = null
 	suit = /obj/item/clothing/suit/wizrobe/red
 	head = /obj/item/clothing/head/wizard/red
-	backpack_contents = list(/obj/item/storage/box/survival = 1)
+	backpack_contents = list(/obj/item/storage/box/survival/normal = 1)
 
 /obj/item/dice/d20/fate
 	name = "Die of Fate"

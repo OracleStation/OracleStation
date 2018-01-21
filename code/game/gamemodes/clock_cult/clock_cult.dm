@@ -242,7 +242,7 @@ Credit where due:
 	ears = /obj/item/device/radio/headset
 	gloves = /obj/item/clothing/gloves/color/yellow
 	belt = /obj/item/storage/belt/utility/servant
-	backpack_contents = list(/obj/item/storage/box/engineer = 1, \
+	backpack_contents = list(/obj/item/storage/box/survival/engineer = 1, \
 	/obj/item/clockwork/replica_fabricator = 1, /obj/item/stack/tile/brass/fifty = 1, /obj/item/paper/servant_primer = 1)
 	id = /obj/item/card/id
 	var/plasmaman //We use this to determine if we should activate internals in post_equip()

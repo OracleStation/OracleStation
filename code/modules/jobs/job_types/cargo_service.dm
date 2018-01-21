@@ -95,7 +95,7 @@ Shaft Miner
 	backpack = /obj/item/storage/backpack/explorer
 	satchel = /obj/item/storage/backpack/satchel/explorer
 	duffelbag = /obj/item/storage/backpack/duffelbag
-	box = /obj/item/storage/box/survival_mining
+	box = /obj/item/storage/box/survival/mining
 
 /datum/outfit/job/miner/asteroid
 	name = "Shaft Miner (Asteroid)"
