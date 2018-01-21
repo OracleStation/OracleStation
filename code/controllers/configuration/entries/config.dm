@@ -152,6 +152,9 @@ CONFIG_DEF(string/banappeals)
 CONFIG_DEF(string/wikiurl)
 		value = "https://www.oraclestation.com/wiki/Main_Page"
 
+CONFIG_DEF(string/wikibookurl)
+		value = "http://10.0.0.2:8080/wiki/"
+
 CONFIG_DEF(string/discordurl)
 		value = "https://discord.gg/TsjA9wp"
 
