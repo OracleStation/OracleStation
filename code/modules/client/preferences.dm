@@ -162,9 +162,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	user << browse_rsc(fakeicon, "fakeicon.png")
 	datspecies += "<center>"
 	datspecies += "<img src=fakeicon.png width=[fakeicon.Width()] height=[fakeicon.Height()]><BR>"
-	datspecies += "<a href='?_src_=prefs;setspecies=[species_looking_at];task=species'>Set Species</a> <a href='?_src_=prefs;preference=job;task=close'>Done</a><BR>"
-	if(species_looking_at == pref_species.id)
-		datspecies += "<font size=3>CHOSEN</font>"
+	if(pref_species.id == species_looking_at)
+		datspecies += "Set Species "
+	else
+		datspecies += "<a href='?_src_=prefs;setspecies=[species_looking_at];task=species'>Set Species</a> "
+	datspecies += "<a href='?_src_=prefs;preference=job;task=close'>Done</a><BR>"
 	if(exp >= 0 && roundstart_species[species_looking_at] > exp)
 		datspecies += "<span class='warning'>Need [roundstart_species[species_looking_at] - exp] hours to unlock!</span>"
 	datspecies += "</center></th></tr></table></div>"

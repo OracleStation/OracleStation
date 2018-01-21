@@ -92,7 +92,7 @@
 	var/obj/item/organ/liver/mutantliver
 	var/obj/item/organ/stomach/mutantstomach
 	var/ass_pic = "human" // self explanatory
-	var/required_playtime = 0//in hours!
+	var/required_playtime = 0//in hours; this will be used IF AND ONLY IF THE CONFIG VALUES ARE NOT SET; DO NOT DEPEND ON THIS
 	var/loreblurb = "A unique race of snowflakes hailing from Omicron Get Off My Coder Lawn Prime.\
 	 Incredibly dangerous, deeply hurt during adolescent years, recently recruited to NT Speshul Forces and makes great fajitas."
 
