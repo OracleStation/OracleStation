@@ -139,7 +139,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 /datum/preferences/proc/ShowSpeciesChoices(mob/user)
 	var/datspecies = "<div><table style='width:100%'><tr><th>"
 	var/roundstart_species = CONFIG_GET(keyed_number_list/roundstart_races)
-	var/exp = 50000//200IQ coding; if we don't track XP there are no restrictions
+	var/exp = INFINITY//200IQ coding; if we don't track XP there are no restrictions
 	if(CONFIG_GET(flag/use_exp_tracking))
 		exp = parent.calc_exp_type(EXP_TYPE_LIVING)
 		exp /= 60 //in hours, because I'm vindictive

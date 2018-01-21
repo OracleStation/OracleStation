@@ -35,8 +35,8 @@
 	allow_numbers_in_name = TRUE
 	ass_pic = "ipc"
 	var/datum/action/innate/change_screen/change_screen
-	loreblurb = "Integrated Positronic Chassis or \"IPC\" for short, are synethetic lifeforms composed of an Artificial \
-	Intelligence program put into a bipedal robotic shell. Fragile, allergic to EMPs, and the butt of endless toaster jokes. \
+	loreblurb = "Integrated Positronic Chassis or \"IPC\" for short, are synthetic lifeforms composed of an Artificial \
+	Intelligence program encased in a bipedal robotic shell. They are fragile, allergic to EMPs, and the butt of endless toaster jokes. \
 	Just as easy to repair as they are to destroy, they might just get their last laugh in as you're choking on neurotoxins. Beep Boop."
 
 /datum/species/ipc/random_name(unique)
