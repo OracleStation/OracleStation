@@ -208,7 +208,7 @@
 	color = "#C8A5DC"
 
 /datum/reagent/medicine/silver_sulfadiazine/reaction_mob(mob/living/M, method=TOUCH, reac_volume, show_message = 1)
-	if(iscarbon(M) && M.stat != DEAD)
+	if(iscarbon(M)) //same deal as with Aluminum Sulphate
 		if(method in list(INGEST, VAPOR, INJECT))
 			M.adjustToxLoss(0.5*reac_volume)
 			if(show_message)
@@ -233,7 +233,7 @@
 	color = "#FF9696"
 
 /datum/reagent/medicine/styptic_powder/reaction_mob(mob/living/M, method=TOUCH, reac_volume, show_message = 1)
-	if(iscarbon(M) && M.stat != DEAD)
+	if(iscarbon(M))//Why in gods name did this have a check if people are dead... Aluminium Sulphate closes wounds even when you are dead
 		if(method in list(INGEST, VAPOR, INJECT))
 			M.adjustToxLoss(0.5*reac_volume)
 			if(show_message)
@@ -341,9 +341,7 @@
 	color = "#FFEBEB"
 
 /datum/reagent/medicine/synthflesh/reaction_mob(mob/living/M, method=TOUCH, reac_volume,show_message = 1)
-	if(iscarbon(M))
-		if (M.stat == DEAD)
-			show_message = 0
+	if(iscarbon(M)) //had again a check for dead mobs...
 		if(method in list(PATCH, TOUCH))
 			M.adjustBruteLoss(-1.25 * reac_volume)
 			M.adjustFireLoss(-1.25 * reac_volume)
