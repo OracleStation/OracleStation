@@ -81,7 +81,7 @@
 	attacktext = "shocks"
 	attack_sound = 'sound/effects/empulse.ogg'
 	friendly = "pinches"
-	speed = 0
+	speed = 1
 	faction = list("swarmer")
 	AIStatus = AI_OFF
 	pass_flags = PASSTABLE
