@@ -16,8 +16,8 @@ effective or pretty fucking useless.
 */
 
 /obj/item/device/batterer
-	name = "Psychic Disruptor"
-	desc = "A strange device with twin antennas and a blue glowing powercell in the middle."
+	name = "Mind Batterer"
+	desc = "A strange device with twin antennas."
 	icon_state = "batterer"
 	throwforce = 5
 	w_class = WEIGHT_CLASS_TINY
@@ -30,7 +30,7 @@ effective or pretty fucking useless.
 	origin_tech = "magnets=3;combat=3;syndicate=3"
 
 	var/times_used = 0 //Number of times it's been used.
-	var/max_uses = 3
+	var/max_uses = 2
 
 
 /obj/item/device/batterer/attack_self(mob/living/carbon/user, flag = 0, emp = 0)
@@ -44,7 +44,7 @@ effective or pretty fucking useless.
 	for(var/mob/living/carbon/human/M in urange(10, user, 1))
 		if(prob(50))
 
-			M.Knockdown(rand(100,250))
+			M.Knockdown(rand(300,400))
 			to_chat(M, "<span class='userdanger'>You feel a tremendous, paralyzing wave flood your mind.</span>")
 
 		else
