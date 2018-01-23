@@ -36,20 +36,20 @@
 
 // Blumpkin
 /obj/item/seeds/pumpkin/blumpkin
-	name = "pack of blumpkin seeds"
-	desc = "These seeds grow into blumpkin vines."
+	name = "pack of plasma-pumpkin seeds"
+	desc = "These seeds grow into plasma-pumpkin vines."
 	icon_state = "seed-blumpkin"
 	species = "blumpkin"
-	plantname = "Blumpkin Vines"
+	plantname = "Plasma-pumpkin Vines"
 	product = /obj/item/reagent_containers/food/snacks/grown/blumpkin
 	mutatelist = list()
-	reagents_add = list("ammonia" = 0.2, "chlorine" = 0.1, "nutriment" = 0.2)
+	reagents_add = list("ammonia" = 0.1, "chlorine" = 0.1, "nutriment" = 0.2, stable_plasma = 0.1)
 	rarity = 20
 
 /obj/item/reagent_containers/food/snacks/grown/blumpkin
 	seed = /obj/item/seeds/pumpkin/blumpkin
-	name = "blumpkin"
-	desc = "The pumpkin's toxic sibling."
+	name = "plasma-pumpkin"
+	desc = "A mutation of the common pumpkin containing toxic chemicals. Should not be eaten."
 	icon_state = "blumpkin"
 	filling_color = "#87CEFA"
 	bitesize_mod = 2
