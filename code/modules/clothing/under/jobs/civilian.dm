@@ -173,4 +173,3 @@
 	item_state = "explorer"
 	item_color = "explorer"
 	can_adjust = 0
-	species_restricted = list("exclude","Vox Outcast")
