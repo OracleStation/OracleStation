@@ -11,13 +11,6 @@
 #define STAMINA 	"stamina"
 #define BRAIN		"brain"
 
-//bitflag damage defines used for suicide_act
-#define BRUTELOSS 1
-#define FIRELOSS 2
-#define TOXLOSS 4
-#define OXYLOSS 8
-#define SHAME 16
-
 #define STUN		"stun"
 #define KNOCKDOWN		"knockdown"
 #define UNCONSCIOUS	"unconscious"

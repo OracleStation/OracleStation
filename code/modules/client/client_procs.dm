@@ -359,7 +359,7 @@ GLOBAL_LIST(external_rsc_urls)
 		holder.owner = null
 		GLOB.admins -= src
 		if (!GLOB.admins.len && SSticker.IsRoundInProgress()) //Only report this stuff if we are currently playing.
-			send2irc("Server", "@here Round has started with no admins online.")
+			send2irc("Server", "Round has started with no admins online.")
 
 	GLOB.ahelp_tickets.ClientLogout(src)
 	GLOB.directory -= ckey

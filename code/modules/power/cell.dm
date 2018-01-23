@@ -95,10 +95,6 @@
 	else
 		to_chat(user, "The charge meter reads [round(src.percent() )]%.")
 
-/obj/item/stock_parts/cell/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is licking the electrodes of [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return (FIRELOSS)
-
 /obj/item/stock_parts/cell/attackby(obj/item/W, mob/user, params)
 	..()
 	if(istype(W, /obj/item/reagent_containers/syringe))

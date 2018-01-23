@@ -1491,17 +1491,6 @@
 	contains = list(/obj/item/stack/tile/noslip/thirty)
 	crate_name = "high-traction floor tiles crate"
 
-/datum/supply_pack/misc/plasmaman
-	name = "Plasmaman Supply Kit"
-	cost = 2000
-	contains = list(/obj/item/clothing/under/plasmaman,
-					/obj/item/clothing/under/plasmaman,
-					/obj/item/tank/internals/plasmaman/belt/full,
-					/obj/item/tank/internals/plasmaman/belt/full,
-					/obj/item/clothing/head/helmet/space/plasmaman,
-					/obj/item/clothing/head/helmet/space/plasmaman)
-	crate_name = "plasmaman supply kit"
-
 /datum/supply_pack/misc/costume
 	name = "Standard Costume Crate"
 	cost = 1000

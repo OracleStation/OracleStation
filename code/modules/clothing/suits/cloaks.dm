@@ -18,10 +18,6 @@
 	flags_1 = NODROP_1
 	flags_inv = HIDEHAIR|HIDEEARS
 
-/obj/item/clothing/neck/cloak/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is strangling [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return(OXYLOSS)
-
 /obj/item/clothing/neck/cloak/hos
 	name = "head of security's cloak"
 	desc = "Worn by Securistan, ruling the station with an iron fist. It's slightly armored."

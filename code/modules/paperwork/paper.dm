@@ -101,10 +101,6 @@
 		name = "paper[(n_name ? text("- '[n_name]'") : null)]"
 	add_fingerprint(usr)
 
-/obj/item/paper/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] scratches a grid on [user.p_their()] wrist with the paper! It looks like [user.p_theyre()] trying to commit sudoku...</span>")
-	return (BRUTELOSS)
-
 /obj/item/paper/attack_self(mob/user)
 	user.examinate(src)
 	if(rigged && (SSevents.holidays && SSevents.holidays[APRIL_FOOLS]))
