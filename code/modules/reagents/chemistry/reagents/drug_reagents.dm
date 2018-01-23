@@ -173,7 +173,7 @@
 	M.AdjustKnockdown(-40, 0)
 	M.AdjustUnconscious(-40, 0)
 	M.adjustStaminaLoss(-2, 0)
-	M.status_flags |= GOTTAGOREALLYFAST
+	M.status_flags |= GOTTAGOFAST
 	M.Jitter(2)
 	M.adjustBrainLoss(0.25)
 	if(prob(5))
