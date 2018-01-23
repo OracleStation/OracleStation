@@ -634,7 +634,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "A dagger made of energy that looks and functions as a pen when off."
 	item = /obj/item/pen/edagger
 	cost = 2
-
+	
 /datum/uplink_item/stealthy_weapons/foampistol
 	name = "Toy Gun with Riot Darts"
 	desc = "An innocent-looking toy pistol designed to fire foam darts. Comes loaded with riot-grade \
@@ -905,6 +905,20 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/card/emag
 	cost = 6
 	exclude_modes = list(/datum/game_mode/gang)
+
+/datum/uplink_item/device_tools/cloakerbelt
+	name = "Cloaking Device"
+	desc = "A belt mounted Omegacorp cloaking device which grants \
+		invisibilty on activation. Its internal battery discharges quickly in the light \
+		but is capable of self charging in the dark due to its dark matter \
+		power cell. The device is very susceptable to Ion Weaponary and \
+		EMPs. It allows usage of weapons and equipment while cloaked. \
+		Detectable by infrared scanners."
+	item = /obj/item/device/shadowcloak
+	cost = 12
+	cant_discount = TRUE //no Dualesword/Carp Memes
+	surplus = 5 //low chance to get it
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)	
 
 /datum/uplink_item/device_tools/toolbox
 	name = "Full Syndicate Toolbox"
