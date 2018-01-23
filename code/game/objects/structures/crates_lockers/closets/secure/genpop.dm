@@ -18,12 +18,25 @@
 	return ..()
 
 /obj/structure/closet/secure_closet/genpop/proc/handle_prisoner_id(mob/user)
+	var/obj/item/card/id/prisoner/prisoner_id = null
+	for(prisoner_id in user.contents)
+		if(prisoner_id != registered_id)
+			prisoner_id = null
+		else
+			break
+
+	if(!prisoner_id)
+		to_chat(user, "<span class='danger'>Access Denied.</span>")
+		return FALSE
+
 	qdel(registered_id)
 	registered_id = null
 	locked = FALSE
 	open(user)
 	desc = "It's a secure locker for prisoner effects."
 	to_chat(user, "<span class='notice'>You insert your prisoner id into \the [src] and it springs open!</span>")
+
+	return TRUE
 
 /obj/structure/closet/secure_closet/genpop/proc/handle_edit_sentence(mob/user)
 	var/prisoner_name = input(user, "Please input the name of the prisoner.", "Prisoner Name", registered_id.registered_name) as text|null
@@ -47,6 +60,9 @@
 	return TRUE
 
 /obj/structure/closet/secure_closet/genpop/togglelock(mob/living/user)
+	if(!allowed(user))
+		return ..()
+
 	if(!broken && locked && registered_id != null)
 		var/name = registered_id.registered_name
 		var/result = alert(user, "This locker currently contains [name]'s personal effects ","Locker In Use","Reset","Amend ID", "Open")

@@ -11,7 +11,6 @@
 	idle_power_usage = 2
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	layer = OPEN_DOOR_LAYER
-	var/cuts_off_zipties = FALSE
 
 /obj/machinery/turnstile/Initialize()
 	. = ..()
@@ -46,12 +45,6 @@
 				return FALSE
 
 			if(allowed_access)
-				var/mob/living/carbon/human/HU = AM
-				if(istype(HU))
-					var/obj/item/restraints/handcuffs/cable/zipties = HU.handcuffed
-					if(istype(zipties) && cuts_off_zipties)
-						qdel(zipties)
-						to_chat(usr, "<span class='notice'>\the [src] cuts off \the [zipties].</span>")
 				flick("operate", src)
 				playsound(src,'sound/items/ratchet.ogg',50,0,3)
 				return TRUE
