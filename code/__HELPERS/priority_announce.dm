@@ -1,4 +1,4 @@
-/proc/priority_announce(text, title = "", sound = 'sound/ai/attention.ogg', type)
+/proc/priority_announce(text, title = "", sound = 'sound/ai/attention.ogg', type, mob/living/user)
 	if(!text)
 		return
 
@@ -23,6 +23,8 @@
 
 	announcement += "<br><span class='alert'>[html_encode(text)]</span><br>"
 	announcement += "<br>"
+	if(user)
+		announcement += "<span class='alert'>-[user.name] ([user.job])</span><br>"
 
 	var/s = sound(sound)
 	for(var/mob/M in GLOB.player_list)
