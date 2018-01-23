@@ -55,7 +55,7 @@
 	worn_x_dimension = 64
 	worn_y_dimension = 64
 	dynamic_hair_suffix = ""
-
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/witchunter_hat
 	name = "witchunter hat"
@@ -63,6 +63,7 @@
 	icon_state = "witchhunterhat"
 	item_state = "witchhunterhat"
 	flags_cover = HEADCOVERSEYES
+	species_restricted = list("exclude","Vox Outcast")
 
 //Detective
 /obj/item/clothing/head/fedora/det_hat

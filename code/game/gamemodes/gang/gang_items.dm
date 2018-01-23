@@ -114,9 +114,11 @@
 	cost = 16
 	item_path = /obj/item/clothing/head/collectable/petehat/gang
 
+
 /obj/item/clothing/head/collectable/petehat/gang
 	name = "pimpin' hat"
 	desc = "The undisputed king of style."
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/collectable/petehat/gang/gang_contraband_value()
 	return 4
@@ -146,6 +148,7 @@
 	name = "blinged-out boots"
 	desc = "Stand aside peasants."
 	icon_state = "bling"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/shoes/gang/gang_contraband_value()
 	return 6

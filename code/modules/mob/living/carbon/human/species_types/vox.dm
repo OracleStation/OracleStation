@@ -19,7 +19,7 @@
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/vox
 	skinned_type = /obj/item/stack/sheet/animalhide/vox
 	toxmod = 2 // Weak immune systems.
-	burnmod = 0.7 // Tough hides.
+	burnmod = 0.8 // Tough hides.
 	stunmod = 1.2 // Take a bit longer to get up than other species.
 	breathid = "n2" // O2 is for dustlungs
 	examine_text = "A vox outcast"

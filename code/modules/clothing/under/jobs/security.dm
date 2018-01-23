@@ -20,6 +20,10 @@
 	alt_covers_chest = 1
 	sensor_mode = SENSOR_COORDS
 	random_sensor = 0
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/uniform.dmi'
+		)
 
 /obj/item/clothing/under/rank/security/grey
 	name = "grey security jumpsuit"

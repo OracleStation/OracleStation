@@ -52,7 +52,7 @@
 	flags_inv = HIDEHAIR|HIDEFACE|HIDEEARS
 	species_fit = list("Vox Outcast")
 	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		"Vox Outcast" = 'icons/mob/species/vox/head.dmi'
 		)
 
 /obj/item/clothing/suit/nun
@@ -71,6 +71,7 @@
 	item_state = "studentuni"
 	body_parts_covered = ARMS|CHEST
 	allowed = list(/obj/item/storage/book/bible, /obj/item/nullrod, /obj/item/reagent_containers/food/drinks/bottle/holywater, /obj/item/storage/fancy/candle_box, /obj/item/candle, /obj/item/tank/internals/emergency_oxygen)
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/witchhunter
 	name = "witchunter garb"
@@ -79,6 +80,7 @@
 	item_state = "witchhunter"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	allowed = list(/obj/item/storage/book/bible, /obj/item/nullrod, /obj/item/reagent_containers/food/drinks/bottle/holywater, /obj/item/storage/fancy/candle_box, /obj/item/candle, /obj/item/tank/internals/emergency_oxygen)
+	species_restricted = list("exclude","Vox Outcast")
 
 //Chef
 /obj/item/clothing/suit/toggle/chef
@@ -205,6 +207,7 @@
 	icon_state = "officerbluejacket"
 	item_state = "officerbluejacket"
 	body_parts_covered = CHEST|ARMS
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/security/warden
 	name = "warden's jacket"
@@ -226,6 +229,7 @@
 	desc = "A sterile blue surgical apron."
 	icon_state = "surgical"
 	allowed = list(/obj/item/scalpel,  /obj/item/cautery, /obj/item/hemostat, /obj/item/retractor)
+	species_restricted = list("exclude","Vox Outcast")
 
 //Curator
 /obj/item/clothing/suit/curator

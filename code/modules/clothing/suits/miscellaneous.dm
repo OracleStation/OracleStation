@@ -165,6 +165,7 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	flags_inv = HIDEJUMPSUIT
 	allowed = list(/obj/item/storage/book/bible, /obj/item/nullrod, /obj/item/reagent_containers/food/drinks/bottle/holywater, /obj/item/storage/fancy/candle_box, /obj/item/candle, /obj/item/tank/internals/emergency_oxygen)
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/cardborg
 	name = "cardborg suit"
@@ -394,6 +395,7 @@
 	icon_state = "pufferjacket"
 	item_state = "hostrench"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 50, rad = 0, fire = 0, acid = 0)
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/jacket/puffer/vest
 	name = "puffer vest"
@@ -416,6 +418,7 @@
 	desc = "A classic brown letterman jacket. Looks pretty hot and heavy."
 	icon_state = "letterman"
 	item_state = "letterman"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/jacket/letterman_red
 	name = "red letterman jacket"
@@ -443,7 +446,7 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|HANDS
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	allowed = list(/obj/item/clothing/mask/facehugger/toy)
-
+	species_restricted = list("exclude","Vox Outcast")
 
 // WINTER COATS
 
