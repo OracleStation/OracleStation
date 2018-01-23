@@ -16,7 +16,7 @@ effective or pretty fucking useless.
 */
 
 /obj/item/device/batterer
-	name = "mind batterer"
+	name = "Mind Batterer"
 	desc = "A strange device with twin antennas."
 	icon_state = "batterer"
 	throwforce = 5
@@ -44,7 +44,7 @@ effective or pretty fucking useless.
 	for(var/mob/living/carbon/human/M in urange(10, user, 1))
 		if(prob(50))
 
-			M.Knockdown(rand(200,400))
+			M.Knockdown(rand(300,400))
 			to_chat(M, "<span class='userdanger'>You feel a tremendous, paralyzing wave flood your mind.</span>")
 
 		else
