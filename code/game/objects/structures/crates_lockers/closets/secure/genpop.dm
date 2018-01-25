@@ -1,6 +1,6 @@
 /obj/structure/closet/secure_closet/genpop
-	desc = "It's a secure locker for inmates's personal effects."
-	var/default_desc = "It's a secure locker for the storage inmates's personal effects during their time in prison."
+	desc = "It's a secure locker for inmates's personal belongings."
+	var/default_desc = "It's a secure locker for the storage inmates's personal belongings during their time in prison."
 	name = "prisoner closet"
 	var/default_name = "prisoner closet"
 	req_access = list(ACCESS_BRIG)
@@ -65,7 +65,7 @@
 
 	if(!broken && locked && registered_id != null)
 		var/name = registered_id.registered_name
-		var/result = alert(user, "This locker currently contains [name]'s personal effects ","Locker In Use","Reset","Amend ID", "Open")
+		var/result = alert(user, "This locker currently contains [name]'s personal belongings ","Locker In Use","Reset","Amend ID", "Open")
 		if(!user.Adjacent(src))
 			return
 		if(result == "Reset")

@@ -288,7 +288,7 @@ update_label("John Doe", "Clowny")
 /obj/item/card/id/prisoner/New()
 	. = ..()
 	START_PROCESSING(SSprocessing, src)
-	registered_name = "Prisoner #13-" + num2text(rand(100,999))
+	registered_name = "Prisoner #13-[rand(100,999)]"
 
 /obj/item/card/id/prisoner/process()
 	if (sentence > 0 && served > (sentence * 60)) //FREEDOM!
@@ -306,12 +306,13 @@ update_label("John Doe", "Clowny")
 	..()
 
 	var/minutesServed = round(served / 60)
+	var/secondsServed = served - (minutesServed * 60)
 	if(sentence <= 0)
 		to_chat(usr, "<span class='notice'>You are serving a permanent sentence for [crime].</span>")
 	else if(served >= (sentence * 60))
 		to_chat(usr, "<span class='notice'>You have served your sentence for [crime].</span>")
 	else
-		to_chat(usr, "<span class='notice'>You have served [minutesServed] minutes of your [sentence] minute sentance for [crime].</span>")
+		to_chat(usr, "<span class='notice'>You have served [minutesServed] minutes [secondsServed] seconds of your [sentence] minute sentance for [crime].</span>")
 	if(goal > 0)
 		to_chat(usr, "<span class='notice'>You have accumulated [points] out of the [goal] points you need for freedom.</span>")
 
