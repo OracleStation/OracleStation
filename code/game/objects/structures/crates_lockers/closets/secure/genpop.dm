@@ -20,7 +20,7 @@
 
 /obj/structure/closet/secure_closet/genpop/proc/handle_prisoner_id(mob/user)
 	var/obj/item/card/id/prisoner/prisoner_id = null
-	for(prisoner_id in user.contents)
+	for(prisoner_id in user.held_items)
 		if(prisoner_id != registered_id)
 			prisoner_id = null
 		else
@@ -92,7 +92,7 @@
 	if(user.lying && get_dist(src, user) > 0)
 		return
 
-	if(!broken && registered_id in user.contents)
+	if(!broken && registered_id in user.held_items)
 		handle_prisoner_id(user)
 		return
 
