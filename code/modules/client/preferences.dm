@@ -138,21 +138,21 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 /datum/preferences/proc/ShowSpeciesChoices(mob/user)
 	var/datspecies = "<div><table style='width:100%'><tr><th>"
-	var/roundstart_species = CONFIG_GET(keyed_number_list/roundstart_races)
-	var/exp = INFINITY//200IQ coding; if we don't track XP there are no restrictions
-	if(CONFIG_GET(flag/use_exp_tracking) && CONFIG_GET(flag/use_exp_restrictions_species))
-		exp = parent.calc_exp_type(EXP_TYPE_LIVING)
-		exp /= 60 //in hours, because I'm vindictive
 	datspecies += "<div style='overflow-y:auto;height=180px;width=75px'>"
-	for(var/S in roundstart_species)
-		if(species_looking_at == S)
-			datspecies += "<b>[S]</b><BR><BR>"
-		else if(roundstart_species[S] == 0 || roundstart_species[S] <= exp)
-			datspecies += "<a href='?_src_=prefs;lookatspecies=[S];task=species'>[S]</a><BR><BR>"
+	for(var/speciesid in CONFIG_GET(keyed_number_list/roundstart_races))
+		var/speciespath = GLOB.species_list[speciesid]
+		if(!speciespath)
+			continue
+		var/datum/species/S = new speciespath()
+		if(species_looking_at == speciesid)
+			datspecies += "<b>[S.name]</b><BR><BR>"
+		else if(S.required_playtime_remaining(parent))
+			datspecies += "<a href='?_src_=prefs;lookatspecies=[speciesid];task=species'><font color='red'>[S.name]</font></a><BR><BR>"
 		else
-			datspecies += "<a href='?_src_=prefs;lookatspecies=[S];task=species'><font color='red'>[S]</font></a><BR><BR>"
+			datspecies += "<a href='?_src_=prefs;lookatspecies=[speciesid];task=species'>[S.name]</a><BR><BR>"
+		QDEL_NULL(S)
 
-	datspecies += "</div></th><th><div style='overflow-y:auto;;height=180px;width=420px'>"
+	datspecies += "</div></th><th><div style='overflow-y:auto;height=180px;width=420px'>"
 	var/sppath = GLOB.species_list[species_looking_at]
 	var/datum/species/S = new sppath()
 
@@ -166,8 +166,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	else
 		datspecies += "<a href='?_src_=prefs;setspecies=[species_looking_at];task=species'>Set Species</a> "
 	datspecies += "<a href='?_src_=prefs;preference=job;task=close'>Done</a><BR>"
-	if(exp >= 0 && roundstart_species[species_looking_at] > exp)
-		datspecies += "<span class='warning'>Need [roundstart_species[species_looking_at] - exp] hours to unlock!</span>"
+	var/required = S.required_playtime_remaining(parent)
+	if(required)
+		datspecies += "<span class='warning'>Need [required] hours to unlock!</span>"
 	datspecies += "</center></th></tr></table></div>"
 
 	user << browse(null, "window=preferences")
@@ -939,11 +940,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				var/sid = href_list["setspecies"]
 				var/let_them = TRUE
 				if(CONFIG_GET(flag/use_exp_tracking) && CONFIG_GET(flag/use_exp_restrictions_species))
-					var/roundstart_species = CONFIG_GET(keyed_number_list/roundstart_races)
-					var/exp = parent.calc_exp_type(EXP_TYPE_LIVING)
-					exp /= 60 //in hours, because I'm vindictive
-					if(roundstart_species[sid] != 0 && roundstart_species[sid] > exp)//we're checking against this list to prevent href shenanigans
-						to_chat(parent, "<span class='danger'>You need more playtime to play [capitalize(sid)]!</span>")
+					var/speciespath = GLOB.species_list[sid]
+					var/datum/species/S = new speciespath()
+					if(S.required_playtime_remaining(parent))//we're checking against this list to prevent href shenanigans
+						to_chat(parent, "<span class='danger'>You need more playtime to play [S.name]!</span>")
 						let_them = FALSE
 				if(let_them)
 					var/newtype = GLOB.species_list[sid]
