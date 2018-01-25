@@ -184,6 +184,9 @@ CHECK_RANDOMIZER
 ## Wiki address
 # WIKIURL http://www.tgstation13.org/wiki
 
+## Wikibook address (for populating manuals)
+WIKIBOOKURL http://10.0.0.2:8080/wiki/
+
 ## Rules address
 # RULESURL http://www.tgstation13.org/wiki/Rules
 
@@ -364,4 +367,3 @@ DEBUG_ADMIN_HREFS
 
 ## Command to invoke on the local machine to process external commands
 #SERVICE_COMMAND python bot.py
-
