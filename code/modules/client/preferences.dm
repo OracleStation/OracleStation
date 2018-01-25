@@ -140,7 +140,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/datspecies = "<div><table style='width:100%'><tr><th>"
 	var/roundstart_species = CONFIG_GET(keyed_number_list/roundstart_races)
 	var/exp = INFINITY//200IQ coding; if we don't track XP there are no restrictions
-	if(CONFIG_GET(flag/use_exp_tracking))
+	if(CONFIG_GET(flag/use_exp_tracking) && CONFIG_GET(flag/use_exp_restrictions_species))
 		exp = parent.calc_exp_type(EXP_TYPE_LIVING)
 		exp /= 60 //in hours, because I'm vindictive
 	datspecies += "<div style='overflow-y:auto;height=180px;width=75px'>"
@@ -938,7 +938,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			if(href_list["setspecies"])
 				var/sid = href_list["setspecies"]
 				var/let_them = TRUE
-				if(CONFIG_GET(flag/use_exp_tracking))
+				if(CONFIG_GET(flag/use_exp_tracking) && CONFIG_GET(flag/use_exp_restrictions_species))
 					var/roundstart_species = CONFIG_GET(keyed_number_list/roundstart_races)
 					var/exp = parent.calc_exp_type(EXP_TYPE_LIVING)
 					exp /= 60 //in hours, because I'm vindictive

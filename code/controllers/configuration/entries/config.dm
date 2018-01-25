@@ -145,6 +145,8 @@ CONFIG_DEF(flag/use_exp_restrictions_other)
 
 CONFIG_DEF(flag/use_exp_restrictions_admin_bypass)
 
+CONFIG_DEF(flag/use_exp_restrictions_species)
+
 CONFIG_DEF(string/server)
 
 CONFIG_DEF(string/banappeals)
