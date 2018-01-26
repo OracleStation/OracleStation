@@ -247,7 +247,7 @@
 			var/remote_hash = file2text(http["CONTENT"])
 
 			if(local_hash != remote_hash)
-				to_chat(world, "<span class='boldannounce'>Server is updating! You may need to reconnect!</span>")
+				to_chat(world, "<span class='narsie'>Server is updating! You may need to reconnect!</span>")
 				shutdown()
 				return
 	..()

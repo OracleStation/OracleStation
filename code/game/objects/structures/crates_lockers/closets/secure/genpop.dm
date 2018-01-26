@@ -92,7 +92,7 @@
 	if(user.lying && get_dist(src, user) > 0)
 		return
 
-	if(!broken && registered_id in user.held_items)
+	if(!broken && registered_id != null && registered_id in user.held_items)
 		handle_prisoner_id(user)
 		return
 
@@ -105,6 +105,7 @@
 			locked = TRUE
 			update_icon()
 			registered_id.forceMove(src.loc)
+			new /obj/item/clothing/under/rank/prisoner(src.loc)
 		else
 			qdel(registered_id)
 			registered_id = null
