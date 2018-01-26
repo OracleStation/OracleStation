@@ -848,6 +848,7 @@
 	var/mob/living/carbon/human/wearer = null
 	var/active = FALSE
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/shoes/flightshoes/Destroy()
 	pack = null
@@ -911,6 +912,7 @@
 	armor = list(melee = 20, bullet = 20, laser = 20, energy = 10, bomb = 30, bio = 100, rad = 75, fire = 100, acid = 100)
 	var/maint_panel = FALSE
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/space/hardsuit/flightsuit/full/Initialize()
 	. = ..()
@@ -1236,6 +1238,7 @@
 	var/zoom_range = 12
 	var/zoom = FALSE
 	actions_types = list(/datum/action/item_action/toggle_helmet_light, /datum/action/item_action/flightpack/zoom)
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/helmet/space/hardsuit/flightsuit/equipped(mob/living/carbon/human/wearer, slot)
 	..()

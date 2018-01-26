@@ -103,7 +103,6 @@
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 	max_heat_protection_temperature = ARMOR_MAX_TEMP_PROTECT
 
-
 /obj/item/clothing/head/culthood/alt
 	name = "cultist hood"
 	desc = "An armored hood worn by the followers of Nar-Sie."
@@ -131,6 +130,7 @@
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDEEARS|HIDEEYES
 	armor = list(melee = 30, bullet = 30, laser = 30,energy = 20, bomb = 0, bio = 0, rad = 0, fire = 10, acid = 10)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/magusred
 	name = "magus robes"
@@ -141,6 +141,7 @@
 	allowed = list(/obj/item/tome, /obj/item/melee/cultblade)
 	armor = list(melee = 50, bullet = 30, laser = 50,energy = 20, bomb = 25, bio = 10, rad = 0, fire = 10, acid = 10)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/helmet/space/hardsuit/cult
 	name = "nar-sien hardened helmet"
@@ -150,6 +151,7 @@
 	armor = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 30, rad = 30, fire = 40, acid = 75)
 	brightness_on = 0
 	actions_types = list()
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/space/hardsuit/cult
 	name = "nar-sien hardened armor"
@@ -160,6 +162,7 @@
 	allowed = list(/obj/item/tome, /obj/item/melee/cultblade, /obj/item/tank/internals/)
 	armor = list(melee = 70, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 30, rad = 30, fire = 40, acid = 75)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/cult
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/sharpener/cult
 	name = "eldritch whetstone"
