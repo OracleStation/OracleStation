@@ -3367,10 +3367,6 @@
 	name = "Asteroid"
 	})
 "afN" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
 /turf/open/floor/plasteel/loadingarea{
 	dir = 1
 	},
@@ -4410,10 +4406,6 @@
 	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
 /turf/open/floor/plasteel/red/side{
 	dir = 9
 	},
@@ -4421,10 +4413,6 @@
 "ahw" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	dir = 6
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
 	},
 /turf/open/floor/plasteel/red/side{
 	dir = 1
@@ -5311,11 +5299,6 @@
 /turf/open/floor/plating,
 /area/security/brig)
 "ajd" = (
-/obj/machinery/camera{
-	c_tag = "Fore Primary Hallway";
-	dir = 4;
-	network = list("SS13")
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	dir = 6
 	},
@@ -33818,9 +33801,7 @@
 	name = "moonlight greatsword"
 	},
 /obj/effect/decal/remains/human,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating,
 /area/chapel/main)
 "bfx" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -42482,7 +42463,6 @@
 /obj/machinery/turnstile{
 	req_access_txt = "71"
 	},
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/engine,
 /area/security/brig)
 "bBW" = (
@@ -42616,6 +42596,24 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /turf/open/floor/plasteel,
 /area/security/brig)
+"bCk" = (
+/obj/structure/cable/white{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/camera{
+	c_tag = "Fore Primary Hallway";
+	dir = 1;
+	network = list("SS13")
+	},
+/turf/open/floor/plasteel/neutral/corner{
+	dir = 8;
+	heat_capacity = 1e+006
+	},
+/area/hallway/primary/central{
+	name = "Primary Hallway"
+	})
 
 (1,1,1) = {"
 aaa
@@ -75851,12 +75849,12 @@ aad
 aad
 aad
 bAP
-bBb
-bBl
-bBu
-bBA
-bBI
-bBS
+bAP
+bAP
+bAP
+bAP
+bAP
+bAP
 aim
 aiR
 bCd
@@ -76107,13 +76105,13 @@ aad
 aad
 aad
 aad
-bAQ
+bAP
 bBc
 bBm
 bBv
 bBB
-bBJ
-bBT
+bBm
+bAP
 ain
 aiS
 aiS
@@ -76364,16 +76362,16 @@ aad
 aad
 aad
 aad
-bAR
+bAP
 bBd
 bBn
 bBw
 bBC
 bBK
-bBU
+bAP
 aio
 aiT
-bCe
+bCd
 ajT
 ait
 alJ
@@ -76621,10 +76619,10 @@ aad
 aad
 aad
 aad
-bAS
+bAP
 bBe
-bBo
-bBx
+bBn
+bBw
 bBD
 bBL
 agF
@@ -76878,12 +76876,12 @@ aad
 aad
 aad
 aaV
-bAT
+bAP
 bBf
-bBp
+bBn
 ael
-bBE
-bBM
+bBn
+bBN
 agF
 ahv
 aiq
@@ -77135,10 +77133,10 @@ aad
 aaV
 abi
 abj
-bAU
+bAP
 bBg
-bBq
-bBy
+bBn
+bBn
 aem
 afN
 bBV
@@ -77392,9 +77390,9 @@ aad
 aaW
 abj
 abj
-bAV
+bAP
 bBh
-bBr
+bBn
 aem
 afb
 bBN
@@ -77649,7 +77647,7 @@ aad
 aad
 abi
 abj
-bAW
+bAP
 acE
 adx
 aen
@@ -77658,7 +77656,7 @@ bBO
 bBX
 ahy
 bBZ
-aiY
+bCb
 ajY
 akZ
 alO
@@ -77906,7 +77904,7 @@ aad
 aad
 aad
 aaW
-bAX
+bAP
 bBi
 ady
 aeo
@@ -77915,7 +77913,7 @@ aeo
 agF
 bBY
 bCa
-aiY
+bCb
 ajZ
 ala
 aiZ
@@ -78163,7 +78161,7 @@ aad
 aad
 aad
 abi
-bAY
+bAP
 bBj
 adz
 aeo
@@ -78172,7 +78170,7 @@ bBP
 agF
 ahz
 bCb
-aiY
+bCb
 aka
 ala
 alP
@@ -78420,7 +78418,7 @@ aad
 aad
 aad
 aad
-bAZ
+bAP
 acH
 bBs
 aeo
@@ -78429,7 +78427,7 @@ bBQ
 agF
 ahA
 bCc
-aiY
+bCb
 akb
 ala
 alQ
@@ -78677,12 +78675,12 @@ aad
 aad
 aad
 aad
-bBa
-bBk
-bBt
-bBz
-bBH
-bBR
+bAP
+bAP
+bAP
+bAP
+bAP
+bAP
 agF
 agF
 agF
@@ -79458,7 +79456,7 @@ agK
 ahD
 aiu
 ajf
-ake
+bCk
 ald
 abt
 abt
