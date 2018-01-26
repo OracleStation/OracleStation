@@ -44,7 +44,8 @@ BAN_LEGACY_SYSTEM
 #USE_EXP_RESTRICTIONS_OTHER
 ## Allows admins to bypass job playtime requirements.
 #USE_EXP_RESTRICTIONS_ADMIN_BYPASS
-
+## Locks certain species away from people who don't have enough XP. Define those in game_options.txt
+#USE_EXP_RESTRICTIONS_SPECIES
 
 ## log OOC channel
 LOG_OOC

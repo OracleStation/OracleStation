@@ -92,6 +92,8 @@
 	var/obj/item/organ/liver/mutantliver
 	var/obj/item/organ/stomach/mutantstomach
 	var/ass_pic = "human" // self explanatory
+	var/required_playtime = 0//in hours; this will be used IF AND ONLY IF THE CONFIG VALUES ARE NOT SET; DO NOT DEPEND ON THIS
+	var/loreblurb = "Description not provided. Yell at a coder. Also, please look into cooking fajitas. That stuff is amazing."
 
 ///////////
 // PROCS //
@@ -102,6 +104,10 @@
 
 	if(!limbs_id)	//if we havent set a limbs id to use, just use our own id
 		limbs_id = id
+
+	var/list/roundstart_species = CONFIG_GET(keyed_number_list/roundstart_races)
+	if(id in roundstart_species)
+		required_playtime = roundstart_species[id]
 	..()
 
 
@@ -1676,6 +1682,20 @@
 /datum/species/proc/negates_gravity(mob/living/carbon/human/H)
 	return 0
 
+/datum/species/proc/required_playtime_remaining(client/C)
+	if(!C)
+		return 0
+	if(!CONFIG_GET(flag/use_exp_tracking))
+		return 0
+	if(!required_playtime)
+		return 0
+	if(CONFIG_GET(flag/use_exp_restrictions_admin_bypass) && check_rights(R_ADMIN, FALSE, C.mob))
+		return 0
+	var/my_exp = C.calc_exp_type(EXP_TYPE_LIVING) / 60
+	if(my_exp >= required_playtime)
+		return 0
+	else
+		return (required_playtime - my_exp)
 
 #undef HEAT_DAMAGE_LEVEL_1
 #undef HEAT_DAMAGE_LEVEL_2
