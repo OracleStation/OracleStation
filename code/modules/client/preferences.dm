@@ -168,7 +168,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	datspecies += "<a href='?_src_=prefs;preference=job;task=close'>Done</a><BR>"
 	var/required = S.required_playtime_remaining(parent)
 	if(required)
-		datspecies += "<span class='warning'><font color='red'>Need [ceiling(required)] hours to unlock!</font></span>"
+		datspecies += "<span class='warning'><font color='red'>Need [Ceiling(required)] hours to unlock!</font></span>"
 	datspecies += "</center></th></tr></table></div>"
 
 	user << browse(null, "window=preferences")
