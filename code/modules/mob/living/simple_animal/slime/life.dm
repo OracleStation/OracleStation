@@ -207,7 +207,7 @@
 
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		C.adjustCloneLoss(rand(2,4))
+		C.adjustCloneLoss(rand(2,4) * C.dna.species.clonemod)
 		C.adjustToxLoss(rand(1,2))
 
 		if(prob(10) && C.client)

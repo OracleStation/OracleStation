@@ -5,10 +5,10 @@
 	heatmod = 3 // Went cheap with Aircooling
 	coldmod = 1.5 // Don't put your computer in the freezer.
 	burnmod = 2 // Wiring doesn't hold up to fire well.
-	brutemod = 1.8 // Thin metal, cheap materials.
+	brutemod = 1.8 // Thin metal, cheap materials. Mind you brute hits have to overcome the inherent armor of BODYPART_ROBOTIC, but if it can, bigger damage.
 	toxmod = 0.5 // Although they can't be poisoned, toxins can damage components
 	clonemod = 0
-	siemens_coeff = 1.5 // Overload!
+	siemens_coeff = 2 // Overload!
 	species_traits = list(NOBREATH, NOBLOOD, RADIMMUNE, VIRUSIMMUNE, NOZOMBIE, EASYDISMEMBER, EASYLIMBATTACHMENT, NOPAIN, NO_BONES, NOTRANSSTING, MUTCOLORS, REVIVESBYHEALING, NOSCAN, NOCHANGELING, NOHUSK, ROBOTIC_LIMBS, NOMOUTH)
 	mutant_organs = list(/obj/item/organ/cyberimp/arm/power_cord)
 	mutant_bodyparts = list("ipc_screen", "ipc_antenna", "ipc_chassis")
