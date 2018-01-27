@@ -207,8 +207,8 @@
 
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		C.adjustCloneLoss(rand(2,4) * C.dna.species.clonemod)
-		C.adjustToxLoss(rand(1,2))
+		C.apply_damage(rand(2,4), CLONE)
+		C.apply_damage(rand(1,2), TOX)
 
 		if(prob(10) && C.client)
 			to_chat(C, "<span class='userdanger'>[pick("You can feel your body becoming weak!", \
