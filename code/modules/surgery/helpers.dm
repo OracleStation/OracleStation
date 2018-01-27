@@ -13,7 +13,7 @@
 	if(!M.lying && !isslime(M))	//if they're prone or a slime
 		return
 
-	if((affecting.status == ORGAN_ROBOTIC && !istype(I, /obj/item/screwdriver)) && (affecting.status == ORGAN_ORGANIC && !I.sharpness))
+	if((affecting && affecting.status == ORGAN_ROBOTIC && !istype(I, /obj/item/screwdriver)) && (affecting.status == ORGAN_ORGANIC && !I.sharpness))
 	//if it's a robotic organ and you're not using a screwdriver OR an organic organ and you're not using something sharp.
 		return
 
