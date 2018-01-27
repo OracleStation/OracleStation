@@ -101,7 +101,7 @@
 	..()
 
 /obj/structure/mirror/magic/lesser/New()
-	var/list/L = CONFIG_GET(keyed_flag_list/roundstart_races)
+	var/list/L = CONFIG_GET(keyed_number_list/roundstart_races)
 	choosable_races = L.Copy()
 	..()
 

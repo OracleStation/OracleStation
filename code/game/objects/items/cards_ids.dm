@@ -275,13 +275,46 @@ update_label("John Doe", "Clowny")
 	item_state = "orange-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	assignment = "Prisoner"
-	registered_name = "Scum"
+	assignment = "Convict"
 	var/goal = 0 //How far from freedom?
 	var/points = 0
 
-/obj/item/card/id/prisoner/attack_self(mob/user)
-	to_chat(usr, "<span class='notice'>You have accumulated [points] out of the [goal] points you need for freedom.</span>")
+	var/served = 0 //Time served in seconds
+	var/sentence = 0 //Sentance in minutes
+	var/crime = "\[redacted\]"
+
+	access = list(ACCESS_ENTER_GENPOP)
+
+/obj/item/card/id/prisoner/New()
+	. = ..()
+	START_PROCESSING(SSprocessing, src)
+	registered_name = "Prisoner #13-[rand(100,999)]"
+
+/obj/item/card/id/prisoner/process()
+	if (sentence > 0 && served > (sentence * 60)) //FREEDOM!
+		assignment = "Ex-Convict"
+		access = list(ACCESS_LEAVE_GENPOP)
+		update_label(registered_name, assignment)
+		playsound(loc, 'sound/machines/ping.ogg', 50, 1)
+		if(isliving(loc))
+			to_chat(loc, "<span class='boldnotice'>\the [src] buzzes: You have served your sentence! You may now exit prison through the turnstiles and collect your belongings.</span>")
+		STOP_PROCESSING(SSprocessing, src)
+	else
+		served += 1
+
+/obj/item/card/id/prisoner/examine(mob/user)
+	..()
+
+	var/minutesServed = round(served / 60)
+	var/secondsServed = served - (minutesServed * 60)
+	if(sentence <= 0)
+		to_chat(usr, "<span class='notice'>You are serving a permanent sentence for [crime].</span>")
+	else if(served >= (sentence * 60))
+		to_chat(usr, "<span class='notice'>You have served your sentence for [crime].</span>")
+	else
+		to_chat(usr, "<span class='notice'>You have served [minutesServed] minutes [secondsServed] seconds of your [sentence] minute sentance for [crime].</span>")
+	if(goal > 0)
+		to_chat(usr, "<span class='notice'>You have accumulated [points] out of the [goal] points you need for freedom.</span>")
 
 /obj/item/card/id/prisoner/one
 	name = "Prisoner #13-001"

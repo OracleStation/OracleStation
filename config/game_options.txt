@@ -398,14 +398,15 @@ JOIN_WITH_MUTANT_RACE
 ## You probably want humans on your space station, but technically speaking you can turn them off without any ill effect
 ROUNDSTART_RACES human
 
-## Races that are okay-ish on the station. Safe to enable.
-ROUNDSTART_RACES unathi
-#ROUNDSTART_RACES plasmaman
-#ROUNDSTART_RACES slime
-ROUNDSTART_RACES ethari
-#ROUNDSTART_RACES pod
-ROUNDSTART_RACES ipc
-ROUNDSTART_RACES vox
+## Races that are okay-ish on the station. Safe to enable. The number is the minimum hours required to play.
+ROUNDSTART_RACES unathi 10
+#ROUNDSTART_RACES plasmaman 0
+#ROUNDSTART_RACES slime 10
+ROUNDSTART_RACES ethari 0
+ROUNDSTART_RACES human 0
+#ROUNDSTART_RACES pod 0
+ROUNDSTART_RACES ipc 10
+ROUNDSTART_RACES vox 10
 
 ## Races that aren't on the station by default.
 #ROUNDSTART_RACES jelly

@@ -21,6 +21,9 @@
 	ass_pic = "ethari"
 	examine_text = "an Ethari"
 	species_text_color = "#e23f03"
+	loreblurb = "A bipedal, fur-covered race, mostly notable for its abysmal public opinion. \
+	Armed with sharp claws, they are strict carnivores and fierce hand-to-hand combatants. \
+	Following a major PR disaster Nanotrasen crews are no longer allowed to make Ethari crewmembers fetch the nuclear authentication disk or call them \"good boy\"."
 
 /datum/species/ethari/after_equip_job(datum/job/J, mob/living/carbon/human/H)
 	H.grant_language(/datum/language/canilunzt)
