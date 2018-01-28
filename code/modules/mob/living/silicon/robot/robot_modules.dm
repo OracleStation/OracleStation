@@ -266,7 +266,7 @@
 		/obj/item/reagent_containers/glass/beaker/large,
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/syringe,
-		
+
 		/obj/item/retractor,
 		/obj/item/hemostat,
 		/obj/item/cautery,
@@ -278,7 +278,8 @@
 		/obj/item/borg/cyborghug/medical,
 		/obj/item/stack/medical/gauze/cyborg,
 		/obj/item/organ_storage,
-		/obj/item/borg/lollipop)
+		/obj/item/borg/lollipop,
+		/obj/item/stack/nanopaste)
 	emag_modules = list(/obj/item/reagent_containers/borghypo/hacked)
 	ratvar_modules = list(
 		/obj/item/clockwork/slab/cyborg/medical,
@@ -536,7 +537,7 @@
 		/obj/item/reagent_containers/borghypo/syndicate,
 		/obj/item/twohanded/shockpaddles/syndicate,
 		/obj/item/device/healthanalyzer,
-		
+
 		/obj/item/retractor,
 		/obj/item/hemostat,
 		/obj/item/cautery,

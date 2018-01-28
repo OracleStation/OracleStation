@@ -159,6 +159,34 @@
 	if(delold)
 		qdel(src)
 
+/mob/living/silicon/pai/attackby(obj/item/W as obj, mob/user as mob, params)
+	if(istype(W, /obj/item/stack/nanopaste))
+		var/obj/item/stack/nanopaste/N = W
+		if(stat == DEAD)
+			to_chat(user, "<span class='danger'>\The [src] is beyond help, at this point.</span>")
+		else if(getBruteLoss() || getFireLoss())
+			adjustBruteLoss(-15)
+			adjustFireLoss(-15)
+			updatehealth()
+			N.use(1)
+			user.visible_message("<span class='notice'>[user.name] applied some [W] at [src]'s damaged areas.</span>",\
+				"<span class='notice'>You apply some [W] at [name]'s damaged areas.</span>")
+		else
+			to_chat(user, "<span class='notice'>All [name]'s systems are nominal.</span>")
+		return
+
+	else if(W.force)
+		adjustBruteLoss(W.force)
+		updatehealth()
+		if(holoform)
+			visible_message("<span class='danger'>[user.name] attacks [src] with [W] and deactivates the holoform!</span>")
+			fold_in(0)
+		else
+			visible_message("<span class='danger'>[user.name] attacks [src] with [W]!</span>")
+
+	else
+		visible_message("<span class='warning'>[user.name] bonks [src] harmlessly with [W].</span>")
+
 /datum/action/innate/pai
 	name = "PAI Action"
 	icon_icon = 'icons/mob/actions/actions_silicon.dmi'
