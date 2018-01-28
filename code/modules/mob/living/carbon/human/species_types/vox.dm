@@ -26,6 +26,9 @@
 	husk_id = "voxhusk"
 	damage_overlay_type = "vox"
 	exotic_bloodtype = "V"
+	loreblurb = "Though commonly referred to as \"shitbirds\" by the crew, they are, in fact, not avian. \
+	Exiled by their own species, the corporation is the only one that will hire the outcasts. \
+	Most of them struggle with galactic common - as it is not their native tongue - and have difficulty grasping the nuances of the language."
 
 /datum/species/vox/random_name(unique)
 	var/sounds = rand(2,8)
