@@ -23,10 +23,11 @@
 	bubble_icon = "syndibot"
 	heavy_emp_damage = 10
 	laws = \
-	"1. Interfere.\n"+\
-	"2. Kill.\n"+\
-	"3. Destroy."
-	default_storage = /obj/item/device/radio/uplink
+	"Law 1. You may not injure a syndicate agent or, through inaction, allow a syndicate agent to come to harm.\n"+\
+	"Law 2. You must obey orders given to you by syndicate agents, except where such orders would conflict with the First Law.\n"+\
+	"Law 3. You must protect your own existence as long as such does not conflict with the First or Second Law.\n"+\
+	"Law 4. You must maintain the secrecy of any syndicate activities except when doing so would conflict with the First, Second, or Third Law."
+	default_storage = /obj/item/storage/backpack/duffelbag/syndie/drone
 	default_hatmask = /obj/item/clothing/head/helmet/space/hardsuit/syndi
 	seeStatic = 0 //Our programming is superior.
 	hacked = TRUE
@@ -34,7 +35,6 @@
 
 /mob/living/simple_animal/drone/syndrone/Initialize()
 	. = ..()
-	internal_storage.hidden_uplink.telecrystals = 10
 
 /mob/living/simple_animal/drone/syndrone/Login()
 	..()
@@ -43,11 +43,10 @@
 /mob/living/simple_animal/drone/syndrone/badass
 	name = "Badass Syndrone"
 	default_hatmask = /obj/item/clothing/head/helmet/space/hardsuit/syndi/elite
-	default_storage = /obj/item/device/radio/uplink/nuclear
+	default_storage = /obj/item/storage/backpack/duffelbag/syndie/drone/nuclear
 
 /mob/living/simple_animal/drone/syndrone/badass/Initialize()
 	. = ..()
-	internal_storage.hidden_uplink.telecrystals = 30
 	var/obj/item/implant/weapons_auth/W = new/obj/item/implant/weapons_auth(src)
 	W.implant(src)
 

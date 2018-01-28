@@ -405,6 +405,23 @@
 	silent = 1
 	slowdown = 0
 
+/obj/item/storage/backpack/duffelbag/syndie/drone
+	name = "suspicious looking drone duffel bag"
+	desc = "A large duffel bag for holding extra weapons and hats."
+	resistance_flags = FIRE_PROOF
+
+/obj/item/storage/backpack/duffelbag/syndie/drone/PopulateContents(var/uplink_tc)
+	var/obj/item/device/radio/uplink/drone_uplink = new(src)
+	drone_uplink.hidden_uplink.telecrystals = 10
+
+/obj/item/storage/backpack/duffelbag/syndie/drone/nuclear
+	name = "suspicious looking drone duffel bag"
+	desc = "A large duffel bag for holding extra weapons and hats. Written on the side are words in red letters: 'GIT THAT FUKKEN DISK.' "
+
+/obj/item/storage/backpack/duffelbag/syndie/drone/nuclear/PopulateContents()
+	var/obj/item/device/radio/uplink/nuclear/drone_uplink = new(src)
+	drone_uplink.hidden_uplink.telecrystals = 30
+
 /obj/item/storage/backpack/duffelbag/syndie/hitman
 	desc = "A large duffel bag for holding extra things. There is a Nanotrasen logo on the back."
 	icon_state = "duffel-syndieammo"
