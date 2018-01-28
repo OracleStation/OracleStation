@@ -2,7 +2,7 @@
 	name = "Vox Outcast"
 	id = "vox"
 	say_mod = "shrieks"
-	species_traits = list(NOSCAN, NO_UNDERWEAR, NOTRANSSTING) // Robust, but cannot be cloned.
+	species_traits = list(RESISTPRESSURE, NO_UNDERWEAR, NOTRANSSTING) // Robust, but cannot be cloned.
 	mutant_bodyparts = list("vox_quills", "vox_body_markings",  "vox_facial_quills", "vox_tail", "vox_body", "vox_eyes", "vox_tail_markings")
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
@@ -21,7 +21,7 @@
 	toxmod = 2 // Weak immune systems.
 	burnmod = 0.8 // Tough hides.
 	stunmod = 1.2 // Take a bit longer to get up than other species.
-	breathid = "n2" // O2 is for dustlungs
+	breathid = "n2"
 	examine_text = "A vox outcast"
 	husk_id = "voxhusk"
 	damage_overlay_type = "vox"
@@ -55,7 +55,9 @@
 	H.internal = H.get_item_for_held_index(2)
 	H.update_internals_hud_icon(1)
 	H.grant_language(/datum/language/voxpidgin)
+	H.disabilities |= NOCLONE
 
-/datum/species/vox/spec_life(mob/living/carbon/human/H)
+/datum/species/vox/spec_death(gibbed, mob/living/carbon/human/H)
 	if(H.disabilities & HUSK)
 		H.dna.features["vox_tail"] = "voxhusk"
+		H.update_body()

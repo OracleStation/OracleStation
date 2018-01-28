@@ -583,7 +583,7 @@
 			bodyparts_to_add -= "vox_facial_quills"
 
 	if("vox_eyes" in mutant_bodyparts)
-		if(!H.dna.features["vox_eyes"] || H.head && (H.head.flags_inv & HIDEFACE) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEYES)) || !HD || HD.status == BODYPART_ROBOTIC)
+		if(!H.dna.features["vox_eyes"] || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEYES)) || !HD || HD.status == BODYPART_ROBOTIC)
 			bodyparts_to_add -= "vox_eyes"
 
 	if("vox_tail" in mutant_bodyparts)
