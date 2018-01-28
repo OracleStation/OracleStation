@@ -341,8 +341,13 @@
 
 /mob/living/simple_animal/bot/medbot/proc/assess_patient(mob/living/carbon/C)
 	//Time to see if they need medical help!
-	if(C.stat == DEAD || (C.status_flags & FAKEDEATH) || (ROBOTIC_LIMBS in C.dna.species.species_traits))
+	if(C.stat == DEAD || (C.status_flags & FAKEDEATH))
 		return 0 //welp too late for them!
+
+	for(var/X in C.bodyparts)
+		var/obj/item/bodypart/part = X
+		if(part.status != BODYPART_ORGANIC)
+			return 0 // No flesh to inject into.
 
 	if(emagged == 2) //Everyone needs our medicine. (Our medicine is toxins)
 		return 1
