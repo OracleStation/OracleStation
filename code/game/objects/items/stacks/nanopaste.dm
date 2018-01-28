@@ -41,10 +41,10 @@
 		if(BP && (BP.status & BODYPART_ROBOTIC))
 			if(BP.get_damage())
 				if(do_after(user, 30, target = H)) //Repairing bodyparts is slightly faster than repairing borgs
-					BP.heal_damage(15, 15, robo_repair = 1)
-					use(1)
 					user.visible_message("<span class='notice'>[user] applies some nanite paste to [user != M ? "[M]'s" : "their"] [BP.name] with [src].</span>",\
 					"<span class='notice'>You apply some nanite paste to [user == M ? "your" : "[M]'s"] [BP.name].</span>")
+					item_heal_robotic(M, user, 15, 15)
+					use(1)
 			else
 				to_chat(user, "<span class='notice'>Nothing to fix here.</span>")
 		else
