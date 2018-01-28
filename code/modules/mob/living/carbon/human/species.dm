@@ -1691,7 +1691,7 @@
 		return 0
 	if(CONFIG_GET(flag/use_exp_restrictions_admin_bypass) && check_rights(R_ADMIN, FALSE, C.mob))
 		return 0
-	var/my_exp = C.calc_exp_type(EXP_TYPE_LIVING) / 60
+	var/my_exp = C.get_exp_living(FALSE) / 60
 	if(my_exp >= required_playtime)
 		return 0
 	else
