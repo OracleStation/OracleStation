@@ -23,7 +23,7 @@
 	var/icon_creating = "make"
 
 	var/list/using_materials
-	var/starting_amount = 0
+	var/starting_amount = 2000
 	var/metal_cost = 1000
 	var/glass_cost = 1000
 	var/power_used = 1000
