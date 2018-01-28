@@ -163,7 +163,7 @@
 	if(istype(W, /obj/item/stack/nanopaste))
 		var/obj/item/stack/nanopaste/N = W
 		if(stat == DEAD)
-			to_chat(user, "<span class='danger'>\The [src] is beyond help, at this point.</span>")
+			to_chat(user, "<span class='danger'>[src] is beyond help, at this point.</span>")
 		else if(getBruteLoss() || getFireLoss())
 			adjustBruteLoss(-15)
 			adjustFireLoss(-15)
@@ -175,17 +175,8 @@
 			to_chat(user, "<span class='notice'>All [name]'s systems are nominal.</span>")
 		return
 
-	else if(W.force)
-		adjustBruteLoss(W.force)
-		updatehealth()
-		if(holoform)
-			visible_message("<span class='danger'>[user.name] attacks [src] with [W] and deactivates the holoform!</span>")
-			fold_in(0)
-		else
-			visible_message("<span class='danger'>[user.name] attacks [src] with [W]!</span>")
-
 	else
-		visible_message("<span class='warning'>[user.name] bonks [src] harmlessly with [W].</span>")
+		..()
 
 /datum/action/innate/pai
 	name = "PAI Action"
