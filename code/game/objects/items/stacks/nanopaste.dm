@@ -49,3 +49,9 @@
 				to_chat(user, "<span class='notice'>Nothing to fix here.</span>")
 		else
 			to_chat(user, "<span class='notice'>[src] won't work on that.</span>")
+
+//Used as medical borg module
+/obj/item/stack/nanopaste/cyborg
+	materials = list()
+	is_cyborg = 1
+	cost = 750

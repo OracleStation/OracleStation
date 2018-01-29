@@ -167,7 +167,6 @@
 		else if(getBruteLoss() || getFireLoss())
 			adjustBruteLoss(-15)
 			adjustFireLoss(-15)
-			updatehealth()
 			N.use(1)
 			user.visible_message("<span class='notice'>[user.name] applied some [W] at [src]'s damaged areas.</span>",\
 				"<span class='notice'>You apply some [W] at [name]'s damaged areas.</span>")
