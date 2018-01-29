@@ -2333,14 +2333,14 @@
 		var/sendername
 		switch(faxtype)
 			if("Central Command")
-				sendername = command_name()
+				sendername = "Central Command"
 			if("Syndicate")
 				sendername = "UNKNOWN"
 			if("Administrator")
-				sendername = input(src.owner, "What organization does the fax come from? This determines the prefix of the paper (i.e. Central Command- Title). This is optional.", "Organization") as text|null
+				sendername = input(owner, "What organization does the fax come from? This determines the prefix of the paper (i.e. Central Command- Title). This is optional.", "Organization") as text|null
 
 		if(sender)
-			notify = alert(src.owner, "Would you like to inform the original sender that a fax has arrived?","Notify Sender","Yes","No")
+			notify = alert(owner, "Would you like to inform the original sender that a fax has arrived?","Notify Sender","Yes","No")
 
 		// Create the reply message
 		if(sendername)
@@ -2351,12 +2351,10 @@
 		P.update_icon()
 		P.x = rand(-2, 0)
 		P.y = rand(-1, 2)
-		//P.offset_x += P.x
-		//P.offset_y += P.y
 
 		if(destination != "All Departments")
 			if(!fax.receivefax(P))
-				to_chat(src.owner, "<span class='warning'>Message transmission failed.</span>")
+				to_chat(owner, "<span class='warning'>Message transmission failed.</span>")
 				return
 		else
 			for(var/thing in GLOB.allfaxes)
@@ -2422,11 +2420,8 @@
 			P.activate_on_timeout = TRUE
 		P.x = rand(-2, 0)
 		P.y = rand(-1, 2)
-		//P.offset_x += P.x
-		//P.offset_y += P.y
 		P.update_icon()
-		P.update_icon()
-		//fax.receivefax(P) // this does not work, it does not preserve the type, we have to physically teleport the fax paper instead
+		//we have to physically teleport the fax paper
 		P.loc = fax.loc
 		if(istype(H) && H.stat == CONSCIOUS && (istype(H.ears, /obj/item/device/radio/headset)))
 			to_chat(H, "Your headset pings, notifying you that a reply to your fax has arrived.")
@@ -2466,9 +2461,6 @@
 		P.info = tmsg
 		P.x = rand(-2, 0)
 		P.y = rand(-1, 2)
-		//P.offset_x += P.x
-		//P.offset_y += P.y
-		P.update_icon()
 		P.update_icon()
 		fax.receivefax(P)
 		if(istype(H) && H.stat == CONSCIOUS && (istype(H.ears, /obj/item/device/radio/headset)))
