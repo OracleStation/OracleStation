@@ -185,6 +185,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		preview_icon = update_preview_icon()
 		user << browse_rsc(preview_icon, "previewicon.png")
 	catch(var/exception/e)
+		preview_icon = icon('icons/effects/effects.dmi', "nothing")
+		preview_icon.Scale(64, 64)
 		log_world("Failed to load icon preview for [user.ckey]: [e.desc]")
 	var/dat = "<center>"
 
