@@ -532,6 +532,8 @@
 	key = "scream"
 	key_third_person = "screams"
 	message = "screams."
+	message_ipc = "screeches electronically!"
+	message_vox = "shrieks!"
 	message_mime = "acts out a scream!"
 	emote_type = EMOTE_SPEAK
 	cooldown = 100
