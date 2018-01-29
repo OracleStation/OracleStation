@@ -28,6 +28,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	var/destination = "Not Selected" // the department we're sending to
 
 /obj/machinery/photocopier/faxmachine/Initialize()
+	. = ..()
 	GLOB.allfaxes += src
 
 	if( !(("[department]" in GLOB.alldepartments) || ("[department]" in GLOB.admin_departments)) )
@@ -231,8 +232,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 		var/obj/machinery/photocopier/faxmachine/F = thing
 		if( F.department == destination )
 			success = F.receivefax(copy)
-
-	if(success)
+	if(success != FALSE && department != destination)
 		var/datum/fax/F = new /datum/fax()
 		F.name = copy.name
 		F.from_department = department
@@ -241,8 +241,14 @@ GLOBAL_LIST_EMPTY(alldepartments)
 		F.message = copy
 		F.sent_by = sender
 		F.sent_at = world.time
-
 		visible_message("[src] beeps, \"Message transmitted successfully.\"")
+
+	else if(destination == department)
+		visible_message("[src] beeps, \"Error transmitting message. [src] cannot send faxes to itself.\"")
+	else if(destination == "Not Selected")
+		visible_message("[src] beeps, \"Error transmitting message. Select a destination.\"")
+	else if(destination == "Unknown")
+		visible_message("[src] beeps, \"Error transmitting message. Cannot transmit to Unknown.\"")
 	else
 		visible_message("[src] beeps, \"Error transmitting message.\"")
 
@@ -250,8 +256,8 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	if(stat & (BROKEN|NOPOWER))
 		return FALSE
 
-	if(department == "Unknown")
-		return FALSE	//You can't send faxes to "Unknown"
+	if(department == "Unknown" || department == destination)
+		return FALSE	//You can't send faxes to "Unknown" or yourself
 
 	flick("faxreceive", src)
 
@@ -261,6 +267,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	addtimer(CALLBACK(src, .proc/handle_copying, incoming), 20)
 
 /obj/machinery/photocopier/faxmachine/proc/handle_copying(var/obj/item/incoming)
+	use_power(active_power_usage)
 	if(istype(incoming, /obj/item/paper))
 		copy(incoming)
 	else if(istype(incoming, /obj/item/photo))
@@ -268,7 +275,6 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	else
 		return FALSE
 
-	use_power(active_power_usage)
 	return TRUE
 
 /obj/machinery/photocopier/faxmachine/proc/send_admin_fax(var/mob/sender, var/destination)
@@ -311,5 +317,5 @@ GLOBAL_LIST_EMPTY(alldepartments)
 
 
 /obj/machinery/photocopier/faxmachine/proc/message_admins(var/mob/sender, var/faxname, var/faxtype, var/obj/item/sent, font_colour="#9A04D1")
-	var/msg = "<span class='boldnotice'><font color='[font_colour]'>[faxname]: </font> [ADMIN_LOOKUP(sender)] | REPLY: [ADMIN_CENTCOM_REPLY(sender)] [ADMIN_FAX(sender, src, faxtype, sent)] [ADMIN_SM(sender)] | REJECT: (<A HREF='?_src_=holder;FaxReplyTemplate=\ref[sender];originfax=\ref[src]'>TEMPLATE</A>) [ADMIN_SMITE(sender)] (<A HREF='?_src_=holder;EvilFax=\ref[sender];originfax=\ref[src]'>EVILFAX</A>) </span>: Receiving '[sent.name]' via secure connection... <a href='?_src_=holder;[HrefToken(TRUE)];AdminFaxView=[REF(sent)]'>view message</a>"
+	var/msg = "<span class='boldnotice'><font color='[font_colour]'>[faxname]: </font> [ADMIN_LOOKUP(sender)] | REPLY: [ADMIN_CENTCOM_REPLY(sender)] [ADMIN_FAX(sender, src, faxtype, sent)] [ADMIN_SM(sender)] | REJECT: (<A HREF='?_src_=holder;[HrefToken(TRUE)];FaxReplyTemplate=[REF(sender)];originfax=[REF(src)]'>TEMPLATE</A>) [ADMIN_SMITE(sender)] (<A HREF='?_src_=holder;[HrefToken(TRUE)];EvilFax=[REF(sender)];originfax=[REF(src)]'>EVILFAX</A>) </span>: Receiving '[sent.name]' via secure connection... <a href='?_src_=holder;[HrefToken(TRUE)];AdminFaxView=[REF(sent)]'>view message</a>"
 	to_chat(GLOB.admins, msg)
