@@ -160,14 +160,8 @@
 	to_chat(owner, "<span class='warning'>Your head hurts.</span>")
 	switch(severity)
 		if(1)
-			owner.Jitter(rand(50,120))
-			owner.Stun(rand(50,100))
-			owner.Dizzy(rand(30,60))
 			owner.adjustBrainLoss(rand(25, 50))
 		if(2)
-			owner.Jitter(rand(25,50))
-			owner.Stun(rand(25,50))
-			owner.Dizzy(rand(25,30))
 			owner.adjustBrainLoss(rand(0, 25))
 
 // IPC brain fuckery.

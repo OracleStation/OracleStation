@@ -2,7 +2,7 @@
 	name = "Vox Outcast"
 	id = "vox"
 	say_mod = "shrieks"
-	species_traits = list(RESISTPRESSURE, NO_UNDERWEAR, NOTRANSSTING) // Robust, but cannot be cloned.
+	species_traits = list(RESISTPRESSURE, NO_UNDERWEAR, NOTRANSSTING) // Robust, but cannot be cloned easily.
 	mutant_bodyparts = list("vox_quills", "vox_body_markings",  "vox_facial_quills", "vox_tail", "vox_body", "vox_eyes", "vox_tail_markings")
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
@@ -13,9 +13,13 @@
 	female_cough_sound = 'sound/voice/shriekcough.ogg'
 	male_sneeze_sound = 'sound/voice/shrieksneeze.ogg'
 	female_sneeze_sound = 'sound/voice/shrieksneeze.ogg'
+	mutant_brain = /obj/item/organ/brain/cybernetic/vox // Brain damage on EMP
+	mutant_heart = /obj/item/organ/heart/vox
+	mutantliver = /obj/item/organ/liver/vox // Liver damage on EMP
+	mutantstomach = /obj/item/organ/stomach/vox // Disgust on EMP
 	mutanttongue = /obj/item/organ/tongue/vox
-	mutantlungs = /obj/item/organ/lungs/vox
-	mutant_brain = /obj/item/organ/brain/cybernetic/vox
+	mutantlungs = /obj/item/organ/lungs/vox // Causes them to.. gasp.
+	mutantears = /obj/item/organ/ears/vox // Very brief deafness
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/vox
 	skinned_type = /obj/item/stack/sheet/animalhide/vox
 	toxmod = 2 // Weak immune systems.
@@ -55,7 +59,7 @@
 	H.internal = H.get_item_for_held_index(2)
 	H.update_internals_hud_icon(1)
 	H.grant_language(/datum/language/voxpidgin)
-	H.disabilities |= NOCLONE
+	H.disabilities |= NOCLONE // Can be cloned with higher component levels.
 
 /datum/species/vox/spec_death(gibbed, mob/living/carbon/human/H)
 	if(H.disabilities & HUSK)

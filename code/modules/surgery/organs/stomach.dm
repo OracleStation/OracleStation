@@ -65,6 +65,12 @@
 	icon_state = "pstomach"
 	desc = "A strange crystal that is responsible for metabolizing the unseen energy force that feeds plasmamen."
 
+/obj/item/organ/stomach/vox
+	name = "cybernetic stomach"
+	icon_state = ""
+	desc = ""
+	status = ORGAN_ROBOTIC
+
 /obj/item/organ/stomach/cell
 	name = "micro-cell"
 	icon_state = "microcell"
@@ -84,3 +90,13 @@
 		if(2)
 			owner.nutrition = 250
 			to_chat(owner, "<span class='warning'>Alert: EMP Detected. Cycling battery.</span>")
+
+/obj/item/organ/stomach/vox
+	name = "vox stomach"
+	icon_state = "stomach-vox"
+	origin_tech = "engineering=3"
+	desc = "A vox stomach. If the mere concept wasn't disgusting enough, it also has metal components sticking out of it."
+	status = ORGAN_ROBOTIC
+
+/obj/item/organ/stomach/vox/emp_act()
+	owner.adjust_disgust(10)
