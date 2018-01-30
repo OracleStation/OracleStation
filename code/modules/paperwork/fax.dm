@@ -23,7 +23,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)
 // Fax panel - lets admins check all faxes sent during the round
 /client/proc/fax_panel()
 	set name = "Fax Panel"
-	set category = "Admin"
+	set category = "Fun"
 	if(holder)
 		holder.fax_panel(usr)
 	SSblackbox.add_details("admin_verb","FXP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -31,7 +31,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)
 
 /datum/admins/proc/fax_panel(var/mob/living/user)
 	var/html = "<A align='right' href='?src=[UID()];[HrefToken(TRUE)];refreshfaxpanel=1'>Refresh</A>"
-	html += "<A align='right' href='?src=[UID()];[HrefToken(TRUE)];AdminFaxCreate=1;faxtype=Administrator'>Create Fax</A>"
+	html += "<A align='right' href='?src=[UID()];[HrefToken(TRUE)];AdminFaxCreate=1;faxtype=Custom'>Create Fax</A>"
 
 	html += "<div class='block'>"
 	html += "<h2>Admin Faxes</h2>"

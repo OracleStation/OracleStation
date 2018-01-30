@@ -2291,7 +2291,7 @@
 
 //Topics relating to Faxes
 	else if(href_list["AdminFaxCreate"])
-		if(!check_rights(R_ADMIN))
+		if(!check_rights(R_FUN))
 			return
 
 		var/mob/sender = locate(href_list["AdminFaxCreate"])
@@ -2336,7 +2336,7 @@
 				sendername = "Central Command"
 			if("Syndicate")
 				sendername = "UNKNOWN"
-			if("Administrator")
+			if("Custom")
 				sendername = input(owner, "What organization does the fax come from? This determines the prefix of the paper (i.e. Central Command- Title). This is optional.", "Organization") as text|null
 
 		if(sender)
@@ -2369,7 +2369,7 @@
 			A.to_department = fax.department
 		else
 			A.to_department = "All Departments"
-		A.origin = "Administrator"
+		A.origin = "Custom"
 		A.message = P
 		A.reply_to = reply_to
 		A.sent_by = usr
@@ -2389,14 +2389,14 @@
 		return
 
 	else if(href_list["refreshfaxpanel"])
-		if(!check_rights(R_ADMIN))
+		if(!check_rights(R_FUN))
 			return
 
 		fax_panel(usr)
 		return
 
 	else if(href_list["EvilFax"])
-		if(!check_rights(R_ADMIN))
+		if(!check_rights(R_FUN))
 			return
 		var/mob/living/carbon/human/H = locate(href_list["EvilFax"])
 		if(!istype(H))
@@ -2431,7 +2431,7 @@
 		return
 
 	else if(href_list["FaxReplyTemplate"])
-		if(!check_rights(R_ADMIN))
+		if(!check_rights(R_FUN))
 			return
 		var/mob/living/carbon/human/H = locate(href_list["FaxReplyTemplate"])
 		if(!istype(H))
@@ -2471,7 +2471,7 @@
 		return
 
 	else if(href_list["AdminFaxView"])
-		if(!check_rights(R_ADMIN))
+		if(!check_rights(R_FUN))
 			return
 
 		var/obj/item/fax = locate(href_list["AdminFaxView"])
@@ -2487,7 +2487,7 @@
 
 /datum/admins/proc/handle_sendall(var/obj/machinery/photocopier/faxmachine/F, var/obj/item/paper/P)
 	if(F.receivefax(P) == FALSE)
-		to_chat(src.owner, "<span class='warning'>Message transmission to [F.department] failed.</span>")
+		to_chat(owner, "<span class='warning'>Message transmission to [F.department] failed.</span>")
 
 /datum/admins/proc/HandleCMode()
 	if(!check_rights(R_ADMIN))
