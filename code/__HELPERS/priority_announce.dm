@@ -1,4 +1,4 @@
-/proc/priority_announce(text, title = "", sound = 'sound/ai/attention.ogg', type, mob/living/user)
+/proc/priority_announce(text, title = "", sound = 'sound/ai/attention.ogg', type)
 	if(!text)
 		return
 
@@ -23,8 +23,6 @@
 
 	announcement += "<br><span class='alert'>[html_encode(text)]</span><br>"
 	announcement += "<br>"
-	if(user)
-		announcement += "<span class='alert'>-[user.name] ([user.job])</span><br>"
 
 	var/s = sound(sound)
 	for(var/mob/M in GLOB.player_list)
@@ -49,13 +47,16 @@
 			C.messagetext.Add(text)
 			P.update_icon()
 
-/proc/minor_announce(message, title = "Attention:", alert)
+/proc/minor_announce(message, title = "Attention:", alert, mob/living/from)
 	if(!message)
 		return
 
 	for(var/mob/M in GLOB.player_list)
 		if(!isnewplayer(M) && M.can_hear())
-			to_chat(M, "<b><font size = 3><font color = red>[title]</font color><BR>[message]</font size></b><BR>")
+			var/complete_msg = "<b><font size = 3><font color = red>[title]</font color><BR>[message]</font size></b><BR>"
+			if(from)
+				complete_msg += "<span class='alert'>-[from.name] ([from.job])"
+			to_chat(M, complete_msg)
 			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS)
 				if(alert)
 					SEND_SOUND(M, sound('sound/misc/notice1.ogg'))
