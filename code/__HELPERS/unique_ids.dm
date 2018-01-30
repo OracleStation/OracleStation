@@ -25,7 +25,7 @@ GLOBAL_VAR_INIT(next_unique_datum_id, 1)
 		tag = null // Grab the raw ref, not the tag
 		unique_datum_id = "[REF(src)]_[GLOB.next_unique_datum_id++]"
 		tag = tag_backup
-	return GLOB.unique_datum_id
+	return unique_datum_id
 
 /*/client/proc/UID()
 	if(!unique_datum_id)
