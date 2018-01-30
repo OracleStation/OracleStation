@@ -2353,7 +2353,7 @@
 		P.y = rand(-1, 2)
 
 		if(destination != "All Departments")
-			if(!fax.receivefax(P))
+			if(fax.receivefax(P) == FALSE)
 				to_chat(owner, "<span class='warning'>Message transmission failed.</span>")
 				return
 		else
@@ -2486,7 +2486,7 @@
 		return
 
 /datum/admins/proc/handle_sendall(var/obj/machinery/photocopier/faxmachine/F, var/obj/item/paper/P)
-	if(!F.receivefax(P))
+	if(F.receivefax(P) == FALSE)
 		to_chat(src.owner, "<span class='warning'>Message transmission to [F.department] failed.</span>")
 
 /datum/admins/proc/HandleCMode()
