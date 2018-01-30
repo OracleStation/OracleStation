@@ -2413,7 +2413,7 @@
 		var/obj/machinery/photocopier/faxmachine/fax = locate(href_list["originfax"])
 
 		P.name = "Central Command - [customname]"
-		P.info = "<b>You <i>really</i> should've known better.</b>"
+		P.info = "<span class='danger'>You really should've known better.</span>"
 		P.myeffect = eviltype
 		P.mytarget = H
 		if(alert("Do you want the Evil Fax to activate automatically if [H] tries to ignore it?",,"Yes", "No") == "Yes")
