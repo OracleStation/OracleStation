@@ -1691,11 +1691,11 @@
 		return 0
 	if(CONFIG_GET(flag/use_exp_restrictions_admin_bypass) && check_rights(R_ADMIN, FALSE, C.mob))
 		return 0
-	var/my_exp = C.get_exp_living(FALSE) / 60
-	if(my_exp >= required_playtime)
+	var/my_exp = C.get_exp_living(FALSE)
+	if(my_exp / 60 >= required_playtime)
 		return 0
 	else
-		return (required_playtime - my_exp)
+		return (get_exp_format(required_playtime * 60 - my_exp))
 
 #undef HEAT_DAMAGE_LEVEL_1
 #undef HEAT_DAMAGE_LEVEL_2
