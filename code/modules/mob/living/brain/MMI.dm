@@ -13,6 +13,7 @@
 	var/obj/item/organ/brain/brain = null //The actual brain
 	var/datum/ai_laws/laws = new()
 	var/force_replace_ai_name = FALSE
+	var/silenced = FALSE //if set to TRUE, they can't talk.
 
 /obj/item/device/mmi/update_icon()
 	if(brain)
