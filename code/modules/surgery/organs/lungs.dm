@@ -323,9 +323,9 @@
 	desc = "A pair of very thin, very light lungs that the vox use to process nitrogen. They seem to have synthetic components."
 	safe_oxygen_min = 0 //We don't breathe this
 	safe_oxygen_max = 1 //This is toxic to us
-	safe_nitro_min = 15 //We breathe THIS!
+	safe_nitro_min = 16 //We breathe THIS!
 	oxy_damage_type = TOX //Oxygen poisons us
-	oxy_damage_multiplier = 10 // BADLY.
+	oxy_damage_multiplier = 6 // BADLY.
 	status = ORGAN_ROBOTIC
 
 /obj/item/organ/lungs/vox/emp_act()

@@ -65,12 +65,6 @@
 	icon_state = "pstomach"
 	desc = "A strange crystal that is responsible for metabolizing the unseen energy force that feeds plasmamen."
 
-/obj/item/organ/stomach/vox
-	name = "cybernetic stomach"
-	icon_state = ""
-	desc = ""
-	status = ORGAN_ROBOTIC
-
 /obj/item/organ/stomach/cell
 	name = "micro-cell"
 	icon_state = "microcell"
