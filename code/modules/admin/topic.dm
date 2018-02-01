@@ -2379,7 +2379,7 @@
 		if(notify == "Yes")
 			var/mob/living/carbon/human/H = sender
 			if(istype(H) && H.stat == CONSCIOUS && (istype(H.ears, /obj/item/device/radio/headset)))
-				to_chat(sender, "Your headset pings, notifying you that a reply to your fax has arrived.")
+				to_chat(sender, "<span class='notice'>Your headset pings, notifying you that a reply to your fax has arrived.</span>")
 		if(sender)
 			log_admin("[key_name(src.owner)] replied to a fax message from [key_name(sender)]: [input_text]")
 			message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(sender)] (<a href='?_src_=holder;[HrefToken(TRUE)];AdminFaxView=[REF(P)]'>VIEW</a>).", 1)
@@ -2400,7 +2400,7 @@
 			return
 		var/mob/living/carbon/human/H = locate(href_list["EvilFax"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "<span class='notice'>This can only be used on instances of type /mob/living/carbon/human.</span>")
 			return
 		var/etypes = list("Borgification","Corgification","Death By Fire","Demotion Notice")
 		var/eviltype = input(src.owner, "Which type of evil fax do you wish to send [H]?","Its good to be baaaad...", "") as null|anything in etypes
@@ -2422,10 +2422,10 @@
 		P.y = rand(-1, 2)
 		P.update_icon()
 		//we have to physically teleport the fax paper
-		P.loc = fax.loc
+		P.forceMove(fax.loc)
 		if(istype(H) && H.stat == CONSCIOUS && (istype(H.ears, /obj/item/device/radio/headset)))
-			to_chat(H, "Your headset pings, notifying you that a reply to your fax has arrived.")
-		to_chat(src.owner, "You sent a [eviltype] fax to [H]")
+			to_chat(H, "<span class='notice'>Your headset pings, notifying you that a reply to your fax has arrived.</span>")
+		to_chat(src.owner, "<span class='notice'>You sent a [eviltype] fax to [H].</span>")
 		log_admin("[key_name(src.owner)] sent [key_name(H)] a [eviltype] fax")
 		message_admins("[key_name_admin(src.owner)] replied to [key_name_admin(H)] with a [eviltype] fax")
 		return
@@ -2435,7 +2435,7 @@
 			return
 		var/mob/living/carbon/human/H = locate(href_list["FaxReplyTemplate"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "<span class='notice'>This can only be used on instances of type /mob/living/carbon/human.</span>")
 			return
 		var/obj/item/paper/P = new /obj/item/paper(null)
 		var/obj/machinery/photocopier/faxmachine/fax = locate(href_list["originfax"])
@@ -2464,8 +2464,8 @@
 		P.update_icon()
 		fax.receivefax(P)
 		if(istype(H) && H.stat == CONSCIOUS && (istype(H.ears, /obj/item/device/radio/headset)))
-			to_chat(H, "Your headset pings, notifying you that a reply to your fax has arrived.")
-		to_chat(src.owner, "You sent a standard '[stype]' fax to [H]")
+			to_chat(H, "<span class='notice'>Your headset pings, notifying you that a reply to your fax has arrived.</span>")
+		to_chat(src.owner, "<span class='notice'>You sent a standard '[stype]' fax to [H].</span>")
 		log_admin("[key_name(src.owner)] sent [key_name(H)] a standard '[stype]' fax")
 		message_admins("[key_name_admin(src.owner)] replied to [key_name_admin(H)] with a standard '[stype]' fax")
 		return

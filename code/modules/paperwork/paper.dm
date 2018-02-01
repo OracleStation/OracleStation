@@ -431,8 +431,8 @@
 			evilpaper_selfdestruct()
 
 
-/obj/item/paper/evilfax/New()
-	..()
+/obj/item/paper/evilfax/Initialize()
+	. = ..()
 	START_PROCESSING(SSobj, src)
 
 
