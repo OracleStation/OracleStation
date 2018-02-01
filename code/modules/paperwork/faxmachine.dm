@@ -259,12 +259,14 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	if(department == "Unknown" || department == destination)
 		return FALSE	//You can't send faxes to "Unknown" or yourself
 
-	flick("faxreceive", src)
-
-	playsound(loc, 'goon/sound/machinery/printer_dotmatrix.ogg', 50, 1)
-
+	handle_animation()
 	//give the sprite some time to flick
 	addtimer(CALLBACK(src, .proc/handle_copying, incoming), 20)
+
+//Prevents copypasta for evil faxes
+/obj/machinery/photocopier/faxmachine/proc/handle_animation()
+	flick("faxreceive", src)
+	playsound(loc, 'goon/sound/machinery/printer_dotmatrix.ogg', 50, 1)
 
 /obj/machinery/photocopier/faxmachine/proc/handle_copying(var/obj/item/incoming)
 	use_power(active_power_usage)

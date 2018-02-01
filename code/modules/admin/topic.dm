@@ -2422,6 +2422,7 @@
 		P.y = rand(-1, 2)
 		P.update_icon()
 		//we have to physically teleport the fax paper
+		fax.handle_animation()
 		P.forceMove(fax.loc)
 		if(istype(H) && H.stat == CONSCIOUS && (istype(H.ears, /obj/item/device/radio/headset)))
 			to_chat(H, "<span class='notice'>Your headset pings, notifying you that a reply to your fax has arrived.</span>")
