@@ -122,7 +122,7 @@
 /obj/item/organ/ears/vox
 	name = "vox ears"
 	icon_state = "ears-vox"
-	desc = "This alien organ is usually completely hidden inside the vox's head. It appears to be equal parts synthetic and organic."
+	desc = "The internal parts of the vox ear. Corporate scientists hypothesize that the synthetic components take the piercing edge off their own shrieking."
 	status = ORGAN_ROBOTIC
 
 /obj/item/organ/ears/vox/emp_act()

@@ -109,6 +109,6 @@
 /obj/item/organ/liver/vox
 	name = "vox liver"
 	icon_state = "liver-vox"
-	desc = "A vox liver that seems to be made of equal parts organic and synthetic pieces."
+	desc = "A mechanically-assisted vox liver."
 	origin_tech = "biotech=4"
 	status = ORGAN_ROBOTIC

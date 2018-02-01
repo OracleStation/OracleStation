@@ -20,6 +20,7 @@
 	mutanttongue = /obj/item/organ/tongue/vox
 	mutantlungs = /obj/item/organ/lungs/vox // Causes them to.. gasp.
 	mutantears = /obj/item/organ/ears/vox // Very brief deafness
+	mutanteyes = /obj/item/organ/eyes/vox // Quick hallucination
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/vox
 	skinned_type = /obj/item/stack/sheet/animalhide/vox
 	toxmod = 2 // Weak immune systems.
