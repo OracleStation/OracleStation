@@ -2400,7 +2400,7 @@
 			return
 		var/mob/living/carbon/human/H = locate(href_list["EvilFax"])
 		if(!istype(H))
-			to_chat(usr, "<span class='notice'>This can only be used on instances of type /mob/living/carbon/human.")
+			to_chat(usr, "<span class='notice'>This can only be used on instances of type /mob/living/carbon/human.</span>")
 			return
 		var/etypes = list("Borgification","Corgification","Death By Fire","Demotion Notice")
 		var/eviltype = input(src.owner, "Which type of evil fax do you wish to send [H]?","Its good to be baaaad...", "") as null|anything in etypes
