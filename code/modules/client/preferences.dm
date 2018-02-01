@@ -181,8 +181,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 /datum/preferences/proc/ShowChoices(mob/user)
 	if(!user || !user.client)
 		return
-	preview_icon = update_preview_icon()
-	user << browse_rsc(preview_icon, "previewicon.png")
+	try
+		preview_icon = update_preview_icon()
+		user << browse_rsc(preview_icon, "previewicon.png")
+	catch(var/exception/e)
+		preview_icon = icon('icons/effects/effects.dmi', "nothing")
+		preview_icon.Scale(64, 64)
+		log_world("Failed to load icon preview for [user.ckey]: [e.desc]")
 	var/dat = "<center>"
 
 	dat += "<a href='?_src_=prefs;preference=tab;tab=0' [current_tab == 0 ? "class='linkOn'" : ""]>Character Settings</a> "
