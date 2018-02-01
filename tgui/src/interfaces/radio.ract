@@ -27,13 +27,6 @@
         {{data.listening ? "Engaged": "Disengaged"}}</ui-button>
     </ui-section>
   {{/if}}
-  {{#if data.command}}
-    <ui-section label='High Volume'>
-      <ui-button icon='{{data.useCommand ? "power-off" : "close"}}' style='{{data.useCommand ? "selected" : null}}'
-        action='command'>
-        {{data.useCommand ? "On": "Off"}}</ui-button>
-    </ui-section>
-  {{/if}}
 </ui-display>
 <ui-display title='Channel'>
   <ui-section label='Frequency'>
