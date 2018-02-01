@@ -17,7 +17,6 @@
 GLOBAL_VAR_INIT(next_unique_datum_id, 1)
 
 /datum/var/tmp/unique_datum_id = null
-//client/var/tmp/unique_datum_id = null
 
 /datum/proc/UID()
 	if(!unique_datum_id)
@@ -26,12 +25,6 @@ GLOBAL_VAR_INIT(next_unique_datum_id, 1)
 		unique_datum_id = "[REF(src)]_[GLOB.next_unique_datum_id++]"
 		tag = tag_backup
 	return unique_datum_id
-
-/*/client/proc/UID()
-	if(!unique_datum_id)
-		unique_datum_id = "[REF(src)]_[next_unique_datum_id++]"
-	return unique_datum_id*/
-
 
 /proc/locateUID(uid)
 	if(!istext(uid))

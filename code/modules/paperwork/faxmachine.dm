@@ -241,16 +241,16 @@ GLOBAL_LIST_EMPTY(alldepartments)
 		F.message = copy
 		F.sent_by = sender
 		F.sent_at = world.time
-		visible_message("[src] beeps, \"Message transmitted successfully.\"")
+		visible_message("<span class='notice'>[src] beeps, \"Message transmitted successfully.\"</span>")
 
 	else if(destination == department)
-		visible_message("[src] beeps, \"Error transmitting message. [src] cannot send faxes to itself.\"")
+		visible_message("<span class='notice'>[src] beeps, \"Error transmitting message. [src] cannot send faxes to itself.\"</span>")
 	else if(destination == "Not Selected")
-		visible_message("[src] beeps, \"Error transmitting message. Select a destination.\"")
+		visible_message("<span class='notice'>[src] beeps, \"Error transmitting message. Select a destination.\"</span>")
 	else if(destination == "Unknown")
-		visible_message("[src] beeps, \"Error transmitting message. Cannot transmit to Unknown.\"")
+		visible_message("<span class='notice'>[src] beeps, \"Error transmitting message. Cannot transmit to Unknown.\"</span>")
 	else
-		visible_message("[src] beeps, \"Error transmitting message.\"")
+		visible_message("<span class='notice'>[src] beeps, \"Error transmitting message.\"</span>")
 
 /obj/machinery/photocopier/faxmachine/proc/receivefax(var/obj/item/incoming)
 	if(stat & (BROKEN|NOPOWER))
@@ -292,7 +292,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	else if(photocopy)
 		rcvdcopy = photocopy(photocopy)
 	else
-		visible_message("[src] beeps, \"Error transmitting message.\"")
+		visible_message("<span class='notice'>[src] beeps, \"Error transmitting message.\"</span>")
 		return
 
 	rcvdcopy.loc = null //hopefully this shouldn't cause trouble
@@ -313,7 +313,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 		if("Syndicate")
 			message_admins(sender, "SYNDICATE FAX", destination, rcvdcopy, "#DC143C")
 	sendcooldown = cooldown_time
-	visible_message("[src] beeps, \"Message transmitted successfully.\"")
+	visible_message("<span class='notice'>[src] beeps, \"Message transmitted successfully.\"</span>")
 
 
 /obj/machinery/photocopier/faxmachine/proc/message_admins(var/mob/sender, var/faxname, var/faxtype, var/obj/item/sent, font_colour="#9A04D1")
