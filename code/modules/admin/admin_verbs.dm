@@ -101,7 +101,8 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/mass_zombie_cure,
 	/client/proc/polymorph_all,
 	/client/proc/show_tip,
-	/client/proc/smite
+	/client/proc/smite,
+	/client/proc/fax_panel
 	))
 GLOBAL_PROTECT(admin_verbs_spawn)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /client/proc/respawn_character))
@@ -236,6 +237,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/client/proc/debug_huds,
 	/client/proc/customiseSNPC,
 	/client/proc/resetSNPC,
+	/client/proc/fax_panel
 	))
 
 /client/proc/add_admin_verbs()
