@@ -49,7 +49,7 @@
 			C.messagetext.Add(text)
 			P.update_icon()
 
-/proc/minor_announce(message, title = "Attention:", alert, mob/living/from)
+/proc/minor_announce(message, title = "Attention:", alert, mob/from)
 	if(!message)
 		return
 
@@ -57,7 +57,7 @@
 		if(!isnewplayer(M) && M.can_hear())
 			var/complete_msg = "<b><font size = 3><font color = red>[title]</font color><BR>[message]</font size></b><BR>"
 			if(from)
-				complete_msg += "<span class='alert'>-[from.name] ([from.job])"
+				complete_msg += "<span class='alert'>-[from.name] ([from.job])</span>"
 			to_chat(M, complete_msg)
 			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS)
 				if(alert)
