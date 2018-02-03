@@ -130,8 +130,8 @@
 
 /obj/item/clothing/head/soft/sec/brig_phys
 	name = "security medic cap"
-	icon_state = "secmedsoft"
-	item_color = "secmed"
+	icon_state = "secsoft"
+	item_color = "sec"
 
 /obj/item/clothing/head/soft/emt
 	name = "EMT cap"

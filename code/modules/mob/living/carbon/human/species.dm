@@ -568,7 +568,7 @@
 			bodyparts_to_add -= "horns"
 
 	if("ipc_screen" in mutant_bodyparts)
-		if(!H.dna.features["ipc_screen"] || H.dna.features["ipc_screen"] == "None" || H.head && (H.head.flags_inv & HIDEFACE) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEYES)) || !HD)
+		if(!H.dna.features["ipc_screen"] || H.dna.features["ipc_screen"] == "None" || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEYES)) || !HD)
 			bodyparts_to_add -= "ipc_screen"
 
 	if("ipc_antenna" in mutant_bodyparts)
@@ -1727,7 +1727,7 @@
 		return 0
 	if(CONFIG_GET(flag/use_exp_restrictions_admin_bypass) && check_rights(R_ADMIN, FALSE, C.mob))
 		return 0
-	var/my_exp = C.calc_exp_type(EXP_TYPE_LIVING) / 60
+	var/my_exp = C.get_exp_living(FALSE) / 60
 	if(my_exp >= required_playtime)
 		return 0
 	else
