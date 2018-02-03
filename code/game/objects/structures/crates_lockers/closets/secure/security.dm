@@ -70,7 +70,7 @@
 	new /obj/item/clothing/glasses/sunglasses(src)
 	new /obj/item/clothing/suit/armor/vest/blueshield(src)
 	new /obj/item/clothing/suit/storage/blueshield(src)
-	new /obj/item/storage/belt/holster(src)
+	new /obj/item/clothing/accessory/holster(src)
 	new /obj/item/clothing/shoes/jackboots(src)
 
 /obj/structure/closet/secure_closet/brig_phys
@@ -222,7 +222,7 @@
 	new /obj/item/holosign_creator/security(src)
 	new /obj/item/reagent_containers/spray/pepper(src)
 	new /obj/item/clothing/suit/armor/vest/det_suit(src)
-	new /obj/item/storage/belt/holster/full(src)
+	new /obj/item/clothing/accessory/holster/detective(src)
 	new /obj/item/device/mass_spectrometer(src)
 
 /obj/structure/closet/secure_closet/injection
