@@ -30,7 +30,7 @@ Chief Medical Officer
 /datum/outfit/job/cmo
 	name = "Chief Medical Officer"
 	jobtype = /datum/job/cmo
-	id = /obj/item/card/id/cmo
+	id = /obj/item/card/id/job/cmo
 	pda_slot = /obj/item/device/pda/heads/cmo
 	l_pocket = /obj/item/pinpointer/crew
 	ears = /obj/item/device/radio/headset/heads/cmo

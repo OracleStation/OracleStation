@@ -388,6 +388,10 @@ update_label("John Doe", "Clowny")
 	icon_state = "centcom"
 	access = list(ACCESS_ENGINE_EQUIP)
 
+/*
+JOB SPECIFIC ID CARDS
+*/
+
 /obj/item/card/id/job/ce
 	icon_state = "CE"
 
