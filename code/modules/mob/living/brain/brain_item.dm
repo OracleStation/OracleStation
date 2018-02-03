@@ -224,3 +224,12 @@
 			stored_mmi.brainmob.name = stored_mmi.brainmob.real_name
 			stored_mmi.icon_state = "posibrain-occupied"
 			update_from_mmi()
+
+/obj/item/organ/brain/mmi_holder/emp_act(severity)
+	switch(severity)
+		if(1)
+			owner.adjustBrainLoss(75)
+			to_chat(owner, "<span class='warning'>Alert: Posibrain heavily damaged.</span>")
+		if(2)
+			owner.adjustBrainLoss(25)
+			to_chat(owner, "<span class='warning'>Alert: Posibrain damaged.</span>")

@@ -344,6 +344,14 @@
 	if(C.stat == DEAD || (C.status_flags & FAKEDEATH))
 		return 0 //welp too late for them!
 
+	var/can_inject = FALSE
+	for(var/X in C.bodyparts)
+		var/obj/item/bodypart/part = X
+		if(part.status == BODYPART_ORGANIC)
+			can_inject = TRUE
+	if(!can_inject)
+		return 0
+
 	if(emagged == 2) //Everyone needs our medicine. (Our medicine is toxins)
 		return 1
 

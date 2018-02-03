@@ -351,6 +351,11 @@
 					if(!jobban_isbanned(player, "Syndicate") && !jobban_isbanned(player, role)) //Nodrak/Carn: Antag Job-bans
 						drafted += player.mind
 
+	if(protected_species)
+		for(var/mob/dead/new_player/player in drafted)
+			if(player.client.prefs.pref_species in protected_species)
+				drafted -= player
+
 	if(restricted_jobs)
 		for(var/datum/mind/player in drafted)				// Remove people who can't be an antagonist
 			for(var/job in restricted_jobs)
@@ -368,6 +373,11 @@
 
 		else												// Not enough scrubs, ABORT ABORT ABORT
 			break
+
+	if(protected_species)
+		for(var/mob/dead/new_player/player in drafted)
+			if(player.client.prefs.pref_species in protected_species)
+				drafted -= player
 
 	if(restricted_jobs)
 		for(var/datum/mind/player in drafted)				// Remove people who can't be an antagonist
