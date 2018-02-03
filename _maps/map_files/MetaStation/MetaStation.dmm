@@ -2243,7 +2243,9 @@
 	pixel_x = -26;
 	pixel_y = 34
 	},
-/obj/machinery/photocopier/faxmachine/longrange,
+/obj/machinery/photocopier/faxmachine/longrange{
+	department = "Head of Security"
+	},
 /turf/open/floor/plasteel/black,
 /area/crew_quarters/heads/hos)
 "aeu" = (
@@ -18533,7 +18535,9 @@
 /obj/machinery/newscaster{
 	pixel_x = -31
 	},
-/obj/machinery/photocopier/faxmachine/longrange,
+/obj/machinery/photocopier/faxmachine/longrange{
+	department = "Law Office"
+	},
 /turf/open/floor/wood,
 /area/lawoffice)
 "aIV" = (
@@ -29244,7 +29248,9 @@
 	pixel_y = -30
 	},
 /obj/structure/table/reinforced,
-/obj/machinery/photocopier/faxmachine,
+/obj/machinery/photocopier/faxmachine{
+	department = "Chief Engineer"
+	},
 /turf/open/floor/plasteel/vault{
 	dir = 5
 	},
@@ -33689,7 +33695,9 @@
 	network = list("Prison");
 	pixel_y = 30
 	},
-/obj/machinery/photocopier/faxmachine/longrange,
+/obj/machinery/photocopier/faxmachine/longrange{
+	department = "Head of Personnel"
+	},
 /turf/open/floor/wood,
 /area/crew_quarters/heads/hop)
 "bmq" = (
@@ -37598,7 +37606,9 @@
 	name = "Station Intercom (General)";
 	pixel_x = 27
 	},
-/obj/machinery/photocopier/faxmachine/longrange,
+/obj/machinery/photocopier/faxmachine/longrange{
+	department = "Captain"
+	},
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain/private)
 "bth" = (
@@ -64798,7 +64808,9 @@
 	pixel_x = 6;
 	pixel_y = -30
 	},
-/obj/machinery/photocopier/faxmachine,
+/obj/machinery/photocopier/faxmachine{
+	department = "Chief Medical Officer"
+	},
 /turf/open/floor/plasteel/barber{
 	dir = 8
 	},
@@ -66068,7 +66080,9 @@
 /area/crew_quarters/heads/hor)
 "cvU" = (
 /obj/structure/table/reinforced,
-/obj/machinery/photocopier/faxmachine,
+/obj/machinery/photocopier/faxmachine{
+	department = "Research Director"
+	},
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
 	},
