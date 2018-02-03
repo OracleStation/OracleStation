@@ -4,6 +4,20 @@
 /obj/effect
 	icon = 'icons/effects/effects.dmi'
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
+	var/use_fade = TRUE
+
+/obj/effect/Initialize()
+	. = ..()
+	if(use_fade)
+		alpha = 0
+		animate(src, alpha = 255, time = 5)
+
+/obj/effect/proc/destroy_effect()
+	if(use_fade)
+		animate(src, alpha = 0, time = 5)
+		QDEL_IN(src, 5)
+	else
+		qdel(src)
 
 /obj/effect/attackby(obj/item/I, mob/living/user, params)
 	return

@@ -44,7 +44,8 @@ BAN_LEGACY_SYSTEM
 #USE_EXP_RESTRICTIONS_OTHER
 ## Allows admins to bypass job playtime requirements.
 #USE_EXP_RESTRICTIONS_ADMIN_BYPASS
-
+## Locks certain species away from people who don't have enough XP. Define those in game_options.txt
+#USE_EXP_RESTRICTIONS_SPECIES
 
 ## log OOC channel
 LOG_OOC
@@ -183,6 +184,9 @@ CHECK_RANDOMIZER
 
 ## Wiki address
 # WIKIURL http://www.tgstation13.org/wiki
+
+## Wikibook address (for populating manuals)
+WIKIBOOKURL http://10.0.0.2:8080/wiki/
 
 ## Rules address
 # RULESURL http://www.tgstation13.org/wiki/Rules
@@ -358,3 +362,9 @@ MINUTE_TOPIC_LIMIT 100
 
 ## Send a message to IRC when starting a new game
 #IRC_ANNOUNCE_NEW_GAME
+
+## Allow admin hrefs that don't use the new token system, will eventually be removed
+DEBUG_ADMIN_HREFS
+
+## Command to invoke on the local machine to process external commands
+#SERVICE_COMMAND python bot.py

@@ -162,10 +162,10 @@
 		update_clothes_damaged_state(TRUE)
 	if(ismob(loc)) //It's not important enough to warrant a message if nobody's wearing it
 		var/mob/M = loc
-		M.visible_message("<span class='warning'>[M]'s [name] starts to fall apart!", "<span class='warning'>Your [name] starts to fall apart!")
+		M.visible_message("<span class='warning'>[M]'s [name] starts to fall apart!", "<span class='warning'>Your [name] starts to fall apart!</span>")
 
 /obj/item/clothing/proc/update_clothes_damaged_state(damaging = TRUE)
-	var/index = "\ref[initial(icon)]-[initial(icon_state)]"
+	var/index = "[REF(initial(icon))]-[initial(icon_state)]"
 	var/static/list/damaged_clothes_icons = list()
 	if(damaging)
 		damaged_clothes = 1
@@ -230,7 +230,7 @@ BLIND     // can't see anything
 		if(damaged_clothes)
 			. += mutable_appearance('icons/effects/item_damage.dmi', "damagedgloves")
 		if(blood_DNA)
-			. += mutable_appearance('icons/effects/blood.dmi', "bloodyhands")
+			. += mutable_appearance('icons/effects/blood.dmi', "bloodyhands", color = blood_DNA_to_color())
 
 /obj/item/clothing/gloves/update_clothes_damaged_state(damaging = TRUE)
 	..()
@@ -266,7 +266,7 @@ BLIND     // can't see anything
 		if(damaged_clothes)
 			. += mutable_appearance('icons/effects/item_damage.dmi', "damagedhelmet")
 		if(blood_DNA)
-			. += mutable_appearance('icons/effects/blood.dmi', "helmetblood")
+			. += mutable_appearance('icons/effects/blood.dmi', "helmetblood", color = blood_DNA_to_color())
 
 /obj/item/clothing/head/update_clothes_damaged_state(damaging = TRUE)
 	..()
@@ -290,7 +290,7 @@ BLIND     // can't see anything
 			if(damaged_clothes)
 				. += mutable_appearance('icons/effects/item_damage.dmi', "damagedmask")
 			if(blood_DNA)
-				. += mutable_appearance('icons/effects/blood.dmi', "maskblood")
+				. += mutable_appearance('icons/effects/blood.dmi', "maskblood", color = blood_DNA_to_color())
 
 
 //Mask
@@ -312,7 +312,7 @@ BLIND     // can't see anything
 			if(damaged_clothes)
 				. += mutable_appearance('icons/effects/item_damage.dmi', "damagedmask")
 			if(blood_DNA)
-				. += mutable_appearance('icons/effects/blood.dmi', "maskblood")
+				. += mutable_appearance('icons/effects/blood.dmi', "maskblood", color = blood_DNA_to_color())
 
 /obj/item/clothing/mask/update_clothes_damaged_state(damaging = TRUE)
 	..()
@@ -365,9 +365,17 @@ BLIND     // can't see anything
 	permeability_coefficient = 0.50
 	slowdown = SHOES_SLOWDOWN
 	var/blood_state = BLOOD_STATE_NOT_BLOODY
-	var/list/bloody_shoes = list(BLOOD_STATE_HUMAN = 0,BLOOD_STATE_XENO = 0, BLOOD_STATE_OIL = 0, BLOOD_STATE_NOT_BLOODY = 0)
+	var/list/bloody_shoes = list(BLOOD_STATE_BLOOD = 0, BLOOD_STATE_OIL = 0, BLOOD_STATE_NOT_BLOODY = 0)
 	var/offset = 0
 	var/equipped_before_drop = FALSE
+	var/last_bloodtype = ""//used to track the last bloodtype to have graced these shoes; makes for better performing footprint shenanigans
+	var/last_blood_DNA = ""//same as last one
+
+/obj/item/clothing/shoes/transfer_blood_dna(list/blood_dna)
+	..()
+	if(blood_dna.len)
+		last_bloodtype = blood_dna[blood_dna[blood_dna.len]]//trust me this works
+		last_blood_DNA = blood_dna[blood_dna.len]
 
 /obj/item/clothing/shoes/worn_overlays(isinhands = FALSE)
 	. = list()
@@ -376,12 +384,12 @@ BLIND     // can't see anything
 		if(blood_DNA)
 			bloody = 1
 		else
-			bloody = bloody_shoes[BLOOD_STATE_HUMAN]
+			bloody = bloody_shoes[BLOOD_STATE_BLOOD]
 
 		if(damaged_clothes)
 			. += mutable_appearance('icons/effects/item_damage.dmi', "damagedshoe")
 		if(bloody)
-			. += mutable_appearance('icons/effects/blood.dmi', "shoeblood")
+			. += mutable_appearance('icons/effects/blood.dmi', "shoeblood", color = blood_DNA_to_color())
 
 /obj/item/clothing/shoes/equipped(mob/user, slot)
 	. = ..()
@@ -409,7 +417,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/shoes/clean_blood()
 	..()
-	bloody_shoes = list(BLOOD_STATE_HUMAN = 0,BLOOD_STATE_XENO = 0, BLOOD_STATE_OIL = 0, BLOOD_STATE_NOT_BLOODY = 0)
+	bloody_shoes = list(BLOOD_STATE_BLOOD = 0, BLOOD_STATE_OIL = 0, BLOOD_STATE_NOT_BLOODY = 0)
 	blood_state = BLOOD_STATE_NOT_BLOODY
 	if(ismob(loc))
 		var/mob/M = loc
@@ -436,7 +444,7 @@ BLIND     // can't see anything
 		if(damaged_clothes)
 			. += mutable_appearance('icons/effects/item_damage.dmi', "damaged[blood_overlay_type]")
 		if(blood_DNA)
-			. += mutable_appearance('icons/effects/blood.dmi', "[blood_overlay_type]blood")
+			. += mutable_appearance('icons/effects/blood.dmi', "[blood_overlay_type]blood", color = blood_DNA_to_color())
 		var/mob/living/carbon/human/M = loc
 		if(ishuman(M) && M.w_uniform)
 			var/obj/item/clothing/under/U = M.w_uniform
@@ -525,7 +533,7 @@ BLIND     // can't see anything
 		if(damaged_clothes)
 			. += mutable_appearance('icons/effects/item_damage.dmi', "damageduniform")
 		if(blood_DNA)
-			. += mutable_appearance('icons/effects/blood.dmi', "uniformblood")
+			. += mutable_appearance('icons/effects/blood.dmi', "uniformblood", color = blood_DNA_to_color())
 		if(accessory_overlay)
 			. += accessory_overlay
 
@@ -690,7 +698,7 @@ BLIND     // can't see anything
 		return
 	sensor_mode = modes.Find(switchMode) - 1
 
-	if (src.loc == usr)
+	if (loc == usr)
 		switch(sensor_mode)
 			if(0)
 				to_chat(usr, "<span class='notice'>You disable your suit's remote sensing equipment.</span>")
@@ -700,6 +708,18 @@ BLIND     // can't see anything
 				to_chat(usr, "<span class='notice'>Your suit will now only report your exact vital lifesigns.</span>")
 			if(3)
 				to_chat(usr, "<span class='notice'>Your suit will now report your exact vital lifesigns as well as your coordinate position.</span>")
+	else if(istype(loc, /mob))
+		usr.visible_message("<span class='notice'>[usr] attempts to adjust [loc]'s suit sensors...</span>")
+		if(do_after(usr, 15, target = loc))
+			switch(sensor_mode)
+				if(0)
+					usr.visible_message("<span class='warning'>[usr] disables [loc]'s remote sensing equipment.</span>")
+				if(1)
+					usr.visible_message("<span class='notice'>[usr] turns [loc]'s remote sensors to binary.</span>")
+				if(2)
+					usr.visible_message("<span class='notice'>[usr] sets [loc]'s sensors to track vitals.</span>")
+				if(3)
+					usr.visible_message("<span class='notice'>[usr] sets [loc]'s sensors to maximum.</span>")
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc

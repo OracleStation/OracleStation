@@ -66,7 +66,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
-	var/list/features = list("mcolor" = "FFF", "tail_unathi" = "Smooth", "tail_human" = "None", "tail_ethari" = "Bushy", "snout_ethari" = "Sharp", "ears_ethari" = "Fox", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs")
+	var/species_looking_at = "human"	//used as a helper to keep track of in the species selct thingy
+	var/list/features = list("mcolor" = "FFF", "tail_unathi" = "Smooth", "tail_human" = "None", "tail_ethari" = "Bushy", "snout_ethari" = "Sharp", "ears_ethari" = "Fox", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "ipc_screen" = "Blue", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)")
 
 	var/list/custom_names = list("clown", "mime", "ai", "cyborg", "religion", "deity")
 	var/prefered_security_department = SEC_DEPT_RANDOM
@@ -124,6 +125,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/loaded_preferences_successfully = load_preferences()
 	if(loaded_preferences_successfully)
 		if(load_character())
+			species_looking_at = pref_species.id
 			return
 	//we couldn't load character data so just randomize the character appearance + name
 	random_character()		//let's create a random character then - rather than a fat, bald and naked man.
@@ -134,11 +136,58 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	menuoptions = list()
 	return
 
+/datum/preferences/proc/ShowSpeciesChoices(mob/user)
+	var/datspecies = "<div><table style='width:100%'><tr><th>"
+	datspecies += "<div style='overflow-y:auto;height=180px;width=75px'>"
+	for(var/speciesid in CONFIG_GET(keyed_number_list/roundstart_races))
+		var/speciespath = GLOB.species_list[speciesid]
+		if(!speciespath)
+			continue
+		var/datum/species/S = new speciespath()
+		if(species_looking_at == speciesid)
+			datspecies += "<b>[S.name]</b><BR><BR>"
+		else if(S.required_playtime_remaining(parent))
+			datspecies += "<a href='?_src_=prefs;lookatspecies=[speciesid];task=species'><font color='red'>[S.name]</font></a><BR><BR>"
+		else
+			datspecies += "<a href='?_src_=prefs;lookatspecies=[speciesid];task=species'>[S.name]</a><BR><BR>"
+		QDEL_NULL(S)
+
+	datspecies += "</div></th><th><div style='overflow-y:auto;height=180px;width=420px'>"
+	var/sppath = GLOB.species_list[species_looking_at]
+	var/datum/species/S = new sppath()
+
+	datspecies += "<center><font size=3 style='font-weight:bold'>[S.name]</font><BR><BR>[S.loreblurb]</center></div></th><th>"
+	var/icon/fakeicon = update_preview_icon(S, TRUE)//Q: Is this hacky? A:Yes. Yes, it is.
+	user << browse_rsc(fakeicon, "fakeicon.png")
+	datspecies += "<center>"
+	datspecies += "<img src=fakeicon.png width=[fakeicon.Width()] height=[fakeicon.Height()]><BR>"
+	if(pref_species.id == species_looking_at)
+		datspecies += "Set Species "
+	else
+		datspecies += "<a href='?_src_=prefs;setspecies=[species_looking_at];task=species'>Set Species</a> "
+	datspecies += "<a href='?_src_=prefs;preference=job;task=close'>Done</a><BR>"
+	var/required = S.required_playtime_remaining(parent)
+	if(required)
+		datspecies += "<span class='warning'><font color='red'>Need [Ceiling(required)] hours to unlock!</font></span>"
+	datspecies += "</center></th></tr></table></div>"
+
+	user << browse(null, "window=preferences")
+	var/datum/browser/popup = new(user, "speciespick", "<div align='center'>Species Pick</div>", 700, 230)
+	popup.set_window_options("can_close=0")
+	popup.set_content(datspecies)
+	popup.open(0)
+	QDEL_NULL(S)
+
 /datum/preferences/proc/ShowChoices(mob/user)
 	if(!user || !user.client)
 		return
-	update_preview_icon()
-	user << browse_rsc(preview_icon, "previewicon.png")
+	try
+		preview_icon = update_preview_icon()
+		user << browse_rsc(preview_icon, "previewicon.png")
+	catch(var/exception/e)
+		preview_icon = icon('icons/effects/effects.dmi', "nothing")
+		preview_icon.Scale(64, 64)
+		log_world("Failed to load icon preview for [user.ckey]: [e.desc]")
 	var/dat = "<center>"
 
 	dat += "<a href='?_src_=prefs;preference=tab;tab=0' [current_tab == 0 ? "class='linkOn'" : ""]>Character Settings</a> "
@@ -357,6 +406,33 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<h3>Ears</h3>"
 
 					dat += "<a href='?_src_=prefs;preference=ears_ethari;task=input'>[features["ears_ethari"]]</a><BR>"
+
+					dat += "</td>"
+
+				if("ipc_screen" in pref_species.mutant_bodyparts)
+					dat += "<td valign='top' width='14%'>"
+
+					dat += "<h3>Screen Style</h3>"
+
+					dat += "<a href='?_src_=prefs;preference=ipc_screen;task=input'>[features["ipc_screen"]]</a><BR>"
+					dat += "<span style='border: 1px solid #161616; background-color: #[eye_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=eyes;task=input'>Change</a><BR>"
+					dat += "</td>"
+
+				if("ipc_antenna" in pref_species.mutant_bodyparts)
+					dat += "<td valign='top' width='14%'>"
+
+					dat += "<h3>Antenna Style</h3>"
+
+					dat += "<a href='?_src_=prefs;preference=ipc_antenna;task=input'>[features["ipc_antenna"]]</a><BR>"
+					dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=hair;task=input'>Change</a><BR>"
+					dat += "</td>"
+
+				if("ipc_chassis" in pref_species.mutant_bodyparts)
+					dat += "<td valign='top' width='14%'>"
+
+					dat += "<h3>Chassis Style</h3>"
+
+					dat += "<a href='?_src_=prefs;preference=ipc_chassis;task=input'>[features["ipc_chassis"]]</a><BR>"
 
 					dat += "</td>"
 
@@ -811,6 +887,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		switch(href_list["task"])
 			if("close")
 				user << browse(null, "window=mob_occupation")
+				user << browse(null, "window=speciespick")
 				ShowChoices(user)
 			if("reset")
 				ResetJobs()
@@ -863,6 +940,33 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("all")
 					random_character()
 
+		if("species")
+			if(href_list["setspecies"])
+				var/sid = href_list["setspecies"]
+				var/let_them = TRUE
+				if(CONFIG_GET(flag/use_exp_tracking) && CONFIG_GET(flag/use_exp_restrictions_species))
+					var/speciespath = GLOB.species_list[sid]
+					var/datum/species/S = new speciespath()
+					if(S.required_playtime_remaining(parent))//we're checking against this list to prevent href shenanigans
+						to_chat(parent, "<span class='danger'>You need more playtime to play [S.name]!</span>")
+						let_them = FALSE
+				if(let_them)
+					var/newtype = GLOB.species_list[sid]
+					pref_species = new newtype()
+					//Now that we changed our species, we must verify that the mutant colour is still allowed.
+					var/temp_hsv = RGBtoHSV(features["mcolor"])
+					if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
+						features["mcolor"] = pref_species.default_color
+					user << browse(null, "window=speciespick")
+					ShowChoices(user)
+					return 1
+
+			if(href_list["lookatspecies"])
+				species_looking_at = href_list["lookatspecies"]
+
+			ShowSpeciesChoices(user)
+			return 1
+
 		if("input")
 			switch(href_list["preference"])
 				if("ghostform")
@@ -897,7 +1001,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							ghost_others = GHOST_OTHERS_SIMPLE
 
 				if("name")
-					var/new_name = reject_bad_name( input(user, "Choose your character's name:", "Character Preference")  as text|null )
+					var/new_name =  reject_bad_name( input(user, "Choose your character's name:", "Character Preference")  as text|null , pref_species.allow_numbers_in_name)
 					if(new_name)
 						real_name = new_name
 					else
@@ -996,16 +1100,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						eye_color = sanitize_hexcolor(new_eyes)
 
 				if("species")
-
-					var/result = input(user, "Select a species", "Species Selection") as null|anything in CONFIG_GET(keyed_flag_list/roundstart_races)
-
-					if(result)
-						var/newtype = GLOB.species_list[result]
-						pref_species = new newtype()
-						//Now that we changed our species, we must verify that the mutant colour is still allowed.
-						var/temp_hsv = RGBtoHSV(features["mcolor"])
-						if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
-							features["mcolor"] = pref_species.default_color
+					ShowSpeciesChoices(user)
+					return 1
 
 				if("mutant_color")
 					var/new_mutantcolor = input(user, "Choose your character's alien/mutant color:", "Character Preference") as color|null
@@ -1096,6 +1192,24 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_legs)
 						features["legs"] = new_legs
 
+				if("ipc_screen")
+					var/new_ipc_screen
+					new_ipc_screen = input(user, "Choose your character's screen:", "Character Preference") as null|anything in GLOB.ipc_screens_list
+					if(new_ipc_screen)
+						features["ipc_screen"] = new_ipc_screen
+
+				if("ipc_antenna")
+					var/new_ipc_antenna
+					new_ipc_antenna = input(user, "Choose your character's antenna:", "Character Preference") as null|anything in GLOB.ipc_antennas_list
+					if(new_ipc_antenna)
+						features["ipc_antenna"] = new_ipc_antenna
+
+				if("ipc_chassis")
+					var/new_ipc_chassis
+					new_ipc_chassis = input(user, "Choose your character's chassis:", "Character Preference") as null|anything in GLOB.ipc_chassis_list
+					if(new_ipc_chassis)
+						features["ipc_chassis"] = new_ipc_chassis
+
 				if("s_tone")
 					var/new_s_tone = input(user, "Choose your character's skin-tone:", "Character Preference")  as null|anything in GLOB.skin_tones
 					if(new_s_tone)
@@ -1180,16 +1294,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						preferred_map = maplist[pickedmap]
 
 				if ("clientfps")
-					var/version_message
-					if (user.client && user.client.byond_version < 511)
-						version_message = "\nYou need to be using byond version 511 or later to take advantage of this feature, your version of [user.client.byond_version] is too low"
-					if (world.byond_version < 511)
-						version_message += "\nThis server does not currently support client side fps. You can set now for when it does."
-					var/desiredfps = input(user, "Choose your desired fps.[version_message]\n(0 = synced with server tick rate (currently:[world.fps]))", "Character Preference", clientfps)  as null|num
+					var/desiredfps = input(user, "Choose your desired fps. (0 = synced with server tick rate (currently:[world.fps]))", "Character Preference", clientfps)  as null|num
 					if (!isnull(desiredfps))
 						clientfps = desiredfps
-						if (world.byond_version >= 511 && user.client && user.client.byond_version >= 511)
-							user.client.vars["fps"] = clientfps
+						parent.fps = desiredfps
 				if("ui")
 					var/pickedui = input(user, "Choose your UI style.", "Character Preference")  as null|anything in list("Midnight", "Plasmafire", "Retro", "Slimecore", "Operative", "Clockwork")
 					if(pickedui)

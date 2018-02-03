@@ -145,12 +145,17 @@ CONFIG_DEF(flag/use_exp_restrictions_other)
 
 CONFIG_DEF(flag/use_exp_restrictions_admin_bypass)
 
+CONFIG_DEF(flag/use_exp_restrictions_species)
+
 CONFIG_DEF(string/server)
 
 CONFIG_DEF(string/banappeals)
 
 CONFIG_DEF(string/wikiurl)
 		value = "https://www.oraclestation.com/wiki/Main_Page"
+
+CONFIG_DEF(string/wikibookurl)
+		value = "http://10.0.0.2:8080/wiki/"
 
 CONFIG_DEF(string/discordurl)
 		value = "https://discord.gg/TsjA9wp"
@@ -347,5 +352,7 @@ CONFIG_DEF(number/error_msg_delay)	// How long to wait between messaging admins 
 	value = 50
 
 CONFIG_DEF(flag/irc_announce_new_game)
+
+CONFIG_DEF(string/service_command)
 
 CONFIG_DEF(flag/debug_admin_hrefs)

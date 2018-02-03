@@ -74,7 +74,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	var/mob/thrownby = null
 
-	/obj/item/mouse_drag_pointer = MOUSE_ACTIVE_POINTER //the icon to indicate this object is being dragged
+	mouse_drag_pointer = MOUSE_ACTIVE_POINTER //the icon to indicate this object is being dragged
 
 	//So items can have custom embedd values
 	//Because customisation is king
@@ -157,16 +157,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/blob_act(obj/structure/blob/B)
 	if(B && B.loc == loc)
 		qdel(src)
-
-//user: The mob that is suiciding
-//damagetype: The type of damage the item will inflict on the user
-//BRUTELOSS = 1
-//FIRELOSS = 2
-//TOXLOSS = 4
-//OXYLOSS = 8
-//Output a creative message and then return the damagetype done
-/obj/item/proc/suicide_act(mob/user)
-	return
 
 /obj/item/verb/move_to_top()
 	set name = "Move To Top"
@@ -534,11 +524,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/clean_blood()
 	. = ..()
 	if(.)
-		if(initial(icon) && initial(icon_state))
-			var/index = blood_splatter_index()
-			var/icon/blood_splatter_icon = GLOB.blood_splatter_icons[index]
-			if(blood_splatter_icon)
-				cut_overlay(blood_splatter_icon)
+		if(blood_splatter_icon)
+			cut_overlay(blood_splatter_icon)
 
 /obj/item/clothing/gloves/clean_blood()
 	. = ..()
@@ -593,7 +580,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 /obj/item/proc/get_dismemberment_chance(obj/item/bodypart/affecting)
 	if(affecting.can_dismember(src))
-		if((sharpness || damtype == BURN) && w_class >= 3)
+		if((sharpness || damtype == BURN || (damtype == BRUTE && (affecting.owner.dna && affecting.owner.dna.species && (EASYDISMEMBER in affecting.owner.dna.species.species_traits)))) && w_class >= 3)
 			. = force*(w_class-1)
 
 /obj/item/proc/get_dismember_sound()

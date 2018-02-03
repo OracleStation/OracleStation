@@ -29,7 +29,11 @@
 	Master.Initialize(10, FALSE)
 
 	if(CONFIG_GET(flag/irc_announce_new_game))
-		IRCBroadcast("New round starting on [SSmapping.config.map_name]!")
+		if(CONFIG_GET(string/server))
+			var/address = CONFIG_GET(string/server)
+			IRCBroadcast("New round starting on [SSmapping.config.map_name]! <byond://[address]>")
+		else
+			IRCBroadcast("New round starting on [SSmapping.config.map_name]!")
 
 /world/proc/SetupExternalRSC()
 #if (PRELOAD_RSC == 0)
@@ -81,6 +85,7 @@
 	GLOB.world_game_log = file("[GLOB.log_directory]/game.log")
 	GLOB.world_attack_log = file("[GLOB.log_directory]/attack.log")
 	GLOB.world_runtime_log = file("[GLOB.log_directory]/runtime.log")
+	GLOB.world_qdel_log = file("[GLOB.log_directory]/qdel.log")
 	GLOB.world_href_log = file("[GLOB.log_directory]/hrefs.html")
 	WRITE_FILE(GLOB.world_game_log, "\n\nStarting up round ID [GLOB.round_id]. [time_stamp()]\n---------------------")
 	WRITE_FILE(GLOB.world_attack_log, "\n\nStarting up round ID [GLOB.round_id]. [time_stamp()]\n---------------------")
@@ -242,7 +247,7 @@
 			var/remote_hash = file2text(http["CONTENT"])
 
 			if(local_hash != remote_hash)
-				to_chat(world, "<span class='boldannounce'>Server is updating! You may need to reconnect!</span>")
+				to_chat(world, "<span class='narsie'>Server is updating! You may need to reconnect!</span>")
 				shutdown()
 				return
 	..()

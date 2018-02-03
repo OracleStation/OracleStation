@@ -14,6 +14,7 @@
 	var/turf_type = /turf/open/floor/plating/asteroid //Because caves do whacky shit to revert to normal
 	var/floor_variance = 20 //probability floor has a different icon state
 	archdrops = list(/obj/item/ore/glass = 5)
+	attachment_holes = FALSE
 
 /turf/open/floor/plating/asteroid/Initialize()
 	var/proper_name = name
@@ -35,6 +36,8 @@
 	return
 
 /turf/open/floor/plating/asteroid/attackby(obj/item/W, mob/user, params)
+	if(..())
+		return TRUE
 	if(istype(W, /obj/item/storage/bag/ore))
 		var/obj/item/storage/bag/ore/S = W
 		if(S.collection_mode == 1)
@@ -54,11 +57,13 @@
 		playsound(src, 'sound/weapons/genhit.ogg', 50, 1)
 		return
 
-	return ..()
 
 /turf/open/floor/plating/asteroid/singularity_act()
 	return
 
+/turf/open/floor/plating/asteroid/ex_act(severity, target)
+	. = SendSignal(COMSIG_ATOM_EX_ACT, severity, target)
+	contents_explosion(severity, target)
 
 /turf/open/floor/plating/asteroid/basalt
 	name = "volcanic floor"

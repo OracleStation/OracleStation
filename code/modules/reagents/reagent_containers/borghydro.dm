@@ -26,7 +26,7 @@ Borg Hypospray
 	var/bypass_protection = 0 //If the hypospray can go through armor or thick material
 
 	var/list/datum/reagents/reagent_list = list()
-	var/list/reagent_ids = list("charcoal", "epinephrine", "spaceacillin", "salglu_solution", "salbutomol")
+	var/list/reagent_ids = list("charcoal", "epinephrine", "spaceacillin", "salglu_solution", "salbutamol")
 	var/accepts_reagent_upgrades = TRUE //If upgrades can increase number of reagents dispensed.
 	var/list/modes = list() //Basically the inverse of reagent_ids. Instead of having numbers as "keys" and strings as values it has strings as keys and numbers as values.
 								//Used as list for input() in shakers.
@@ -206,7 +206,6 @@ Borg Shaker
 		to_chat(usr, "<span class='warning'>It is currently empty! Please allow some time for the synthesizer to produce more.</span>")
 
 /obj/item/reagent_containers/borghypo/borgshaker/hacked
-	..()
 	name = "cyborg shaker"
 	desc = "Will mix drinks that knock them dead."
 	icon = 'icons/obj/drinks.dmi'

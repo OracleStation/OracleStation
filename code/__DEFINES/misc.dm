@@ -203,8 +203,7 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 #define BLOOD_FADEOUT_TIME			2
 
 //Bloody shoe blood states
-#define BLOOD_STATE_HUMAN			"blood"
-#define BLOOD_STATE_XENO			"xeno"
+#define BLOOD_STATE_BLOOD			"blood"
 #define BLOOD_STATE_OIL				"oil"
 #define BLOOD_STATE_NOT_BLOODY		"no blood whatsoever"
 

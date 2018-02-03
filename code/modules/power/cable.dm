@@ -494,13 +494,6 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe("cable restrai
 	item_color = cable_color
 	update_icon()
 
-/obj/item/stack/cable_coil/suicide_act(mob/user)
-	if(locate(/obj/structure/chair/stool) in get_turf(user))
-		user.visible_message("<span class='suicide'>[user] is making a noose with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	else
-		user.visible_message("<span class='suicide'>[user] is strangling [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return(OXYLOSS)
-
 /obj/item/stack/cable_coil/Initialize(mapload, new_amount = null, param_color = null)
 	. = ..()
 	if(new_amount) // MAXCOIL by default
@@ -528,7 +521,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe("cable restrai
 	if(affecting && affecting.status == BODYPART_ROBOTIC)
 		if(user == H)
 			user.visible_message("<span class='notice'>[user] starts to fix some of the wires in [H]'s [affecting.name].</span>", "<span class='notice'>You start fixing some of the wires in [H]'s [affecting.name].</span>")
-			if(!do_mob(user, H, 50))
+			if(!do_mob(user, H, 60))
 				return
 		if(item_heal_robotic(H, user, 0, 15))
 			use(1)

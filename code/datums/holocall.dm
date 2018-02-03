@@ -93,6 +93,10 @@
 //Forcefully disconnects a holopad `H` from a call. Pads not in the call are ignored.
 /datum/holocall/proc/ConnectionFailure(obj/machinery/holopad/H, graceful = FALSE)
 	testing("Holocall connection failure: graceful [graceful]")
+
+	if (connected_holopad)
+		connected_holopad.clear_holo(user)
+
 	if(H == connected_holopad || H == calling_holopad)
 		if(!graceful && H != calling_holopad)
 			calling_holopad.say("Connection failure.")

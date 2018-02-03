@@ -35,6 +35,7 @@
 	req_access = list()
 
 	var/update = 0
+	var/pressure_display = 0
 	var/static/list/label2types = list(
 		"n2" = /obj/machinery/portable_atmospherics/canister/nitrogen,
 		"o2" = /obj/machinery/portable_atmospherics/canister/oxygen,
@@ -187,11 +188,6 @@
 
 #define HOLDING 1
 #define CONNECTED 2
-#define EMPTY 4
-#define LOW 8
-#define MEDIUM 16
-#define FULL 32
-#define DANGER 64
 /obj/machinery/portable_atmospherics/canister/update_icon()
 	if(stat & BROKEN)
 		cut_overlays()
@@ -199,40 +195,30 @@
 		return
 
 	var/last_update = update
+	var/last_pressure_display = pressure_display
+	var/pressure = air_contents.return_pressure()
 	update = 0
+	pressure_display = round(pressure / 500)
+	if(pressure_display > 10)
+		pressure_display = 10
 
 	if(holding)
 		update |= HOLDING
 	if(connected_port)
 		update |= CONNECTED
-	var/pressure = air_contents.return_pressure()
-	if(pressure < 10)
-		update |= EMPTY
-	else if(pressure < 5 * ONE_ATMOSPHERE)
-		update |= LOW
-	else if(pressure < 10 * ONE_ATMOSPHERE)
-		update |= MEDIUM
-	else if(pressure < 40 * ONE_ATMOSPHERE)
-		update |= FULL
-	else
-		update |= DANGER
 
-	if(update == last_update)
+	if(update != last_update && pressure_display != last_pressure_display)
 		return
 
 	cut_overlays()
+
+	if(pressure > 100)
+		add_overlay("can-o" + num2text(pressure_display))
 	if(update & HOLDING)
 		add_overlay("can-open")
 	if(update & CONNECTED)
 		add_overlay("can-connector")
-	if(update & LOW)
-		add_overlay("can-o0")
-	else if(update & MEDIUM)
-		add_overlay("can-o1")
-	else if(update & FULL)
-		add_overlay("can-o2")
-	else if(update & DANGER)
-		add_overlay("can-o3")
+
 #undef HOLDING
 #undef CONNECTED
 #undef EMPTY

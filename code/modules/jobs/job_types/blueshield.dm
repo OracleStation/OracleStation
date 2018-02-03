@@ -28,8 +28,7 @@ Blueshield
 /datum/outfit/job/blueshield
   name = "Blueshield"
   jobtype = /datum/job/blueshield
-
-  id = /obj/item/card/id/silver
+  id = /obj/item/card/id/job/nt
   uniform = /obj/item/clothing/under/rank/blueshield
   gloves = /obj/item/clothing/gloves/combat
   shoes = /obj/item/clothing/shoes/jackboots

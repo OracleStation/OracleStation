@@ -27,7 +27,7 @@
 		if(quickdraw)
 			to_chat(user, "<span class='notice'>You discreetly slip [W] into [src]. Alt-click [src] to remove it.</span>")
 		else
-			to_chat(user, "<span class='notice'>You discreetly slip [W] into [src].")
+			to_chat(user, "<span class='notice'>You discreetly slip [W] into [src].</span>")
 
 /obj/item/storage/internal/pocket/big
 	max_w_class = WEIGHT_CLASS_NORMAL
@@ -85,3 +85,25 @@
 	new /obj/item/pen/red(src)
 	new /obj/item/pen(src)
 	new /obj/item/pen/blue(src)
+
+/obj/item/storage/internal/pocket/holster
+	storage_slots = 3
+	max_w_class = WEIGHT_CLASS_NORMAL
+	can_hold = list(
+		/obj/item/gun/ballistic/automatic/pistol,
+		/obj/item/gun/ballistic/revolver,
+		/obj/item/ammo_box,
+		)
+
+/obj/item/storage/internal/pocket/holster/detective
+	storage_slots = 3
+	max_w_class = WEIGHT_CLASS_NORMAL
+	can_hold = list(
+		/obj/item/gun/ballistic/revolver/detective,
+		/obj/item/ammo_box/c38
+		)
+
+/obj/item/storage/internal/pocket/holster/detective/PopulateContents()
+	new /obj/item/gun/ballistic/revolver/detective(src)
+	new /obj/item/ammo_box/c38(src)
+	new /obj/item/ammo_box/c38(src)

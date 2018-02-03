@@ -14,6 +14,8 @@
 
 	var/valid_territory = TRUE // If it's a valid territory for gangs to claim
 	var/blob_allowed = TRUE // Does it count for blobs score? By default, all areas count.
+	var/clockwork_warp_allowed = TRUE // Can servants warp into this area from Reebe?
+	var/clockwork_warp_fail = "The structure there is too dense for warping to pierce. (This is normal in high-security areas.)"
 
 	var/eject = null
 
@@ -444,10 +446,11 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 
 		if(!L.client.played)
 			SEND_SOUND(L, sound(sound, repeat = 0, wait = 0, volume = 25, channel = CHANNEL_AMBIENCE))
-			L.client.played = 1
-			sleep(600)			//ewww - this is very very bad
-			if(L.&& L.client)
-				L.client.played = 0
+			L.client.played = TRUE
+			addtimer(CALLBACK(L.client, /client/proc/ResetAmbiencePlayed), 600)
+
+/client/proc/ResetAmbiencePlayed()
+	played = FALSE
 
 /atom/proc/has_gravity(turf/T)
 	if(!T || !isturf(T))

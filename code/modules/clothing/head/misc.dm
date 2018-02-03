@@ -189,16 +189,6 @@
 	desc = "A really cool hat if you're a mobster. A really lame hat if you're not."
 	pockets = /obj/item/storage/internal/pocket/small
 
-/obj/item/clothing/head/fedora/suicide_act(mob/user)
-	if(user.gender == FEMALE)
-		return 0
-	var/mob/living/carbon/human/H = user
-	user.visible_message("<span class='suicide'>[user] is donning [src]! It looks like they're trying to be nice to girls.</span>")
-	user.say("M'lady.")
-	sleep(10)
-	H.facial_hair_style = "Neckbeard"
-	return(BRUTELOSS)
-
 /obj/item/clothing/head/sombrero
 	name = "sombrero"
 	icon_state = "sombrero"

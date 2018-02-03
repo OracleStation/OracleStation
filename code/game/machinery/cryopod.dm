@@ -42,11 +42,11 @@
 
 	dat += "<hr/><br/><b>[storage_name]</b><br/>"
 	dat += "<i>Welcome, [user.real_name].</i><br/><br/><hr/>"
-	dat += "<a href='?src=\ref[src];log=1'>View storage log</a>.<br>"
+	dat += "<a href='?src=[REF(src)];log=1'>View storage log</a>.<br>"
 	if(allow_items)
-		dat += "<a href='?src=\ref[src];view=1'>View objects</a>.<br>"
-		dat += "<a href='?src=\ref[src];item=1'>Recover object</a>.<br>"
-		dat += "<a href='?src=\ref[src];allitems=1'>Recover all objects</a>.<br>"
+		dat += "<a href='?src=[REF(src)];view=1'>View objects</a>.<br>"
+		dat += "<a href='?src=[REF(src)];item=1'>Recover object</a>.<br>"
+		dat += "<a href='?src=[REF(src)];allitems=1'>Recover all objects</a>.<br>"
 
 	user << browse(dat, "window=cryopod_console")
 	onclose(user, "cryopod_console")
@@ -433,7 +433,7 @@
 	to_chat(target, "<span class='boldnotice'>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</span>")
 	name = "[name] ([occupant.name])"
 	log_admin("<span class='notice'>[key_name(target)] entered a stasis pod.</span>")
-	message_admins("[key_name_admin(target)] entered a stasis pod. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+	message_admins("[key_name_admin(target)] entered a stasis pod. (<A HREF='?_src_=holder;[HrefToken()];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
 	add_fingerprint(target)
 
 //Attacks/effects.

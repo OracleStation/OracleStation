@@ -36,10 +36,6 @@
 	. = ..()
 	reagents.add_reagent("weedkiller", 100)
 
-/obj/item/reagent_containers/spray/weedspray/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is huffing [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return (TOXLOSS)
-
 /obj/item/reagent_containers/spray/pestspray // -- Skie
 	desc = "It's some pest eliminator spray! <I>Do not inhale!</I>"
 	icon = 'icons/obj/hydroponics/equipment.dmi'
@@ -59,10 +55,6 @@
 /obj/item/reagent_containers/spray/pestspray/Initialize()
 	. = ..()
 	reagents.add_reagent("pestkiller", 100)
-
-/obj/item/reagent_containers/spray/pestspray/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is huffing [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return (TOXLOSS)
 
 /obj/item/cultivator
 	name = "cultivator"
@@ -101,11 +93,6 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP
 
-/obj/item/hatchet/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is chopping at [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	playsound(loc, 'sound/weapons/bladeslice.ogg', 50, 1, -1)
-	return (BRUTELOSS)
-
 /obj/item/scythe
 	icon_state = "scythe0"
 	lefthand_file = 'icons/mob/inhands/weapons/polearms_lefthand.dmi'
@@ -124,16 +111,6 @@
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	var/swiping = FALSE
-
-/obj/item/scythe/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is beheading [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		var/obj/item/bodypart/BP = C.get_bodypart("head")
-		if(BP)
-			BP.drop_limb()
-			playsound(loc,pick('sound/misc/desceration-01.ogg','sound/misc/desceration-02.ogg','sound/misc/desceration-01.ogg') ,50, 1, -1)
-	return (BRUTELOSS)
 
 /obj/item/scythe/pre_attackby(atom/A, mob/living/user, params)
 	if(swiping || !istype(A, /obj/structure/spacevine) || get_turf(A) == get_turf(user))

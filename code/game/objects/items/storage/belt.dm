@@ -37,6 +37,7 @@
 		/obj/item/stack/cable_coil,
 		/obj/item/device/t_scanner,
 		/obj/item/device/analyzer,
+		/obj/item/device/geiger_counter,
 		/obj/item/extinguisher/mini,
 		/obj/item/device/radio,
 		/obj/item/clothing/gloves
@@ -87,6 +88,15 @@
 	new /obj/item/wirecutters(src)
 	new /obj/item/device/t_scanner(src)
 	new /obj/item/extinguisher/mini(src)
+
+/obj/item/storage/belt/utility/servant/PopulateContents()
+	new /obj/item/screwdriver/brass(src)
+	new /obj/item/wirecutters/brass(src)
+	new /obj/item/wrench/brass(src)
+	new /obj/item/crowbar/brass(src)
+	new /obj/item/weldingtool/experimental/brass(src)
+	new /obj/item/device/multitool(src)
+	new /obj/item/stack/cable_coil(src, 30, "yellow")
 
 
 
@@ -396,25 +406,6 @@
 	can_hold = list(
 		/obj/item/ammo_casing/shotgun
 		)
-
-/obj/item/storage/belt/holster
-	name = "shoulder holster"
-	desc = "A holster to carry a handgun and ammo. WARNING: Badasses only."
-	icon_state = "holster"
-	item_state = "holster"
-	storage_slots = 3
-	max_w_class = WEIGHT_CLASS_NORMAL
-	can_hold = list(
-		/obj/item/gun/ballistic/automatic/pistol,
-		/obj/item/gun/ballistic/revolver,
-		/obj/item/ammo_box,
-		)
-	alternate_worn_layer = UNDER_SUIT_LAYER
-
-/obj/item/storage/belt/holster/full/PopulateContents()
-	new /obj/item/gun/ballistic/revolver/detective(src)
-	new /obj/item/ammo_box/c38(src)
-	new /obj/item/ammo_box/c38(src)
 
 /obj/item/storage/belt/fannypack
 	name = "fannypack"

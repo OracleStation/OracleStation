@@ -1,3 +1,16 @@
+/datum/admins/proc/CheckAdminHref(href, href_list)
+	var/auth = href_list["admin_token"]
+	. = auth && (auth == href_token || auth == GLOB.href_token)
+	if(.)
+		return
+	var/msg = !auth ? "no" : "a bad"
+	message_admins("[key_name_admin(usr)] clicked an href with [msg] authorization key!")
+	if(CONFIG_GET(flag/debug_admin_hrefs))
+		message_admins("Debug mode enabled, call not blocked. Please ask your coders to review this round's logs.")
+		log_world("UAH: [href]")
+		return TRUE
+	log_admin_private("[key_name(usr)] clicked an href with [msg] authorization key! [href]")
+
 /datum/admins/Topic(href, href_list)
 	..()
 
@@ -5,6 +18,10 @@
 		message_admins("[usr.key] has attempted to override the admin panel!")
 		log_admin("[key_name(usr)] tried to use the admin panel without authorization.")
 		return
+
+	if(!CheckAdminHref(href, href_list))
+		return
+
 	if(href_list["ahelp"])
 		if(!check_rights(R_ADMIN, TRUE))
 			return
@@ -362,7 +379,7 @@
 		else
 			SSticker.mode.round_ends_with_antag_death = 0
 
-		message_admins("<span class='adminnotice'>[key_name_admin(usr)] edited the midround antagonist system to [SSticker.mode.round_ends_with_antag_death ? "end the round" : "continue as extended"] upon failure.")
+		message_admins("<span class='adminnotice'>[key_name_admin(usr)] edited the midround antagonist system to [SSticker.mode.round_ends_with_antag_death ? "end the round" : "continue as extended"] upon failure.</span>")
 		check_antagonists()
 
 	else if(href_list["delay_round_end"])
@@ -607,15 +624,15 @@
 //Regular jobs
 	//Command (Blue)
 		dat += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		dat += "<tr align='center' bgcolor='ccccff'><th colspan='[length(GLOB.command_positions)]'><a href='?src=\ref[src];jobban3=commanddept;jobban4=\ref[M]'>Command Positions</a></th></tr><tr align='center'>"
+		dat += "<tr align='center' bgcolor='ccccff'><th colspan='[length(GLOB.command_positions)]'><a href='?src=[REF(src)];[HrefToken()];jobban3=commanddept;jobban4=[REF(M)]'>Command Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in GLOB.command_positions)
 			if(!jobPos)
 				continue
 			if(jobban_isbanned(M, jobPos))
-				dat += "<td width='15%'><a href='?src=\ref[src];jobban3=[jobPos];jobban4=\ref[M]'><font color=red>[jobPos]</font></a></td>"
+				dat += "<td width='15%'><a href='?src=[REF(src)];[HrefToken()];jobban3=[jobPos];jobban4=[REF(M)]'><font color=red>[jobPos]</font></a></td>"
 				counter++
 			else
-				dat += "<td width='15%'><a href='?src=\ref[src];jobban3=[jobPos];jobban4=\ref[M]'>[jobPos]</a></td>"
+				dat += "<td width='15%'><a href='?src=[REF(src)];[HrefToken()];jobban3=[jobPos];jobban4=[REF(M)]'>[jobPos]</a></td>"
 				counter++
 
 			if(counter >= 6) //So things dont get squiiiiished!
@@ -626,15 +643,15 @@
 	//Security (Red)
 		counter = 0
 		dat += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		dat += "<tr bgcolor='ffddf0'><th colspan='[length(GLOB.security_positions)]'><a href='?src=\ref[src];jobban3=securitydept;jobban4=\ref[M]'>Security Positions</a></th></tr><tr align='center'>"
+		dat += "<tr bgcolor='ffddf0'><th colspan='[length(GLOB.security_positions)]'><a href='?src=[REF(src)];[HrefToken()];jobban3=securitydept;jobban4=[REF(M)]'>Security Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in GLOB.security_positions)
 			if(!jobPos)
 				continue
 			if(jobban_isbanned(M, jobPos))
-				dat += "<td width='20%'><a href='?src=\ref[src];jobban3=[jobPos];jobban4=\ref[M]'><font color=red>[jobPos]</font></a></td>"
+				dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=[jobPos];jobban4=[REF(M)]'><font color=red>[jobPos]</font></a></td>"
 				counter++
 			else
-				dat += "<td width='20%'><a href='?src=\ref[src];jobban3=[jobPos];jobban4=\ref[M]'>[jobPos]</a></td>"
+				dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=[jobPos];jobban4=[REF(M)]'>[jobPos]</a></td>"
 				counter++
 
 			if(counter >= 5) //So things dont get squiiiiished!
@@ -645,15 +662,15 @@
 	//Engineering (Yellow)
 		counter = 0
 		dat += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		dat += "<tr bgcolor='fff5cc'><th colspan='[length(GLOB.engineering_positions)]'><a href='?src=\ref[src];jobban3=engineeringdept;jobban4=\ref[M]'>Engineering Positions</a></th></tr><tr align='center'>"
+		dat += "<tr bgcolor='fff5cc'><th colspan='[length(GLOB.engineering_positions)]'><a href='?src=[REF(src)];[HrefToken()];jobban3=engineeringdept;jobban4=[REF(M)]'>Engineering Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in GLOB.engineering_positions)
 			if(!jobPos)
 				continue
 			if(jobban_isbanned(M, jobPos))
-				dat += "<td width='20%'><a href='?src=\ref[src];jobban3=[jobPos];jobban4=\ref[M]'><font color=red>[jobPos]</font></a></td>"
+				dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=[jobPos];jobban4=[REF(M)]'><font color=red>[jobPos]</font></a></td>"
 				counter++
 			else
-				dat += "<td width='20%'><a href='?src=\ref[src];jobban3=[jobPos];jobban4=\ref[M]'>[jobPos]</a></td>"
+				dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=[jobPos];jobban4=[REF(M)]'>[jobPos]</a></td>"
 				counter++
 
 			if(counter >= 5) //So things dont get squiiiiished!
@@ -664,15 +681,15 @@
 	//Medical (White)
 		counter = 0
 		dat += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		dat += "<tr bgcolor='ffeef0'><th colspan='[length(GLOB.medical_positions)]'><a href='?src=\ref[src];jobban3=medicaldept;jobban4=\ref[M]'>Medical Positions</a></th></tr><tr align='center'>"
+		dat += "<tr bgcolor='ffeef0'><th colspan='[length(GLOB.medical_positions)]'><a href='?src=[REF(src)];[HrefToken()];jobban3=medicaldept;jobban4=[REF(M)]'>Medical Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in GLOB.medical_positions)
 			if(!jobPos)
 				continue
 			if(jobban_isbanned(M, jobPos))
-				dat += "<td width='20%'><a href='?src=\ref[src];jobban3=[jobPos];jobban4=\ref[M]'><font color=red>[jobPos]</font></a></td>"
+				dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=[jobPos];jobban4=[REF(M)]'><font color=red>[jobPos]</font></a></td>"
 				counter++
 			else
-				dat += "<td width='20%'><a href='?src=\ref[src];jobban3=[jobPos];jobban4=\ref[M]'>[jobPos]</a></td>"
+				dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=[jobPos];jobban4=[REF(M)]'>[jobPos]</a></td>"
 				counter++
 
 			if(counter >= 5) //So things dont get squiiiiished!
@@ -683,15 +700,15 @@
 	//Science (Purple)
 		counter = 0
 		dat += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		dat += "<tr bgcolor='e79fff'><th colspan='[length(GLOB.science_positions)]'><a href='?src=\ref[src];jobban3=sciencedept;jobban4=\ref[M]'>Science Positions</a></th></tr><tr align='center'>"
+		dat += "<tr bgcolor='e79fff'><th colspan='[length(GLOB.science_positions)]'><a href='?src=[REF(src)];[HrefToken()];jobban3=sciencedept;jobban4=[REF(M)]'>Science Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in GLOB.science_positions)
 			if(!jobPos)
 				continue
 			if(jobban_isbanned(M, jobPos))
-				dat += "<td width='20%'><a href='?src=\ref[src];jobban3=[jobPos];jobban4=\ref[M]'><font color=red>[jobPos]</font></a></td>"
+				dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=[jobPos];jobban4=[REF(M)]'><font color=red>[jobPos]</font></a></td>"
 				counter++
 			else
-				dat += "<td width='20%'><a href='?src=\ref[src];jobban3=[jobPos];jobban4=\ref[M]'>[jobPos]</a></td>"
+				dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=[jobPos];jobban4=[REF(M)]'>[jobPos]</a></td>"
 				counter++
 
 			if(counter >= 5) //So things dont get squiiiiished!
@@ -702,15 +719,15 @@
 	//Supply (Brown)
 		counter = 0
 		dat += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		dat += "<tr bgcolor='DDAA55'><th colspan='[length(GLOB.supply_positions)]'><a href='?src=\ref[src];jobban3=supplydept;jobban4=\ref[M]'>Supply Positions</a></th></tr><tr align='center'>"
+		dat += "<tr bgcolor='DDAA55'><th colspan='[length(GLOB.supply_positions)]'><a href='?src=[REF(src)];[HrefToken()];jobban3=supplydept;jobban4=[REF(M)]'>Supply Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in GLOB.supply_positions)
 			if(!jobPos)
 				continue
 			if(jobban_isbanned(M, jobPos))
-				dat += "<td width='20%'><a href='?src=\ref[src];jobban3=[jobPos];jobban4=\ref[M]'><font color=red>[jobPos]</font></a></td>"
+				dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=[jobPos];jobban4=[REF(M)]'><font color=red>[jobPos]</font></a></td>"
 				counter++
 			else
-				dat += "<td width='20%'><a href='?src=\ref[src];jobban3=[jobPos];jobban4=\ref[M]'>[jobPos]</a></td>"
+				dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=[jobPos];jobban4=[REF(M)]'>[jobPos]</a></td>"
 				counter++
 
 			if(counter >= 5) //So things dont get COPYPASTE!
@@ -721,15 +738,15 @@
 	//Civilian (Grey)
 		counter = 0
 		dat += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		dat += "<tr bgcolor='dddddd'><th colspan='[length(GLOB.civilian_positions)]'><a href='?src=\ref[src];jobban3=civiliandept;jobban4=\ref[M]'>Civilian Positions</a></th></tr><tr align='center'>"
+		dat += "<tr bgcolor='dddddd'><th colspan='[length(GLOB.civilian_positions)]'><a href='?src=[REF(src)];[HrefToken()];jobban3=civiliandept;jobban4=[REF(M)]'>Civilian Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in GLOB.civilian_positions)
 			if(!jobPos)
 				continue
 			if(jobban_isbanned(M, jobPos))
-				dat += "<td width='20%'><a href='?src=\ref[src];jobban3=[jobPos];jobban4=\ref[M]'><font color=red>[jobPos]</font></a></td>"
+				dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=[jobPos];jobban4=[REF(M)]'><font color=red>[jobPos]</font></a></td>"
 				counter++
 			else
-				dat += "<td width='20%'><a href='?src=\ref[src];jobban3=[jobPos];jobban4=\ref[M]'>[jobPos]</a></td>"
+				dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=[jobPos];jobban4=[REF(M)]'>[jobPos]</a></td>"
 				counter++
 
 			if(counter >= 5) //So things dont get squiiiiished!
@@ -740,15 +757,15 @@
 	//Non-Human (Green)
 		counter = 0
 		dat += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		dat += "<tr bgcolor='ccffcc'><th colspan='[length(GLOB.nonhuman_positions)]'><a href='?src=\ref[src];jobban3=nonhumandept;jobban4=\ref[M]'>Non-human Positions</a></th></tr><tr align='center'>"
+		dat += "<tr bgcolor='ccffcc'><th colspan='[length(GLOB.nonhuman_positions)]'><a href='?src=[REF(src)];[HrefToken()];jobban3=nonhumandept;jobban4=[REF(M)]'>Non-human Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in GLOB.nonhuman_positions)
 			if(!jobPos)
 				continue
 			if(jobban_isbanned(M, jobPos))
-				dat += "<td width='20%'><a href='?src=\ref[src];jobban3=[jobPos];jobban4=\ref[M]'><font color=red>[jobPos]</font></a></td>"
+				dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=[jobPos];jobban4=[REF(M)]'><font color=red>[jobPos]</font></a></td>"
 				counter++
 			else
-				dat += "<td width='20%'><a href='?src=\ref[src];jobban3=[jobPos];jobban4=\ref[M]'>[jobPos]</a></td>"
+				dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=[jobPos];jobban4=[REF(M)]'>[jobPos]</a></td>"
 				counter++
 
 			if(counter >= 5) //So things dont get squiiiiished!
@@ -759,109 +776,109 @@
 
 		//Ghost Roles (light light gray)
 		dat += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		dat += "<tr bgcolor='eeeeee'><th colspan='5'><a href='?src=\ref[src];jobban3=ghostroles;jobban4=\ref[M]'>Ghost Roles</a></th></tr><tr align='center'>"
+		dat += "<tr bgcolor='eeeeee'><th colspan='5'><a href='?src=[REF(src)];[HrefToken()];jobban3=ghostroles;jobban4=[REF(M)]'>Ghost Roles</a></th></tr><tr align='center'>"
 
 		//pAI
 		if(jobban_isbanned(M, "pAI"))
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=pAI;jobban4=\ref[M]'><font color=red>pAI</font></a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=pAI;jobban4=[REF(M)]'><font color=red>pAI</font></a></td>"
 		else
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=pAI;jobban4=\ref[M]'>pAI</a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=pAI;jobban4=[REF(M)]'>pAI</a></td>"
 
 
 		//Drones
 		if(jobban_isbanned(M, "drone"))
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=drone;jobban4=\ref[M]'><font color=red>Drone</font></a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=drone;jobban4=[REF(M)]'><font color=red>Drone</font></a></td>"
 		else
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=drone;jobban4=\ref[M]'>Drone</a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=drone;jobban4=[REF(M)]'>Drone</a></td>"
 
 
 		//Positronic Brains
 		if(jobban_isbanned(M, "posibrain"))
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=posibrain;jobban4=\ref[M]'><font color=red>Posibrain</font></a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=posibrain;jobban4=[REF(M)]'><font color=red>Posibrain</font></a></td>"
 		else
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=posibrain;jobban4=\ref[M]'>Posibrain</a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=posibrain;jobban4=[REF(M)]'>Posibrain</a></td>"
 
 
 		//Deathsquad
 		if(jobban_isbanned(M, "deathsquad"))
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=deathsquad;jobban4=\ref[M]'><font color=red>Deathsquad</font></a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=deathsquad;jobban4=[REF(M)]'><font color=red>Deathsquad</font></a></td>"
 		else
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=deathsquad;jobban4=\ref[M]'>Deathsquad</a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=deathsquad;jobban4=[REF(M)]'>Deathsquad</a></td>"
 
 		//Lavaland roles
 		if(jobban_isbanned(M, "lavaland"))
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=lavaland;jobban4=\ref[M]'><font color=red>Lavaland</font></a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=lavaland;jobban4=[REF(M)]'><font color=red>Lavaland</font></a></td>"
 		else
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=lavaland;jobban4=\ref[M]'>Lavaland</a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=lavaland;jobban4=[REF(M)]'>Lavaland</a></td>"
 
 		dat += "</tr></table>"
 
 	//Antagonist (Orange)
 		var/isbanned_dept = jobban_isbanned(M, "Syndicate")
 		dat += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		dat += "<tr bgcolor='ffeeaa'><th colspan='10'><a href='?src=\ref[src];jobban3=Syndicate;jobban4=\ref[M]'>Antagonist Positions</a></th></tr><tr align='center'>"
+		dat += "<tr bgcolor='ffeeaa'><th colspan='10'><a href='?src=[REF(src)];[HrefToken()];jobban3=Syndicate;jobban4=[REF(M)]'>Antagonist Positions</a></th></tr><tr align='center'>"
 
 		//Traitor
 		if(jobban_isbanned(M, "traitor") || isbanned_dept)
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=traitor;jobban4=\ref[M]'><font color=red>Traitor</font></a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=traitor;jobban4=[REF(M)]'><font color=red>Traitor</font></a></td>"
 		else
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=traitor;jobban4=\ref[M]'>Traitor</a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];jobban3=traitor;jobban4=[REF(M)]'>Traitor</a></td>"
 
 		//Changeling
 		if(jobban_isbanned(M, "changeling") || isbanned_dept)
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=changeling;jobban4=\ref[M]'><font color=red>Changeling</font></a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=changeling;jobban4=[REF(M)]'><font color=red>Changeling</font></a></td>"
 		else
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=changeling;jobban4=\ref[M]'>Changeling</a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=changeling;jobban4=[REF(M)]'>Changeling</a></td>"
 
 		//Nuke Operative
 		if(jobban_isbanned(M, "operative") || isbanned_dept)
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=operative;jobban4=\ref[M]'><font color=red>Nuke Operative</font></a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=operative;jobban4=[REF(M)]'><font color=red>Nuke Operative</font></a></td>"
 		else
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=operative;jobban4=\ref[M]'>Nuke Operative</a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=operative;jobban4=[REF(M)]'>Nuke Operative</a></td>"
 
 		//Revolutionary
 		if(jobban_isbanned(M, "revolutionary") || isbanned_dept)
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=revolutionary;jobban4=\ref[M]'><font color=red>Revolutionary</font></a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=revolutionary;jobban4=[REF(M)]'><font color=red>Revolutionary</font></a></td>"
 		else
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=revolutionary;jobban4=\ref[M]'>Revolutionary</a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=revolutionary;jobban4=[REF(M)]'>Revolutionary</a></td>"
 
 		//Gangster
 		if(jobban_isbanned(M, "gangster") || isbanned_dept)
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=gangster;jobban4=\ref[M]'><font color=red>Gangster</font></a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=gangster;jobban4=[REF(M)]'><font color=red>Gangster</font></a></td>"
 		else
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=gangster;jobban4=\ref[M]'>Gangster</a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=gangster;jobban4=[REF(M)]'>Gangster</a></td>"
 
 		dat += "</tr><tr align='center'>" //Breaking it up so it fits nicer on the screen every 5 entries
 
 		//Cultist
 		if(jobban_isbanned(M, "cultist") || isbanned_dept)
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=cultist;jobban4=\ref[M]'><font color=red>Cultist</font></a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=cultist;jobban4=[REF(M)]'><font color=red>Cultist</font></a></td>"
 		else
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=cultist;jobban4=\ref[M]'>Cultist</a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=cultist;jobban4=[REF(M)]'>Cultist</a></td>"
 
 		//Servant of Ratvar
 		if(jobban_isbanned(M, "servant of Ratvar") || isbanned_dept)
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=servant of Ratvar;jobban4=\ref[M]'><font color=red>Servant</font></a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=servant of Ratvar;jobban4=[REF(M)]'><font color=red>Servant</font></a></td>"
 		else
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=servant of Ratvar;jobban4=\ref[M]'>Servant</a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=servant of Ratvar;jobban4=[REF(M)]'>Servant</a></td>"
 
 		//Wizard
 		if(jobban_isbanned(M, "wizard") || isbanned_dept)
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=wizard;jobban4=\ref[M]'><font color=red>Wizard</font></a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=wizard;jobban4=[REF(M)]'><font color=red>Wizard</font></a></td>"
 		else
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=wizard;jobban4=\ref[M]'>Wizard</a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=wizard;jobban4=[REF(M)]'>Wizard</a></td>"
 
 		//Abductor
 		if(jobban_isbanned(M, "abductor") || isbanned_dept)
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=abductor;jobban4=\ref[M]'><font color=red>Abductor</font></a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=abductor;jobban4=[REF(M)]'><font color=red>Abductor</font></a></td>"
 		else
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=abductor;jobban4=\ref[M]'>Abductor</a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=abductor;jobban4=[REF(M)]'>Abductor</a></td>"
 
 		//Alien
 		if(jobban_isbanned(M, "alien candidate") || isbanned_dept)
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=alien candidate;jobban4=\ref[M]'><font color=red>Alien</font></a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=alien candidate;jobban4=[REF(M)]'><font color=red>Alien</font></a></td>"
 		else
-			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=alien candidate;jobban4=\ref[M]'>Alien</a></td>"
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=alien candidate;jobban4=[REF(M)]'>Alien</a></td>"
 
 		dat += "</tr></table>"
 		usr << browse(dat, "window=jobban2;size=800x450")
@@ -1199,33 +1216,10 @@
 		cmd_admin_mute(href_list["mute"], text2num(href_list["mute_type"]))
 
 	else if(href_list["c_mode"])
-		if(!check_rights(R_ADMIN))
-			return
-
-		if(SSticker.HasRoundStarted())
-			return alert(usr, "The game has already started.", null, null, null, null)
-		var/dat = {"<B>What mode do you wish to play?</B><HR>"}
-		for(var/mode in config.modes)
-			dat += {"<A href='?src=\ref[src];c_mode2=[mode]'>[config.mode_names[mode]]</A><br>"}
-		dat += {"<A href='?src=\ref[src];c_mode2=secret'>Secret</A><br>"}
-		dat += {"<A href='?src=\ref[src];c_mode2=random'>Random</A><br>"}
-		dat += {"Now: [GLOB.master_mode]"}
-		usr << browse(dat, "window=c_mode")
+		return HandleCMode()
 
 	else if(href_list["f_secret"])
-		if(!check_rights(R_ADMIN))
-			return
-
-		if(SSticker.HasRoundStarted())
-			return alert(usr, "The game has already started.", null, null, null, null)
-		if(GLOB.master_mode != "secret")
-			return alert(usr, "The game mode has to be secret!", null, null, null, null)
-		var/dat = {"<B>What game mode do you want to force secret to be? Use this if you want to change the game mode, but want the players to believe it's secret. This will only work if the current game mode is secret.</B><HR>"}
-		for(var/mode in config.modes)
-			dat += {"<A href='?src=\ref[src];f_secret2=[mode]'>[config.mode_names[mode]]</A><br>"}
-		dat += {"<A href='?src=\ref[src];f_secret2=secret'>Random (default)</A><br>"}
-		dat += {"Now: [GLOB.secret_force_mode]"}
-		usr << browse(dat, "window=f_secret")
+		return HandleFSecret()
 
 	else if(href_list["c_mode2"])
 		if(!check_rights(R_ADMIN|R_SERVER))
@@ -1239,7 +1233,7 @@
 		to_chat(world, "<span class='adminnotice'><b>The mode is now: [GLOB.master_mode]</b></span>")
 		Game() // updates the main game menu
 		SSticker.save_mode(GLOB.master_mode)
-		.(href, list("c_mode"=1))
+		HandleCMode()
 
 	else if(href_list["f_secret2"])
 		if(!check_rights(R_ADMIN|R_SERVER))
@@ -1253,7 +1247,7 @@
 		log_admin("[key_name(usr)] set the forced secret mode as [GLOB.secret_force_mode].")
 		message_admins("<span class='adminnotice'>[key_name_admin(usr)] set the forced secret mode as [GLOB.secret_force_mode].</span>")
 		Game() // updates the main game menu
-		.(href, list("f_secret"=1))
+		HandleFSecret()
 
 	else if(href_list["monkeyone"])
 		if(!check_rights(R_SPAWN))
@@ -1726,6 +1720,17 @@
 			return
 
 		usr.client.smite(H)
+
+	else if(href_list["adminbless"])
+		if(!check_rights(R_ADMIN|R_FUN))
+			return
+
+		var/mob/living/carbon/human/H = locate(href_list["adminbless"]) in GLOB.mob_list
+		if(!H || !istype(H))
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			return
+
+		usr.client.bless(H)
 
 	else if(href_list["CentComReply"])
 		var/mob/living/carbon/human/H = locate(href_list["CentComReply"]) in GLOB.mob_list
@@ -2284,3 +2289,232 @@
 
 		usr << browse(dat.Join("<br>"), "window=related_[C];size=420x300")
 
+//Topics relating to Faxes
+	else if(href_list["AdminFaxCreate"])
+		if(!check_rights(R_FUN))
+			return
+
+		var/mob/sender = locate(href_list["AdminFaxCreate"])
+		var/obj/machinery/photocopier/faxmachine/fax = locate(href_list["originfax"])
+		var/faxtype = href_list["faxtype"]
+		var/reply_to = locate(href_list["replyto"])
+		var/destination
+		var/notify
+
+		var/obj/item/paper/P = new /obj/item/paper(null) //hopefully the null loc won't cause trouble for us
+
+		if(!fax)
+			var/list/departmentoptions = GLOB.alldepartments + "All Departments"
+			destination = input(usr, "To which department?", "Choose a department", "") as null|anything in departmentoptions
+			if(!destination)
+				qdel(P)
+				return
+
+			for(var/thing in GLOB.allfaxes)
+				var/obj/machinery/photocopier/faxmachine/F = thing
+				if(destination != "All Departments" && F.department == destination)
+					fax = F
+
+
+		var/input_text = input(src.owner, "Please enter a message to send a fax via secure connection. Use <br> for line breaks. Both pencode and HTML work.", "Outgoing message from Centcomm", "") as message|null
+		if(!input_text)
+			qdel(P)
+			return
+
+		var/obj/item/pen/admin_writer = new /obj/item/pen(null)
+
+		input_text = P.parsepencode(input_text, admin_writer, usr) // Encode everything from pencode to html
+		qdel(admin_writer)
+
+		var/customname = input(src.owner, "Pick a title for the fax.", "Fax Title") as text|null
+		if(!customname)
+			customname = "paper"
+
+		var/sendername
+		switch(faxtype)
+			if("Central Command")
+				sendername = "Central Command"
+			if("Syndicate")
+				sendername = "UNKNOWN"
+			if("Custom")
+				sendername = input(owner, "What organization does the fax come from? This determines the prefix of the paper (i.e. Central Command- Title). This is optional.", "Organization") as text|null
+
+		if(sender)
+			notify = alert(owner, "Would you like to inform the original sender that a fax has arrived?","Notify Sender","Yes","No")
+
+		// Create the reply message
+		if(sendername)
+			P.name = "[sendername]- [customname]"
+		else
+			P.name = "[customname]"
+		P.info = input_text
+		P.update_icon()
+		P.x = rand(-2, 0)
+		P.y = rand(-1, 2)
+
+		if(destination != "All Departments")
+			if(fax.receivefax(P) == FALSE)
+				to_chat(owner, "<span class='warning'>Message transmission failed.</span>")
+				return
+		else
+			for(var/thing in GLOB.allfaxes)
+				var/obj/machinery/photocopier/faxmachine/F = thing
+				if(F.z in GLOB.station_z_levels)
+					addtimer(CALLBACK(src, .proc/handle_sendall, F, P), 0)
+
+		var/datum/fax/admin/A = new /datum/fax/admin()
+		A.name = P.name
+		A.from_department = faxtype
+		if(destination != "All Departments")
+			A.to_department = fax.department
+		else
+			A.to_department = "All Departments"
+		A.origin = "Custom"
+		A.message = P
+		A.reply_to = reply_to
+		A.sent_by = usr
+		A.sent_at = world.time
+
+		to_chat(src.owner, "<span class='notice'>Message transmitted successfully.</span>")
+		if(notify == "Yes")
+			var/mob/living/carbon/human/H = sender
+			if(istype(H) && H.stat == CONSCIOUS && (istype(H.ears, /obj/item/device/radio/headset)))
+				to_chat(sender, "<span class='notice'>Your headset pings, notifying you that a reply to your fax has arrived.</span>")
+		if(sender)
+			log_admin("[key_name(src.owner)] replied to a fax message from [key_name(sender)]: [input_text]")
+			message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(sender)] (<a href='?_src_=holder;[HrefToken(TRUE)];AdminFaxView=[REF(P)]'>VIEW</a>).", 1)
+		else
+			log_admin("[key_name(src.owner)] sent a fax message to [destination]: [input_text]")
+			message_admins("[key_name_admin(src.owner)] sent a fax message to [destination] (<a href='?_src_=holder;[HrefToken(TRUE)];AdminFaxView=[REF(P)]'>VIEW</a>).", 1)
+		return
+
+	else if(href_list["refreshfaxpanel"])
+		if(!check_rights(R_FUN))
+			return
+
+		fax_panel(usr)
+		return
+
+	else if(href_list["EvilFax"])
+		if(!check_rights(R_FUN))
+			return
+		var/mob/living/carbon/human/H = locate(href_list["EvilFax"])
+		if(!istype(H))
+			to_chat(usr, "<span class='notice'>This can only be used on instances of type /mob/living/carbon/human.</span>")
+			return
+		var/etypes = list("Borgification","Corgification","Death By Fire","Demotion Notice")
+		var/eviltype = input(src.owner, "Which type of evil fax do you wish to send [H]?","Its good to be baaaad...", "") as null|anything in etypes
+		if(!(eviltype in etypes))
+			return
+		var/customname = input(src.owner, "Pick a title for the evil fax.", "Fax Title") as text|null
+		if(!customname)
+			customname = "paper"
+		var/obj/item/paper/evilfax/P = new /obj/item/paper/evilfax(null)
+		var/obj/machinery/photocopier/faxmachine/fax = locate(href_list["originfax"])
+
+		P.name = "Central Command - [customname]"
+		P.info = "<span class='danger'>You really should've known better.</span>"
+		P.myeffect = eviltype
+		P.mytarget = H
+		if(alert("Do you want the Evil Fax to activate automatically if [H] tries to ignore it?",,"Yes", "No") == "Yes")
+			P.activate_on_timeout = TRUE
+		P.x = rand(-2, 0)
+		P.y = rand(-1, 2)
+		P.update_icon()
+		//we have to physically teleport the fax paper
+		fax.handle_animation()
+		P.forceMove(fax.loc)
+		if(istype(H) && H.stat == CONSCIOUS && (istype(H.ears, /obj/item/device/radio/headset)))
+			to_chat(H, "<span class='notice'>Your headset pings, notifying you that a reply to your fax has arrived.</span>")
+		to_chat(src.owner, "<span class='notice'>You sent a [eviltype] fax to [H].</span>")
+		log_admin("[key_name(src.owner)] sent [key_name(H)] a [eviltype] fax")
+		message_admins("[key_name_admin(src.owner)] replied to [key_name_admin(H)] with a [eviltype] fax")
+		return
+
+	else if(href_list["FaxReplyTemplate"])
+		if(!check_rights(R_FUN))
+			return
+		var/mob/living/carbon/human/H = locate(href_list["FaxReplyTemplate"])
+		if(!istype(H))
+			to_chat(usr, "<span class='notice'>This can only be used on instances of type /mob/living/carbon/human.</span>")
+			return
+		var/obj/item/paper/P = new /obj/item/paper(null)
+		var/obj/machinery/photocopier/faxmachine/fax = locate(href_list["originfax"])
+		P.name = "Central Command - paper"
+		var/stypes = list("Handle it yourselves!","Illegible fax","Fax not signed","Not Right Now","You are wasting our time", "Keep up the good work")
+		var/stype = input(src.owner, "Which type of standard reply do you wish to send to [H]?","Choose your paperwork", "") as null|anything in stypes
+		var/tmsg = "<font face='Verdana' color='black'><center><BR><font size='4'><B>[GLOB.station_name]</B></font><BR><BR><BR><font size='4'>Nanotrasen Communications Department Report</font></center><BR><BR>"
+		if(stype == "Handle it yourselves!")
+			tmsg += "Greetings, esteemed crewmember. Your fax has been <B><I>DECLINED</I></B> automatically by the Communications Department Fax Registration System.<BR><BR>Please proceed in accordance with Standard Operating Procedure and/or Space Law. You are fully trained to handle this situation without Central Command intervention.<BR><BR><i><small>This is an automatic message.</small>"
+		else if(stype == "Illegible fax")
+			tmsg += "Greetings, esteemed crewmember. Your fax has been <B><I>DECLINED</I></B> automatically by the Communications Department Fax Registration System.<BR><BR>Your fax's grammar, syntax and/or typography are of a sub-par level and do not allow us to understand the contents of the message.<BR><BR>Please consult your nearest dictionary and/or thesaurus and try again.<BR><BR><i><small>This is an automatic message.</small>"
+		else if(stype == "Fax not signed")
+			tmsg += "Greetings, esteemed crewmember. Your fax has been <B><I>DECLINED</I></B> automatically by the Communications Department Fax Registration System.<BR><BR>Your fax has not been correctly signed and, as such, we cannot verify your identity.<BR><BR>Please sign your faxes before sending them so that we may verify your identity.<BR><BR><i><small>This is an automatic message.</small>"
+		else if(stype == "Not Right Now")
+			tmsg += "Greetings, esteemed crewmember. Your fax has been <B><I>DECLINED</I></B> automatically by the Communications Department Fax Registration System.<BR><BR>Due to pressing concerns of a matter above your current paygrade, we are unable to provide assistance in whatever matter your fax referenced.<BR><BR>This can be either due to a power outage, bureaucratic audit, pest infestation, Ascendance Event, corgi outbreak, or any other situation that would affect the proper functioning of the Communications Department Fax Registration System.<BR><BR>Please try again later.<BR><BR><i><small>This is an automatic message.</small>"
+		else if(stype == "You are wasting our time")
+			tmsg += "Greetings, esteemed crewmember. Your fax has been <B><I>DECLINED</I></B> automatically by the Communications Department Fax Registration System.<BR><BR>In the interest of preventing further mismanagement of company resources, please avoid wasting our time with such petty drivel.<BR><BR>Do kindly remember that we expect our workforce to maintain at least a semi-decent level of profesionalism. Do not test our patience.<BR><BR><i><small>This is an automatic message.</i></small>"
+		else if(stype == "Keep up the good work")
+			tmsg += "Greetings, esteemed crewmember. Your fax has been received successfully by the Communications Department Fax Registration System.<BR><BR>We at Central Command appreciate the good work that you have done here, and sincerely recommend that you continue such a display of dedication to the company.<BR><BR><i><small>This is absolutely not an automated message.</i></small>"
+		else
+			return
+		tmsg += "</font>"
+		P.info = tmsg
+		P.x = rand(-2, 0)
+		P.y = rand(-1, 2)
+		P.update_icon()
+		fax.receivefax(P)
+		if(istype(H) && H.stat == CONSCIOUS && (istype(H.ears, /obj/item/device/radio/headset)))
+			to_chat(H, "<span class='notice'>Your headset pings, notifying you that a reply to your fax has arrived.</span>")
+		to_chat(src.owner, "<span class='notice'>You sent a standard '[stype]' fax to [H].</span>")
+		log_admin("[key_name(src.owner)] sent [key_name(H)] a standard '[stype]' fax")
+		message_admins("[key_name_admin(src.owner)] replied to [key_name_admin(H)] with a standard '[stype]' fax")
+		return
+
+	else if(href_list["AdminFaxView"])
+		if(!check_rights(R_FUN))
+			return
+
+		var/obj/item/fax = locate(href_list["AdminFaxView"])
+		if(istype(fax, /obj/item/paper))
+			var/obj/item/paper/P = fax
+			P.show_content(usr, TRUE)
+		else if(istype(fax, /obj/item/photo))
+			var/obj/item/photo/H = fax
+			H.show(usr)
+		else
+			to_chat(usr, "<span class='warning'>The faxed item is not viewable. This is probably a bug, and should be reported on the tracker: [fax.type]</span>")
+		return
+
+/datum/admins/proc/handle_sendall(var/obj/machinery/photocopier/faxmachine/F, var/obj/item/paper/P)
+	if(F.receivefax(P) == FALSE)
+		to_chat(owner, "<span class='warning'>Message transmission to [F.department] failed.</span>")
+
+/datum/admins/proc/HandleCMode()
+	if(!check_rights(R_ADMIN))
+		return
+
+	if(SSticker.HasRoundStarted())
+		return alert(usr, "The game has already started.", null, null, null, null)
+	var/dat = {"<B>What mode do you wish to play?</B><HR>"}
+	for(var/mode in config.modes)
+		dat += {"<A href='?src=[REF(src)];[HrefToken()];c_mode2=[mode]'>[config.mode_names[mode]]</A><br>"}
+		dat += {"<A href='?src=[REF(src)];[HrefToken()];c_mode2=secret'>Secret</A><br>"}
+		dat += {"<A href='?src=[REF(src)];[HrefToken()];c_mode2=random'>Random</A><br>"}
+	dat += {"Now: [GLOB.master_mode]"}
+	usr << browse(dat, "window=c_mode")
+
+/datum/admins/proc/HandleFSecret()
+	if(!check_rights(R_ADMIN))
+		return
+
+	if(SSticker.HasRoundStarted())
+		return alert(usr, "The game has already started.", null, null, null, null)
+	if(GLOB.master_mode != "secret")
+		return alert(usr, "The game mode has to be secret!", null, null, null, null)
+	var/dat = {"<B>What game mode do you want to force secret to be? Use this if you want to change the game mode, but want the players to believe it's secret. This will only work if the current game mode is secret.</B><HR>"}
+	for(var/mode in config.modes)
+		dat += {"<A href='?src=[REF(src)];[HrefToken()];f_secret2=[mode]'>[config.mode_names[mode]]</A><br>"}
+		dat += {"<A href='?src=[REF(src)];[HrefToken()];f_secret2=secret'>Random (default)</A><br>"}
+	dat += {"Now: [GLOB.secret_force_mode]"}
+	usr << browse(dat, "window=f_secret")

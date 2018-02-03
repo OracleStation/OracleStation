@@ -36,6 +36,7 @@
 /datum/reagent/blood/on_new(list/data)
 	if(istype(data))
 		SetViruses(src, data)
+		color = bloodtype_to_color(data["blood_type"])
 
 /datum/reagent/blood/on_merge(list/mix_data)
 	if(data && mix_data)
@@ -120,7 +121,7 @@
 	glass_name = "glass of Water"
 	glass_desc = "The father of all refreshments."
 	shot_glass_icon_state = "shotglassclear"
-
+	process_flags = ORGANIC | SYNTHETIC
 /*
  *	Water reaction to turf
  */
@@ -272,6 +273,7 @@
 	id = "hell_water"
 	description = "YOUR FLESH! IT BURNS!"
 	taste_description = "burning"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/hellwater/on_mob_life(mob/living/M)
 	M.fire_stacks = min(5,M.fire_stacks + 3)
@@ -407,6 +409,7 @@
 	taste_description = "slime"
 	var/datum/species/race = /datum/species/human
 	var/mutationtext = "<span class='danger'>The pain subsides. You feel... human.</span>"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/stableslimetoxin/on_mob_life(mob/living/carbon/human/H)
 	..()
@@ -493,14 +496,13 @@
 	race = /datum/species/abductor
 	mutationtext = "<span class='danger'>The pain subsides. You feel... alien.</span>"
 
-/datum/reagent/stableslimetoxin/android
-	name = "Android Mutation Toxin"
-	id = "androidmutationtoxin"
+/datum/reagent/stableslimetoxin/robot
+	name = "Robot Mutation Toxin"
+	id = "ipcmutationtoxin"
 	description = "A robotic toxin produced by slimes."
 	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/android
+	race = /datum/species/ipc
 	mutationtext = "<span class='danger'>The pain subsides. You feel... artificial.</span>"
-
 
 //BLACKLISTED RACES
 /datum/reagent/stableslimetoxin/skeleton
@@ -729,6 +731,7 @@
 	reagent_state = GAS
 	color = "#808080" // rgb: 128, 128, 128
 	taste_description = "acid"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/fluorine/on_mob_life(mob/living/M)
 	M.adjustToxLoss(1*REM, 0)
@@ -780,6 +783,7 @@
 	reagent_state = SOLID
 	color = "#C7C7C7" // rgb: 199,199,199
 	taste_description = "the colour blue and regret"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/radium/on_mob_life(mob/living/M)
 	M.apply_effect(2*REM/M.metabolism_efficiency,IRRADIATE,0)
@@ -863,6 +867,7 @@
 	reagent_state = SOLID
 	color = "#B8B8C0" // rgb: 184, 184, 192
 	taste_description = "the inside of a reactor"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/uranium/on_mob_life(mob/living/M)
 	M.apply_effect(1/M.metabolism_efficiency,IRRADIATE,0)
@@ -883,6 +888,7 @@
 	reagent_state = SOLID
 	color = "#0000CC"
 	taste_description = "fizzling blue"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/bluespace/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if(method == TOUCH || method == VAPOR)
@@ -922,6 +928,7 @@
 	glass_icon_state = "dr_gibb_glass"
 	glass_name = "glass of welder fuel"
 	glass_desc = "Unless you're an industrial tool, this is probably not safe for consumption."
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/fuel/reaction_mob(mob/living/M, method=TOUCH, reac_volume)//Splashing people with welding fuel to make them easy to ignite!
 	if(!isliving(M))
@@ -1051,6 +1058,7 @@
 	color = "#535E66" // rgb: 83, 94, 102
 	can_synth = 0
 	taste_description = "sludge"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/nanites/reaction_mob(mob/M, method=TOUCH, reac_volume, show_message = 1, touch_protection = 0)
 	if(method==PATCH || method==INGEST || method==INJECT || (method == VAPOR && prob(min(reac_volume,100)*(1 - touch_protection))))
@@ -1313,6 +1321,7 @@
 	color = "#C8A5DC"
 	taste_description = "bitterness"
 	taste_mult = 1.5
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/stable_plasma/on_mob_life(mob/living/M)
 	if(iscarbon(M))

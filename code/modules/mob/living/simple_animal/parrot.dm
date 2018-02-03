@@ -184,9 +184,9 @@
 	user.set_machine(src)
 	var/dat = 	"<div align='center'><b>Inventory of [name]</b></div><p>"
 	if(ears)
-		dat +=	"<br><b>Headset:</b> [ears] (<a href='?src=\ref[src];remove_inv=ears'>Remove</a>)"
+		dat +=	"<br><b>Headset:</b> [ears] (<a href='?src=[REF(src)];remove_inv=ears'>Remove</a>)"
 	else
-		dat +=	"<br><b>Headset:</b> <a href='?src=\ref[src];add_inv=ears'>Nothing</a>"
+		dat +=	"<br><b>Headset:</b> <a href='?src=[REF(src)];add_inv=ears'>Nothing</a>"
 
 	user << browse(dat, "window=mob[real_name];size=325x500")
 	onclose(user, "mob[real_name]")
@@ -733,7 +733,7 @@
 			visible_message("[src] grabs [held_item] out of [C]'s hand!", "<span class='notice'>You snag [held_item] out of [C]'s hand!</span>", "<span class='italics'>You hear the sounds of wings flapping furiously.</span>")
 			return held_item
 
-	to_chat(src, "<span class='warning'>There is nothing of interest to take!</spawn>")
+	to_chat(src, "<span class='warning'>There is nothing of interest to take!</span>")
 	return 0
 
 /mob/living/simple_animal/parrot/verb/drop_held_item_player()
@@ -952,7 +952,7 @@
 
 /mob/living/simple_animal/parrot/Poly/ghost/Initialize()
 	memory_saved = 1 //At this point nothing is saved
-	..()
+	. = ..()
 
 /mob/living/simple_animal/parrot/Poly/ghost/handle_automated_speech()
 	if(ismob(loc))

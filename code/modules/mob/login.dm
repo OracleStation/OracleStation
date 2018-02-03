@@ -45,3 +45,5 @@
 		GLOB.individual_log_list[ckey] = logging
 	else
 		logging = GLOB.individual_log_list[ckey]
+
+	player_logged = FALSE

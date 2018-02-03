@@ -198,8 +198,7 @@ GLOBAL_LIST(external_rsc_urls)
 		GLOB.preferences_datums[ckey] = prefs
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
-	if(world.byond_version >= 511 && byond_version >= 511 && prefs.clientfps)
-		vars["fps"] = prefs.clientfps
+	fps = prefs.clientfps
 	sethotkeys(1)						//set hoykeys from preferences (from_pref = 1)
 
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[byond_version]")
@@ -360,22 +359,7 @@ GLOBAL_LIST(external_rsc_urls)
 		holder.owner = null
 		GLOB.admins -= src
 		if (!GLOB.admins.len && SSticker.IsRoundInProgress()) //Only report this stuff if we are currently playing.
-			var/cheesy_message = pick(
-				"I have no admins online!",\
-				"I'm all alone :(",\
-				"I'm feeling lonely :(",\
-				"I'm so lonely :(",\
-				"Why does nobody love me? :(",\
-				"I want a man :(",\
-				"Where has everyone gone?",\
-				"I need a hug :(",\
-				"Someone come hold me :(",\
-				"I need someone on me :(",\
-				"What happened? Where has everyone gone?",\
-				"Forever alone :("\
-			)
-
-			send2irc("Server", "[cheesy_message] (No admins online)")
+			send2irc("Server", "Round has started with no admins online.")
 
 	GLOB.ahelp_tickets.ClientLogout(src)
 	GLOB.directory -= ckey

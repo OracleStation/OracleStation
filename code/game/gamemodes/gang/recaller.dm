@@ -35,11 +35,11 @@
 			if(promotable && user.mind.gang_datum.bosses.len < 3)
 				dat += "Give this device to another member of your organization to use to promote them to Lieutenant.<br><br>"
 				dat += "If this is meant as a spare device for yourself:<br>"
-			dat += "<a href='?src=\ref[src];register=1'>Register Device as Spare</a><br>"
+			dat += "<a href='?src=[REF(src)];register=1'>Register Device as Spare</a><br>"
 		else if (promotable)
 			if(user.mind.gang_datum.bosses.len < 3)
 				dat += "You have been selected for a promotion!<br>"
-				dat += "<a href='?src=\ref[src];register=1'>Accept Promotion</a><br>"
+				dat += "<a href='?src=[REF(src)];register=1'>Accept Promotion</a><br>"
 			else
 				dat += "No promotions available: All positions filled.<br>"
 		else
@@ -69,7 +69,7 @@
 
 				var/toAdd = G.get_name_display(user, gang, src)
 				if(G.can_buy(user, gang, src))
-					toAdd = "<a href='?src=\ref[src];purchase=[G.id]'>[toAdd]</a>"
+					toAdd = "<a href='?src=[REF(src)];purchase=[G.id]'>[toAdd]</a>"
 				dat += toAdd
 				var/extra = G.get_extra_info(user, gang, src)
 				if(extra)
@@ -77,7 +77,7 @@
 				dat += "<br>"
 			dat += "<br>"
 
-	dat += "<a href='?src=\ref[src];choice=refresh'>Refresh</a><br>"
+	dat += "<a href='?src=[REF(src)];choice=refresh'>Refresh</a><br>"
 
 	var/datum/browser/popup = new(user, "gangtool", "Welcome to GangTool v3.5", 340, 625)
 	popup.set_content(dat)
@@ -285,7 +285,7 @@
 
 			var/toAdd = G.get_name_display(user, gang, src)
 			if(G.can_buy(user, gang, src))
-				toAdd = "<a href='?src=\ref[src];purchase=[G.id]'>[toAdd]</a>"
+				toAdd = "<a href='?src=[REF(src)];purchase=[G.id]'>[toAdd]</a>"
 			dat += toAdd
 			var/extra = G.get_extra_info(user, gang, src)
 			if(extra)
@@ -293,7 +293,7 @@
 			dat += "<br>"
 		dat += "<br>"
 
-	dat += "<a href='?src=\ref[src];choice=refresh'>Refresh</a><br>"
+	dat += "<a href='?src=[REF(src)];choice=refresh'>Refresh</a><br>"
 
 	var/datum/browser/popup = new(user, "gangtool", "Welcome to GangTool v3.5", 340, 625)
 	popup.set_content(dat)

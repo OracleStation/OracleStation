@@ -160,7 +160,7 @@ update_label("John Doe", "Clowny")
 	var/anyone = FALSE //Can anyone forge the ID or just syndicate?
 
 /obj/item/card/id/syndicate/Initialize()
-	..()
+	. = ..()
 	var/datum/action/item_action/chameleon/change/chameleon_action = new(src)
 	chameleon_action.chameleon_type = /obj/item/card/id
 	chameleon_action.chameleon_name = "ID Card"
@@ -220,7 +220,7 @@ update_label("John Doe", "Clowny")
 /obj/item/card/id/captains_spare/Initialize()
 	var/datum/job/captain/J = new/datum/job/captain
 	access = J.get_access()
-	..()
+	. = ..()
 
 /obj/item/card/id/centcom
 	name = "\improper CentCom ID"
@@ -231,7 +231,7 @@ update_label("John Doe", "Clowny")
 
 /obj/item/card/id/centcom/Initialize()
 	access = get_all_centcom_access()
-	..()
+	. = ..()
 
 /obj/item/card/id/ert
 	name = "\improper CentCom ID"
@@ -242,7 +242,7 @@ update_label("John Doe", "Clowny")
 
 /obj/item/card/id/ert/Initialize()
 	access = get_all_accesses()+get_ert_access("commander")-ACCESS_CHANGE_IDS
-	..()
+	. = ..()
 
 /obj/item/card/id/ert/Security
 	registered_name = "Security Response Officer"
@@ -250,7 +250,7 @@ update_label("John Doe", "Clowny")
 
 /obj/item/card/id/ert/Security/Initialize()
 	access = get_all_accesses()+get_ert_access("sec")-ACCESS_CHANGE_IDS
-	..()
+	. = ..()
 
 /obj/item/card/id/ert/Engineer
 	registered_name = "Engineer Response Officer"
@@ -258,7 +258,7 @@ update_label("John Doe", "Clowny")
 
 /obj/item/card/id/ert/Engineer/Initialize()
 	access = get_all_accesses()+get_ert_access("eng")-ACCESS_CHANGE_IDS
-	..()
+	. = ..()
 
 /obj/item/card/id/ert/Medical
 	registered_name = "Medical Response Officer"
@@ -266,7 +266,7 @@ update_label("John Doe", "Clowny")
 
 /obj/item/card/id/ert/Medical/Initialize()
 	access = get_all_accesses()+get_ert_access("med")-ACCESS_CHANGE_IDS
-	..()
+	. = ..()
 
 /obj/item/card/id/prisoner
 	name = "prisoner ID card"
@@ -275,13 +275,46 @@ update_label("John Doe", "Clowny")
 	item_state = "orange-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	assignment = "Prisoner"
-	registered_name = "Scum"
+	assignment = "Convict"
 	var/goal = 0 //How far from freedom?
 	var/points = 0
 
-/obj/item/card/id/prisoner/attack_self(mob/user)
-	to_chat(usr, "<span class='notice'>You have accumulated [points] out of the [goal] points you need for freedom.</span>")
+	var/served = 0 //Time served in seconds
+	var/sentence = 0 //Sentance in minutes
+	var/crime = "\[redacted\]"
+
+	access = list(ACCESS_ENTER_GENPOP)
+
+/obj/item/card/id/prisoner/New()
+	. = ..()
+	START_PROCESSING(SSprocessing, src)
+	registered_name = "Prisoner #13-[rand(100,999)]"
+
+/obj/item/card/id/prisoner/process()
+	if (sentence > 0 && served > (sentence * 60)) //FREEDOM!
+		assignment = "Ex-Convict"
+		access = list(ACCESS_LEAVE_GENPOP)
+		update_label(registered_name, assignment)
+		playsound(loc, 'sound/machines/ping.ogg', 50, 1)
+		if(isliving(loc))
+			to_chat(loc, "<span class='boldnotice'>\the [src] buzzes: You have served your sentence! You may now exit prison through the turnstiles and collect your belongings.</span>")
+		STOP_PROCESSING(SSprocessing, src)
+	else
+		served += 1
+
+/obj/item/card/id/prisoner/examine(mob/user)
+	..()
+
+	var/minutesServed = round(served / 60)
+	var/secondsServed = served - (minutesServed * 60)
+	if(sentence <= 0)
+		to_chat(usr, "<span class='notice'>You are serving a permanent sentence for [crime].</span>")
+	else if(served >= (sentence * 60))
+		to_chat(usr, "<span class='notice'>You have served your sentence for [crime].</span>")
+	else
+		to_chat(usr, "<span class='notice'>You have served [minutesServed] minutes [secondsServed] seconds of your [sentence] minute sentance for [crime].</span>")
+	if(goal > 0)
+		to_chat(usr, "<span class='notice'>You have accumulated [points] out of the [goal] points you need for freedom.</span>")
 
 /obj/item/card/id/prisoner/one
 	name = "Prisoner #13-001"
@@ -354,3 +387,43 @@ update_label("John Doe", "Clowny")
 	desc = "Special ID card to allow access to APCs"
 	icon_state = "centcom"
 	access = list(ACCESS_ENGINE_EQUIP)
+
+/*
+JOB SPECIFIC ID CARDS
+*/
+
+/obj/item/card/id/job/ce
+	icon_state = "CE"
+
+/obj/item/card/id/job/cmo
+	icon_state = "CMO"
+
+/obj/item/card/id/job/hos
+	icon_state = "HoS"
+
+/obj/item/card/id/job/rd
+	icon_state = "RD"
+
+/obj/item/card/id/job/cargo
+	icon_state = "cargo"
+
+/obj/item/card/id/job/clown
+	icon_state = "clown"
+
+/obj/item/card/id/job/engineering
+	icon_state = "engineering"
+
+/obj/item/card/id/job/medical
+	icon_state = "medical"
+
+/obj/item/card/id/job/mime
+	icon_state = "mime"
+
+/obj/item/card/id/job/science
+	icon_state = "research"
+
+/obj/item/card/id/job/sec
+	icon_state = "security"
+
+/obj/item/card/id/job/nt
+	icon_state = "nanotrasen"

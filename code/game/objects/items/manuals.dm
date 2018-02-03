@@ -890,7 +890,7 @@ GLOBAL_LIST_EMPTY(cached_wiki_pages)
 	if (dat)
 		return TRUE
 
-	var/http[] = world.Export("[CONFIG_GET(string/wikiurl)]/w/index.php/[page_link]?action=render")
+	var/http[] = world.Export("[CONFIG_GET(string/wikibookurl)][page_link]?action=render")
 
 	if(!http)
 		return FALSE

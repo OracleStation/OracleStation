@@ -3,7 +3,7 @@
 */
 /obj/machinery/atmospherics/pipe/manifold4w
 	icon = 'icons/obj/atmospherics/pipes/manifold.dmi'
-	icon_state = "manifold4w"
+	icon_state = "manifold4w2"
 
 	name = "4-way pipe manifold"
 	desc = "A manifold composed of regular pipes"
@@ -19,16 +19,16 @@
 	initialize_directions = initial(initialize_directions)
 
 /obj/machinery/atmospherics/pipe/manifold4w/update_icon()
-	var/invis = invisibility ? "-f" : ""
+	alpha = invisibility ? 128 : 255
 
-	icon_state = "manifold4w_center[piping_layer][invis]"
+	icon_state = "manifold4w_center[piping_layer]"
 
 	cut_overlays()
 
 	//Add non-broken pieces
 	for(DEVICE_TYPE_LOOP)
 		if(NODE_I)
-			add_overlay(getpipeimage('icons/obj/atmospherics/pipes/manifold.dmi', "manifold_full[piping_layer][invis]", get_dir(src, NODE_I)))
+			add_overlay(getpipeimage('icons/obj/atmospherics/pipes/manifold.dmi', "manifold_full[piping_layer]", get_dir(src, NODE_I)))
 
 //Colored pipes, use these for mapping
 /obj/machinery/atmospherics/pipe/manifold4w/general

@@ -43,7 +43,7 @@
 
 /obj/effect/countdown/process()
 	if(!attached_to || QDELETED(attached_to))
-		qdel(src)
+		destroy_effect()
 	forceMove(get_turf(attached_to))
 	var/new_val = get_value()
 	if(new_val == displayed_text)
@@ -123,7 +123,7 @@
 	if(!istype(G))
 		return
 	else if(G.obj_integrity && !G.purpose_fulfilled)
-		return "<div align='center' valign='middle' style='position:relative; top:0px; left:6px'>[G.get_arrival_text(FALSE)]</div>"
+		return "<div align='center' valign='middle' style='position:relative; top:0px; left:6px'>[G.get_arrival_time(FALSE)]</div>"
 
 /obj/effect/countdown/supermatter
 	name = "supermatter damage"

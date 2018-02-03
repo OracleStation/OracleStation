@@ -29,6 +29,10 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 	var/list/possible_names //If you leave this blank, it will use the global posibrain names
 	var/picked_name
 
+/obj/item/device/mmi/posibrain/examine(mob/user)
+	if(..(user, TRUE))
+		to_chat(user, "Its speaker is turned [silenced ? "off" : "on"].")
+
 /obj/item/device/mmi/posibrain/Topic(href, href_list)
 	if(href_list["activate"])
 		var/mob/dead/observer/ghost = usr
@@ -37,7 +41,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 
 /obj/item/device/mmi/posibrain/proc/ping_ghosts(msg, newlymade)
 	if(newlymade || GLOB.posibrain_notify_cooldown <= world.time)
-		notify_ghosts("[name] [msg] in [get_area(src)]!", ghost_sound = !newlymade ? 'sound/effects/ghost2.ogg':null, enter_link = "<a href=?src=\ref[src];activate=1>(Click to enter)</a>", source = src, action = NOTIFY_ATTACK, flashwindow = FALSE)
+		notify_ghosts("[name] [msg] in [get_area(src)]!", ghost_sound = !newlymade ? 'sound/effects/ghost2.ogg':null, enter_link = "<a href=?src=[REF(src)];activate=1>(Click to enter)</a>", source = src, action = NOTIFY_ATTACK, flashwindow = FALSE)
 		if(!newlymade)
 			GLOB.posibrain_notify_cooldown = world.time + askDelay
 
@@ -45,7 +49,10 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 	if(!brainmob)
 		brainmob = new(src)
 	if(is_occupied())
-		to_chat(user, "<span class='warning'>This [name] is already active!</span>")
+		silenced = !silenced
+		to_chat(user, "<span class='notice'>You toggle the speaker [silenced ? "off" : "on"].</span>")
+		if(brainmob && brainmob.key)
+			to_chat(brainmob, "<span class='warning'>Your internal speaker has been toggled [silenced ? "off" : "on"].</span>")
 		return
 	if(next_ask > world.time)
 		to_chat(user, recharge_message)
@@ -175,3 +182,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 		icon_state = "[initial(icon_state)]-occupied"
 	else
 		icon_state = initial(icon_state)
+
+/obj/item/device/mmi/posibrain/ipc
+	desc = "A cube of shining metal, four inches to a side and covered in shallow grooves. It has an IPC serial number engraved on the top."
+	autoping = FALSE

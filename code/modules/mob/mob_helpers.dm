@@ -8,6 +8,9 @@
 	for(var/obj/item/implant/mindshield/L in implants)
 		return 1
 
+/mob/proc/isLivingSSD()
+	if(player_logged && stat != DEAD)
+		return TRUE
 
 /proc/check_zone(zone)
 	if(!zone)
@@ -385,13 +388,13 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		return
 	for(var/mob/dead/observer/O in GLOB.player_list)
 		if(O.client)
-			to_chat(O, "<span class='ghostalert'>[message][(enter_link) ? " [enter_link]" : ""]<span>")
+			to_chat(O, "<span class='ghostalert'>[message][(enter_link) ? " [enter_link]" : ""]</span>")
 			if(ghost_sound)
 				SEND_SOUND(O, sound(ghost_sound))
 			if(flashwindow)
 				window_flash(O.client)
 			if(source)
-				var/obj/screen/alert/notify_action/A = O.throw_alert("\ref[source]_notify_action", /obj/screen/alert/notify_action)
+				var/obj/screen/alert/notify_action/A = O.throw_alert("[REF(source)]_notify_action", /obj/screen/alert/notify_action)
 				if(A)
 					if(O.client.prefs && O.client.prefs.UI_style)
 						A.icon = ui_style2icon(O.client.prefs.UI_style)
@@ -488,3 +491,18 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 /mob/proc/can_hear()
 	. = TRUE
+
+/mob/proc/has_mouth()
+	return FALSE
+
+/proc/bloodtype_to_color(var/type)
+	//all of these strings CANNOT have capitals in them, because that's how BYOND stores their colors and capitals won't work with == checks
+	. = "#dc0000"
+	switch(type)
+		if("F")//Ethari blood; a bit orange
+			. = "#db3300"
+		if("L")//lizard, a bit pink/purple
+			. = "#db004d"
+		if("X*")//xeno blood; not actually used in many spots
+			. = "#88aa00"
+		//add more stuff to the switch if you have more blood colors for different types

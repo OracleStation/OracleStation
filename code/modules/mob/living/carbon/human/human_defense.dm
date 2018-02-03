@@ -36,9 +36,10 @@
 
 
 /mob/living/carbon/human/bullet_act(obj/item/projectile/P, def_zone)
-	var/spec_return = dna.species.bullet_act(P, src)
-	if(spec_return)
-		return spec_return
+	if(dna && dna.species)
+		var/spec_return = dna.species.bullet_act(P, src)
+		if(spec_return)
+			return spec_return
 
 	if(mind)
 		if(mind.martial_art && mind.martial_art.deflection_chance) //Some martial arts users can deflect projectiles!
@@ -162,6 +163,12 @@
 	else
 		affecting = get_bodypart(ran_zone(user.zone_selected))
 	var/target_area = parse_zone(check_zone(user.zone_selected)) //our intended target
+	if(affecting)
+		if(I.force && I.damtype != STAMINA && affecting.status == BODYPART_ROBOTIC) // Bodpart_robotic sparks when hit, but only when it does real damage
+			if(I.force >= 5)
+				do_sparks(1, FALSE, loc)
+				if(prob(25))
+					new /obj/effect/decal/cleanable/oil(loc)
 
 	SSblackbox.add_details("item_used_for_combat","[I.type]|[I.force]")
 	SSblackbox.add_details("zone_targeted","[target_area]")
@@ -475,6 +482,9 @@
 				if(2)
 					L.receive_damage(0,5)
 					Stun(100)
+			if((EASYDISMEMBER in L.owner.dna.species.species_traits) && L.body_zone != "chest")
+				if(prob(20))
+					L.dismember(BRUTE)
 	..()
 
 /mob/living/carbon/human/acid_act(acidpwr, acid_volume, bodyzone_hit)
@@ -671,7 +681,7 @@
 				to_chat(src, "\t <span class='[status == "OK" ? "notice" : "warning"]'>Your [LB.name] is [status].</span>")
 
 				for(var/obj/item/I in LB.embedded_objects)
-					to_chat(src, "\t <a href='?src=\ref[src];embedded_object=\ref[I];embedded_limb=\ref[LB]' class='warning'>There is \a [I] embedded in your [LB.name]!</a>")
+					to_chat(src, "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] embedded in your [LB.name]!</a>")
 
 			for(var/t in missing)
 				to_chat(src, "<span class='boldannounce'>Your [parse_zone(t)] is missing!</span>")
