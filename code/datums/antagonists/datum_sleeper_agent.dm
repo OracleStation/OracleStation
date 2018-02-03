@@ -1,92 +1,92 @@
-#define PINPOINTER_MINIMUM_RANGE 15 
+#define PINPOINTER_MINIMUM_RANGE 15
 #define PINPOINTER_EXTRA_RANDOM_RANGE 10
 #define PINPOINTER_PING_TIME 40
 #define PROB_ACTUAL_TRAITOR 20
 #define TRAITOR_AGENT_ROLE "Syndicate External Affairs Agent"
 
-/datum/antagonist/traitor/internal_affairs
-	base_datum_custom = ANTAG_DATUM_IAA_CUSTOM
-	human_datum = ANTAG_DATUM_IAA_HUMAN
-	ai_datum = ANTAG_DATUM_IAA_AI
+/datum/antagonist/traitor/sleeper_agent
+	base_datum_custom = ANTAG_DATUM_SLEEPER_AGENT_CUSTOM
+	human_datum = ANTAG_DATUM_SLEEPER_AGENT_HUMAN
+	ai_datum = ANTAG_DATUM_SLEEPER_AGENT_AI
 
-	
 
-/datum/antagonist/traitor/AI/internal_affairs
-	name = "Internal Affairs Agent"
+
+/datum/antagonist/traitor/AI/sleeper_agent
+	name = "Sleeper Agent"
 	employer = "Nanotrasen"
-	special_role = "internal affairs agent"
-	base_datum_custom = ANTAG_DATUM_IAA_CUSTOM
+	special_role = "sleeper agent"
+	base_datum_custom = ANTAG_DATUM_SLEEPER_AGENT_CUSTOM
 	var/syndicate = FALSE
 	var/last_man_standing = FALSE
 	var/list/datum/mind/targets_stolen
 
-/datum/antagonist/traitor/AI/internal_affairs/custom
+/datum/antagonist/traitor/AI/sleeper_agent/custom
 	silent = TRUE
 	should_give_codewords = FALSE
 	give_objectives = FALSE
 
-/datum/antagonist/traitor/human/internal_affairs
-	name = "Internal Affairs Agent"
+/datum/antagonist/traitor/human/sleeper_agent
+	name = "Sleeper Agent"
 	employer = "Nanotrasen"
-	special_role = "internal affairs agent"
-	base_datum_custom = ANTAG_DATUM_IAA_CUSTOM
+	special_role = "sleeper agent"
+	base_datum_custom = ANTAG_DATUM_SLEEPER_AGENT_CUSTOM
 	var/syndicate = FALSE
 	var/last_man_standing = FALSE
 	var/list/datum/mind/targets_stolen
-	
-/datum/antagonist/traitor/human/internal_affairs/custom
+
+/datum/antagonist/traitor/human/sleeper_agent/custom
 	silent = TRUE
 	should_give_codewords = FALSE
 	give_objectives = FALSE
 	should_equip = FALSE //Duplicating TCs is dangerous
 
-/datum/antagonist/traitor/human/internal_affairs/transfer_important_variables(datum/antagonist/traitor/human/internal_affairs/other)
+/datum/antagonist/traitor/human/sleeper_agent/transfer_important_variables(datum/antagonist/traitor/human/sleeper_agent/other)
 	..(other)
 	other.syndicate = syndicate
 	other.last_man_standing = last_man_standing
 	other.targets_stolen = targets_stolen
 
-/datum/antagonist/traitor/AI/internal_affairs/transfer_important_variables(datum/antagonist/traitor/human/internal_affairs/other)
+/datum/antagonist/traitor/AI/sleeper_agent/transfer_important_variables(datum/antagonist/traitor/human/sleeper_agent/other)
 	..(other)
 	other.syndicate = syndicate
 	other.last_man_standing = last_man_standing
 	other.targets_stolen = targets_stolen
 
-/datum/antagonist/traitor/human/internal_affairs/proc/give_pinpointer()
+/datum/antagonist/traitor/human/sleeper_agent/proc/give_pinpointer()
 	if(owner && owner.current)
 		owner.current.apply_status_effect(/datum/status_effect/agent_pinpointer)
-	
-/datum/antagonist/traitor/human/internal_affairs/apply_innate_effects()
+
+/datum/antagonist/traitor/human/sleeper_agent/apply_innate_effects()
 	.=..() //in case the base is used in future
 	if(owner&&owner.current)
 		give_pinpointer(owner.current)
 
-/datum/antagonist/traitor/human/internal_affairs/remove_innate_effects()
+/datum/antagonist/traitor/human/sleeper_agent/remove_innate_effects()
 	.=..()
 	if(owner&&owner.current)
 		owner.current.remove_status_effect(/datum/status_effect/agent_pinpointer)
 
-/datum/antagonist/traitor/internal_affairs/custom
-	ai_datum = ANTAG_DATUM_IAA_AI_CUSTOM
-	human_datum = ANTAG_DATUM_IAA_HUMAN_CUSTOM
+/datum/antagonist/traitor/sleeper_agent/custom
+	ai_datum = ANTAG_DATUM_SLEEPER_AGENT_AI_CUSTOM
+	human_datum = ANTAG_DATUM_SLEEPER_AGENT_HUMAN_CUSTOM
 
-/datum/antagonist/traitor/human/internal_affairs/on_gain()
+/datum/antagonist/traitor/human/sleeper_agent/on_gain()
 	START_PROCESSING(SSprocessing, src)
 	.=..()
-/datum/antagonist/traitor/human/internal_affairs/on_removal()
+/datum/antagonist/traitor/human/sleeper_agent/on_removal()
 	STOP_PROCESSING(SSprocessing,src)
 	.=..()
-/datum/antagonist/traitor/human/internal_affairs/process()
-	iaa_process()
+/datum/antagonist/traitor/human/sleeper_agent/process()
+	sleeper_agent_process()
 
-/datum/antagonist/traitor/AI/internal_affairs/on_gain()
+/datum/antagonist/traitor/AI/sleeper_agent/on_gain()
 	START_PROCESSING(SSprocessing, src)
 	.=..()
-/datum/antagonist/traitor/AI/internal_affairs/on_removal()
+/datum/antagonist/traitor/AI/sleeper_agent/on_removal()
 	STOP_PROCESSING(SSprocessing,src)
 	.=..()
-/datum/antagonist/traitor/AI/internal_affairs/process()
-	iaa_process()
+/datum/antagonist/traitor/AI/sleeper_agent/process()
+	sleeper_agent_process()
 
 /datum/status_effect/agent_pinpointer
 	id = "agent_pinpointer"
@@ -97,7 +97,7 @@
 	var/mob/scan_target = null
 
 /obj/screen/alert/status_effect/agent_pinpointer
-	name = "Internal Affairs Integrated Pinpointer"
+	name = "Sleeper Agent Integrated Pinpointer"
 	desc = "Even stealthier than a normal implant."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "pinon"
@@ -155,7 +155,7 @@
 		if(!(istype(objective_, /datum/objective/escape)||istype(objective_, /datum/objective/survive)))
 			continue
 		remove_objective(objective_)
-		
+
 	var/datum/objective/martyr/martyr_objective = new
 	martyr_objective.owner = owner
 	add_objective(martyr_objective)
@@ -168,22 +168,22 @@
 			continue
 		remove_objective(objective_)
 
-/datum/antagonist/traitor/human/internal_affairs/reinstate_escape_objective()
+/datum/antagonist/traitor/human/sleeper_agent/reinstate_escape_objective()
 	..()
 	var/datum/objective/escape/escape_objective = new
 	escape_objective.owner = owner
 	add_objective(escape_objective)
 
-/datum/antagonist/traitor/AI/internal_affairs/reinstate_escape_objective()
+/datum/antagonist/traitor/AI/sleeper_agent/reinstate_escape_objective()
 	..()
 	var/datum/objective/survive/survive_objective = new
 	survive_objective.owner = owner
 	add_objective(survive_objective)
 
 /datum/antagonist/traitor/proc/steal_targets(datum/mind/victim)
-	var/datum/antagonist/traitor/human/internal_affairs/this = src //Should only use this if IAA
-	
-	if(!owner.current||owner.current.stat==DEAD) 
+	var/datum/antagonist/traitor/human/sleeper_agent/this = src //Should only use this if sleeper agent
+
+	if(!owner.current||owner.current.stat==DEAD)
 		return
 	to_chat(owner.current, "<span class='userdanger'> Target eliminated: [victim.name]</span>")
 	for(var/objective_ in victim.objectives)
@@ -228,8 +228,8 @@
 			to_chat(owner.current,"<span class='userdanger'> All the other agents are dead, and you're the last loose end. Stage a Syndicate terrorist attack to cover up for today's events. You no longer have any limits on collateral damage.</span>")
 		replace_escape_objective(owner)
 
-/datum/antagonist/traitor/proc/iaa_process()
-	var/datum/antagonist/traitor/human/internal_affairs/this = src //Should only use this if IAA
+/datum/antagonist/traitor/proc/sleeper_agent_process()
+	var/datum/antagonist/traitor/human/sleeper_agent/this = src //Should only use this if sleeper agent
 	if(owner&&owner.current&&owner.current.stat!=DEAD)
 		for(var/objective_ in owner.objectives)
 			if(!is_internal_objective(objective_))
@@ -256,8 +256,8 @@
 					to_chat(owner.current, fail_msg)
 					objective.stolen = FALSE
 
-/datum/antagonist/traitor/proc/forge_iaa_objectives()
-	var/datum/antagonist/traitor/human/internal_affairs/this = src //Should only use this if IAA
+/datum/antagonist/traitor/proc/forge_sleeper_agent_objectives()
+	var/datum/antagonist/traitor/human/sleeper_agent/this = src //Should only use this if sleeper agent
 	if(SSticker.mode.target_list.len && SSticker.mode.target_list[owner]) // Is a double agent
 
 		// Assassinate
@@ -280,26 +280,26 @@
 			owner.special_role = TRAITOR_AGENT_ROLE
 			special_role = TRAITOR_AGENT_ROLE
 			this.syndicate = TRUE
-			forge_single_objective()	
+			forge_single_objective()
 
 	else
 		..() // Give them standard objectives.
 	return
 
-/datum/antagonist/traitor/human/internal_affairs/forge_traitor_objectives()
-	forge_iaa_objectives()
+/datum/antagonist/traitor/human/sleeper_agent/forge_traitor_objectives()
+	forge_sleeper_agent_objectives()
 	var/datum/objective/escape/escape_objective = new
 	escape_objective.owner = owner
 	add_objective(escape_objective)
 
-/datum/antagonist/traitor/AI/internal_affairs/forge_traitor_objectives()
-	forge_iaa_objectives()
+/datum/antagonist/traitor/AI/sleeper_agent/forge_traitor_objectives()
+	forge_sleeper_agent_objectives()
 	var/datum/objective/survive/survive_objective = new
 	survive_objective.owner = owner
 	add_objective(survive_objective)
 
-/datum/antagonist/traitor/proc/greet_iaa()
-	var/datum/antagonist/traitor/human/internal_affairs/this = src //Should only use this if IAA
+/datum/antagonist/traitor/proc/greet_sleeper_agent()
+	var/datum/antagonist/traitor/human/sleeper_agent/this = src //Should only use this if sleeper agent
 	var/crime = pick("distribution of contraband" , "unauthorized erotic action on duty", "embezzlement", "piloting under the influence", "dereliction of duty", "syndicate collaboration", "mutiny", "multiple homicides", "corporate espionage", "recieving bribes", "malpractice", "worship of prohbited life forms", "possession of profane texts", "murder", "arson", "insulting their manager", "grand theft", "conspiracy", "attempting to unionize", "vandalism", "gross incompetence")
 
 	to_chat(owner.current, "<span class='userdanger'>You are the [special_role].</span>")
@@ -315,10 +315,10 @@
 	to_chat(owner.current, "<span class='userdanger'>Finally, watch your back. Your target has friends in high places, and intel suggests someone may have taken out a contract of their own to protect them.</span>")
 	owner.announce_objectives()
 
-/datum/antagonist/traitor/AI/internal_affairs/greet()
-	greet_iaa()
-/datum/antagonist/traitor/human/internal_affairs/greet()
-	greet_iaa()
+/datum/antagonist/traitor/AI/sleeper_agent/greet()
+	greet_sleeper_agent()
+/datum/antagonist/traitor/human/sleeper_agent/greet()
+	greet_sleeper_agent()
 
 
 #undef PROB_ACTUAL_TRAITOR
