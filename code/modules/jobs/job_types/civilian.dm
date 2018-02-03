@@ -23,7 +23,7 @@ Clown
 /datum/outfit/job/clown
 	name = "Clown"
 	jobtype = /datum/job/clown
-
+	id = /obj/item/card/id/job/clown
 	pda_slot = /obj/item/device/pda/clown
 	uniform = /obj/item/clothing/under/rank/clown
 	shoes = /obj/item/clothing/shoes/clown_shoes
@@ -83,7 +83,7 @@ Mime
 /datum/outfit/job/mime
 	name = "Mime"
 	jobtype = /datum/job/mime
-
+	id = /obj/item/card/id/job/mime
 	pda_slot = /obj/item/device/pda/mime
 	uniform = /obj/item/clothing/under/rank/mime
 	mask = /obj/item/clothing/mask/gas/mime
@@ -175,7 +175,7 @@ Lawyer
 /datum/outfit/job/lawyer
 	name = "Lawyer"
 	jobtype = /datum/job/lawyer
-
+	id = /obj/item/card/id/job/sec
 	pda_slot = /obj/item/device/pda/lawyer
 	ears = /obj/item/device/radio/headset/headset_sec
 	uniform = /obj/item/clothing/under/lawyer/bluesuit

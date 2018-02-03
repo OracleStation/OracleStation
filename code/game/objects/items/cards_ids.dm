@@ -387,3 +387,39 @@ update_label("John Doe", "Clowny")
 	desc = "Special ID card to allow access to APCs"
 	icon_state = "centcom"
 	access = list(ACCESS_ENGINE_EQUIP)
+
+/obj/item/card/id/job/ce
+	icon_state = "CE"
+
+/obj/item/card/id/job/cmo
+	icon_state = "CMO"
+
+/obj/item/card/id/job/hos
+	icon_state = "HoS"
+
+/obj/item/card/id/job/rd
+	icon_state = "RD"
+
+/obj/item/card/id/job/cargo
+	icon_state = "cargo"
+
+/obj/item/card/id/job/clown
+	icon_state = "clown"
+
+/obj/item/card/id/job/engineering
+	icon_state = "engineering"
+
+/obj/item/card/id/job/medical
+	icon_state = "medical"
+
+/obj/item/card/id/job/mime
+	icon_state = "mime"
+
+/obj/item/card/id/job/science
+	icon_state = "research"
+
+/obj/item/card/id/job/sec
+	icon_state = "security"
+
+/obj/item/card/id/job/nt
+	icon_state = "nanotrasen"
