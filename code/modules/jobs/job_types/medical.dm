@@ -181,10 +181,10 @@ Virologist
 	pda_slot = /obj/item/device/pda/viro
 	ears = /obj/item/device/radio/headset/headset_med
 	uniform = /obj/item/clothing/under/rank/virologist
-	mask = /obj/item/clothing/mask/surgical
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	suit =  /obj/item/clothing/suit/toggle/labcoat/virologist
 	suit_store =  /obj/item/device/flashlight/pen
+	backpack_contents = list(/obj/item/clothing/mask/surgical=1)
 
 	backpack = /obj/item/storage/backpack/virology
 	satchel = /obj/item/storage/backpack/satchel/vir

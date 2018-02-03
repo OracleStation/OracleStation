@@ -45,24 +45,27 @@
 		newname += pick("ti","hi","ki","ya","ta","ha","ka","yi","chi","cha","kah")
 	return capitalize(newname)
 
-/datum/species/vox/on_species_gain(mob/living/carbon/C)
+/datum/species/vox/on_species_gain(mob/living/carbon/C) // The body color choice feature
 	. = ..()
 	var/vox_body = C.dna.features["vox_body"]
 	var/datum/sprite_accessory/vox_bodies/vox_body_of_choice = GLOB.vox_bodies_list[vox_body]
 	C.dna.species.limbs_id = vox_body_of_choice.limbs_id
-	C.dna.features["vox_tail"] = vox_body_of_choice.limbs_id
-	C.dna.features["vox_eyes"] = vox_body_of_choice.eye_type
+	C.dna.features["vox_tail"] = vox_body_of_choice.limbs_id // The tail has to match the bodytype
+	C.dna.features["vox_eyes"] = vox_body_of_choice.eye_type // Auroras have three eyes, so we have to swap that
 
-/datum/species/vox/after_equip_job(datum/job/J, mob/living/carbon/human/H)
+/datum/species/vox/after_equip_job(datum/job/J, mob/living/carbon/human/H) // Don't forget your voxygen tank
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), slot_wear_mask)
 	H.put_in_r_hand(new /obj/item/tank/internals/emergency_oxygen/vox(H))
-	to_chat(H, "<span class='notice'>You are now running on nitrogen internals from the emergency tank in your hand. Your species finds oxygen toxic, so you must breathe nitrogen only.</span>")
+	to_chat(H, "<span class='notice'>You are now running on nitrogen internals from the emergency tank in your hand. Your species finds oxygen EXTREMELY TOXIC, so you must breathe nitrogen only.</span>")
 	H.internal = H.get_item_for_held_index(2)
 	H.update_internals_hud_icon(1)
 	H.grant_language(/datum/language/voxpidgin)
 	H.disabilities |= NOCLONE // Can be cloned with higher component levels.
 
-/datum/species/vox/spec_death(gibbed, mob/living/carbon/human/H)
-	if(H.disabilities & HUSK)
-		H.dna.features["vox_tail"] = "voxhusk"
-		H.update_body()
+/datum/species/vox/on_husk(mob/living/carbon/C) // Husks the tail
+		C.dna.features["vox_tail"] = "voxhusk"
+
+/datum/species/vox/on_husk_cure(mob/living/carbon/C) // De-husks the to a normal tail based on the body.
+	var/vox_body = C.dna.features["vox_body"]
+	var/datum/sprite_accessory/vox_bodies/vox_body_of_choice = GLOB.vox_bodies_list[vox_body]
+	C.dna.features["vox_tail"] = vox_body_of_choice.limbs_id

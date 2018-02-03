@@ -147,18 +147,10 @@ Detective
 	r_pocket = /obj/item/lighter
 	backpack_contents = list(/obj/item/storage/box/evidence=1,\
 		/obj/item/device/detective_scanner=1,\
+		/obj/item/storage/fancy/cigarettes=1,\
 		/obj/item/melee/classic_baton=1)
-	mask = /obj/item/clothing/mask/cigarette
 
 	implants = list(/obj/item/implant/mindshield)
-
-/datum/outfit/job/detective/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	..()
-	var/obj/item/clothing/mask/cigarette/cig = H.wear_mask
-	cig.light("")
-
-	if(visualsOnly)
-		return
 
 /*
 Security Officer

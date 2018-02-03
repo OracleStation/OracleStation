@@ -306,6 +306,12 @@
 		for(var/obj/item/bodypart/head/head in C.bodyparts)
 			head.mouth = TRUE
 
+/datum/species/proc/on_husk()
+	return
+
+/datum/species/proc/on_husk_cure()
+	return
+
 /datum/species/proc/handle_hair(mob/living/carbon/human/H, forced_colour)
 	H.remove_overlay(HAIR_LAYER)
 
