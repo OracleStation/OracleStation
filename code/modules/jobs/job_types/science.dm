@@ -35,7 +35,7 @@ Research Director
 	name = "Research Director"
 	jobtype = /datum/job/rd
 
-	id = /obj/item/card/id/silver
+	id = /obj/item/card/id/job/rd
 	pda_slot = /obj/item/device/pda/heads/rd
 	ears = /obj/item/device/radio/headset/heads/rd
 	uniform = /obj/item/clothing/under/rank/research_director
@@ -82,7 +82,7 @@ Scientist
 /datum/outfit/job/scientist
 	name = "Scientist"
 	jobtype = /datum/job/scientist
-
+	id = /obj/item/card/id/job/science
 	pda_slot = /obj/item/device/pda/toxins
 	ears = /obj/item/device/radio/headset/headset_sci
 	uniform = /obj/item/clothing/under/rank/scientist
@@ -117,7 +117,7 @@ Roboticist
 /datum/outfit/job/roboticist
 	name = "Roboticist"
 	jobtype = /datum/job/roboticist
-
+	id = /obj/item/card/id/job/science
 	belt = /obj/item/storage/belt/utility/full
 	pda_slot = /obj/item/device/pda/roboticist
 	ears = /obj/item/device/radio/headset/headset_sci
