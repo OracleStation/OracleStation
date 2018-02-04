@@ -43,3 +43,4 @@
 #define MIME			(1<<12)
 #define ASSISTANT		(1<<13)
 #define BLUESHIELD		(1<<14)
+#define IAA		(1<<15)

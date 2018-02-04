@@ -138,6 +138,9 @@
 /obj/effect/landmark/start/brig_phys
 	name = "Brig Physician"
 
+/obj/effect/landmark/start/iaa
+	name = "Internal Affairs Agent"
+
 //Department Security spawns
 
 /obj/effect/landmark/start/depsec

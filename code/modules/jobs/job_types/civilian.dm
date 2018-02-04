@@ -196,3 +196,41 @@ Lawyer
 	if(J.lawyers>1)
 		uniform = /obj/item/clothing/under/lawyer/purpsuit
 		suit = /obj/item/clothing/suit/toggle/lawyer/purple
+
+/*
+Internal Affairs Agent
+*/
+/datum/job/iaa
+	title = "Internal Affairs Agent"
+	flag = IAA
+	department_head = list("CentCom")
+	department_flag = CIVILIAN
+	faction = "Station"
+	total_positions = 2
+	spawn_positions = 2
+	supervisors = "central command"
+	selection_color = "#dddddd"
+	minimal_player_age = 14
+	exp_requirements = 180 //3 hours
+	exp_type = EXP_TYPE_CREW
+
+	outfit = /datum/outfit/job/iaa
+	//Basic access to each department
+	access = list(ACCESS_LAWYER, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_IAA, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_CARGO)
+	minimal_access = list(ACCESS_LAWYER, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_IAA, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_CARGO)
+
+/datum/outfit/job/iaa
+	name = "Internal Affairs Agent"
+	jobtype = /datum/job/iaa
+	id = /obj/item/card/id/job/sec
+	pda_slot = /obj/item/device/pda/lawyer/iaa
+	ears = /obj/item/device/radio/headset/headset_sec
+	uniform = /obj/item/clothing/under/lawyer/blacksuit
+	suit = /obj/item/clothing/suit/toggle/lawyer/black
+	glasses = /obj/item/clothing/glasses/
+	shoes = /obj/item/clothing/shoes/laceup
+	l_hand = /obj/item/storage/briefcase
+	l_pocket = /obj/item/device/laser_pointer
+	r_pocket = /obj/item/device/assembly/flash/handheld
+
+	implants = list(/obj/item/implant/mindshield)

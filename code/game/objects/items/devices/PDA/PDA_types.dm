@@ -161,6 +161,10 @@
 	icon_state = "pda-lawyer"
 	ttone = "objection"
 
+/obj/item/device/pda/lawyer/iaa
+	name = "internal affairs PDA"
+	ttone = "beep"
+
 /obj/item/device/pda/botanist
 	name = "botanist PDA"
 	//default_cartridge = /obj/item/cartridge/botanist
