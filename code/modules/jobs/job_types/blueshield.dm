@@ -15,7 +15,7 @@ Blueshield
 	minimal_player_age = 14
 	exp_requirements = 600 //10 hours
 	exp_type = EXP_TYPE_CREW
-	special_notice = "You are not a security officer. Do not do their job."
+	special_notice = "You are a bodyguard for heads of staff. You are not a security officer. Do not do security's job."
 
 	outfit = /datum/outfit/job/blueshield
 
