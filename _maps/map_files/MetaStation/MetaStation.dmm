@@ -2233,8 +2233,6 @@
 /obj/machinery/newscaster/security_unit{
 	pixel_y = 32
 	},
-/obj/item/folder/red,
-/obj/item/folder/red,
 /obj/machinery/keycard_auth{
 	pixel_x = -26;
 	pixel_y = 23
@@ -2244,6 +2242,9 @@
 	name = "Space Shutters Control";
 	pixel_x = -26;
 	pixel_y = 34
+	},
+/obj/machinery/photocopier/faxmachine/longrange{
+	department = "Head of Security"
 	},
 /turf/open/floor/plasteel/black,
 /area/crew_quarters/heads/hos)
@@ -3298,9 +3299,10 @@
 /area/crew_quarters/heads/hos)
 "agi" = (
 /obj/structure/table/wood,
-/obj/item/stamp/hos,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
+/obj/item/folder/red,
+/obj/item/stamp/hos,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/hos)
 "agj" = (
@@ -18526,16 +18528,15 @@
 /area/security/courtroom)
 "aIU" = (
 /obj/structure/table/wood,
-/obj/item/device/flashlight/lamp/green{
-	pixel_x = 1;
-	pixel_y = 5
-	},
 /obj/machinery/requests_console{
 	department = "Law office";
 	pixel_y = 32
 	},
 /obj/machinery/newscaster{
 	pixel_x = -31
+	},
+/obj/machinery/photocopier/faxmachine/longrange{
+	department = "Law Office"
 	},
 /turf/open/floor/wood,
 /area/lawoffice)
@@ -29240,17 +29241,15 @@
 	},
 /area/crew_quarters/heads/chief)
 "beh" = (
-/obj/structure/rack{
-	dir = 8;
-	layer = 2.9
-	},
-/obj/item/storage/secure/briefcase,
-/obj/item/clothing/mask/cigarette/cigar,
 /obj/machinery/computer/security/telescreen{
 	dir = 1;
 	name = "MiniSat Monitor";
 	network = list("MiniSat","tcomm");
 	pixel_y = -30
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/photocopier/faxmachine{
+	department = "Chief Engineer"
 	},
 /turf/open/floor/plasteel/vault{
 	dir = 5
@@ -29268,6 +29267,7 @@
 	name = "Privacy Shutters Control";
 	pixel_y = -26
 	},
+/obj/item/clothing/mask/cigarette/cigar,
 /turf/open/floor/plasteel/vault{
 	dir = 5
 	},
@@ -33688,13 +33688,15 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/storage/secure/briefcase,
 /obj/structure/table/wood,
 /obj/machinery/computer/security/telescreen{
 	desc = "Used for watching Prison Wing holding areas.";
 	name = "Prison Monitor";
 	network = list("Prison");
 	pixel_y = 30
+	},
+/obj/machinery/photocopier/faxmachine/longrange{
+	department = "Head of Personnel"
 	},
 /turf/open/floor/wood,
 /area/crew_quarters/heads/hop)
@@ -37578,6 +37580,7 @@
 	},
 /obj/item/pen,
 /obj/structure/window/reinforced,
+/obj/item/hand_tele,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain/private)
 "btf" = (
@@ -37597,12 +37600,14 @@
 /area/crew_quarters/heads/captain/private)
 "btg" = (
 /obj/structure/table/wood,
-/obj/item/hand_tele,
 /obj/structure/window/reinforced,
 /obj/item/device/radio/intercom{
 	dir = 0;
 	name = "Station Intercom (General)";
 	pixel_x = 27
+	},
+/obj/machinery/photocopier/faxmachine/longrange{
+	department = "Captain"
 	},
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain/private)
@@ -39105,6 +39110,7 @@
 /area/crew_quarters/heads/hop)
 "bwk" = (
 /obj/structure/closet/secure_closet/hop,
+/obj/item/storage/secure/briefcase,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/hop)
 "bwl" = (
@@ -63641,6 +63647,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	dir = 4
 	},
+/obj/item/clothing/neck/stethoscope,
 /turf/open/floor/plasteel/barber{
 	dir = 8
 	},
@@ -64797,11 +64804,12 @@
 /area/crew_quarters/heads/cmo)
 "ctz" = (
 /obj/structure/table/glass,
-/obj/item/pen,
-/obj/item/clothing/neck/stethoscope,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 6;
 	pixel_y = -30
+	},
+/obj/machinery/photocopier/faxmachine{
+	department = "Chief Medical Officer"
 	},
 /turf/open/floor/plasteel/barber{
 	dir = 8
@@ -66071,7 +66079,10 @@
 	},
 /area/crew_quarters/heads/hor)
 "cvU" = (
-/obj/machinery/holopad,
+/obj/structure/table/reinforced,
+/obj/machinery/photocopier/faxmachine{
+	department = "Research Director"
+	},
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
 	},
@@ -93830,6 +93841,18 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"dKR" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
+	dir = 4
+	},
+/obj/machinery/holopad,
+/turf/open/floor/plasteel/cafeteria{
+	dir = 5
+	},
+/area/crew_quarters/heads/hor)
 
 (1,1,1) = {"
 aaa
@@ -107295,10 +107318,10 @@ avT
 avT
 avT
 dJw
-dJx
+dJw
 avT
-dJy
-dJz
+dJw
+dJw
 avT
 avT
 avT
@@ -110693,7 +110716,7 @@ cjt
 cjt
 cjt
 dKn
-dKo
+dKn
 crh
 bXE
 ctn
@@ -111396,8 +111419,8 @@ apt
 dnk
 doJ
 atu
-dJs
-dJt
+dJp
+dJp
 awQ
 ayk
 azo
@@ -111414,7 +111437,7 @@ aMv
 aNF
 aMv
 aMv
-dJD
+dJB
 aKR
 aMv
 cVC
@@ -111674,7 +111697,7 @@ aQj
 aMv
 aKS
 dCB
-dJJ
+dJB
 aMv
 aYM
 bap
@@ -111985,7 +112008,7 @@ cia
 ceu
 dwb
 bXE
-dKy
+dKr
 dKB
 dux
 aaf
@@ -112242,7 +112265,7 @@ cia
 cug
 dwb
 dDw
-dKz
+dKr
 cNg
 dux
 aaa
@@ -114219,7 +114242,7 @@ aks
 alJ
 amY
 dnH
-dJq
+dJp
 aqQ
 dne
 atB
@@ -115333,7 +115356,7 @@ czQ
 cAU
 diN
 cxU
-dKE
+dKD
 dux
 cFO
 cGJ
@@ -125621,7 +125644,7 @@ cIb
 cIV
 cJS
 cIg
-dKL
+dKA
 dzc
 dvY
 aaf
@@ -125861,7 +125884,7 @@ crQ
 ctb
 ctS
 cuO
-cvS
+dKR
 cwR
 crQ
 cyB
@@ -126652,8 +126675,8 @@ cIg
 dDF
 dvY
 cNj
-dKN
-dKQ
+dKt
+dKt
 cPg
 dvY
 aaa
@@ -126909,7 +126932,7 @@ cIg
 dxQ
 dvY
 cNk
-dKO
+dKt
 dwN
 cPh
 dvY
@@ -127321,7 +127344,7 @@ agq
 agq
 agq
 agq
-dJm
+dJk
 aje
 aje
 agq
@@ -127418,7 +127441,7 @@ cGm
 cHh
 cIi
 cJa
-dKF
+dKp
 cKK
 dKM
 dvY
@@ -127578,7 +127601,7 @@ agq
 ahd
 ahR
 dJk
-dJn
+dJk
 alc
 aje
 agq
@@ -127834,7 +127857,7 @@ aaf
 agq
 ahe
 aje
-dJl
+dJk
 ajP
 ald
 amu
@@ -128380,7 +128403,7 @@ dGj
 aTt
 aUR
 aUM
-dJK
+dJG
 dnh
 bbh
 duo
@@ -128948,7 +128971,7 @@ cuY
 cwa
 dvY
 dKA
-dKC
+dKt
 dvY
 cAK
 cBF
@@ -129154,7 +129177,7 @@ aUM
 aYh
 aCM
 aCM
-dJM
+dJA
 bdW
 bfM
 bhJ
@@ -130487,7 +130510,7 @@ cpH
 dvY
 cud
 cvc
-dKu
+dKt
 dvY
 cxO
 dvY
@@ -131238,11 +131261,11 @@ byN
 bTb
 bUt
 apc
-dKf
+dJP
 dKg
 apc
-dKh
-dKi
+dJP
+dJP
 cdW
 cfk
 apc
@@ -131976,7 +131999,7 @@ aPS
 cXc
 aSo
 dnh
-dJH
+dJG
 aWv
 aYm
 aZA
@@ -132229,7 +132252,7 @@ aCM
 aCM
 dCs
 dJA
-dJC
+dJA
 aRi
 aCM
 aCM
@@ -132257,7 +132280,7 @@ bwY
 bFB
 dJQ
 bHl
-dJR
+dJQ
 bTd
 bHl
 bPg
@@ -133290,7 +133313,7 @@ bLW
 bNN
 bPj
 bKr
-dJW
+dJP
 bTg
 alq
 bVE
@@ -133547,8 +133570,8 @@ bKr
 bKr
 bKr
 bKr
-dJX
-dKa
+dJP
+dJP
 alq
 alq
 bXb
@@ -134060,9 +134083,9 @@ aiN
 atm
 bLY
 bPl
-dJV
-dJY
-dKb
+dJP
+dJO
+dJP
 bUy
 alq
 bXd
@@ -134319,7 +134342,7 @@ bLZ
 bPm
 apc
 bSf
-dKc
+dJP
 bxc
 bxc
 bXe
@@ -134575,8 +134598,8 @@ atm
 cTw
 bPn
 bQR
-dJZ
-dKd
+dJP
+dJN
 bxc
 bVF
 bXf

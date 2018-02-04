@@ -20,7 +20,7 @@ Quartermaster
 /datum/outfit/job/quartermaster
 	name = "Quartermaster"
 	jobtype = /datum/job/qm
-
+	id = /obj/item/card/id/job/cargo
 	pda_slot = /obj/item/device/pda/quartermaster
 	ears = /obj/item/device/radio/headset/headset_cargo
 	uniform = /obj/item/clothing/under/rank/cargo
@@ -50,7 +50,7 @@ Cargo Technician
 /datum/outfit/job/cargo_tech
 	name = "Cargo Technician"
 	jobtype = /datum/job/cargo_tech
-
+	id = /obj/item/card/id/job/cargo
 	pda_slot = /obj/item/device/pda/cargo
 	ears = /obj/item/device/radio/headset/headset_cargo
 	uniform = /obj/item/clothing/under/rank/cargotech
@@ -78,7 +78,7 @@ Shaft Miner
 /datum/outfit/job/miner
 	name = "Shaft Miner (Lavaland)"
 	jobtype = /datum/job/mining
-
+	id = /obj/item/card/id/job/cargo
 	pda_slot = /obj/item/device/pda/shaftminer
 	ears = /obj/item/device/radio/headset/headset_cargo/mining
 	shoes = /obj/item/clothing/shoes/workboots/mining

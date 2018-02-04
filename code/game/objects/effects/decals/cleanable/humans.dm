@@ -5,13 +5,10 @@
 	icon_state = "floor1"
 	random_icon_states = list("floor1", "floor2", "floor3", "floor4", "floor5", "floor6", "floor7")
 	blood_DNA = list()
-	blood_state = BLOOD_STATE_HUMAN
+	blood_state = BLOOD_STATE_BLOOD
 	bloodiness = MAX_SHOE_BLOODINESS
 	use_fade = FALSE
-
-/obj/effect/cleanable/blood/Initialize()
-	. = ..()
-	update_icon()
+	color = "#940000"
 
 /obj/effect/decal/cleanable/blood/replace_decal(obj/effect/decal/cleanable/blood/C)
 	if (C.blood_DNA)
@@ -38,7 +35,7 @@
 /obj/effect/decal/cleanable/blood/old/Initialize()
 	. = ..()
 	icon_state += "-old" //This IS necessary because the parent /blood type uses icon randomization.
-	add_blood(list(blood_DNA["Non-human DNA"] = "A+"))
+	add_blood(list("Non-human DNA" = "A+"))
 
 /obj/effect/decal/cleanable/blood/splatter
 	random_icon_states = list("gibbl1", "gibbl2", "gibbl3", "gibbl4", "gibbl5")
@@ -65,7 +62,7 @@
 	update_icon()
 
 /obj/effect/decal/cleanable/trail_holder/can_bloodcrawl_in()
-	return 1
+	return TRUE
 
 /obj/effect/decal/cleanable/trail_holder/transfer_blood_dna()
 	..()
@@ -140,7 +137,7 @@
 	. = ..()
 	setDir(pick(1,2,4,8))
 	icon_state += "-old"
-	add_blood(list(blood_DNA["Non-human DNA"] = "A+"))
+	add_blood(list("Non-human DNA" = "A+"))
 
 /obj/effect/decal/cleanable/blood/drip
 	name = "drips of blood"
@@ -163,7 +160,7 @@
 	random_icon_states = null
 	var/entered_dirs = 0
 	var/exited_dirs = 0
-	blood_state = BLOOD_STATE_HUMAN //the icon state to load images from
+	blood_state = BLOOD_STATE_BLOOD //the icon state to load images from
 	var/list/shoe_types = list()
 
 /obj/effect/decal/cleanable/blood/footprints/Crossed(atom/movable/O)

@@ -74,9 +74,6 @@ Difficulty: Hard
 	random_icon_states = list("gib3", "gib5", "gib6")
 	bloodiness = 20
 
-/obj/effect/decal/cleanable/blood/gibs/bubblegum/can_bloodcrawl_in()
-	return TRUE
-
 /mob/living/simple_animal/hostile/megafauna/bubblegum/Life()
 	..()
 	move_to_delay = Clamp((health/maxHealth) * 10, 5, 10)

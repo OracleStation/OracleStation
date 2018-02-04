@@ -496,12 +496,13 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return FALSE
 
 /proc/bloodtype_to_color(var/type)
-	. = "#DC0000"
+	//all of these strings CANNOT have capitals in them, because that's how BYOND stores their colors and capitals won't work with == checks
+	. = "#dc0000"
 	switch(type)
 		if("F")//Ethari blood; a bit orange
-			. = "#DB3300"
+			. = "#db3300"
 		if("L")//lizard, a bit pink/purple
-			. = "#DB004D"
+			. = "#db004d"
 		if("X*")//xeno blood; not actually used in many spots
-			. = "#00DB21"
+			. = "#88aa00"
 		//add more stuff to the switch if you have more blood colors for different types

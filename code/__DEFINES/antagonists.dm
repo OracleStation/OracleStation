@@ -12,9 +12,9 @@
 #define ANTAG_DATUM_TRAITOR_HUMAN_CUSTOM	/datum/antagonist/traitor/human/custom
 #define ANTAG_DATUM_TRAITOR_AI			/datum/antagonist/traitor/AI
 #define ANTAG_DATUM_TRAITOR_AI_CUSTOM		/datum/antagonist/traitor/AI/custom
-#define ANTAG_DATUM_IAA				/datum/antagonist/traitor/internal_affairs
-#define ANTAG_DATUM_IAA_CUSTOM			/datum/antagonist/traitor/internal_affairs/custom
-#define ANTAG_DATUM_IAA_HUMAN	  		/datum/antagonist/traitor/human/internal_affairs
-#define ANTAG_DATUM_IAA_HUMAN_CUSTOM  		/datum/antagonist/traitor/human/internal_affairs/custom
-#define ANTAG_DATUM_IAA_AI_CUSTOM  		/datum/antagonist/traitor/AI/internal_affairs/custom
-#define ANTAG_DATUM_IAA_AI	  		/datum/antagonist/traitor/AI/internal_affairs
+#define ANTAG_DATUM_SLEEPER_AGENT				/datum/antagonist/traitor/sleeper_agent
+#define ANTAG_DATUM_SLEEPER_AGENT_CUSTOM			/datum/antagonist/traitor/sleeper_agent/custom
+#define ANTAG_DATUM_SLEEPER_AGENT_HUMAN	  		/datum/antagonist/traitor/human/sleeper_agent
+#define ANTAG_DATUM_SLEEPER_AGENT_HUMAN_CUSTOM  		/datum/antagonist/traitor/human/sleeper_agent/custom
+#define ANTAG_DATUM_SLEEPER_AGENT_AI_CUSTOM  		/datum/antagonist/traitor/AI/sleeper_agent/custom
+#define ANTAG_DATUM_SLEEPER_AGENT_AI	  		/datum/antagonist/traitor/AI/sleeper_agent

@@ -39,7 +39,7 @@ Head of Security
 	name = "Head of Security"
 	jobtype = /datum/job/hos
 
-	id = /obj/item/card/id/silver
+	id = /obj/item/card/id/job/hos
 	pda_slot = /obj/item/device/pda/heads/hos
 	ears = /obj/item/device/radio/headset/heads/hos/alt
 	uniform = /obj/item/clothing/under/rank/head_of_security
@@ -89,7 +89,7 @@ Warden
 /datum/outfit/job/warden
 	name = "Warden"
 	jobtype = /datum/job/warden
-
+	id = /obj/item/card/id/job/sec
 	pda_slot = /obj/item/device/pda/warden
 	ears = /obj/item/device/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/warden
@@ -135,7 +135,7 @@ Detective
 /datum/outfit/job/detective
 	name = "Detective"
 	jobtype = /datum/job/detective
-
+	id = /obj/item/card/id/job/sec
 	pda_slot = /obj/item/device/pda/detective
 	ears = /obj/item/device/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/det
@@ -271,7 +271,7 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 /datum/outfit/job/security
 	name = "Security Officer"
 	jobtype = /datum/job/officer
-
+	id = /obj/item/card/id/job/sec
 	pda_slot = /obj/item/device/pda/security
 	ears = /obj/item/device/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/security
@@ -312,7 +312,7 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 /datum/outfit/job/brig_phys
 	name = "Brig Physician"
 	jobtype = /datum/job/brig_phys
-
+	id = /obj/item/card/id/job/sec
 	pda_slot = /obj/item/device/pda/security
 	ears = /obj/item/device/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/brig_phys
