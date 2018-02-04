@@ -70,7 +70,7 @@
 	new /obj/item/clothing/glasses/sunglasses(src)
 	new /obj/item/clothing/suit/armor/vest/blueshield(src)
 	new /obj/item/clothing/suit/storage/blueshield(src)
-	new /obj/item/clothing/accessory/holster(src)
+	new /obj/item/clothing/accessory/holster/blueshield(src)
 	new /obj/item/clothing/shoes/jackboots(src)
 
 /obj/structure/closet/secure_closet/brig_phys
