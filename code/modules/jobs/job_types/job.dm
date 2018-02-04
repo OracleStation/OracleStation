@@ -48,6 +48,9 @@
 	var/exp_type = ""
 	var/exp_type_department = ""
 
+	//A special, very large and noticeable message for certain roles reminding them of something important. Ex: "Blueshields are not security"
+	var/special_notice = ""
+
 //Only override this proc
 //H is usually a human unless an /equip override transformed it
 /datum/job/proc/after_spawn(mob/living/H, mob/M)

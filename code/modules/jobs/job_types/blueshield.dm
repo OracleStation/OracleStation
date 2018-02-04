@@ -3,27 +3,30 @@ Blueshield
 */
 
 /datum/job/blueshield
-  title = "Blueshield"
-  flag = BLUESHIELD
-  department_flag = CIVILIAN
-  faction = "Station"
-  total_positions = 1
-  spawn_positions = 1
-  supervisors = "captain and command personnel"
-  selection_color = "#ddddff"
-  req_admin_notify = 1
-  minimal_player_age = 14
+	title = "Blueshield"
+	flag = BLUESHIELD
+	department_flag = CIVILIAN
+	faction = "Station"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "captain and command personnel"
+	selection_color = "#ddddff"
+	req_admin_notify = 1
+	minimal_player_age = 14
+	exp_requirements = 600 //10 hours
+	exp_type = EXP_TYPE_CREW
+	special_notice = "You are not a security officer. Do not do their job."
 
-  outfit = /datum/outfit/job/blueshield
+	outfit = /datum/outfit/job/blueshield
 
-  access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_COURT, ACCESS_WEAPONS,
-			            ACCESS_MEDICAL, ACCESS_ENGINE, ACCESS_CHANGE_IDS, ACCESS_AI_UPLOAD, ACCESS_EVA, ACCESS_HEADS,
+	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_COURT, ACCESS_WEAPONS,
+			            ACCESS_MEDICAL, ACCESS_ENGINE, ACCESS_AI_UPLOAD, ACCESS_EVA,
 			            ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_MAINT_TUNNELS, ACCESS_BAR, ACCESS_JANITOR, ACCESS_CONSTRUCTION, ACCESS_MORGUE,
 			            ACCESS_CREMATORIUM, ACCESS_KITCHEN, ACCESS_CARGO, ACCESS_CARGO_BOT, ACCESS_MAILSORTING, ACCESS_QM, ACCESS_HYDROPONICS, ACCESS_LAWYER,
 			            ACCESS_THEATRE, ACCESS_CHAPEL_OFFICE, ACCESS_LIBRARY, ACCESS_RESEARCH, ACCESS_MINING, ACCESS_HEADS_VAULT, ACCESS_MINING_STATION,
-			            ACCESS_HOP, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_GATEWAY, ACCESS_MINERAL_STOREROOM, ACCESS_BLUESHIELD)
-  minimal_access = list(ACCESS_FORENSICS_LOCKERS, ACCESS_SEC_DOORS, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_ENGINE, ACCESS_MAINT_TUNNELS,
-                  ACCESS_RESEARCH, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_HEADS, ACCESS_BLUESHIELD, ACCESS_WEAPONS)
+			            ACCESS_HOP, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_GATEWAY, ACCESS_MINERAL_STOREROOM, ACCESS_BLUESHIELD, ACCESS_CAPTAIN, ACCESS_RD, ACCESS_HOS, ACCESS_CMO, ACCESS_CE)
+	minimal_access = list(ACCESS_FORENSICS_LOCKERS, ACCESS_SEC_DOORS, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_ENGINE, ACCESS_MAINT_TUNNELS,
+                  ACCESS_RESEARCH, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_BLUESHIELD, ACCESS_QM, ACCESS_HOP, ACCESS_WEAPONS, ACCESS_CAPTAIN, ACCESS_RD, ACCESS_HOS, ACCESS_CMO, ACCESS_CE)
 
 /datum/outfit/job/blueshield
   name = "Blueshield"

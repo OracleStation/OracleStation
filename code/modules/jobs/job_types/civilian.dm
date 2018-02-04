@@ -11,6 +11,7 @@ Clown
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
+	special_notice = "There is a difference between harmless pranks and griefing. Know it."
 
 	outfit = /datum/outfit/job/clown
 
