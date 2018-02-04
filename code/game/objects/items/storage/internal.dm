@@ -93,6 +93,7 @@
 		/obj/item/gun/ballistic/automatic/pistol,
 		/obj/item/gun/ballistic/revolver,
 		/obj/item/ammo_box,
+		/obj/item/gun/energy/e_gun/mini
 		)
 
 /obj/item/storage/internal/pocket/holster/detective
@@ -107,3 +108,14 @@
 	new /obj/item/gun/ballistic/revolver/detective(src)
 	new /obj/item/ammo_box/c38(src)
 	new /obj/item/ammo_box/c38(src)
+
+/obj/item/storage/internal/pocket/holster/blueshield
+	storage_slots = 3
+	max_w_class = WEIGHT_CLASS_NORMAL
+	can_hold = list(
+		/obj/item/gun/energy/e_gun/blueshield,
+		/obj/item/gun/ballistic/revolver/detective,
+		/obj/item/ammo_box/c38,
+		/obj/item/gun/ballistic/automatic/pistol/enforcer,
+		/obj/item/ammo_box/magazine/enforcer
+		)
