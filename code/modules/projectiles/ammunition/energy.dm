@@ -93,7 +93,7 @@
 
 /obj/item/ammo_casing/energy/electrode/hos
 	e_cost = 200
-	delay = 0
+	delay = 5
 
 /obj/item/ammo_casing/energy/electrode/old
 	e_cost = 1000
