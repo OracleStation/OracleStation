@@ -21,6 +21,7 @@ SUBSYSTEM_DEF(dbcore)
 
 	var/_db_con// This variable contains a reference to the actual database connection.
 	var/failed_connections = 0
+	var/auto_reconnecting = FALSE //So we only try and reconnect once.
 
 /datum/controller/subsystem/dbcore/PreInit()
 	if(!_db_con)
@@ -68,6 +69,21 @@ SUBSYSTEM_DEF(dbcore)
 	if (!.)
 		log_sql("Connect() failed | [ErrorMsg()]")
 		++failed_connections
+
+/datum/controller/subsystem/dbcore/proc/AutoReconnect()
+	if(!auto_reconnecting)
+		auto_reconnecting = TRUE
+		message_admins("MySQL connection interrupted")
+		failed_connections = 0
+		Disconnect()
+		var/success = Connect()
+		if(success)
+			message_admins("Reconnected to MySQL server!")
+		else
+			message_admins("Could not reconnect to MySQL server!")
+		auto_reconnecting = FALSE
+		return success
+	return FALSE
 
 /datum/controller/subsystem/dbcore/proc/Disconnect()
 	failed_connections = 0
@@ -188,11 +204,17 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 	if(!.)
 		to_chat(usr, "<span class='danger'>A SQL error occurred during this operation, check the server logs.</span>")
 
-/datum/DBQuery/proc/Execute(sql_query = sql, cursor_handler = default_cursor, log_error = TRUE)
+/datum/DBQuery/proc/Execute(sql_query = sql, cursor_handler = default_cursor, log_error = TRUE, retries = 0)
 	Close()
 	. = _dm_db_execute(_db_query, sql_query, db_connection._db_con, cursor_handler, null)
-	if(!. && log_error)
-		log_sql("[ErrorMsg()] | Query used: [sql]")
+
+	if(!.)
+		var/error_msg = ErrorMsg()
+		if(log_error)
+			log_sql("[error_msg] | Query used: [sql]")
+		if(error_msg == "MySQL server has gone away" || error_msg == "Lost connection to MySQL server during query")
+			if(SSdbcore.AutoReconnect() && retries < 5)
+				return Execute(sql_query, cursor_handler, log_error, retries + 1)
 
 /datum/DBQuery/proc/NextRow()
 	return _dm_db_next_row(_db_query,item,conversions)
