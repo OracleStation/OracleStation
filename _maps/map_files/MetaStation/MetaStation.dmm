@@ -44993,6 +44993,10 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -23
+	},
 /turf/open/floor/plasteel/caution{
 	dir = 8
 	},
@@ -46465,10 +46469,6 @@
 	dir = 4;
 	name = "External Waste Ports to Filter";
 	on = 1
-	},
-/obj/machinery/airalarm{
-	dir = 4;
-	pixel_x = -23
 	},
 /turf/open/floor/plasteel/caution{
 	dir = 8
@@ -49678,10 +49678,10 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard)
 "bQS" = (
-/obj/machinery/suit_storage_unit/atmos,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/structure/closet/wardrobe/atmospherics_yellow,
 /turf/open/floor/plasteel,
 /area/engine/atmos)
 "bQT" = (
@@ -93853,6 +93853,17 @@
 	dir = 5
 	},
 /area/crew_quarters/heads/hor)
+"dKS" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/suit_storage_unit/atmos,
+/turf/open/floor/plasteel/darkyellow,
+/area/engine/atmos)
+"dKT" = (
+/obj/machinery/suit_storage_unit/atmos,
+/turf/open/floor/plasteel/darkyellow,
+/area/engine/atmos)
 
 (1,1,1) = {"
 aaa
@@ -135107,13 +135118,13 @@ bDR
 bza
 bxc
 bIN
-bxg
+dKS
 bMa
 bMa
 bPo
 bPo
+dKT
 bxc
-bTi
 bUz
 bVH
 bXh
@@ -135369,8 +135380,8 @@ bMb
 bNP
 bPp
 bPp
-bSg
 bDS
+bSg
 bDS
 bVI
 bXi
