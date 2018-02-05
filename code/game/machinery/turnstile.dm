@@ -22,6 +22,12 @@
 /obj/machinery/turnstile/bullet_act(obj/item/projectile/P, def_zone)
 	return -1 //Pass through!
 
+/obj/machinery/turnstile/proc/allowed_access(var/mob/B)
+	if(B.pulledby && ismob(B.pulledby))
+		return allowed(B.pulledby) | allowed(B)
+	else
+		return allowed(B)
+
 /obj/machinery/turnstile/CanPass(atom/movable/AM, turf/T)
 	if(ismob(AM))
 		var/mob/B = AM
@@ -36,10 +42,7 @@
 			var/turf/behind = get_step(src, dir)
 
 			if(B in behind.contents)
-				if(B.pulledby && ismob(B.pulledby))
-					allowed_access = allowed(B.pulledby) | allowed(B)
-				else
-					allowed_access = allowed(B)
+				allowed_access = allowed_access(B)
 			else
 				to_chat(usr, "<span class='notice'>\the [src] resists your efforts.</span>")
 				return FALSE
@@ -61,7 +64,7 @@
 	if(isliving(AM))
 		var/mob/living/M = AM
 		var/outdir = dir
-		if(allowed(M))
+		if(allowed_access(M))
 			switch(dir)
 				if(NORTH)
 					outdir = SOUTH

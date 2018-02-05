@@ -1185,11 +1185,11 @@
 		if(!istype(J) && istype(C))
 			J = C.jetpack
 		if(istype(J) && J.full_speed && J.allow_thrust(0.01, H))	//Prevents stacking
-			. -= 2
+			. -= 1
 		else if(istype(T) && T.allow_thrust(0.01, H))
-			. -= 2
+			. -= 1
 		else if(flightpack && F.allow_thrust(0.01, src))
-			. -= 2
+			. -= 1
 
 	if(flightpack && F.boost)
 		. -= F.boost_speed

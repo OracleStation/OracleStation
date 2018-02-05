@@ -3,6 +3,8 @@
 #define SPEED_OF_LIGHT_SQ		9e+16
 #define INFINITY				1e31	//closer then enough
 
+#define SHORT_REAL_LIMIT 16777216
+
 //atmos
 #define R_IDEAL_GAS_EQUATION	8.31	//kPa*L/(K*mol)
 #define ONE_ATMOSPHERE			101.325	//kPa

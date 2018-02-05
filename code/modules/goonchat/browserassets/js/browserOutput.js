@@ -22,7 +22,7 @@ window.onerror = function(msg, url, line, col, error) {
 
 //Globals
 window.status = 'Output';
-var $messages, $subOptions, $contextMenu, $filterMessages;
+var $messages, $subOptions, $contextMenu, $filterMessages, $last_message;
 var opts = {
 	//General
 	'messageCount': 0, //A count...of messages...
@@ -30,7 +30,7 @@ var opts = {
 	'scrollSnapTolerance': 10, //If within x pixels of bottom
 	'clickTolerance': 10, //Keep focus if outside x pixels of mousedown position on mouseup
 	'imageRetryDelay': 50, //how long between attempts to reload images (in ms)
-	'imageRetryLimit': 50, //how many attempts should we make? 
+	'imageRetryLimit': 50, //how many attempts should we make?
 	'popups': 0, //Amount of popups opened ever
 	'wasd': false, //Is the user in wasd mode?
 	'priorChatHeight': 0, //Thing for height-resizing detection
@@ -60,6 +60,8 @@ var opts = {
 	//Client Connection Data
 	'clientDataLimit': 5,
 	'clientData': [],
+
+	'messageCombining': true,
 
 };
 
@@ -278,26 +280,59 @@ function output(message, flag) {
 		opts.messageCount--; //I guess the count should only ever equal the limit
 	}
 
-	//Actually append the message
-	var entry = document.createElement('div');
-	entry.className = 'entry';
-
-	if (filteredOut) {
-		entry.className += ' hidden';
-		entry.setAttribute('data-filter', filteredOut);
+	var handled = false;
+	var trimmed_message = message.trim()
+	var lastmessages = $messages.children('div.entry:last-child');
+	if (opts.messageCombining && lastmessages.length && $last_message)
+	{
+		if($last_message == trimmed_message)
+		{
+			if(lastmessages.children('span.r').length)
+			{
+				var current_value = parseInt(lastmessages.children('span.r').text())
+				lastmessages.children('span.r').text(current_value+1)
+			}
+			else
+			{
+				lastmessages.append($('<span/>', { 'class': 'r', 'text': 2}));
+			}
+			var insertedBadge = $(lastmessages).find('.r');
+			insertedBadge.animate({
+				"font-size": "0.9em"
+			}, 100, function() {
+				insertedBadge.animate({
+					"font-size": "0.7em"
+				}, 100);
+			});
+			opts.messageCount--;
+			handled = true;
+		}
 	}
 
-	entry.innerHTML = message.trim();
-	$messages[0].appendChild(entry);
-	$(entry).find("img.icon").error(iconError);
-	//Actually do the snap
+	if(!handled)
+	{
+		//Actually append the message
+		var entry = document.createElement('div');
+		entry.className = 'entry';
+
+		if (filteredOut) {
+			entry.className += ' hidden';
+			entry.setAttribute('data-filter', filteredOut);
+		}
+
+		$last_message = trimmed_message;
+		entry.innerHTML = trimmed_message;
+		$messages[0].appendChild(entry);
+		$(entry).find("img.icon").error(iconError);
+		//Actually do the snap
+		//Stuff we can do after the message shows can go here, in the interests of responsiveness
+		if (opts.highlightTerms && opts.highlightTerms.length > 0) {
+			highlightTerms(entry);
+		}
+	}
+
 	if (!filteredOut && atBottom) {
 		$('body,html').scrollTop($messages.outerHeight());
-	}
-
-	//Stuff we can do after the message shows can go here, in the interests of responsiveness
-	if (opts.highlightTerms && opts.highlightTerms.length > 0) {
-		highlightTerms(entry);
 	}
 }
 
@@ -423,7 +458,7 @@ function ehjaxCallback(data) {
 			var firebugEl = document.createElement('script');
 			firebugEl.src = 'https://getfirebug.com/firebug-lite-debug.js';
 			document.body.appendChild(firebugEl);
-		} 
+		}
 	}
 }
 
@@ -486,6 +521,7 @@ $(function() {
 		'spingDisabled': getCookie('pingdisabled'),
 		'shighlightTerms': getCookie('highlightterms'),
 		'shighlightColor': getCookie('highlightcolor'),
+		'smessagecombining': getCookie('messagecombining'),
 	};
 
 	if (savedConfig.sfontSize) {
@@ -517,7 +553,13 @@ $(function() {
 		opts.highlightColor = savedConfig.shighlightColor;
 		internalOutput('<span class="internal boldnshit">Loaded highlight color of: '+savedConfig.shighlightColor+'</span>', 'internal');
 	}
-
+	if (savedConfig.smessagecombining) {
+		if (savedConfig.smessagecombining == 'false') {
+			opts.messageCombining = false;
+		} else {
+			opts.messageCombining = true;
+		}
+	}
 	(function() {
 		var dataCookie = getCookie('connData');
 		if (dataCookie) {
@@ -834,11 +876,16 @@ $(function() {
 		$messages.empty();
 		opts.messageCount = 0;
 	});
-	
+
+	$('#toggleCombine').click(function(e) {
+		opts.messageCombining = !opts.messageCombining;
+		setCookie('messagecombining', (opts.messageCombining ? 'true' : 'false'), 365);
+	});
+
 	$('img.icon').error(iconError);
-	
-	
-		
+
+
+
 
 	/*****************************************
 	*

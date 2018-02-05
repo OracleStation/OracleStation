@@ -9,6 +9,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	icon_state = "fax"
 	insert_anim = "faxsend"
 	var/fax_network = "Local Fax Network"
+	density = FALSE
 
 	var/long_range_enabled = FALSE // Can we send messages off the station?
 	req_one_access = list(ACCESS_LAWYER, ACCESS_HEADS, ACCESS_ARMORY)
