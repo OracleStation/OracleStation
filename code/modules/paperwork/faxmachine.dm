@@ -276,11 +276,10 @@ GLOBAL_LIST_EMPTY(alldepartments)
 
 /obj/machinery/photocopier/faxmachine/proc/handle_copying(var/obj/item/incoming)
 	use_power(active_power_usage)
-	var/obj/item/incoming_fax = null
 	if(istype(incoming, /obj/item/paper))
-		incoming_fax = copy(incoming)
+		copy(incoming)
 	else if(istype(incoming, /obj/item/photo))
-		incoming_fax = photocopy(incoming)
+		photocopy(incoming)
 	else
 		return FALSE
 
