@@ -224,7 +224,7 @@ Internal Affairs Agent
 	jobtype = /datum/job/iaa
 	id = /obj/item/card/id/job/sec
 	pda_slot = /obj/item/device/pda/lawyer/iaa
-	ears = /obj/item/device/radio/headset/headset_sec
+	ears = /obj/item/device/radio/headset/iaa
 	uniform = /obj/item/clothing/under/lawyer/blacksuit
 	suit = /obj/item/clothing/suit/toggle/lawyer/black
 	glasses = /obj/item/clothing/glasses/
