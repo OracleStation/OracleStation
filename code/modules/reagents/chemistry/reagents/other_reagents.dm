@@ -504,6 +504,14 @@
 	race = /datum/species/ipc
 	mutationtext = "<span class='danger'>The pain subsides. You feel... artificial.</span>"
 
+/datum/reagent/stableslimetoxin/vox
+	name = "Vox Mutation Toxin"
+	id = "voxmutationtoxin"
+	description = "A gross toxin produced by slimes."
+	color = "#3498db" // Same as vox blood
+	race = /datum/species/vox
+	mutationtext = "<span class='danger'>The pain subsides. You feel... skrek.</span>"
+
 //BLACKLISTED RACES
 /datum/reagent/stableslimetoxin/skeleton
 	name = "Skeleton Mutation Toxin"
