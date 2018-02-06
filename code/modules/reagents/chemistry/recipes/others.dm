@@ -185,7 +185,7 @@
 	name = "Vox Mutation Toxin"
 	id = "voxmutationtoxin"
 	results = list("voxmutationtoxin" = 1)
-	required_reagents = list("amutationtoxin" = 1, "cleaner" = 1, "nitrogen" = 1)
+	required_reagents = list("amutationtoxin" = 1, "eggyolk" = 1, "nitrogen" = 1)
 
 //BLACKLISTED RACES
 /datum/chemical_reaction/skeleton_mutation_toxin
