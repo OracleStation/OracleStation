@@ -33833,7 +33833,8 @@
 /obj/machinery/door/window/brigdoor{
 	dir = 2;
 	name = "Command Desk";
-	req_access_txt = "19"
+	req_access_txt = "0";
+	req_one_access_txt = "69;19" 
 	},
 /turf/open/floor/plasteel/darkblue/side{
 	dir = 2
@@ -37431,7 +37432,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_command{
 	name = "Bridge";
-	req_access_txt = "19"
+	req_access_txt = "0";
+	req_one_access_txt = "69;19" 
 	},
 /turf/open/floor/plasteel/darkblue/side{
 	dir = 1
@@ -37530,7 +37532,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_command{
 	name = "Bridge";
-	req_access_txt = "19"
+	req_access_txt = "0";
+	req_one_access_txt = "69;19" 
 	},
 /turf/open/floor/plasteel/darkblue/side{
 	dir = 1
@@ -37540,7 +37543,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_command{
 	name = "Bridge";
-	req_access_txt = "19"
+	req_access_txt = "0";
+	req_one_access_txt = "69;19" 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /turf/open/floor/plasteel/darkblue/side{
@@ -38322,7 +38326,8 @@
 /obj/machinery/door/airlock/command{
 	name = "Command Desk";
 	req_access = null;
-	req_access_txt = "19"
+	req_access_txt = "0";
+	req_one_access_txt = "69;19" 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
@@ -40214,7 +40219,8 @@
 /obj/machinery/door/airlock/command{
 	name = "Council Chamber";
 	req_access = null;
-	req_access_txt = "19"
+	req_access_txt = "0";
+	req_one_access_txt = "69;19" 
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	dir = 4
@@ -40267,7 +40273,8 @@
 /obj/machinery/door/airlock/command{
 	name = "Council Chamber";
 	req_access = null;
-	req_access_txt = "19"
+	req_access_txt = "0";
+	req_one_access_txt = "69;19" 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	dir = 4
@@ -41906,7 +41913,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_command{
 	name = "Bridge Access";
-	req_access_txt = "19"
+	req_access_txt = "0";
+	req_one_access_txt = "69;19" 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
@@ -41920,7 +41928,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_command{
 	name = "Bridge Access";
-	req_access_txt = "19"
+	req_access_txt = "0";
+	req_one_access_txt = "69;19" 
 	},
 /turf/open/floor/plasteel/vault,
 /area/bridge)
@@ -42047,7 +42056,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_command{
 	name = "Bridge Access";
-	req_access_txt = "19"
+	req_access_txt = "0";
+	req_one_access_txt = "69;19" 
 	},
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -46975,7 +46985,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Corporate Showroom";
-	req_access_txt = "19"
+	req_access_txt = "0";
+	req_one_access_txt = "69;19" 
 	},
 /turf/open/floor/wood,
 /area/bridge/showroom/corporate)
@@ -50719,7 +50730,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Corporate Showroom";
-	req_access_txt = "19"
+	req_access_txt = "0";
+	req_one_access_txt = "69;19"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /turf/open/floor/wood,
@@ -50728,7 +50740,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Corporate Showroom";
-	req_access_txt = "19"
+	req_access_txt = "0";
+	req_one_access_txt = "69;19" 
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /turf/open/floor/wood,
@@ -92057,7 +92070,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_command{
 	name = "Bridge";
-	req_access_txt = "19"
+	req_access_txt = "0";
+	req_one_access_txt = "69;19" 
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top,
 /turf/open/floor/plasteel/darkblue/side{
@@ -92215,7 +92229,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_command{
 	name = "Bridge Access";
-	req_access_txt = "19"
+	req_access_txt = "0";
+	req_one_access_txt = "69;19" 
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom,
 /turf/open/floor/plasteel/vault,
