@@ -542,6 +542,8 @@
 		return
 	if(isAI(M))
 		return
+	if(!isliving(M))
+		return
 	show_inv(usr)
 
 /mob/proc/is_active()
