@@ -68,7 +68,6 @@ Head of Personnel
 	minimal_player_age = 10
 	exp_requirements = 180
 	exp_type = EXP_TYPE_CREW
-	exp_type_department = EXP_TYPE_SERVICE
 	special_notice = "You are not a security officer. Do not do their job."
 
 	outfit = /datum/outfit/job/hop
