@@ -184,9 +184,13 @@
 	foodtype = MEAT | SUGAR
 
 /obj/item/reagent_containers/food/snacks/monkeycube/proc/Expand()
+	if(GLOB.total_cube_monkeys >= MAX_CUBE_MONKEYS)
+		visible_message("<span class='warning'>[src] refuses to expand!</span>")
+		return
+
 	visible_message("<span class='notice'>[src] expands!</span>")
 	var/mob/spammer = get_mob_by_key(src.fingerprintslast)
-	var/mob/living/carbon/monkey/bananas = new(get_turf(src))
+	var/mob/living/carbon/monkey/cube/bananas = new(get_turf(src))
 	bananas.log_message("Spawned via [src] at [COORD(src)], Last attached mob: [key_name(spammer)].", INDIVIDUAL_ATTACK_LOG)
 	qdel(src)
 
