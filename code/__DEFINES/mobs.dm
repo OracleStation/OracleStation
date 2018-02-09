@@ -167,9 +167,3 @@
 //Taste defines
 #define NO_TASTE_SENSITIVITY -1
 #define DEFAULT_TASTE_SENSITIVITY 15
-
-// Monkeycube/chicken/slime spam prevention
-// This is the maximum number of each mob type that can exist at once
-#define MAX_CUBE_MONKEYS 5 //placeholder //Only applies to monkeys spawned via monkeycube, since monkeys can't normally reproduce
-#define MAX_CHICKENS 5 //placeholder
-#define MAX_SLIMES 5 //placeholder

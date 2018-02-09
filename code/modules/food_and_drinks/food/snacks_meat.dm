@@ -184,7 +184,7 @@
 	foodtype = MEAT | SUGAR
 
 /obj/item/reagent_containers/food/snacks/monkeycube/proc/Expand()
-	if(GLOB.total_cube_monkeys >= MAX_CUBE_MONKEYS)
+	if(GLOB.total_cube_monkeys >= CONFIG_GET(number/max_cube_monkeys))
 		visible_message("<span class='warning'>[src] refuses to expand!</span>")
 		return
 

@@ -295,7 +295,7 @@
 	. =..()
 	if(!.)
 		return
-	if((!stat && prob(3) && eggsleft > 0) && egg_type && GLOB.total_chickens < MAX_CHICKENS)
+	if((!stat && prob(3) && eggsleft > 0) && egg_type && GLOB.total_chickens < CONFIG_GET(number/max_chickens))
 		visible_message("[src] [pick(layMessage)]")
 		eggsleft--
 		var/obj/item/E = new egg_type(get_turf(src))

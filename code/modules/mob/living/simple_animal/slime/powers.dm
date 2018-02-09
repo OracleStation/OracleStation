@@ -145,7 +145,7 @@
 			if(stat)
 				to_chat(src, "<i>I must be conscious to do this...</i>")
 				return
-			if(GLOB.total_slimes >= MAX_SLIMES)
+			if(GLOB.total_slimes >= CONFIG_GET(number/max_slimes))
 				to_chat(src, "<i>There are too many of us...</i>")
 				return
 			var/list/babies = list()
