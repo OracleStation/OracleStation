@@ -224,7 +224,7 @@
 	return dna
 
 
-/mob/living/carbon/human/proc/hardset_dna(ui, se, newreal_name, newblood_type, datum/species/mrace, newfeatures)
+/mob/living/carbon/human/proc/hardset_dna(ui, se, ue, newreal_name, newblood_type, datum/species/mrace, newfeatures)
 
 	if(newfeatures)
 		dna.features = newfeatures
@@ -252,6 +252,9 @@
 		update_hair()
 		update_body_parts()
 		update_mutations_overlay()
+
+	if(ue)
+		dna.unique_enzymes = ue
 
 
 /mob/living/carbon/proc/create_dna()
