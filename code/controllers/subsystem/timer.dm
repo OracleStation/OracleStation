@@ -456,7 +456,7 @@ SUBSYSTEM_DEF(timer)
 
 	//alot of things add short timers on themselves in their destroy, we ignore those cases
 	if (wait >= 1 && callback && callback.object && callback.object != GLOBAL_PROC && QDELETED(callback.object))
-		stack_trace("addtimer called with a callback assigned to a qdeleted object")
+		stack_trace("addtimer called with a callback assigned to a qdeleted object [callback.object_path]")
 
 	wait = max(wait, 0)
 
