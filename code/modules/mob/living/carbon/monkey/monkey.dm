@@ -166,7 +166,7 @@
 
 /mob/living/carbon/monkey/cube/death(gibbed)
 	GLOB.total_cube_monkeys--
-	..(gibbed)
+	..()
 
 //In case admins delete them before they die
 /mob/living/carbon/monkey/cube/Destroy()

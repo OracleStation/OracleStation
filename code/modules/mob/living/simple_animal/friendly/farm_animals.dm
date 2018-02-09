@@ -211,7 +211,7 @@
 
 /mob/living/simple_animal/chick/death(gibbed)
 	GLOB.total_chickens--
-	..(gibbed)
+	..()
 
 /mob/living/simple_animal/chick/Destroy()
 	if(stat != DEAD)
@@ -270,7 +270,7 @@
 
 /mob/living/simple_animal/chicken/death(gibbed)
 	GLOB.total_chickens--
-	..(gibbed)
+	..()
 
 /mob/living/simple_animal/chicken/Destroy()
 	if(stat != DEAD)
