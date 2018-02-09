@@ -19,14 +19,15 @@
 		if(legcuffed)
 			. += legcuffed.slowdown
 
-		for(var/obj/item/bodypart/X in bodyparts)
-			if(!X.broken)
+		for(var/X in bodyparts)
+			var/obj/item/bodypart/B = X
+			if(!B.broken)
 				return
-			if(X.body_part == LEG_RIGHT || X.body_part == LEG_LEFT)
-				. += 2 //can't move fast with a broken leg
+			if(B.body_part == LEG_RIGHT || B.body_part == LEG_LEFT)
+				. += 20 //can't move fast with a broken leg
 
 	if(lying)
-		. += 14
+		. += 25
 
 
 /mob/living/carbon/slip(knockdown_amount, obj/O, lube)
