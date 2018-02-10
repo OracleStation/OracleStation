@@ -81,9 +81,10 @@
 	var/blood_loss = 100 //600 blood is human default, so 5 failures (below 122 blood is where humans die because reasons?)
 
 	//How much to heal per pump, negative numbers would HURT the player
-	var/heal_brute = 0
-	var/heal_burn = 0
-	var/heal_oxy = 0
+	var/heal_brute = 5
+	var/heal_burn = 5
+	var/heal_oxy = 5
+	var/heal_tox = 5
 
 
 /obj/item/organ/heart/cursed/attack(mob/living/carbon/human/H, mob/living/carbon/human/user, obj/target)
@@ -138,6 +139,7 @@
 				H.adjustBruteLoss(-cursed_heart.heal_brute)
 				H.adjustFireLoss(-cursed_heart.heal_burn)
 				H.adjustOxyLoss(-cursed_heart.heal_oxy)
+				H.adjustToxLoss(-cursed_heart.heal_tox)
 
 
 /datum/client_colour/cursed_heart_blood
