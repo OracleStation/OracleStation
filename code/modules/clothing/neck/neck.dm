@@ -34,13 +34,19 @@
 	icon_state = "horribletie"
 	item_color = "horribletie"
 	var/language
+	var/can_remove_language = TRUE
 
 /obj/item/clothing/neck/translator/common
+	name = "galactic common translation collar"
 	desc = "A small translator fitted around one's neck. This one is for Galactic Common."
 	language = /datum/language/common
 
 /obj/item/clothing/neck/translator/equipped(mob/user, slot)
 	if(!ishuman(user))
+		return
+	var/datum/language_holder/L = user.get_language_holder()
+	if(L.has_language(language))
+		can_remove_language = FALSE
 		return
 	if((slot == slot_neck) && language)
 		var/mob/living/carbon/human/H = user
@@ -50,7 +56,7 @@
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
-	if((H.get_item_by_slot(slot_neck) == src) && language)
+	if((H.get_item_by_slot(slot_neck) == src) && language && can_remove_language)
 		H.remove_language(language)
 
 /obj/item/clothing/neck/stethoscope
