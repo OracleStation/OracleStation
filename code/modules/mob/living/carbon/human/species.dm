@@ -1664,6 +1664,9 @@
 /datum/species/proc/ExtinguishMob(mob/living/carbon/human/H)
 	return
 
+/datum/species/proc/spec_revival(mob/living/carbon/human/H)
+	return
+
 
 ////////////
 //Stun//
