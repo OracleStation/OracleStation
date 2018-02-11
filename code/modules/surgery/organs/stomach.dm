@@ -89,7 +89,7 @@
 	name = "vox stomach"
 	icon_state = "stomach-vox"
 	origin_tech = "engineering=3"
-	desc = "A vox stomach. If the mere concept wasn't disgusting enough, it also has metal components sticking out of it."
+	desc = "A vox stomach. If the mere concept wasn't disgusting enough, it appears to have metal components grown into it."
 	status = ORGAN_ROBOTIC
 
 /obj/item/organ/stomach/vox/emp_act()

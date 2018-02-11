@@ -175,6 +175,7 @@
 	body_parts_covered = CHEST|GROIN
 	flags_inv = HIDEJUMPSUIT
 	dog_fashion = /datum/dog_fashion/back
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/cardborg/equipped(mob/living/user, slot)
 	..()
@@ -251,6 +252,7 @@
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT	//Space carp like space, so you should too
 	allowed = list(/obj/item/tank/internals/emergency_oxygen, /obj/item/gun/ballistic/automatic/speargun)
 	hoodtype = /obj/item/clothing/head/hooded/carp_hood
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/hooded/carp_hood
 	name = "carp hood"
@@ -260,6 +262,7 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	flags_inv = HIDEHAIR|HIDEEARS
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/hooded/ian_costume	//It's Ian, rub his bell- oh god what happened to his inside parts?
 	name = "corgi costume"
@@ -272,6 +275,7 @@
 	allowed = list()
 	hoodtype = /obj/item/clothing/head/hooded/ian_hood
 	dog_fashion = /datum/dog_fashion/back
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/hooded/ian_hood
 	name = "corgi hood"
@@ -281,6 +285,7 @@
 	//cold_protection = HEAD
 	//min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	flags_inv = HIDEHAIR|HIDEEARS
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/hooded/bee_costume // It's Hip!
 	name = "bee costume"
@@ -290,6 +295,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	flags_1 = THICKMATERIAL_1
 	hoodtype = /obj/item/clothing/head/hooded/bee_hood
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/hooded/bee_hood
 	name = "bee hood"
@@ -299,6 +305,7 @@
 	flags_1 = THICKMATERIAL_1
 	flags_inv = HIDEHAIR|HIDEEARS
 	dynamic_hair_suffix = ""
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/hooded/bloated_human	//OH MY GOD WHAT HAVE YOU DONE!?!?!?
 	name = "bloated human suit"
@@ -309,7 +316,10 @@
 	allowed = list()
 	actions_types = list(/datum/action/item_action/toggle_human_head)
 	hoodtype = /obj/item/clothing/head/hooded/human_head
-
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		)
 
 /obj/item/clothing/head/hooded/human_head
 	name = "bloated human head"
@@ -318,6 +328,10 @@
 	body_parts_covered = HEAD
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/head.dmi'
+		)
 
 /obj/item/clothing/suit/security/officer/russian
 	name = "russian officer's jacket"
@@ -325,7 +339,10 @@
 	icon_state = "officertanjacket"
 	item_state = "officertanjacket"
 	body_parts_covered = CHEST|ARMS
-
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		)
 /*
  * Misc
  */
@@ -340,6 +357,7 @@
 	equip_delay_self = 50
 	strip_delay = 60
 	breakouttime = 3000
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/ianshirt
 	name = "worn shirt"
