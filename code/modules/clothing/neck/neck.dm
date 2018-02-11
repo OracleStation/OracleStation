@@ -31,8 +31,8 @@
 /obj/item/clothing/neck/translator
 	name = "translation collar"
 	desc = "A small translator fitted around one's neck. This one seems to be broken."
-	icon_state = "horribletie"
-	item_color = "horribletie"
+	icon_state = "collar"
+	item_color = "collar"
 	var/language
 	var/can_remove_language = TRUE
 
