@@ -158,6 +158,7 @@ update_label("John Doe", "Clowny")
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_SYNDICATE)
 	origin_tech = "syndicate=1"
 	var/anyone = FALSE //Can anyone forge the ID or just syndicate?
+	icon_state = "syndie"
 
 /obj/item/card/id/syndicate/Initialize()
 	. = ..()
@@ -205,6 +206,7 @@ update_label("John Doe", "Clowny")
 	desc = "An ID straight from the Syndicate."
 	registered_name = "Syndicate"
 	assignment = "Syndicate Overlord"
+	icon_state = "commander"
 	access = list(ACCESS_SYNDICATE)
 
 /obj/item/card/id/captains_spare
@@ -236,7 +238,7 @@ update_label("John Doe", "Clowny")
 /obj/item/card/id/ert
 	name = "\improper CentCom ID"
 	desc = "A ERT ID card"
-	icon_state = "centcom"
+	icon_state = "ERT_leader"
 	registered_name = "Emergency Response Team Commander"
 	assignment = "Emergency Response Team Commander"
 
@@ -247,6 +249,7 @@ update_label("John Doe", "Clowny")
 /obj/item/card/id/ert/Security
 	registered_name = "Security Response Officer"
 	assignment = "Security Response Officer"
+	icon_state = "ERT_security"
 
 /obj/item/card/id/ert/Security/Initialize()
 	access = get_all_accesses()+get_ert_access("sec")-ACCESS_CHANGE_IDS
@@ -255,6 +258,7 @@ update_label("John Doe", "Clowny")
 /obj/item/card/id/ert/Engineer
 	registered_name = "Engineer Response Officer"
 	assignment = "Engineer Response Officer"
+	icon_state = "ERT_engineer"
 
 /obj/item/card/id/ert/Engineer/Initialize()
 	access = get_all_accesses()+get_ert_access("eng")-ACCESS_CHANGE_IDS
@@ -263,6 +267,7 @@ update_label("John Doe", "Clowny")
 /obj/item/card/id/ert/Medical
 	registered_name = "Medical Response Officer"
 	assignment = "Medical Response Officer"
+	icon_state = "ERT_medical"
 
 /obj/item/card/id/ert/Medical/Initialize()
 	access = get_all_accesses()+get_ert_access("med")-ACCESS_CHANGE_IDS
@@ -347,11 +352,13 @@ update_label("John Doe", "Clowny")
 /obj/item/card/id/mining
 	name = "mining ID"
 	access = list(ACCESS_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM)
+	icon_state = "cargo"
 
 /obj/item/card/id/away
 	name = "a perfectly generic identification card"
 	desc = "A perfectly generic identification card. Looks like it could use some flavor."
 	access = list(ACCESS_AWAY_GENERAL)
+	icon_state = "old"
 
 /obj/item/card/id/away/hotel
 	name = "Staff ID"
@@ -361,6 +368,7 @@ update_label("John Doe", "Clowny")
 /obj/item/card/id/away/hotel/securty
 	name = "Officer ID"
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MAINT, ACCESS_AWAY_SEC)
+	icon_state = "old-sec"
 
 /obj/item/card/id/away/old
 	name = "a perfectly generic identification card"
@@ -370,23 +378,31 @@ update_label("John Doe", "Clowny")
 /obj/item/card/id/away/old/sec
 	name = "Security Officer ID"
 	desc = "Security officers ID card."
-	icon_state = "centcom"
+	icon_state = "old-sec"
 
 /obj/item/card/id/away/old/sci
 	name = "Scientist ID"
 	desc = "Scientists ID card."
-	icon_state = "centcom"
+	icon_state = "old-sci"
 
 /obj/item/card/id/away/old/eng
 	name = "Engineer ID"
 	desc = "Engineers ID card."
-	icon_state = "centcom"
+	icon_state = "old-eng"
 
 /obj/item/card/id/away/old/apc
 	name = "APC Access ID"
 	desc = "Special ID card to allow access to APCs"
-	icon_state = "centcom"
 	access = list(ACCESS_ENGINE_EQUIP)
+
+/obj/item/card/id/admin
+	name = "Admin ID"
+	desc = "Should you be touching this?"
+	icon_state = "admin"
+
+/obj/item/card/id/admin/Initialize()
+	access = get_all_accesses() + get_all_centcom_access()
+	. = ..()
 
 /*
 JOB SPECIFIC ID CARDS

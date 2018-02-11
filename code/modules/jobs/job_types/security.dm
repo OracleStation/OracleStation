@@ -126,6 +126,7 @@ Detective
 	minimal_player_age = 7
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
+	special_notice = "You are not a security officer, do not do their job for them. However, you can help them if they need immediate assistance."
 
 	outfit = /datum/outfit/job/detective
 

@@ -16,3 +16,8 @@ GLOBAL_VAR_INIT(CHARGELEVEL, 0.001) // Cap for how fast cells charge, as a perce
 GLOBAL_LIST_EMPTY(powernets)
 
 GLOBAL_VAR_INIT(bsa_unlock, FALSE)	//BSA unlocked by head ID swipes
+
+// Monkeycube/chicken/slime spam prevention
+GLOBAL_VAR_INIT(total_cube_monkeys, 0)
+GLOBAL_VAR_INIT(total_chickens, 0)
+GLOBAL_VAR_INIT(total_slimes, 0)

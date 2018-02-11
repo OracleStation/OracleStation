@@ -291,6 +291,9 @@
 	set name = "Point To"
 	set category = "Object"
 
+	if(world.time - last_pointed < 2 SECONDS)
+		return 0
+
 	if(!src || !isturf(src.loc) || !(A in view(src.loc)))
 		return 0
 	if(istype(A, /obj/effect/temp_visual/point))
@@ -301,6 +304,7 @@
 		return 0
 
 	new /obj/effect/temp_visual/point(A,invisibility)
+	last_pointed = world.time
 
 	return 1
 
@@ -538,6 +542,8 @@
 		return
 	if(isAI(M))
 		return
+	if(!isliving(M))
+		return
 	show_inv(usr)
 
 /mob/proc/is_active()
@@ -570,6 +576,7 @@
 		stat(null, "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]")
 		stat(null, "Station Time: [worldtime2text()]")
 		stat(null, "Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)")
+		stat(null, "Playing/Connected: [get_active_player_count(0,0,0)]/[GLOB.clients.len]")
 		if(SSshuttle.emergency)
 			var/ETA = SSshuttle.emergency.getModeStr()
 			if(ETA)
