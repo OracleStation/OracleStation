@@ -51,5 +51,8 @@
 	name = "Ash Walker"
 	id = "ashlizard"
 	limbs_id = "unathi"
+	speedmod = -0.25
+	brutemod = 0.9
+	burnmod = 0.9
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,NOBREATH,NOGUNS,DIGITIGRADE,NO_BONES)
 	examine_text = "an Ash Walker"
