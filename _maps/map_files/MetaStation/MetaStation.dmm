@@ -34211,11 +34211,6 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 27
 	},
-/obj/machinery/camera{
-	c_tag = "Engineering - Foyer - Starboard";
-	dir = 8;
-	network = list("SS13")
-	},
 /turf/open/floor/plasteel,
 /area/engine/break_room)
 "bnh" = (
@@ -47800,7 +47795,6 @@
 	name = "\improper 'Perfect Drone' sign";
 	pixel_y = 32
 	},
-/obj/machinery/droneDispenser,
 /obj/machinery/door/window/southleft,
 /turf/open/floor/carpet,
 /area/bridge/showroom/corporate)
@@ -71984,6 +71978,7 @@
 	},
 /obj/machinery/r_n_d/circuit_imprinter,
 /obj/effect/turf_decal/bot,
+/obj/item/reagent_containers/glass/beaker/sulphuric,
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
 "cGW" = (
@@ -72509,11 +72504,14 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
 "cHP" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/bodycontainer/morgue,
 /obj/effect/turf_decal/bot,
+/obj/machinery/droneDispenser,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/metal{
+	amount = 50;
+	pixel_x = 2;
+	pixel_y = 2
+	},
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
 "cHQ" = (
@@ -73515,6 +73513,7 @@
 	name = "Station Intercom (General)";
 	pixel_x = -29
 	},
+/obj/item/cautery,
 /turf/open/floor/plasteel/white/corner{
 	dir = 4
 	},
@@ -103266,7 +103265,7 @@ cVv
 ddL
 aaa
 aVs
-bKS
+btO
 aWT
 aVs
 aVs
