@@ -265,3 +265,11 @@ CONFIG_DEF(number/bombcap)
 CONFIG_DEF(flag/shutdown_for_update)			// Shuts down the world instead of reboot
 CONFIG_DEF(string/update_version_string_uri)	// Location of the hash to compare against COMMIT_HASH
 	value = "http://s3.us-east-1.oraclestation.com/master/latest/COMMIT_HASH"
+
+//Mob spam prevention
+CONFIG_DEF(number/max_cube_monkeys)
+	value = 100
+CONFIG_DEF(number/max_chickens)
+	value = 100
+CONFIG_DEF(number/max_slimes)
+	value = 100
