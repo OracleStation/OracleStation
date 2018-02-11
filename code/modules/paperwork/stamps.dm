@@ -18,8 +18,8 @@
 	icon_state = "stamp-qm"
 	item_color = "qm"
 
-/obj/item/stamp/law
-	name = "law office's rubber stamp"
+/obj/item/stamp/iaa
+	name = "internal affairs office's rubber stamp"
 	icon_state = "stamp-law"
 	item_color = "cargo"
 

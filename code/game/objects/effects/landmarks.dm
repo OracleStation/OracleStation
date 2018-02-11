@@ -96,8 +96,8 @@
 /obj/effect/landmark/start/librarian
 	name = "Curator"
 
-/obj/effect/landmark/start/lawyer
-	name = "Lawyer"
+/obj/effect/landmark/start/iaa
+	name = "Internal Affairs Agent"
 
 /obj/effect/landmark/start/station_engineer
 	name = "Station Engineer"

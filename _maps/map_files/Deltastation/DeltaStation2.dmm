@@ -52286,7 +52286,7 @@
 /area/security/courtroom)
 "bWR" = (
 /turf/closed/wall,
-/area/lawoffice)
+/area/iaaoffice)
 "bWS" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -52294,7 +52294,7 @@
 	name = "Lawyer's Privacy Shutter"
 	},
 /turf/open/floor/plating,
-/area/lawoffice)
+/area/iaaoffice)
 "bWT" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable/white{
@@ -52308,7 +52308,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "bWU" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -52317,7 +52317,7 @@
 	name = "Lawyer's Privacy Shutter"
 	},
 /turf/open/floor/plating,
-/area/lawoffice)
+/area/iaaoffice)
 "bWV" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 5
@@ -53281,13 +53281,13 @@
 	req_access_txt = "0"
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "bYJ" = (
 /obj/structure/table/wood,
 /obj/item/clipboard,
 /obj/item/toy/figure/lawyer,
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "bYK" = (
 /obj/structure/cable/white{
 	d1 = 1;
@@ -53296,7 +53296,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "bYL" = (
 /obj/machinery/light_switch{
 	pixel_x = 26;
@@ -53304,7 +53304,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "bYM" = (
 /obj/structure/closet/lawcloset,
 /obj/machinery/firealarm{
@@ -53312,10 +53312,10 @@
 	pixel_x = 24
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "bYN" = (
 /turf/closed/wall/r_wall,
-/area/lawoffice)
+/area/iaaoffice)
 "bYO" = (
 /obj/machinery/door/firedoor,
 /obj/structure/table/reinforced,
@@ -54276,7 +54276,7 @@
 	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,
-/area/lawoffice)
+/area/iaaoffice)
 "caz" = (
 /obj/structure/cable/white{
 	d1 = 4;
@@ -54292,7 +54292,7 @@
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "caA" = (
 /obj/structure/cable/white{
 	d1 = 4;
@@ -54304,7 +54304,7 @@
 	},
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/plasteel/grimy,
-/area/lawoffice)
+/area/iaaoffice)
 "caB" = (
 /obj/machinery/holopad,
 /obj/structure/cable/white{
@@ -54322,19 +54322,19 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/grimy,
-/area/lawoffice)
+/area/iaaoffice)
 "caC" = (
 /obj/structure/cable/white{
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/effect/landmark/start/lawyer,
+/obj/effect/landmark/start/iaa,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
 	},
 /turf/open/floor/plasteel/grimy,
-/area/lawoffice)
+/area/iaaoffice)
 "caD" = (
 /obj/structure/filingcabinet/employment,
 /obj/machinery/airalarm{
@@ -54342,7 +54342,7 @@
 	pixel_x = 24
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "caE" = (
 /obj/machinery/computer/security,
 /obj/structure/cable/white{
@@ -55210,7 +55210,7 @@
 	dir = 4
 	},
 /turf/closed/wall,
-/area/lawoffice)
+/area/iaaoffice)
 "ccj" = (
 /obj/machinery/light{
 	dir = 8
@@ -55227,7 +55227,7 @@
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "cck" = (
 /obj/structure/table/wood,
 /obj/item/folder/yellow,
@@ -55240,7 +55240,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/grimy,
-/area/lawoffice)
+/area/iaaoffice)
 "ccl" = (
 /obj/structure/chair/office/dark{
 	dir = 8
@@ -55252,7 +55252,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/grimy,
-/area/lawoffice)
+/area/iaaoffice)
 "ccm" = (
 /obj/structure/cable/white{
 	d1 = 1;
@@ -55267,14 +55267,14 @@
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/plasteel/grimy,
-/area/lawoffice)
+/area/iaaoffice)
 "ccn" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
 /obj/machinery/disposal/bin,
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "cco" = (
 /obj/structure/cable/white{
 	d1 = 1;
@@ -56123,16 +56123,16 @@
 /obj/machinery/power/apc{
 	dir = 8;
 	name = "Law Office APC";
-	areastring = "/area/lawoffice";
+	areastring = "/area/iaaoffice";
 	pixel_x = -26;
 	pixel_y = 3
 	},
-/obj/effect/landmark/start/lawyer,
+/obj/effect/landmark/start/iaa,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "cdU" = (
 /obj/structure/table/wood,
 /obj/machinery/requests_console{
@@ -56146,16 +56146,16 @@
 	pixel_y = 3
 	},
 /obj/item/folder/red,
-/obj/item/stamp/law,
+/obj/item/stamp/iaa,
 /turf/open/floor/plasteel/grimy,
-/area/lawoffice)
+/area/iaaoffice)
 "cdV" = (
 /obj/structure/chair/office/dark{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/grimy,
-/area/lawoffice)
+/area/iaaoffice)
 "cdW" = (
 /obj/structure/cable/white{
 	d1 = 1;
@@ -56165,7 +56165,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel/grimy,
-/area/lawoffice)
+/area/iaaoffice)
 "cdX" = (
 /obj/machinery/photocopier,
 /obj/machinery/status_display{
@@ -56177,7 +56177,7 @@
 	name = "security camera"
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "cdZ" = (
 /obj/structure/cable/white{
 	d1 = 4;
@@ -56871,7 +56871,7 @@
 /area/security/courtroom)
 "cfy" = (
 /obj/machinery/holopad,
-/obj/effect/landmark/start/lawyer,
+/obj/effect/landmark/start/iaa,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,
 /area/security/courtroom)
@@ -56927,12 +56927,12 @@
 	pixel_x = -26
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "cfE" = (
 /obj/structure/table/wood,
 /obj/item/paper_bin,
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "cfG" = (
 /obj/structure/cable/white{
 	d1 = 1;
@@ -56942,7 +56942,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "cfH" = (
 /obj/structure/rack,
 /obj/item/storage/briefcase{
@@ -56951,7 +56951,7 @@
 	},
 /obj/item/storage/secure/briefcase,
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "cfI" = (
 /obj/structure/cable/white{
 	d2 = 4;
@@ -57521,7 +57521,7 @@
 "cgP" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall,
-/area/lawoffice)
+/area/iaaoffice)
 "cgQ" = (
 /obj/structure/cable/white{
 	d1 = 1;
@@ -65935,7 +65935,7 @@
 	icon_state = "greydet";
 	name = "trenchcoat"
 	},
-/obj/item/clothing/suit/toggle/lawyer/black,
+/obj/item/clothing/suit/toggle/iaa/black,
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
@@ -65982,7 +65982,7 @@
 "cxy" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/item/clothing/suit/jacket/letterman_nanotrasen,
-/obj/item/clothing/suit/toggle/lawyer,
+/obj/item/clothing/suit/toggle/iaa,
 /obj/item/device/radio/intercom{
 	name = "Station Intercom";
 	pixel_x = 26;
@@ -66017,7 +66017,7 @@
 	icon_state = "detective";
 	name = "trenchcoat"
 	},
-/obj/item/clothing/suit/toggle/lawyer/purple,
+/obj/item/clothing/suit/toggle/iaa/purple,
 /obj/item/device/radio/intercom{
 	name = "Station Intercom";
 	pixel_x = 26;
@@ -75350,7 +75350,7 @@
 "cPN" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/item/clothing/suit/jacket/letterman_nanotrasen,
-/obj/item/clothing/suit/toggle/lawyer,
+/obj/item/clothing/suit/toggle/iaa,
 /obj/item/clothing/under/maid,
 /obj/item/clothing/head/kitty,
 /obj/machinery/airalarm{
@@ -75375,11 +75375,11 @@
 	icon_state = "detective";
 	name = "trenchcoat"
 	},
-/obj/item/clothing/suit/toggle/lawyer/purple,
+/obj/item/clothing/suit/toggle/iaa/purple,
 /obj/item/clothing/head/fedora{
 	icon_state = "detective"
 	},
-/obj/item/clothing/under/lawyer/female,
+/obj/item/clothing/under/iaa/female,
 /obj/machinery/airalarm{
 	dir = 1;
 	pixel_y = -22
@@ -108247,7 +108247,7 @@
 	pixel_y = -32
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "efR" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/effect/decal/cleanable/dirt,

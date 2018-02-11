@@ -261,7 +261,7 @@
 
 /obj/item/clothing/accessory/lawyers_badge
 	name = "attorney's badge"
-	desc = "Fills you with the conviction of JUSTICE. Lawyers tend to want to show it to everyone they meet."
+	desc = "Fills you with the conviction of JUSTICE. Internal Affairs Agents tend to want to show it to everyone they meet."
 	icon_state = "lawyerbadge"
 	item_color = "lawyerbadge"
 
