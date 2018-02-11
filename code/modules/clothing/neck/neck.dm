@@ -29,16 +29,16 @@
 	item_color = "horribletie"
 
 /obj/item/clothing/neck/translator
-	name = "translation collar"
-	desc = "A small translator fitted around one's neck. This one seems to be broken."
+	name = "translator badge"
+	desc = "A small translator attached to one's shirt collar that repeats its user in another language. This one seems to be broken."
 	icon_state = "collar"
 	item_color = "collar"
 	var/language
 	var/can_remove_language = TRUE
 
 /obj/item/clothing/neck/translator/common
-	name = "galactic common translation collar"
-	desc = "A small translator fitted around one's neck. This one is for Galactic Common."
+	name = "galactic common translator badge"
+	desc = "A small translator attached to one's shirt collar that repeats its user in another language. This one is for Galactic Common."
 	language = /datum/language/common
 
 /obj/item/clothing/neck/translator/equipped(mob/user, slot)
