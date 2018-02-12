@@ -4,7 +4,7 @@
 	say_mod = "states"
 	heatmod = 3 // Went cheap with Aircooling
 	coldmod = 1.5 // Don't put your computer in the freezer.
-	burnmod = 2 // Wiring doesn't hold up to fire well.
+	burnmod = 1.8 // Wiring doesn't hold up to fire well.
 	brutemod = 1.8 // Thin metal, cheap materials. Mind you brute hits have to overcome the inherent armor of BODYPART_ROBOTIC, but if it can, bigger damage.
 	toxmod = 0.5 // Although they can't be poisoned, toxins can damage components
 	clonemod = 0
