@@ -192,7 +192,7 @@ GLOBAL_LIST(external_rsc_urls)
 		holder.owner = src
 
 	//Need to load before we load preferences for correctly removing Ultra if user no longer whitelisted
-	is_ultra_whitelisted = check_ultra_whitelisted(src) //TODO: what the fuck is is_job_whitelisted -ike709
+	is_ultra_whitelisted = db_get_ultra_whitelisted(src)
 
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
 	prefs = GLOB.preferences_datums[ckey]

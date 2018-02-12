@@ -506,7 +506,26 @@ Proc for attack log creation, because really why not
 			log_say(logmessage)
 
 /proc/check_ultra_whitelisted(client/user)
-	if(user && istype(user, /client/))
+	if(user && istype(user, /client))
 		return (user.is_ultra_whitelisted)
 	warning("Non-client [user] passed to check_ultra_whitelisted().")
 	return FALSE
+
+/proc/db_get_ultra_whitelisted(client/user)
+	if(!user || !istype(user, /client) || !SSdbcore.IsConnected())
+		return FALSE
+	var/ckey = user.ckey
+	if(!ckey)
+		return FALSE
+	var/datum/DBQuery/query_whitelist = SSdbcore.NewQuery("SELECT `ultrawhitelisted` FROM [format_table_name("player")] WHERE `ckey`='[ckey]'")
+	query_whitelist.Execute()
+	return query_whitelist
+
+/proc/db_set_ultra_whitelisted(client/user, var/whitelisted)
+	if((whitelisted != FALSE && whitelisted != TRUE) || !user || !istype(user, /client) || !SSdbcore.IsConnected())
+		return FALSE
+	var/ckey = user.ckey
+	if(ckey)
+		return FALSE
+	var/datum/DBQuery/query_whitelist = SSdbcore.NewQuery("UPDATE [format_table_name("player")] SET `ultrawhitelisted`=[whitelisted] WHERE `ckey`='[ckey]'")
+	query_whitelist.Execute()
