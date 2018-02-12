@@ -76,14 +76,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/icon/preview_icon = null
 
 		//Jobs, uses bitflags
+	var/job_civilian_ultra = 0
 	var/job_civilian_high = 0
 	var/job_civilian_med = 0
 	var/job_civilian_low = 0
 
+	var/job_medsci_ultra = 0
 	var/job_medsci_high = 0
 	var/job_medsci_med = 0
 	var/job_medsci_low = 0
 
+	var/job_engsec_ultra = 0
 	var/job_engsec_high = 0
 	var/job_engsec_med = 0
 	var/job_engsec_low = 0
@@ -125,6 +128,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/loaded_preferences_successfully = load_preferences()
 	if(loaded_preferences_successfully)
 		if(load_character())
+			if(!check_ultra_whitelisted(C))
+				job_civilian_ultra = 0
+				job_medsci_ultra = 0
+				job_engsec_ultra = 0
+				save_character()
 			species_looking_at = pref_species.id
 			return
 	//we couldn't load character data so just randomize the character appearance + name
@@ -675,25 +683,36 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			var/prefLowerLevel = -1 // level to assign on right click
 
 			if(GetJobDepartment(job, 1) & job.flag)
-				prefLevelLabel = "High"
-				prefLevelColor = "slateblue"
-				prefUpperLevel = 4
+				prefLevelLabel = "Ultra"
+				prefLevelColor = "#E5E4E2"
+				prefUpperLevel = 5
 				prefLowerLevel = 2
 			else if(GetJobDepartment(job, 2) & job.flag)
-				prefLevelLabel = "Medium"
-				prefLevelColor = "green"
-				prefUpperLevel = 1
+				prefLevelLabel = "High"
+				prefLevelColor = "slateblue"
+				if(check_ultra_whitelisted(user.client))
+					prefUpperLevel = 1
+				else
+					prefUpperLevel = 5
 				prefLowerLevel = 3
 			else if(GetJobDepartment(job, 3) & job.flag)
-				prefLevelLabel = "Low"
-				prefLevelColor = "orange"
+				prefLevelLabel = "Medium"
+				prefLevelColor = "green"
 				prefUpperLevel = 2
 				prefLowerLevel = 4
+			else if(GetJobDepartment(job, 4) & job.flag)
+				prefLevelLabel = "Low"
+				prefLevelColor = "orange"
+				prefUpperLevel = 3
+				prefLowerLevel = 5
 			else
 				prefLevelLabel = "NEVER"
 				prefLevelColor = "red"
-				prefUpperLevel = 3
-				prefLowerLevel = 1
+				prefUpperLevel = 4
+				if(check_ultra_whitelisted(user.client))
+					prefLowerLevel = 1
+				else
+					prefLowerLevel = 2
 
 
 			HTML += "<a class='white' href='?_src_=prefs;preference=job;task=setJobLevel;level=[prefUpperLevel];text=[rank]' oncontextmenu='javascript:return setJobPrefRedirect([prefLowerLevel], \"[rank]\");'>"
@@ -734,7 +753,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if (!job)
 		return 0
 
-	if (level == 1) // to high
+	if (level == 1) // to ultra
+		// remove any other job(s) set to ultra
+		job_civilian_med |= job_civilian_ultra
+		job_engsec_med |= job_engsec_ultra
+		job_medsci_med |= job_medsci_ultra
+		job_civilian_ultra = 0
+		job_engsec_ultra = 0
+		job_medsci_ultra = 0
+
+	if (level == 2) // to high
 		// remove any other job(s) set to high
 		job_civilian_med |= job_civilian_high
 		job_engsec_med |= job_engsec_high
@@ -747,13 +775,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		job_civilian_low &= ~job.flag
 		job_civilian_med &= ~job.flag
 		job_civilian_high &= ~job.flag
+		job_civilian_ultra &= ~job.flag
 
 		switch(level)
 			if (1)
-				job_civilian_high |= job.flag
+				job_civilian_ultra |= job.flag
 			if (2)
-				job_civilian_med |= job.flag
+				job_civilian_high |= job.flag
 			if (3)
+				job_civilian_med |= job.flag
+			if (4)
 				job_civilian_low |= job.flag
 
 		return 1
@@ -761,13 +792,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		job_engsec_low &= ~job.flag
 		job_engsec_med &= ~job.flag
 		job_engsec_high &= ~job.flag
+		job_engsec_ultra &= ~job.flag
 
 		switch(level)
 			if (1)
-				job_engsec_high |= job.flag
+				job_engsec_ultra |= job.flag
 			if (2)
-				job_engsec_med |= job.flag
+				job_engsec_high |= job.flag
 			if (3)
+				job_engsec_med |= job.flag
+			if (4)
 				job_engsec_low |= job.flag
 
 		return 1
@@ -775,13 +809,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		job_medsci_low &= ~job.flag
 		job_medsci_med &= ~job.flag
 		job_medsci_high &= ~job.flag
+		job_medsci_ultra &= ~job.flag
 
 		switch(level)
 			if (1)
-				job_medsci_high |= job.flag
+				job_medsci_ultra |= job.flag
 			if (2)
-				job_medsci_med |= job.flag
+				job_medsci_high |= job.flag
 			if (3)
+				job_medsci_med |= job.flag
+			if (4)
 				job_medsci_low |= job.flag
 
 		return 1
@@ -822,14 +859,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	job_civilian_high = 0
 	job_civilian_med = 0
 	job_civilian_low = 0
+	job_civilian_ultra = 0
 
 	job_medsci_high = 0
 	job_medsci_med = 0
 	job_medsci_low = 0
+	job_medsci_ultra = 0
 
 	job_engsec_high = 0
 	job_engsec_med = 0
 	job_engsec_low = 0
+	job_engsec_ultra = 0
 
 
 /datum/preferences/proc/GetJobDepartment(datum/job/job, level)
@@ -839,26 +879,32 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if(CIVILIAN)
 			switch(level)
 				if(1)
-					return job_civilian_high
+					return job_civilian_ultra
 				if(2)
-					return job_civilian_med
+					return job_civilian_high
 				if(3)
+					return job_civilian_med
+				if(4)
 					return job_civilian_low
 		if(MEDSCI)
 			switch(level)
 				if(1)
-					return job_medsci_high
+					return job_medsci_ultra
 				if(2)
-					return job_medsci_med
+					return job_medsci_high
 				if(3)
+					return job_medsci_med
+				if(4)
 					return job_medsci_low
 		if(ENGSEC)
 			switch(level)
 				if(1)
-					return job_engsec_high
+					return job_engsec_ultra
 				if(2)
-					return job_engsec_med
+					return job_engsec_high
 				if(3)
+					return job_engsec_med
+				if(4)
 					return job_engsec_low
 	return 0
 
@@ -1398,11 +1444,21 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("load")
 					load_preferences()
 					load_character()
+					if(!check_ultra_whitelisted(user.client))
+						job_civilian_ultra = 0
+						job_medsci_ultra = 0
+						job_engsec_ultra = 0
+						save_character()
 
 				if("changeslot")
 					if(!load_character(text2num(href_list["num"])))
 						random_character()
 						real_name = random_unique_name(gender)
+						save_character()
+					else if(!check_ultra_whitelisted(user.client))
+						job_civilian_ultra = 0
+						job_medsci_ultra = 0
+						job_engsec_ultra = 0
 						save_character()
 
 				if("tab")

@@ -505,3 +505,8 @@ Proc for attack log creation, because really why not
 			warning("Invalid speech logging type detected. [logtype]. Defaulting to say")
 			log_say(logmessage)
 
+/proc/check_ultra_whitelisted(client/user)
+	if(user && istype(user, /client/))
+		return (user.is_ultra_whitelisted)
+	warning("Non-client [user] passed to check_ultra_whitelisted().")
+	return FALSE
