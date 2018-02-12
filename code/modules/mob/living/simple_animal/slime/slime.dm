@@ -77,6 +77,7 @@
 	"cerulean", "sepia", "black", "pyrite")
 
 /mob/living/simple_animal/slime/Initialize(mapload, new_colour="grey", new_is_adult=FALSE)
+	GLOB.total_slimes++
 	var/datum/action/innate/slime/feed/F = new
 	F.Grant(src)
 

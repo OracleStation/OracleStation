@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	icon_state = "magicOrange"
 	icon_living = "magicOrange"
 	icon_dead = "magicOrange"
-	speed = 0
+	speed = 1
 	a_intent = INTENT_HARM
 	stop_automated_movement = 1
 	movement_type = FLYING // Immunity to chasms and landmines, etc.

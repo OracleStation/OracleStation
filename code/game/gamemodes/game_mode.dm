@@ -335,7 +335,7 @@
 
 	if(protected_species)
 		for(var/mob/dead/new_player/player in candidates)
-			if(player.client.prefs.pref_species in protected_species)
+			if(player.client.prefs.pref_species.id in protected_species)
 				candidates -= player
 
 	if(restricted_jobs)
@@ -353,7 +353,7 @@
 
 	if(protected_species)
 		for(var/mob/dead/new_player/player in drafted)
-			if(player.client.prefs.pref_species in protected_species)
+			if(player.client.prefs.pref_species.id in protected_species)
 				drafted -= player
 
 	if(restricted_jobs)
@@ -376,7 +376,7 @@
 
 	if(protected_species)
 		for(var/mob/dead/new_player/player in drafted)
-			if(player.client.prefs.pref_species in protected_species)
+			if(player.client.prefs.pref_species.id in protected_species)
 				drafted -= player
 
 	if(restricted_jobs)
