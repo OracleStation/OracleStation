@@ -185,4 +185,4 @@ datum/species/ipc/on_species_loss(mob/living/carbon/C)
 	H.say("Unit [H.real_name] is fully functional. Have a nice day.")
 	H.dna.features["ipc_screen"] = saved_screen
 	H.update_body()
-	return	to_chat(H, "<span class='notice'>You are an IPC, a free synthetic! You recharge by using your power cord implant on an APC. If you get damaged, it can be fixed with a welder, or cable coil on the damaged area. You lose limbs easily, but you can plug them back in yourself. Watch out for EMPs!</span>")
+	return
