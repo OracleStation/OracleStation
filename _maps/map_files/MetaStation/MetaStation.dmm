@@ -47800,7 +47800,6 @@
 	name = "\improper 'Perfect Drone' sign";
 	pixel_y = 32
 	},
-/obj/machinery/droneDispenser,
 /obj/machinery/door/window/southleft,
 /turf/open/floor/carpet,
 /area/bridge/showroom/corporate)
@@ -71984,6 +71983,7 @@
 	},
 /obj/machinery/r_n_d/circuit_imprinter,
 /obj/effect/turf_decal/bot,
+/obj/item/reagent_containers/glass/beaker/sulphuric,
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
 "cGW" = (
@@ -72512,8 +72512,16 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/bodycontainer/morgue,
 /obj/effect/turf_decal/bot,
+/obj/machinery/droneDispenser,
+/obj/item/stack/sheet/glass{
+	amount = 40;
+	pixel_x = 3;
+	pixel_y = -4
+	},
+/obj/item/stack/sheet/metal{
+	amount = 50
+	},
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
 "cHQ" = (
@@ -73514,6 +73522,9 @@
 	frequency = 1459;
 	name = "Station Intercom (General)";
 	pixel_x = -29
+	},
+/obj/item/cautery{
+	pixel_x = 4
 	},
 /turf/open/floor/plasteel/white/corner{
 	dir = 4
