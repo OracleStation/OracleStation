@@ -210,7 +210,7 @@
 	if(!CONFIG_GET(flag/disable_peaceborg))
 		modulelist["Peacekeeper"] = /obj/item/robot_module/peacekeeper
 	var/datum/job/J = SSjob.GetJob("Security Officer")
-	if(!CONFIG_GET(flag/disable_secborg) || J.current_positions <= 1)
+	if(!CONFIG_GET(flag/disable_secborg) || (!CONFIG_GET(flag/disable_lowpop_secborg) && J.current_positions <= 1))
 		modulelist["Security"] = /obj/item/robot_module/security
 
 	var/input_module = input("Please, select a module!", "Robot", null, null) as null|anything in modulelist

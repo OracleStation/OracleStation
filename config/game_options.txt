@@ -259,6 +259,9 @@ ALLOW_AI
 ## Uncomment to prevent the security cyborg module from being chosen
 DISABLE_SECBORG
 
+## Uncomment to prevent the security cyborg module from being chosen if security is undermanned.
+#DISABLE_LOWPOP_SECBORG
+
 ## Peacekeeper Borg ###
 ## Uncomment to prevent the peacekeeper cyborg module from being chosen
 DISABLE_PEACEBORG
