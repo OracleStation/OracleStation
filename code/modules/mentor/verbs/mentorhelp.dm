@@ -27,10 +27,10 @@
 
 	//spam prevention, 60 second delay
 	src.verbs -= /client/verb/mentorhelp
-	addtimer(CALLBACK(src, .proc/return_mhelp, src), 60, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/return_mhelp, src), 600, TIMER_STOPPABLE) //1 minute cooldown of mentor helps
 	return
 
-/proc/return_mhelp(var/client/C)
+/client/proc/return_mhelp(var/client/C)
 	C.verbs += /client/verb/mentorhelp
 	return
 
