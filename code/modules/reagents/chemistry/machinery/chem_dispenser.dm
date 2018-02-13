@@ -242,7 +242,6 @@
 		list(
 			"lithium",
 			"sugar",
-			"sacid",
 			"copper",
 			"mercury",
 			"sodium",
