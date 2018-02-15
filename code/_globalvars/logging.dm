@@ -34,6 +34,8 @@ GLOBAL_LIST_EMPTY(LOOClog)
 GLOBAL_PROTECT(LOOClog)
 GLOBAL_LIST_EMPTY(adminlog)
 GLOBAL_PROTECT(adminlog)
+GLOBAL_LIST_EMPTY(mentorlog)
+GLOBAL_PROTECT(mentorlog)
 
 GLOBAL_LIST_EMPTY(individual_log_list) // Logs each mob individual logs, a global so it doesn't get lost on cloning/changing mobs
 
