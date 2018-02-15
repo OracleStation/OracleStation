@@ -110,7 +110,7 @@
 		switch(color)
 			if("red")
 				color_hex = "#DA0000"
-				inner_outfit = pick(/obj/item/clothing/under/color/red, /obj/item/clothing/under/lawyer/red)
+				inner_outfit = pick(/obj/item/clothing/under/color/red, /obj/item/clothing/under/iaa/red)
 			if("orange")
 				color_hex = "#FF9300"
 				inner_outfit = pick(/obj/item/clothing/under/color/orange, /obj/item/clothing/under/geisha)
@@ -125,7 +125,7 @@
 				inner_outfit = pick(/obj/item/clothing/under/color/blue, /obj/item/clothing/under/suit_jacket/navy)
 			if("purple")
 				color_hex = "#DA00FF"
-				inner_outfit = pick(/obj/item/clothing/under/color/lightpurple, /obj/item/clothing/under/lawyer/purpsuit)
+				inner_outfit = pick(/obj/item/clothing/under/color/lightpurple, /obj/item/clothing/under/iaa/purpsuit)
 			if("white")
 				color_hex = "#FFFFFF"
 				inner_outfit = pick(/obj/item/clothing/under/color/white, /obj/item/clothing/under/suit_jacket/white)

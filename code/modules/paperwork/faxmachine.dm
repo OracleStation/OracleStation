@@ -14,7 +14,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	pixel_y = 4
 
 	var/long_range_enabled = FALSE // Can we send messages off the station?
-	req_one_access = list(ACCESS_LAWYER, ACCESS_HEADS, ACCESS_ARMORY)
+	req_one_access = list(ACCESS_LAWYER, ACCESS_HEADS, ACCESS_ARMORY, ACCESS_IAA)
 
 	use_power = TRUE
 	idle_power_usage = 30
