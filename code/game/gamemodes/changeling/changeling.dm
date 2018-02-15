@@ -256,13 +256,21 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 			if(changeling.objectives.len)
 				var/count = 1
 				for(var/datum/objective/objective in changeling.objectives)
-					if(objective.check_completion())
-						text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <font color='green'><b>Success!</b></font>"
-						SSblackbox.add_details("changeling_objective","[objective.type]|SUCCESS")
+					if(istype(objective, /datum/objective/crew))
+						if(objective.check_completion())
+							text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='green'><b>Success!</b></span> (Optional)"
+							SSblackbox.add_details("changeling_objective","[objective.type]|SUCCESS")
+						else
+							text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='danger'>Fail.</span> (Optional)"
+							SSblackbox.add_details("changeling_objective","[objective.type]|FAIL")
 					else
-						text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='danger'>Fail.</span>"
-						SSblackbox.add_details("changeling_objective","[objective.type]|FAIL")
-						changelingwin = 0
+						if(objective.check_completion())
+							text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='green'><b>Success!</b></span>"
+							SSblackbox.add_details("changeling_objective","[objective.type]|SUCCESS")
+						else
+							text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='danger'>Fail.</span>"
+							SSblackbox.add_details("changeling_objective","[objective.type]|FAIL")
+							changelingwin = 0
 					count++
 
 			if(changelingwin)

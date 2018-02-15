@@ -63,6 +63,10 @@ SUBSYSTEM_DEF(ticker)
 	var/mode_result = "undefined"
 	var/end_state = "undefined"
 
+	//Crew Objective stuff
+	var/list/crewobjlist = list()
+	var/list/crewobjjobs = list()
+
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
 	var/list/music = world.file2list(ROUND_START_MUSIC_LIST, "\n")
@@ -72,6 +76,14 @@ SUBSYSTEM_DEF(ticker)
 		GLOB.syndicate_code_phrase	= generate_code_phrase()
 	if(!GLOB.syndicate_code_response)
 		GLOB.syndicate_code_response = generate_code_phrase()
+
+	crewobjlist = typesof(/datum/objective/crew)
+	for(var/hooray in crewobjlist) //taken from old Hippie's "job2obj" proc with adjustments.
+		var/datum/objective/crew/obj = hooray
+		var/list/availableto = splittext(initial(obj.jobs),",")
+		for(var/job in availableto)
+			crewobjjobs["[job]"] += list(obj)
+
 	..()
 
 /datum/controller/subsystem/ticker/fire()
@@ -253,6 +265,9 @@ SUBSYSTEM_DEF(ticker)
 		//Deleting Startpoints but we need the ai point to AI-ize people later
 		if(S.name != "AI")
 			qdel(S)
+
+	if(CONFIG_GET(flag/allow_crew_objectives))
+		generate_crew_objectives()
 
 	var/list/adm = get_admin_counts()
 	var/list/allmins = adm["present"]
@@ -470,6 +485,7 @@ SUBSYSTEM_DEF(ticker)
 	var/num_survivors = 0
 	var/num_escapees = 0
 	var/num_shuttle_escapees = 0
+	var/list/successfulCrew = list()
 
 	to_chat(world, "<BR><BR><BR><FONT size=3><B>The round has ended.</B></FONT>")
 
@@ -591,6 +607,19 @@ SUBSYSTEM_DEF(ticker)
 	log_game("Antagonists at round end were...")
 	for(var/i in total_antagonists)
 		log_game("[i]s[total_antagonists[i]].")
+
+	CHECK_TICK
+
+	if(CONFIG_GET(flag/allow_crew_objectives))
+		for(var/datum/mind/crewMind in minds)
+			if(!crewMind.current || !crewMind.objectives.len)
+				continue
+			for(var/datum/objective/crew/CO in crewMind.objectives)
+				if(CO.check_completion())
+					to_chat(crewMind.current, "<br><B>Your optional objective</B>: [CO.explanation_text] <span class='green'><B>Success!</B></span>")
+					successfulCrew += "<B>[crewMind.current.real_name]</B> (Played by: <B>[crewMind.key]</B>)<BR><B>Optional Objective</B>: [CO.explanation_text] <span class='green'><B>Success!</B></span>"
+				else
+					to_chat(crewMind.current, "<br><B>Your optional objective</B>: [CO.explanation_text] <span class='warning'><B>Failed.</B></span>")
 
 	CHECK_TICK
 
