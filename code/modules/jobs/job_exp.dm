@@ -113,9 +113,11 @@ GLOBAL_PROTECT(exp_to_update)
 
 
 /client/proc/get_exp_living(as_text = TRUE)
-	if(!prefs.exp)
+	if(!prefs.exp && as_text)
 		return "No data"
 	var/exp_living = text2num(prefs.exp[EXP_TYPE_LIVING])
+	if(!exp_living)
+		exp_living = 0
 	if(as_text)
 		return get_exp_format(exp_living)
 	return exp_living

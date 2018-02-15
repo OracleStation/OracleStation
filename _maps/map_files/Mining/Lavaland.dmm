@@ -1957,6 +1957,7 @@
 	pixel_x = -5;
 	pixel_y = 30
 	},
+/obj/machinery/suit_storage_unit/mining,
 /turf/open/floor/plasteel/purple/corner{
 	dir = 4
 	},
@@ -1966,6 +1967,7 @@
 	frequency = 1439;
 	pixel_y = 23
 	},
+/obj/machinery/suit_storage_unit/mining,
 /turf/open/floor/plasteel/purple/corner{
 	dir = 1
 	},
