@@ -190,6 +190,20 @@ SUBSYSTEM_DEF(job)
 				return 1
 	return 0
 
+/datum/controller/subsystem/job/proc/FillPosition(datum/job/job)
+	for(var/level = 1 to 3)
+		if(!job)
+			continue
+		if((job.current_positions >= job.total_positions) && job.total_positions != -1)
+			continue
+		var/list/candidates = FindOccupationCandidates(job, level)
+		if(!candidates.len)
+			continue
+		var/mob/dead/new_player/candidate = pick(candidates)
+		if(AssignRole(candidate, job.title))
+			return 1
+	return 0
+
 
 //This proc is called at the start of the level loop of DivideOccupations() and will cause head jobs to be checked before any other jobs of the same level
 //This is also to ensure we get as many heads as possible
@@ -285,6 +299,12 @@ SUBSYSTEM_DEF(job)
 	Debug("DO, Running AI Check")
 	FillAIPosition()
 	Debug("DO, AI Check end")
+
+	//Fill security roles
+	Debug("DO, Running Security Check")
+	FillPosition(GetJob("Security Officer"))
+	Debug("DO, Security Check end")
+
 
 	//Other jobs are now checked
 	Debug("DO, Running Standard Check")
