@@ -9,10 +9,10 @@
 	if(!msg || !mob)
 		return
 	if(src.prefs.muted & MUTE_MENTORHELP)
-		to_chat(src, "<font color='red'>You are unable to use mentorhelp (muted).</font>")
+		to_chat(src, "<span class='warning'>You are unable to use mentorhelp (muted).</span>")
 		return
 	var/show_char = CONFIG_GET(flag/mentors_mobname_only)
-	var/mentor_msg = "<span class='mentornotice'><b><font color='#3280ff'>MENTORHELP:</b> <b>[key_name_mentor(src, 1, 0, 1, show_char)]</b>:</font> [msg]</span>"
+	var/mentor_msg = "<span class='mentornotice'><b><span class='info'>MENTORHELP:</b> <b>[key_name_mentor(src, 1, 0, 1, show_char)]</b>:</span> [msg]</span>"
 	log_mentor("MENTORHELP: [key_name_mentor(src, 0, 0, 0, 0)]: [msg]")
 
 	for(var/client/X in GLOB.mentors)
@@ -23,7 +23,7 @@
 		A << 'sound/items/bikehorn.ogg'
 		to_chat(A, mentor_msg)
 
-	to_chat(src, "<span class='mentornotice'><font color='purple'>PM to-<b>Mentors</b>: [msg]</font></span>")
+	to_chat(src, "<span class='mentornotice'>PM to-<b>Mentors</b>: [msg]</span>")
 
 	//spam prevention, 60 second delay
 	src.verbs -= /client/verb/mentorhelp

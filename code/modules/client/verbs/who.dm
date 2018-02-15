@@ -56,7 +56,7 @@
 		for(var/client/C in sortList(GLOB.clients))
 			var/mentor = GLOB.mentor_datums[C.ckey]
 			if(mentor)
-				Lines += "<font color='#0033CC'>\t[C.key]</font> - Mentor"
+				Lines += "<span class='info'>\t[C.key]</span> - Mentor"
 
 	for(var/line in sortList(Lines))
 		msg += "[line]\n"

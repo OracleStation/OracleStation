@@ -3,7 +3,7 @@
 	set category = "Mentor"
 	set name = "Mentor PM"
 	if(!holder)
-		to_chat(src, "<font color='red'>Error: Mentor-PM-Panel: Only Mentors may use this command.</font>")
+		to_chat(src, "<span class='warning'>Error: Mentor-PM-Panel: Only Mentors may use this command.</span>")
 		return
 	var/list/client/targets[0]
 	for(var/client/T)
@@ -34,19 +34,19 @@
 		C = whom
 	if(!C)
 		if(holder)
-			to_chat(src, "<font color='red'>Error: Mentor-PM: Client not found.</font>")
+			to_chat(src, "<span class='warning'>Error: Mentor-PM: Client not found.</span>")
 		else
 			mentorhelp(msg)	//Mentor we are replying to left. Mentorhelp instead
 		return
 
-	//get message text, limit it's length.and clean/escape html
+	//get message text, limit its length.and clean/escape html
 	if(!msg)
 		msg = input(src,"Message:", "Private message") as text|null
 		if(!msg)
 			return
 		if(!C)
 			if(holder)
-				to_chat(src, "<font color='red'>Error: Mentor-PM: Client not found.</font>")
+				to_chat(src, "<span class='warning'>Error: Mentor-PM: Client not found.</span>")
 			else
 				mentorhelp(msg)	//Mentor we are replying to has vanished, Mentorhelp instead
 			return
@@ -62,24 +62,24 @@
 	var/show_char = CONFIG_GET(flag/mentors_mobname_only)
 	if(check_mentor_other(C))
 		if(check_mentor())	//both are mentors
-			to_chat(C, "<font color='#3280ff'>Mentor PM from-<b>[key_name_mentor(src, C, 1, 0, 0)]</b>: [msg]</font>")
-			to_chat(src, "<font color='green'>Mentor PM to-<b>[key_name_mentor(C, C, 1, 0, 0)]</b>: [msg]</font>")
+			to_chat(C, "<span class='notice'>Mentor PM from-<b>[key_name_mentor(src, C, 1, 0, 0)]</b>: [msg]</span>")
+			to_chat(src, "<span class='green'>Mentor PM to-<b>[key_name_mentor(C, C, 1, 0, 0)]</b>: [msg]</span>")
 
 		else		//recipient is an mentor but sender is not
-			to_chat(C, "<font color='#3280ff'>Reply PM from-<b>[key_name_mentor(src, C, 1, 0, show_char)]</b>: [msg]</font>")
-			to_chat(src, "<font color='green'>Mentor PM to-<b>[key_name_mentor(C, C, 1, 0, 0)]</b>: [msg]</font>")
+			to_chat(C, "<span class='notice'>Reply PM from-<b>[key_name_mentor(src, C, 1, 0, show_char)]</b>: [msg]</span>")
+			to_chat(src, "<span class='green'>Mentor PM to-<b>[key_name_mentor(C, C, 1, 0, 0)]</b>: [msg]</span>")
 
 	else
 		if(check_mentor())	//sender is an mentor but recipient is not.
-			to_chat(C, "<font color='#3280ff'>Mentor PM from-<b>[key_name_mentor(src, C, 1, 0, 0)]</b>: [msg]</font>")
-			to_chat(src, "<font color='green'>Mentor PM to-<b>[key_name_mentor(C, C, 1, 0, show_char)]</b>: [msg]</font>")
+			to_chat(C, "<span class='notice'>Mentor PM from-<b>[key_name_mentor(src, C, 1, 0, 0)]</b>: [msg]</span>")
+			to_chat(src, "<span class='green'>Mentor PM to-<b>[key_name_mentor(C, C, 1, 0, show_char)]</b>: [msg]</span>")
 
 	//we don't use message_Mentors here because the sender/receiver might get it too
 	var/show_char_sender = !check_mentor_other(src) && CONFIG_GET(flag/mentors_mobname_only)
 	var/show_char_recip = !check_mentor_other(C) && CONFIG_GET(flag/mentors_mobname_only)
 	for(var/client/X in GLOB.mentors)
 		if(X.key!=key && X.key!=C.key)	//check client/X is an Mentor and isn't the sender or recipient
-			to_chat(X, "<B><font color='green'>Mentor PM: [key_name_mentor(src, X, 0, 0, show_char_sender)]-&gt;[key_name_mentor(C, X, 0, 0, show_char_recip)]:</B> \blue [msg]</font>") //inform X
+			to_chat(X, "<B><span class='green'>Mentor PM: [key_name_mentor(src, X, 0, 0, show_char_sender)]-&gt;[key_name_mentor(C, X, 0, 0, show_char_recip)]:</B> \blue [msg]</span>") //inform X
 	for(var/client/A in GLOB.admins)
 		if(A.key!=key && A.key!=C.key)	//check client/A is an Mentor and isn't the sender or recipient
-			to_chat(A, "<B><font color='green'>Mentor PM: [key_name_mentor(src, A, 0, 0, show_char_sender)]-&gt;[key_name_mentor(C, A, 0, 0, show_char_recip)]:</B> \blue [msg]</font>") //inform A
+			to_chat(A, "<B><span class='green'>Mentor PM: [key_name_mentor(src, A, 0, 0, show_char_sender)]-&gt;[key_name_mentor(C, A, 0, 0, show_char_recip)]:</B> \blue [msg]</span>") //inform A
