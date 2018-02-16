@@ -63,23 +63,23 @@
 	if(check_mentor_other(C))
 		if(check_mentor())	//both are mentors
 			to_chat(C, "<span class='notice'>Mentor PM from-<b>[key_name_mentor(src, C, 1, 0, 0)]</b>: [msg]</span>")
-			to_chat(src, "<span class='green'>Mentor PM to-<b>[key_name_mentor(C, C, 1, 0, 0)]</b>: [msg]</span>")
+			to_chat(src, "<span class='mentornotice'>Mentor PM to-<b>[key_name_mentor(C, C, 1, 0, 0)]</b>: [msg]</span>")
 
 		else		//recipient is an mentor but sender is not
 			to_chat(C, "<span class='notice'>Reply PM from-<b>[key_name_mentor(src, C, 1, 0, show_char)]</b>: [msg]</span>")
-			to_chat(src, "<span class='green'>Mentor PM to-<b>[key_name_mentor(C, C, 1, 0, 0)]</b>: [msg]</span>")
+			to_chat(src, "<span class='mentornotice'>Mentor PM to-<b>[key_name_mentor(C, C, 1, 0, 0)]</b>: [msg]</span>")
 
 	else
 		if(check_mentor())	//sender is an mentor but recipient is not.
 			to_chat(C, "<span class='notice'>Mentor PM from-<b>[key_name_mentor(src, C, 1, 0, 0)]</b>: [msg]</span>")
-			to_chat(src, "<span class='green'>Mentor PM to-<b>[key_name_mentor(C, C, 1, 0, show_char)]</b>: [msg]</span>")
+			to_chat(src, "<span class='mentornotice'>Mentor PM to-<b>[key_name_mentor(C, C, 1, 0, show_char)]</b>: [msg]</span>")
 
 	//we don't use message_Mentors here because the sender/receiver might get it too
 	var/show_char_sender = !check_mentor_other(src) && CONFIG_GET(flag/mentors_mobname_only)
 	var/show_char_recip = !check_mentor_other(C) && CONFIG_GET(flag/mentors_mobname_only)
 	for(var/client/X in GLOB.mentors)
 		if(X.key!=key && X.key!=C.key)	//check client/X is an Mentor and isn't the sender or recipient
-			to_chat(X, "<B><span class='green'>Mentor PM: [key_name_mentor(src, X, 0, 0, show_char_sender)]-&gt;[key_name_mentor(C, X, 0, 0, show_char_recip)]:</B> \blue [msg]</span>") //inform X
+			to_chat(X, "<B><span class='mentornotice'>Mentor PM: [key_name_mentor(src, X, 0, 0, show_char_sender)]-&gt;[key_name_mentor(C, X, 0, 0, show_char_recip)]:</B> \blue [msg]</span>") //inform X
 	for(var/client/A in GLOB.admins)
 		if(A.key!=key && A.key!=C.key)	//check client/A is an Mentor and isn't the sender or recipient
-			to_chat(A, "<B><span class='green'>Mentor PM: [key_name_mentor(src, A, 0, 0, show_char_sender)]-&gt;[key_name_mentor(C, A, 0, 0, show_char_recip)]:</B> \blue [msg]</span>") //inform A
+			to_chat(A, "<B><span class='mentornotice'>Mentor PM: [key_name_mentor(src, A, 0, 0, show_char_sender)]-&gt;[key_name_mentor(C, A, 0, 0, show_char_recip)]:</B> \blue [msg]</span>") //inform A
