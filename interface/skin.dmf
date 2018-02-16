@@ -812,7 +812,7 @@ window "mainwindow"
 		anchor2 = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
-		icon = 'icons\\ss13_64.png'
+		icon = 'icons\\oracle_eye.png'
 		macro = "macro"
 		menu = "menu"
 	elem "split"
