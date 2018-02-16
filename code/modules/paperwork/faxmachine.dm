@@ -8,11 +8,13 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	icon = 'icons/obj/library.dmi'
 	icon_state = "fax"
 	insert_anim = "faxsend"
+	var/print_anim = "faxreceive"
 	var/fax_network = "Local Fax Network"
 	density = FALSE
+	pixel_y = 4
 
 	var/long_range_enabled = FALSE // Can we send messages off the station?
-	req_one_access = list(ACCESS_LAWYER, ACCESS_HEADS, ACCESS_ARMORY)
+	req_one_access = list(ACCESS_LAWYER, ACCESS_HEADS, ACCESS_ARMORY, ACCESS_IAA)
 
 	use_power = TRUE
 	idle_power_usage = 30
@@ -38,6 +40,9 @@ GLOBAL_LIST_EMPTY(alldepartments)
 /obj/machinery/photocopier/faxmachine/longrange
 	name = "long range fax machine"
 	fax_network = "Central Command Quantum Entanglement Network"
+	icon_state = "longfax"
+	insert_anim = "longfaxsend"
+	print_anim = "longfaxreceive"
 	long_range_enabled = TRUE
 
 /obj/machinery/photocopier/faxmachine/attack_hand(mob/user)
@@ -266,7 +271,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 
 //Prevents copypasta for evil faxes
 /obj/machinery/photocopier/faxmachine/proc/handle_animation()
-	flick("faxreceive", src)
+	flick(print_anim, src)
 	playsound(loc, 'goon/sound/machinery/printer_dotmatrix.ogg', 50, 1)
 
 /obj/machinery/photocopier/faxmachine/proc/handle_copying(var/obj/item/incoming)

@@ -56,6 +56,7 @@
 #define SUPERMATTER_WARNING_PERCENT 100
 
 GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_shard)
+GLOBAL_LIST_EMPTY(supermatters)
 
 /obj/machinery/power/supermatter_shard
 	name = "supermatter shard"
@@ -141,6 +142,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_shard)
 	countdown = new(src)
 	countdown.start()
 	GLOB.poi_list |= src
+	GLOB.supermatters |= src
 	radio = new(src)
 	radio.keyslot = new radio_key
 	radio.listening = 0
@@ -154,6 +156,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_shard)
 	SSair.atmos_machinery -= src
 	QDEL_NULL(radio)
 	GLOB.poi_list -= src
+	GLOB.supermatters -= src
 	QDEL_NULL(countdown)
 	if(is_main_engine && GLOB.main_supermatter_engine == src)
 		GLOB.main_supermatter_engine = null

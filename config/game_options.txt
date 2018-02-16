@@ -500,3 +500,8 @@ MICE_ROUNDSTART 10
 ## Shutdown the world instead of rebooting
 #SHUTDOWN_FOR_UPDATE
 #UPDATE_VERSION_STRING_URI http://s3.us-east-1.oraclestation.com/master/latest/COMMIT_HASH
+
+## Mob spam prevention. The number of each mobtype that can be alive at once. Stops people from crashing the server with chickens/monkeycubes/slimes. Altering these values is recommended based on server hardware.
+MAX_CUBE_MONKEYS 100
+MAX_CHICKENS 100
+MAX_SLIMES 100

@@ -8,7 +8,7 @@
 	new /obj/item/clothing/neck/cloak/qm(src)
 	new /obj/item/clothing/under/rank/cargo(src)
 	new /obj/item/clothing/shoes/sneakers/brown(src)
-	new /obj/item/device/radio/headset/headset_cargo(src)
+	new /obj/item/device/radio/headset/heads/qm(src)
 	new /obj/item/clothing/suit/fire/firefighter(src)
 	new /obj/item/clothing/gloves/fingerless(src)
 	new /obj/item/device/megaphone/cargo(src)

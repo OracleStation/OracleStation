@@ -157,8 +157,8 @@
 	blood_overlay_type = "armor"
 	allowed = list(/obj/item/device/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/device/t_scanner, /obj/item/device/radio)
 	resistance_flags = 0
-//Lawyer
-/obj/item/clothing/suit/toggle/lawyer
+//IAA
+/obj/item/clothing/suit/toggle/iaa
 	name = "blue suit jacket"
 	desc = "A snappy dress jacket."
 	icon_state = "suitjacket_blue"
@@ -171,13 +171,13 @@
 		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
 		)
 
-/obj/item/clothing/suit/toggle/lawyer/purple
+/obj/item/clothing/suit/toggle/iaa/purple
 	name = "purple suit jacket"
 	desc = "A foppish dress jacket."
 	icon_state = "suitjacket_purp"
 	item_state = "suitjacket_purp"
 
-/obj/item/clothing/suit/toggle/lawyer/black
+/obj/item/clothing/suit/toggle/iaa/black
 	name = "black suit jacket"
 	desc = "A professional suit jacket."
 	icon_state = "suitjacket_black"
@@ -268,4 +268,4 @@
 	species_fit = list("Vox Outcast")
 	sprite_sheets = list(
 		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
-		)
+		)	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 10)
