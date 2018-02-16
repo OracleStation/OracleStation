@@ -81,6 +81,6 @@
 	for(var/mob/living/carbon/human/H in GLOB.mob_list)
 		if(!H.stat == DEAD)
 			if(H.z == ZLEVEL_STATION_PRIMARY || SSshuttle.emergency.shuttle_areas[get_area(H)])
-				if(H.check_virus() == 2)
+				if(H.check_virus() == 2) //Harmful viruses only
 					return FALSE
 	return TRUE

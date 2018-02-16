@@ -18,3 +18,14 @@
 		if(owner.current.stat != DEAD)
 			return TRUE
 	return FALSE
+
+/datum/objective/crew/shawshankgonewrong
+	explanation_text = "Ensure there are no corpses in security when the shift ends."
+	jobs = "brigphysician"
+
+/datum/objective/crew/shawshankgonewrong/check_completion()
+	for(var/mob/living/carbon/human/H in GLOB.mob_list)
+		if(H.stat == DEAD && H.z == ZLEVEL_STATION_PRIMARY)
+			if(get_area(H) == /area/security)
+				return FALSE
+	return TRUE

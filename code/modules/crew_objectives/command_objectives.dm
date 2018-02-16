@@ -31,3 +31,12 @@
 				return TRUE
 		return FALSE
 	return FALSE
+
+/datum/objective/crew/peashooter
+	explanation_text = "Don't lose your pistol."
+	jobs = "blueshield"
+
+/datum/objective/peashooter/check_completion()
+	if(owner && owner.current && (owner.current.check_contents_for(/obj/item/gun/ballistic/revolver/detective) || owner.current.check_contents_for(/obj/item/gun/ballistic/automatic/pistol/enforcer) || owner.current.check_contents_for(/obj/item/gun/energy/e_gun/blueshield)))
+		return TRUE
+	return FALSE
