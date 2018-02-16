@@ -1,7 +1,8 @@
 /datum/controller/subsystem/ticker/proc/generate_crew_objectives()
 	if(CONFIG_GET(flag/allow_crew_objectives))
 		for(var/datum/mind/crewMind in SSticker.minds)
-			generate_individual_objectives(crewMind)
+			if(crewMind.current.client.prefs.crew_objectives)
+				generate_individual_objectives(crewMind)
 	return
 
 /datum/controller/subsystem/ticker/proc/generate_individual_objectives(var/datum/mind/crewMind)
