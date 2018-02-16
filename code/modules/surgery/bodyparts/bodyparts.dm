@@ -155,7 +155,7 @@
 
 	if(status == BODYPART_ROBOTIC) //This makes robolimbs not damageable by chems and makes it stronger
 		brute = max(0, brute - 5)
-		burn = max(0, burn - 4)
+		burn = max(0, burn - 3)
 
 	switch(animal_origin)
 		if(ALIEN_BODYPART,LARVA_BODYPART) //aliens take double burn

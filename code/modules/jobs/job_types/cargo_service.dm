@@ -147,7 +147,7 @@ Bartender
 /datum/job/bartender
 	title = "Bartender"
 	flag = BARTENDER
-	department_head = list("Quartermaster")
+	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 1
@@ -179,7 +179,7 @@ Cook
 /datum/job/cook
 	title = "Cook"
 	flag = COOK
-	department_head = list("Quartermaster")
+	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 2
@@ -227,7 +227,7 @@ Botanist
 /datum/job/hydro
 	title = "Botanist"
 	flag = BOTANIST
-	department_head = list("Quartermaster")
+	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 3
@@ -265,7 +265,7 @@ Janitor
 /datum/job/janitor
 	title = "Janitor"
 	flag = JANITOR
-	department_head = list("Quartermaster")
+	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 2

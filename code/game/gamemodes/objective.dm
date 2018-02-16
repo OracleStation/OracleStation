@@ -878,4 +878,8 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	command_staff_only = TRUE
 
 
+/datum/objective/wizard
+	completed = TRUE
 
+/datum/objective/wizard/New()
+	explanation_text = "[pick("Wreak havoc", "Sow carnage", "Unleash destruction")] on these [pick("wandless", "spelless", "absolutely not magical")] Nanotrasen scum."

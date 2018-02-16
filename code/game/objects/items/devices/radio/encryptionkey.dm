@@ -115,6 +115,12 @@
 	icon_state = "com_cypherkey"
 	channels = list("Command" = 1)
 
+/obj/item/device/encryptionkey/iaa
+	name = "\proper the internal affairs agent's encryption key"
+	desc = "An encryption key for a radio headset.  Channels are as follows: :c - command, :s - security."
+	icon_state = "com_cypherkey"
+	channels = list("Command" = 1, "Security" = 1)
+
 /obj/item/device/encryptionkey/headset_cargo
 	name = "supply radio encryption key"
 	desc = "An encryption key for a radio headset.  To access the supply channel, use :u."

@@ -117,6 +117,10 @@ CONFIG_DEF(number/tick_limit_mc_init)	//SSinitialization throttling
 
 CONFIG_DEF(flag/admin_legacy_system)	//Defines whether the server uses the legacy admin system with admins.txt or the SQL system
 
+CONFIG_DEF(flag/mentors_mobname_only) // Only display mob name to mentors in mentorhelps
+
+CONFIG_DEF(flag/mentor_legacy_system) // Whether to use the legacy mentor system (flat file) instead of SQL
+
 CONFIG_DEF(string/hostedby)
 
 CONFIG_DEF(flag/norespawn)

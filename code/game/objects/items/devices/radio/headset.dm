@@ -177,6 +177,12 @@
 	icon_state = "com_headset_alt"
 	keyslot = new /obj/item/device/encryptionkey/heads/blueshield
 
+/obj/item/device/radio/headset/iaa
+	name = "\proper the internal affairs agent's headset"
+	desc = "The headset of Central Command's snitch. \nChannels are as follows: :s - security, :c - command."
+	icon_state = "com_headset"
+	keyslot = new /obj/item/device/encryptionkey/iaa
+
 /obj/item/device/radio/headset/heads/qm
 	name = "\proper the quartermaster's headset"
 	desc = "The headset of the station's latest head of staff. \nChannels are as follows: :u - supply, :c - command."

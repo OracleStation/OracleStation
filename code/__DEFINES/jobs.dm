@@ -37,7 +37,7 @@
 #define QUARTERMASTER	(1<<6)
 #define CARGOTECH		(1<<7)
 #define MINER			(1<<8)
-#define LAWYER			(1<<9)
+#define IAA		(1<<9)
 #define CHAPLAIN		(1<<10)
 #define CLOWN			(1<<11)
 #define MIME			(1<<12)
