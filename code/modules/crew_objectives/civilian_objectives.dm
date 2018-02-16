@@ -3,7 +3,7 @@
 /datum/objective/crew/druglordbot //ported from old Hippie with adjustments
 	var/targetchem = "none"
 	var/datum/reagent/chempath
-	explanation_text = "Have at least (somethin broke here) harvested plants containing (report this on the development discussion channel of citadel's discord) when the shift ends."
+	explanation_text = "Have at least (somethin broke here) harvested plants containing (report this on GitHub) when the shift ends."
 	jobs = "botanist"
 
 /datum/objective/crew/druglordbot/New()
@@ -72,7 +72,7 @@
 /datum/objective/crew/clean //ported from old Hippie
 	var/list/areas = list()
 	var/hardmode = FALSE
-	explanation_text = "Ensure sure that (Yo, something broke. Yell about this in citadels devlopmeent discussion channel.) remain spotless at the end of the shift."
+	explanation_text = "Ensure sure that (Yo, something broke. Yell about this on GitHub.) remain spotless at the end of the shift."
 	jobs = "janitor"
 
 /datum/objective/crew/clean/New()
@@ -146,7 +146,7 @@
 	return TRUE
 
 /datum/objective/crew/nullrod
-	explanation_text = "Don't lose your holy rod."
+	explanation_text = "Don't lose your nullrod. You can still transform it into another item."
 	jobs = "chaplain"
 
 /datum/objective/crew/nullrod/check_completion()
@@ -158,7 +158,7 @@
 
 /datum/objective/crew/reporter //ported from old hippie
 	var/charcount = 100
-	explanation_text = "Publish at least (Yo something broke) articles containing at least (Report this to Citadels development channel) characters."
+	explanation_text = "Publish at least (Yo something broke) articles containing at least (Report this on GitHub) characters."
 	jobs = "curator"
 
 /datum/objective/crew/reporter/New()
@@ -186,7 +186,7 @@
 
 /datum/objective/crew/pwrgame //ported from Goon with adjustments
 	var/obj/item/clothing/targettidegarb
-	explanation_text = "Get your grubby hands on a (Dear god something broke. Report this to Citadel's development dicussion channel)."
+	explanation_text = "Get your grubby hands on a (Dear god something broke. Report this on GitHub)."
 	jobs = "assistant"
 
 /datum/objective/crew/pwrgame/New()

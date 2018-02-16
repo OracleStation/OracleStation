@@ -1,7 +1,7 @@
 /*				CARGO OBJECTIVES				*/
 
 /datum/objective/crew/petsplosion
-	explanation_text = "Ensure there are at least (If you see this, yell on citadels discord in the development discussion channel) pets on the station by the end of the shift. Interpret this as you wish."
+	explanation_text = "Ensure there are at least (If you see this, yell on GitHub) pets on the station by the end of the shift. Interpret this as you wish."
 	jobs = "quartermaster,cargotechnician"
 
 /datum/objective/crew/petsplosion/New()
@@ -30,7 +30,7 @@
 		return FALSE
 
 /datum/objective/crew/points //ported from old hippie
-	explanation_text = "Make sure the station has at least (Something broke, report this to the development discussion channel of citadels discord) supply points at the end of the shift."
+	explanation_text = "Make sure the station has at least (Something broke, yell on GitHub) station credits at the end of the shift."
 	jobs = "quartermaster,cargotechnician"
 
 /datum/objective/crew/points/New()
@@ -40,7 +40,7 @@
 
 /datum/objective/crew/points/update_explanation_text()
 	. = ..()
-	explanation_text = "Make sure the station has at least [target_amount] supply points at the end of the shift."
+	explanation_text = "Make sure the station has at least [target_amount] station credits at the end of the shift."
 
 /datum/objective/crew/points/check_completion()
 	if(SSshuttle.points >= target_amount)
@@ -59,7 +59,7 @@
 	return TRUE
 
 /datum/objective/crew/fatstacks //ported from old hippie
-	explanation_text = "Have at least (something broke, report this to the development discussion channel of citadels discord) mining points on your ID at the end of the shift."
+	explanation_text = "Have at least (something broke, report this on GitHub) mining points on your ID at the end of the shift."
 	jobs = "shaftminer"
 
 /datum/objective/crew/fatstacks/New()
