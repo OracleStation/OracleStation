@@ -985,7 +985,7 @@ window "infowindow"
 		saved-params = "is-checked"
 		text = "GitHub"
 		command = "github"
-	elem "report-issue"
+	elem "ui-help-button"
 		type = BUTTON
 		pos = 552,5
 		size = 80x20
@@ -993,11 +993,12 @@ window "infowindow"
 		anchor2 = 99,0
 		font-family = "Verdana"
 		font-size = 8
+		font-style = "bold"
 		text-color = #ffffff
-		background-color = #40628a
+		background-color = #ff0000
 		saved-params = "is-checked"
-		text = "Report Issue"
-		command = "report-issue"
+		text = "Help"
+		command = "ui-help-button"
 
 window "outputwindow"
 	elem "outputwindow"

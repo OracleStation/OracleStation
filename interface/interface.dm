@@ -53,23 +53,18 @@
 		to_chat(src, "<span class='danger'>The Github URL is not set in the server configuration.</span>")
 	return
 
-/client/verb/reportissue()
-	set name = "report-issue"
-	set desc = "Report an issue"
+/client/verb/helpbutton()
+	set name = "ui-help-button"
+	set desc = "Get Assistance"
 	set hidden = 1
-	var/githuburl = CONFIG_GET(string/githuburl)
-	if(githuburl)
-		var/message = "This will open the Github issue reporter in your browser. Are you sure?"
-		if(GLOB.revdata.testmerge.len)
-			message += "<br>The following experimental changes are active and are probably the cause of any new or sudden issues you may experience. If possible, please try to find a specific thread for your issue instead of posting to the general issue tracker:<br>"
-			message += GLOB.revdata.GetTestMergeInfo(FALSE)
-		if(tgalert(src, message, "Report Issue","Yes","No")=="No")
-			return
-		var/static/issue_template = file2text(".github/ISSUE_TEMPLATE.md")
-		var/servername = CONFIG_GET(string/servername)
-		src << link("[githuburl]/issues/new[GLOB.round_id ? "?body=[url_encode("Issue reported from Round ID: [GLOB.round_id][servername ? " ([servername])" : ""]\n\n[issue_template]")]" : ""]")
-	else
-		to_chat(src, "<span class='danger'>The GitHub URL is not set in the server configuration.</span>")
+
+	var/message = "If you have a question about the game mechanics, press 'Mentor Help'.\nFor administrative issues such as griefing, press 'Admin Help'"
+	var/choice = alert(src, message, "What kind of help do you need?","Mentor Help","Admin Help","Cancel")
+	if(choice == "Mentor Help")
+		mentorhelp(input("What do you need to ask the Mentors?", "Mentor Help") as text)
+	if(choice == "Admin Help")
+		adminhelp(input("What do you need to ask the Admins?", "Admin Help") as text)
+
 	return
 
 /client/verb/joindiscord()
