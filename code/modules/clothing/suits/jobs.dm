@@ -268,4 +268,4 @@
 	species_fit = list("Vox Outcast")
 	sprite_sheets = list(
 		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
-		)	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 10)
+		)
