@@ -50,17 +50,9 @@
 			else
 				Lines += "[C.key] ([round(C.avgping, 1)]ms)"
 
-	var/player_number = length(Lines)
-	if(length(GLOB.mentors) > 0)
-		Lines += "<b>Mentors:</b>"
-		for(var/client/C in sortList(GLOB.clients))
-			var/mentor = GLOB.mentor_datums[C.ckey]
-			if(mentor)
-				Lines += "<span class='info'>\t[C.key]</span> - Mentor"
-
 	for(var/line in sortList(Lines))
 		msg += "[line]\n"
-
+	var/player_number = length(Lines)
 	msg += "<b>Total Players: [player_number]</b>"
 	to_chat(src, msg)
 
@@ -71,7 +63,7 @@
 	var/msg = "<b>Current Admins:</b>\n"
 	if(holder)
 		for(var/client/C in GLOB.admins)
-			msg += "\t[C] is a [C.holder.rank]"
+			msg += "<b>\t[C]</b> is a [C.holder.rank]"
 
 			if(C.holder.fakekey)
 				msg += " <i>(as [C.holder.fakekey])</i>"
@@ -91,6 +83,12 @@
 			if(C.is_afk())
 				continue //Don't show afk admins to adminwho
 			if(!C.holder.fakekey)
-				msg += "\t[C] is a [C.holder.rank]\n"
+				msg += "<b>\t[C]</b> is a [C.holder.rank]\n"
+	if(length(GLOB.mentors) > 0)
+		msg += "<b>Mentors:</b> \n"
+		for(var/client/C in sortList(GLOB.clients))
+			var/mentor = GLOB.mentor_datums[C.ckey]
+			if(mentor)
+				msg += "<b>\t[C.key]</b> is a Mentor \n"
 		msg += "<span class='info'>Adminhelps are also sent to Discord. If no admins are available in game adminhelp anyways and an admin on Discord will see it and respond.</span>"
 	to_chat(src, msg)
