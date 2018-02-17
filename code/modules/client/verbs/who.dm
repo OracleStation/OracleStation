@@ -89,6 +89,6 @@
 		for(var/client/C in sortList(GLOB.clients))
 			var/mentor = GLOB.mentor_datums[C.ckey]
 			if(mentor)
-				msg += "<span class='info'>\t[C.key]</span> - Mentor \n"
+				msg += "<span>\t[C.key]</span> is a Mentor \n"
 		msg += "<span class='info'>Adminhelps are also sent to Discord. If no admins are available in game adminhelp anyways and an admin on Discord will see it and respond.</span>"
 	to_chat(src, msg)
