@@ -316,10 +316,7 @@
 	allowed = list()
 	actions_types = list(/datum/action/item_action/toggle_human_head)
 	hoodtype = /obj/item/clothing/head/hooded/human_head
-	species_fit = list("Vox Outcast")
-	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
-		)
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/hooded/human_head
 	name = "bloated human head"
@@ -328,10 +325,7 @@
 	body_parts_covered = HEAD
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
-	species_fit = list("Vox Outcast")
-	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/head.dmi'
-		)
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/security/officer/russian
 	name = "russian officer's jacket"
