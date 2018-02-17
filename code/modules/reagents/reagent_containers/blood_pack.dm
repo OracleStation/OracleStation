@@ -85,7 +85,6 @@
 
 /obj/item/reagent_containers/blood/empty
 	name = "blood pack"
-	icon_state = "empty"
 
 /obj/item/reagent_containers/blood/attackby(obj/item/I, mob/user, params)
 	if (istype(I, /obj/item/pen) || istype(I, /obj/item/toy/crayon))
