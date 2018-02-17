@@ -184,7 +184,7 @@ Internal Affairs Agent
 	ears = /obj/item/device/radio/headset/iaa
 	uniform = /obj/item/clothing/under/iaa/blacksuit
 	suit = /obj/item/clothing/suit/toggle/iaa/black
-	glasses = /obj/item/clothing/glasses/
+	glasses = /obj/item/clothing/glasses/sunglasses
 	shoes = /obj/item/clothing/shoes/laceup
 	l_hand = /obj/item/storage/briefcase
 	l_pocket = /obj/item/device/laser_pointer
