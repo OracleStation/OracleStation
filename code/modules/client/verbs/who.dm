@@ -63,7 +63,7 @@
 	var/msg = "<b>Current Admins:</b>\n"
 	if(holder)
 		for(var/client/C in GLOB.admins)
-			msg += "\t[C] is a [C.holder.rank]"
+			msg += "<b>\t[C]</b> is a [C.holder.rank]"
 
 			if(C.holder.fakekey)
 				msg += " <i>(as [C.holder.fakekey])</i>"
