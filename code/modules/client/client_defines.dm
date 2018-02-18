@@ -47,6 +47,7 @@
 	var/related_accounts_cid = "Requires database"	//So admins know why it isn't working - Used to determine what other accounts previously logged in from this computer id
 	var/account_join_date = null	//Date of byond account creation in ISO 8601 format
 	var/account_age = -1	//Age of byond account in days
+	var/is_ultra_whitelisted = FALSE	//Used to determine if the player is whitelisted for the Ultra job preference. Reward for good behavior.
 
 	preload_rsc = PRELOAD_RSC
 

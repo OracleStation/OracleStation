@@ -1350,6 +1350,44 @@
 		NP.ckey = M.ckey
 		qdel(M)
 
+	else if(href_list["awardultrawhitelist"])
+		if(!check_rights(R_ADMIN))
+			return
+
+		var/mob/M = locate(href_list["awardultrawhitelist"])
+
+		if(!M.client)
+			to_chat(usr, "<span class='warning'>[M] doesn't seem to have an active client.</span>")
+			return
+
+		if(alert(usr, "Award [key_name(M)] Ultra preference whitelist?", "Message", "Yes", "No") != "Yes")
+			return
+
+		M.client.is_ultra_whitelisted = TRUE
+		db_set_ultra_whitelisted(M.client, TRUE)
+		to_chat(M, "<span class='notice'>You have been added to the Ultra job preference whitelist! Congratulations!</span>")
+		log_admin("[key_name(usr)] has added [key_name(M)] to the Ultra job preference whitelist.")
+		message_admins("[key_name(usr)] has added [key_name(M)] to the Ultra job preference whitelist.")
+
+	else if(href_list["removeultrawhitelist"])
+		if(!check_rights(R_ADMIN))
+			return
+
+		var/mob/M = locate(href_list["removeultrawhitelist"])
+
+		if(!M.client)
+			to_chat(usr, "<span class='warning'>[M] doesn't seem to have an active client.</span>")
+			return
+
+		if(alert(usr, "Remove [key_name(M)] from the Ultra preference whitelist?", "Message", "Yes", "No") != "Yes")
+			return
+
+		M.client.is_ultra_whitelisted = FALSE
+		db_set_ultra_whitelisted(M.client, FALSE)
+		to_chat(M, "<span class='warning'>You have been removed from the Ultra job preference whitelist! Darn.</span>")
+		log_admin("[key_name(usr)] has removed [key_name(M)] from the Ultra job preference whitelist.")
+		message_admins("[key_name(usr)] has removed [key_name(M)] from the Ultra job preference whitelist.")
+
 	else if(href_list["tdome1"])
 		if(!check_rights(R_FUN))
 			return

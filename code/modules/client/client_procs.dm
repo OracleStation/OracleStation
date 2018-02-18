@@ -209,6 +209,9 @@ GLOBAL_LIST(external_rsc_urls)
 		GLOB.admins |= src
 		holder.owner = src
 
+	//Need to load before we load preferences for correctly removing Ultra if user no longer whitelisted
+	is_ultra_whitelisted = db_get_ultra_whitelisted(src)
+
 	//Mentor Authorisation
 	var/mentor = GLOB.mentor_datums[ckey]
 	if(mentor)
@@ -460,7 +463,7 @@ GLOBAL_LIST(external_rsc_urls)
 
 		new_player = 1
 		account_join_date = sanitizeSQL(findJoinDate())
-		var/datum/DBQuery/query_add_player = SSdbcore.NewQuery("INSERT INTO [format_table_name("player")] (`ckey`, `firstseen`, `lastseen`, `ip`, `computerid`, `lastadminrank`, `accountjoindate`) VALUES ('[sql_ckey]', Now(), Now(), INET_ATON('[sql_ip]'), '[sql_computerid]', '[sql_admin_rank]', [account_join_date ? "'[account_join_date]'" : "NULL"])")
+		var/datum/DBQuery/query_add_player = SSdbcore.NewQuery("INSERT INTO [format_table_name("player")] (`ckey`, `firstseen`, `lastseen`, `ip`, `computerid`, `lastadminrank`, `accountjoindate`, `ultrawhitelisted`) VALUES ('[sql_ckey]', Now(), Now(), INET_ATON('[sql_ip]'), '[sql_computerid]', '[sql_admin_rank]', [account_join_date ? "'[account_join_date]'" : "NULL"], '0')")
 		if(!query_add_player.Execute())
 			return
 		if(!account_join_date)
