@@ -329,7 +329,7 @@
 	basic_modules = list(
 		/obj/item/device/assembly/flash/cyborg,
 		/obj/item/restraints/handcuffs/cable/zipties/cyborg,
-		/obj/item/melee/baton/loaded,
+		/obj/item/melee/classic_baton/,
 		/obj/item/gun/energy/disabler/cyborg,
 		/obj/item/clothing/mask/gas/sechailer/cyborg)
 	emag_modules = list(/obj/item/gun/energy/laser/cyborg)
@@ -343,8 +343,8 @@
 
 /obj/item/robot_module/security/do_transform_animation()
 	..()
-	to_chat(loc, "<span class='userdanger'>While you have picked the security module, you still have to follow your laws, NOT Space Law. \
-	For Asimov, this means you must follow criminals' orders unless there is a law 1 reason not to.</span>")
+	to_chat(loc, "<span class='userdanger'>While you have picked the security module, you still have to FOLLOW YOUR LAWS, NOT Space Law. \
+	For Asimov, this means you must follow human criminals' orders unless there is a law 1 reason not to.</span>")
 
 /obj/item/robot_module/security/respawn_consumable(mob/living/silicon/robot/R, coeff = 1)
 	..()
