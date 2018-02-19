@@ -184,6 +184,7 @@ GLOBAL_LIST(external_rsc_urls)
 	GLOB.directory[ckey] = src
 
 	GLOB.ahelp_tickets.ClientLogin(src)
+	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
 
 	//Admin Authorisation
 	var/localhost_addresses = list("127.0.0.1", "::1")
@@ -208,6 +209,7 @@ GLOBAL_LIST(external_rsc_urls)
 	if(holder)
 		GLOB.admins |= src
 		holder.owner = src
+		connecting_admin = TRUE
 
 	//Mentor Authorisation
 	var/mentor = GLOB.mentor_datums[ckey]
@@ -295,7 +297,7 @@ GLOBAL_LIST(external_rsc_urls)
 		to_chat(src, "Required version to remove this message: [cwv] or later")
 		to_chat(src, "Visit http://www.byond.com/download/ to get the latest version of byond.")
 
-	if (connection == "web" && !holder)
+	if (connection == "web" && !connecting_admin)
 		if (!CONFIG_GET(flag/allow_webclient))
 			to_chat(src, "Web client is disabled")
 			qdel(src)
