@@ -88,7 +88,7 @@
 		msg += "<b>Mentors:</b> \n"
 		for(var/client/C in sortList(GLOB.clients))
 			if(C in GLOB.admins)
-				return
+				continue
 			var/mentor = GLOB.mentor_datums[C.ckey]
 			if(mentor)
 				msg += "<b>\t[C.key]</b> is a Mentor \n"
