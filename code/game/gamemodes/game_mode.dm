@@ -338,12 +338,14 @@
 			for(var/species in restricted_species)
 				if(player.client.prefs.pref_species.id == species)
 					candidates -= player
+					break
 
 	if(restricted_jobs)
 		for(var/datum/mind/player in candidates)
 			for(var/job in restricted_jobs)					// Remove people who want to be antagonist but have a job already that precludes it
 				if(player.assigned_role == job)
 					candidates -= player
+					break
 
 	if(candidates.len < recommended_enemies)
 		for(var/mob/dead/new_player/player in players)
@@ -357,12 +359,14 @@
 			for(var/species in restricted_species)
 				if(player.client.prefs.pref_species.id == species)
 					drafted -= player
+					break
 
 	if(restricted_jobs)
 		for(var/datum/mind/player in drafted)				// Remove people who can't be an antagonist
 			for(var/job in restricted_jobs)
 				if(player.assigned_role == job)
 					drafted -= player
+					break
 
 	drafted = shuffle(drafted) // Will hopefully increase randomness, Donkie
 
@@ -381,12 +385,14 @@
 			for(var/species in restricted_species)
 				if(player.client.prefs.pref_species.id == species)
 					drafted -= player
+					break
 
 	if(restricted_jobs)
 		for(var/datum/mind/player in drafted)				// Remove people who can't be an antagonist
 			for(var/job in restricted_jobs)
 				if(player.assigned_role == job)
 					drafted -= player
+					break
 
 	drafted = shuffle(drafted) // Will hopefully increase randomness, Donkie
 
