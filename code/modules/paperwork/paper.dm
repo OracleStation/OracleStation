@@ -504,7 +504,7 @@
 	This Topology:<br>\
 	This topology is split into isles, each isle having 1 bus and 1 CPU responsible for 2 channels, each with their own servers. The channel specific servers are marked with floor tiles similar to each channel identifier.<br>\
 	<br>\
-	Telecommunication Machinery Description\
+	Telecommunication Machinery Description<br>\
 	All machines share similar features, such as networks and filtering frequencies, but each machine has a very specific role<br>\
 	Servers:<br>\
 	Servers store a data packet every time audio is sent down a corresponding channel, this data can be viewed with a Telecomms Server Montior. Servers can also be used for scripting, but sadly this is no longer supported.<br>\
@@ -542,7 +542,7 @@
 	<li>Isle 3: Command And Security</li>\
 	<li>Isle 4: Supply And Service</li>\
 	<br>\
-	NOTE: In this setup, the Common server also listens on all frequencies<br>\
+	NOTE: In this setup, the Common server also listens on frequencies 144.4 - 148.7<br>\
 	<br>\
 	Bottom Section:<br>\
 	In the bottom section, you will find two broadcasters (one for output, one for redundcancy) and two recievers. The west reciever handles Science, Medical, Supply and Service. The east reciever handles Command, Security, Engineering, Common and all the other frequencies.<br>"
