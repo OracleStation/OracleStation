@@ -3,7 +3,11 @@
 	////////////
 #define UPLOAD_LIMIT		1048576	//Restricts client uploads to the server to 1MB //Could probably do with being lower.
 
-GLOBAL_LIST_INIT(blacklisted_builds, list(1407 = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see"))
+GLOBAL_LIST_INIT(blacklisted_builds, list(
+	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
+	"1408" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see"
+
+	))
 
 #define LIMITER_SIZE	5
 #define CURRENT_SECOND	1
@@ -184,6 +188,7 @@ GLOBAL_LIST(external_rsc_urls)
 	GLOB.directory[ckey] = src
 
 	GLOB.ahelp_tickets.ClientLogin(src)
+	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
 
 	//Admin Authorisation
 	var/localhost_addresses = list("127.0.0.1", "::1")
@@ -208,6 +213,7 @@ GLOBAL_LIST(external_rsc_urls)
 	if(holder)
 		GLOB.admins |= src
 		holder.owner = src
+		connecting_admin = TRUE
 
 	//Mentor Authorisation
 	var/mentor = GLOB.mentor_datums[ckey]
@@ -253,7 +259,7 @@ GLOBAL_LIST(external_rsc_urls)
 	. = ..()	//calls mob.Login()
 
 	#if DM_VERSION >= 512
-	if (byond_build in GLOB.blacklisted_builds)
+	if (num2text(byond_build) in GLOB.blacklisted_builds)
 		log_access("Failed login: blacklisted byond version")
 		to_chat(src, "<span class='userdanger'>Your version of byond is blacklisted.</span>")
 		to_chat(src, "<span class='danger'>Byond build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[byond_build]].</span>")
@@ -295,7 +301,7 @@ GLOBAL_LIST(external_rsc_urls)
 		to_chat(src, "Required version to remove this message: [cwv] or later")
 		to_chat(src, "Visit http://www.byond.com/download/ to get the latest version of byond.")
 
-	if (connection == "web" && !holder)
+	if (connection == "web" && !connecting_admin)
 		if (!CONFIG_GET(flag/allow_webclient))
 			to_chat(src, "Web client is disabled")
 			qdel(src)
