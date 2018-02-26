@@ -489,7 +489,7 @@
 	name = "Your Guide To Telecomms!"
 	info = "<b>Congratulations On Your Purchase Of An NT-07 Telecommunications System!</b><br>\
 	WARNING: Should this machinery become destroyed or non functional, please contact your nearest technician.<br>\
-	INFO: This machinery is very subsceptable to Ionspheric Interference. Should an Ionspheric Anomalie occur, the machiner may be offline for a short amount of time.<br>\
+	INFO: This machinery is very subsceptable to Ionspheric Interference. Should an Ionspheric Anomalie occur, the machinery may be offline for a short amount of time.<br>\
 	<br>\
 	List of authorised channels and corresponding frequencies:<br>\
 	<li>Science: 135.1</li>\
