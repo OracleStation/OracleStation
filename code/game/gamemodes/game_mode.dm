@@ -23,8 +23,8 @@
 	var/list/datum/mind/modePlayer = new
 	var/list/datum/mind/antag_candidates = list()	// List of possible starting antags goes here
 	var/list/restricted_jobs = list()	// Jobs it doesn't make sense to be.  I.E chaplain or AI cultist
+	var/list/restricted_species = list() // Species that can't be traitors
 	var/list/protected_jobs = list()	// Jobs that can't be traitors because
-	var/list/protected_species = list() // Species that can't be traitors
 	var/required_players = 0
 	var/maximum_players = -1 // -1 is no maximum, positive numbers limit the selection of a mode on overstaffed stations
 	var/required_enemies = 0
@@ -333,16 +333,19 @@
 					if(age_check(player.client)) //Must be older than the minimum age
 						candidates += player.mind				// Get a list of all the people who want to be the antagonist for this round
 
-	if(protected_species)
+	if(restricted_species)
 		for(var/mob/dead/new_player/player in candidates)
-			if(player.client.prefs.pref_species.id in protected_species)
-				candidates -= player
+			for(var/species in restricted_species)
+				if(player.client.prefs.pref_species.id == species)
+					candidates -= player
+					break
 
 	if(restricted_jobs)
 		for(var/datum/mind/player in candidates)
 			for(var/job in restricted_jobs)					// Remove people who want to be antagonist but have a job already that precludes it
 				if(player.assigned_role == job)
 					candidates -= player
+					break
 
 	if(candidates.len < recommended_enemies)
 		for(var/mob/dead/new_player/player in players)
@@ -351,16 +354,19 @@
 					if(!jobban_isbanned(player, "Syndicate") && !jobban_isbanned(player, role)) //Nodrak/Carn: Antag Job-bans
 						drafted += player.mind
 
-	if(protected_species)
+	if(restricted_species)
 		for(var/mob/dead/new_player/player in drafted)
-			if(player.client.prefs.pref_species.id in protected_species)
-				drafted -= player
+			for(var/species in restricted_species)
+				if(player.client.prefs.pref_species.id == species)
+					drafted -= player
+					break
 
 	if(restricted_jobs)
 		for(var/datum/mind/player in drafted)				// Remove people who can't be an antagonist
 			for(var/job in restricted_jobs)
 				if(player.assigned_role == job)
 					drafted -= player
+					break
 
 	drafted = shuffle(drafted) // Will hopefully increase randomness, Donkie
 
@@ -374,16 +380,19 @@
 		else												// Not enough scrubs, ABORT ABORT ABORT
 			break
 
-	if(protected_species)
+	if(restricted_species)
 		for(var/mob/dead/new_player/player in drafted)
-			if(player.client.prefs.pref_species.id in protected_species)
-				drafted -= player
+			for(var/species in restricted_species)
+				if(player.client.prefs.pref_species.id == species)
+					drafted -= player
+					break
 
 	if(restricted_jobs)
 		for(var/datum/mind/player in drafted)				// Remove people who can't be an antagonist
 			for(var/job in restricted_jobs)
 				if(player.assigned_role == job)
 					drafted -= player
+					break
 
 	drafted = shuffle(drafted) // Will hopefully increase randomness, Donkie
 
