@@ -16,11 +16,11 @@
 	log_mentor("MENTORHELP: [key_name_mentor(src, 0, 0, 0, 0)]: [msg]")
 
 	for(var/client/X in GLOB.mentors)
-		X << 'sound/items/bikehorn.ogg'
+		X << 'sound/misc/notice2.ogg'
 		to_chat(X, mentor_msg)
 
 	for(var/client/A in GLOB.admins)
-		A << 'sound/items/bikehorn.ogg'
+		A << 'sound/misc/notice2.ogg'
 		to_chat(A, mentor_msg)
 
 	to_chat(src, "<span class='mentornotice'>PM to-<b>Mentors</b>: [msg]</span>")

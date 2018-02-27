@@ -3246,7 +3246,7 @@
 /obj/machinery/iv_drip{
 	density = 0
 	},
-/obj/item/reagent_containers/blood/empty,
+/obj/item/reagent_containers/blood,
 /turf/open/floor/plasteel/whitered/side{
 	dir = 5
 	},
@@ -58161,8 +58161,8 @@
 /area/quartermaster/storage)
 "cCp" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/blood/empty,
-/obj/item/reagent_containers/blood/empty,
+/obj/item/reagent_containers/blood,
+/obj/item/reagent_containers/blood,
 /obj/item/reagent_containers/blood/AMinus,
 /obj/item/reagent_containers/blood/BMinus{
 	pixel_x = -4;
