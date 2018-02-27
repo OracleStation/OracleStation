@@ -31,8 +31,8 @@
 /obj/item/clothing/neck/translator
 	name = "translator badge"
 	desc = "A small translator attached to one's shirt collar that repeats its user in another language. This one seems to be broken."
-	icon_state = "collar"
-	item_color = "collar"
+	icon_state = "combadge"
+	item_color = "combadge"
 	var/language
 	var/can_remove_language = TRUE
 
