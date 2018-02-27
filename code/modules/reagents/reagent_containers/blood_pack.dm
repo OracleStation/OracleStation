@@ -86,10 +86,6 @@
 /obj/item/reagent_containers/blood/vox
 	blood_type = "V"
 
-/obj/item/reagent_containers/blood/empty
-	name = "blood pack"
-	icon_state = "empty"
-
 /obj/item/reagent_containers/blood/attackby(obj/item/I, mob/user, params)
 	if (istype(I, /obj/item/pen) || istype(I, /obj/item/toy/crayon))
 		var/t = stripped_input(user, "What would you like to label the blood pack?", name, null, 53)
