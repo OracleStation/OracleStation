@@ -304,7 +304,7 @@
 			else if(!key)
 				msg += "<span class='deadsay'>[t_He] [t_is] totally catatonic. The stresses of life in deep-space must have been too much for [t_him]. Any recovery is unlikely.</span>\n"
 			else if(!client)
-				msg += "<span class='warning'>[t_He] [t_has] appears to be suffering from Sudden Sleep Disorder. [t_He] may snap out of it at any time! Or maybe never. It's best to leave [t_He] be.</span>\n"
+				msg += "<span class='warning'>[t_He] appears to be suffering from Space Sleep Disorder. [t_He] may snap out of it at any time! Or maybe never. It's best to leave [t_him] be.</span>\n"
 
 		if(digitalcamo)
 			msg += "[t_He] [t_is] moving [t_his] body in an unnatural and blatantly inhuman manner.\n"
