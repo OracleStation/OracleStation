@@ -129,7 +129,7 @@
 		// shuttle timers use 1/10th seconds internally
 		SSshuttle.emergency.setTimer(ENGINES_START_TIME)
 		var/system_error = emagged ? "SYSTEM ERROR:" : null
-		var/emag_boost_message = pick("STRAP IN FOR EMERGENCY BURN", "PREPARE FOR LUDICROUS SPEED", "WHEN THIS BABY HITS 88 MILLION MILES PER HOUR YOU'RE GONNA SEE SOME SERIOUS SHIT", "MAKING THE JUMP TO %@ERROR^& IN UNDER 12 PARSECS", "INERTIAL DAMPENERS OFFLINE", "WHAT IF THE ENGINES MOVE THE UNIVERSE, NOT THE SHUTTLE?")
+		var/emag_boost_message = pick("STRAP IN FOR EMERGENCY BURN", "PREPARE FOR LUDICROUS SPEED", "MAKING THE JUMP TO %@ERROR^& IN UNDER 12 PARSECS", "INERTIAL DAMPENERS OFFLINE")
 		minor_announce("The emergency shuttle will launch in \
 			[TIME_LEFT] seconds.\n[emag_boost_message]", system_error, alert=TRUE)
 		. = TRUE
