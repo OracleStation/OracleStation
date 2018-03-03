@@ -153,6 +153,7 @@
 	attack_verb = list("sliced")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/glasses/hud/security/sunglasses/gars/supergars
 	name = "giga HUD gar glasses"

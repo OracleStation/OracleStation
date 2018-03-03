@@ -206,6 +206,7 @@
 	attack_verb = list("sliced")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/glasses/sunglasses/garb/supergarb
 	name = "black giga gar glasses"
@@ -236,6 +237,7 @@
 	force = 12
 	throwforce = 12
 	glass_colour_type = /datum/client_colour/glass_colour/red
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/glasses/welding
 	name = "welding goggles"
@@ -346,6 +348,7 @@
 	icon_state = "orangeglasses"
 	item_state = "orangeglasses"
 	glass_colour_type = /datum/client_colour/glass_colour/lightorange
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/glasses/red
 	name = "red glasses"
@@ -353,6 +356,7 @@
 	icon_state = "redglasses"
 	item_state = "redglasses"
 	glass_colour_type = /datum/client_colour/glass_colour/red
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/glasses/godeye
 	name = "eye of god"
