@@ -400,7 +400,7 @@ ROUNDSTART_RACES human
 
 ## Races that are okay-ish on the station. Safe to enable. The number is the minimum hours required to play.
 ROUNDSTART_RACES unathi 10
-#ROUNDSTART_RACES plasmaman 0
+ROUNDSTART_RACES plasmaman 20
 #ROUNDSTART_RACES slime 10
 ROUNDSTART_RACES ethari 0
 ROUNDSTART_RACES human 0
