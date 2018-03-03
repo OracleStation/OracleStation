@@ -333,4 +333,4 @@
 /obj/structure/sign/numbered/isle
 	name = "Aisle Number"
 	desc = "This sign indicated an aisle in a telecommunications setup."
-	icon_state = "islenum"
+	icon_state = "aislenum"
