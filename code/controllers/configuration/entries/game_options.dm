@@ -94,6 +94,20 @@ CONFIG_DEF(flag/enforce_human_authority)	//If non-human species are barred from 
 
 CONFIG_DEF(flag/allow_latejoin_antagonists)	// If late-joining players can be traitor/changeling
 
+CONFIG_DEF(flag/use_antag_rep) // see game_options.txt for details
+
+CONFIG_DEF(number/antag_rep_maximum)
+	value = 200
+	min_val = 0
+
+CONFIG_DEF(number/default_antag_tickets)
+	value = 100
+	min_val = 0
+
+CONFIG_DEF(number/max_tickets_per_roll)
+	value = 100
+	min_val = 0
+
 CONFIG_DEF(number/midround_antag_time_check)	// How late (in minutes) you want the midround antag system to stay on, setting this to 0 will disable the system
 	value = 60
 	min_val = 0

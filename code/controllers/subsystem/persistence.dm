@@ -1,3 +1,5 @@
+#define FILE_ANTAG_REP "data/AntagReputation.json"
+
 SUBSYSTEM_DEF(persistence)
 	name = "Persistence"
 	init_order = INIT_ORDER_PERSISTENCE
@@ -12,12 +14,16 @@ SUBSYSTEM_DEF(persistence)
 
 	var/savefile/trophy_sav
 	var/list/saved_trophies = list()
+	var/list/antag_rep = list()
+	var/list/antag_rep_change = list()
 
 /datum/controller/subsystem/persistence/Initialize()
 	LoadSatchels()
 	LoadPoly()
 	LoadChiselMessages()
 	LoadTrophies()
+	if(CONFIG_GET(flag/use_antag_rep))
+		LoadAntagReputation()
 	..()
 
 /datum/controller/subsystem/persistence/proc/LoadSatchels()
@@ -108,6 +114,16 @@ SUBSYSTEM_DEF(persistence)
 
 	log_world("Loaded [saved_messages.len] engraved messages on map [SSmapping.config.map_name]")
 
+/datum/controller/subsystem/persistence/proc/LoadAntagReputation()
+	var/json = file2text(FILE_ANTAG_REP)
+	if(!json)
+		var/json_file = file(FILE_ANTAG_REP)
+		if(!fexists(json_file))
+			WARNING("Failed to load antag reputation. File likely corrupt.")
+			return
+		return
+	antag_rep = json_decode(json)
+
 /datum/controller/subsystem/persistence/proc/LoadTrophies()
 	trophy_sav = new /savefile("data/npc_saves/TrophyItems.sav")
 	var/saved_json
@@ -154,6 +170,8 @@ SUBSYSTEM_DEF(persistence)
 	CollectChiselMessages()
 	CollectSecretSatchels()
 	CollectTrophies()
+	if(CONFIG_GET(flag/use_antag_rep))
+		CollectAntagReputation()
 
 /datum/controller/subsystem/persistence/proc/CollectSecretSatchels()
 	for(var/A in new_secret_satchels)
@@ -197,3 +215,16 @@ SUBSYSTEM_DEF(persistence)
 		data["message"] = T.trophy_message
 		data["placer_key"] = T.placer_key
 		saved_trophies += list(data)
+
+/datum/controller/subsystem/persistence/proc/CollectAntagReputation()
+	var/ANTAG_REP_MAXIMUM = CONFIG_GET(number/antag_rep_maximum)
+
+	for(var/p_ckey in antag_rep_change)
+		//var/start = antag_rep[p_ckey]
+		antag_rep[p_ckey] = max(0, min(antag_rep[p_ckey]+antag_rep_change[p_ckey], ANTAG_REP_MAXIMUM))
+		//WARNING("AR_DEBUG: [p_ckey]: Committed [antag_rep_change[p_ckey]] reputation, going from [start] to [antag_rep[p_ckey]]")
+
+	antag_rep_change = list()
+
+	fdel(FILE_ANTAG_REP)
+	text2file(json_encode(antag_rep), FILE_ANTAG_REP)

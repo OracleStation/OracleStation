@@ -58,13 +58,13 @@
 	var/datum/mind/agent
 
 	if(!preset_scientist)
-		scientist = pick(antag_candidates)
+		scientist = antag_pick(antag_candidates)
 		antag_candidates -= scientist
 	else
 		scientist = preset_scientist
 
 	if(!preset_agent)
-		agent = pick(antag_candidates)
+		agent = antag_pick(antag_candidates)
 		antag_candidates -= agent
 	else
 		agent = preset_agent

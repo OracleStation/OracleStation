@@ -52,7 +52,7 @@
 	for (var/i=1 to max_headrevs)
 		if (antag_candidates.len==0)
 			break
-		var/datum/mind/lenin = pick(antag_candidates)
+		var/datum/mind/lenin = antag_pick(antag_candidates)
 		antag_candidates -= lenin
 		head_revolutionaries += lenin
 		lenin.restricted_roles = restricted_jobs
@@ -213,7 +213,7 @@
 				if(ROLE_REV in khrushchev.current.client.prefs.be_special)
 					promotable_revs += khrushchev
 		if(promotable_revs.len)
-			var/datum/mind/stalin = pick(promotable_revs)
+			var/datum/mind/stalin = antag_pick(promotable_revs)
 			revolutionaries -= stalin
 			head_revolutionaries += stalin
 			log_game("[stalin.key] (ckey) has been promoted to a head rev")

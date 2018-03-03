@@ -14,6 +14,7 @@ AI
 	minimal_player_age = 30
 	exp_requirements = 180
 	exp_type = EXP_TYPE_CREW
+	antag_rep = 20
 
 /datum/job/ai/equip(mob/living/carbon/human/H)
 	return H.AIize(FALSE)
@@ -46,6 +47,7 @@ Cyborg
 	minimal_player_age = 21
 	exp_requirements = 120
 	exp_type = EXP_TYPE_CREW
+	antag_rep = 16
 
 /datum/job/cyborg/equip(mob/living/carbon/human/H)
 	return H.Robotize(FALSE, FALSE)

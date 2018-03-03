@@ -12,6 +12,7 @@ Chaplain
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
+	antag_rep = 5
 
 	outfit = /datum/outfit/job/chaplain
 
