@@ -45,7 +45,7 @@
 			//metabolize reagents
 			C.reagents.metabolize(C, can_overdose=TRUE)
 
-			if(damage > 10 && prob(damage/3))//the higher the damage the higher the probability
+			if(damage > 10 && prob(damage/3) && status != ORGAN_ROBOTIC)//the higher the damage the higher the probability
 				to_chat(C, "<span class='notice'>You feel [pick("nauseous", "dull pain in your lower body", "confused")].</span>")
 
 /obj/item/organ/liver/prepare_eat()
@@ -100,11 +100,6 @@
 
 /obj/item/organ/liver/cybernetic/upgraded/ipc/emp_act(severity)
 	to_chat(owner, "<span class='warning'>Alert: Your Substance Processor has been damaged. An internal chemical leak is affecting performance.</span>")
-	switch(severity)
-		if(1)
-			owner.toxloss += 15
-		if(2)
-			owner.toxloss += 5
 
 /obj/item/organ/liver/vox
 	name = "vox liver"
@@ -112,3 +107,4 @@
 	desc = "A mechanically-assisted vox liver."
 	origin_tech = "biotech=4"
 	status = ORGAN_ROBOTIC
+	to_chat(owner, "<span class='warning'>Alert: Your Substance Processor has been damaged. Replace as soon as possible.</span>")

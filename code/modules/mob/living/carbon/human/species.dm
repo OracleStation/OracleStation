@@ -781,6 +781,9 @@
 
 
 /datum/species/proc/spec_life(mob/living/carbon/human/H)
+	if(NOTOX in species_traits)
+		H.setToxLoss(0)
+
 	if(NOBREATH in species_traits)
 		H.setOxyLoss(0)
 		H.losebreath = 0

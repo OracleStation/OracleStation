@@ -79,6 +79,7 @@
 			return -1
 		if(target_zone != "chest")
 			to_chat(user, "<span class='notice'>You have to install [tool] in [target]'s chest!</span>")
+			return -1
 		if(target.internal_organs_slot["brain"])
 			to_chat(user, "<span class='notice'>[target] already has a brain! You'd rather not find out what would happen with two in there.</span>")
 			return -1

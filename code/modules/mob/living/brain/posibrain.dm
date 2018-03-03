@@ -167,6 +167,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 	brainmob.real_name = brainmob.name
 	brainmob.loc = src
 	brainmob.container = src
+	GLOB.dead_mob_list -= brainmob
 	if(autoping)
 		ping_ghosts("created", TRUE)
 
