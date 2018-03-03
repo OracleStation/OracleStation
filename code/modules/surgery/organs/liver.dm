@@ -107,4 +107,3 @@
 	desc = "A mechanically-assisted vox liver."
 	origin_tech = "biotech=4"
 	status = ORGAN_ROBOTIC
-	to_chat(owner, "<span class='warning'>Alert: Your Substance Processor has been damaged. Replace as soon as possible.</span>")
