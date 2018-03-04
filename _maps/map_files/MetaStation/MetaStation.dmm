@@ -93888,21 +93888,21 @@
 /area/tcommsat/server)
 "dKX" = (
 /obj/effect/spawner/structure/window/reinforced,
-/obj/structure/sign/numbered/isle{
+/obj/structure/sign/numbered/aisle{
 	dir = 1;
-	icon_state = "islenum";
-	name = "Isle 2";
-	tag = "icon-islenum (NORTH)"
+	icon_state = "aislenum";
+	name = "Aisle 2";
+	tag = "icon-aislenum (NORTH)"
 	},
 /turf/open/floor/plating,
 /area/tcommsat/server)
 "dKY" = (
 /obj/effect/spawner/structure/window/reinforced,
-/obj/structure/sign/numbered/isle{
+/obj/structure/sign/numbered/aisle{
 	dir = 4;
-	icon_state = "islenum";
-	name = "Isle 3";
-	tag = "icon-islenum (EAST)"
+	icon_state = "aislenum";
+	name = "Aisle 3";
+	tag = "icon-aislenum (EAST)"
 	},
 /turf/open/floor/plating,
 /area/tcommsat/server)
@@ -93917,8 +93917,8 @@
 /turf/open/floor/plasteel/green,
 /area/tcommsat/server)
 "dLc" = (
-/obj/structure/sign/numbered/isle{
-	name = "Isle 1"
+/obj/structure/sign/numbered/aisle{
+	name = "Aisle 1"
 	},
 /turf/closed/wall/r_wall,
 /area/aisat)
@@ -93929,11 +93929,11 @@
 /turf/open/floor/plasteel/red,
 /area/tcommsat/server)
 "dLf" = (
-/obj/structure/sign/numbered/isle{
+/obj/structure/sign/numbered/aisle{
 	dir = 8;
-	icon_state = "islenum";
-	name = "Isle 4";
-	tag = "icon-islenum (WEST)"
+	icon_state = "aislenum";
+	name = "Aisle 4";
+	tag = "icon-aislenum (WEST)"
 	},
 /turf/closed/wall/r_wall,
 /area/aisat)
