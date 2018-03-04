@@ -219,10 +219,14 @@ SUBSYSTEM_DEF(persistence)
 /datum/controller/subsystem/persistence/proc/CollectAntagReputation()
 	var/ANTAG_REP_MAXIMUM = CONFIG_GET(number/antag_rep_maximum)
 
-	for(var/p_ckey in antag_rep_change)
-		//var/start = antag_rep[p_ckey]
+	for(var/p_ckey in antag_rep_change
+		#ifdef TESTING
+		var/start = antag_rep[p_ckey]
+		#endif
 		antag_rep[p_ckey] = max(0, min(antag_rep[p_ckey]+antag_rep_change[p_ckey], ANTAG_REP_MAXIMUM))
-		//WARNING("AR_DEBUG: [p_ckey]: Committed [antag_rep_change[p_ckey]] reputation, going from [start] to [antag_rep[p_ckey]]")
+		#ifdef TESTING
+		testing("AR_DEBUG: [p_ckey]: Committed [antag_rep_change[p_ckey]] reputation, going from [start] to [antag_rep[p_ckey]]")
+		#endif
 
 	antag_rep_change = list()
 
@@ -248,7 +252,9 @@ SUBSYSTEM_DEF(persistence)
 	// people who died or left should not gain any reputation
 	// people who rolled antagonist still lose it
 	if(failed && SSpersistence.antag_rep_change[p_ckey] > 0)
-		//WARNING("AR_DEBUG: Zeroed [p_ckey]'s antag_rep_change due to failure")
+		#ifdef TESTING
+		testing("AR_DEBUG: Zeroed [p_ckey]'s antag_rep_change due to failure")
+		#endif
 		SSpersistence.antag_rep_change[p_ckey] = 0
 
 	var/mob/living/carbon/C = player
@@ -258,5 +264,7 @@ SUBSYSTEM_DEF(persistence)
 	//If they changed jobs to a higher rep, it'll still be the original job's rep so let's only worry about lower
 	if(current_job.antag_rep < original_job.antag_rep)
 		if(SSpersistence.antag_rep_change[p_ckey] > 0)
-			//WARNING("AR_DEBUG: Reduced [p_ckey]'s antag_rep_change due to higher rep job change")
+			#ifdef TESTING
+			testing("AR_DEBUG: Reduced [p_ckey]'s antag_rep_change due to higher rep job change")
+			#endif
 			SSpersistence.antag_rep_change[p_ckey] = current_job.antag_rep

@@ -355,7 +355,9 @@
 		if(current <= antag_select)
 			var/subtract = min(p_rep + DEFAULT_ANTAG_TICKETS, MAX_TICKETS_PER_ROLL) - DEFAULT_ANTAG_TICKETS
 			SSpersistence.antag_rep_change[p_ckey] = -subtract
-			//WARNING("AR_DEBUG: Player [mind.key] won spending [subtract] tickets from starting value [SSpersistence.antag_rep[p_ckey]]")
+			#ifdef TESTING
+			testing("AR_DEBUG: Player [mind.key] won spending [subtract] tickets from starting value [SSpersistence.antag_rep[p_ckey]]")
+			#endif
 
 			return mind
 
