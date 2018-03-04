@@ -430,6 +430,10 @@ SUBSYSTEM_DEF(job)
 	if(H.mind)
 		H.mind.assigned_role = rank
 
+	if(iscarbon(H))
+		var/mob/living/carbon/C = H
+		C.latest_id_job = rank
+
 	if(job)
 		var/new_mob = job.equip(H)
 		if(ismob(new_mob))

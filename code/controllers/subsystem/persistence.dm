@@ -228,3 +228,35 @@ SUBSYSTEM_DEF(persistence)
 
 	fdel(FILE_ANTAG_REP)
 	text2file(json_encode(antag_rep), FILE_ANTAG_REP)
+
+/datum/controller/subsystem/persistence/proc/antag_rep_check(mob/player)
+	if(!iscarbon(player))
+		return
+	if(!player.ckey || !player.client)
+		return
+	var/failed = FALSE
+	if(player.client.inactivity >= (ROUNDSTART_LOGOUT_REPORT_TIME / 2))
+		failed = TRUE //AFK client
+	if(!failed && player.stat)
+		if(!failed && player.stat == UNCONSCIOUS)
+			failed = TRUE //Unconscious
+		if(!failed && player.stat == DEAD)
+			failed = TRUE //Dead
+
+	var/p_ckey = player.client.ckey
+
+	// people who died or left should not gain any reputation
+	// people who rolled antagonist still lose it
+	if(failed && SSpersistence.antag_rep_change[p_ckey] > 0)
+		//WARNING("AR_DEBUG: Zeroed [p_ckey]'s antag_rep_change due to failure")
+		SSpersistence.antag_rep_change[p_ckey] = 0
+
+	var/mob/living/carbon/C = player
+	var/datum/job/current_job = SSjob.GetJob(C.latest_id_job)
+	var/datum/job/original_job = SSjob.GetJob(C.mind.assigned_role)
+
+	//If they changed jobs to a higher rep, it'll still be the original job's rep so let's only worry about lower
+	if(current_job.antag_rep < original_job.antag_rep)
+		if(SSpersistence.antag_rep_change[p_ckey] > 0)
+			//WARNING("AR_DEBUG: Reduced [p_ckey]'s antag_rep_change due to higher rep job change")
+			SSpersistence.antag_rep_change[p_ckey] = current_job.antag_rep
