@@ -219,7 +219,7 @@ SUBSYSTEM_DEF(persistence)
 /datum/controller/subsystem/persistence/proc/CollectAntagReputation()
 	var/ANTAG_REP_MAXIMUM = CONFIG_GET(number/antag_rep_maximum)
 
-	for(var/p_ckey in antag_rep_change
+	for(var/p_ckey in antag_rep_change)
 		#ifdef TESTING
 		var/start = antag_rep[p_ckey]
 		#endif
