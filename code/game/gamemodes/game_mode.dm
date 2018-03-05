@@ -554,7 +554,7 @@
 
 	for(var/mob/M in GLOB.mob_list)
 		if(M.client)
-			antag_rep_check(M)
+			SSpersistence.antag_rep_check(M)
 			if(M.client.holder)
 				to_chat(M, msg)
 
