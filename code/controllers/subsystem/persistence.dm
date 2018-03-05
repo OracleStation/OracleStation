@@ -234,8 +234,6 @@ SUBSYSTEM_DEF(persistence)
 	text2file(json_encode(antag_rep), FILE_ANTAG_REP)
 
 /datum/controller/subsystem/persistence/proc/antag_rep_check(mob/player)
-	if(!iscarbon(player))
-		return
 	if(!player.ckey || !player.client)
 		return
 	var/failed = FALSE
@@ -257,6 +255,11 @@ SUBSYSTEM_DEF(persistence)
 		#endif
 		SSpersistence.antag_rep_change[p_ckey] = 0
 
+	if(!iscarbon(player))
+		#ifdef TESTING
+		testing("AR_DEBUG: [player] ([p_ckey]) is not a carbon mob, job change not checked")
+		#endif
+		return
 	var/mob/living/carbon/C = player
 	var/datum/job/current_job = SSjob.GetJob(C.latest_id_job)
 	var/datum/job/original_job = SSjob.GetJob(C.mind.assigned_role)
