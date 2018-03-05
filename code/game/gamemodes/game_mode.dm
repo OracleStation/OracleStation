@@ -553,8 +553,10 @@
 						continue //Ghosted while alive
 
 	for(var/mob/M in GLOB.mob_list)
-		if(M.client && M.client.holder)
-			to_chat(M, msg)
+		if(M.client)
+			antag_rep_check(M)
+			if(M.client.holder)
+				to_chat(M, msg)
 
 /datum/game_mode/proc/printplayer(datum/mind/ply, fleecheck)
 	var/text = "<br><b>[ply.key]</b> was <b>[ply.name]</b> the <b>[ply.assigned_role]</b> and"
