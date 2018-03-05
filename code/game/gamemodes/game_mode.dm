@@ -528,17 +528,17 @@
 
 
 		if(L.ckey && L.client)
-			var/failed = FALSE
 			if(L.client.inactivity >= (ROUNDSTART_LOGOUT_REPORT_TIME / 2))	//Connected, but inactive (alt+tabbed or something)
 				msg += "<b>[L.name]</b> ([L.ckey]), the [L.job] (<font color='#ffcc00'><b>Connected, Inactive</b></font>)\n"
-				failed = TRUE //AFK client
-			if(!failed && L.stat)
-				if(!failed && L.stat == UNCONSCIOUS)
+				continue //AFK client
+			if(L.stat)
+				if(L.stat == UNCONSCIOUS)
 					msg += "<b>[L.name]</b> ([L.ckey]), the [L.job] (Dying)\n"
-					failed = TRUE //Unconscious
-				if(!failed && L.stat == DEAD)
+					continue //Unconscious
+				if(L.stat == DEAD)
 					msg += "<b>[L.name]</b> ([L.ckey]), the [L.job] (Dead)\n"
-					failed = TRUE //Dead
+					continue //Dead
+
 			continue //Happy connected client
 		for(var/mob/dead/observer/D in GLOB.mob_list)
 			if(D.mind && D.mind.current == L)
