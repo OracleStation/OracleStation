@@ -490,6 +490,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		M.SetSleeping(200000)//20k seconds to get your admin shit together
 		M.adminfreezeoverlay = new()
 		M.add_overlay(M.adminfreezeoverlay)
+		M.anchored = TRUE
 		log_admin("[key_name(usr)] froze [key_name(M)]!")
 		message_admins("[key_name(usr)] froze [key_name(M)]!")
 		to_chat(M, "<span class='userdanger'>You have been frozen by Administrator [usr.key]!</span>")
@@ -497,6 +498,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		M.SetSleeping(M.adminfrozen)//set it to what it was before freezing or just 1/10th of a second if it was nothing
 		M.adminfrozen = 0
 		M.cut_overlay(M.adminfreezeoverlay)
+		M.anchored = FALSE
 		log_admin("[key_name(usr)] unfroze [key_name(M)].")
 		message_admins("[key_name(usr)] unfroze [key_name(M)].")
 		to_chat(M, "<span class='userdanger'>You have been unfrozen by Administrator [usr.key]!</span>")
