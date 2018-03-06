@@ -157,7 +157,7 @@
 	update_icon()
 
 /obj/machinery/door/airlock/proc/setup_hatch()
-	hatch_image = image('icons/obj/doors/hatches.dmi', src, "hatch_closed", layer+0.01)
+	hatch_image = image('icons/obj/doors/hatches.dmi', src, "hatch_closed", layer=(CLOSED_FIREDOOR_LAYER-0.01))
 	hatch_image.color = hatch_colour
 	hatch_image.pixel_x = hatch_offset_x
 	hatch_image.pixel_y = hatch_offset_y
@@ -495,6 +495,12 @@
 			lights_overlay = get_airlock_overlay("lights_denied", overlays_file)
 			if(note)
 				note_overlay = get_airlock_overlay(notetype, note_overlay_file)
+			if(has_hatch)
+				if(hatchstate)
+					hatch_image.icon_state = "hatch_open"
+				else
+					hatch_image.icon_state = "hatch_closed"
+				hatch_overlay = hatch_image
 
 		if(AIRLOCK_EMAG)
 			frame_overlay = get_airlock_overlay("closed", icon)
@@ -574,7 +580,7 @@
 	add_overlay(sparks_overlay)
 	add_overlay(damag_overlay)
 	add_overlay(note_overlay)
-	if(has_hatch && AIRLOCK_CLOSED)
+	if(has_hatch && (AIRLOCK_CLOSED || AIRLOCK_DENY))
 		add_overlay(hatch_overlay)
 
 /proc/get_airlock_overlay(icon_state, icon_file)
