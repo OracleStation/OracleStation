@@ -336,16 +336,15 @@
 	if(restricted_species)
 		for(var/mob/dead/new_player/player in candidates)
 			for(var/species in restricted_species)
-				if(player.client.prefs.pref_species.id == species)
-					message_admins("[player] was removed from antag candidates due to being [species]")
-					candidates -= player
-					break
+				if(player.client && player.client.prefs)
+					if(player.client.prefs.pref_species.id == species)
+						candidates -= player
+						break
 
 	if(restricted_jobs)
 		for(var/datum/mind/player in candidates)
 			for(var/job in restricted_jobs)					// Remove people who want to be antagonist but have a job already that precludes it
 				if(player.assigned_role == job)
-					message_admins("[player] was removed from antag candidates due to being [job]")
 					candidates -= player
 					break
 
@@ -359,16 +358,15 @@
 	if(restricted_species)
 		for(var/mob/dead/new_player/player in drafted)
 			for(var/species in restricted_species)
-				if(player.client.prefs.pref_species.id == species)
-					message_admins("[player] was removed from antag drafted players due to being [species]")
-					drafted -= player
-					break
+				if(player.client && player.client.prefs)
+					if(player.client.prefs.pref_species.id == species)
+						drafted -= player
+						break
 
 	if(restricted_jobs)
 		for(var/datum/mind/player in drafted)				// Remove people who can't be an antagonist
 			for(var/job in restricted_jobs)
 				if(player.assigned_role == job)
-					message_admins("[player] was removed from antag drafted players due to being [job]")
 					drafted -= player
 					break
 
@@ -387,16 +385,15 @@
 	if(restricted_species)
 		for(var/mob/dead/new_player/player in drafted)
 			for(var/species in restricted_species)
-				if(player.client.prefs.pref_species.id == species)
-					message_admins("[player] was removed from antag drafted players due to being [species]")
-					drafted -= player
-					break
+				if(player.client && player.client.prefs)
+					if(player.client.prefs.pref_species.id == species)
+						drafted -= player
+						break
 
 	if(restricted_jobs)
 		for(var/datum/mind/player in drafted)				// Remove people who can't be an antagonist
 			for(var/job in restricted_jobs)
 				if(player.assigned_role == job)
-					message_admins("[player] was removed from antag drafted players due to being [job]")
 					drafted -= player
 					break
 
