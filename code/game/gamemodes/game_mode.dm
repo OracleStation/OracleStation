@@ -336,9 +336,10 @@
 	if(restricted_species)
 		for(var/mob/dead/new_player/player in candidates)
 			for(var/species in restricted_species)
-				if(player.client.prefs.pref_species.id == species)
-					candidates -= player
-					break
+				if(player.client && player.client.prefs)
+					if(player.client.prefs.pref_species.id == species)
+						candidates -= player
+						break
 
 	if(restricted_jobs)
 		for(var/datum/mind/player in candidates)
@@ -357,9 +358,10 @@
 	if(restricted_species)
 		for(var/mob/dead/new_player/player in drafted)
 			for(var/species in restricted_species)
-				if(player.client.prefs.pref_species.id == species)
-					drafted -= player
-					break
+				if(player.client && player.client.prefs)
+					if(player.client.prefs.pref_species.id == species)
+						drafted -= player
+						break
 
 	if(restricted_jobs)
 		for(var/datum/mind/player in drafted)				// Remove people who can't be an antagonist
@@ -383,9 +385,10 @@
 	if(restricted_species)
 		for(var/mob/dead/new_player/player in drafted)
 			for(var/species in restricted_species)
-				if(player.client.prefs.pref_species.id == species)
-					drafted -= player
-					break
+				if(player.client && player.client.prefs)
+					if(player.client.prefs.pref_species.id == species)
+						drafted -= player
+						break
 
 	if(restricted_jobs)
 		for(var/datum/mind/player in drafted)				// Remove people who can't be an antagonist
