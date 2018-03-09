@@ -359,7 +359,7 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 			return
 	if(!target)
 		return
-	if((target.disabilities & NOCLONE) || (target.disabilities & HUSK))
+	if(target.disabilities & HUSK)
 		if(verbose)
 			to_chat(user, "<span class='warning'>DNA of [target] is ruined beyond usability!</span>")
 		return
