@@ -25,7 +25,7 @@
 	skinned_type = /obj/item/stack/sheet/animalhide/vox
 	toxmod = 2 // Weak immune systems.
 	burnmod = 0.8 // Tough hides.
-	stunmod = 1.2 // Take a bit longer to get up than other species.
+	stunmod = 1.1 // Take a bit longer to get up than other species.
 	breathid = "n2"
 	examine_text = "A vox outcast"
 	husk_id = "voxhusk"
