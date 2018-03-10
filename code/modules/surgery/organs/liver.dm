@@ -69,6 +69,7 @@
 	icon_state = "liver-c"
 	desc = "An electronic device designed to mimic the functions of a human liver. It has no benefits over an organic liver, but is easy to produce."
 	origin_tech = "biotech=4"
+	status = ORGAN_ROBOTIC
 
 /obj/item/organ/liver/cybernetic/upgraded
 	name = "upgraded cybernetic liver"
@@ -96,7 +97,13 @@
 	alcohol_tolerance = 0
 	toxTolerance = -1
 	toxLethality = 0
-	status = ORGAN_ROBOTIC
 
 /obj/item/organ/liver/cybernetic/upgraded/ipc/emp_act(severity)
-	to_chat(owner, "<span class='warning'>Alert: Your Substance Processor has been damaged. Replace as soon as possible.</span>")
+	to_chat(owner, "<span class='warning'>Alert: Your Substance Processor has been damaged. An internal chemical leak is affecting performance.</span>")
+
+/obj/item/organ/liver/vox
+	name = "vox liver"
+	icon_state = "liver-vox"
+	desc = "A mechanically-assisted vox liver."
+	origin_tech = "biotech=4"
+	status = ORGAN_ROBOTIC

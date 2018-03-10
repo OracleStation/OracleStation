@@ -181,6 +181,11 @@
 	results = list("golemmutationtoxin" = 1)
 	required_reagents = list("unstablemutationtoxin" = 1, "silver" = 1) //not too hard to get but also not just there in xenobio
 
+/datum/chemical_reaction/vox_mutation_toxin
+	name = "Vox Mutation Toxin"
+	id = "voxmutationtoxin"
+	results = list("voxmutationtoxin" = 1)
+	required_reagents = list("amutationtoxin" = 1, "eggyolk" = 1, "nitrogen" = 1)
 
 //BLACKLISTED RACES
 /datum/chemical_reaction/skeleton_mutation_toxin

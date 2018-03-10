@@ -72,6 +72,10 @@
 	icon_state = "welding"
 	item_state = "welding"
 	resistance_flags = 0
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/mask.dmi'
+		)
 
 /obj/item/clothing/head/collectable/slime
 	name = "collectable slime hat"
@@ -153,3 +157,7 @@
 	item_state = "swat"
 	resistance_flags = 0
 	flags_inv = HIDEHAIR
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/helmet.dmi'
+		)

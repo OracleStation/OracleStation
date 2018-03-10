@@ -102,6 +102,7 @@
 	if(disabilities & HUSK)
 		disabilities &= ~HUSK
 		status_flags &= ~DISFIGURED
+		dna.species.on_husk_cure(src)
 		update_body()
 		return 1
 
@@ -110,6 +111,7 @@
 		return
 	disabilities |= HUSK
 	status_flags |= DISFIGURED	//makes them unknown
+	dna.species.on_husk(src)
 	update_body()
 	return 1
 

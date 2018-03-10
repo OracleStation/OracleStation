@@ -56,7 +56,7 @@
 
 
 /obj/item/reagent_containers/blood/random/Initialize()
-	blood_type = pick("A+", "A-", "B+", "B-", "O+", "O-", "L", "F")
+	blood_type = pick("A+", "A-", "B+", "B-", "O+", "O-", "L", "F", "V")
 	. = ..()
 
 /obj/item/reagent_containers/blood/APlus
@@ -83,9 +83,11 @@
 /obj/item/reagent_containers/blood/ethari
 	blood_type = "F"
 
+/obj/item/reagent_containers/blood/vox
+	blood_type = "V"
+
 /obj/item/reagent_containers/blood/attackby(obj/item/I, mob/user, params)
 	if (istype(I, /obj/item/pen) || istype(I, /obj/item/toy/crayon))
-
 		var/t = stripped_input(user, "What would you like to label the blood pack?", name, null, 53)
 		if(!user.canUseTopic(src))
 			return
