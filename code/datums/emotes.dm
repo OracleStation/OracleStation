@@ -22,12 +22,27 @@
 	var/stat_allowed = CONSCIOUS
 	var/static/list/emote_list = list()
 	var/cooldown = 20 //deciseconds of cooldown
+	var/robotic_emote = FALSE
 
 /datum/emote/New()
 	if(key_third_person)
 		emote_list[key_third_person] = src
 	mob_type_allowed_typecache = typecacheof(mob_type_allowed_typecache)
 	mob_type_blacklist_typecache = typecacheof(mob_type_blacklist_typecache)
+
+/datum/emote/proc/can_run_robotic_emote(mob/user)
+	if(iscarbon(user))
+		var/obj/item/organ/tongue/T = user.getorganslot("tongue")
+		if(T.status == ORGAN_ROBOTIC)
+			return TRUE
+		else
+			return FALSE
+	if(issilicon(user))
+		return TRUE
+	if(isdrone(user))
+		return TRUE
+	else
+		return FALSE
 
 /datum/emote/proc/run_emote(mob/user, params, type_override)
 	. = TRUE
@@ -98,6 +113,9 @@
 
 /datum/emote/proc/can_run_emote(mob/user, help_check)
 	. = TRUE
+	if(robotic_emote == TRUE)
+		if(can_run_robotic_emote(user))
+			return TRUE
 	if(!is_type_in_typecache(user, mob_type_allowed_typecache))
 		return FALSE
 	if(is_type_in_typecache(user, mob_type_blacklist_typecache))
