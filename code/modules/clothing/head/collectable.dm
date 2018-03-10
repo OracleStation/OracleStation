@@ -20,6 +20,7 @@
 	name = "collectable xenomorph helmet!"
 	desc = "Hiss hiss hiss!"
 	icon_state = "xenom"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/collectable/chef
 	name = "collectable chef's hat"
@@ -72,10 +73,6 @@
 	icon_state = "welding"
 	item_state = "welding"
 	resistance_flags = 0
-	species_fit = list("Vox Outcast")
-	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/mask.dmi'
-		)
 
 /obj/item/clothing/head/collectable/slime
 	name = "collectable slime hat"
@@ -88,6 +85,7 @@
 	desc = "A collectible farmer's flat cap!"
 	icon_state = "flat_cap"
 	item_state = "detective"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/collectable/pirate
 	name = "collectable pirate hat"
@@ -103,6 +101,7 @@
 	icon_state = "kitty"
 	item_state = "kitty"
 	dynamic_hair_suffix = ""
+	species_restricted = list("exclude","Vox Outcast") // Fuck you if you want this to work
 
 	dog_fashion = /datum/dog_fashion/head/kitty
 
@@ -149,6 +148,7 @@
 	item_state = "thunderdome"
 	resistance_flags = 0
 	flags_inv = HIDEHAIR
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/collectable/swat
 	name = "collectable SWAT helmet"
