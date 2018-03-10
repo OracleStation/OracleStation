@@ -1,4 +1,4 @@
-#define STATION_RENAME_TIME_LIMIT 3000
+#define STATION_RENAME_TIME_LIMIT 6000
 
 /obj/item/station_charter
 	name = "station charter"
@@ -12,7 +12,7 @@
 	var/unlimited_uses = FALSE
 	var/ignores_timeout = FALSE
 	var/response_timer_id = null
-	var/approval_time = 600
+	var/approval_time = 1200
 
 	var/static/regex/standard_station_regex
 
@@ -30,7 +30,7 @@
 	if(used)
 		to_chat(user, "The [name_type] has already been named.")
 		return
-	if(!ignores_timeout && (world.time-SSticker.round_start_time > STATION_RENAME_TIME_LIMIT)) //5 minutes
+	if(!ignores_timeout && (world.time-SSticker.round_start_time > STATION_RENAME_TIME_LIMIT)) //10 minutes
 		to_chat(user, "The crew has already settled into the shift. It probably wouldn't be good to rename the [name_type] right now.")
 		return
 	if(response_timer_id)
