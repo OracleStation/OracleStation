@@ -1123,7 +1123,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	icon_state = "clothes"
 	product_slogans = "Dress for success!;Prepare to look swagalicious!;Look at all this free swag!;Why leave style up to fate? Use the ClothesMate!"
 	vend_reply = "Thank you for using the ClothesMate!"
-	products = list(/obj/item/clothing/head/that=2, /obj/item/clothing/head/fedora=1, /obj/item/clothing/glasses/monocle=1,
+	products = list(/obj/item/clothing/neck/translator/common=5, /obj/item/clothing/head/that=2, /obj/item/clothing/head/fedora=1, /obj/item/clothing/glasses/monocle=1,
 	/obj/item/clothing/suit/jacket=2, /obj/item/clothing/suit/jacket/puffer/vest=2, /obj/item/clothing/suit/jacket/puffer=2,
 	/obj/item/clothing/under/suit_jacket/navy=1, /obj/item/clothing/under/suit_jacket/really_black=1, /obj/item/clothing/under/suit_jacket/burgundy=1,
 	/obj/item/clothing/under/suit_jacket/charcoal=1, /obj/item/clothing/under/suit_jacket/white=1, /obj/item/clothing/under/kilt=1, /obj/item/clothing/under/overalls=1,
@@ -1149,7 +1149,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	/obj/item/clothing/head/beanie/striped=1, /obj/item/clothing/head/beanie/stripedred=1, /obj/item/clothing/head/beanie/stripedblue=1, /obj/item/clothing/head/beanie/stripedgreen=1,
 	/obj/item/clothing/suit/jacket/letterman_red=1, /obj/item/clothing/under/victorian_dress=1, /obj/item/clothing/under/victorian_dress/red=1, /obj/item/clothing/under/victorian_suit=1,
 	/obj/item/clothing/under/victorian_suit/redblack=1, /obj/item/clothing/under/victorian_suit/red=1, /obj/item/clothing/suit/tailcoat=1, /obj/item/clothing/suit/victorian_coat=1, /obj/item/clothing/suit/victorian_coat/red=1,
-	/obj/item/clothing/ears/headphones = 10)
+	/obj/item/clothing/ears/headphones=10)
 	contraband = list(/obj/item/clothing/under/syndicate/tacticool=1, /obj/item/clothing/mask/balaclava=1, /obj/item/clothing/head/ushanka=1, /obj/item/clothing/under/soviet=1, /obj/item/storage/belt/fannypack/black=2, /obj/item/clothing/suit/jacket/letterman_syndie=1, /obj/item/clothing/under/jabroni=1, /obj/item/clothing/suit/vapeshirt=1, /obj/item/clothing/under/geisha=1)
 	premium = list(/obj/item/clothing/under/suit_jacket/checkered=1, /obj/item/clothing/head/mailman=1, /obj/item/clothing/under/rank/mailman=1, /obj/item/clothing/suit/jacket/leather=1, /obj/item/clothing/suit/jacket/leather/overcoat=1, /obj/item/clothing/under/pants/mustangjeans=1, /obj/item/clothing/neck/necklace/dope=3, /obj/item/clothing/suit/jacket/letterman_nanotrasen=1)
 	refill_canister = /obj/item/vending_refill/clothing

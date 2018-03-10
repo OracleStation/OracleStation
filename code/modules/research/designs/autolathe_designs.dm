@@ -179,6 +179,14 @@
 	build_path = /obj/item/clothing/ears/earmuffs
 	category = list("initial", "Misc")
 
+/datum/design/common_translator
+	name = "Galactic Common Translation Collar"
+	id = "common_translator"
+	build_type = AUTOLATHE
+	materials = list(MAT_METAL = 100, MAT_GLASS = 50)
+	build_path = /obj/item/clothing/neck/translator/common
+	category = list("initial", "Electronics")
+
 /datum/design/pipe_painter
 	name = "Pipe Painter"
 	id = "pipe_painter"

@@ -25,8 +25,11 @@
 	Armed with sharp claws, they are strict carnivores and fierce hand-to-hand combatants. \
 	Following a major PR disaster Nanotrasen crews are no longer allowed to make Ethari crewmembers fetch the nuclear authentication disk or call them \"good boy\"."
 
-/datum/species/ethari/after_equip_job(datum/job/J, mob/living/carbon/human/H)
+//This needs to happen before to guarantee that they get a translator equipped
+/datum/species/ethari/before_equip_job(datum/job/J, mob/living/carbon/human/H, visualsOnly = FALSE)
+	H.remove_language(/datum/language/common)
 	H.grant_language(/datum/language/canilunzt)
+	H.equip_to_slot_if_possible(new /obj/item/clothing/neck/translator/common(H), slot_neck, 0, 0, 0, 1)
 
 /datum/species/ethari/random_name(gender,unique,lastname)
 	if(unique)

@@ -28,6 +28,37 @@
 	icon_state = "horribletie"
 	item_color = "horribletie"
 
+/obj/item/clothing/neck/translator
+	name = "translator badge"
+	desc = "A small translator attached to one's shirt collar that repeats its user in another language. This one seems to be broken."
+	icon_state = "combadge"
+	item_color = "combadge"
+	var/language
+	var/can_remove_language = TRUE
+
+/obj/item/clothing/neck/translator/common
+	name = "galactic common translator badge"
+	desc = "A small translator attached to one's shirt collar that repeats its user in another language. This one is for Galactic Common."
+	language = /datum/language/common
+
+/obj/item/clothing/neck/translator/equipped(mob/user, slot)
+	if(!ishuman(user))
+		return
+	var/datum/language_holder/L = user.get_language_holder()
+	if(L.has_language(language))
+		can_remove_language = FALSE
+		return
+	if((slot == slot_neck) && language)
+		var/mob/living/carbon/human/H = user
+		H.grant_language(language)
+
+/obj/item/clothing/neck/translator/dropped(mob/user)
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+	if((H.get_item_by_slot(slot_neck) == src) && language && can_remove_language)
+		H.remove_language(language)
+
 /obj/item/clothing/neck/stethoscope
 	name = "stethoscope"
 	desc = "An outdated medical apparatus for listening to the sounds of the human body. It also makes you look like you know what you're doing."
