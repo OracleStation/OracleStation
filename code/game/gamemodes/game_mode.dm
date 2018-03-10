@@ -311,13 +311,35 @@
 		set_security_level(SEC_LEVEL_BLUE)
 
 
+/datum/game_mode/proc/is_player_eligible_for_role(role, mob/dead/new_player/player)
+	if(!player.client || player.ready != PLAYER_READY_TO_PLAY)
+		return FALSE
+
+	if(jobban_isbanned(player, "Syndicate") || jobban_isbanned(player, role))
+		return FALSE
+
+	if(!age_check(player.client))
+		return FALSE
+
+	if(restricted_species)
+		for(var/species in restricted_species)
+			if(player.client.prefs.pref_species.id == species)
+				return FALSE
+
+	if(restricted_jobs)
+		for(var/job in restricted_jobs)
+			if(player.mind.assigned_role == job)
+				return FALSE
+
+	return TRUE
+
+// Returns candidates who would prefer to be antag first. If there are not enough players to reach recommended_enemies
+// it will return all eligble players instead.
+//
+// This may return less than recommended_enemies if there are not enough eligble players for this role.
 /datum/game_mode/proc/get_players_for_role(role)
 	var/list/players = list()
-	var/list/candidates = list()
-	var/list/drafted = list()
-	var/datum/mind/applicant = null
 
-	// Ultimate randomizing code right here
 	for(var/mob/dead/new_player/player in GLOB.player_list)
 		if(player.client && player.ready == PLAYER_READY_TO_PLAY)
 			players += player
@@ -326,91 +348,21 @@
 	// Goodbye antag dante
 	players = shuffle(players)
 
+	var/list/candidates_preferred = list()
+	var/list/candidates_nothanks = list()
+
 	for(var/mob/dead/new_player/player in players)
-		if(player.client && player.ready == PLAYER_READY_TO_PLAY)
+		if(is_player_eligible_for_role(role, player))
 			if(role in player.client.prefs.be_special)
-				if(!jobban_isbanned(player, "Syndicate") && !jobban_isbanned(player, role)) //Nodrak/Carn: Antag Job-bans
-					if(age_check(player.client)) //Must be older than the minimum age
-						candidates += player.mind				// Get a list of all the people who want to be the antagonist for this round
+				candidates_preferred += player.mind
+			else
+				candidates_nothanks += player.mind
 
-	if(restricted_species)
-		for(var/mob/dead/new_player/player in candidates)
-			for(var/species in restricted_species)
-				if(player.client.prefs.pref_species.id == species)
-					candidates -= player
-					break
+	if(candidates_preferred.len < recommended_enemies)
+		for(var/datum/mind/player in candidates_nothanks)
+			candidates_preferred += player
 
-	if(restricted_jobs)
-		for(var/datum/mind/player in candidates)
-			for(var/job in restricted_jobs)					// Remove people who want to be antagonist but have a job already that precludes it
-				if(player.assigned_role == job)
-					candidates -= player
-					break
-
-	if(candidates.len < recommended_enemies)
-		for(var/mob/dead/new_player/player in players)
-			if(player.client && player.ready == PLAYER_READY_TO_PLAY)
-				if(!(role in player.client.prefs.be_special)) // We don't have enough people who want to be antagonist, make a separate list of people who don't want to be one
-					if(!jobban_isbanned(player, "Syndicate") && !jobban_isbanned(player, role)) //Nodrak/Carn: Antag Job-bans
-						drafted += player.mind
-
-	if(restricted_species)
-		for(var/mob/dead/new_player/player in drafted)
-			for(var/species in restricted_species)
-				if(player.client.prefs.pref_species.id == species)
-					drafted -= player
-					break
-
-	if(restricted_jobs)
-		for(var/datum/mind/player in drafted)				// Remove people who can't be an antagonist
-			for(var/job in restricted_jobs)
-				if(player.assigned_role == job)
-					drafted -= player
-					break
-
-	drafted = shuffle(drafted) // Will hopefully increase randomness, Donkie
-
-	while(candidates.len < recommended_enemies)				// Pick randomlly just the number of people we need and add them to our list of candidates
-		if(drafted.len > 0)
-			applicant = pick(drafted)
-			if(applicant)
-				candidates += applicant
-				drafted.Remove(applicant)
-
-		else												// Not enough scrubs, ABORT ABORT ABORT
-			break
-
-	if(restricted_species)
-		for(var/mob/dead/new_player/player in drafted)
-			for(var/species in restricted_species)
-				if(player.client.prefs.pref_species.id == species)
-					drafted -= player
-					break
-
-	if(restricted_jobs)
-		for(var/datum/mind/player in drafted)				// Remove people who can't be an antagonist
-			for(var/job in restricted_jobs)
-				if(player.assigned_role == job)
-					drafted -= player
-					break
-
-	drafted = shuffle(drafted) // Will hopefully increase randomness, Donkie
-
-	while(candidates.len < recommended_enemies)				// Pick randomlly just the number of people we need and add them to our list of candidates
-		if(drafted.len > 0)
-			applicant = pick(drafted)
-			if(applicant)
-				candidates += applicant
-				drafted.Remove(applicant)
-
-		else												// Not enough scrubs, ABORT ABORT ABORT
-			break
-
-	return candidates		// Returns: The number of people who had the antagonist role set to yes, regardless of recomended_enemies, if that number is greater than recommended_enemies
-							//			recommended_enemies if the number of people with that role set to yes is less than recomended_enemies,
-							//			Less if there are not enough valid players in the game entirely to make recommended_enemies.
-
-
+	return candidates_preferred
 
 /datum/game_mode/proc/num_players()
 	. = 0
