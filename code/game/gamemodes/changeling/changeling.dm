@@ -155,12 +155,6 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 			changeling.objectives += identity_theft
 		escape_objective_possible = FALSE
 
-
-
-/datum/game_mode/changeling/forge_changeling_objectives(datum/mind/changeling)
-	..(changeling,0)
-
-
 /datum/game_mode/proc/greet_changeling(datum/mind/changeling, you_are=1)
 	if (you_are)
 		to_chat(changeling.current, "<span class='boldannounce'>You are [changeling.changeling.changelingID], a changeling! You have absorbed and taken the form of a human.</span>")
