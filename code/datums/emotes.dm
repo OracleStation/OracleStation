@@ -33,14 +33,13 @@
 /datum/emote/proc/can_run_robotic_emote(mob/user)
 	if(iscarbon(user))
 		var/obj/item/organ/tongue/T = user.getorganslot("tongue")
-		if(T.status == ORGAN_ROBOTIC)
+		if(T && T.status == ORGAN_ROBOTIC)
 			return TRUE
 	if(issilicon(user))
 		return TRUE
 	if(isdrone(user))
 		return TRUE
-	else
-		return FALSE
+	return FALSE
 
 /datum/emote/proc/run_emote(mob/user, params, type_override)
 	. = TRUE
