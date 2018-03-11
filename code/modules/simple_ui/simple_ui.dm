@@ -16,7 +16,7 @@
 	if(hascall(n_datasource, "simpleui_canview") && hascall(n_datasource, "simpleui_getcontent"))
 		datasource = n_datasource
 	else
-		log_world("[n_datasource] does not have the correct datums for use with /datum/simple_ui!")
+		log_world("[n_datasource] does not have the correct procs for use with /datum/simple_ui!")
 	window_id = REF(src)
 	width = n_width
 	height = n_height
