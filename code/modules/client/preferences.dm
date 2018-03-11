@@ -160,18 +160,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	user << browse_rsc(fakeicon, "fakeicon.png")
 	datspecies += "<center>"
 	datspecies += "<img src=fakeicon.png width=[fakeicon.Width()] height=[fakeicon.Height()]><BR>"
+	var/required = S.required_playtime_remaining(parent)
 	if(pref_species.id == species_looking_at)
 		datspecies += "Set Species "
+	else if(required)
+		datspecies += "<span class='linkOff'>Set Species</span>"
 	else
 		datspecies += "<a href='?_src_=prefs;setspecies=[species_looking_at];task=species'>Set Species</a> "
 	datspecies += "<a href='?_src_=prefs;preference=job;task=close'>Done</a><BR>"
-	var/required = S.required_playtime_remaining(parent)
 	if(required)
 		datspecies += "<span class='warning'><font color='red'>[required] more to unlock!</font></span>"
 	datspecies += "</center></th></tr></table></div>"
 
 	user << browse(null, "window=preferences")
-	var/datum/browser/popup = new(user, "speciespick", "<div align='center'>Species Pick</div>", 700, 230)
+	var/datum/browser/popup = new(user, "speciespick", "<div align='center'>Species Pick</div>", 700, 350)
 	popup.set_window_options("can_close=0")
 	popup.set_content(datspecies)
 	popup.open(0)
