@@ -2,6 +2,10 @@
 	name = "glasses"
 	materials = list(MAT_GLASS = 250)
 	var/glass_colour_type = null //colors your vision when worn
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/eyes.dmi'
+		)
 
 /obj/item/clothing/glasses/visor_toggling()
 	..()
@@ -39,10 +43,6 @@
 	vision_flags = SEE_TURFS
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	glass_colour_type = /datum/client_colour/glass_colour/lightgreen
-	species_fit = list("Vox Outcast")
-	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/eyes.dmi'
-		)
 
 /obj/item/clothing/glasses/meson/night
 	name = "night vision meson scanner"
@@ -76,10 +76,6 @@
 	glass_colour_type = /datum/client_colour/glass_colour/purple
 	resistance_flags = ACID_PROOF
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0, fire = 80, acid = 100)
-	species_fit = list("Vox Outcast")
-	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/eyes.dmi'
-		)
 
 /obj/item/clothing/glasses/science/item_action_slot_check(slot)
 	if(slot == slot_glasses)
@@ -100,20 +96,12 @@
 	desc = "Yarr."
 	icon_state = "eyepatch"
 	item_state = "eyepatch"
-	species_fit = list("Vox Outcast")
-	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/eyes.dmi'
-		)
 
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
 	desc = "Such a dapper eyepiece!"
 	icon_state = "monocle"
 	item_state = "headset" // lol
-	species_fit = list("Vox Outcast")
-	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/eyes.dmi'
-		)
 
 /obj/item/clothing/glasses/material
 	name = "optical material scanner"
@@ -123,10 +111,6 @@
 	origin_tech = "magnets=3;engineering=3"
 	vision_flags = SEE_OBJS
 	glass_colour_type = /datum/client_colour/glass_colour/lightblue
-	species_fit = list("Vox Outcast")
-	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/eyes.dmi'
-		)
 
 /obj/item/clothing/glasses/material/mining
 	name = "optical material scanner"
@@ -184,10 +168,6 @@
 	tint = 1
 	glass_colour_type = /datum/client_colour/glass_colour/gray
 	dog_fashion = /datum/dog_fashion/head
-	species_fit = list("Vox Outcast")
-	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/eyes.dmi'
-		)
 
 /obj/item/clothing/glasses/sunglasses/reagent
 	name = "beer goggles"
@@ -269,6 +249,7 @@
 	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Larger than average enhanced shielding blocks many flashes."
 	icon_state = "bigsunglasses"
 	item_state = "bigsunglasses"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/glasses/thermal
 	name = "optical thermal scanner"
@@ -280,10 +261,6 @@
 	invis_view = 2
 	flash_protect = 0
 	glass_colour_type = /datum/client_colour/glass_colour/red
-	species_fit = list("Vox Outcast")
-	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/eyes.dmi'
-		)
 
 /obj/item/clothing/glasses/thermal/emp_act(severity)
 	thermal_overload()
@@ -335,12 +312,14 @@
 	desc = "A pair of goggles meant for low temperatures."
 	icon_state = "cold"
 	item_state = "cold"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/glasses/heat
 	name = "heat goggles"
 	desc = "A pair of goggles meant for high temperatures."
 	icon_state = "heat"
 	item_state = "heat"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/glasses/orange
 	name = "orange glasses"
