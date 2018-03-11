@@ -1732,12 +1732,13 @@
 
 /datum/species/proc/required_playtime_remaining(client/C)
 	if(!C)
-		return 0
+		to_chat(usr, "<span class='warning'>Something went wrong! Yell at a coder.</span>")
+		CRASH("required_playtime_remaning called without a client")
 	if(!CONFIG_GET(flag/use_exp_tracking))
 		return 0
 	if(!required_playtime)
 		return 0
-	if(CONFIG_GET(flag/use_exp_restrictions_admin_bypass) && check_rights(R_ADMIN, FALSE, C.mob))
+	if(CONFIG_GET(flag/use_exp_restrictions_admin_bypass) && check_rights_for(C, R_ADMIN))
 		return 0
 	var/my_exp = C.get_exp_living(FALSE)
 	if(my_exp / 60 >= required_playtime)
