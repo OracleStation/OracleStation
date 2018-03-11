@@ -3,7 +3,7 @@
 	var/list/late_joining_list = list()
 
 /datum/game_mode/traitor/sleeper_agent
-	name = "Sleeper Agents"
+	name = "sleeper agents"
 	config_tag = "sleeper_agent"
 	required_players = 25
 	required_enemies = 4
