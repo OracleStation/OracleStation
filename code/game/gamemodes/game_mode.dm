@@ -331,6 +331,14 @@
 			if(player.mind.assigned_role == job)
 				return FALSE
 
+	if(CONFIG_GET(flag/use_exp_tracking))
+		var/list/role_reqs = CONFIG_GET(keyed_number_list/antag_time_requirements)
+		var/req = role_reqs[lowertext(role)]
+		if(!req)
+			req = 0
+		if(player.client.get_exp_living(FALSE) < req)
+			return FALSE
+
 	return TRUE
 
 // Returns candidates who would prefer to be antag first. If there are not enough players to reach recommended_enemies

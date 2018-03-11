@@ -218,6 +218,9 @@ CONFIG_DEF(keyed_flag_list/random_laws)
 CONFIG_DEF(keyed_number_list/law_weight)
 	splitter = ","
 
+CONFIG_DEF(keyed_number_list/antag_time_requirements)
+	splitter = ","
+
 CONFIG_DEF(number/assistant_cap)
 	value = -1
 	min_val = -1
