@@ -35,8 +35,6 @@
 		var/obj/item/organ/tongue/T = user.getorganslot("tongue")
 		if(T.status == ORGAN_ROBOTIC)
 			return TRUE
-		else
-			return FALSE
 	if(issilicon(user))
 		return TRUE
 	if(isdrone(user))
@@ -113,12 +111,9 @@
 
 /datum/emote/proc/can_run_emote(mob/user, help_check)
 	. = TRUE
-	if(robotic_emote == TRUE)
-		if(can_run_robotic_emote(user))
-			return TRUE
-	if(!is_type_in_typecache(user, mob_type_allowed_typecache))
+	if(!is_type_in_typecache(user, mob_type_allowed_typecache) && !robotic_emote) // Robotic emotes ignore typecache, because users of these emotes cross multiple typecaches.
 		return FALSE
-	if(is_type_in_typecache(user, mob_type_blacklist_typecache))
+	if(is_type_in_typecache(user, mob_type_blacklist_typecache) && !robotic_emote)
 		return FALSE
 	if(world.time < user.emote_cooldown)
 		return FALSE
@@ -129,7 +124,8 @@
 			return FALSE
 		if(user.reagents && user.reagents.has_reagent("mimesbane"))
 			return FALSE
-
+	if(robotic_emote && !can_run_robotic_emote(user))
+		return FALSE
 
 /datum/emote/sound
 	var/sound //Sound to play when emote is called
