@@ -126,3 +126,4 @@
 #define ROBOTIC_LIMBS	35 //limbs start out as robotic; but also use organic icons. If you want to use the default ones, you'll have to use on_species_gain
 #define NOMOUTH			36
 #define NOTOX       37
+#define DIFFICULTCLONE 38 // Requires upgraded cloner to be cloned
