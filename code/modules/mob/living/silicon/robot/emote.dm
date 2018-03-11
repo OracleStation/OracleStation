@@ -1,5 +1,5 @@
 /datum/emote/silicon
-	mob_type_allowed_typecache = list(/mob/living/silicon, )
+	mob_type_allowed_typecache = list(/mob/living/silicon)
 	emote_type = EMOTE_AUDIBLE
 	robotic_emote = TRUE
 
