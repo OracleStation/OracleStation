@@ -447,8 +447,6 @@
 	/obj/item/hand_tele, /obj/item/device/aicard)
 	armor = list(melee = 30, bullet = 5, laser = 10, energy = 5, bomb = 100, bio = 100, rad = 60, fire = 60, acid = 80)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/rd
-	species_restricted = list("exclude","Vox Outcast")
-
 
 	//Security hardsuit
 /obj/item/clothing/head/helmet/space/hardsuit/security
@@ -511,6 +509,7 @@
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRE_IMMUNITY_SUIT_MAX_TEMP_PROTECT //this needed to be added a long fucking time ago
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/captain
+	species_restricted = list("exclude","Vox Outcast")
 
 	//Clown
 /obj/item/clothing/head/helmet/space/hardsuit/clown
