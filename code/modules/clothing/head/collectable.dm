@@ -148,7 +148,10 @@
 	item_state = "thunderdome"
 	resistance_flags = 0
 	flags_inv = HIDEHAIR
-	species_restricted = list("exclude","Vox Outcast")
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/helmet.dmi'
+		)
 
 /obj/item/clothing/head/collectable/swat
 	name = "collectable SWAT helmet"
