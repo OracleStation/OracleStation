@@ -27,7 +27,8 @@
 	burnmod = 0.8 // Tough hides.
 	stunmod = 1.1 // Take a bit longer to get up than other species.
 	breathid = "n2"
-	examine_text = "A vox outcast"
+	examine_text = "a Vox outcast"
+	species_text_color = "#BA3690"
 	husk_id = "voxhusk"
 	damage_overlay_type = "vox"
 	exotic_bloodtype = "V"
