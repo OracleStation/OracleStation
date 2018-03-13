@@ -273,3 +273,5 @@ CONFIG_DEF(number/max_chickens)
 	value = 100
 CONFIG_DEF(number/max_slimes)
 	value = 100
+
+CONFIG_DEF(flag/allow_crew_objectives)
