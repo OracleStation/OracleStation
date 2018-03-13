@@ -126,7 +126,8 @@
 /datum/objective/crew/exterminator/check_completion()
 	var/num_mice = 0
 	for(var/mob/living/simple_animal/mouse/M in GLOB.living_mob_list)
-		num_mice++
+		if(M.z == ZLEVEL_STATION_PRIMARY)
+			num_mice++
 	if(num_mice <= target_amount)
 		return TRUE
 	return FALSE

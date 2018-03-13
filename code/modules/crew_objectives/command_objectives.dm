@@ -1,5 +1,5 @@
 /*				COMMAND OBJECTIVES				*/
-/*
+
 /datum/objective/crew/caphat //Ported from Goon
 	explanation_text = "Don't lose your hat."
 	jobs = "captain"
@@ -19,7 +19,7 @@
 		return TRUE
 	else
 		return FALSE
-*/
+
 /datum/objective/crew/downwiththestation
 	explanation_text = "Go down with your station. Do not leave on the shuttle or an escape pod. Instead, stay on the bridge."
 	jobs = "captain"
