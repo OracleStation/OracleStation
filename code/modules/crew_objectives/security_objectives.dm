@@ -26,7 +26,7 @@
 /datum/objective/crew/shawshankgonewrong/check_completion()
 	for(var/mob/living/carbon/human/H in GLOB.mob_list)
 		if(H.stat == DEAD && H.z == ZLEVEL_STATION_PRIMARY)
-			if(get_area(H) == /area/security)
+			if(istype(get_area(H), /area/security))
 				return FALSE
 	return TRUE
 
@@ -36,6 +36,6 @@
 
 /datum/objective/crew/nomanleftbehind/check_completion()
 	for(var/mob/living/carbon/M in GLOB.living_mob_list)
-		if(!(M.mind.assigned_role in GLOB.security_positions) && get_area(M) == typesof(/area/security/prison)) //there's no list of incarcerated players, so we just assume any non-security people in prison are prisoners, and assume that any security people aren't prisoners
+		if(!(M.mind.assigned_role in GLOB.security_positions) && istype(get_area(M), /area/security/prison)) //there's no list of incarcerated players, so we just assume any non-security people in prison are prisoners, and assume that any security people aren't prisoners
 			return FALSE
 	return TRUE
