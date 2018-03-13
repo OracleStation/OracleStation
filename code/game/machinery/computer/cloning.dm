@@ -456,6 +456,10 @@
 		scantemp = "<span class='bad'>Subject no longer contains the fundamental materials required to create a living clone.</span>"
 		playsound(src, 'sound/machines/terminal_alert.ogg', 50, 0)
 		return
+	if(dna && dna.species && (DIFFICULTCLONE in dna.species.species_traits) && (src.scanner.scan_level < 2))
+		scantemp = "<span class='bad'>Subject's DNA is too complex or damage for current components to scan; upgraded components required.</span>"
+		playsound(src, 'sound/machines/terminal_alert.ogg', 50, 0)
+		return
 	if((!mob_occupant.ckey) || (!mob_occupant.client))
 		scantemp = "<span class='bad'>Mental interface failure.</span>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)

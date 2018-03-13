@@ -103,6 +103,7 @@
 	allowed = list(/obj/item/device/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/toy)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	resistance_flags = 0
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/hastur
 	name = "\improper Hastur's robe"
@@ -121,7 +122,7 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	flags_inv = HIDESHOES|HIDEJUMPSUIT
 	allowed = list(/obj/item/storage/book/bible, /obj/item/nullrod, /obj/item/reagent_containers/food/drinks/bottle/holywater, /obj/item/storage/fancy/candle_box, /obj/item/candle, /obj/item/tank/internals/emergency_oxygen)
-
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/chickensuit
 	name = "chicken suit"
@@ -130,7 +131,7 @@
 	item_state = "chickensuit"
 	body_parts_covered = CHEST|ARMS|GROIN|LEGS|FEET
 	flags_inv = HIDESHOES|HIDEJUMPSUIT
-
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/monkeysuit
 	name = "monkey suit"
@@ -149,6 +150,7 @@
 	body_parts_covered = ARMS|CHEST
 	allowed = list(/obj/item/gun/energy, /obj/item/reagent_containers/spray/pepper, /obj/item/gun/ballistic, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/restraints/handcuffs, /obj/item/device/flashlight/seclite, /obj/item/melee/classic_baton/telescopic)
 	actions_types = list(/datum/action/item_action/toggle_wings)
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/toggle/owlwings/griffinwings
 	name = "griffon cloak"
@@ -204,6 +206,7 @@
 	item_state = "snowman"
 	body_parts_covered = CHEST|GROIN
 	flags_inv = HIDEJUMPSUIT
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/poncho
 	name = "poncho"
@@ -241,6 +244,7 @@
 	item_state = "w_suit"
 	body_parts_covered = CHEST|GROIN|LEGS|FEET
 	flags_inv = HIDEJUMPSUIT|HIDESHOES
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/hooded/carp_costume
 	name = "carp costume"

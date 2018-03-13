@@ -209,7 +209,6 @@
 	icon_state = "tongue-vox"
 	taste_sensitivity = 50 // There's not much need for taste when you're a scavenger.
 	attack_verb = list("skree'd")
-	status = ORGAN_ROBOTIC
 
 /obj/item/organ/tongue/vox/TongueSpeech(var/message)
 	if(prob(10))
