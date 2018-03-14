@@ -199,6 +199,15 @@
 			return FALSE
 	return TRUE
 
+/datum/objective/crew/nothingreallymatterstome
+	explanation_text = "Have a Bottle of Nothing with you at the end of the shift."
+	jobs = "mime"
+
+/datum/objective/crew/nothingreallymatterstome/check_completion()
+	if(owner && owner.current && owner.current.check_contents_for(/obj/item/reagent_containers/food/drinks/bottle/bottleofnothing))
+		return TRUE
+	return FALSE
+
 /datum/objective/crew/nullrod
 	explanation_text = "Don't lose your nullrod. You can still transform it into another item."
 	jobs = "chaplain"
