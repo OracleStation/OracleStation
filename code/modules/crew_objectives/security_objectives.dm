@@ -20,13 +20,13 @@
 	return FALSE
 
 /datum/objective/crew/shawshankgonewrong
-	explanation_text = "Ensure there are no corpses in security when the shift ends."
+	explanation_text = "Ensure there are no corpses in the prison wing when the shift ends."
 	jobs = "brigphysician"
 
 /datum/objective/crew/shawshankgonewrong/check_completion()
 	for(var/mob/living/carbon/human/H in GLOB.mob_list)
 		if(H.stat == DEAD && H.z == ZLEVEL_STATION_PRIMARY)
-			if(istype(get_area(H), /area/security))
+			if(istype(get_area(H), /area/security/prison))
 				return FALSE
 	return TRUE
 
