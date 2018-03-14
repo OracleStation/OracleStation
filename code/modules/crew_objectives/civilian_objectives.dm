@@ -166,7 +166,7 @@
 		return FALSE
 
 /datum/objective/crew/shoethief
-	explanation_text = "Steal at least (Yell on github, this objective broke) pairs of shoes, and have them in your bag at the end of the shift."
+	explanation_text = "Steal at least (Yell on github, this objective broke) pairs of shoes, and have them in your bag at the end of the shift. Bonus points if they are stolen from crewmembers instead of ClothesMates."
 	jobs = "clown"
 
 /datum/objective/crew/shoethief/New()
@@ -176,7 +176,7 @@
 
 /datum/objective/crew/shoethief/update_explanation_text()
 	. = ..()
-	explanation_text = "Steal at least [target_amount] pair\s of shoes, and have them in your bag at the end of the shift."
+	explanation_text = "Steal at least [target_amount] pair\s of shoes, and have them in your bag at the end of the shift. Bonus points if they are stolen from crewmembers instead of ClothesMates."
 
 /datum/objective/crew/shoethief/check_completion()
 	var/list/shoes = list()
