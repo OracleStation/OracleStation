@@ -110,6 +110,37 @@
 			return FALSE
 	return TRUE
 
+/datum/objective/crew/exterminator
+	explanation_text = "Ensure that there are no more than (Yell on github, this objective broke) living mice on the station when the round ends."
+	jobs = "janitor"
+
+/datum/objective/crew/exterminator/New()
+	. = ..()
+	target_amount = rand(2, 5)
+	update_explanation_text()
+
+/datum/objective/crew/exterminator/update_explanation_text()
+	. = ..()
+	explanation_text = "Ensure that there are no more than [target_amount] living mice on the station when the round ends."
+
+/datum/objective/crew/exterminator/check_completion()
+	var/num_mice = 0
+	for(var/mob/living/simple_animal/mouse/M in GLOB.living_mob_list)
+		if(M.z == ZLEVEL_STATION_PRIMARY)
+			num_mice++
+	if(num_mice <= target_amount)
+		return TRUE
+	return FALSE
+
+/datum/objective/crew/lostkeys
+	explanation_text = "Don't lose the janicart keys. Have them with you when the shift ends."
+	jobs = "janitor"
+
+/datum/objective/crew/lostkeys/check_completion()
+	if(owner && owner.current && owner.current.check_contents_for(/obj/item/key/janitor))
+		return TRUE
+	return FALSE
+
 /datum/objective/crew/slipster //ported from old Hippie with adjustments
 	explanation_text = "Slip at least (Yell on GitHub if you see this) different people with your PDA, and have it on you at the end of the shift."
 	jobs = "clown"
@@ -134,6 +165,29 @@
 	else
 		return FALSE
 
+/datum/objective/crew/shoethief
+	explanation_text = "Steal at least (Yell on github, this objective broke) pairs of shoes, and have them in your bag at the end of the shift. Bonus points if they are stolen from crewmembers instead of ClothesMates."
+	jobs = "clown"
+
+/datum/objective/crew/shoethief/New()
+	. = ..()
+	target_amount = rand(3, 5)
+	update_explanation_text()
+
+/datum/objective/crew/shoethief/update_explanation_text()
+	. = ..()
+	explanation_text = "Steal at least [target_amount] pair\s of shoes, and have them in your bag at the end of the shift. Bonus points if they are stolen from crewmembers instead of ClothesMates."
+
+/datum/objective/crew/shoethief/check_completion()
+	var/list/shoes = list()
+	if(owner && owner.current)
+		for(var/obj/item/clothing/shoes/S in owner.current.get_contents())
+			if(!istype(S, /obj/item/clothing/shoes/clown_shoes))
+				shoes |= S
+	if(shoes.len >= target_amount)
+		return TRUE
+	return FALSE
+
 /datum/objective/crew/vow //ported from old Hippie
 	explanation_text = "Never break your vow of silence."
 	jobs = "mime"
@@ -144,6 +198,15 @@
 		if(say_log.len > 0)
 			return FALSE
 	return TRUE
+
+/datum/objective/crew/nothingreallymatterstome
+	explanation_text = "Have a Bottle of Nothing with you at the end of the shift."
+	jobs = "mime"
+
+/datum/objective/crew/nothingreallymatterstome/check_completion()
+	if(owner && owner.current && owner.current.check_contents_for(/obj/item/reagent_containers/food/drinks/bottle/bottleofnothing))
+		return TRUE
+	return FALSE
 
 /datum/objective/crew/nullrod
 	explanation_text = "Don't lose your nullrod. You can still transform it into another item."

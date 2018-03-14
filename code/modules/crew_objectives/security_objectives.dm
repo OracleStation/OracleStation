@@ -20,12 +20,22 @@
 	return FALSE
 
 /datum/objective/crew/shawshankgonewrong
-	explanation_text = "Ensure there are no corpses in security when the shift ends."
+	explanation_text = "Ensure there are no corpses in the prison wing when the shift ends."
 	jobs = "brigphysician"
 
 /datum/objective/crew/shawshankgonewrong/check_completion()
 	for(var/mob/living/carbon/human/H in GLOB.mob_list)
 		if(H.stat == DEAD && H.z == ZLEVEL_STATION_PRIMARY)
-			if(get_area(H) == /area/security)
+			if(istype(get_area(H), /area/security/prison))
 				return FALSE
+	return TRUE
+
+/datum/objective/crew/nomanleftbehind
+	explanation_text = "Ensure no prisoners are left in the brig when the shift ends."
+	jobs = "warden,securityofficer"
+
+/datum/objective/crew/nomanleftbehind/check_completion()
+	for(var/mob/living/carbon/M in GLOB.living_mob_list)
+		if(!(M.mind.assigned_role in GLOB.security_positions) && istype(get_area(M), /area/security/prison)) //there's no list of incarcerated players, so we just assume any non-security people in prison are prisoners, and assume that any security people aren't prisoners
+			return FALSE
 	return TRUE
