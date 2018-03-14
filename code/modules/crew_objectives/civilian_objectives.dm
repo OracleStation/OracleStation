@@ -175,6 +175,7 @@
 	update_explanation_text()
 
 /datum/objective/crew/shoethief/update_explanation_text()
+	. = ..()
 	explanation_text = "Steal at least [target_amount] pair\s of shoes, and have them in your bag at the end of the shift."
 
 /datum/objective/crew/shoethief/check_completion()
