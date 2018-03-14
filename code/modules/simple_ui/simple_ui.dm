@@ -13,7 +13,7 @@
 	var/datum/asset/assets = null
 
 /datum/simple_ui/New(atom/n_datasource, n_width = 512, n_height = 512, n_assets = null)
-	if(hascall(n_datasource, "simpleui_canview") && hascall(n_datasource, "simpleui_getcontent"))
+	if(hascall(n_datasource, "simpleui_canview"))
 		datasource = n_datasource
 	else
 		log_world("[n_datasource] does not have the correct procs for use with /datum/simple_ui!")
