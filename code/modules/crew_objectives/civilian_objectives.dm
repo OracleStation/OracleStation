@@ -132,6 +132,15 @@
 		return TRUE
 	return FALSE
 
+/datum/objective/crew/lostkeys
+	explanation_text = "Don't lose the janicart keys. Have them with you when the shift ends."
+	jobs = "janitor"
+
+/datum/objective/crew/lostkeys/check_completion()
+	if(owner && owner.current && owner.current.check_contents_for(/obj/item/key/janitor))
+		return TRUE
+	return FALSE
+
 /datum/objective/crew/slipster //ported from old Hippie with adjustments
 	explanation_text = "Slip at least (Yell on GitHub if you see this) different people with your PDA, and have it on you at the end of the shift."
 	jobs = "clown"
@@ -155,6 +164,28 @@
 		return TRUE
 	else
 		return FALSE
+
+/datum/objective/crew/shoethief
+	explanation_text = "Steal at least (Yell on github, this objective broke) pairs of shoes, and have them in your bag at the end of the shift."
+	jobs = "clown"
+
+/datum/objective/crew/shoethief/New()
+	. = ..()
+	target_amount = rand(3, 5)
+	update_explanation_text()
+
+/datum/objective/crew/shoethief/update_explanation_text()
+	explanation_text = "Steal at least [target_amount] pair\s of shoes, and have them in your bag at the end of the shift."
+
+/datum/objective/crew/shoethief/check_completion()
+	var/list/shoes = list()
+	if(owner && owner.current)
+		for(var/obj/item/clothing/shoes/S in owner.current.get_contents())
+			if(!istype(S, /obj/item/clothing/shoes/clown_shoes))
+				shoes |= S
+	if(shoes.len >= target_amount)
+		return TRUE
+	return FALSE
 
 /datum/objective/crew/vow //ported from old Hippie
 	explanation_text = "Never break your vow of silence."
