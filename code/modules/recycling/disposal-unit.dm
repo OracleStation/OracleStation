@@ -271,6 +271,12 @@
 	name = "disposal unit"
 	desc = "A pneumatic waste disposal unit."
 	icon_state = "disposal"
+	var/datum/simple_ui/themed/nano/ui
+
+/obj/machinery/disposal/bin/Initialize(mapload, obj/structure/disposalconstruct/make_from)
+	. = ..()
+	ui = new /datum/simple_ui/themed/nano(src, 330, 200, "disposal_bin")
+	ui.auto_refresh = TRUE
 
 // attack by item places it in to disposal
 /obj/machinery/disposal/bin/attackby(obj/item/I, mob/user, params)
@@ -286,19 +292,15 @@
 
 // handle machine interaction
 
-/obj/machinery/disposal/bin/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
-									datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
+/obj/machinery/disposal/bin/ui_interact(mob/user)
 	if(stat & BROKEN)
 		return
-	if(user.loc == src)
-		to_chat(user, "<span class='warning'>You cannot reach the controls from inside!</span>")
-		return
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
-	if(!ui)
-		ui = new(user, src, ui_key, "disposal_unit", name, 300, 200, master_ui, state)
-		ui.open()
+	ui.render(user)
 
-/obj/machinery/disposal/bin/ui_data(mob/user)
+/obj/machinery/disposal/bin/proc/simpleui_canview(mob/user)
+	return !(stat & BROKEN) && Adjacent(user)
+
+/obj/machinery/disposal/bin/proc/simpleui_data(mob/user)
 	var/list/data = list()
 	data["flush"] = flush
 	data["full_pressure"] = full_pressure
@@ -309,7 +311,7 @@
 	data["isai"] = isAI(user)
 	return data
 
-/obj/machinery/disposal/bin/ui_act(action, params)
+/obj/machinery/disposal/bin/proc/simpleui_act(action, params)
 	if(..())
 		return
 	switch(action)
