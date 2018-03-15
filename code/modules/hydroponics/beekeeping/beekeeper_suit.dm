@@ -5,7 +5,6 @@
 	icon_state = "beekeeper"
 	item_state = "beekeeper"
 	flags_1 = THICKMATERIAL_1
-	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/beekeeper_suit
 	name = "beekeeper suit"
@@ -13,4 +12,3 @@
 	icon_state = "beekeeper"
 	item_state = "beekeeper"
 	flags_1 = THICKMATERIAL_1
-	species_restricted = list("exclude","Vox Outcast")
