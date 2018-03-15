@@ -56,6 +56,7 @@
 	return TRUE
 
 /datum/simple_ui/proc/render(mob/target, updating = FALSE)
+	set waitfor = FALSE //Makes this an async call
 	//Check to see if they have the window open still if updating
 	if(updating && !test_viewer(target, updating))
 		return
@@ -67,12 +68,14 @@
 	if(!isprocessing && (auto_refresh | auto_check_view))
 		START_PROCESSING(SSobj, src) //Start processing to poll for viewability
 	//Send the content
-	target << browse(get_content(target), "window=[window_id];size=[width]x[height];can_close=[can_close];can_minimize=[can_minimize];can_resize=[can_resize];titlebar=[titlebar];")
+	if(updating)
+		target << output(get_content(target), "[window_id].browser")
+	else
+		target << browse(get_content(target), "window=[window_id];size=[width]x[height];can_close=[can_close];can_minimize=[can_minimize];can_resize=[can_resize];titlebar=[titlebar];focus=false;")
 
 /datum/simple_ui/proc/update_all()
 	for(var/viewer in viewers)
-		//Spawn forks off the execution to their own coroutines for better performance, since winget is a blocking call
-		spawn() render(viewer, TRUE)
+		render(viewer, TRUE)
 
 /datum/simple_ui/proc/close(mob/target)
 	if(target && target.client)
@@ -85,17 +88,19 @@
 
 /datum/simple_ui/proc/check_view_all()
 	for(var/viewer in viewers)
-		spawn() check_view(viewer)
+		check_view(viewer)
 
 /datum/simple_ui/proc/check_view(mob/target)
+	set waitfor = FALSE //Makes this an async call
 	if(!test_viewer(target, TRUE))
 		close(target)
 
 /datum/simple_ui/proc/call_js(mob/target, js_func, list/parameters = list())
+	set waitfor = FALSE //Makes this an async call
 	if(!test_viewer(target, TRUE))
 		return
 	target << output(list2params(parameters),"[window_id].browser:[js_func]")
 
 /datum/simple_ui/proc/call_js_all(js_func, list/parameters = list())
 	for(var/viewer in viewers)
-		spawn() call_js(viewer, js_func, parameters)
+		call_js(viewer, js_func, parameters)
