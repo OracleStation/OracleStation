@@ -93,7 +93,7 @@
 /datum/map_template/shuttle/emergency/meteor/prerequisites_met(mob/user)
 	if("emagged" in SSshuttle.shuttle_purchase_requirements_met)
 		return TRUE
-	to_chat(user, "<span class='notice'>The console blocks the purchase of that shuttle.</span>")
+	to_chat(user, "<span class='notice'>Central Command has deemed this shuttle too dangerous for general usage. The console's safeties prevent its purchase.</span>")
 	return FALSE
 
 /datum/map_template/shuttle/emergency/luxury
