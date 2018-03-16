@@ -277,6 +277,7 @@
 	. = ..()
 	ui = new /datum/simple_ui/themed/nano(src, 330, 200, "disposal_bin")
 	ui.auto_refresh = TRUE
+	ui.can_resize = FALSE
 
 // attack by item places it in to disposal
 /obj/machinery/disposal/bin/attackby(obj/item/I, mob/user, params)
@@ -302,12 +303,13 @@
 
 /obj/machinery/disposal/bin/proc/simpleui_data(mob/user)
 	var/list/data = list()
-	data["flush"] = flush
-	data["full_pressure"] = full_pressure
-	data["pressure_charging"] = pressure_charging
-	data["panel_open"] = panel_open
-	var/per = Clamp(100* air_contents.return_pressure() / (SEND_PRESSURE), 0, 100)
-	data["per"] = round(per, 1)
+	data["flush"] = flush ? "TRUE" : "FALSE"
+	data["full_pressure"] = full_pressure ? "TRUE" : "FALSE"
+	data["pressure_charging"] = pressure_charging ? "TRUE" : "FALSE"
+	data["panel_open"] = panel_open ? "TRUE" : "FALSE"
+	var/per = full_pressure ? 100 : Clamp(100* air_contents.return_pressure() / (SEND_PRESSURE), 0, 99)
+	data["per"] = "[round(per, 1)]%"
+	data["contents"] = (contents.len > 0) ? "TRUE" : "FALSE"
 	data["isai"] = isAI(user)
 	return data
 
@@ -355,6 +357,7 @@
 	full_pressure = FALSE
 	pressure_charging = TRUE
 	update_icon()
+	ui.soft_update_all()
 
 /obj/machinery/disposal/bin/update_icon()
 	cut_overlays()
@@ -399,9 +402,7 @@
 				do_flush()
 		flush_count = 0
 
-	ui.soft_update_all()
-	var/pressurePercent = round(Clamp(100* air_contents.return_pressure() / (SEND_PRESSURE), 0, 100),1)
-	ui.call_js_all("updateProgressBar", list("[pressurePercent]%"))
+	ui.soft_update_fields()
 
 	if(flush && air_contents.return_pressure() >= SEND_PRESSURE) // flush can happen even without power
 		do_flush()

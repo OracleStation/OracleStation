@@ -1,28 +1,27 @@
-<script type="text/javascript">
-	function updateProgressBar(value) {
-		document.getElementById("pressureBar").style["width"] = value;
-	}
-</script>
 <div class='display'>
 	<section>
-		<span class='label'>Pressurised:</span>
+		<span class='label'>State:</span>
 		<div class='content' id="full_pressure">@{full_pressure}</div>
 	</section>
-	<section>
-		<span class='label'>Charging:</span>
-		<div class='content' id="pressure_charging">@{pressure_charging}</div>
-	</section>
-	<section>
+    <section>
 		<span class='label'>Pressure:</span>
 		<div class='content'>
-			<div class='progressBar'>
-				<div style='width: @{per}%;' class='progressFill' id="pressureBar"></div>
-				<div class='progressValue' id="per">@{per}</div>
+			<div class='progressBar' id='per'>
+				<div class='progressFill' style="width: @{per}"></div>
+				<div class='progressLabel'>@{per}</div>
 			</div>
 		</div>
 	</section>
-	<section>
+    <section>
 		<span class='label'>Handle:</span>
 		<div class='content' id="flush">@{flush}</div>
+	</section>
+	<section>
+		<span class='label'>Eject:</span>
+		<div class='content' id="contents">@{contents}</div>
+	</section>
+	<section>
+		<span class='label'>Power:</span>
+		<div class='content' id="pressure_charging">@{pressure_charging}</div>
 	</section>
 </div>

@@ -13,7 +13,7 @@
 	if(auto_check_view)
 		check_view_all()
 	if(auto_refresh)
-		soft_update_all()
+		soft_update_fields()
 
 GLOBAL_LIST_EMPTY(simpleui_template_variables)
 GLOBAL_LIST_EMPTY(simpleui_file_cache)
@@ -55,10 +55,14 @@ GLOBAL_LIST_EMPTY(simpleui_file_cache)
 	var/list/template_data = list("title" = datasource.name, "body" = get_inner_content(target))
 	return process_template(root_template, template_data)
 
-/datum/simple_ui/themed/proc/soft_update_all()
+/datum/simple_ui/themed/proc/soft_update_fields()
 	for(var/viewer in viewers)
 		var/json = json_encode(call(datasource, "simpleui_data")(viewer))
 		call_js(viewer, "updateFields", list(json))
+
+/datum/simple_ui/themed/proc/soft_update_all()
+	for(var/viewer in viewers)
+		call_js(viewer, "replaceContent", list(get_inner_content(viewer)))
 
 /datum/simple_ui/themed/nano
 	theme = "nano"
