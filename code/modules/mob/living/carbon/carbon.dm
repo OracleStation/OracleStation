@@ -692,10 +692,10 @@
 	if(status_flags & GODMODE)
 		return
 	if(stat != DEAD)
-		if(health<= HEALTH_THRESHOLD_DEAD)
+		if(health <= HEALTH_THRESHOLD_DEAD)
 			death()
 			return
-		if(IsUnconscious() || IsSleeping() || getOxyLoss() > 50 || (status_flags & FAKEDEATH) || health <= HEALTH_THRESHOLD_CRIT)
+		if(IsUnconscious() || IsSleeping() || (status_flags & FAKEDEATH) || health <= HEALTH_THRESHOLD_CRIT)
 			if(stat == CONSCIOUS)
 				stat = UNCONSCIOUS
 				blind_eyes(1)

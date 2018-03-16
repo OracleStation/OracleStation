@@ -134,6 +134,11 @@
 	else
 		..()
 
+/obj/item/organ/brain/on_life()
+	if(owner && owner.getOxyLoss() > 50)
+		organ_take_damage(rand(1, 5))
+	return ..()
+
 /obj/item/organ/brain/Destroy() //copypasted from MMIs.
 	if(brainmob)
 		qdel(brainmob)

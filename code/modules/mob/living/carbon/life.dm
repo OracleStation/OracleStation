@@ -34,6 +34,8 @@
 
 //Start of a breath chain, calls breathe()
 /mob/living/carbon/handle_breathing(times_fired)
+	if(getOxyLoss() > 50)
+		silent = max(5, silent)//you can't speak without air in your lungs
 	if((times_fired % 4) == 2 || failed_last_breath)
 		breathe() //Breathe per 4 ticks, unless suffocating
 	else
