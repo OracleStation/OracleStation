@@ -103,6 +103,17 @@ MASS SPECTROMETER
 
 	add_fingerprint(user)
 
+/proc/damage_amount_to_fluff(amt)
+	. = "none"
+	switch(amt)
+		if(1 to 10)
+			. = "minor"
+		if(10 to 25)
+			. = "moderate"
+		if(25 to 40)
+			. = "heavy"
+		if(40 to 100000)
+			. = "catastrophic"
 
 // Used by the PDA medical scanner too
 /proc/healthscan(mob/living/user, mob/living/M, mode = 1)
@@ -160,10 +171,12 @@ MASS SPECTROMETER
 	if(iscarbon(M) && mode == 1)
 		var/mob/living/carbon/C = M
 		var/list/damaged = C.get_damaged_bodyparts(1,1)
-		if(length(damaged)>0 || oxy_loss>0 || tox_loss>0 || fire_loss>0)
-			to_chat(user, "<span class='info'>\tDamage: <span class='info'><font color='red'>Brute</font></span>-<font color='#FF8000'>Burn</font>-<font color='green'>Toxin</font>-<font color='blue'>Suffocation</font>\n\t\tSpecifics: <font color='red'>[brute_loss]</font>-<font color='#FF8000'>[fire_loss]</font>-<font color='green'>[tox_loss]</font>-<font color='blue'>[oxy_loss]</font></span>")
+		if(length(damaged) > 0 || oxy_loss > 0 || tox_loss > 0 || fire_loss > 0)
+			to_chat(user, "<span class='info'>\tDamage: <b><font color='green'>Toxin</font> - <font color='#1E90FF'>Suffocation</font></b>\n\t\tSpecifics: <b><font color='green'>[round(tox_loss)]</font> - <font color='#1E90FF'>[round(oxy_loss)]</font></span></b>")
+			if(!C.brute_burn_revive_check() && C.stat == DEAD)
+				to_chat(user, "<span class='alert'>Subject's body too damaged to attempt revival. Treat brute trauma and burn wounds first.</span>")
 			for(var/obj/item/bodypart/org in damaged)
-				to_chat(user, "\t\t<span class='info'>[capitalize(org.name)]: [(org.brute_dam > 0) ? "<font color='red'>[org.brute_dam]</font></span>" : "<font color='red'>0</font>"]-[(org.burn_dam > 0) ? "<font color='#FF8000'>[org.burn_dam]</font>" : "<font color='#FF8000'>0</font>"]")
+				to_chat(user, "\t\t<span class='info'>[capitalize(org.name)]: <b><font color='red'>[damage_amount_to_fluff(org.brute_dam)]</font> - <font color='#FF8000'>[damage_amount_to_fluff(org.burn_dam)]</font></b></span>")
 
 		var/list/broken_stuff = list()
 		for(var/obj/item/bodypart/B in C.bodyparts)

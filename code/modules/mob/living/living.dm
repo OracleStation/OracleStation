@@ -989,3 +989,7 @@
 			client.move_delay = world.time + movement_delay()
 	lying_prev = lying
 	return canmove
+
+
+/mob/living/proc/brute_burn_revive_check()
+	return getBruteLoss() < 180 && getFireLoss() < 180
