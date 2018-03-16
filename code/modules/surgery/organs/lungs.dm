@@ -64,6 +64,16 @@
 
 	var/crit_stabilizing_reagent = "epinephrine"
 
+/obj/item/organ/lungs/proc/handle_damage_losebreath()
+	var/lung_damage = get_damage_perc()
+	if(lung_damage > 10 && prob(sqrt(lung_damage)) && owner)
+		owner.losebreath += rand(3, sqrt(lung_damage))
+		to_chat(owner, "<span class='warning'>You feel a sharp pain in your [zone] and suddenly start choking. You can't breathe!</span>")
+
+/obj/item/organ/lungs/on_life()
+	return//nothing happens here, we overwrite the stuff from earlier, because of how closely lungs are related to life()
+	//really no way to run things on the lungs themselves, because the code is so tightly knit
+	//look at the above handle_damage_losebreath() for the code
 
 /obj/item/organ/lungs/proc/check_breath(datum/gas_mixture/breath, mob/living/carbon/human/H)
 	if((H.status_flags & GODMODE))

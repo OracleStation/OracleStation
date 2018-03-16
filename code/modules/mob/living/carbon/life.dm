@@ -19,9 +19,6 @@
 		if(AmountSleeping() < 20)
 			AdjustSleeping(20)
 
-	if(stat != DEAD)
-		handle_liver()
-
 	if(stat == DEAD)
 		stop_sound_channel(CHANNEL_HEARTBEAT)
 
@@ -37,6 +34,8 @@
 
 //Start of a breath chain, calls breathe()
 /mob/living/carbon/handle_breathing(times_fired)
+	if(getOxyLoss() > 50)
+		silent = max(5, silent)//you can't speak without air in your lungs
 	if((times_fired % 4) == 2 || failed_last_breath)
 		breathe() //Breathe per 4 ticks, unless suffocating
 	else
@@ -59,6 +58,13 @@
 
 	if(health <= HEALTH_THRESHOLD_CRIT || (pulledby && pulledby.grab_state >= GRAB_KILL && !getorganslot("breathing_tube")))
 		losebreath++
+
+	var/obj/item/organ/lungs/lungs = getorganslot("lungs")
+
+	if(lungs)
+		lungs.handle_damage_losebreath()//Why don't you put this into lungs' check_breathe() directly, Flattest?
+	//This needs to set losebreath /before/ the next few lines disallow breathing to happen because of its lack
+	//so this needs to be here.
 
 	//Suffocate
 	if(losebreath > 0)
@@ -226,9 +232,9 @@
 	return
 
 /mob/living/carbon/proc/handle_organs()
-	for(var/V in internal_organs)
-		var/obj/item/organ/O = V
+	for(var/obj/item/organ/O in internal_organs)
 		O.on_life()
+	reagents.remove_reagent("corazone", 0.4) //corazone slowly deletes itself regardless of whether the patient has a liver or not
 
 /mob/living/carbon/handle_diseases()
 	for(var/thing in viruses)
@@ -402,45 +408,13 @@
 /////////
 //LIVER//
 /////////
-
-/mob/living/carbon/proc/handle_liver()
-	var/obj/item/organ/liver/liver = getorganslot("liver")
-	if(liver)
-		if(liver.damage >= 100)
-			liver.failing = TRUE
-			liver_failure()
-		else
-			liver.failing = FALSE
-
-	if(((!(NOLIVER in dna.species.species_traits)) && (!liver)))
-		liver_failure()
-
-/mob/living/carbon/proc/undergoing_liver_failure()
-	var/obj/item/organ/liver/liver = getorganslot("liver")
-	if(liver && liver.failing)
-		return TRUE
-
 /mob/living/carbon/proc/return_liver_damage()
 	var/obj/item/organ/liver/liver = getorganslot("liver")
 	if(liver)
-		return liver.damage
+		return liver.get_damage_perc()
+	return 101//won't pass a `< 100` check
 
 /mob/living/carbon/proc/applyLiverDamage(var/d)
 	var/obj/item/organ/liver/L = getorganslot("liver")
 	if(L)
-		L.damage += d
-
-/mob/living/carbon/proc/liver_failure()
-	if(reagents.get_reagent_amount("corazone"))//corazone is processed here an not in the liver because a failing liver can't metabolize reagents
-		reagents.remove_reagent("corazone", 0.4) //corazone slowly deletes itself.
-		return
-	var/dealt_damage = FALSE
-	if(ishuman(src))
-		var/mob/living/carbon/human/H = src
-		if(TOXINLOVER in H.dna.species.species_traits)
-			adjustToxLoss(-8)
-			dealt_damage = TRUE
-	if(!dealt_damage)
-		adjustToxLoss(8)
-	if(prob(30))
-		to_chat(src, "<span class='notice'>You feel confused and nauseous...</span>")//actual symptoms of liver failure
+		L.organ_take_damage(d)

@@ -7,6 +7,7 @@
 	origin_tech = "materials=2;biotech=7;magnets=4;bluespace=4;abductor=5"
 	var/obj/machinery/abductor/pad/home
 	var/cooldown = 30
+	shows_up_on_scanners = FALSE
 
 /obj/item/implant/abductor/activate()
 	if(cooldown == initial(cooldown))

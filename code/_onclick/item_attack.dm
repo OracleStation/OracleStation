@@ -75,7 +75,7 @@
 /mob/living/attacked_by(obj/item/I, mob/living/user)
 	send_item_attack_message(I, user)
 	if(I.force)
-		apply_damage(I.force, I.damtype, break_modifier = (I.sharpness ? 1 : 2))
+		apply_damage(I.force, I.damtype, break_modifier = I.sharpness)
 		if(I.damtype == BRUTE)
 			if(prob(33))
 				I.add_mob_blood(src)

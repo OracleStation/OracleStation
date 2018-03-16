@@ -11,7 +11,6 @@
 	origin_tech = "biotech=5"
 	attack_verb = list("attacked", "slapped", "whacked")
 	var/mob/living/brain/brainmob = null
-	var/damaged_brain = FALSE //whether the brain organ is damaged.
 	var/decoy_override = FALSE	//I apologize to the security players, and myself, who abused this, but this is going to go.
 
 /obj/item/organ/brain/changeling_brain
@@ -134,6 +133,11 @@
 		Insert(C)
 	else
 		..()
+
+/obj/item/organ/brain/on_life()
+	if(owner && owner.getOxyLoss() > 50)
+		organ_take_damage(rand(1, 5))
+	return ..()
 
 /obj/item/organ/brain/Destroy() //copypasted from MMIs.
 	if(brainmob)

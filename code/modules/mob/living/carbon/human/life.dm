@@ -48,6 +48,10 @@
 		//pain
 		handle_shock()
 
+	if(stat != DEAD)
+		//toxins
+		handle_toxins()
+
 	//Update our name based on whether our face is obscured/disfigured
 	name = get_visible_name()
 
@@ -333,19 +337,6 @@
 		visible_message("<span class='warning'><b>[src]</b> screams and lets go of [held_items[2]] in pain.</span>", "<span class='userdanger'>A horrible pain in your [parse_zone(R)] makes it impossible to hold [held_items[2]]!</span>")
 		dropItemToGround(held_items[2])
 
-/mob/living/carbon/human/proc/update_shock()
-	traumatic_shock = 100 - health + getBrainLoss()
-
-	// broken or ripped off organs will add quite a bit of pain
-	for(var/thing in bodyparts)
-		var/obj/item/bodypart/BP = thing
-		if(BP.broken && !(BP.splinted))
-			traumatic_shock += 15
-
-	if(drunkenness)
-		traumatic_shock = max(0, traumatic_shock - 10)
-	return traumatic_shock
-
 /mob/living/carbon/human/proc/handle_shock()
 	if(status_flags & GODMODE) //godmode
 		return
@@ -353,16 +344,23 @@
 	if(NOPAIN in dna.species.species_traits)
 		return
 
-	update_shock()
+	var/traumatic_shock = getFireLoss() + getBruteLoss()
 
-	if(health <= 0)
-		shock_stage = max(shock_stage, 61)
+	// broken odyparts will add quite a bit of pain
+	for(var/thing in bodyparts)
+		var/obj/item/bodypart/BP = thing
+		if(BP.broken && !(BP.splinted))
+			traumatic_shock += 15
+
+	if(drunkenness)
+		traumatic_shock = max(0, traumatic_shock - 25)
 
 	if(traumatic_shock >= 100)
-		shock_stage += 1
+		shock_stage = max(shock_stage, 80)
+		shock_stage++
 	else
-		shock_stage = min(shock_stage, 160)
-		shock_stage = max(shock_stage-1, 0)
+		shock_stage = min(shock_stage, 160)//bump down to 160 if higher than that
+		shock_stage = max(shock_stage - 1, 0)//-1
 		return
 
 	var/list/ouch_list = list("It hurts!", "Agh, it hurts!", "The pain!", "You really need some painkillers...")
@@ -404,6 +402,16 @@
 		set_heartattack(TRUE)
 		to_chat(src, "<span class='userdanger'>You feel your heart stop beating...</span>")
 		//if you survived this long, you won't survive much longer
+
+/mob/living/carbon/human/proc/handle_toxins()
+	if(return_liver_damage() < 95 || prob(80) || !getToxLoss())
+		return
+//if the liver is completely f****d, once every five cycles we heal 1 toxin damage
+//and deal 1 to 5 damage to all organs
+	for(var/thing in internal_organs)
+		var/obj/item/organ/O = thing
+		O.organ_take_damage(rand(1, 5))
+	adjustToxLoss(-1)
 
 /mob/living/carbon/human/proc/can_heartattack()
 	CHECK_DNA_AND_SPECIES(src)

@@ -692,10 +692,10 @@
 	if(status_flags & GODMODE)
 		return
 	if(stat != DEAD)
-		if(health<= HEALTH_THRESHOLD_DEAD)
+		if(health <= HEALTH_THRESHOLD_DEAD)
 			death()
 			return
-		if(IsUnconscious() || IsSleeping() || getOxyLoss() > 50 || (status_flags & FAKEDEATH) || health <= HEALTH_THRESHOLD_CRIT)
+		if(IsUnconscious() || IsSleeping() || (status_flags & FAKEDEATH) || health <= HEALTH_THRESHOLD_CRIT)
 			if(stat == CONSCIOUS)
 				stat = UNCONSCIOUS
 				blind_eyes(1)
@@ -725,13 +725,13 @@
 /mob/living/carbon/fully_heal(admin_revive = 0)
 	if(reagents)
 		reagents.clear_reagents()
-	var/obj/item/organ/brain/B = getorgan(/obj/item/organ/brain)
-	if(B)
-		B.damaged_brain = 0
 	for(var/thing in viruses)
 		var/datum/disease/D = thing
 		if(D.severity != NONTHREAT)
 			D.cure(0)
+	for(var/thing in internal_organs)
+		var/obj/item/organ/O = thing
+		O.organ_set_damage(0)
 	if(admin_revive)
 		regenerate_limbs()
 		regenerate_organs()
