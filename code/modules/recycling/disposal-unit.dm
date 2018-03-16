@@ -399,7 +399,9 @@
 				do_flush()
 		flush_count = 0
 
-	updateDialog()
+	ui.soft_update_all()
+	var/pressurePercent = round(Clamp(100* air_contents.return_pressure() / (SEND_PRESSURE), 0, 100),1)
+	ui.call_js_all("updateProgressBar", list("[pressurePercent]%"))
 
 	if(flush && air_contents.return_pressure() >= SEND_PRESSURE) // flush can happen even without power
 		do_flush()

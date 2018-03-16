@@ -267,6 +267,7 @@ div.notice
 	height: 100%;
 	background: #40628a;
 	overflow: hidden;
+	transition: width 2.2s linear;
 }
 
 .progressFill.good

@@ -37,7 +37,7 @@ GLOBAL_LIST_EMPTY(simpleui_file_cache)
 	return get_file("html/simple_ui/themes/[theme]/[filename]")
 
 /datum/simple_ui/themed/proc/process_template(template, variables)
-	var/regex/pattern = regex("\\{(\\S+)\\}","gi")
+	var/regex/pattern = regex("\\@\\{(\\w+)\\}","gi")
 	GLOB.simpleui_template_variables = variables
 	var/replaced = pattern.Replace(template, /proc/simpleui_process_template_replace)
 	GLOB.simpleui_template_variables = null
@@ -57,7 +57,8 @@ GLOBAL_LIST_EMPTY(simpleui_file_cache)
 
 /datum/simple_ui/themed/proc/soft_update_all()
 	for(var/viewer in viewers)
-		spawn() call_js(viewer, "replaceContent", list(get_inner_content(viewer)))
+		var/json = json_encode(call(datasource, "simpleui_data")(viewer))
+		call_js(viewer, "updateFields", list(json))
 
 /datum/simple_ui/themed/nano
 	theme = "nano"
