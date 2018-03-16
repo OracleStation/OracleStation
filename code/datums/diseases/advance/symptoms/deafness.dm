@@ -49,9 +49,9 @@ Bonus
 		if(5)
 			if(power > 2)
 				var/obj/item/organ/ears/ears = M.getorganslot("ears")
-				if(istype(ears) && ears.ear_damage < UNHEALING_EAR_DAMAGE)
+				if(istype(ears) && ears.get_damage_perc() < UNHEALING_EAR_DAMAGE)
 					to_chat(M, "<span class='userdanger'>Your ears pop painfully and start bleeding!</span>")
-					ears.ear_damage = max(ears.ear_damage, UNHEALING_EAR_DAMAGE)
+					ears.organ_take_damage(50)
 					M.emote("scream")
 			else
 				to_chat(M, "<span class='userdanger'>Your ears pop and begin ringing loudly!</span>")

@@ -1,6 +1,5 @@
-#define LIVER_DEFAULT_HEALTH 100 //amount of damage required for liver failure
 #define LIVER_DEFAULT_TOX_TOLERANCE 3 //amount of toxins the liver can filter out
-#define LIVER_DEFAULT_TOX_LETHALITY 0.5 //lower values lower how harmful toxins are to the liver
+#define LIVER_DEFAULT_TOX_LETHALITY 0.3 //lower values lower how harmful toxins are to the liver
 
 /obj/item/organ/liver
 	name = "liver"
@@ -10,21 +9,37 @@
 	zone = "chest"
 	slot = "liver"
 	desc = "Pairing suggestion: chianti and fava beans."
-	var/damage = 0 //liver damage, 0 is no damage, damage=maxHealth causes liver failure
 	var/alcohol_tolerance = ALCOHOL_RATE//affects how much damage the liver takes from alcohol
 	var/failing //is this liver failing?
-	var/maxHealth = LIVER_DEFAULT_HEALTH
 	var/toxTolerance = LIVER_DEFAULT_TOX_TOLERANCE//maximum amount of toxins the liver can just shrug off
 	var/toxLethality = LIVER_DEFAULT_TOX_LETHALITY//affects how much damage toxins do to the liver
 	var/filterToxins = TRUE //whether to filter toxins
 
+/obj/item/organ/liver/damage_effect_check()
+	if(get_damage_perc() > 50)//it will always trigger if the damage is above 50
+		return TRUE
+
+/obj/item/organ/liver/damage_effect()
+	if(!owner)
+		return
+	if(!iscarbon(owner))
+		return
+	var/dealt_damage = FALSE
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		if(TOXINLOVER in H.dna.species.species_traits)
+			owner.adjustToxLoss(-8)
+			dealt_damage = TRUE
+	if(!dealt_damage)
+		owner.adjustToxLoss(8)
+
 /obj/item/organ/liver/on_life()
+
+	..()
 	var/mob/living/carbon/C = owner
 
 	//slowly heal liver damage
-	damage = max(0, damage - 0.1)
-	if(damage > maxHealth)//cap liver damage
-		damage = maxHealth
+	organ_heal_damage(0.1)
 
 	if(istype(C))
 		if(!failing)//can't process reagents with a failing liver
@@ -39,14 +54,11 @@
 					for(var/datum/reagent/toxin/toxin in listOfToxinsInThisBitch)
 						C.reagents.remove_reagent(initial(toxin.id), 1)
 				else if(toxamount > toxTolerance)
-					damage += toxamount*toxLethality
+					organ_take_damage(toxamount * toxLethality)
 
 
 			//metabolize reagents
 			C.reagents.metabolize(C, can_overdose=TRUE)
-
-			if(damage > 10 && prob(damage/3) && status != ORGAN_ROBOTIC)//the higher the damage the higher the probability
-				to_chat(C, "<span class='notice'>You feel [pick("nauseous", "dull pain in your lower body", "confused")].</span>")
 
 /obj/item/organ/liver/prepare_eat()
 	var/obj/S = ..()
@@ -77,16 +89,16 @@
 	desc = "An upgraded version of the cybernetic liver, designed to improve upon organic livers. It is resistant to alcohol poisoning and is very robust at filtering toxins."
 	origin_tech = "biotech=6"
 	alcohol_tolerance = 0.001
-	maxHealth = 200 //double the health of a normal liver
 	toxTolerance = 15 //can shrug off up to 15u of toxins
 	toxLethality = 0.3 //20% less damage than a normal liver
+	maxDamage = 200 //double the health of a normal liver
 
 /obj/item/organ/liver/cybernetic/emp_act(severity)
 	switch(severity)
 		if(1)
-			damage+=100
+			organ_take_damage(100)
 		if(2)
-			damage+=50
+			organ_take_damage(50)
 
 /obj/item/organ/liver/cybernetic/upgraded/ipc
 	name = "substance processor"

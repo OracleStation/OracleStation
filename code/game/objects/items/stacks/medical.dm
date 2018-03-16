@@ -20,6 +20,14 @@
 
 /obj/item/stack/medical/attack(mob/living/M, mob/user)
 
+	if(iscarbon(M))					//this bit here allows us to use medical stacks for surgery
+		var/mob/living/carbon/C = M	//without writing the whole codebase from scratch; really useful!
+		if(C.surgeries.len)
+			for(var/datum/surgery/surgery in C.surgeries)
+				if(surgery.location == user.zone_selected)
+					if(surgery.next_step(user))
+						return 1
+
 	if(M.stat == 2)
 		var/t_him = "it"
 		if(M.gender == MALE)

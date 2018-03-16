@@ -22,7 +22,7 @@
 		else if(istype(loc, /obj/item/organ/brain))
 			BR = loc
 		if(BR)
-			BR.damaged_brain = 1 //beaten to a pulp
+			BR.organ_take_damage(100000)//the cooler cousin of *squish
 
 /* //currently unused feature, since brain outside a mmi is always dead.
 /mob/living/brain/proc/handle_brain_revival_life()

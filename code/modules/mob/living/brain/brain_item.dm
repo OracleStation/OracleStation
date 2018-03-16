@@ -11,7 +11,6 @@
 	origin_tech = "biotech=5"
 	attack_verb = list("attacked", "slapped", "whacked")
 	var/mob/living/brain/brainmob = null
-	var/damaged_brain = FALSE //whether the brain organ is damaged.
 	var/decoy_override = FALSE	//I apologize to the security players, and myself, who abused this, but this is going to go.
 
 /obj/item/organ/brain/changeling_brain

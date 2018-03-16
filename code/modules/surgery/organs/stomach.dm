@@ -9,7 +9,13 @@
 	desc = "Onaka ga suite imasu."
 	var/disgust_metabolism = 1
 
+/obj/item/organ/stomach/damage_effect()
+	..()
+	if(owner)
+		owner.adjustToxLoss(rand(1, 3))//not nearly as lethal as other organs being damaged
+
 /obj/item/organ/stomach/on_life()
+	..()
 	var/mob/living/carbon/human/H = owner
 
 	if(istype(H))

@@ -15,6 +15,31 @@
 	//whether to call Remove() when qdeling the organ.
 	var/remove_on_qdel = TRUE
 
+	var/maxDamage = ORGAN_DEFAULT_HEALTH
+	var/damage = 0
+
+/obj/item/organ/proc/organ_take_damage(amount)
+	damage = Clamp(damage + amount, 0, maxDamage)
+
+/obj/item/organ/proc/organ_heal_damage(amount)//for the purists
+	take_damage(-amount)
+
+/obj/item/organ/proc/organ_set_damage(amount)
+	damage = Clamp(amount, 0, maxDamage)
+
+/obj/item/organ/proc/get_damage_perc()
+	return maxDamage ? damage / maxDamage * 100 : 0 //returns the percentage of damage an organ has; returns 0 if maxDamage is 0
+
+/obj/item/organ/proc/damage_effect_check()//used to do bad things to people
+	if(owner.reagents.get_reagent_amount("corazone"))//corazone stops all organ damage effects
+		return FALSE
+	var/damage_level = get_damage_perc()
+	if(damage_level > 30 && prob(sqrt(damage_level) && owner))//triggers once every 18 2 second ticks at 30 damage and once every 10 2 second ticks at 100 damage.
+		return TRUE
+
+/obj/item/organ/proc/damage_effect()
+	if(owner)
+		to_chat(owner, "<span class='warning'>You feel a sharp pain in your [parse_zone(zone)]!</span>")
 
 /obj/item/organ/proc/Insert(mob/living/carbon/M, special = 0, drop_if_replaced = TRUE)
 	if(!iscarbon(M) || owner == M)
@@ -54,12 +79,24 @@
 	return
 
 /obj/item/organ/proc/on_life()
+	if(damage_effect_check())
+		damage_effect()
 	return
 
 /obj/item/organ/examine(mob/user)
 	..()
+	switch(get_damage_perc())
+		if(0 to 10)
+			to_chat(user, "<span class='warning'>It's in pristine condition!</span>")
+		if(10 to 35)
+			to_chat(user, "<span class='warning'>It looks pretty banged up!</span>")
+		if(35 to 70)
+			to_chat(user, "<span class='warning'>It looks badly damaged!</span>")
+		if(70 to 100)
+			to_chat(user, "<span class='warning'>It's completely obliterated!</span>")
+
 	if(status == ORGAN_ROBOTIC && crit_fail)
-		to_chat(user, "<span class='warning'>[src] seems to be broken!</span>")
+		to_chat(user, "<span class='warning'>[src]'s circuits don't seem to be functioning properly!</span>")//for electronic organs; before they reboot; not *quite* related to damage
 
 
 /obj/item/organ/proc/prepare_eat()

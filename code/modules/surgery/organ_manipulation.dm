@@ -27,14 +27,18 @@
 	implements = list(/obj/item/organ = 100, /obj/item/reagent_containers/food/snacks/organ = 0, /obj/item/organ_storage = 100, /obj/item/device/mmi = 100)
 	var/implements_extract = list(/obj/item/hemostat = 100, /obj/item/crowbar = 55)
 	var/implements_mend = list(/obj/item/cautery = 100, /obj/item/weldingtool = 70, /obj/item/lighter = 45, /obj/item/match = 20)
+	var/implements_heal = list(/obj/item/stack/medical/bruise_pack = 90, /obj/item/stack/medical/gauze = 55, /obj/item/stack/medical/gauze/improvised = 35)
+	var/implements_heal_robotic = list(/obj/item/stack/nanopaste = 100, /obj/item/screwdriver = 30)
 	var/current_type
+	var/list/healed_organs = list()
+	var/list/healed_organ_name_list = list()//only for the names, because english_list() works weird when it gets datums
 	var/mend_the_incision = "mend the incision in"//so we can reuse the whole thing for robotic surgery
 	var/mends_the_incision = "mends the incision in"
 	var/obj/item/organ/I = null
 
 /datum/surgery_step/manipulate_organs/New()
 	..()
-	implements = implements + implements_extract + implements_mend
+	implements = implements + implements_extract + implements_mend + implements_heal + implements_heal_robotic
 
 /datum/surgery_step/manipulate_organs/tool_check(mob/user, obj/item/tool)
 	if(istype(tool, /obj/item/weldingtool))
@@ -132,6 +136,19 @@
 		to_chat(user, "<span class='warning'>[tool] was bitten by someone! It's too damaged to use!</span>")
 		return -1
 
+	else if(implement_type in implements_heal)
+		current_type = "heal"
+		for(var/obj/item/organ/O in target.internal_organs)
+			if(O.zone == target_zone && O.damage && O.status == ORGAN_ORGANIC)
+				healed_organs += O
+				healed_organ_name_list += O.name
+		if(healed_organs.len)
+			user.visible_message("<span class='notice'>[user] begins to mend the damage to [target]'s [english_list(healed_organ_name_list)].</span>",
+			"<span class='warning'>You begin to mend the internal damage to [target]'s [english_list(healed_organ_name_list)]!</span>")
+		else
+			to_chat(user, "<span class='warning'>It doesn't look like there's anything to fix in [target]'s [parse_zone(target_zone)]!</span>")
+			return -1
+
 /datum/surgery_step/manipulate_organs/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(current_type == "mend")
 		user.visible_message("<span class='notice'>[user] [mends_the_incision] [target]'s [parse_zone(target_zone)].</span>",
@@ -178,4 +195,15 @@
 		else
 			user.visible_message("<span class='notice'>[user] can't seem to extract anything from [target]'s [parse_zone(target_zone)]!</span>",
 				"<span class='notice'>You can't extract anything from [target]'s [parse_zone(target_zone)]!</span>")
+	else if(current_type == "heal")
+		if(istype(tool, /obj/item/stack/))
+			var/obj/item/stack/stack = tool
+			if(!stack.use(1))
+				to_chat(user, "<span class='warning'>You'll need more [tool] for this!</span>")//this should never happen, since we only need 1
+				return 0
+
+		user.visible_message("[user] successfully mends the damage to [target]'s [english_list(healed_organs)]!",
+			"<span class='notice'>You successfully mend the damage to [target]'s [english_list(healed_organs)].</span>")
+		for(var/obj/item/organ/O in healed_organs)
+			O.organ_set_damage(0)
 	return 0

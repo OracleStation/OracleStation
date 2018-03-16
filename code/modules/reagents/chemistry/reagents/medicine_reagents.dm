@@ -687,7 +687,7 @@
 	else if(M.eye_blind || M.eye_blurry)
 		M.set_blindness(0)
 		M.set_blurriness(0)
-	else if(eyes.eye_damage > 0)
+	else if(eyes.get_damage_perc() > 0)
 		M.adjust_eye_damage(-1)
 	..()
 
@@ -1032,12 +1032,13 @@
 	..()
 
 /datum/reagent/medicine/corazone
-	// Heart attack code will not do damage if corazone is present
-	// because it's SPACE MAGIC ASPIRIN
+	// Stops all organ damage effects from happening
+	// Also stops heart attacks
 	name = "Corazone"
 	id = "corazone"
 	description = "A medication used to treat pain, fever, and inflammation, along with heart attacks."
 	color = "#F5F5F5"
+	metabolization_rate = 0 // it gets filtered out manually in carbon code; rip
 
 /datum/reagent/medicine/corazone/on_mob_life(mob/living/M as mob)
 	..()

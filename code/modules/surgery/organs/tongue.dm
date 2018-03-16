@@ -27,6 +27,10 @@
 	return list()
 
 /obj/item/organ/tongue/proc/TongueSpeech(var/message)
+	if(prob(get_damage_perc()))
+		if(owner)
+			to_chat(owner, "<span class='warning'>You try to talk, but a piercing pain bolts through your throat!</span>"	)
+		return
 	return message
 
 /obj/item/organ/tongue/Insert(mob/living/carbon/M, special = 0)
@@ -55,7 +59,7 @@
 	if(copytext(message, 1, 2) != "*")
 		message = lizard_hiss.Replace(message, "sss")
 		message = lizard_hiSS.Replace(message, "SSS")
-	return message
+	return ..(message)
 
 /obj/item/organ/tongue/fly
 	name = "proboscis"
@@ -70,7 +74,7 @@
 	if(copytext(message, 1, 2) != "*")
 		message = fly_buzz.Replace(message, "zzz")
 		message = fly_buZZ.Replace(message, "ZZZ")
-	return message
+	return ..(message)
 
 /obj/item/organ/tongue/abductor
 	name = "superlingual matrix"
@@ -78,6 +82,7 @@
 	icon_state = "tongueayylmao"
 	say_mod = "gibbers"
 	taste_sensitivity = NO_TASTE_SENSITIVITY // ayys cannot taste anything.
+	maxDamage = 0
 
 /obj/item/organ/tongue/abductor/TongueSpeech(var/message)
 	//Hacks
@@ -119,7 +124,7 @@
 		if(prob(20) && message_list.len > 3)
 			message_list.Insert(insertpos, "[pick("BRAINS", "Brains", "Braaaiinnnsss", "BRAAAIIINNSSS")]...")
 
-	return jointext(message_list, " ")
+	return ..(jointext(message_list, " "))
 
 /obj/item/organ/tongue/alien
 	name = "alien tongue"
@@ -140,7 +145,7 @@
 
 /obj/item/organ/tongue/alien/TongueSpeech(var/message)
 	playsound(owner, "hiss", 25, 1, 1)
-	return message
+	return ..(message)
 
 /obj/item/organ/tongue/bone
 	name = "bone \"tongue\""
@@ -159,11 +164,12 @@
 	phomeme_type = pick(phomeme_types)
 
 /obj/item/organ/tongue/bone/TongueSpeech(var/message)
-	. = message
+
 
 	if(chattering)
 		//Annoy everyone nearby with your chattering.
 		chatter(message, phomeme_type, usr)
+	return ..(message)
 
 /obj/item/organ/tongue/bone/get_spans()
 	. = ..()

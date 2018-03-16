@@ -3,6 +3,7 @@
 	desc = "What did you cut this off of?"
 	zone = "groin"
 	slot = "tail"
+	maxDamage = 0
 
 /obj/item/organ/tail/cat
 	name = "cat tail"
