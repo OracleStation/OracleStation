@@ -275,7 +275,7 @@
 
 /obj/machinery/disposal/bin/Initialize(mapload, obj/structure/disposalconstruct/make_from)
 	. = ..()
-	ui = new /datum/simple_ui/themed/nano(src, 330, 200, "disposal_bin")
+	ui = new /datum/simple_ui/themed/nano(src, 330, 190, "disposal_bin")
 	ui.auto_refresh = TRUE
 	ui.can_resize = FALSE
 
@@ -303,17 +303,17 @@
 
 /obj/machinery/disposal/bin/proc/simpleui_data(mob/user)
 	var/list/data = list()
-	data["flush"] = flush ? "TRUE" : "FALSE"
-	data["full_pressure"] = full_pressure ? "TRUE" : "FALSE"
-	data["pressure_charging"] = pressure_charging ? "TRUE" : "FALSE"
+	data["flush"] = flush ? ui.act("Disengage", user, "handle-0") : ui.act("Engage", user, "handle-1")
+	data["full_pressure"] = full_pressure ? "Ready" : (pressure_charging ? "Pressurizing" : "Off")
+	data["pressure_charging"] = pressure_charging ? ui.act("Turn Off", user, "pump-0") : ui.act("Turn On", user, "pump-1")
 	data["panel_open"] = panel_open ? "TRUE" : "FALSE"
 	var/per = full_pressure ? 100 : Clamp(100* air_contents.return_pressure() / (SEND_PRESSURE), 0, 99)
 	data["per"] = "[round(per, 1)]%"
-	data["contents"] = (contents.len > 0) ? "TRUE" : "FALSE"
+	data["contents"] = ui.act("Eject Contents", user, "eject")
 	data["isai"] = isAI(user)
 	return data
 
-/obj/machinery/disposal/bin/proc/simpleui_act(action, params)
+/obj/machinery/disposal/bin/proc/simpleui_act(mob/user, action, list/params)
 	if(..())
 		return
 	switch(action)
@@ -339,6 +339,7 @@
 		if("eject")
 			eject()
 			. = TRUE
+	ui.soft_update_fields()
 
 /obj/machinery/disposal/bin/hitby(atom/movable/AM)
 	if(isitem(AM) && AM.CanEnterDisposals())
