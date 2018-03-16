@@ -7,7 +7,8 @@
 		return
 	else
 		bleedsuppress = TRUE
-		addtimer(CALLBACK(src, .proc/resume_bleeding), amount)
+		var/time_delta = rand(-30 SECONDS, 30 SECONDS)
+		addtimer(CALLBACK(src, .proc/resume_bleeding), amount + time_delta)
 
 /mob/living/carbon/human/proc/resume_bleeding()
 	bleedsuppress = 0
@@ -73,19 +74,15 @@
 		//Bleeding out
 		for(var/X in bodyparts)
 			var/obj/item/bodypart/BP = X
-			var/brutedamage = BP.brute_dam
 
 			//We want an accurate reading of .len
 			listclearnulls(BP.embedded_objects)
 			temp_bleed += 0.5*BP.embedded_objects.len
 
-			if(brutedamage >= 20)
-				temp_bleed += (brutedamage * 0.013)
-
-		bleed_rate = max(bleed_rate - 0.5, temp_bleed)//if no wounds, other bleed effects (heparin) naturally decreases
+		temp_bleed += (getBruteLoss() * 0.02)
 
 		if(bleed_rate && !bleedsuppress && !(status_flags & FAKEDEATH))
-			bleed(bleed_rate)
+			bleed(bleed_rate + temp_bleed)
 
 //Makes a blood drop, leaking amt units of blood from the mob
 /mob/living/carbon/proc/bleed(amt)
