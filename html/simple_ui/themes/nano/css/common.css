@@ -250,15 +250,16 @@ div.notice
 	border: 1px solid #666666;
 	float: left;
 	overflow: hidden;
+    padding: 1px;
 }
 
-.progressValue
+.progressLabel
 {
 	top: -2px;
     height: 100%;
-    width: 32px;
     position: absolute;
-    left: calc(50% - 16px);
+    right: 4px;
+    text-align: right;
 }
 
 .progressFill
@@ -339,7 +340,7 @@ section
 }
 
 .display {
-    width: calc(100% - 6px);
+    width: calc(100% - 8px);
     padding: 4px;
     background-color: #000;
     background-color: rgba(0, 0, 0, .33);
