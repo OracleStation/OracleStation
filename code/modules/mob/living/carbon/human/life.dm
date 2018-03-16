@@ -48,6 +48,10 @@
 		//pain
 		handle_shock()
 
+	if(stat != DEAD)
+		//toxins
+		handle_toxins()
+
 	//Update our name based on whether our face is obscured/disfigured
 	name = get_visible_name()
 
@@ -404,6 +408,16 @@
 		set_heartattack(TRUE)
 		to_chat(src, "<span class='userdanger'>You feel your heart stop beating...</span>")
 		//if you survived this long, you won't survive much longer
+
+/mob/living/carbon/human/proc/handle_toxins()
+	if(return_liver_damage() < 95 || prob(80) || !getToxLoss())
+		return
+//if the liver is completely f****d, once every five cycles we heal 1 toxin damage
+//and deal 1 to 5 damage to all organs
+	for(var/thing in internal_organs)
+		var/obj/item/organ/O = thing
+		O.organ_take_damage(rand(1, 5))
+	adjustToxLoss(-1)
 
 /mob/living/carbon/human/proc/can_heartattack()
 	CHECK_DNA_AND_SPECIES(src)
