@@ -300,12 +300,6 @@ SUBSYSTEM_DEF(job)
 	FillAIPosition()
 	Debug("DO, AI Check end")
 
-	//Fill security roles
-	Debug("DO, Running Security Check")
-	FillPosition(GetJob("Security Officer"))
-	Debug("DO, Security Check end")
-
-
 	//Other jobs are now checked
 	Debug("DO, Running Standard Check")
 
