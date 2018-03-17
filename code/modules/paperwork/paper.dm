@@ -56,7 +56,7 @@
 	update_icon()
 	updateinfolinks()
 
-/obj/item/paper/proc/simpleui_getcontent(mob/target)
+/obj/item/paper/simpleui_getcontent(mob/target)
 	if(!target.is_literate())
 		return "<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>"
 	else if(istype(target.get_active_held_item(), /obj/item/pen) | istype(target.get_active_held_item(), /obj/item/toy/crayon))
@@ -64,11 +64,7 @@
 	else
 		return "<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY></HTML>"
 
-/obj/item/paper/proc/simpleui_canview(mob/target)
-	if(!target.client)
-		return FALSE
-	if(isobserver(target))
-		return TRUE
+/obj/item/paper/simpleui_canview(mob/target)
 	if(check_rights_for(target.client, R_FUN)) //Allows admins to view faxes
 		return TRUE
 	if(isAI(target))
@@ -76,11 +72,7 @@
 		return get_dist(src, ai.current) < 2
 	if(iscyborg(target))
 		return get_dist(src, target) < 2
-	if(src.loc == target)
-		return src in target.held_items
-	if(isturf(src.loc) && Adjacent(target))
-		return TRUE
-	return FALSE
+	return ..()
 
 /obj/item/paper/update_icon()
 

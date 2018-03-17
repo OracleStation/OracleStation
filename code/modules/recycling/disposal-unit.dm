@@ -293,15 +293,17 @@
 
 // handle machine interaction
 
-/obj/machinery/disposal/bin/ui_interact(mob/user)
+/obj/machinery/disposal/bin/ui_interact(mob/user, state)
 	if(stat & BROKEN)
 		return
 	ui.render(user)
 
-/obj/machinery/disposal/bin/proc/simpleui_canview(mob/user)
-	return !(stat & BROKEN) && Adjacent(user)
+/obj/machinery/disposal/bin/simpleui_canview(mob/user)
+	if(stat & BROKEN)
+		return FALSE
+	return ..()
 
-/obj/machinery/disposal/bin/proc/simpleui_data(mob/user)
+/obj/machinery/disposal/bin/simpleui_data(mob/user)
 	var/list/data = list()
 	data["flush"] = flush ? ui.act("Disengage", user, "handle-0") : ui.act("Engage", user, "handle-1")
 	data["full_pressure"] = full_pressure ? "Ready" : (pressure_charging ? "Pressurizing" : "Off")
@@ -313,7 +315,7 @@
 	data["isai"] = isAI(user)
 	return data
 
-/obj/machinery/disposal/bin/proc/simpleui_act(mob/user, action, list/params)
+/obj/machinery/disposal/bin/simpleui_act(mob/user, action, list/params)
 	if(..())
 		return
 	switch(action)
