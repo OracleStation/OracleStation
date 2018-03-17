@@ -310,7 +310,9 @@
 
 // update the icon_state and luminosity of the light depending on its state
 /obj/machinery/light/proc/update(trigger = 1)
-
+	switch(status)
+		if(LIGHT_BROKEN,LIGHT_BURNED,LIGHT_EMPTY)
+			on = FALSE
 	emergency_mode = FALSE
 	if(on)
 		if(!light || light.light_range != brightness)
@@ -636,6 +638,7 @@
 		if(on)
 			do_sparks(3, TRUE, src)
 	status = LIGHT_BROKEN
+	on = FALSE
 	update()
 
 /obj/machinery/light/proc/fix()
