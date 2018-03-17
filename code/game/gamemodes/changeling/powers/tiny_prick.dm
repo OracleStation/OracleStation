@@ -126,6 +126,7 @@
 
 /obj/effect/proc_holder/changeling/sting/false_armblade/sting_action(mob/user, mob/target)
 	add_logs(user, target, "stung", object="falso armblade sting")
+	log_admin("[user] has stung [target] with false armblade sting")
 
 	if(!target.drop_item())
 		to_chat(user, "<span class='warning'>The [target.get_active_held_item()] is stuck to their hand, you cannot grow a false armblade over it!</span>")
