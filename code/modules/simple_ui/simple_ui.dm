@@ -13,10 +13,7 @@
 	var/datum/asset/assets = null
 
 /datum/simple_ui/New(atom/n_datasource, n_width = 512, n_height = 512, n_assets = null)
-	if(hascall(n_datasource, "simpleui_canview"))
-		datasource = n_datasource
-	else
-		log_world("[n_datasource] does not have the correct procs for use with /datum/simple_ui!")
+	datasource = n_datasource
 	window_id = REF(src)
 	width = n_width
 	height = n_height
@@ -34,18 +31,12 @@
 		update_all()
 
 /datum/simple_ui/proc/get_content(mob/target)
-	return datasource ? call(datasource, "simpleui_getcontent")(target) : "ERROR: NO DATASOURCE"
+	return call(datasource, "simpleui_getcontent")(target)
 
 /datum/simple_ui/proc/can_view(mob/target)
-	return datasource ? call(datasource, "simpleui_canview")(target) : TRUE
+	return call(datasource, "simpleui_canview")(target)
 
 /datum/simple_ui/proc/test_viewer(mob/target, updating)
-	//If this is an update, and they have closed the window, remove from viewers and return
-	if(updating && winget(target, window_id, "is-visible") != "true")
-		viewers -= target
-		if(viewers.len < 1 && isprocessing)
-			STOP_PROCESSING(SSobj, src) //No more viewers, stop polling
-		return FALSE
 	//If the target is null or does not have a client, remove from viewers and return
 	if(!target | !target.client | !can_view(target))
 		viewers -= target
@@ -53,10 +44,18 @@
 			STOP_PROCESSING(SSobj, src)  //No more viewers, stop polling
 		close(target)
 		return FALSE
+	//If this is an update, and they have closed the window, remove from viewers and return
+	if(updating && winget(target, window_id, "is-visible") != "true")
+		viewers -= target
+		if(viewers.len < 1 && isprocessing)
+			STOP_PROCESSING(SSobj, src) //No more viewers, stop polling
+		return FALSE
 	return TRUE
 
 /datum/simple_ui/proc/render(mob/target, updating = FALSE)
 	set waitfor = FALSE //Makes this an async call
+	if(!can_view(target))
+		return
 	//Check to see if they have the window open still if updating
 	if(updating && !test_viewer(target, updating))
 		return
@@ -115,5 +114,7 @@
 /datum/simple_ui/Topic(href, parameters)
 	var/action = parameters["sui_action"]
 	var/mob/current_user = locate(parameters["sui_user"])
+	if(!call(datasource, "simpleui_canuse")(current_user))
+		return
 	if(datasource)
 		call(datasource, "simpleui_act")(current_user, action, parameters);
