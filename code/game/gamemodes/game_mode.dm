@@ -359,7 +359,8 @@
 			SSpersistence.antag_rep_change[p_ckey] = -(spend - DEFAULT_ANTAG_TICKETS)
 
 			#ifdef TESTING
-			testing("AR_DEBUG: Player [mind.key] won spending [subtract] tickets from starting value [SSpersistence.antag_rep[p_ckey]]")
+			var/cost = spend - DEFAULT_ANTAG_TICKETS
+			testing("AR_DEBUG: Player [mind.key] won spending [cost] tickets from starting value [SSpersistence.antag_rep[p_ckey]]")
 			#endif
 
 			return mind
