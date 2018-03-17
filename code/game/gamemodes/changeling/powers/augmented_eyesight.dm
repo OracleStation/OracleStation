@@ -12,7 +12,7 @@
 /obj/effect/proc_holder/changeling/augmented_eyesight/sting_action(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
-	var/obj/item/organ/eyes/E = user.getorganslot("eye_sight")
+	var/obj/item/organ/eyes/E = user.getorganslot(ORGAN_SLOT_EYES)
 	if(E)
 		if(E.flash_protect)
 			E.sight_flags |= SEE_MOBS
@@ -32,6 +32,6 @@
 
 
 /obj/effect/proc_holder/changeling/augmented_eyesight/on_refund(mob/user)
-	var/obj/item/organ/eyes/E = user.getorganslot("eye_sight")
+	var/obj/item/organ/eyes/E = user.getorganslot(ORGAN_SLOT_EYES)
 	if(E)
 		E.sight_flags -= SEE_MOBS
