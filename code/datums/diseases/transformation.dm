@@ -245,7 +245,7 @@
 	max_stages = 5
 	cure_text = "Unknown Cure"
 	cures = list("adminordrazine")
-	agent = "lizard Tears"
+	agent = "lizard tears"
 	desc = "This Disease turns its victim into a small lizard"
 	viable_mobtypes = list(/mob/living/carbon/human)
 	severity = HARMFUL
