@@ -207,7 +207,7 @@
 /datum/emote/living/carbon/human/robot_tongue/can_run_emote(mob/user)
 	if(!..())
 		return FALSE
-	var/obj/item/organ/tongue/T = user.getorganslot("tongue")
+	var/obj/item/organ/tongue/T = user.getorganslot(ORGAN_SLOT_TONGUE)
 	if(T.status == ORGAN_ROBOTIC)
 		return TRUE
 

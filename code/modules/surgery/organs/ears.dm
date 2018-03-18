@@ -101,7 +101,7 @@
 	origin_tech = "engineering=2"
 	desc = "A pair of microphones intended to be installed in an IPC head, that grant the ability to hear."
 	zone = "head"
-	slot = "ears"
+	slot = ORGAN_SLOT_EARS
 	gender = PLURAL
 	status = ORGAN_ROBOTIC
 
