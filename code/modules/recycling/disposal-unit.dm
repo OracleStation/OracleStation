@@ -298,9 +298,14 @@
 /obj/machinery/disposal/bin/ui_interact(mob/user, state)
 	if(stat & BROKEN)
 		return
+	if(user.loc == src)
+		to_chat(user, "<span class='warning'>You cannot reach the controls from inside!</span>")
+		return
 	ui.render(user)
 
 /obj/machinery/disposal/bin/oui_canview(mob/user)
+	if(user.loc == src)
+		return FALSE
 	if(stat & BROKEN)
 		return FALSE
 	return ..()
