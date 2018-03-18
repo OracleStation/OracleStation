@@ -125,9 +125,6 @@
 	var/params_string = replacetext(list2params(parameters),"&",";")
 	return "?src=[REF(src)];sui_action=[action];sui_user=[REF(user)];[params_string]"
 
-/datum/simple_ui/proc/act(label, mob/user, action, list/parameters = list())
-	return "<a href=\"" + href(user, action, parameters) + "\">[label]</a>"
-
 /datum/simple_ui/Topic(href, parameters)
 	var/action = parameters["sui_action"]
 	var/mob/current_user = locate(parameters["sui_user"])

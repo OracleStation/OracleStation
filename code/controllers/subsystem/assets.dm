@@ -6,7 +6,17 @@ SUBSYSTEM_DEF(assets)
 	var/list/preload = list()
 
 /datum/controller/subsystem/assets/Initialize(timeofday)
-	for(var/type in typesof(/datum/asset) - list(/datum/asset, /datum/asset/simple))
+	var/list/priority_assets = list(
+		/datum/asset/simple/simpleui_theme_nano,
+		/datum/asset/simple/goonchat,
+		/datum/asset/HTML_interface
+		)
+
+	for(var/type in priority_assets)
+		var/datum/asset/A = new type()
+		A.register()
+
+	for(var/type in typesof(/datum/asset) - (priority_assets | list(/datum/asset, /datum/asset/simple)))
 		var/datum/asset/A = new type()
 		A.register()
 

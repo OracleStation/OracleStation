@@ -1,5 +1,4 @@
 /datum/asset/simple/simpleui_theme_nano
-	verify = TRUE
 	assets = list(
 		// JavaScript
 		"sui-nano-common.js"					= 'html/simple_ui/themes/nano/js/common.js',

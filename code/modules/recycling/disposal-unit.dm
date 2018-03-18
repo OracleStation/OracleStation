@@ -288,7 +288,9 @@
 			T.remove_from_storage(O,src)
 		T.update_icon()
 		update_icon()
+		ui.soft_update_fields()
 	else
+		ui.soft_update_fields()
 		return ..()
 
 // handle machine interaction
@@ -305,13 +307,12 @@
 
 /obj/machinery/disposal/bin/simpleui_data(mob/user)
 	var/list/data = list()
-	data["flush"] = flush ? ui.act("Disengage", user, "handle-0") : ui.act("Engage", user, "handle-1")
+	data["flush"] = flush ? ui.act("Disengage", user, "handle-0", class="active") : ui.act("Engage", user, "handle-1")
 	data["full_pressure"] = full_pressure ? "Ready" : (pressure_charging ? "Pressurizing" : "Off")
-	data["pressure_charging"] = pressure_charging ? ui.act("Turn Off", user, "pump-0") : ui.act("Turn On", user, "pump-1")
-	data["panel_open"] = panel_open ? "TRUE" : "FALSE"
+	data["pressure_charging"] = pressure_charging ? ui.act("Turn Off", user, "pump-0", class="active", disabled=full_pressure) : ui.act("Turn On", user, "pump-1", disabled=full_pressure)
 	var/per = full_pressure ? 100 : Clamp(100* air_contents.return_pressure() / (SEND_PRESSURE), 0, 99)
 	data["per"] = "[round(per, 1)]%"
-	data["contents"] = ui.act("Eject Contents", user, "eject")
+	data["contents"] = ui.act("Eject Contents", user, "eject", disabled=contents.len < 1)
 	data["isai"] = isAI(user)
 	return data
 
