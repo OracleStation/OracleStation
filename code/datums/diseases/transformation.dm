@@ -244,6 +244,7 @@
 	name = "Heat-Lamp Syndrome"
 	max_stages = 5
 	cure_text = "Unknown Cure"
+	cures = list("adminordrazine")
 	agent = "LizardTears"
 	desc = "This Disease turns its victim into a small lizard"
 	viable_mobtypes = list(/mob/living/carbon/human)
