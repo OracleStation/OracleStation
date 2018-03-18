@@ -30,6 +30,7 @@
 	examine_text = "a Vox outcast"
 	species_text_color = "#BA3690"
 	husk_id = "voxhusk"
+	creampie_id = "creampie_vox"
 	damage_overlay_type = "vox"
 	exotic_bloodtype = "V"
 	loreblurb = "Though commonly referred to as \"shitbirds\" by the crew, they are, in fact, not avian. \
