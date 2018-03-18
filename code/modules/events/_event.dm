@@ -61,7 +61,7 @@
 	triggering = TRUE
 	if (alertadmins)
 		message_admins("Random Event triggering in 20 seconds: [name] ([typepath]) (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)")
-		sleep(200)
+		sleep(20 SECONDS)
 		var/gamemode = SSticker.mode.config_tag
 		var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 		if(!canSpawnEvent(players_amt, gamemode))
