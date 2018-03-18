@@ -1,33 +1,33 @@
-/datum/proc/simpleui_canview(mob/user)
+/datum/proc/oui_canview(mob/user)
 	return TRUE
 
-/datum/proc/simpleui_getcontent(mob/user)
+/datum/proc/oui_getcontent(mob/user)
 	return "Default Implementation"
 
-/datum/proc/simpleui_canuse(mob/user)
+/datum/proc/oui_canuse(mob/user)
 	if(isobserver(user))
 		return FALSE
-	return simpleui_canview(user)
+	return oui_canview(user)
 
-/datum/proc/simpleui_data(mob/user)
+/datum/proc/oui_data(mob/user)
 	return list()
 
-/datum/proc/simpleui_act(mob/user, action, list/params)
+/datum/proc/oui_act(mob/user, action, list/params)
 	// No Implementation
 
-/atom/simpleui_canview(mob/user)
+/atom/oui_canview(mob/user)
 	if(isobserver(user))
 		return TRUE
 	if(isturf(src.loc) && Adjacent(user))
 		return TRUE
 	return FALSE
 
-/obj/item/simpleui_canview(mob/user)
+/obj/item/oui_canview(mob/user)
 	if(src.loc == user)
 		return src in user.held_items
 	return ..()
 
-/obj/machinery/simpleui_canview(mob/user)
+/obj/machinery/oui_canview(mob/user)
 	if(!is_interactable())
 		return FALSE
 	if(iscyborg(user))

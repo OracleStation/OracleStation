@@ -1,6 +1,6 @@
-# `/datum/simple_ui`
+# `/datum/oracle_ui`
 
-In summary, `/datum/simple_ui` does this:
+In summary, `/datum/oracle_ui` does this:
 - Wraps the `use << browse` functionality
 - Keeps track of all the people viewing the UI
 - Handles multicasting updates to viewers

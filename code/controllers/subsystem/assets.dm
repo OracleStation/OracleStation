@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(assets)
 
 /datum/controller/subsystem/assets/Initialize(timeofday)
 	var/list/priority_assets = list(
-		/datum/asset/simple/simpleui_theme_nano,
+		/datum/asset/simple/oui_theme_nano,
 		/datum/asset/simple/goonchat,
 		/datum/asset/HTML_interface
 		)
