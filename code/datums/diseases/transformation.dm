@@ -239,3 +239,20 @@
 	stage4	= list("<span class='danger'>You're ravenous.</span>")
 	stage5	= list("<span class='danger'>You have become a morph.</span>")
 	new_form = /mob/living/simple_animal/hostile/morph
+
+/datum/disease/transformation/lizard
+	name = "Heat-Lamp Syndrome"
+	max_stages = 5
+	cure_text = "Unknown Cure"
+	agent = "LizardTears"
+	desc = "This Disease turns its victim into a small lizard"
+	viable_mobtypes = list(/mob/living/carbon/human)
+	severity = HARMFUL
+	stage_prob = 10
+	visibility_flags = 0
+	stage1 = list("You feel dry.")
+	stage2 = list("You feel like following the janitor")
+	stage3 = list("Your skin feels a bit... scaly.")
+	stage4 = list("It's too cold in here.")
+	stage5 = list("You begin to feel small.")
+	new_form = /mob/living/simple_animal/hostile/lizard
