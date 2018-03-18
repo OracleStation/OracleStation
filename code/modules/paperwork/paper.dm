@@ -118,7 +118,7 @@
 	if((loc == usr && usr.stat == 0))
 		name = "paper[(n_name ? text("- '[n_name]'") : null)]"
 	add_fingerprint(usr)
-	ui.update_all()
+	ui.render_all()
 
 /obj/item/paper/attack_self(mob/user)
 	show_content(user)
@@ -169,7 +169,7 @@
 	for(var/i in 1 to min(fields, 15))
 		addtofield(i, "<font face=\"[PEN_FONT]\"><A href='?src=[REF(src)];write=[i]'>write</A></font>", 1)
 	info_links = info_links + "<font face=\"[PEN_FONT]\"><A href='?src=[REF(src)];write=end'>write</A></font>"
-	ui.update_all()
+	ui.render_all()
 
 /obj/item/paper/proc/clearpaper()
 	info = null
@@ -339,7 +339,7 @@
 		add_overlay(stampoverlay)
 
 		to_chat(user, "<span class='notice'>You stamp the paper with your rubber stamp.</span>")
-		ui.update_all()
+		ui.render_all()
 
 	if(P.is_hot())
 		if(user.disabilities & CLUMSY && prob(10))
