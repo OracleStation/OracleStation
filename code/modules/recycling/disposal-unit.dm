@@ -271,11 +271,11 @@
 	name = "disposal unit"
 	desc = "A pneumatic waste disposal unit."
 	icon_state = "disposal"
-	var/datum/simple_ui/themed/nano/ui
+	var/datum/oracle_ui/themed/nano/ui
 
 /obj/machinery/disposal/bin/Initialize(mapload, obj/structure/disposalconstruct/make_from)
 	. = ..()
-	ui = new /datum/simple_ui/themed/nano(src, 330, 190, "disposal_bin")
+	ui = new /datum/oracle_ui/themed/nano(src, 330, 190, "disposal_bin")
 	ui.auto_refresh = TRUE
 	ui.can_resize = FALSE
 
@@ -300,12 +300,12 @@
 		return
 	ui.render(user)
 
-/obj/machinery/disposal/bin/simpleui_canview(mob/user)
+/obj/machinery/disposal/bin/oui_canview(mob/user)
 	if(stat & BROKEN)
 		return FALSE
 	return ..()
 
-/obj/machinery/disposal/bin/simpleui_data(mob/user)
+/obj/machinery/disposal/bin/oui_data(mob/user)
 	var/list/data = list()
 	data["flush"] = flush ? ui.act("Disengage", user, "handle-0", class="active") : ui.act("Engage", user, "handle-1")
 	data["full_pressure"] = full_pressure ? "Ready" : (pressure_charging ? "Pressurizing" : "Off")
@@ -316,7 +316,7 @@
 	data["isai"] = isAI(user)
 	return data
 
-/obj/machinery/disposal/bin/simpleui_act(mob/user, action, list/params)
+/obj/machinery/disposal/bin/oui_act(mob/user, action, list/params)
 	if(..())
 		return
 	switch(action)

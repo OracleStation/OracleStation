@@ -31,7 +31,7 @@
 	var/spam_flag = 0
 	var/contact_poison // Reagent ID to transfer on contact
 	var/contact_poison_volume = 0
-	var/datum/simple_ui/ui = null
+	var/datum/oracle_ui/ui = null
 
 /obj/item/paper/pickup(user)
 	if(contact_poison && ishuman(user))
@@ -51,12 +51,12 @@
 	. = ..()
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
-	ui = new /datum/simple_ui(src, 420, 600, get_asset_datum(/datum/asset/simple/paper))
+	ui = new /datum/oracle_ui(src, 420, 600, get_asset_datum(/datum/asset/simple/paper))
 	ui.can_resize = FALSE
 	update_icon()
 	updateinfolinks()
 
-/obj/item/paper/simpleui_getcontent(mob/target)
+/obj/item/paper/oui_getcontent(mob/target)
 	if(!target.is_literate())
 		return "<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>"
 	else if(istype(target.get_active_held_item(), /obj/item/pen) | istype(target.get_active_held_item(), /obj/item/toy/crayon))
@@ -64,7 +64,7 @@
 	else
 		return "<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY></HTML>"
 
-/obj/item/paper/simpleui_canview(mob/target)
+/obj/item/paper/oui_canview(mob/target)
 	if(check_rights_for(target.client, R_FUN)) //Allows admins to view faxes
 		return TRUE
 	if(isAI(target))
@@ -92,7 +92,7 @@
 		if(!iscultist(user) && !user.stat)
 			to_chat(user, "<span class='danger'>There are indecipherable images scrawled on the paper in what looks to be... <i>blood?</i></span>")
 			return
-	if(simpleui_canview(user))
+	if(oui_canview(user))
 		ui.render(user)
 	else
 		to_chat(user, "<span class='notice'>It is too far away.</span>")
