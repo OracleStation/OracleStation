@@ -3,7 +3,7 @@
 	desc = "I feel bad for the heartless bastard who lost this."
 	icon_state = "heart-on"
 	zone = "chest"
-	slot = "heart"
+	slot = ORGAN_SLOT_HEART
 	origin_tech = "biotech=5"
 	// Heart attack code is in code/modules/mob/living/carbon/human/life.dm
 	var/beating = 1
@@ -84,6 +84,7 @@
 	var/heal_brute = 0
 	var/heal_burn = 0
 	var/heal_oxy = 0
+	var/heal_tox = 0
 
 
 /obj/item/organ/heart/cursed/attack(mob/living/carbon/human/H, mob/living/carbon/human/user, obj/target)
@@ -138,6 +139,7 @@
 				H.adjustBruteLoss(-cursed_heart.heal_brute)
 				H.adjustFireLoss(-cursed_heart.heal_burn)
 				H.adjustOxyLoss(-cursed_heart.heal_oxy)
+				H.adjustToxLoss(-cursed_heart.heal_tox)
 
 
 /datum/client_colour/cursed_heart_blood
@@ -152,3 +154,11 @@
 
 /obj/item/organ/heart/cybernetic/emp_act()
 	Stop()
+
+/obj/item/organ/heart/vox
+	name = "vox heart"
+	desc = "A vox's heart. It appears to have circuitry and components woven into it."
+	icon_state = "heartvox-off"
+	icon_base = "heartvox"
+	status = ORGAN_ROBOTIC
+	origin_tech = "biotech=5"

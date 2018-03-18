@@ -68,6 +68,7 @@
 #define ACCESS_PARAMEDIC 70 // Paramedic
 #define ACCESS_ENTER_GENPOP 71 // Access to enter genpop
 #define ACCESS_LEAVE_GENPOP 72 // Access to leave genpop
+#define ACCESS_IAA 73 //internal affairs office
 
 	//BEGIN CENTCOM ACCESS
 	/*Should leave plenty of room if we need to add more access levels.

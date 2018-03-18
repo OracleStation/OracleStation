@@ -11,6 +11,8 @@
 		if(path != root)
 			choices.Insert(1,"/")
 
+		sortInsert(choices, /proc/cmp_text_asc, 0)
+
 		var/choice = input(src,"Choose a file to access:","Download",null) as null|anything in choices
 		switch(choice)
 			if(null)

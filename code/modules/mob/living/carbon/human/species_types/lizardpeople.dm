@@ -53,3 +53,12 @@
 	limbs_id = "unathi"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,NOBREATH,NOGUNS,DIGITIGRADE,NO_BONES)
 	examine_text = "an Ash Walker"
+	mutanteyes = /obj/item/organ/eyes/night_vision
+
+/datum/species/unathi/ashwalker/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	. = ..()
+	C.weather_immunities |= "ash"
+
+/datum/species/unathi/ashwalker/on_species_loss(mob/living/carbon/C)
+	. = ..()
+	C.weather_immunities -= "ash"

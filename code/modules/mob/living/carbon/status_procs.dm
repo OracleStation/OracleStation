@@ -3,7 +3,7 @@
 // eye damage, eye_blind, eye_blurry, druggy, BLIND disability, NEARSIGHT disability, and HUSK disability.
 
 /mob/living/carbon/damage_eyes(amount)
-	var/obj/item/organ/eyes/eyes = getorganslot("eye_sight")
+	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
 	if (!eyes)
 		return
 	if(amount>0)
@@ -15,7 +15,7 @@
 				overlay_fullscreen("eye_damage", /obj/screen/fullscreen/impaired, 1)
 
 /mob/living/carbon/set_eye_damage(amount)
-	var/obj/item/organ/eyes/eyes = getorganslot("eye_sight")
+	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
 	if (!eyes)
 		return
 	eyes.eye_damage = max(amount,0)
@@ -28,7 +28,7 @@
 		clear_fullscreen("eye_damage")
 
 /mob/living/carbon/adjust_eye_damage(amount)
-	var/obj/item/organ/eyes/eyes = getorganslot("eye_sight")
+	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
 	if (!eyes)
 		return
 	eyes.eye_damage = max(eyes.eye_damage+amount, 0)
@@ -102,6 +102,7 @@
 	if(disabilities & HUSK)
 		disabilities &= ~HUSK
 		status_flags &= ~DISFIGURED
+		dna.species.on_husk_cure(src)
 		update_body()
 		return 1
 
@@ -110,6 +111,7 @@
 		return
 	disabilities |= HUSK
 	status_flags |= DISFIGURED	//makes them unknown
+	dna.species.on_husk(src)
 	update_body()
 	return 1
 

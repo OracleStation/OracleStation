@@ -14586,7 +14586,7 @@
 "axH" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/item/clothing/suit/jacket/letterman_nanotrasen,
-/obj/item/clothing/suit/toggle/lawyer,
+/obj/item/clothing/suit/toggle/iaa,
 /obj/item/clothing/under/maid,
 /obj/machinery/light/small{
 	dir = 1
@@ -14607,7 +14607,7 @@
 	icon_state = "detective";
 	name = "trenchcoat"
 	},
-/obj/item/clothing/suit/toggle/lawyer/purple,
+/obj/item/clothing/suit/toggle/iaa/purple,
 /obj/item/clothing/head/fedora{
 	icon_state = "detective"
 	},
@@ -18591,11 +18591,11 @@
 	icon_state = "detective";
 	name = "trenchcoat"
 	},
-/obj/item/clothing/suit/toggle/lawyer/purple,
+/obj/item/clothing/suit/toggle/iaa/purple,
 /obj/item/clothing/head/fedora{
 	icon_state = "detective"
 	},
-/obj/item/clothing/under/lawyer/female,
+/obj/item/clothing/under/iaa/female,
 /obj/machinery/light/small,
 /turf/open/floor/wood,
 /area/crew_quarters/dorms)
@@ -18615,7 +18615,7 @@
 	icon_state = "greydet";
 	name = "trenchcoat"
 	},
-/obj/item/clothing/suit/toggle/lawyer/black,
+/obj/item/clothing/suit/toggle/iaa/black,
 /obj/item/clothing/head/fedora,
 /obj/item/clothing/under/blacktango,
 /obj/machinery/light/small,

@@ -129,8 +129,9 @@
 		// shuttle timers use 1/10th seconds internally
 		SSshuttle.emergency.setTimer(ENGINES_START_TIME)
 		var/system_error = emagged ? "SYSTEM ERROR:" : null
+		var/emag_boost_message = pick("STRAP IN FOR EMERGENCY BURN", "PREPARE FOR LUDICROUS SPEED", "MAKING THE JUMP TO %@ERROR^& IN UNDER 12 PARSECS", "INERTIAL DAMPENERS OFFLINE")
 		minor_announce("The emergency shuttle will launch in \
-			[TIME_LEFT] seconds", system_error, alert=TRUE)
+			[TIME_LEFT] seconds.\n[emag_boost_message]", system_error, alert=TRUE)
 		. = TRUE
 
 /obj/machinery/computer/emergency_shuttle/emag_act(mob/user)
@@ -150,6 +151,7 @@
 	log_game("[key_name(user)] has emagged the emergency shuttle in \
 		[COORD(src)] [time] seconds before launch.")
 	emagged = TRUE
+	SSshuttle.emergency.movement_force = list("KNOCKDOWN" = 10, "THROW" = 20, "IGNOREBUCKLE" = TRUE)
 	var/datum/species/S = new
 	for(var/i in 1 to 10)
 		// the shuttle system doesn't know who these people are, but they

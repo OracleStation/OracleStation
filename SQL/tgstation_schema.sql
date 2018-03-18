@@ -263,11 +263,11 @@ DROP TABLE IF EXISTS `role_time`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 
-CREATE TABLE `role_time` 
+CREATE TABLE `role_time`
 ( `ckey` VARCHAR(32) NOT NULL ,
  `job` VARCHAR(32) NOT NULL ,
  `minutes` INT UNSIGNED NOT NULL,
- PRIMARY KEY (`ckey`, `job`) 
+ PRIMARY KEY (`ckey`, `job`)
  ) ENGINE = InnoDB;
 
 --
@@ -423,3 +423,18 @@ CREATE TABLE `schema_revision` (
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+DROP TABLE IF EXISTS `mentor`;
+CREATE TABLE `mentor` (
+  `ckey` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `mentor_memo`;
+CREATE TABLE `mentor_memo` (
+  `ckey` varchar(32) NOT NULL,
+  `memotext` text NOT NULL,
+  `timestamp` datetime NOT NULL,
+  `last_editor` varchar(32) DEFAULT NULL,
+  `edits` text,
+  PRIMARY KEY (`ckey`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

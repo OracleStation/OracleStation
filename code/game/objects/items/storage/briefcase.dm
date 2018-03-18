@@ -27,7 +27,7 @@
 	folder_path = /obj/item/folder/blue
 
 /obj/item/storage/briefcase/lawyer/PopulateContents()
-	new /obj/item/stamp/law(src)
+	new /obj/item/stamp/iaa(src)
 	..()
 
 /obj/item/storage/briefcase/sniperbundle

@@ -73,6 +73,12 @@ GLOBAL_LIST_INIT(monkey_recipes, list ( \
 	singular_name = "Ethari skin piece"
 	icon_state = "sheet-fox"
 
+/obj/item/stack/sheet/animalhide/vox
+	name = "vox skin"
+	desc = "A vox skin. SKREE!"
+	singular_name = "vox skin piece"
+	icon_state = "sheet-vox"
+
 /obj/item/stack/sheet/animalhide/xeno
 	name = "alien hide"
 	desc = "The skin of a terrible creature."

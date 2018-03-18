@@ -7,8 +7,9 @@ GLOBAL_PROTECT(href_token)
 /datum/admins
 	var/datum/admin_rank/rank
 
-	var/client/owner	= null
-	var/fakekey			= null
+	var/client/owner = null
+	var/fakekey = null
+	var/following = null
 
 	var/datum/marked_datum
 

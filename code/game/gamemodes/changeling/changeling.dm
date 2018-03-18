@@ -17,8 +17,8 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	config_tag = "changeling"
 	antag_flag = ROLE_CHANGELING
 	restricted_jobs = list("AI", "Cyborg")
-	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Blueshield", "Brig Physician")
-	protected_species = list("ipc")
+	restricted_species = list("ipc", "synth")
+	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Blueshield", "Brig Physician", "Internal Affairs Agent")
 	required_players = 15
 	required_enemies = 1
 	recommended_enemies = 4
@@ -111,7 +111,7 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 		if(ROLE_CHANGELING in character.client.prefs.be_special)
 			if(!jobban_isbanned(character, ROLE_CHANGELING) && !jobban_isbanned(character, "Syndicate"))
 				if(age_check(character.client))
-					if(!(character.job in restricted_jobs))
+					if(!(character.job in restricted_jobs) && !(character.dna.species.id in restricted_species))
 						character.mind.make_Changling()
 
 /datum/game_mode/proc/forge_changeling_objectives(datum/mind/changeling, var/team_mode = 0)
@@ -256,13 +256,21 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 			if(changeling.objectives.len)
 				var/count = 1
 				for(var/datum/objective/objective in changeling.objectives)
-					if(objective.check_completion())
-						text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <font color='green'><b>Success!</b></font>"
-						SSblackbox.add_details("changeling_objective","[objective.type]|SUCCESS")
+					if(istype(objective, /datum/objective/crew))
+						if(objective.check_completion())
+							text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='green'><b>Success!</b></span> (Optional)"
+							SSblackbox.add_details("changeling_objective","[objective.type]|SUCCESS")
+						else
+							text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='danger'>Fail.</span> (Optional)"
+							SSblackbox.add_details("changeling_objective","[objective.type]|FAIL")
 					else
-						text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='danger'>Fail.</span>"
-						SSblackbox.add_details("changeling_objective","[objective.type]|FAIL")
-						changelingwin = 0
+						if(objective.check_completion())
+							text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='green'><b>Success!</b></span>"
+							SSblackbox.add_details("changeling_objective","[objective.type]|SUCCESS")
+						else
+							text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='danger'>Fail.</span>"
+							SSblackbox.add_details("changeling_objective","[objective.type]|FAIL")
+							changelingwin = 0
 					count++
 
 			if(changelingwin)

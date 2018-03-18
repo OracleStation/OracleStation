@@ -484,3 +484,66 @@
 /obj/item/paper/evilfax/proc/evilpaper_selfdestruct()
 	visible_message("<span class='danger'>[src] spontaneously catches fire, and burns up!</span>")
 	qdel(src)
+
+/obj/item/paper/telecomms
+	name = "Telecommunications Manual"
+	info = "<b>Congratulations On Your Purchase Of An NT-07 Telecommunications System!</b><br>\
+	WARNING: Should this machinery become destroyed or non-functional, please contact Central Command Tech Support.<br>\
+	INFO: This machinery is very susceptible to ionspheric interference. Should an ionspheric anomaly occur, the machinery may be offline for a brief period of time.<br>\
+	<br>\
+	List of authorised channels and corresponding frequencies:<br>\
+	<li>Science: 135.1</li>\
+	<li>Medical: 135.5</li>\
+	<li>Supply: 134.7</li>\
+	<li>Service: 134.9</li>\
+	<li>Command: 135.3</li>\
+	<li>Security: 135.9</li>\
+	<li>Engineering: 135.7</li>\
+	<li>Common: 145.7</li><br>\
+	<br>\
+	The Topology:<br>\
+	This topology is split into aisles, each aisle having 1 bus and 1 CPU responsible for 2 channels, each with their own servers. The channel specific servers are marked with floor tiles similar to each channel identifier.<br>\
+	<br>\
+	Telecommunication Machinery Functionality<br>\
+	All machines share similar features, such as networks and filtering frequencies, but each machine has a very specific role<br>\
+	Servers:<br>\
+	Servers store a data packet every time audio is sent down a corresponding channel, this data can be viewed with a Telecomms Server Monitor. Servers can also be used for scripting, but sadly this is no longer supported.<br>\
+	<br>\
+	Hubs:<br>\
+	Hubs are the 'Hub' of the setup, quite literally. All the machine except processors (see below) link to this, including distant ones such as relays (See below).<br>\
+	<br>\
+	Processors:<br>\
+	Processors are an essential part of a telecomms setup if you want to be able to understand anything. They take an encoded signal and decode it into standard audio which is sent off to the broadcasters (See below). These link to the bus mainframes.<br>\
+	<br>\
+	Bus Mainframes<br>\
+	Bus Mainframes play a similar role to hubs. Networks without hubs will use a Bus Mainframe as a hub, as they can do local machinery but not relays. The bus links to all machines that cover the channels it manages. So to the hub, the processor and the server.<br>\
+	<br>\
+	Receiver:<br>\
+	Receivers are what they say on the tin, they receive subspace signals. If you are using a hub, link it to the hub, if you are not, link it to the mainframe.<br>\
+	<br>\
+	Broadcasters:<br>\
+	Broadcasters are what they say on the tin, they take decoded signals from the processors, and broadcast them through subspace. If you are using a hub, link it to the hub, if you are not, link it to the mainframe.<br>\
+	<br>\
+	Other Machinery:<br>\
+	This machinery is not linked directly to the network, but is still important for communications.<br>\
+	<br>\
+	PDA Server:<br>\
+	This is the server responsible for PDA messaging, if this is disabled, PDA messaging will not function.<br>\
+	<br>\
+	Blackbox Recorder:<br>\
+	This is important should and disaster happen to the station, this keeps a record of everything that happens to the station.<br>\
+	<br>\
+	NTNet Quantum Relay:<br>\
+	This is the machine which makes NTNet (Used by consoles and tablets) able to reach devices. Warning: This machine is very fragile.<br>\
+	<br>\
+	This room is split into four isles, each one with a corresponding bus and CPU, as well as two servers.<br>\
+	<li>Isle 1: Medical And Science</li>\
+	<li>Isle 2: Service And Supply</li>\
+	<li>Isle 3: Command And Security</li>\
+	<li>Isle 4: Supply And Service</li>\
+	<br>\
+	NOTE: In this setup, the Common server also listens on frequencies 144.4 - 148.7<br>\
+	<br>\
+	Bottom Section:<br>\
+	In the bottom section, you will find two broadcasters (one for output, one for redundancy) and two receivers. The west receiver handles Science, Medical, Supply and Service. The east receiver handles Command, Security, Engineering, Common and all the other frequencies.<br>"
+

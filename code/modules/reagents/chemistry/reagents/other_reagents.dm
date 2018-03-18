@@ -504,6 +504,14 @@
 	race = /datum/species/ipc
 	mutationtext = "<span class='danger'>The pain subsides. You feel... artificial.</span>"
 
+/datum/reagent/stableslimetoxin/vox
+	name = "Vox Mutation Toxin"
+	id = "voxmutationtoxin"
+	description = "A gross toxin produced by slimes."
+	color = "#3498db" // Same as vox blood
+	race = /datum/species/vox
+	mutationtext = "<span class='danger'>The pain subsides. You feel... skrek.</span>"
+
 //BLACKLISTED RACES
 /datum/reagent/stableslimetoxin/skeleton
 	name = "Skeleton Mutation Toxin"
@@ -1585,7 +1593,7 @@
 
 /datum/reagent/romerol/on_mob_life(mob/living/carbon/human/H)
 	// Silently add the zombie infection organ to be activated upon death
-	if(!H.getorganslot("zombie_infection"))
+	if(!H.getorganslot(ORGAN_SLOT_ZOMBIE))
 		var/obj/item/organ/zombie_infection/ZI = new()
 		ZI.Insert(H)
 	..()

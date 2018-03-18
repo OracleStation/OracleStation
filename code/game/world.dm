@@ -19,6 +19,7 @@
 
 	load_motd()
 	load_admins()
+	load_mentors()
 	LoadVerbs(/datum/verbs/menu)
 	if(CONFIG_GET(flag/usewhitelist))
 		load_whitelist()
@@ -154,6 +155,10 @@
 		var/list/presentmins = adm["present"]
 		var/list/afkmins = adm["afk"]
 		s["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
+
+		var/list/mnt = get_mentor_counts()
+		s["mentors"] = mnt["total"] // we don't have stealth mentors, so we can just use the total.
+
 		s["gamestate"] = SSticker.current_state
 
 		s["map_name"] = SSmapping.config.map_name
@@ -191,7 +196,7 @@
 				for(var/obj/machinery/computer/communications/CM in GLOB.machines)
 					CM.overrideCooldown()
 			if(input["crossmessage"] == "News_Report")
-				minor_announce(input["message"], "Breaking Update From [input["message_sender"]]")
+				minor_announce(input["message"], "Breaking update from [input["message_sender"]]")
 
 	else if("adminmsg" in input)	//tgs2 support
 		if(!key_valid)
@@ -232,8 +237,8 @@
 	ServiceReboot() //handles alternative actions if necessary
 	if (reason || fast_track) //special reboot, do none of the normal stuff
 		if (usr)
-			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
-			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
+			log_admin("[key_name(usr)] has requested an immediate world restart via client side debugging tools")
+			message_admins("[key_name_admin(usr)] has requested an immediate world restart via client side debugging tools")
 		to_chat(world, "<span class='boldannounce'>Rebooting World immediately due to host request</span>")
 	else
 		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
@@ -247,7 +252,7 @@
 			var/remote_hash = file2text(http["CONTENT"])
 
 			if(local_hash != remote_hash)
-				to_chat(world, "<span class='narsie'>Server is updating! You may need to reconnect!</span>")
+				to_chat(world, "<span class='narsiesmall'>Server is updating! You may need to reconnect!</span>")
 				shutdown()
 				return
 	..()

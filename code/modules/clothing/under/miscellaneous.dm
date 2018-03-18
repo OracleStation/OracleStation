@@ -94,6 +94,7 @@
 	item_state = "darkholme"
 	item_color = "darkholme"
 	can_adjust = 0
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/rank/vice
 	name = "vice officer's jumpsuit"
@@ -110,6 +111,7 @@
 	item_state = "g_suit"
 	item_color = "officer"
 	alt_covers_chest = 1
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/rank/centcom_commander
 	desc = "It's a jumpsuit worn by CentCom's highest-tier Commanders."
@@ -274,6 +276,7 @@
 	icon_state = "burial"
 	item_state = "burial"
 	item_color = "burial"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/skirt/black
 	name = "black skirt"
@@ -293,6 +296,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	fitted = FEMALE_UNIFORM_TOP
 	can_adjust = 0
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/skirt/red
 	name = "red skirt"
@@ -303,6 +307,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	fitted = FEMALE_UNIFORM_TOP
 	can_adjust = 0
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/skirt/purple
 	name = "purple skirt"
@@ -313,7 +318,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	fitted = FEMALE_UNIFORM_TOP
 	can_adjust = 0
-
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/schoolgirl
 	name = "blue schoolgirl uniform"
@@ -324,6 +329,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	fitted = FEMALE_UNIFORM_TOP
 	can_adjust = 0
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/schoolgirl/red
 	name = "red schoolgirl uniform"
@@ -439,6 +445,7 @@
 	item_state = "r_suit"
 	item_color = "hos_parade_male"
 	can_adjust = 0
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/hosparadefem
 	name = "head of security's parade uniform"
@@ -448,6 +455,7 @@
 	item_color = "hos_parade_fem"
 	fitted = FEMALE_UNIFORM_TOP
 	can_adjust = 0
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/assistantformal
 	name = "assistant's formal uniform"
@@ -557,6 +565,7 @@
 	fitted = NO_FEMALE_UNIFORM
 	alternate_worn_layer = ABOVE_SHOES_LAYER
 	can_adjust = 0
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/singerb
 	name = "blue performer's outfit"
@@ -567,6 +576,7 @@
 	alternate_worn_layer = ABOVE_SHOES_LAYER
 	fitted = FEMALE_UNIFORM_TOP
 	can_adjust = 0
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/plaid_skirt/green
 	name = "green plaid skirt"
@@ -577,6 +587,7 @@
 	fitted = FEMALE_UNIFORM_TOP
 	can_adjust = 1
 	alt_covers_chest = 1
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/jester
 	name = "jester suit"
@@ -584,6 +595,7 @@
 	icon_state = "jester"
 	item_color = "jester"
 	can_adjust = 0
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/jester/alt
 	icon_state = "jester2"
@@ -594,6 +606,7 @@
 	icon_state = "geisha"
 	item_color = "geisha"
 	can_adjust = 0
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/villain
 	name = "villain suit"
@@ -623,6 +636,7 @@
 	var/next_extinguish = 0
 	var/extinguish_cooldown = 100
 	var/extinguishes_left = 5
+	species_fit = list("Plasmaman")
 
 
 /obj/item/clothing/under/plasmaman/examine(mob/user)
@@ -681,6 +695,7 @@
 	fitted = NO_FEMALE_UNIFORM
 	can_adjust = FALSE
 	resistance_flags = NONE
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/scarecrow
 	name = "scarecrow clothes"
@@ -692,6 +707,7 @@
 	fitted = NO_FEMALE_UNIFORM
 	can_adjust = FALSE
 	resistance_flags = NONE
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/skeleton
 	name = "skeleton jumpsuit"
@@ -703,6 +719,7 @@
 	fitted = NO_FEMALE_UNIFORM
 	can_adjust = FALSE
 	resistance_flags = NONE
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/rank/blueshield
 	desc = "Gold trim on space-black cloth, this uniform displays the rank of \"Lieutenant\" on the left shoulder."

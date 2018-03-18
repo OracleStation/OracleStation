@@ -29,6 +29,7 @@
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 10, bio = 10, rad = 0, fire = 0, acid = 0)
 	can_adjust = 1
 	alt_covers_chest = 1
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/rank/scientist
 	desc = "It's made of a special fiber that provides minor protection against explosives. It has markings that denote the wearer as a scientist."

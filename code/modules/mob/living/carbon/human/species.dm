@@ -59,6 +59,7 @@
 	var/fixed_mut_color = "" //to use MUTCOLOR with a fixed color that's independent of dna.feature["mcolor"]
 	var/reagent_tag = PROCESS_ORGANIC //Used for metabolizing reagents. We're going to assume you're a meatbag unless you say otherwise.
 	var/species_gibs = "human"
+	var/husk_id = "husk" // For species-specific husk graphics. Currently in use: husk, or voxhusk.
 	var/allow_numbers_in_name // Can this species use numbers in its name?
 
 	// species flags. these can be found in flags.dm
@@ -84,6 +85,7 @@
 	var/override_float = 0
 
 	var/obj/item/organ/brain/mutant_brain = /obj/item/organ/brain
+	var/obj/item/organ/heart/mutant_heart = /obj/item/organ/heart
 	var/obj/item/organ/eyes/mutanteyes = /obj/item/organ/eyes
 	var/obj/item/organ/ears/mutantears = /obj/item/organ/ears
 	var/obj/item/mutanthands
@@ -142,15 +144,15 @@
 
 //Will regenerate missing organs
 /datum/species/proc/regenerate_organs(mob/living/carbon/C, datum/species/old_species, replace_current=TRUE)
-	var/obj/item/organ/brain/brain = C.getorganslot("brain")
-	var/obj/item/organ/heart/heart = C.getorganslot("heart")
-	var/obj/item/organ/lungs/lungs = C.getorganslot("lungs")
-	var/obj/item/organ/appendix/appendix = C.getorganslot("appendix")
-	var/obj/item/organ/eyes/eyes = C.getorganslot("eye_sight")
-	var/obj/item/organ/ears/ears = C.getorganslot("ears")
-	var/obj/item/organ/tongue/tongue = C.getorganslot("tongue")
-	var/obj/item/organ/liver/liver = C.getorganslot("liver")
-	var/obj/item/organ/stomach/stomach = C.getorganslot("stomach")
+	var/obj/item/organ/brain/brain = C.getorganslot(ORGAN_SLOT_BRAIN)
+	var/obj/item/organ/heart/heart = C.getorganslot(ORGAN_SLOT_HEART)
+	var/obj/item/organ/lungs/lungs = C.getorganslot(ORGAN_SLOT_LUNGS)
+	var/obj/item/organ/appendix/appendix = C.getorganslot(ORGAN_SLOT_APPENDIX)
+	var/obj/item/organ/eyes/eyes = C.getorganslot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/ears/ears = C.getorganslot(ORGAN_SLOT_EARS)
+	var/obj/item/organ/tongue/tongue = C.getorganslot(ORGAN_SLOT_TONGUE)
+	var/obj/item/organ/liver/liver = C.getorganslot(ORGAN_SLOT_LIVER)
+	var/obj/item/organ/stomach/stomach = C.getorganslot(ORGAN_SLOT_STOMACH)
 
 	var/should_have_brain = TRUE
 	var/should_have_heart = !(NOBLOOD in species_traits)
@@ -174,7 +176,7 @@
 		heart.Remove(C,1)
 		QDEL_NULL(heart)
 	if(should_have_heart && !heart)
-		heart = new()
+		heart = new mutant_heart()
 		heart.Insert(C)
 
 	if(lungs && (replace_current || !should_have_lungs))
@@ -303,6 +305,12 @@
 	if(NOMOUTH in species_traits)
 		for(var/obj/item/bodypart/head/head in C.bodyparts)
 			head.mouth = TRUE
+
+/datum/species/proc/on_husk()
+	return
+
+/datum/species/proc/on_husk_cure()
+	return
 
 /datum/species/proc/handle_hair(mob/living/carbon/human/H, forced_colour)
 	H.remove_overlay(HAIR_LAYER)
@@ -573,6 +581,26 @@
 		if(!H.dna.features["ipc_antenna"] || H.dna.features["ipc_antenna"] == "None" || H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
 			bodyparts_to_add -= "ipc_antenna"
 
+	if("vox_quills" in mutant_bodyparts)
+		if(!H.dna.features["vox_quills"] || H.dna.features["vox_quills"] == "None" || H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
+			bodyparts_to_add -= "vox_quills"
+
+	if("vox_facial_quills" in mutant_bodyparts)
+		if(!H.dna.features["vox_facial_quills"] || H.dna.features["vox_facial_quills"] == "None" || H.head && (H.head.flags_inv & HIDEFACE) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEYES)) || !HD || HD.status == BODYPART_ROBOTIC)
+			bodyparts_to_add -= "vox_facial_quills"
+
+	if("vox_eyes" in mutant_bodyparts)
+		if(!H.dna.features["vox_eyes"] || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEYES)) || !HD || HD.status == BODYPART_ROBOTIC)
+			bodyparts_to_add -= "vox_eyes"
+
+	if("vox_tail" in mutant_bodyparts)
+		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
+			bodyparts_to_add -= "vox_tail"
+
+	if("vox_tail_markings" in mutant_bodyparts)
+		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
+			bodyparts_to_add -= "vox_tail_markings"
+
 	if("ears" in mutant_bodyparts)
 		if(!H.dna.features["ears"] || H.dna.features["ears"] == "None" || H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
 			bodyparts_to_add -= "ears"
@@ -658,6 +686,20 @@
 					S = GLOB.ipc_antennas_list[H.dna.features["ipc_antenna"]]
 				if("ipc_chassis")
 					S = GLOB.ipc_chassis_list[H.dna.features["ipc_chassis"]]
+				if("vox_body")
+					S = GLOB.vox_bodies_list[H.dna.features["vox_body"]]
+				if("vox_quills")
+					S = GLOB.vox_quills_list[H.dna.features["vox_quills"]]
+				if("vox_facial_quills")
+					S = GLOB.vox_facial_quills_list[H.dna.features["vox_facial_quills"]]
+				if("vox_eyes")
+					S = GLOB.vox_eyes_list[H.dna.features["vox_eyes"]]
+				if("vox_tail")
+					S = GLOB.vox_tails_list[H.dna.features["vox_tail"]]
+				if("vox_body_markings")
+					S = GLOB.vox_body_markings_list[H.dna.features["vox_body_markings"]]
+				if("vox_tail_markings")
+					S = GLOB.vox_tail_markings_list[H.dna.features["vox_tail_markings"]]
 				if("wings")
 					S = GLOB.wings_list[H.dna.features["wings"]]
 				if("wingsopen")
@@ -739,6 +781,9 @@
 
 
 /datum/species/proc/spec_life(mob/living/carbon/human/H)
+	if(NOTOX in species_traits)
+		H.setToxLoss(0)
+
 	if(NOBREATH in species_traits)
 		H.setOxyLoss(0)
 		H.losebreath = 0
@@ -1139,7 +1184,7 @@
 	if(!gravity)
 		var/obj/item/tank/jetpack/J = H.back
 		var/obj/item/clothing/suit/space/hardsuit/C = H.wear_suit
-		var/obj/item/organ/cyberimp/chest/thrusters/T = H.getorganslot("thrusters")
+		var/obj/item/organ/cyberimp/chest/thrusters/T = H.getorganslot(ORGAN_SLOT_THRUSTERS)
 		if(!istype(J) && istype(C))
 			J = C.jetpack
 		if(istype(J) && J.full_speed && J.allow_thrust(0.01, H))	//Prevents stacking
@@ -1195,7 +1240,7 @@
 		return 1
 	else
 		var/we_breathe = (!(NOBREATH in user.dna.species.species_traits))
-		var/we_lung = user.getorganslot("lungs")
+		var/we_lung = user.getorganslot(ORGAN_SLOT_LUNGS)
 
 		if(we_breathe && we_lung)
 			user.do_cpr(target)
@@ -1687,12 +1732,13 @@
 
 /datum/species/proc/required_playtime_remaining(client/C)
 	if(!C)
-		return 0
+		to_chat(usr, "<span class='warning'>Something went wrong! Yell at a coder.</span>")
+		CRASH("required_playtime_remaning called without a client")
 	if(!CONFIG_GET(flag/use_exp_tracking))
 		return 0
 	if(!required_playtime)
 		return 0
-	if(CONFIG_GET(flag/use_exp_restrictions_admin_bypass) && check_rights(R_ADMIN, FALSE, C.mob))
+	if(CONFIG_GET(flag/use_exp_restrictions_admin_bypass) && check_rights_for(C, R_ADMIN))
 		return 0
 	var/my_exp = C.get_exp_living(FALSE)
 	if(my_exp / 60 >= required_playtime)
