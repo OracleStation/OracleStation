@@ -246,7 +246,7 @@
 	cure_text = "Unknown Cure"
 	cures = list("adminordrazine")
 	agent = "lizard tears"
-	desc = "This Disease turns its victim into a small lizard"
+	desc = "This disease turns its victim into a small lizard."
 	viable_mobtypes = list(/mob/living/carbon/human)
 	severity = HARMFUL
 	stage_prob = 10
