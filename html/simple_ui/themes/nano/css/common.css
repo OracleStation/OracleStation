@@ -6,6 +6,9 @@ body
 	font-size: 12px;
 	color: #ffffff;
 	line-height: 170%;
+	cursor: default;
+	-moz-user-select: none;
+	-ms-user-select: none;
 }
 
 hr
@@ -48,14 +51,14 @@ a.white:hover
 	background: #40628a;
 }
 
-.linkOn, a.linkOn:link, a.linkOn:visited, a.linkOn:active, a.linkOn:hover
+.active, a.active:link, a.active:visited, a.active:active, a.active:hover
 {
 	color: #ffffff;
 	background: #2f943c;
 	border-color: #24722e;
 }
 
-.linkOff, a.linkOff:link, a.linkOff:visited, a.linkOff:active, a.linkOff:hover
+.disabled, a.disabled:link, a.disabled:visited, a.disabled:active, a.disabled:hover
 {
 	color: #ffffff;
 	background: #999999;

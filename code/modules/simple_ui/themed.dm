@@ -64,5 +64,11 @@ GLOBAL_LIST_EMPTY(simpleui_file_cache)
 	for(var/viewer in viewers)
 		call_js(viewer, "replaceContent", list(get_inner_content(viewer)))
 
+/datum/simple_ui/themed/proc/act(label, mob/user, action, list/parameters = list(), class = "", disabled = FALSE)
+	if(disabled)
+		return "<a class=\"disabled\">[label]</a>"
+	else
+		return "<a class=\"[class]\" href=\"" + href(user, action, parameters) + "\">[label]</a>"
+
 /datum/simple_ui/themed/nano
 	theme = "nano"
