@@ -6,7 +6,7 @@
 	throw_range = 5
 	layer = ABOVE_MOB_LAYER
 	zone = "head"
-	slot = "brain"
+	slot = ORGAN_SLOT_BRAIN
 	vital = TRUE
 	origin_tech = "biotech=5"
 	attack_verb = list("attacked", "slapped", "whacked")
