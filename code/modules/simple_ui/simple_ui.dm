@@ -71,6 +71,7 @@
 		target << output(get_content(target), "[window_id].browser")
 	else
 		target << browse(get_content(target), "window=[window_id];size=[width]x[height];can_close=[can_close];can_minimize=[can_minimize];can_resize=[can_resize];titlebar=[titlebar];focus=false;")
+	steal_focus(target)
 
 /datum/simple_ui/proc/update_all()
 	for(var/viewer in viewers)
@@ -103,6 +104,22 @@
 /datum/simple_ui/proc/call_js_all(js_func, list/parameters = list())
 	for(var/viewer in viewers)
 		call_js(viewer, js_func, parameters)
+
+/datum/simple_ui/proc/steal_focus(mob/target)
+	set waitfor = FALSE //Makes this an async call
+	winset(target, "[window_id]","focus=true")
+
+/datum/simple_ui/proc/steal_focus_all()
+	for(var/viewer in viewers)
+		steal_focus(viewer)
+
+/datum/simple_ui/proc/flash(mob/target, times = -1)
+	set waitfor = FALSE //Makes this an async call
+	winset(target, "[window_id]","flash=[times]")
+
+/datum/simple_ui/proc/flash_all(times = -1)
+	for(var/viewer in viewers)
+		flash(viewer, times)
 
 /datum/simple_ui/proc/href(mob/user, action, list/parameters = list())
 	var/params_string = replacetext(list2params(parameters),"&",";")
