@@ -243,7 +243,7 @@
 /datum/disease/transformation/lizard
 	name = "Heat-Lamp Syndrome"
 	max_stages = 5
-	cure_text = "Unknown Cure"
+	cure_text = "Unknown"
 	cures = list("adminordrazine")
 	agent = "lizard tears"
 	desc = "This disease turns its victim into a small lizard."
@@ -252,7 +252,7 @@
 	stage_prob = 10
 	visibility_flags = 0
 	stage1 = list("You feel dry.")
-	stage2 = list("You feel like following the janitor")
+	stage2 = list("You feel like following the janitor.")
 	stage3 = list("Your skin feels a bit... scaly.")
 	stage4 = list("It's too cold in here.")
 	stage5 = list("You begin to feel small.")
