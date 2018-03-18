@@ -125,4 +125,104 @@ You now need to hook in and ensure oracle_ui is invoked upon clicking. `render` 
 
 #### Done
 
+![gif](https://user-images.githubusercontent.com/202160/37561879-1bb9179e-2a52-11e8-902c-80e6e6df7204.gif)
+
 You should have a functional UI at this point. Some additional odds and ends can be discovered throughout `code/modules/recycling/disposal-unit.dm`. For a full diff of the changes made to it, refer to [the original pull request on GitHub](https://github.com/OracleStation/OracleStation/pull/702/files#diff-4b6c20ec7d37222630e7524d9577e230).
+
+### API Reference
+
+#### `/datum/oracle_ui`
+
+The main datum which handles the UI.
+
+##### `get_content(mob/target)`
+Returns the HTML that should be displayed for a specified target mob. Calls `oui_getcontent` on the datasource to get the return value. *This proc is not used in the themed subclass.*
+
+##### `can_view(mob/target)`
+Returns whether the specified target mob can view the UI. Calls `oui_canview` on the datasource to get the return value.
+
+##### `test_viewer(mob/target, updating)`
+Tests whether the client is valid and can view the UI. If updating is TRUE, checks to see if they still have the UI window open.
+
+##### `render(mob/target, updating = FALSE)`
+Opens the UI for a target mob, sending HTML. If updating is TRUE, will only do it to clients which still have the window open.
+
+##### `render_all()`
+Does the above, but for all viewers and with updating set to TRUE.
+
+##### `close(mob/target)`
+Closes the UI for the specified target mob.
+
+##### `close_all()`
+Does the above, but for all viewers.
+
+##### `check_view(mob/target)`
+Checks if the specified target mob can view the UI, and if they can't closes their UI
+
+##### `check_view_all()`
+Does the above, but for all viewers.
+
+##### `call_js(mob/target, js_func, list/parameters = list())`
+Invokes `js_func` in the UI of the specified target mob with the specified parameters.
+
+##### `call_js_all(js_func, list/parameters = list()))`
+Does the above, but for all viewers.
+
+##### `steal_focus(mob/target)`
+Causes the UI to steal focus for the specified target mob.
+
+##### `steal_focus_all()`
+Does the above, but for all viewers.
+
+##### `flash(mob/target, times = -1)`
+Causes the UI to flash for the specified target mob the specified number of times, the default keeps the element flashing until focused.
+
+##### `flash_all()`
+Does the above, but for all viewers.
+
+##### `href(mob/user, action, list/parameters = list())`
+Generates a href for the specified user which will invoke `oui_act` on the datasource with the specified action and parameters.
+
+#### `/datum/oracle_ui/themed`
+
+A subclass which supports templating and theming.
+
+##### `get_file(path)`
+Loads a file from disk and returns the contents. Caches files loaded from disk for you.
+
+##### `get_content_file(filename)`
+Loads a file from the current content folder and returns the contents.
+
+##### `get_themed_file(filename)`
+Loads a file from the current theme folder and returns the contents.
+
+##### `process_template(template, variables)`
+Processes a template and populates it with the provided variables.
+
+##### `get_inner_content(mob/target)`
+Returns the templated content to be inserted into the main template for the specified target mob.
+
+##### `soft_update_fields()`
+For all viewers, updates the fields in the template via the `updateFields` javaScript function.
+
+##### `soft_update_all()`
+For all viewers, updates the content body in the template via the `replaceContent` javaScript function.
+
+##### `act(label, mob/user, action, list/parameters = list(), class = "", disabled = FALSE`
+Returns a fully formatted hyperlink for the specified user. `label` will be the hyperlink label, `action` and `parameters` are what will be passed to `oui_act`, `class` is any CSS classes to apply to the hyperlink and `disabled` will disable the hyperlink.
+
+#### `/datum`
+
+Functions built into all objects to support oracle_ui. There are default implementations for most major superclasses.
+
+##### `oui_canview(mob/user)`
+Returns whether the specified user view the UI at this time.
+
+##### `oui_getcontent(mob/user)`
+Returns the raw HTML to be sent to the specified user. *This proc is not used in the themed subclass of oracle_ui.*
+
+##### `oui_data(mob/user)`
+Returns templating data for the specified user. *This proc is only used in the themed subclass of oracle_ui.*
+
+##### `oui_act(mob/user, action, list/params)`
+Called when a hyperlink is clicked in the UI.

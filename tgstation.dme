@@ -2097,7 +2097,7 @@
 #include "code\modules\shuttle\supply.dm"
 #include "code\modules\shuttle\syndicate.dm"
 #include "code\modules\shuttle\white_ship.dm"
-#include "code\modules\oracle_ui\simple_ui.dm"
+#include "code\modules\oracle_ui\oracle_ui.dm"
 #include "code\modules\oracle_ui\themed.dm"
 #include "code\modules\oracle_ui\hookup_procs.dm"
 #include "code\modules\oracle_ui\assets.dm"
