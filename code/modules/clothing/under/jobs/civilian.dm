@@ -151,6 +151,7 @@
 	icon_state = "curator"
 	item_state = "curator"
 	item_color = "curator"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/rank/mime
 	name = "mime's outfit"
