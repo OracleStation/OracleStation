@@ -64,10 +64,10 @@
 /obj/item/organ/eyes/night_vision/ethari
 	name = "ethari eyes"
 	desc = "A set of eyes that have slightly better dark vision."
-	see_in_dark = 6
+	see_in_dark = 4
 	flash_protect = -1
 	actions_types = null // Can't adjust their eyes
-	lighting_alpha = 240 // Still VERY dark, but you can make out some stuff.
+	lighting_alpha = 245 // Still pretty dark, but night vision is useful.
 
 /obj/item/organ/eyes/night_vision/alien
 	name = "alien eyes"
