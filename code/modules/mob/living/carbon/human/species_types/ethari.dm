@@ -9,8 +9,6 @@
 	heatmod = 1.5 // .. Almost too good
 	burnmod = 1.5 // Fire is their weakness.
 	default_features = list("mcolor" = "#DF8134", "tail_ethari" = "Bushy", "body_markings" = "None", "snout_ethari" = "Fox", "ears_ethari" = "Fox")
-	punchdamagelow = 2 // Default is 0
-	punchdamagehigh = 12 // Default is 9
 	attack_verb = "slash"
 	mutanttongue = /obj/item/organ/tongue/ethari
 	mutanteyes = /obj/item/organ/eyes/night_vision/ethari
