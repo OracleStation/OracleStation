@@ -149,3 +149,4 @@
 #define NOMOUTH			36
 #define NOTOX       37
 #define DIFFICULTCLONE 38 // Requires upgraded cloner to be cloned
+#define NOSLOW 39
