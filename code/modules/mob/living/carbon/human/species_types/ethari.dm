@@ -6,11 +6,10 @@
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR,NOGUNS,NOSLOW,DIGITIGRADE) // No guns, but they gain some robustness in exchange for this
 	mutant_bodyparts = list("tail_ethari", "body_markings", "snout_ethari", "ears_ethari")
 	coldmod = 0.5 // Good insulation..
-	heatmod = 1.3 // .. Almost too good
-	brutemod = 0.8 // Tougher than most
+	heatmod = 1.5 // .. Almost too good
 	burnmod = 1.5 // Fire is their weakness.
 	default_features = list("mcolor" = "#DF8134", "tail_ethari" = "Bushy", "body_markings" = "None", "snout_ethari" = "Fox", "ears_ethari" = "Fox")
-	punchdamagelow = 5 // Default is 0
+	punchdamagelow = 2 // Default is 0
 	punchdamagehigh = 12 // Default is 9
 	attack_verb = "slash"
 	mutanttongue = /obj/item/organ/tongue/ethari
