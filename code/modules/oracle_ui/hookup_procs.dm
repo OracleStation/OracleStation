@@ -12,6 +12,9 @@
 /datum/proc/oui_data(mob/user)
 	return list()
 
+/datum/proc/oui_data_debug(mob/user)
+	return html_encode(json_encode(oui_data(user)))
+
 /datum/proc/oui_act(mob/user, action, list/params)
 	// No Implementation
 
