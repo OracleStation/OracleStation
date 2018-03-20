@@ -497,6 +497,8 @@ SUBSYSTEM_DEF(ticker)
 
 	//Player status report
 	for(var/mob/Player in GLOB.mob_list)
+		if(CONFIG_GET(flag/use_antag_rep) && Player.client)
+			SSpersistence.antag_rep_check(Player)
 		if(Player.mind && !isnewplayer(Player))
 			if(Player.stat != DEAD && !isbrain(Player))
 				num_survivors++

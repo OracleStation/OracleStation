@@ -12,6 +12,7 @@ Clown
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
 	special_notice = "There is a difference between harmless pranks and griefing. Know it."
+	antag_rep = 4
 
 	outfit = /datum/outfit/job/clown
 
@@ -73,6 +74,7 @@ Mime
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
 	special_notice = "There is a difference between harmless pranks and griefing. Know it."
+	antag_rep = 4
 
 	outfit = /datum/outfit/job/mime
 
@@ -123,6 +125,7 @@ Curator
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
+	antag_rep = 5
 
 	outfit = /datum/outfit/job/curator
 
@@ -170,6 +173,7 @@ Internal Affairs Agent
 	minimal_player_age = 14
 	exp_requirements = 180 //3 hours
 	exp_type = EXP_TYPE_CREW
+	antag_rep = 12
 
 	outfit = /datum/outfit/job/iaa
 	//Basic access to each department

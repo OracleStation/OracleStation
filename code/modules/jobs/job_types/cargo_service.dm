@@ -18,6 +18,7 @@ Quartermaster
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_SUPPLY
 	special_notice = "The Quartermaster is now a Head of Staff. Act like it."
+	antag_rep = 12
 
 	outfit = /datum/outfit/job/quartermaster
 
@@ -48,6 +49,7 @@ Cargo Technician
 	spawn_positions = 2
 	supervisors = "the quartermaster"
 	selection_color = "#dcba97"
+	antag_rep = 10
 
 	outfit = /datum/outfit/job/cargo_tech
 
@@ -76,6 +78,7 @@ Shaft Miner
 	spawn_positions = 3
 	supervisors = "the quartermaster"
 	selection_color = "#dcba97"
+	antag_rep = 10
 
 	outfit = /datum/outfit/job/miner
 
@@ -154,6 +157,7 @@ Bartender
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
+	antag_rep = 8
 
 	outfit = /datum/outfit/job/bartender
 
@@ -186,6 +190,7 @@ Cook
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
+	antag_rep = 8
 	var/cooks = 0 //Counts cooks amount
 
 	outfit = /datum/outfit/job/cook
@@ -234,6 +239,7 @@ Botanist
 	spawn_positions = 2
 	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
+	antag_rep = 8
 
 	outfit = /datum/outfit/job/botanist
 
@@ -272,6 +278,7 @@ Janitor
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
+	antag_rep = 8
 	var/global/janitors = 0
 
 	outfit = /datum/outfit/job/janitor

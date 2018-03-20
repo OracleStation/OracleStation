@@ -84,6 +84,14 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/device/pda/GetID()
 	return id
 
+/obj/item/device/pda/equipped(mob/user, slot)
+	..()
+	if(!iscarbon(user) || slot != slot_wear_id || !GetID())
+		return
+	var/mob/living/carbon/C = user
+	if(C.real_name == id.registered_name)
+		C.latest_id_job = id.assignment
+
 /obj/item/device/pda/update_icon()
 	cut_overlays()
 	var/mutable_appearance/overlay = new()
@@ -691,6 +699,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 		id = I
 		if(old_id)
 			user.put_in_hands(old_id)
+		if(user.get_item_by_slot(slot_wear_id) == src && iscarbon(user) && user.real_name == id.registered_name)
+			var/mob/living/carbon/player = user
+			player.latest_id_job = id.assignment
 		update_icon()
 	return 1
 

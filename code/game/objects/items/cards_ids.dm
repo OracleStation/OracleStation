@@ -98,6 +98,14 @@
 	if(mapload && access_txt)
 		access = text2access(access_txt)
 
+/obj/item/card/id/equipped(mob/user, slot)
+	..()
+	if(!iscarbon(user) || slot != slot_wear_id)
+		return
+	var/mob/living/carbon/C = user
+	if(C.real_name == src.registered_name)
+		C.latest_id_job = src.assignment
+
 /obj/item/card/id/vv_edit_var(var_name, var_value)
 	. = ..()
 	if(.)

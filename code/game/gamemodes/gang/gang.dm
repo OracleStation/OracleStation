@@ -60,7 +60,7 @@ GLOBAL_LIST_INIT(gang_outfit_pool, list(/obj/item/clothing/suit/jacket/leather, 
 
 		//Now assign a boss for the gang
 		for(var/n in 1 to 3)
-			var/datum/mind/boss = pick(antag_candidates)
+			var/datum/mind/boss = antag_pick(antag_candidates)
 			antag_candidates -= boss
 			G.bosses[boss] = GANGSTER_BOSS_STARTING_INFLUENCE
 			boss.gang_datum = G

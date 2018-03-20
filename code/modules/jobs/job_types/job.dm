@@ -48,6 +48,9 @@
 	var/exp_type = ""
 	var/exp_type_department = ""
 
+	//The amount of good boy points playing this role will earn you towards a higher chance to roll antagonist next round
+	var/antag_rep = 0
+
 	//A special, very large and noticeable message for certain roles reminding them of something important. Ex: "Blueshields are not security"
 	var/special_notice = ""
 

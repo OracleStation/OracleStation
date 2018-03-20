@@ -190,21 +190,6 @@ SUBSYSTEM_DEF(job)
 				return 1
 	return 0
 
-/datum/controller/subsystem/job/proc/FillPosition(datum/job/job)
-	for(var/level = 1 to 3)
-		if(!job)
-			continue
-		if((job.current_positions >= job.total_positions) && job.total_positions != -1)
-			continue
-		var/list/candidates = FindOccupationCandidates(job, level)
-		if(!candidates.len)
-			continue
-		var/mob/dead/new_player/candidate = pick(candidates)
-		if(AssignRole(candidate, job.title))
-			return 1
-	return 0
-
-
 //This proc is called at the start of the level loop of DivideOccupations() and will cause head jobs to be checked before any other jobs of the same level
 //This is also to ensure we get as many heads as possible
 /datum/controller/subsystem/job/proc/CheckHeadPositions(level)
@@ -424,6 +409,10 @@ SUBSYSTEM_DEF(job)
 	if(H.mind)
 		H.mind.assigned_role = rank
 
+	if(iscarbon(H))
+		var/mob/living/carbon/C = H
+		C.latest_id_job = rank
+
 	if(job)
 		var/new_mob = job.equip(H)
 		if(ismob(new_mob))
@@ -432,6 +421,8 @@ SUBSYSTEM_DEF(job)
 				N.new_character = H
 			else
 				M = H
+
+	SSpersistence.antag_rep_change[M.client.ckey] += job.antag_rep
 
 	to_chat(M, "<b>You are the [rank].</b>")
 	to_chat(M, "<b>As the [rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")

@@ -23,6 +23,7 @@ Head of Security
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_SECURITY
+	antag_rep = 18
 
 	outfit = /datum/outfit/job/hos
 
@@ -75,6 +76,7 @@ Warden
 	minimal_player_age = 7
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
+	antag_rep = 16
 
 	outfit = /datum/outfit/job/warden
 
@@ -127,6 +129,7 @@ Detective
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
 	special_notice = "You are not a security officer, do not do their job for them. However, you can help them if they need immediate assistance."
+	antag_rep = 10
 
 	outfit = /datum/outfit/job/detective
 
@@ -169,6 +172,7 @@ Security Officer
 	minimal_player_age = 7
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
+	antag_rep = 15
 
 	outfit = /datum/outfit/job/security
 
@@ -296,6 +300,7 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 	minimal_player_age = 7
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
+	antag_rep = 10
 
 	outfit = /datum/outfit/job/brig_phys
 

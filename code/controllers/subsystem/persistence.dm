@@ -1,3 +1,5 @@
+#define FILE_ANTAG_REP "data/AntagReputation.json"
+
 SUBSYSTEM_DEF(persistence)
 	name = "Persistence"
 	init_order = INIT_ORDER_PERSISTENCE
@@ -12,12 +14,16 @@ SUBSYSTEM_DEF(persistence)
 
 	var/savefile/trophy_sav
 	var/list/saved_trophies = list()
+	var/list/antag_rep = list()
+	var/list/antag_rep_change = list()
 
 /datum/controller/subsystem/persistence/Initialize()
 	LoadSatchels()
 	LoadPoly()
 	LoadChiselMessages()
 	LoadTrophies()
+	if(CONFIG_GET(flag/use_antag_rep))
+		LoadAntagReputation()
 	..()
 
 /datum/controller/subsystem/persistence/proc/LoadSatchels()
@@ -108,6 +114,16 @@ SUBSYSTEM_DEF(persistence)
 
 	log_world("Loaded [saved_messages.len] engraved messages on map [SSmapping.config.map_name]")
 
+/datum/controller/subsystem/persistence/proc/LoadAntagReputation()
+	var/json = file2text(FILE_ANTAG_REP)
+	if(!json)
+		var/json_file = file(FILE_ANTAG_REP)
+		if(!fexists(json_file))
+			WARNING("Failed to load antag reputation. File likely corrupt.")
+			return
+		return
+	antag_rep = json_decode(json)
+
 /datum/controller/subsystem/persistence/proc/LoadTrophies()
 	trophy_sav = new /savefile("data/npc_saves/TrophyItems.sav")
 	var/saved_json
@@ -154,6 +170,8 @@ SUBSYSTEM_DEF(persistence)
 	CollectChiselMessages()
 	CollectSecretSatchels()
 	CollectTrophies()
+	if(CONFIG_GET(flag/use_antag_rep))
+		CollectAntagReputation()
 
 /datum/controller/subsystem/persistence/proc/CollectSecretSatchels()
 	for(var/A in new_secret_satchels)
@@ -197,3 +215,59 @@ SUBSYSTEM_DEF(persistence)
 		data["message"] = T.trophy_message
 		data["placer_key"] = T.placer_key
 		saved_trophies += list(data)
+
+/datum/controller/subsystem/persistence/proc/CollectAntagReputation()
+	var/ANTAG_REP_MAXIMUM = CONFIG_GET(number/antag_rep_maximum)
+
+	for(var/p_ckey in antag_rep_change)
+		#ifdef TESTING
+		var/start = antag_rep[p_ckey]
+		#endif
+		antag_rep[p_ckey] = max(0, min(antag_rep[p_ckey]+antag_rep_change[p_ckey], ANTAG_REP_MAXIMUM))
+		#ifdef TESTING
+		testing("AR_DEBUG: [p_ckey]: Committed [antag_rep_change[p_ckey]] reputation, going from [start] to [antag_rep[p_ckey]]")
+		#endif
+
+	antag_rep_change = list()
+
+	fdel(FILE_ANTAG_REP)
+	text2file(json_encode(antag_rep), FILE_ANTAG_REP)
+
+/datum/controller/subsystem/persistence/proc/antag_rep_check(mob/player)
+	if(!player.ckey || !player.client)
+		return
+	var/failed = FALSE
+	if(player.client.inactivity >= (ROUNDSTART_LOGOUT_REPORT_TIME / 2))
+		failed = TRUE //AFK client
+	if(!failed && player.stat)
+		if(!failed && player.stat == UNCONSCIOUS)
+			failed = TRUE //Unconscious
+		if(!failed && player.stat == DEAD)
+			failed = TRUE //Dead
+
+	var/p_ckey = player.client.ckey
+
+	// people who died or left should not gain any reputation
+	// people who rolled antagonist still lose it
+	if(failed && SSpersistence.antag_rep_change[p_ckey] > 0)
+		#ifdef TESTING
+		testing("AR_DEBUG: Zeroed [p_ckey]'s antag_rep_change due to failure")
+		#endif
+		SSpersistence.antag_rep_change[p_ckey] = 0
+
+	if(!iscarbon(player))
+		#ifdef TESTING
+		testing("AR_DEBUG: [player] ([p_ckey]) is not a carbon mob, job change not checked")
+		#endif
+		return
+	var/mob/living/carbon/C = player
+	var/datum/job/current_job = SSjob.GetJob(C.latest_id_job)
+	var/datum/job/original_job = SSjob.GetJob(C.mind.assigned_role)
+
+	//If they changed jobs to a higher rep, it'll still be the original job's rep so let's only worry about lower
+	if(current_job.antag_rep < original_job.antag_rep)
+		if(SSpersistence.antag_rep_change[p_ckey] > 0)
+			#ifdef TESTING
+			testing("AR_DEBUG: Reduced [p_ckey]'s antag_rep_change due to higher rep job change")
+			#endif
+			SSpersistence.antag_rep_change[p_ckey] = current_job.antag_rep

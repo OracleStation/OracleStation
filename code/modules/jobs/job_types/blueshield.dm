@@ -16,6 +16,7 @@ Blueshield
 	exp_requirements = 600 //10 hours
 	exp_type = EXP_TYPE_CREW
 	special_notice = "You are a bodyguard for heads of staff. You are not a security officer. Do not do security's job."
+	antag_rep = 14
 
 	outfit = /datum/outfit/job/blueshield
 

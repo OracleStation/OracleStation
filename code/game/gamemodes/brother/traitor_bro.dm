@@ -1,6 +1,6 @@
 /datum/objective_team/brother_team
-	name = "brotherhood" 
-	member_name = "blood brother" 
+	name = "brotherhood"
+	member_name = "blood brother"
 	var/list/objectives = list()
 	var/meeting_area
 
@@ -71,12 +71,12 @@
 		num_teams = max(1, round(num_players() / bsc))
 
 	for(var/j = 1 to num_teams)
-		if(possible_brothers.len < min_team_size || antag_candidates.len <= required_enemies) 
+		if(possible_brothers.len < min_team_size || antag_candidates.len <= required_enemies)
 			break
 		var/datum/objective_team/brother_team/team = new
 		var/team_size = prob(10) ? min(3, possible_brothers.len) : 2
 		for(var/k = 1 to team_size)
-			var/datum/mind/bro = pick(possible_brothers)
+			var/datum/mind/bro = antag_pick(possible_brothers)
 			possible_brothers -= bro
 			antag_candidates -= bro
 			team.members += bro

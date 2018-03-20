@@ -310,6 +310,63 @@
 	if(GLOB.security_level < SEC_LEVEL_BLUE)
 		set_security_level(SEC_LEVEL_BLUE)
 
+// This is a frequency selection system. You may imagine it like a raffle where each player can have some number of tickets. The more tickets you have the more likely you are to
+// "win". The default is 100 tickets. If no players use any extra tickets (earned with the antagonist rep system) calling this function should be equivalent to calling the normal
+// pick() function. By default you may use up to 100 extra tickets per roll, meaning at maximum a player may double their chances compared to a player who has no extra tickets.
+//
+// The odds of being picked are simply (your_tickets / total_tickets). Suppose you have one player using fifty (50) extra tickets, and one who uses no extra:
+//     Player A: 150 tickets
+//     Player B: 100 tickets
+//        Total: 250 tickets
+//
+// The odds become:
+//     Player A: 150 / 250 = 0.6 = 60%
+//     Player B: 100 / 250 = 0.4 = 40%
+/datum/game_mode/proc/antag_pick(list/datum/candidates)
+	if(!CONFIG_GET(flag/use_antag_rep))
+		return pick(candidates)
+
+	// Tickets start at 100
+	var/DEFAULT_ANTAG_TICKETS = CONFIG_GET(number/default_antag_tickets)
+
+	// You may use up to 100 extra tickets (double your odds)
+	var/MAX_TICKETS_PER_ROLL = CONFIG_GET(number/max_tickets_per_roll)
+
+
+	var/total_tickets = 0
+
+	MAX_TICKETS_PER_ROLL += DEFAULT_ANTAG_TICKETS
+
+	var/p_ckey
+	var/p_rep
+
+	for(var/datum/mind/mind in candidates)
+		p_ckey = ckey(mind.key)
+		total_tickets += min(SSpersistence.antag_rep[p_ckey] + DEFAULT_ANTAG_TICKETS, MAX_TICKETS_PER_ROLL)
+
+	var/antag_select = rand(1,total_tickets)
+	var/current = 1
+
+	for(var/datum/mind/mind in candidates)
+		p_ckey = ckey(mind.key)
+		p_rep = SSpersistence.antag_rep[p_ckey]
+
+		var/previous = current
+		var/spend = min(p_rep + DEFAULT_ANTAG_TICKETS, MAX_TICKETS_PER_ROLL)
+		current += spend
+
+		if(antag_select >= previous && antag_select <= (current-1))
+			SSpersistence.antag_rep_change[p_ckey] = -(spend - DEFAULT_ANTAG_TICKETS)
+
+			#ifdef TESTING
+			var/cost = spend - DEFAULT_ANTAG_TICKETS
+			testing("AR_DEBUG: Player [mind.key] won spending [cost] tickets from starting value [SSpersistence.antag_rep[p_ckey]]")
+			#endif
+
+			return mind
+
+	WARNING("Something has gone terribly wrong. /datum/game_mode/proc/antag_pick failed to select a candidate. Falling back to pick()")
+	return pick(candidates)
 
 /datum/game_mode/proc/is_player_eligible_for_role(role, mob/dead/new_player/player)
 	if(!player.client || player.ready != PLAYER_READY_TO_PLAY)
@@ -457,11 +514,11 @@
 						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (<span class='boldannounce'>Ghosted</span>)\n"
 						continue //Ghosted while alive
 
-
-
 	for(var/mob/M in GLOB.mob_list)
-		if(M.client && M.client.holder)
-			to_chat(M, msg)
+		if(M.client)
+			SSpersistence.antag_rep_check(M)
+			if(M.client.holder)
+				to_chat(M, msg)
 
 /datum/game_mode/proc/printplayer(datum/mind/ply, fleecheck)
 	var/text = "<br><b>[ply.key]</b> was <b>[ply.name]</b> the <b>[ply.assigned_role]</b> and"
