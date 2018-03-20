@@ -224,5 +224,8 @@ Returns the raw HTML to be sent to the specified user. *This proc is not used in
 ##### `oui_data(mob/user)`
 Returns templating data for the specified user. *This proc is only used in the themed subclass of oracle_ui.*
 
+##### `oui_data_debug(mob/user)`
+Returns the above, but JSON-encoded and escaped, for copy pasting into the web IDE. *This proc is only used for debugging purposes.*
+
 ##### `oui_act(mob/user, action, list/params)`
 Called when a hyperlink is clicked in the UI.
