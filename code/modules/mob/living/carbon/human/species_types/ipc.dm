@@ -16,8 +16,8 @@
 	meat = /obj/item/stack/sheet/plasteel{amount = 5}
 	skinned_type = /obj/item/stack/sheet/metal{amount = 10}
 	exotic_bloodtype = "Oil"
-	male_scream_sound = 'sound/effects/mob_effects/goonstation/robot_scream.ogg'
-	female_scream_sound = 'sound/effects/mob_effects/goonstation/robot_scream.ogg'
+	male_scream_sound = 'sound/effects/mob_effects/ipc_scream.ogg'
+	female_scream_sound = 'sound/effects/mob_effects/ipc_scream.ogg'
 	male_cough_sound = 'sound/effects/mob_effects/machine_cough.ogg'
 	female_cough_sound = 'sound/effects/mob_effects/machine_cough.ogg'
 	male_sneeze_sound = 'sound/effects/mob_effects/machine_sneeze.ogg'
