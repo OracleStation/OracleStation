@@ -86,6 +86,7 @@ GLOBAL_LIST_INIT(hallucinations_major, list(
 
 /obj/effect/hallucination
 	invisibility = INVISIBILITY_OBSERVER
+	anchored = TRUE
 	var/mob/living/carbon/target = null
 
 /obj/effect/hallucination/simple
@@ -1156,4 +1157,3 @@ GLOBAL_LIST_INIT(hallucinations_major, list(
 	H.original = target
 	H.fire()
 	qdel(src)
-

@@ -59,6 +59,8 @@
 	SendSignal(COMSIG_ITEM_ATTACK_OBJ, O, user)
 	if(flags_1 & NOBLUDGEON_1)
 		return
+	if(user.disabilities & PACIFISM)
+		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	user.do_attack_animation(O)
 	O.attacked_by(src, user)
