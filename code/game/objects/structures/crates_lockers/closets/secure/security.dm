@@ -6,10 +6,12 @@
 /obj/structure/closet/secure_closet/captains/PopulateContents()
 	..()
 	new /obj/item/clothing/suit/hooded/wintercoat/captain(src)
-	if(prob(50))
+	if(prob(33))
 		new /obj/item/storage/backpack/captain(src)
-	else
+	else if(prob(50))
 		new /obj/item/storage/backpack/satchel/cap(src)
+	else
+		new /obj/item/storage/backpack/messenger/com(src)
 	new /obj/item/clothing/neck/cloak/cap(src)
 	new /obj/item/storage/backpack/duffelbag/captain(src)
 	new /obj/item/clothing/suit/captunic(src)

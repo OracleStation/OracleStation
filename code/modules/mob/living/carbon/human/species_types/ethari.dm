@@ -22,6 +22,7 @@
 	ass_pic = "ethari"
 	examine_text = "an Ethari"
 	species_text_color = "#e23f03"
+	creampie_id = "creampie_lizard"
 	loreblurb = "A bipedal, fur-covered race, uplifted by the corporation. \
 	Their claws and large fingers make them unable to use guns. \
 	Following a major PR disaster Nanotrasen crews are no longer allowed to make Ethari crewmembers fetch the nuclear authentication disk or call them \"good boy\"."
