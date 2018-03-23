@@ -57,6 +57,7 @@
 	item_color = "clown"
 	fitted = FEMALE_UNIFORM_TOP
 	can_adjust = 0
+	species_restricted = null
 
 /obj/item/clothing/under/rank/clown/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	playsound(loc, 'sound/items/bikehorn.ogg', 50, 1, -1)

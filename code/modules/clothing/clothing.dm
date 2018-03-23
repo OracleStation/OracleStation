@@ -429,6 +429,7 @@ BLIND     // can't see anything
 	sprite_sheets = list(
 		"Vox Outcast" = 'icons/mob/species/vox/shoes.dmi'
 		)
+	species_restricted = list("exclude", "Clown")
 
 	permeability_coefficient = 0.50
 	slowdown = SHOES_SLOWDOWN
@@ -609,6 +610,7 @@ BLIND     // can't see anything
 	sprite_sheets = list(
 		"Vox Outcast" = 'icons/mob/species/vox/uniform.dmi'
 		)
+	species_restricted = list("exclude", "Clown")
 
 /obj/item/clothing/under/worn_overlays(isinhands = FALSE)
 	. = list()

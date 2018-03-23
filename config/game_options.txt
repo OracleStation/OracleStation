@@ -427,6 +427,7 @@ ROUNDSTART_RACES human 0
 #ROUNDSTART_RACES pod 0
 ROUNDSTART_RACES ipc 10
 ROUNDSTART_RACES vox 10
+ROUNDSTART_RACES clown 1337
 
 ## Races that aren't on the station by default.
 #ROUNDSTART_RACES jelly

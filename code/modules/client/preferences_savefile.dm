@@ -371,6 +371,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["spines"] 	= sanitize_inlist(features["spines"], GLOB.spines_list)
 	features["body_markings"] 	= sanitize_inlist(features["body_markings"], GLOB.body_markings_list)
 	features["feature_unathi_legs"]	= sanitize_inlist(features["legs"], GLOB.legs_list, "Normal Legs")
+	features["clown_mask"]	= sanitize_inlist(features["clown_mask"], GLOB.clown_masks_list)
+	features["clown_hair"]	= sanitize_inlist(features["clown_hair"], GLOB.clown_hairs_list)
 	features["ipc_screen"]	= sanitize_inlist(features["ipc_screen"], GLOB.ipc_screens_list)
 	features["ipc_antenna"]	 = sanitize_inlist(features["ipc_antenna"], GLOB.ipc_antennas_list)
 	features["ipc_chassis"]	 = sanitize_inlist(features["ipc_chassis"], GLOB.ipc_chassis_list)

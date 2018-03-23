@@ -1519,6 +1519,30 @@
 	name = "Aquatic"
 	icon_state = "aqua"
 
+// Clown accessories.
+
+/datum/sprite_accessory/clown_hairs
+	icon = 'icons/mob/clown_accessories.dmi'
+	color_src = HAIR
+
+/datum/sprite_accessory/clown_hairs/classic
+	name = "Classic"
+	icon_state = "classic"
+	color_src = 0
+
+/datum/sprite_accessory/clown_hairs/greyscale
+	name = "Tinted"
+	icon_state = "greyscale"
+
+/datum/sprite_accessory/clown_masks
+	icon = 'icons/mob/clown_accessories.dmi'
+	color_src = EYECOLOR
+
+/datum/sprite_accessory/clown_masks/classic
+	name = "Classic"
+	icon_state = "classic"
+	color_src = 0
+
 // IPC accessories.
 
 /datum/sprite_accessory/ipc_screens

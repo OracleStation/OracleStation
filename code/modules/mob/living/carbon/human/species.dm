@@ -574,6 +574,14 @@
 		if(!H.dna.features["horns"] || H.dna.features["horns"] == "None" || H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
 			bodyparts_to_add -= "horns"
 
+	if("clown_mask" in mutant_bodyparts)
+		if(!H.dna.features["clown_mask"] || H.dna.features["clown_mask"] == "None" || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEYES)) || !HD)
+			bodyparts_to_add -= "clown_mask"
+
+	if("clown_hair" in mutant_bodyparts)
+		if(!H.dna.features["clown_hair"] || H.dna.features["clown_hair"] == "None" || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEYES)) || !HD)
+			bodyparts_to_add -= "clown_hair"
+
 	if("ipc_screen" in mutant_bodyparts)
 		if(!H.dna.features["ipc_screen"] || H.dna.features["ipc_screen"] == "None" || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEYES)) || !HD)
 			bodyparts_to_add -= "ipc_screen"
@@ -681,6 +689,10 @@
 					S = GLOB.ears_list[H.dna.features["ears"]]
 				if("body_markings")
 					S = GLOB.body_markings_list[H.dna.features["body_markings"]]
+				if("clown_masks")
+					S = GLOB.clown_masks_list[H.dna.features["clown_masks"]]
+				if("clown_hair")
+					S = GLOB.clown_hairs_list[H.dna.features["clown_hair"]]
 				if("ipc_screen")
 					S = GLOB.ipc_screens_list[H.dna.features["ipc_screen"]]
 				if("ipc_antenna")
