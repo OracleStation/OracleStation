@@ -40,6 +40,29 @@
 	var/dynamic_fhair_suffix = ""//mask > head for facial hair
 
 //BS12: Species-restricted clothing check.
+/obj/item/clothing/species_can_equip(mob/M)
+	if(!ishuman(M))
+		return TRUE
+	if(!species_restricted)
+		return TRUE
+
+	var/mob/living/carbon/human/H = M
+	var/datum/species/S = H.dna.species
+
+	var/exclusive = FALSE
+
+	if("exclude" in species_restricted)
+		exclusive = TRUE
+
+	if(exclusive)
+		if(!(S.name in species_restricted))
+			return TRUE
+	else
+		if(S.name in species_restricted)
+			return TRUE
+
+	return FALSE
+
 /obj/item/clothing/mob_can_equip(mob/M, slot)
 
 	//if we can't equip the item anyway, don't bother with species_restricted (also cuts down on spam)
@@ -50,26 +73,9 @@
 	if(slot in list(slot_in_backpack, slot_l_store, slot_r_store))
 		return TRUE
 
-	if(species_restricted && ishuman(M))
-
-		var/wearable = null
-		var/exclusive = null
-		var/mob/living/carbon/human/H = M
-
-		if("exclude" in species_restricted)
-			exclusive = TRUE
-
-		if(H.dna.species)
-			if(exclusive)
-				if(!(H.dna.species.name in species_restricted))
-					wearable = TRUE
-			else
-				if(H.dna.species.name in species_restricted)
-					wearable = TRUE
-
-			if(!wearable)
-				to_chat(M, "<span class='warning'>Your species cannot wear [src].</span>")
-				return FALSE
+	if(!species_can_equip(M))
+		to_chat(M, "<span class='warning'>Your species cannot wear [src].</span>")
+		return FALSE
 
 	return TRUE
 

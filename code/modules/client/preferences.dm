@@ -447,6 +447,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 					dat += "<a href='?_src_=prefs;preference=clown_hair;task=input'>[features["clown_hair"]]</a><BR>"
 
+					if(features["clown_hair"] != "Classic")
+						dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=hair;task=input'>Change</a><BR>"
+
 					dat += "</td>"
 
 				if("clown_mask" in pref_species.mutant_bodyparts)

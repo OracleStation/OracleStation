@@ -579,7 +579,7 @@
 			bodyparts_to_add -= "clown_mask"
 
 	if("clown_hair" in mutant_bodyparts)
-		if(!H.dna.features["clown_hair"] || H.dna.features["clown_hair"] == "None" || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEYES)) || !HD)
+		if(!H.dna.features["clown_hair"] || H.dna.features["clown_hair"] == "None" || !HD)
 			bodyparts_to_add -= "clown_hair"
 
 	if("ipc_screen" in mutant_bodyparts)
@@ -689,8 +689,8 @@
 					S = GLOB.ears_list[H.dna.features["ears"]]
 				if("body_markings")
 					S = GLOB.body_markings_list[H.dna.features["body_markings"]]
-				if("clown_masks")
-					S = GLOB.clown_masks_list[H.dna.features["clown_masks"]]
+				if("clown_mask")
+					S = GLOB.clown_masks_list[H.dna.features["clown_mask"]]
 				if("clown_hair")
 					S = GLOB.clown_hairs_list[H.dna.features["clown_hair"]]
 				if("ipc_screen")
@@ -1758,6 +1758,10 @@
 		return 0
 	else
 		return (get_exp_format(required_playtime * 60 - my_exp))
+
+//Easy override for equipping
+/datum/species/proc/get_alternative_clothing(obj/item/I, mob/M)
+	return null
 
 #undef HEAT_DAMAGE_LEVEL_1
 #undef HEAT_DAMAGE_LEVEL_2
