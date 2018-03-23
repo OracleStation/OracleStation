@@ -143,6 +143,7 @@
 	var/backpack = /obj/item/storage/backpack
 	var/satchel  = /obj/item/storage/backpack/satchel
 	var/duffelbag = /obj/item/storage/backpack/duffelbag
+	var/courierbag = /obj/item/storage/backpack/messenger
 	var/box = /obj/item/storage/box/survival
 
 /datum/outfit/job/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -155,10 +156,14 @@
 			back = /obj/item/storage/backpack/duffelbag //Grey Duffel bag
 		if(LSATCHEL)
 			back = /obj/item/storage/backpack/satchel/leather //Leather Satchel
+		if(GCOURIERBAG)
+			back = /obj/item/storage/backpack/satchel
 		if(DSATCHEL)
 			back = satchel //Department satchel
 		if(DDUFFELBAG)
 			back = duffelbag //Department duffel bag
+		if(DCOURIERBAG) //Department courier bag
+			back = courierbag
 		else
 			back = backpack //Department backpack
 

@@ -243,6 +243,7 @@
 	armor = list(melee = 25, bullet = 10, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0, fire = 0, acid = 45)
 	cold_protection = CHEST|ARMS
 	heat_protection = CHEST|ARMS
+	species_restricted = list("exclude","Vox Outcast")
 
 //Blueshield
 /obj/item/clothing/suit/storage/blueshield

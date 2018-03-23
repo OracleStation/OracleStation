@@ -61,6 +61,7 @@
 	var/species_gibs = "human"
 	var/husk_id = "husk" // For species-specific husk graphics. Currently in use: husk, or voxhusk.
 	var/allow_numbers_in_name // Can this species use numbers in its name?
+	var/creampie_id = "creampie_human" // What sort of creampie overlay does this species use?
 
 	// species flags. these can be found in flags.dm
 	var/list/species_traits = list()

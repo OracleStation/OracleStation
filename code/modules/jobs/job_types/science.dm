@@ -48,6 +48,7 @@ Research Director
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/tox
+	courierbag = /obj/item/storage/backpack/messenger/tox
 
 /datum/outfit/job/rd/rig
 	name = "Research Director (Hardsuit)"
@@ -91,6 +92,7 @@ Scientist
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/tox
+	courierbag = /obj/item/storage/backpack/messenger/tox
 	accessory = /obj/item/clothing/accessory/pocketprotector/full
 
 /*
@@ -126,3 +128,4 @@ Roboticist
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/tox
+	courierbag = /obj/item/storage/backpack/messenger/tox

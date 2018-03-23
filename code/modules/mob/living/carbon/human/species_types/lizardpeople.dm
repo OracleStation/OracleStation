@@ -21,6 +21,7 @@
 	ass_pic = "unathi"
 	examine_text = "a Unathi"
 	species_text_color = "#3d0000"
+	creampie_id = "creampie_lizard"
 	loreblurb = "Cold-blooded and covered in scales, Unathi may seem like a vicious predator put in a fancy jumpsuit, \
 	but due to some recent pressure from HR they're generally well-behaved. Most of them don't even fight all that well. \
 	Confusing them with Ash Walkers (the similarly lizard-like natives of the Lavaland Wastes) might lead to having a spear lodged in your skull."
