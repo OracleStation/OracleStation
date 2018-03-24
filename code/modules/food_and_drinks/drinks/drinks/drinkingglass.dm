@@ -1,4 +1,5 @@
-
+/obj/item/reagent_containers/food/drinks/
+	you_drink_from_this = TRUE
 
 /obj/item/reagent_containers/food/drinks/drinkingglass
 	name = "drinking glass"
