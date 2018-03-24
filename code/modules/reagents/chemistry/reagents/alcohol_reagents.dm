@@ -1256,7 +1256,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	description = "An oily substance that an IPC could technically consider a 'drink'."
 	reagent_state = LIQUID
 	color = "#363636"
-	boozepwr = 50
+	boozepwr = 10
 	glass_icon_state = "robottearsglass"
 	glass_name = "Glass of Robot Tears"
 	glass_desc = "No robots were hurt in the making of this drink."
