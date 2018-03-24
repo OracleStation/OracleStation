@@ -447,3 +447,9 @@
 	desc = "There is no air shortage. Do not drink."
 	icon_state = "air"
 	list_reagents = list("nitrogen" = 24, "oxygen" = 6)
+
+/obj/item/reagent_containers/food/drinks/soda_cans/synthanol
+	name = "Beep's Classic Synthanol"
+	desc = "A can of IPC booze, however that works."
+	icon_state = "synthanolcan"
+	list_reagents = list("synthanol" = 50)
