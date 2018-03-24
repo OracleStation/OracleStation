@@ -19,6 +19,7 @@ SUBSYSTEM_DEF(traumas)
 						"clowns"    = strings(PHOBIA_FILE, "clowns"),
 						"greytide"  = strings(PHOBIA_FILE, "greytide"),
 						"lizards"   = strings(PHOBIA_FILE, "lizards"),
+						"furries"   = strings(PHOBIA_FILE, "furries"),
 						"skeletons" = strings(PHOBIA_FILE, "skeletons"),
 					   )
 
@@ -44,6 +45,7 @@ SUBSYSTEM_DEF(traumas)
 	phobia_turfs = list("space" = typecacheof(list(/turf/open/space, /turf/open/floor/holofloor/space, /turf/open/floor/fakespace)))
 
 	phobia_species = list("lizards"   = typecacheof(list(/datum/species/unathi)),
+						  "furries"   = typecacheof(list(/datum/species/ethari)),
 						  "skeletons" = typecacheof(list(/datum/species/skeleton, /datum/species/plasmaman))
 						 )
 
