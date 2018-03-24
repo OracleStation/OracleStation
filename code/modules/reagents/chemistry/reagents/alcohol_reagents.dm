@@ -1243,11 +1243,12 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	description = "A runny liquid with conductive capacities. Its effects on synthetics are similar to those of alcohol on organics."
 	reagent_state = LIQUID
 	color = "#1BB1FF"
-	process_flags = ORGANIC | SYNTHETIC
+	process_flags = SYNTHETIC
 	boozepwr = 20
 	glass_icon_state = "synthanolglass"
 	glass_name = "Glass of Synthanol"
 	glass_desc = "The equivalent of alcohol for synthetic crewmembers. They'd find it awful if they had tastebuds too."
+	taste_description = "motor oil and grease"
 
 /datum/reagent/consumable/ethanol/synthanol/robottears
 	name = "Robot Tears"
