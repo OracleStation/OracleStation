@@ -13,6 +13,7 @@
 	possible_transfer_amounts = list(5,10,15,20,25,30,50)
 	volume = 50
 	resistance_flags = 0
+	you_drink_from_this = TRUE
 
 /obj/item/reagent_containers/food/drinks/on_reagent_change()
 	if (gulp_size < 5) gulp_size = 5
@@ -343,6 +344,7 @@
 	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
 	container_type = NONE
 	spillable = FALSE
+	you_drink_from_this = TRUE
 
 /obj/item/reagent_containers/food/drinks/soda_cans/attack(mob/M, mob/user)
 	if(M == user && !src.reagents.total_volume && user.a_intent == INTENT_HARM && user.zone_selected == "head")
