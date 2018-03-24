@@ -753,7 +753,6 @@
 	required_reagents = list("rum" = 1, "vodka" = 1, "tequila" = 1, "whiskey" = 1, "synthanol" = 1)
 	results = list("uplink" = 5)
 
-
 /datum/chemical_reaction/synthanol/synthnsoda
 	name = "Synth 'n Soda"
 	id = "synthnsoda"
