@@ -1531,17 +1531,37 @@
 	color_src = 0
 
 /datum/sprite_accessory/clown_hairs/greyscale
-	name = "Tinted"
-	icon_state = "greyscale"
+	name = "Classic (Tintable)"
+	icon_state = "classic_tintable"
+
+/datum/sprite_accessory/clown_hairs/rainbow
+	name = "Rainbow"
+	icon_state = "rainbow"
+	color_src = 0
+
+/datum/sprite_accessory/clown_hairs/pigtails
+	name = "Pigtails (Tintable)"
+	icon_state = "pigtails_tintable"
+
+/datum/sprite_accessory/clown_hairs/mop
+	name = "Mop (Tintable)"
+	icon_state = "mop_tintable"
 
 /datum/sprite_accessory/clown_masks
 	icon = 'icons/mob/clown_accessories.dmi'
-	color_src = EYECOLOR
+	color_src = 0
 
 /datum/sprite_accessory/clown_masks/classic
 	name = "Classic"
 	icon_state = "classic"
-	color_src = 0
+
+/datum/sprite_accessory/clown_masks/femme
+	name = "Femme"
+	icon_state = "femme"
+
+/datum/sprite_accessory/clown_masks/grin
+	name = "Grin"
+	icon_state = "grin"
 
 // IPC accessories.
 

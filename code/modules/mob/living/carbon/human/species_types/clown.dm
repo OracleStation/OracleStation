@@ -5,11 +5,15 @@
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human
 	examine_text = "a Clown"
 	species_text_color = "#ff69b4"
-	mutant_bodyparts = list("clown_hair", "clown_mask")
+	mutant_bodyparts = list("clown_mask", "clown_hair")
 	default_features = list("clown_hair" = "Classic", "clown_mask" = "Classic")
 	attack_sound = 'sound/items/bikehorn.ogg'
 	skinned_type = /obj/item/clothing/mask/gas/clown_hat
 	species_traits = list(NO_UNDERWEAR, NOPAIN)
+	loreblurb = "What is it about clowns? They seem to be a happy enough bunch, \
+	delighted to suffer a pie-in-the-face or a seltzer-down-the-pants just to \
+	make us laugh, but what dark compulsion drives these men to hide behind their \
+	painted-on smiles and big rubber noses? What madness turns a man into a clown?"
 
 /datum/species/clown/random_name(gender,unique,lastname)
 	return pick(GLOB.clown_names)
@@ -29,9 +33,16 @@
 
 /datum/species/clown/get_alternative_clothing(obj/item/I, mob/M)
 	if(istype(I, /obj/item/clothing/shoes))
-		return new /obj/item/clothing/shoes/clown_shoes(M)
+		var/obj/item/clothing/shoes/S = I
+		switch (S.item_color)
+			if("hosred")							return new /obj/item/clothing/shoes/clown/black(M)
+			else									return new /obj/item/clothing/shoes/clown/sneakers(M)
+
 	if(istype(I, /obj/item/clothing/under))
-		return new /obj/item/clothing/under/rank/clown(M)
+		var/obj/item/clothing/under/U = I
+		switch (U.item_color)
+			if("rsecurity","rwarden","detective")	return new /obj/item/clothing/under/clown/sec(M)
+			else									return new /obj/item/clothing/under/clown/grey(M)
 	return null
 
 /datum/species/clown/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)

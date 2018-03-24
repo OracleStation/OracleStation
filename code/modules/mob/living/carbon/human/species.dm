@@ -579,7 +579,7 @@
 			bodyparts_to_add -= "clown_mask"
 
 	if("clown_hair" in mutant_bodyparts)
-		if(!H.dna.features["clown_hair"] || H.dna.features["clown_hair"] == "None" || !HD)
+		if(!H.dna.features["clown_hair"] || H.dna.features["clown_hair"] == "None" ||  H.head && (H.head.flags_inv & HIDEHAIR) || !HD)
 			bodyparts_to_add -= "clown_hair"
 
 	if("ipc_screen" in mutant_bodyparts)
