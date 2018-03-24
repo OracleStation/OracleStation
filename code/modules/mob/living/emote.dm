@@ -554,7 +554,7 @@
 		else
 			sound_to_play = H.dna.species.male_scream_sound
 	if(issilicon(user) || isdrone(user))
-		sound_to_play = 'sound/effects/mob_effects/goonstation/robot_scream.ogg'
+		sound_to_play = 'sound/effects/mob_effects/silicon_scream.ogg'
 
 	playsound(user.loc, sound_to_play, 50, frequency = frequency_to_use)
 
