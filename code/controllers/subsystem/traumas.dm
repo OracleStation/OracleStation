@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(traumas)
 #define PHOBIA_FILE "phobia.json"
 
 /datum/controller/subsystem/traumas/Initialize()
-	phobia_types = list("spiders", "space", "security", "clowns", "greytide", "lizards", "skeletons")
+	phobia_types = list("spiders", "space", "security", "clowns", "greytide", "lizards", "furries", "skeletons")
 
 	phobia_words = list("spiders"   = strings(PHOBIA_FILE, "spiders"),
 						"space"     = strings(PHOBIA_FILE, "space"),
