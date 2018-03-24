@@ -36,3 +36,4 @@
 	name = "purple athletic shorts"
 	icon_state = "purpleshorts"
 	item_color = "purpleshorts"
+	species_restricted = list("exclude","Vox Outcast")

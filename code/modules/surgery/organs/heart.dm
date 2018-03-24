@@ -3,7 +3,7 @@
 	desc = "I feel bad for the heartless bastard who lost this."
 	icon_state = "heart-on"
 	zone = "chest"
-	slot = "heart"
+	slot = ORGAN_SLOT_HEART
 	origin_tech = "biotech=5"
 	// Heart attack code is in code/modules/mob/living/carbon/human/life.dm
 	var/beating = 1
@@ -154,3 +154,11 @@
 
 /obj/item/organ/heart/cybernetic/emp_act()
 	Stop()
+
+/obj/item/organ/heart/vox
+	name = "vox heart"
+	desc = "A vox's heart. It appears to have circuitry and components woven into it."
+	icon_state = "heartvox-off"
+	icon_base = "heartvox"
+	status = ORGAN_ROBOTIC
+	origin_tech = "biotech=5"

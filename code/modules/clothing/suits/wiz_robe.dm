@@ -37,6 +37,7 @@
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0, fire = 0, acid = 0)
 	resistance_flags = FLAMMABLE
 	dog_fashion = /datum/dog_fashion/head/blue_wizard
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/wizard/marisa
 	name = "witch hat"
@@ -50,6 +51,7 @@
 	icon_state = "magus"
 	item_state = "magus"
 	dog_fashion = null
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/wizard/santa
 	name = "Santa's hat"
@@ -68,7 +70,6 @@
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 20, bomb = 20, bio = 20, rad = 20, fire = 100, acid = 100)
 	allowed = list(/obj/item/teleportation_scroll)
-	flags_inv = HIDEJUMPSUIT
 	strip_delay = 50
 	equip_delay_other = 50
 	resistance_flags = FIRE_PROOF | ACID_PROOF
@@ -102,19 +103,21 @@
 	desc = "A set of armored robes that seem to radiate a dark power."
 	icon_state = "magusblue"
 	item_state = "magusblue"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/wizrobe/magusred
 	name = "\improper Magus robe"
 	desc = "A set of armored robes that seem to radiate a dark power."
 	icon_state = "magusred"
 	item_state = "magusred"
-
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/wizrobe/santa
 	name = "Santa's suit"
 	desc = "Festive!"
 	icon_state = "santa"
 	item_state = "santa"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/wizrobe/fake
 	name = "wizard robe"
@@ -125,6 +128,7 @@
 	permeability_coefficient = 1
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0, fire = 0, acid = 0)
 	resistance_flags = FLAMMABLE
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/wizard/marisa/fake
 	name = "witch hat"
@@ -152,7 +156,7 @@
 	item_state = "wizrobe"
 	var/robe_charge = TRUE
 	actions_types = list(/datum/action/item_action/stickmen)
-
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/wizrobe/paper/ui_action_click(mob/user, action)
 	stickmen()
@@ -197,6 +201,7 @@
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 20, bomb = 20, bio = 20, rad = 20, fire = 100, acid = 100)
 	slowdown = 0
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/helmet/space/hardsuit/shielded/wizard
 	name = "battlemage helmet"
@@ -208,6 +213,7 @@
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 20, bomb = 20, bio = 20, rad = 20, fire = 100, acid = 100)
 	actions_types = null //No inbuilt light
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/helmet/space/hardsuit/shielded/wizard/attack_self(mob/user)
 	return

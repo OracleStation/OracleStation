@@ -3,15 +3,15 @@
 	var/list/late_joining_list = list()
 
 /datum/game_mode/traitor/sleeper_agent
-	name = "Sleeper Agents"
+	name = "sleeper agents"
 	config_tag = "sleeper_agent"
 	required_players = 25
-	required_enemies = 5
-	recommended_enemies = 8
+	required_enemies = 4
+	recommended_enemies = 6
 	reroll_friendly = 0
 	traitor_name = "Nanotrasen Sleeper Agent"
 
-	traitors_possible = 10 //hard limit on traitors if scaling is turned off
+	traitors_possible = 8 //hard limit on traitors if scaling is turned off
 	num_modifier = 4 // Four additional traitors
 	antag_datum = ANTAG_DATUM_SLEEPER_AGENT
 

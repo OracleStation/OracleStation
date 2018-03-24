@@ -14,6 +14,10 @@
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEHAIR
 	flags_2 = BANG_PROTECT_2
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/helmet.dmi'
+		)
 
 	dog_fashion = /datum/dog_fashion/head/helmet
 

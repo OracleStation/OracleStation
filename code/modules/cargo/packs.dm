@@ -95,6 +95,9 @@
 					/obj/item/tank/internals/emergency_oxygen,
 					/obj/item/tank/internals/emergency_oxygen,
 					/obj/item/tank/internals/emergency_oxygen,
+					/obj/item/tank/internals/emergency_oxygen/vox,
+					/obj/item/tank/internals/emergency_oxygen/vox,
+					/obj/item/tank/internals/emergency_oxygen/vox,
 					/obj/item/tank/internals/air,
 					/obj/item/tank/internals/air,
 					/obj/item/tank/internals/air)
@@ -817,8 +820,8 @@
 /datum/supply_pack/medical/bloodpacks
 	name = "Blood Pack Variety Crate"
 	cost = 3500
-	contains = list(/obj/item/reagent_containers/blood/empty,
-					/obj/item/reagent_containers/blood/empty,
+	contains = list(/obj/item/reagent_containers/blood,
+					/obj/item/reagent_containers/blood,
 					/obj/item/reagent_containers/blood/APlus,
 					/obj/item/reagent_containers/blood/AMinus,
 					/obj/item/reagent_containers/blood/BPlus,

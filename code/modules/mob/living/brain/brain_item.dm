@@ -6,7 +6,7 @@
 	throw_range = 5
 	layer = ABOVE_MOB_LAYER
 	zone = "head"
-	slot = "brain"
+	slot = ORGAN_SLOT_BRAIN
 	vital = TRUE
 	origin_tech = "biotech=5"
 	attack_verb = list("attacked", "slapped", "whacked")
@@ -70,7 +70,7 @@
 		C.dna.copy_dna(brainmob.stored_dna)
 		if(L.disabilities & NOCLONE)
 			brainmob.disabilities |= NOCLONE	//This is so you can't just decapitate a husked guy and clone them without needing to get a new body
-		var/obj/item/organ/zombie_infection/ZI = L.getorganslot("zombie_infection")
+		var/obj/item/organ/zombie_infection/ZI = L.getorganslot(ORGAN_SLOT_ZOMBIE)
 		if(ZI)
 			brainmob.set_species(ZI.old_species)	//For if the brain is cloned
 	if(L.mind && L.mind.current)
@@ -147,6 +147,23 @@
 	icon_state = "brain-x"
 	origin_tech = "biotech=6"
 
+/obj/item/organ/brain/cybernetic/vox
+	name = "vox brain"
+	slot = ORGAN_SLOT_BRAIN
+	desc = "A vox brain. A truly alien organ made up of both organic and synthetic parts. I bet you thought there was going to be a bird-brain joke here, didn't you?"
+	zone = "head"
+	icon_state = "brain-vox"
+	status = ORGAN_ROBOTIC
+	origin_tech = "biotech=3"
+
+/obj/item/organ/brain/cybernetic/vox/emp_act(severity)
+	to_chat(owner, "<span class='warning'>Your head hurts.</span>")
+	switch(severity)
+		if(1)
+			owner.adjustBrainLoss(rand(25, 50))
+		if(2)
+			owner.adjustBrainLoss(rand(0, 25))
+
 // IPC brain fuckery.
 /obj/item/organ/brain/mmi_holder
 	name = "brain"
@@ -210,7 +227,7 @@
 	icon = stored_mmi.icon
 	icon_state = stored_mmi.icon_state
 
-/obj/item/organ/brain/mmi_holder/posibrain/Initialize(var/obj/item/device/mmi/MMI)
+/obj/item/organ/brain/mmi_holder/posibrain/New(var/obj/item/device/mmi/MMI)
 	. = ..()
 	if(MMI)
 		stored_mmi = MMI

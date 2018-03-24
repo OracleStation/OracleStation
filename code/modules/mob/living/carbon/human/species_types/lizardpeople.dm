@@ -21,6 +21,7 @@
 	ass_pic = "unathi"
 	examine_text = "a Unathi"
 	species_text_color = "#3d0000"
+	creampie_id = "creampie_lizard"
 	loreblurb = "Cold-blooded and covered in scales, Unathi may seem like a vicious predator put in a fancy jumpsuit, \
 	but due to some recent pressure from HR they're generally well-behaved. Most of them don't even fight all that well. \
 	Confusing them with Ash Walkers (the similarly lizard-like natives of the Lavaland Wastes) might lead to having a spear lodged in your skull."
@@ -53,3 +54,12 @@
 	limbs_id = "unathi"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,NOBREATH,NOGUNS,DIGITIGRADE,NO_BONES)
 	examine_text = "an Ash Walker"
+	mutanteyes = /obj/item/organ/eyes/night_vision
+
+/datum/species/unathi/ashwalker/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	. = ..()
+	C.weather_immunities |= "ash"
+
+/datum/species/unathi/ashwalker/on_species_loss(mob/living/carbon/C)
+	. = ..()
+	C.weather_immunities -= "ash"

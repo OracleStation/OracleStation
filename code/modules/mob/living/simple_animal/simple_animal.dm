@@ -252,7 +252,7 @@
 /mob/living/simple_animal/emote(act, m_type=1, message = null)
 	if(stat)
 		return
-	if(act == "scream")
+	if(act == "scream" && !isdrone(src))
 		message = "makes a loud and pained whimper." //ugly hack to stop animals screaming when crushed :P
 		act = "me"
 	..(act, m_type, message)

@@ -101,7 +101,7 @@
 	origin_tech = "engineering=2"
 	desc = "A pair of microphones intended to be installed in an IPC head, that grant the ability to hear."
 	zone = "head"
-	slot = "ears"
+	slot = ORGAN_SLOT_EARS
 	gender = PLURAL
 	status = ORGAN_ROBOTIC
 
@@ -118,3 +118,12 @@
 			owner.Dizzy(15)
 			owner.Knockdown(100)
 			to_chat(owner, "<span class='warning'>Your robotic ears buzz.</span>")
+
+/obj/item/organ/ears/vox
+	name = "vox ears"
+	icon_state = "ears-vox"
+	desc = "The internal parts of the vox ear. Corporate scientists hypothesize that the synthetic components take the piercing edge off their own shrieking."
+	status = ORGAN_ROBOTIC
+
+/obj/item/organ/ears/vox/emp_act()
+	deaf = 10

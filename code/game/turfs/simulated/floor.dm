@@ -247,6 +247,8 @@
 			else
 				A.req_access = A.electronics.accesses
 			A.autoclose = TRUE
+			if(A.has_hatch)
+				A.setup_hatch()
 			return TRUE
 		if(RCD_DECONSTRUCT)
 			if(istype(src, baseturf))

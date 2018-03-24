@@ -664,9 +664,10 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 		if ("Custom")
 			//use custom one
 			M.equipOutfit(custom)
+			M.dna.species.after_equip_job(src, M)
 		else
 			M.equipOutfit(dresscode)
-
+			M.dna.species.after_equip_job(src, M)
 
 	M.regenerate_icons()
 

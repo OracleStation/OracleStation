@@ -17,8 +17,8 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	config_tag = "changeling"
 	antag_flag = ROLE_CHANGELING
 	restricted_jobs = list("AI", "Cyborg")
+	restricted_species = list("ipc", "synth")
 	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Blueshield", "Brig Physician", "Internal Affairs Agent")
-	restricted_species = list("ipc")
 	required_players = 15
 	required_enemies = 1
 	recommended_enemies = 4
@@ -47,8 +47,6 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	var/const/prob_right_objective_h = 50 //upper bound on probability of determining the objective correctly
 
 	var/const/changeling_amount = 4 //hard limit on changelings if scaling is turned off
-
-	var/changeling_team_objective_type = null //If this is not null, we hand our this objective to all lings
 
 /datum/game_mode/changeling/pre_setup()
 
@@ -80,19 +78,6 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 
 /datum/game_mode/changeling/post_setup()
 
-	//Decide if it's ok for the lings to have a team objective
-	//And then set it up to be handed out in forge_changeling_objectives
-	var/list/team_objectives = subtypesof(/datum/objective/changeling_team_objective)
-	var/list/possible_team_objectives = list()
-	for(var/T in team_objectives)
-		var/datum/objective/changeling_team_objective/CTO = T
-
-		if(changelings.len >= initial(CTO.min_lings))
-			possible_team_objectives += T
-
-	if(possible_team_objectives.len && prob(20*changelings.len))
-		changeling_team_objective_type = pick(possible_team_objectives)
-
 	for(var/datum/mind/changeling in changelings)
 		log_game("[changeling.key] (ckey) has been selected as a changeling")
 		changeling.current.make_changeling()
@@ -114,18 +99,12 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 					if(!(character.job in restricted_jobs) && !(character.dna.species.id in restricted_species))
 						character.mind.make_Changling()
 
-/datum/game_mode/proc/forge_changeling_objectives(datum/mind/changeling, var/team_mode = 0)
+/datum/game_mode/proc/forge_changeling_objectives(datum/mind/changeling)
 	//OBJECTIVES - random traitor objectives. Unique objectives "steal brain" and "identity theft".
 	//No escape alone because changelings aren't suited for it and it'd probably just lead to rampant robusting
 	//If it seems like they'd be able to do it in play, add a 10% chance to have to escape alone
 
 	var/escape_objective_possible = TRUE
-
-	//if there's a team objective, check if it's compatible with escape objectives
-	for(var/datum/objective/changeling_team_objective/CTO in changeling.objectives)
-		if(!CTO.escape_objective_compatible)
-			escape_objective_possible = FALSE
-			break
 
 	var/datum/objective/absorb/absorb_objective = new
 	absorb_objective.owner = changeling
@@ -148,18 +127,12 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 		if(prob(70))
 			var/datum/objective/assassinate/kill_objective = new
 			kill_objective.owner = changeling
-			if(team_mode) //No backstabbing while in a team
-				kill_objective.find_target_by_role(role = "Changeling", role_type = 1, invert = 1)
-			else
-				kill_objective.find_target()
+			kill_objective.find_target()
 			changeling.objectives += kill_objective
 		else
 			var/datum/objective/maroon/maroon_objective = new
 			maroon_objective.owner = changeling
-			if(team_mode)
-				maroon_objective.find_target_by_role(role = "Changeling", role_type = 1, invert = 1)
-			else
-				maroon_objective.find_target()
+			maroon_objective.find_target()
 			changeling.objectives += maroon_objective
 
 			if (!(locate(/datum/objective/escape) in changeling.objectives) && escape_objective_possible)
@@ -178,25 +151,9 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 		else
 			var/datum/objective/escape/escape_with_identity/identity_theft = new
 			identity_theft.owner = changeling
-			if(team_mode)
-				identity_theft.find_target_by_role(role = "Changeling", role_type = 1, invert = 1)
-			else
-				identity_theft.find_target()
+			identity_theft.find_target()
 			changeling.objectives += identity_theft
 		escape_objective_possible = FALSE
-
-
-
-/datum/game_mode/changeling/forge_changeling_objectives(datum/mind/changeling)
-	if(changeling_team_objective_type)
-		var/datum/objective/changeling_team_objective/team_objective = new changeling_team_objective_type
-		team_objective.owner = changeling
-		changeling.objectives += team_objective
-
-		..(changeling,1)
-	else
-		..(changeling,0)
-
 
 /datum/game_mode/proc/greet_changeling(datum/mind/changeling, you_are=1)
 	if (you_are)
@@ -256,13 +213,21 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 			if(changeling.objectives.len)
 				var/count = 1
 				for(var/datum/objective/objective in changeling.objectives)
-					if(objective.check_completion())
-						text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <font color='green'><b>Success!</b></font>"
-						SSblackbox.add_details("changeling_objective","[objective.type]|SUCCESS")
+					if(istype(objective, /datum/objective/crew))
+						if(objective.check_completion())
+							text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='green'><b>Success!</b></span> (Optional)"
+							SSblackbox.add_details("changeling_objective","[objective.type]|SUCCESS")
+						else
+							text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='danger'>Fail.</span> (Optional)"
+							SSblackbox.add_details("changeling_objective","[objective.type]|FAIL")
 					else
-						text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='danger'>Fail.</span>"
-						SSblackbox.add_details("changeling_objective","[objective.type]|FAIL")
-						changelingwin = 0
+						if(objective.check_completion())
+							text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='green'><b>Success!</b></span>"
+							SSblackbox.add_details("changeling_objective","[objective.type]|SUCCESS")
+						else
+							text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='danger'>Fail.</span>"
+							SSblackbox.add_details("changeling_objective","[objective.type]|FAIL")
+							changelingwin = 0
 					count++
 
 			if(changelingwin)

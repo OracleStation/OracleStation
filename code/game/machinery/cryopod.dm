@@ -247,7 +247,7 @@
 			var/list/possible_targets = list()
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
 				if(H.mind && !is_convertable_to_cult(H) && !iscultist(H))
-					possible_targets += H
+					possible_targets += H.mind
 
 			possible_targets -= mob_occupant.mind
 			if(!possible_targets.len)

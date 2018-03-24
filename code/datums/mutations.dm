@@ -309,6 +309,7 @@ GLOBAL_LIST_EMPTY(mutations_list)
 	if(..())
 		return
 	owner.disabilities &= ~CLUMSY
+	to_chat(owner, "<span class='danger'>You no longer feel funny.</span>")
 
 /datum/mutation/human/tourettes
 	name = "Tourettes Syndrome"
