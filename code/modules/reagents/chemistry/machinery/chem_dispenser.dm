@@ -359,7 +359,8 @@
 		"cognac",
 		"ale",
 		"absinthe",
-		"hcider"
+		"hcider",
+		"synthanol"
 	)
 	emagged_reagents = list(
 		"ethanol",
