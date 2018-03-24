@@ -46,6 +46,7 @@ Chief Engineer
 	backpack = /obj/item/storage/backpack/industrial
 	satchel = /obj/item/storage/backpack/satchel/eng
 	duffelbag = /obj/item/storage/backpack/duffelbag/engineering
+	courierbag = /obj/item/storage/backpack/messenger/engi
 	box = /obj/item/storage/box/engineer
 
 /datum/outfit/job/ce/rig
@@ -99,6 +100,7 @@ Station Engineer
 	backpack = /obj/item/storage/backpack/industrial
 	satchel = /obj/item/storage/backpack/satchel/eng
 	duffelbag = /obj/item/storage/backpack/duffelbag/engineering
+	courierbag = /obj/item/storage/backpack/messenger/engi
 	box = /obj/item/storage/box/engineer
 	backpack_contents = list(/obj/item/device/modular_computer/tablet/preset/advanced=1)
 
@@ -152,6 +154,7 @@ Atmospheric Technician
 	backpack = /obj/item/storage/backpack/industrial
 	satchel = /obj/item/storage/backpack/satchel/eng
 	duffelbag = /obj/item/storage/backpack/duffelbag/engineering
+	courierbag = /obj/item/storage/backpack/messenger/engi
 	box = /obj/item/storage/box/engineer
 	backpack_contents = list(/obj/item/device/modular_computer/tablet/preset/advanced=1)
 

@@ -19,7 +19,8 @@ GLOBAL_LIST_INIT(medical_positions, list(
 	"Medical Doctor",
 	"Geneticist",
 	"Virologist",
-	"Chemist"))
+	"Chemist",
+	"Paramedic"))
 
 
 GLOBAL_LIST_INIT(science_positions, list(
