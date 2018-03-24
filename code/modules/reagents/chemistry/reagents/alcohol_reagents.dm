@@ -1244,7 +1244,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	reagent_state = LIQUID
 	color = "#1BB1FF"
 	process_flags = ORGANIC | SYNTHETIC
-	boozepwr = 5
+	boozepwr = 20
 	glass_icon_state = "synthanolglass"
 	glass_name = "Glass of Synthanol"
 	glass_desc = "The equivalent of alcohol for synthetic crewmembers. They'd find it awful if they had tastebuds too."
@@ -1255,7 +1255,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	description = "An oily substance that an IPC could technically consider a 'drink'."
 	reagent_state = LIQUID
 	color = "#363636"
-	boozepwr = 25
+	boozepwr = 50
 	glass_icon_state = "robottearsglass"
 	glass_name = "Glass of Robot Tears"
 	glass_desc = "No robots were hurt in the making of this drink."
@@ -1266,7 +1266,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	description = "A fruit drink meant only for synthetics, however that works."
 	reagent_state = LIQUID
 	color = "#adb21f"
-	boozepwr = 25
+	boozepwr = 50
 	glass_icon_state = "trinaryglass"
 	glass_name = "Glass of Trinary"
 	glass_desc = "Colorful drink made for synthetic crewmembers. It doesn't seem like it would taste well."
@@ -1277,7 +1277,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	description = "A drink containing some organic ingredients, but meant only for synthetics."
 	reagent_state = LIQUID
 	color = "#5b3210"
-	boozepwr = 25
+	boozepwr = 50
 	glass_icon_state = "servoglass"
 	glass_name = "Glass of Servo"
 	glass_desc = "Chocolate - based drink made for IPCs. Not sure if anyone's actually tried out the recipe."
@@ -1288,7 +1288,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	description = "A potent mix of alcohol and synthanol. Will only work on synthetics."
 	reagent_state = LIQUID
 	color = "#e7ae04"
-	boozepwr = 15
+	boozepwr = 30
 	glass_icon_state = "uplinkglass"
 	glass_name = "Glass of Uplink"
 	glass_desc = "An exquisite mix of the finest liquoirs and synthanol. Meant only for synthetics."
@@ -1299,7 +1299,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	description = "The classic drink adjusted for a robot's tastes."
 	reagent_state = LIQUID
 	color = "#7204e7"
-	boozepwr = 25
+	boozepwr = 50
 	glass_icon_state = "synthnsodaglass"
 	glass_name = "Glass of Synth 'n Soda"
 	glass_desc = "Classic drink altered to fit the tastes of a robot. Bad idea to drink if you're made of carbon."
@@ -1310,7 +1310,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	description = "Someone mixed wine and alcohol for robots. Hope you're proud of yourself."
 	reagent_state = LIQUID
 	color = "#d004e7"
-	boozepwr = 25
+	boozepwr = 50
 	glass_icon_state = "synthignonglass"
 	glass_name = "Glass of Synthignon"
 	glass_desc = "Someone mixed good wine and robot booze. Romantic, but atrocious."
