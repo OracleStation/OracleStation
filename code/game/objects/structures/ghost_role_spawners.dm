@@ -309,13 +309,14 @@
 	r_pocket = /obj/item/device/radio/off
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/mindshield)
+	id = /obj/item/card/id/away/hotel
 
 /obj/effect/mob_spawn/human/hotel_staff/security
 	name = "hotel security sleeper"
 	mob_name = "hotel security memeber"
 	outfit = /datum/outfit/hotelstaff/security
-	flavour_text = "You are a peacekeeper assigned to this hotel to protect the intrests of the company while keeping the peace between \
-		guests and the staff.Do <font size=6><b>NOT</b></font> leave the hotel, as that is grounds for contract termination."
+	flavour_text = "You are a peacekeeper assigned to this hotel to protect the interests of the company while keeping the peace between \
+		guests and 	staff. Do <font size=6><b>NOT</b></font> leave the hotel, as that is grounds for contract termination."
 	objectives = "Do not leave your assigned hotel. Try and keep the peace between staff and guests, non-lethal force heavily advised if possible."
 
 /datum/outfit/hotelstaff/security
@@ -326,6 +327,8 @@
 	head = /obj/item/clothing/head/helmet/blueshirt
 	back = /obj/item/storage/backpack/security
 	belt = /obj/item/storage/belt/security/full
+	implants = list(/obj/item/implant/mindshield)
+	id = /obj/item/card/id/away/hotel/securty
 
 /obj/effect/mob_spawn/human/hotel_staff/Destroy()
 	new/obj/structure/fluff/empty_sleeper/syndicate(get_turf(src))
