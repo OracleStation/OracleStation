@@ -5,8 +5,8 @@
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human
 	examine_text = "a Clown"
 	species_text_color = "#ff69b4"
-	mutant_bodyparts = list("clown_mask", "clown_hair")
-	default_features = list("clown_hair" = "Classic", "clown_mask" = "Classic")
+	mutant_bodyparts = list("clown_mouth", "clown_hair", "clown_makeup")
+	default_features = list("clown_hair" = "Classic", "clown_mouth" = "Classic", "clown_makeup" = "Classic")
 	attack_sound = 'sound/items/bikehorn.ogg'
 	skinned_type = /obj/item/clothing/mask/gas/clown_hat
 	species_traits = list(NO_UNDERWEAR, NOPAIN)

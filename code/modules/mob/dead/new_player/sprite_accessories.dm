@@ -1547,21 +1547,37 @@
 	name = "Mop (Tintable)"
 	icon_state = "mop_tintable"
 
-/datum/sprite_accessory/clown_masks
+/datum/sprite_accessory/clown_mouths
 	icon = 'icons/mob/clown_accessories.dmi'
-	color_src = 0
+	color_src = FACEHAIR
 
-/datum/sprite_accessory/clown_masks/classic
+/datum/sprite_accessory/clown_mouths/classic
 	name = "Classic"
 	icon_state = "classic"
 
-/datum/sprite_accessory/clown_masks/femme
+/datum/sprite_accessory/clown_mouths/femme
 	name = "Femme"
 	icon_state = "femme"
 
-/datum/sprite_accessory/clown_masks/grin
+/datum/sprite_accessory/clown_mouths/grin
 	name = "Grin"
 	icon_state = "grin"
+
+/datum/sprite_accessory/clown_makeups
+	icon = 'icons/mob/clown_accessories.dmi'
+	color_src = EYECOLOR
+
+/datum/sprite_accessory/clown_makeups/classic
+	name = "Classic"
+	icon_state = "classic"
+
+/datum/sprite_accessory/clown_makeups/femme
+	name = "Femme"
+	icon_state = "femme"
+
+/datum/sprite_accessory/clown_makeups/none
+	name = "None"
+	icon_state = "None"
 
 // IPC accessories.
 

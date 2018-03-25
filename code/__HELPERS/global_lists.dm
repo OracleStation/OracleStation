@@ -35,7 +35,8 @@
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails_animated/ethari, GLOB.animated_tails_list_ethari)
 	// Clown bodyparts
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/clown_hairs, GLOB.clown_hairs_list)
-	init_sprite_accessory_subtypes(/datum/sprite_accessory/clown_masks, GLOB.clown_masks_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/clown_mouths, GLOB.clown_mouths_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/clown_makeups, GLOB.clown_makeups_list)
 	// IPC bodyparts
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/ipc_screens, GLOB.ipc_screens_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/ipc_antennas, GLOB.ipc_antennas_list)

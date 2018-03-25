@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
-	var/list/features = list("mcolor" = "FFF", "tail_unathi" = "Smooth", "tail_human" = "None", "tail_ethari" = "Bushy", "snout_ethari" = "Sharp", "ears_ethari" = "Fox", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "ipc_screen" = "Blue", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)", "vox_quills" = "None", "vox_facial_quills" = "None", "vox_body_markings" = "None", "vox_body" = "Green", "vox_tail_markings" = "None", "clown_mask" = "Classic", "clown_hair" = "Classic")
+	var/list/features = list("mcolor" = "FFF", "tail_unathi" = "Smooth", "tail_human" = "None", "tail_ethari" = "Bushy", "snout_ethari" = "Sharp", "ears_ethari" = "Fox", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "ipc_screen" = "Blue", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)", "vox_quills" = "None", "vox_facial_quills" = "None", "vox_body_markings" = "None", "vox_body" = "Green", "vox_tail_markings" = "None", "clown_mouth" = "Classic", "clown_makeup" = "Classic", "clown_hair" = "Classic")
 	var/species_looking_at = "human"	//used as a helper to keep track of in the species selct thingy
 	var/list/custom_names = list("clown", "mime", "ai", "cyborg", "religion", "deity")
 	var/prefered_security_department = SEC_DEPT_RANDOM
@@ -452,12 +452,24 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 					dat += "</td>"
 
-				if("clown_mask" in pref_species.mutant_bodyparts)
+				if("clown_mouth" in pref_species.mutant_bodyparts)
 					dat += "<td valign='top' width='14%'>"
 
-					dat += "<h3>Mask Style</h3>"
+					dat += "<h3>Mouth Style</h3>"
 
-					dat += "<a href='?_src_=prefs;preference=clown_mask;task=input'>[features["clown_mask"]]</a><BR>"
+					dat += "<a href='?_src_=prefs;preference=clown_mouth;task=input'>[features["clown_mouth"]]</a><BR>"
+					dat += "<span style='border: 1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=facial;task=input'>Change</a><BR>"
+
+					dat += "</td>"
+
+				if("clown_makeup" in pref_species.mutant_bodyparts)
+					dat += "<td valign='top' width='14%'>"
+
+					dat += "<h3>Makeup Style</h3>"
+
+					dat += "<a href='?_src_=prefs;preference=clown_makeup;task=input'>[features["clown_makeup"]]</a><BR>"
+					if(features["clown_makeup"] != "None")
+						dat += "<span style='border: 1px solid #161616; background-color: #[eye_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=eyes;task=input'>Change</a><BR>"
 
 					dat += "</td>"
 
@@ -1272,11 +1284,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_legs)
 						features["legs"] = new_legs
 
-				if("clown_mask")
-					var/new_clown_mask
-					new_clown_mask = input(user, "Choose your character's mask:", "Character Preference") as null|anything in GLOB.clown_masks_list
-					if(new_clown_mask)
-						features["clown_mask"] = new_clown_mask
+				if("clown_mouth")
+					var/new_clown_mouth
+					new_clown_mouth = input(user, "Choose your character's mask:", "Character Preference") as null|anything in GLOB.clown_mouths_list
+					if(new_clown_mouth)
+						features["clown_mouth"] = new_clown_mouth
+
+				if("clown_makeup")
+					var/new_clown_makeup
+					new_clown_makeup = input(user, "Choose your character's makeup:", "Character Preference") as null|anything in GLOB.clown_makeups_list
+					if(new_clown_makeup)
+						features["clown_makeup"] = new_clown_makeup
 
 				if("clown_hair")
 					var/new_clown_hair
