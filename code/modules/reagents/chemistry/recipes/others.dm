@@ -757,7 +757,7 @@
 	name = "Synth 'n Soda"
 	id = "synthnsoda"
 	required_reagents = list("synthanol" = 1, "cola" = 1)
-	results = list("synthsoda" = 2)
+	results = list("synthnsoda" = 2)
 
 /datum/chemical_reaction/synthanol/synthignon
 	name = "Synthignon"
