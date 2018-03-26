@@ -85,7 +85,7 @@ MASS SPECTROMETER
 /obj/item/device/healthanalyzer/attack(mob/living/M, mob/living/carbon/human/user)
 
 	// Clumsiness/brain damage check
-	if ((user.disabilities & CLUMSY || user.getBrainLoss() >= 60) && prob(50))
+	if ((user.disabilities & (CLUMSY | DUMB)) && prob(50))
 		to_chat(user, "<span class='notice'>You stupidly try to analyze the floor's vitals!</span>")
 		user.visible_message("<span class='warning'>[user] has analyzed the floor's vitals!</span>")
 		to_chat(user, "<span class='info'>Analyzing results for The floor:\n\tOverall status: <b>Healthy</b>")
@@ -143,12 +143,19 @@ MASS SPECTROMETER
 		to_chat(user, "\t<span class='alert'>Subject appears to have [M.getCloneLoss() > 30 ? "severe" : "minor"] cellular damage.</span>")
 	if (M.reagents && M.reagents.get_reagent_amount("epinephrine"))
 		to_chat(user, "\t<span class='info'>Bloodstream analysis located [M.reagents.get_reagent_amount("epinephrine")] units of rejuvenation chemicals.</span>")
-	if (M.getBrainLoss() >= 100 || !M.getorgan(/obj/item/organ/brain))
+	if (M.getBrainLoss() >= 200 || !M.getorgan(/obj/item/organ/brain))
 		to_chat(user, "\t<span class='alert'>Subject brain function is non-existent.</span>")
-	else if (M.getBrainLoss() >= 60)
-		to_chat(user, "\t<span class='alert'>Severe brain damage detected. Subject likely to have mental retardation.</span>")
-	else if (M.getBrainLoss() >= 10)
-		to_chat(user, "\t<span class='alert'>Brain damage detected. Subject may have had a concussion.</span>")
+	else if (M.getBrainLoss() >= 120)
+		to_chat(user, "\t<span class='alert'>Severe brain damage detected. Subject likely to have mental traumas.</span>")
+	else if (M.getBrainLoss() >= 45)
+		to_chat(user, "\t<span class='alert'>Brain damage detected.</span>")
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		if(LAZYLEN(C.get_traumas()))
+			var/list/trauma_text = list()
+			for(var/datum/brain_trauma/B in C.get_traumas())
+				trauma_text += B.scan_desc
+			to_chat(user, "\t<span class='alert'>Cerebral traumas detected: subjects appears to be suffering from [english_list(trauma_text)].</span>")
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M

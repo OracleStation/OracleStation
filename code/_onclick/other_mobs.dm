@@ -61,6 +61,7 @@
 
 /atom/proc/attack_animal(mob/user)
 	return
+
 /mob/living/RestrainedClickOn(atom/A)
 	return
 

@@ -1265,11 +1265,14 @@
 
 
 /datum/species/proc/harm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
+	if(user.disabilities & PACIFISM)
+		to_chat(user, "<span class='warning'>You don't want to harm [target]!</span>")
+		return FALSE
 	if(target.check_block())
 		target.visible_message("<span class='warning'>[target] blocks [user]'s attack!</span>")
-		return 0
+		return FALSE
 	if(attacker_style && attacker_style.harm_act(user,target))
-		return 1
+		return TRUE
 	else
 
 		var/atk_verb = user.dna.species.attack_verb
@@ -1294,7 +1297,7 @@
 			playsound(target.loc, user.dna.species.miss_sound, 25, 1, -1)
 			target.visible_message("<span class='danger'>[user] has attempted to [atk_verb] [target]!</span>",\
 			"<span class='userdanger'>[user] has attempted to [atk_verb] [target]!</span>", null, COMBAT_MESSAGE_RANGE)
-			return 0
+			return FALSE
 
 
 		var/armor_block = target.run_armor_check(affecting, "melee")
@@ -1310,7 +1313,7 @@
 		add_logs(user, target, "punched")
 		if((target.stat != DEAD) && damage >= user.dna.species.punchstunthreshold)
 			target.visible_message("<span class='danger'>[user] has knocked  [target] down!</span>", \
-							"<span class='userdanger'>[user] has knocked [target] down!</span>")
+							"<span class='userdanger'>[user] has knocked [target] down!</span>", null, COMBAT_MESSAGE_RANGE)
 			target.apply_effect(80, KNOCKDOWN, armor_block)
 			target.forcesay(GLOB.hit_appends)
 		else if(target.lying)
@@ -1343,7 +1346,7 @@
 		if(randn <= 60)
 			var/obj/item/I = null
 			if(target.pulling)
-				to_chat(target, "<span class='warning'>[user] has broken [target]'s grip on [target.pulling]!</span>")
+				target.visible_message("<span class='warning'>[user] has broken [target]'s grip on [target.pulling]!</span>")
 				target.stop_pulling()
 			else
 				I = target.get_active_held_item()
@@ -1448,7 +1451,13 @@
 						H.visible_message("<span class='danger'>[H] has been knocked senseless!</span>", \
 										"<span class='userdanger'>[H] has been knocked senseless!</span>")
 						H.confused = max(H.confused, 20)
+						H.adjustBrainLoss(20)
 						H.adjust_blurriness(10)
+						if(prob(10))
+							H.gain_trauma(/datum/brain_trauma/mild/concussion)
+					else
+						if(!I.is_sharp())
+							H.adjustBrainLoss(I.force / 5)
 
 					if(prob(I.force + ((100 - H.health)/2)) && H != user)
 						SSticker.mode.remove_revolutionary(H.mind)

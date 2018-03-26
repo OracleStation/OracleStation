@@ -20,7 +20,8 @@
 		/datum/language/monkey,
 		/datum/language/narsie,
 		/datum/language/beachbum,
-		/datum/language/ratvar
+		/datum/language/ratvar,
+		/datum/language/aphasia
 	))
 
 /obj/item/organ/tongue/get_spans()
