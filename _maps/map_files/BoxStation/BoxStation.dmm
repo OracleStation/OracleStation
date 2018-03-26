@@ -28387,7 +28387,6 @@
 "bor" = (
 /obj/structure/table,
 /obj/item/clothing/gloves/color/latex,
-
 /obj/item/razor,
 /turf/open/floor/plasteel/black,
 /area/science/robotics/lab)
@@ -30512,7 +30511,6 @@
 /obj/structure/table/optable{
 	name = "Robotics Operating Table"
 	},
-
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "bsV" = (
@@ -32945,6 +32943,10 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4
 	},
+/obj/machinery/keycard_auth{
+	pixel_x = 0;
+	pixel_y = -25
+	},
 /turf/open/floor/plasteel/brown{
 	dir = 2
 	},
@@ -34242,7 +34244,6 @@
 /area/medical/sleeper)
 "bBc" = (
 /obj/structure/table,
-
 /obj/item/razor,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -52646,7 +52647,6 @@
 /area/engine/engineering)
 "cpF" = (
 /obj/structure/table/optable,
-
 /turf/open/floor/mineral/titanium,
 /area/shuttle/syndicate)
 "cpG" = (
@@ -61634,7 +61634,6 @@
 /area/shuttle/syndicate)
 "cLl" = (
 /obj/structure/table/optable,
-
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},
@@ -84368,7 +84367,7 @@ bxu
 byA
 bzR
 byd
-bxx
+bxu
 aaa
 cTg
 cTg

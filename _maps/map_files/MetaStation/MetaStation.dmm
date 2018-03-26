@@ -20476,6 +20476,9 @@
 "aNO" = (
 /obj/structure/closet/secure_closet/quartermaster,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/top,
+/obj/machinery/keycard_auth{
+	pixel_y = 25
+	},
 /turf/open/floor/plasteel/brown{
 	dir = 9
 	},
@@ -115438,8 +115441,8 @@ aeK
 afF
 dLh
 dLm
-dLu
-dLC
+dLp
+dLp
 aax
 aaa
 aaa
@@ -115695,8 +115698,8 @@ aeL
 afV
 agE
 dLn
-dLv
-dLD
+dLn
+dLn
 aax
 aaa
 aaa
@@ -115951,9 +115954,9 @@ abe
 aeM
 afH
 agE
-dLo
-dLw
-dLE
+dLn
+dLn
+dLn
 aax
 aaa
 aaa
@@ -116207,10 +116210,10 @@ dEU
 aem
 aeN
 afI
-dLi
+dLh
 dLp
-dLx
-dLF
+dLp
+dLp
 aax
 aaa
 aaa
@@ -116466,8 +116469,8 @@ aeO
 afV
 dLj
 dLq
-dLy
-dLG
+dLq
+dLq
 aax
 aaa
 aaa
@@ -116722,9 +116725,9 @@ abe
 aeP
 afV
 agE
-dLr
-dLz
-dLH
+dLn
+dLn
+dLn
 aax
 aaa
 aaa
@@ -116979,9 +116982,9 @@ dIC
 dLg
 afV
 agE
-dLs
-dLA
-dLI
+dLn
+dLn
+dLn
 aax
 aaa
 aaa
@@ -117235,10 +117238,10 @@ adS
 add
 aeR
 afV
-dLk
+dLh
 dLt
-dLB
-dLJ
+dLp
+dLp
 aax
 aaa
 aaa
@@ -117490,7 +117493,7 @@ dID
 adw
 dIE
 dID
-aeS
+dLg
 afM
 abe
 ahx
@@ -119037,7 +119040,7 @@ afG
 dLl
 dEX
 dEY
-dLK
+dLl
 dLL
 dEY
 dEY
