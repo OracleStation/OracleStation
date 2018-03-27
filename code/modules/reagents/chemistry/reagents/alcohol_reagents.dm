@@ -1247,7 +1247,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	boozepwr = 20
 	glass_icon_state = "synthanolglass"
 	glass_name = "Glass of Synthanol"
-	glass_desc = "The equivalent of alcohol for synthetic crewmembers. They'd find it awful if they had tastebuds too."
+	glass_desc = "Alcohol's synthetic counterpart chemically designed to be consumed for an organics counterpart."
 	taste_description = "motor oil and grease"
 
 /datum/reagent/consumable/ethanol/synthanol/robottears
@@ -1256,10 +1256,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	description = "An oily substance that an IPC could technically consider a 'drink'."
 	reagent_state = LIQUID
 	color = "#363636"
-	boozepwr = 10
+	boozepwr = 10 //watered down
 	glass_icon_state = "robottearsglass"
 	glass_name = "Glass of Robot Tears"
-	glass_desc = "No robots were hurt in the making of this drink."
+	glass_desc = ": A perfect way to drown your emulated sorrow, the feeling washing away like tears in rain - or tears in a glass of excellent synth-booze."
 
 /datum/reagent/consumable/ethanol/synthanol/trinary
 	name = "Trinary"
@@ -1267,10 +1267,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	description = "A fruit drink meant only for synthetics, however that works."
 	reagent_state = LIQUID
 	color = "#adb21f"
-	boozepwr = 50
+	boozepwr = 10 //watered down
 	glass_icon_state = "trinaryglass"
 	glass_name = "Glass of Trinary"
-	glass_desc = "Colorful drink made for synthetic crewmembers. It doesn't seem like it would taste well."
+	glass_desc = "Expanding your binary way of thinking into a trinary way of processing - may be mentally damaging to IPCs."
 
 /datum/reagent/consumable/ethanol/synthanol/servo
 	name = "Servo"
@@ -1278,10 +1278,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	description = "A drink containing some organic ingredients, but meant only for synthetics."
 	reagent_state = LIQUID
 	color = "#5b3210"
-	boozepwr = 50
+	boozepwr = 10  //watered down
 	glass_icon_state = "servoglass"
 	glass_name = "Glass of Servo"
-	glass_desc = "Chocolate - based drink made for IPCs. Not sure if anyone's actually tried out the recipe."
+	glass_desc = "Helps loosen your aching servos - almost helps too much after consuming a few glasses."
 
 /datum/reagent/consumable/ethanol/synthanol/uplink
 	name = "Uplink"
@@ -1289,10 +1289,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	description = "A potent mix of alcohol and synthanol. Will only work on synthetics."
 	reagent_state = LIQUID
 	color = "#e7ae04"
-	boozepwr = 30
+	boozepwr = 75 // contains a LOT of alchohol
 	glass_icon_state = "uplinkglass"
 	glass_name = "Glass of Uplink"
-	glass_desc = "An exquisite mix of the finest liquoirs and synthanol. Meant only for synthetics."
+	glass_desc = "Not to be used for buying things with tele-crystals, only to be enjoyed by the station's synths."
 
 /datum/reagent/consumable/ethanol/synthanol/synthnsoda
 	name = "Synth 'n Soda"
@@ -1300,10 +1300,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	description = "The classic drink adjusted for a robot's tastes."
 	reagent_state = LIQUID
 	color = "#7204e7"
-	boozepwr = 50
+	boozepwr = 20 //watered down
 	glass_icon_state = "synthnsodaglass"
 	glass_name = "Glass of Synth 'n Soda"
-	glass_desc = "Classic drink altered to fit the tastes of a robot. Bad idea to drink if you're made of carbon."
+	glass_desc = "A fine concoction of one of the simplest drinks ever crafted for synthetics. This drink is a staple for any IPC looking to g-... is that a sparking battery?"
 
 /datum/reagent/consumable/ethanol/synthanol/synthignon
 	name = "Synthignon"
@@ -1314,4 +1314,4 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	boozepwr = 50
 	glass_icon_state = "synthignonglass"
 	glass_name = "Glass of Synthignon"
-	glass_desc = "Someone mixed good wine and robot booze. Romantic, but atrocious."
+	glass_desc = "An exquisite wine made from aged and harvested steel-grapes from the Spaso Robles station. It looks like it was meant to emulate a Merlot or a Cabernet - though one could speculate it's as cheap as space bag wine."
