@@ -1,5 +1,3 @@
-
-
 /*
  * GAMEMODES (by Rastaf0)
  *
@@ -39,6 +37,9 @@
 
 	var/announce_span = "warning" //The gamemode's name will be in this span during announcement.
 	var/announce_text = "This gamemode forgot to set a descriptive text! Uh oh!" //Used to describe a gamemode when it's announced.
+
+	// title_icon and title_icon_state are used for the credits that roll at the end
+	var/title_icon
 
 	var/const/waittime_l = 600
 	var/const/waittime_h = 1800 // started at 1800
@@ -415,6 +416,115 @@
 		if(player.mind && (player.mind.assigned_role in GLOB.security_positions))
 			. |= player.mind
 
+/////////////////////////////////////////////////
+//Keeps track of all living engineering members//
+/////////////////////////////////////////////////
+/datum/game_mode/proc/get_living_eng()
+	. = list()
+	for(var/mob/living/carbon/human/player in GLOB.mob_list)
+		if(player.stat != DEAD && player.mind && (player.mind.assigned_role in GLOB.engineering_positions))
+			. |= player.mind
+
+///////////////////////////////////////////
+//Keeps track of all engineering members //
+///////////////////////////////////////////
+/datum/game_mode/proc/get_all_eng()
+	. = list()
+	for(var/mob/living/carbon/human/player in GLOB.mob_list)
+		if(player.mind && (player.mind.assigned_role in GLOB.engineering_positions))
+			. |= player.mind
+
+/////////////////////////////////////////////
+//Keeps track of all living science members//
+/////////////////////////////////////////////
+/datum/game_mode/proc/get_living_sci()
+	. = list()
+	for(var/mob/living/carbon/human/player in GLOB.mob_list)
+		if(player.stat != DEAD && player.mind && (player.mind.assigned_role in GLOB.science_positions))
+			. |= player.mind
+
+///////////////////////////////////////
+//Keeps track of all science members //
+///////////////////////////////////////
+/datum/game_mode/proc/get_all_sci()
+	. = list()
+	for(var/mob/living/carbon/human/player in GLOB.mob_list)
+		if(player.mind && (player.mind.assigned_role in GLOB.science_positions))
+			. |= player.mind
+
+/////////////////////////////////////////////
+//Keeps track of all living medical members//
+/////////////////////////////////////////////
+/datum/game_mode/proc/get_living_med()
+	. = list()
+	for(var/mob/living/carbon/human/player in GLOB.mob_list)
+		if(player.stat != DEAD && player.mind && (player.mind.assigned_role in GLOB.medical_positions))
+			. |= player.mind
+
+///////////////////////////////////////
+//Keeps track of all medical members //
+///////////////////////////////////////
+/datum/game_mode/proc/get_all_med()
+	. = list()
+	for(var/mob/living/carbon/human/player in GLOB.mob_list)
+		if(player.mind && (player.mind.assigned_role in GLOB.medical_positions))
+			. |= player.mind
+
+///////////////////////////////////////////
+//Keeps track of all living cargo members//
+///////////////////////////////////////////
+/datum/game_mode/proc/get_living_cargo()
+	. = list()
+	for(var/mob/living/carbon/human/player in GLOB.mob_list)
+		if(player.stat != DEAD && player.mind && (player.mind.assigned_role in GLOB.supply_positions))
+			. |= player.mind
+
+/////////////////////////////////////
+//Keeps track of all cargo members //
+/////////////////////////////////////
+/datum/game_mode/proc/get_all_cargo()
+	. = list()
+	for(var/mob/living/carbon/human/player in GLOB.mob_list)
+		if(player.mind && (player.mind.assigned_role in GLOB.supply_positions))
+			. |= player.mind
+
+//////////////////////////////////////////////
+//Keeps track of all living civilian members//
+//////////////////////////////////////////////
+/datum/game_mode/proc/get_living_civ()
+	. = list()
+	for(var/mob/living/carbon/human/player in GLOB.mob_list)
+		if(player.stat != DEAD && player.mind && (player.mind.assigned_role in GLOB.civilian_positions))
+			. |= player.mind
+
+////////////////////////////////////////
+//Keeps track of all civilian members //
+////////////////////////////////////////
+/datum/game_mode/proc/get_all_civ()
+	. = list()
+	for(var/mob/living/carbon/human/player in GLOB.mob_list)
+		if(player.mind && (player.mind.assigned_role in GLOB.civilian_positions))
+			. |= player.mind
+
+/////////////////////////////////////////////
+//Keeps track of all living silicon members//
+/////////////////////////////////////////////
+/datum/game_mode/proc/get_living_silicon()
+	. = list()
+	for(var/mob/living/carbon/human/player in GLOB.mob_list)
+		if(player.stat != DEAD && player.mind && (player.mind.assigned_role in GLOB.nonhuman_positions))
+			. |= player.mind
+
+///////////////////////////////////////
+//Keeps track of all silicon members //
+///////////////////////////////////////
+/datum/game_mode/proc/get_all_silicon()
+	. = list()
+	for(var/mob/living/carbon/human/player in GLOB.mob_list)
+		if(player.mind && (player.mind.assigned_role in GLOB.nonhuman_positions))
+			. |= player.mind
+
+
 //////////////////////////
 //Reports player logouts//
 //////////////////////////
@@ -541,3 +651,83 @@
 	for(var/V in station_goals)
 		var/datum/station_goal/G = V
 		G.print_result()
+
+/datum/game_mode/proc/generate_credit_text()
+		var/list/round_credits = list()
+		var/len_before_addition
+
+		// HEADS OF STAFF
+		round_credits += "<center><h1>The Glorious Command Staff:</h1>"
+		len_before_addition = round_credits.len
+		for(var/datum/mind/current in SSticker.mode.get_all_heads())
+				round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		if(round_credits.len == len_before_addition)
+				round_credits += list("<center><h2>A serious bureaucratic error has occurred!</h2>", "<center><h2>Noone was in charge of the crew!</h2>")
+		round_credits += "<br>"
+
+		// SILICONS
+		round_credits += "<center><h1>The Silicon Intelligences:</h1>"
+		len_before_addition = round_credits.len
+		for(var/datum/mind/current in SSticker.mode.get_all_silicon())
+				round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		if(round_credits.len == len_before_addition)
+				round_credits += list("<center><h2>[station_name()] had no silicon helpers!</h2>", "<center><h2>Not a single door was opened today!</h2>")
+		round_credits += "<br>"
+
+		// SECURITY
+		round_credits += "<center><h1>The Brave Security Officers:</h1>"
+		len_before_addition = round_credits.len
+		for(var/datum/mind/current in SSticker.mode.get_all_sec())
+				round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		if(round_credits.len == len_before_addition)
+				round_credits += list("<center><h2>[station_name()] has fallen to Communism!</h2>", "<center><h2>Noone was there to protect the crew!</h2>")
+		round_credits += "<br>"
+
+		// MEDICAL
+		round_credits += "<center><h1>The Wise Medical Department:</h1>"
+		len_before_addition = round_credits.len
+		for(var/datum/mind/current in SSticker.mode.get_all_med())
+				round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		if(round_credits.len == len_before_addition)
+				round_credits += list("<center><h2>Healthcare was not included!</h2>", "<center><h2>There were no doctors today!</h2>")
+		round_credits += "<br>"
+
+		// ENGINEERING
+		round_credits += "<center><h1>The Industrious Engineers:</h1>"
+		len_before_addition = round_credits.len
+		for(var/datum/mind/current in SSticker.mode.get_all_med())
+				round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		if(round_credits.len == len_before_addition)
+				round_credits += list("<center><h2>[station_name()] probably did not last long!</h2>", "<center><h2>Noone was holding the station together!</h2>")
+		round_credits += "<br>"
+
+		// SCIENCE
+		round_credits += "<center><h1>The Inventive Science Employees:</h1>"
+		len_before_addition = round_credits.len
+		for(var/datum/mind/current in SSticker.mode.get_all_med())
+				round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		if(round_credits.len == len_before_addition)
+				round_credits += list("<center><h2>Noone was doing \"science\" today!</h2>", "<center><h2>Everyone probably made it out alright, then!</h2>")
+		round_credits += "<br>"
+
+		// CARGO
+		round_credits += "<center><h1>The Rugged Cargo Crew:</h1>"
+		len_before_addition = round_credits.len
+		for(var/datum/mind/current in SSticker.mode.get_all_cargo())
+				round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		if(round_credits.len == len_before_addition)
+				round_credits += list("<center><h2>The station was freed from paperwork!</h2>", "<center><h2>Noone worked in cargo today!</h2>")
+		round_credits += "<br>"
+
+		// CIVILIANS
+		round_credits += "<center><h1>The Hardy Civilians:</h1>"
+		len_before_addition = round_credits.len
+		for(var/datum/mind/current in SSticker.mode.get_all_civ())
+				round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		if(round_credits.len == len_before_addition)
+				round_credits += list("<center><h2>Everyone was stuck in traffic this morning!</h2>", "<center><h2>No civilians made it to work!</h2>")
+		round_credits += "<br>"
+
+		round_credits += "<center><h1>Thanks for playing</h1>"
+
+		return round_credits

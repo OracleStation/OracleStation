@@ -356,3 +356,21 @@ GLOBAL_LIST_INIT(gang_outfit_pool, list(/obj/item/clothing/suit/jacket/leather, 
 			SSticker.station_explosion_cinematic(1,"gang war", null)
 			SSticker.mode.explosion_in_progress = 0
 			SSticker.force_ending = TRUE
+
+/datum/game_mode/gang/generate_credit_text()
+	var/list/round_credits = list()
+	var/len_before_addition
+
+	for(var/datum/gang/G in gangs)
+		round_credits += "<center><h1>The [G.name] Gang:</h1></center>"
+		len_before_addition = round_credits.len
+		for(var/datum/mind/boss in G.bosses)
+			round_credits += "<center><h2>[boss.name] as a [G.name] Gang leader</h2>"
+		for(var/datum/mind/gangster in G.gangsters)
+			round_credits += "<center><h2>[gangster.name] as a [G.name] gangster</h2>"
+		if(len_before_addition == round_credits.len)
+			round_credits += list("<center><h2>The [G.name] Gang was wiped out!</h2>", "<center><h2>The competition was too tough!</h2>")
+		round_credits += "<br>"
+
+	round_credits += ..()
+	return round_credits

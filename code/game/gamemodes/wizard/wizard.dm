@@ -18,6 +18,8 @@
 	var/use_huds = 0
 	var/finished = 0
 
+	title_icon = "wizard"
+
 /datum/game_mode/wizard/pre_setup()
 
 	var/datum/mind/wizard = pick(antag_candidates)
@@ -208,3 +210,20 @@
 	var/datum/atom_hud/antag/wizhud = GLOB.huds[ANTAG_HUD_WIZ]
 	wizhud.leave_hud(wiz_mind.current)
 	set_antag_hud(wiz_mind.current, null)
+
+/datum/game_mode/wizard/generate_credit_text()
+	var/list/round_credits = list()
+	var/len_before_addition
+
+	round_credits += "<center><h1>The Space Wizard Federation:</h1></center>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/wizard in wizards)
+		round_credits += "<center><h2>[wizard.name] as a master wizard</h2>"
+	for(var/datum/mind/apprentice in apprentices)
+		round_credits += "<center><h2>[apprentice.name] as an eager apprentice</h2>"
+	if(len_before_addition == round_credits.len)
+		round_credits += list("<center><h2>The wizards have removed themself from this realm of existance!</h2>", "<center><h2>We couldn't locate them!</h2>")
+	round_credits += "<br>"
+
+	round_credits += ..()
+	return round_credits
