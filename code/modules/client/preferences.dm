@@ -458,7 +458,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<h3>Mouth Style</h3>"
 
 					dat += "<a href='?_src_=prefs;preference=clown_mouth;task=input'>[features["clown_mouth"]]</a><BR>"
-					dat += "<span style='border: 1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=facial;task=input'>Change</a><BR>"
+					if(findtext(features["clown_mouth"], "(Tintable)") != 0)
+						dat += "<span style='border: 1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=facial;task=input'>Change</a><BR>"
 
 					dat += "</td>"
 
@@ -468,7 +469,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<h3>Makeup Style</h3>"
 
 					dat += "<a href='?_src_=prefs;preference=clown_makeup;task=input'>[features["clown_makeup"]]</a><BR>"
-					if(features["clown_makeup"] != "None")
+					if(findtext(features["clown_makeup"], "(Tintable)") != 0)
 						dat += "<span style='border: 1px solid #161616; background-color: #[eye_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=eyes;task=input'>Change</a><BR>"
 
 					dat += "</td>"

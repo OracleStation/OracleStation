@@ -1554,13 +1554,18 @@
 /datum/sprite_accessory/clown_mouths/classic
 	name = "Classic"
 	icon_state = "classic"
+	color_src = 0
+
+/datum/sprite_accessory/clown_mouths/classic_tintable
+	name = "Classic (Tintable)"
+	icon_state = "classic_tintable"
 
 /datum/sprite_accessory/clown_mouths/femme
-	name = "Femme"
+	name = "Femme (Tintable)"
 	icon_state = "femme"
 
 /datum/sprite_accessory/clown_mouths/grin
-	name = "Grin"
+	name = "Grin (Tintable)"
 	icon_state = "grin"
 
 /datum/sprite_accessory/clown_makeups
@@ -1570,9 +1575,14 @@
 /datum/sprite_accessory/clown_makeups/classic
 	name = "Classic"
 	icon_state = "classic"
+	color_src = 0
+
+/datum/sprite_accessory/clown_makeups/classic_tintable
+	name = "Classic (Tintable)"
+	icon_state = "classic_tintable"
 
 /datum/sprite_accessory/clown_makeups/femme
-	name = "Femme"
+	name = "Femme (Tintable)"
 	icon_state = "femme"
 
 /datum/sprite_accessory/clown_makeups/none

@@ -291,6 +291,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_unathi_body_markings"]	>> features["body_markings"]
 	S["feature_unathi_legs"]			>> features["legs"]
 	S["feature_ears_ethari"]			>> features["ears_ethari"]
+	S["feature_clown_hair"]				>> features["clown_hair"]
+	S["feature_clown_mouth"]			>> features["clown_mouth"]
+	S["feature_clown_makeup"]			>> features["clown_makeup"]
 	S["feature_ipc_screen"]				>> features["ipc_screen"]
 	S["feature_ipc_antenna"]			>> features["ipc_antenna"]
 	S["feature_ipc_chassis"]			>> features["ipc_chassis"]
@@ -440,6 +443,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_unathi_spines"]			, features["spines"])
 	WRITE_FILE(S["feature_unathi_body_markings"]	, features["body_markings"])
 	WRITE_FILE(S["feature_unathi_legs"]				, features["legs"])
+	WRITE_FILE(S["feature_clown_hair"]				, features["clown_hair"])
+	WRITE_FILE(S["feature_clown_mouth"]				, features["clown_mouth"])
+	WRITE_FILE(S["feature_clown_makeup"]			, features["clown_makeup"])
 	WRITE_FILE(S["feature_ipc_screen"]				, features["ipc_screen"])
 	WRITE_FILE(S["feature_ipc_antenna"]				, features["ipc_antenna"])
 	WRITE_FILE(S["feature_ipc_chassis"]				, features["ipc_chassis"])

@@ -40,14 +40,9 @@
 	var/dynamic_fhair_suffix = ""//mask > head for facial hair
 
 //BS12: Species-restricted clothing check.
-/obj/item/clothing/species_can_equip(mob/M)
-	if(!ishuman(M))
-		return TRUE
+/obj/item/clothing/species_can_equip(datum/species/S)
 	if(!species_restricted)
 		return TRUE
-
-	var/mob/living/carbon/human/H = M
-	var/datum/species/S = H.dna.species
 
 	var/exclusive = FALSE
 

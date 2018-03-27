@@ -436,7 +436,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	return M.can_equip(src, slot, disable_warning, bypass_equip_delay_self)
 
-/obj/item/proc/species_can_equip(mob/M)
+/obj/item/proc/species_can_equip(datum/species/S)
 	return TRUE
 
 /obj/item/verb/verb_pickup()

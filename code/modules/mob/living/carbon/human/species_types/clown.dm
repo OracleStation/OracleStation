@@ -19,12 +19,16 @@
 	return pick(GLOB.clown_names)
 
 /datum/species/clown/on_species_gain(mob/living/carbon/C)
-	C.dna.add_mutation(CLOWNMUT)
-	C.dna.add_mutation(WACKY)
+	if(!C.dna.check_mutation(CLOWNMUT))
+		C.dna.add_mutation(CLOWNMUT)
+	if(!C.dna.check_mutation(WACKY))
+		C.dna.add_mutation(WACKY)
 
 /datum/species/clown/on_species_loss(mob/living/carbon/C)
-	C.dna.remove_mutation(CLOWNMUT)
-	C.dna.remove_mutation(WACKY)
+	if(C.dna.check_mutation(CLOWNMUT))
+		C.dna.remove_mutation(CLOWNMUT)
+	if(C.dna.check_mutation(WACKY))
+		C.dna.remove_mutation(WACKY)
 
 /datum/species/clown/after_equip_job(datum/job/J, mob/living/carbon/human/H)
 
