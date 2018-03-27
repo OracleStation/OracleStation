@@ -250,24 +250,6 @@
 	cost = 10
 	item_path = /obj/item/ammo_box/magazine/m10mm
 
-/datum/gang_item/weapon/sniper
-	name = "Black Market .50cal Sniper Rifle"
-	id = "sniper"
-	cost = 40
-	item_path = /obj/item/gun/ballistic/automatic/sniper_rifle/gang
-
-/datum/gang_item/weapon/ammo/sniper_ammo
-	name = "Smuggled .50cal Sniper Rounds"
-	id = "sniper_ammo"
-	cost = 15
-	item_path = /obj/item/ammo_box/magazine/sniper_rounds/gang
-
-
-/datum/gang_item/weapon/ammo/sleeper_ammo
-	name = "Illicit Tranquilizer Cartridges"
-	id = "sniper_ammo"
-	cost = 15
-	item_path = /obj/item/ammo_box/magazine/sniper_rounds/gang/sleeper
 
 
 /datum/gang_item/weapon/machinegun
@@ -282,7 +264,6 @@
 	id = "uzi"
 	cost = 60
 	item_path = /obj/item/gun/ballistic/automatic/mini_uzi
-
 
 /datum/gang_item/weapon/ammo/uzi_ammo
 	name = "Uzi Ammo"
