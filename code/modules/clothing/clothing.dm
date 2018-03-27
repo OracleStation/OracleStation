@@ -68,9 +68,11 @@
 	if(slot in list(slot_in_backpack, slot_l_store, slot_r_store))
 		return TRUE
 
-	if(!species_can_equip(M))
-		to_chat(M, "<span class='warning'>Your species cannot wear [src].</span>")
-		return FALSE
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!species_can_equip(H.dna.species))
+			to_chat(M, "<span class='warning'>Your species cannot wear [src].</span>")
+			return FALSE
 
 	return TRUE
 
