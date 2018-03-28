@@ -917,7 +917,7 @@
 			if(prob(10))
 				M.confused += 15
 			if(prob(15))
-				M.Stun(1)
+				M.Stun(10)
 				M.emote("scream")
 		if(30 to 60)
 			M.blur_eyes(5)
