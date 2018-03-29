@@ -19,10 +19,11 @@ Head of Security
 	supervisors = "the captain"
 	selection_color = "#ffdddd"
 	req_admin_notify = 1
-	minimal_player_age = 14
+	minimal_player_age = 30
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_SECURITY
+	special_notice = "Space law is THE LAW. Not a suggestion. https://wiki.oraclestation.com/wiki/Space_Law"
 
 	outfit = /datum/outfit/job/hos
 
@@ -76,6 +77,7 @@ Warden
 	minimal_player_age = 7
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
+	special_notice = "Space law is THE LAW. Not a suggestion. https://wiki.oraclestation.com/wiki/Space_Law"
 
 	outfit = /datum/outfit/job/warden
 
@@ -171,6 +173,7 @@ Security Officer
 	minimal_player_age = 7
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
+	special_notice = "Space law is THE LAW. Not a suggestion. https://wiki.oraclestation.com/wiki/Space_Law"
 
 	outfit = /datum/outfit/job/security
 
@@ -299,6 +302,7 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 	minimal_player_age = 7
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
+	special_notice = "You are not a security officer, do not do their job for them. However, you can help them if they need immediate assistance. You are to tend to the medical needs of officers and prisoners."
 
 	outfit = /datum/outfit/job/brig_phys
 
