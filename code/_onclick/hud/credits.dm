@@ -70,5 +70,5 @@ GLOBAL_LIST(end_titles)
 
 /obj/screen/credit/title_card/Initialize(mapload, credited, client/P, title_icon_state)
 	icon_state = title_icon_state
-	.=..()
+	. = ..()
 	maptext = null

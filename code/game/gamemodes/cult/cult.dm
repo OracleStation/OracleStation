@@ -305,7 +305,7 @@
 	round_credits += "<center><h1>The Cult of Nar'Sie:</h1></center>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/cultist in cult)
-		round_credits += "<center><h2>[cultist.name] as a loyal servant of the dark god</h2>"
+		round_credits += "<center><h2>[cultist.name] as a cult fanatic</h2>"
 	if(!eldergod)
 		round_credits += "<center><h2>Nar'Sie as the eldritch abomination</h2>"
 	if(len_before_addition == round_credits.len)

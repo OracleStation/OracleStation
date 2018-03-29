@@ -90,7 +90,7 @@
 			round_credits += "<center><h2>[devil_info.truename] in the form of [devil.name]</h2>"
 			devil_info = null
 	if(len_before_addition == round_credits.len)
-		round_credits += list("<center><h2>The devils were all utterly desrtoyed!</h2>", "<center><h2>The love of God shines through!</h2>")
+		round_credits += list("<center><h2>The devils were all utterly destroyed!</h2>", "<center><h2>The love of Space Jesus shines through!</h2>")
 	round_credits += "<br>"
 
 	round_credits += ..()
