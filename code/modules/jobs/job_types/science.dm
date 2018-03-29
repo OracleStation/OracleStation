@@ -17,6 +17,7 @@ Research Director
 	exp_type_department = EXP_TYPE_SCIENCE
 	exp_requirements = 180
 	exp_type = EXP_TYPE_CREW
+	wiki_page = "Science_SOP"
 
 	outfit = /datum/outfit/job/rd
 
@@ -110,6 +111,7 @@ Roboticist
 	selection_color = "#ffeeff"
 	exp_requirements = 60
 	exp_type = EXP_TYPE_CREW
+	wiki_page = "Guide_to_robotics"
 
 	outfit = /datum/outfit/job/roboticist
 

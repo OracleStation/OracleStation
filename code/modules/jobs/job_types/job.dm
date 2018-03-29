@@ -51,6 +51,9 @@
 	//A special, very large and noticeable message for certain roles reminding them of something important. Ex: "Blueshields are not security"
 	var/special_notice = ""
 
+	// A link to the relevant wiki related to the job. Ex: "Space_law" would link to wiki.blah/Space_law
+	var/wiki_page = ""
+
 //Only override this proc
 //H is usually a human unless an /equip override transformed it
 /datum/job/proc/after_spawn(mob/living/H, mob/M)

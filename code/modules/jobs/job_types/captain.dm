@@ -15,6 +15,7 @@ Captain
 	minimal_player_age = 30
 	exp_requirements = 180
 	exp_type = EXP_TYPE_COMMAND
+	special_notice = "You may be the Captain of this station, but you are still beholden to The Corporation."
 
 	outfit = /datum/outfit/job/captain
 
