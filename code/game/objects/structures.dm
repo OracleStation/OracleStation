@@ -81,9 +81,6 @@
 				user.visible_message("<span class='warning'>[user] climbs onto [src].</span>", \
 									"<span class='notice'>You climb onto [src].</span>")
 				add_logs(user, src, "climbed onto")
-				if(climb_stun)
-					user.Stun(climb_stun)
-				. = 1
 			else
 				to_chat(user, "<span class='warning'>You fail to climb onto [src].</span>")
 	structureclimber = null
