@@ -23,8 +23,8 @@ Head of Security
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_SECURITY
-	special_notice = "Space law is THE LAW. Not a suggestion."
-	wiki_page = "Security_SOP" 
+	special_notice = "Space Law is THE LAW. Not a suggestion."
+	wiki_page = "Security_SOP"
 
 	outfit = /datum/outfit/job/hos
 
@@ -78,7 +78,7 @@ Warden
 	minimal_player_age = 7
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
-	special_notice = "Space law is THE LAW. Not a suggestion."
+	special_notice = "Space Law is THE LAW. Not a suggestion."
 	wiki_page = "Space_Law"
 
 	outfit = /datum/outfit/job/warden
@@ -176,7 +176,7 @@ Security Officer
 	minimal_player_age = 7
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
-	special_notice = "Space law is THE LAW. Not a suggestion."
+	special_notice = "Space Law is THE LAW. Not a suggestion."
 	wiki_page = "Space_Law"
 
 	outfit = /datum/outfit/job/security
