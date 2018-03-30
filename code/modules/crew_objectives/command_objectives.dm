@@ -57,7 +57,7 @@
 	var/datum/mind/protection_target
 
 /datum/objective/crew/coveryourhead/New()
-	var/list/heads = SSticker.mode.get_living_heads() //the proc returns the mind not the mob
+	var/list/heads = SSticker.mode.get_living_by_department(GLOB.command_positions) //the proc returns the mind not the mob
 	protection_target = pick(heads)
 	update_explanation_text()
 
@@ -66,7 +66,7 @@
 	explanation_text = "Make sure [protection_target.name], the [protection_target.assigned_role] survives."
 
 /datum/objective/crew/coveryourhead/check_completion()
-	var/list/heads = SSticker.mode.get_living_heads()
+	var/list/heads = SSticker.mode.get_living_by_department(GLOB.command_positions)
 	if(protection_target in heads)
 		return TRUE
 	return FALSE
