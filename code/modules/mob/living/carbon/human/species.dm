@@ -855,9 +855,10 @@
 			if(num_legs < 2)
 				return 0
 			if(DIGITIGRADE in species_traits)
-				if(!disable_warning)
-					to_chat(H, "<span class='warning'>The footwear around here isn't compatible with your feet!</span>")
-				return 0
+				if(!(I.digitigrade_compatible))
+					if(!disable_warning)
+						to_chat(H, "<span class='warning'>The footwear around here isn't compatible with your feet!</span>")
+					return 0
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(slot_belt)
 			if(H.belt)
@@ -1176,7 +1177,7 @@
 			. -= 2
 		. += speedmod
 
-	if(H.status_flags & IGNORESLOWDOWN)
+	if((H.status_flags & IGNORESLOWDOWN) || (H.dna && H.dna.species && NOSLOW in H.dna.species.species_traits))
 		ignoreslow = 1
 
 	if(H.has_gravity())

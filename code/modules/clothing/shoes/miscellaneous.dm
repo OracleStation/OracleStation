@@ -74,6 +74,7 @@
 	slowdown = SHOES_SLOWDOWN+1
 	item_color = "clown"
 	pockets = /obj/item/storage/internal/pocket/shoes/clown
+	digitigrade_compatible = TRUE // CLOWN MAGIC
 
 /obj/item/clothing/shoes/clown_shoes/Initialize()
 	. = ..()

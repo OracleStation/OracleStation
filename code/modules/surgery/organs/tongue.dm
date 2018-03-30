@@ -58,6 +58,20 @@
 		message = lizard_hiSS.Replace(message, "SSS")
 	return message
 
+/obj/item/organ/tongue/ethari
+	name = "ethari tongue"
+	desc = "A tongue from the mouth of an ethari."
+	say_mod = "growls"
+	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
+
+/obj/item/organ/tongue/ethari/TongueSpeech(var/message)
+	var/regex/ethari_growl = new("r+", "g")
+	var/regex/ethari_gRRowl = new("R+", "g")
+	if(copytext(message, 1, 2) != "*")
+		message = ethari_growl.Replace(message, "rrr")
+		message = ethari_gRRowl.Replace(message, "RRR")
+	return message
+
 /obj/item/organ/tongue/fly
 	name = "proboscis"
 	desc = "A freakish looking meat tube that apparently can take in liquids."

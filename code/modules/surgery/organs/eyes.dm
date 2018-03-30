@@ -61,6 +61,14 @@
 			sight_flags &= ~SEE_BLACKNESS
 	owner.update_sight()
 
+/obj/item/organ/eyes/night_vision/ethari
+	name = "ethari eyes"
+	desc = "A set of eyes that have slightly better dark vision."
+	see_in_dark = 4
+	flash_protect = -1
+	actions_types = null // Can't adjust their eyes
+	lighting_alpha = 245 // Still pretty dark, but night vision is useful.
+
 /obj/item/organ/eyes/night_vision/alien
 	name = "alien eyes"
 	desc = "It turned out they had them after all!"

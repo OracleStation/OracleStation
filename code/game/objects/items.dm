@@ -107,6 +107,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/icon_override = null  //Used to override hardcoded clothing dmis in human clothing proc.
 	var/sprite_sheets_obj = null //Used to override hardcoded clothing inventory object dmis in human clothing proc.
 	var/list/species_fit = null //This object has a different appearance when worn by these species
+	var/digitigrade_compatible = FALSE // Can digitigrade-legged species wear these? Sandals and clown shoes only.
 
 	//The list of slots by priority. equip_to_appropriate_slot() uses this list. Doesn't matter if a mob type doesn't have a slot.
 	var/list/slot_equipment_priority = null // for default list, see /mob/proc/equip_to_appropriate_slot()
