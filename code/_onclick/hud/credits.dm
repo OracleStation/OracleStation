@@ -1,5 +1,5 @@
-#define CREDIT_ROLL_SPEED 185
-#define CREDIT_SPAWN_SPEED 20
+#define CREDIT_ROLL_SPEED 125
+#define CREDIT_SPAWN_SPEED 10
 #define CREDIT_ANIMATE_HEIGHT (14 * world.icon_size)
 #define CREDIT_EASE_DURATION 22
 
@@ -15,7 +15,7 @@ GLOBAL_LIST(end_titles)
 	var/list/_credits = credits
 	verbs += /client/proc/ClearCredits
 	_credits += new /obj/screen/credit/title_card(null, null, src, SSticker.mode.title_icon)
-	sleep(CREDIT_SPAWN_SPEED * 3)
+	sleep(CREDIT_SPAWN_SPEED * 4)
 	for(var/I in GLOB.end_titles)
 		_credits += new /obj/screen/credit(null, I, src)
 		sleep(CREDIT_SPAWN_SPEED)
