@@ -225,7 +225,7 @@
 		if(this.syndicate)
 			to_chat(owner.current,"<span class='userdanger'> All the loyalist agents are dead, and no more is required of you. Die a glorious death, agent. </span>")
 		else
-			to_chat(owner.current,"<span class='userdanger'> All the other agents are dead, and you're the last loose end. Stage a Syndicate terrorist attack to cover up for today's events. You no longer have any limits on collateral damage.</span>")
+			to_chat(owner.current,"<span class='userdanger'> All the other agents are dead, and you're the last loose end. Stage a Syndicate terrorist attack to cover up for today's events and die a glorious death.</span>")
 		replace_escape_objective(owner)
 
 /datum/antagonist/traitor/proc/sleeper_agent_process()

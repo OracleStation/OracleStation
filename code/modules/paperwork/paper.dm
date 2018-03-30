@@ -31,7 +31,7 @@
 	var/spam_flag = 0
 	var/contact_poison // Reagent ID to transfer on contact
 	var/contact_poison_volume = 0
-
+	var/datum/oracle_ui/ui = null
 
 /obj/item/paper/pickup(user)
 	if(contact_poison && ishuman(user))
@@ -40,16 +40,39 @@
 		if(!istype(G) || G.transfer_prints)
 			H.reagents.add_reagent(contact_poison,contact_poison_volume)
 			contact_poison = null
+	ui.check_view_all()
 	..()
 
+/obj/item/paper/dropped(mob/user)
+	ui.check_view(user)
+	return ..()
 
 /obj/item/paper/Initialize()
 	. = ..()
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
+	ui = new /datum/oracle_ui(src, 420, 600, get_asset_datum(/datum/asset/simple/paper))
+	ui.can_resize = FALSE
 	update_icon()
 	updateinfolinks()
 
+/obj/item/paper/oui_getcontent(mob/target)
+	if(!target.is_literate())
+		return "<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>"
+	else if(istype(target.get_active_held_item(), /obj/item/pen) | istype(target.get_active_held_item(), /obj/item/toy/crayon))
+		return "<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links]<HR>[stamps]</BODY></HTML>"
+	else
+		return "<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY></HTML>"
+
+/obj/item/paper/oui_canview(mob/target)
+	if(check_rights_for(target.client, R_FUN)) //Allows admins to view faxes
+		return TRUE
+	if(isAI(target))
+		var/mob/living/silicon/ai/ai = target
+		return get_dist(src, ai.current) < 2
+	if(iscyborg(target))
+		return get_dist(src, target) < 2
+	return ..()
 
 /obj/item/paper/update_icon()
 
@@ -69,27 +92,13 @@
 		if(!iscultist(user) && !user.stat)
 			to_chat(user, "<span class='danger'>There are indecipherable images scrawled on the paper in what looks to be... <i>blood?</i></span>")
 			return
-	if(in_range(user, src) || isobserver(user))
-		show_content(user)
+	if(oui_canview(user))
+		ui.render(user)
 	else
 		to_chat(user, "<span class='notice'>It is too far away.</span>")
 
-/obj/item/paper/proc/show_content(var/mob/user, var/forceshow = 0, var/forcestars = 0, var/infolinks = 0, var/view = 1)
-	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/paper)
-	assets.send(user)
-
-	var/data
-	if((!user.is_literate() && !forceshow) || forcestars)
-		data = "<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>"
-		if(view)
-			user << browse(data, "window=[name]")
-			onclose(user, "[name]")
-	else
-		data = "<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY></HTML>"
-		if(view)
-			user << browse(data, "window=[name]")
-			onclose(user, "[name]")
-	return data
+/obj/item/paper/proc/show_content(var/mob/user)
+	user.examinate(src)
 
 /obj/item/paper/verb/rename()
 	set name = "Rename paper"
@@ -109,30 +118,13 @@
 	if((loc == usr && usr.stat == 0))
 		name = "paper[(n_name ? text("- '[n_name]'") : null)]"
 	add_fingerprint(usr)
+	ui.render_all()
 
 /obj/item/paper/attack_self(mob/user)
-	user.examinate(src)
-	if(rigged && (SSevents.holidays && SSevents.holidays[APRIL_FOOLS]))
-		if(spam_flag == 0)
-			spam_flag = 1
-			playsound(loc, 'sound/items/bikehorn.ogg', 50, 1)
-			spawn(20)
-				spam_flag = 0
-
+	show_content(user)
 
 /obj/item/paper/attack_ai(mob/living/silicon/ai/user)
-	var/dist
-	if(istype(user) && user.current) //is AI
-		dist = get_dist(src, user.current)
-	else //cyborg or AI not seeing through a camera
-		dist = get_dist(src, user)
-	if(dist < 2)
-		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY></HTML>", "window=[name]")
-		onclose(usr, "[name]")
-	else
-		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>", "window=[name]")
-		onclose(usr, "[name]")
-
+	show_content(user)
 
 /obj/item/paper/proc/addtofield(id, text, links = 0)
 	var/locid = 0
@@ -177,7 +169,7 @@
 	for(var/i in 1 to min(fields, 15))
 		addtofield(i, "<font face=\"[PEN_FONT]\"><A href='?src=[REF(src)];write=[i]'>write</A></font>", 1)
 	info_links = info_links + "<font face=\"[PEN_FONT]\"><A href='?src=[REF(src)];write=end'>write</A></font>"
-
+	ui.render_all()
 
 /obj/item/paper/proc/clearpaper()
 	info = null
@@ -305,10 +297,11 @@
 		if(t != null)	//No input from the user means nothing needs to be added
 			if(id!="end")
 				addtofield(text2num(id), t) // He wants to edit a field, let him.
+				ui.render(usr)
 			else
 				info += t // Oh, he wants to edit to the end of the file, let him.
 				updateinfolinks()
-			usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links]<HR>[stamps]</BODY><div align='right'style='position:fixed;bottom:0;font-style:bold;'><A href='?src=[REF(src)];help=1'>\[?\]</A></div></HTML>", "window=[name]") // Update the window
+
 			update_icon()
 
 
@@ -323,7 +316,7 @@
 
 	if(istype(P, /obj/item/pen) || istype(P, /obj/item/toy/crayon))
 		if(user.is_literate())
-			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links]<HR>[stamps]</BODY><div align='right'style='position:fixed;bottom:0;font-style:bold;'><A href='?src=[REF(src)];help=1'>\[?\]</A></div></HTML>", "window=[name]")
+			user.examinate(src)
 			return
 		else
 			to_chat(user, "<span class='notice'>You don't know how to read or write.</span>")
@@ -346,6 +339,7 @@
 		add_overlay(stampoverlay)
 
 		to_chat(user, "<span class='notice'>You stamp the paper with your rubber stamp.</span>")
+		ui.render_all()
 
 	if(P.is_hot())
 		if(user.disabilities & CLUMSY && prob(10))
@@ -546,4 +540,3 @@
 	<br>\
 	Bottom Section:<br>\
 	In the bottom section, you will find two broadcasters (one for output, one for redundancy) and two receivers. The west receiver handles Science, Medical, Supply and Service. The east receiver handles Command, Security, Engineering, Common and all the other frequencies.<br>"
-

@@ -24,7 +24,7 @@
 #define MUT_MUTE	"Mute"
 #define SMILE		"Smile"
 #define STONER		"Stoner"
-#define UNINTELLIGABLE		"Unintelligable"
+#define UNINTELLIGIBLE		"Unintelligible"
 #define SWEDISH		"Swedish"
 #define CHAV		"Chav"
 #define ELVIS		"Elvis"
