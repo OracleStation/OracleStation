@@ -43,6 +43,8 @@
 	<span class='cult'>Cultists</span>: Carry out Nar-Sie's will.\n\
 	<span class='notice'>Crew</span>: Prevent the cult from expanding and drive it out."
 
+	title_icon = "cult"
+
 	var/finished = 0
 
 	var/acolytes_needed = 10 //for the survive objective
@@ -295,3 +297,20 @@
 						SSticker.news_report = CULT_FAILURE
 			text += "<br><B>Objective #[obj_count]</B>: [explanation]"
 	to_chat(world, text)
+
+/datum/game_mode/cult/generate_credit_text()
+	var/list/round_credits = list()
+	var/len_before_addition
+
+	round_credits += "<center><h1>The Cult of Nar'Sie:</h1></center>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/cultist in cult)
+		round_credits += "<center><h2>[cultist.name] as a cult fanatic</h2>"
+	if(!eldergod)
+		round_credits += "<center><h2>Nar'Sie as the eldritch abomination</h2>"
+	if(len_before_addition == round_credits.len)
+		round_credits += list("<center><h2>The cultists have learned the danger of eldritch magic!</h2>", "<center><h2>They all disappeared!</h2>")
+		round_credits += "<br>"
+
+	round_credits += ..()
+	return round_credits

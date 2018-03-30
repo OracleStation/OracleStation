@@ -29,6 +29,8 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	<span class='green'>Changelings</span>: Accomplish the objectives assigned to you.\n\
 	<span class='notice'>Crew</span>: Root out and eliminate the changeling menace."
 
+	title_icon = "changeling"
+
 	var/const/prob_int_murder_target = 50 // intercept names the assassination target half the time
 	var/const/prob_right_murder_target_l = 25 // lower bound on probability of naming right assassination target
 	var/const/prob_right_murder_target_h = 50 // upper bound on probability of naimg the right assassination target
@@ -492,3 +494,18 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	var/datum/atom_hud/antag/hud = GLOB.huds[ANTAG_HUD_CHANGELING]
 	hud.leave_hud(changling_mind.current)
 	set_antag_hud(changling_mind.current, null)
+
+/datum/game_mode/changeling/generate_credit_text()
+	var/list/round_credits = list()
+	var/len_before_addition
+
+	round_credits += "<center><h1>The Slippery Changelings:</h1></center>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/cling in changelings)
+		round_credits += "<center><h2>[cling.changeling.changelingID] in the body of [cling.name]</h2>"
+	if(len_before_addition == round_credits.len)
+		round_credits += list("<center><h2>Uh oh, we lost track of the shape shifters!</h2>", "<center><h2>Nobody move!</h2>")
+	round_credits += "<br>"
+
+	round_credits += ..()
+	return round_credits
