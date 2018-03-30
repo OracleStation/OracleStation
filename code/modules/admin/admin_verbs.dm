@@ -76,7 +76,11 @@ GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 	/client/proc/toggleadminhelpsound,
 	/client/proc/cmd_admin_rejuvenate,
 	/client/proc/cmd_admin_freeze,
-	/client/proc/respawn_character
+	/client/proc/respawn_character,
+	/datum/admins/proc/startnow,
+	/datum/admins/proc/restart,
+	/datum/admins/proc/end_round,
+	/datum/admins/proc/delay,
 	)
 GLOBAL_PROTECT(mentor_verbs)
 GLOBAL_LIST_INIT(mentor_verbs, list(/client/proc/cmd_mentor_pm_panel, /client/proc/show_mentor_memo, /client/proc/cmd_mentor_say))
@@ -114,10 +118,6 @@ GLOBAL_PROTECT(admin_verbs_server)
 GLOBAL_LIST_INIT(admin_verbs_server, world.AVerbsServer())
 /world/proc/AVerbsServer()
 	return list(
-	/datum/admins/proc/startnow,
-	/datum/admins/proc/restart,
-	/datum/admins/proc/end_round,
-	/datum/admins/proc/delay,
 	/datum/admins/proc/toggleaban,
 	/client/proc/everyone_random,
 	/datum/admins/proc/toggleAI,
