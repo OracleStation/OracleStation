@@ -499,7 +499,7 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	var/list/round_credits = list()
 	var/len_before_addition
 
-	round_credits += "<center><h1>The Slippery Changelings:</h1></center>"
+	round_credits += "<center><h1>The Slippery Changelings:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/cling in changelings)
 		round_credits += "<center><h2>[cling.changeling.changelingID] in the body of [cling.name]</h2>"
