@@ -12,6 +12,7 @@ Clown
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
 	special_notice = "There is a difference between harmless pranks and griefing. Know it."
+	wiki_page = "Clown"
 
 	outfit = /datum/outfit/job/clown
 
@@ -73,6 +74,7 @@ Mime
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
 	special_notice = "There is a difference between harmless pranks and griefing. Know it."
+	wiki_page = "Mime"
 
 	outfit = /datum/outfit/job/mime
 
@@ -170,6 +172,7 @@ Internal Affairs Agent
 	minimal_player_age = 14
 	exp_requirements = 180 //3 hours
 	exp_type = EXP_TYPE_CREW
+	wiki_page = "Standard_Operating_Procedure"
 
 	outfit = /datum/outfit/job/iaa
 	//Basic access to each department

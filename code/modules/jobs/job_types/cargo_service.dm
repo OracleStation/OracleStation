@@ -18,6 +18,7 @@ Quartermaster
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_SUPPLY
 	special_notice = "The Quartermaster is now a Head of Staff. Act like it."
+	wiki_page = "Cargo_SOP"
 
 	outfit = /datum/outfit/job/quartermaster
 
@@ -48,6 +49,7 @@ Cargo Technician
 	spawn_positions = 2
 	supervisors = "the quartermaster"
 	selection_color = "#dcba97"
+	wiki_page = "Cargo_Technician"
 
 	outfit = /datum/outfit/job/cargo_tech
 
@@ -76,6 +78,7 @@ Shaft Miner
 	spawn_positions = 3
 	supervisors = "the quartermaster"
 	selection_color = "#dcba97"
+	wiki_page = "Shaft_Miner"
 
 	outfit = /datum/outfit/job/miner
 
