@@ -208,6 +208,9 @@ For all viewers, updates the fields in the template via the `updateFields` javaS
 ##### `soft_update_all()`
 For all viewers, updates the content body in the template via the `replaceContent` javaScript function.
 
+##### `change_page(var/newpage)`
+Changes the template to use to draw the page and forces an update to all viewers
+
 ##### `act(label, mob/user, action, list/parameters = list(), class = "", disabled = FALSE`
 Returns a fully formatted hyperlink for the specified user. `label` will be the hyperlink label, `action` and `parameters` are what will be passed to `oui_act`, `class` is any CSS classes to apply to the hyperlink and `disabled` will disable the hyperlink.
 
