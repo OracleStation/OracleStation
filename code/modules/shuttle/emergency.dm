@@ -123,9 +123,12 @@
 
 	if(ENGINES_STARTED || (!IS_DOCKED))
 		return .
-
 	// Check to see if we've reached criteria for early launch
-	if((authorized.len >= auth_need) || emagged)
+	if(authorized.len >= auth_need)
+		SSshuttle.emergency.setTimer(ENGINES_START_TIME)
+		minor_announce("The emergency shuttle will launch in \
+			[TIME_LEFT] seconds.", alert=TRUE)
+	if(emagged)
 		// shuttle timers use 1/10th seconds internally
 		SSshuttle.emergency.setTimer(ENGINES_START_TIME)
 		var/system_error = emagged ? "SYSTEM ERROR:" : null
