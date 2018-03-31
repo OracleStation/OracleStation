@@ -128,7 +128,6 @@
 		SSshuttle.emergency.setTimer(ENGINES_START_TIME)
 		minor_announce("The emergency shuttle will launch in \
 			[TIME_LEFT] seconds.", alert=TRUE)
-			[TIME_LEFT] seconds.\n[emag_boost_message]", system_error, alert=TRUE)
 		. = TRUE
 	if(emagged)
 	   // shuttle timers use 1/10th seconds internally
