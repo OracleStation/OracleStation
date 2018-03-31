@@ -128,14 +128,14 @@
 		SSshuttle.emergency.setTimer(ENGINES_START_TIME)
 		minor_announce("The emergency shuttle will launch in \
 			[TIME_LEFT] seconds.", alert=TRUE)
-	if(emagged)
-		// shuttle timers use 1/10th seconds internally
-		SSshuttle.emergency.setTimer(ENGINES_START_TIME)
-		var/system_error = emagged ? "SYSTEM ERROR:" : null
-		var/emag_boost_message = pick("STRAP IN FOR EMERGENCY BURN", "PREPARE FOR LUDICROUS SPEED", "MAKING THE JUMP TO %@ERROR^& IN UNDER 12 PARSECS", "INERTIAL DAMPENERS OFFLINE")
-		minor_announce("The emergency shuttle will launch in \
 			[TIME_LEFT] seconds.\n[emag_boost_message]", system_error, alert=TRUE)
 		. = TRUE
+	if(emagged)
+	   // shuttle timers use 1/10th seconds internally
+	  SSshuttle.emergency.setTimer(ENGINES_START_TIME)
+	  minor_announce("The emergency shuttle will launch in [TIME_LEFT] seconds.\
+	    \n[pick("STRAP IN FOR EMERGENCY BURN", "PREPARE FOR LUDICROUS SPEED", "MAKING THE JUMP TO %@ERROR^& IN UNDER 12 PARSECS", "INERTIAL DAMPENERS OFFLINE")]", "SYSTEM ERROR:", alert=TRUE)
+	  . = TRUE
 
 /obj/machinery/computer/emergency_shuttle/emag_act(mob/user)
 	// How did you even get on the shuttle before it go to the station?
