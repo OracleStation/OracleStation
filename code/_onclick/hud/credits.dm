@@ -10,13 +10,13 @@ GLOBAL_LIST(end_titles)
 	if(!GLOB.end_titles)
 		GLOB.end_titles = SSticker.mode.generate_credit_text()
 	LAZYINITLIST(credits)
-	if(!credits)
-		return
 	var/list/_credits = credits
 	verbs += /client/proc/ClearCredits
 	_credits += new /obj/screen/credit/title_card(null, null, src, SSticker.mode.title_icon)
 	sleep(CREDIT_SPAWN_SPEED * 3)
 	for(var/I in GLOB.end_titles)
+		if(!credits)
+			return
 		_credits += new /obj/screen/credit(null, I, src)
 		sleep(CREDIT_SPAWN_SPEED)
 	sleep(CREDIT_ROLL_SPEED - CREDIT_SPAWN_SPEED)

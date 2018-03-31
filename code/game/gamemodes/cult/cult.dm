@@ -310,7 +310,7 @@
 		round_credits += "<center><h2>Nar'Sie as the eldritch abomination</h2>"
 	if(len_before_addition == round_credits.len)
 		round_credits += list("<center><h2>The cultists have learned the danger of eldritch magic!</h2>", "<center><h2>They all disappeared!</h2>")
-		round_credits += "<br>"
+	round_credits += "<br>"
 
 	round_credits += ..()
 	return round_credits
