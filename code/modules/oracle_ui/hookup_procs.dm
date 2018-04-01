@@ -5,7 +5,7 @@
 	return "Default Implementation"
 
 /datum/proc/oui_canuse(mob/user)
-	if(isobserver(user))
+	if(isobserver(user) && !user.has_unlimited_silicon_privilege)
 		return FALSE
 	return oui_canview(user)
 
@@ -21,6 +21,8 @@
 /atom/oui_canview(mob/user)
 	if(isobserver(user))
 		return TRUE
+	if(user.incapacitated())
+		return FALSE
 	if(isturf(src.loc) && Adjacent(user))
 		return TRUE
 	return FALSE
@@ -31,6 +33,8 @@
 	return ..()
 
 /obj/machinery/oui_canview(mob/user)
+	if(user.has_unlimited_silicon_privilege)
+		return TRUE
 	if(!is_interactable())
 		return FALSE
 	if(iscyborg(user))
