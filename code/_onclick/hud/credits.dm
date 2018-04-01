@@ -43,7 +43,7 @@ GLOBAL_LIST(end_titles)
 	parent = P
 	maptext = credited
 	maptext_height = world.icon_size * 2
-	maptext_width = world.icon_size * 14
+	maptext_width = world.icon_size * 15
 	var/matrix/M = matrix(transform)
 	M.Translate(0, CREDIT_ANIMATE_HEIGHT)
 	animate(src, transform = M, time = CREDIT_ROLL_SPEED)
