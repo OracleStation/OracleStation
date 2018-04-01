@@ -942,3 +942,11 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 		else
 			B.icon_state = "standing"
 			B.name = "lay down"
+
+/mob/living/carbon/human/equip_to_slot_or_del(obj/item/W, slot)
+	if(!W.species_can_equip(src.dna.species)) //If our species can't wear this
+		var/obj/item/alternative = src.dna.species.get_alternative_clothing(W, src) //Get an alternative
+		if(alternative)
+			qdel(W)
+			return ..(alternative, slot)
+	return ..(W, slot)

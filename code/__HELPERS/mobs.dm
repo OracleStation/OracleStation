@@ -74,6 +74,12 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/body_markings, GLOB.body_markings_list)
 	if(!GLOB.wings_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/wings, GLOB.wings_list)
+	if(!GLOB.clown_hairs_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/clown_hairs, GLOB.clown_hairs_list)
+	if(!GLOB.clown_mouths_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/clown_mouths, GLOB.clown_mouths_list)
+	if(!GLOB.clown_makeups_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/clown_makeups, GLOB.clown_makeups_list)
 	if(!GLOB.ipc_screens_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/ipc_screens, GLOB.ipc_screens_list)
 	if(!GLOB.ipc_antennas_list.len)
@@ -96,7 +102,7 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_tail_markings, GLOB.vox_tail_markings_list)
 
 	//For now we will always return none for tail_human and ears.
-	return(list("mcolor" = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"), "tail_unathi" = pick(GLOB.tails_list_unathi), "tail_ethari" = pick(GLOB.tails_list_ethari), "tail_human" = "None", "wings" = "None", "snout" = pick(GLOB.snouts_list), "snout_ethari" = pick(GLOB.snouts_ethari_list), "ears_ethari" = "Fox", "horns" = pick(GLOB.horns_list), "ears" = "None", "frills" = pick(GLOB.frills_list), "spines" = pick(GLOB.spines_list), "body_markings" = pick(GLOB.body_markings_list), "legs" = "Normal Legs", "ipc_screen" = pick(GLOB.ipc_screens_list), "ipc_antenna" = pick(GLOB.ipc_antennas_list),"ipc_chassis" = pick(GLOB.ipc_chassis_list),"vox_body" = pick(GLOB.vox_bodies_list),"vox_quills" = pick(GLOB.vox_quills_list),"vox_facial_quills" = pick(GLOB.vox_facial_quills_list),"vox_body_markings" = pick(GLOB.vox_body_markings_list),"vox_tail_markings" = pick(GLOB.vox_tail_markings_list)))
+	return(list("mcolor" = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"), "tail_unathi" = pick(GLOB.tails_list_unathi), "tail_ethari" = pick(GLOB.tails_list_ethari), "tail_human" = "None", "wings" = "None", "snout" = pick(GLOB.snouts_list), "snout_ethari" = pick(GLOB.snouts_ethari_list), "ears_ethari" = "Fox", "horns" = pick(GLOB.horns_list), "ears" = "None", "frills" = pick(GLOB.frills_list), "spines" = pick(GLOB.spines_list), "body_markings" = pick(GLOB.body_markings_list), "legs" = "Normal Legs", "ipc_screen" = pick(GLOB.ipc_screens_list), "ipc_antenna" = pick(GLOB.ipc_antennas_list),"ipc_chassis" = pick(GLOB.ipc_chassis_list),"clown_mouth" = pick(GLOB.clown_mouths_list),"clown_makeup" = pick(GLOB.clown_makeups_list),"clown_hair" = pick(GLOB.clown_hairs_list),"vox_body" = pick(GLOB.vox_bodies_list),"vox_quills" = pick(GLOB.vox_quills_list),"vox_facial_quills" = pick(GLOB.vox_facial_quills_list),"vox_body_markings" = pick(GLOB.vox_body_markings_list),"vox_tail_markings" = pick(GLOB.vox_tail_markings_list)))
 
 /proc/random_hair_style(gender)
 	switch(gender)
@@ -518,4 +524,3 @@ Proc for attack log creation, because really why not
 		else
 			warning("Invalid speech logging type detected. [logtype]. Defaulting to say")
 			log_say(logmessage)
-

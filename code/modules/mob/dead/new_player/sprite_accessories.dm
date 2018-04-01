@@ -1519,6 +1519,76 @@
 	name = "Aquatic"
 	icon_state = "aqua"
 
+// Clown accessories.
+
+/datum/sprite_accessory/clown_hairs
+	icon = 'icons/mob/clown_accessories.dmi'
+	color_src = HAIR
+
+/datum/sprite_accessory/clown_hairs/classic
+	name = "Classic"
+	icon_state = "classic"
+	color_src = 0
+
+/datum/sprite_accessory/clown_hairs/greyscale
+	name = "Classic (Tintable)"
+	icon_state = "classic_tintable"
+
+/datum/sprite_accessory/clown_hairs/rainbow
+	name = "Rainbow"
+	icon_state = "rainbow"
+	color_src = 0
+
+/datum/sprite_accessory/clown_hairs/pigtails
+	name = "Pigtails (Tintable)"
+	icon_state = "pigtails_tintable"
+
+/datum/sprite_accessory/clown_hairs/mop
+	name = "Mop (Tintable)"
+	icon_state = "mop_tintable"
+
+/datum/sprite_accessory/clown_mouths
+	icon = 'icons/mob/clown_accessories.dmi'
+	color_src = FACEHAIR
+
+/datum/sprite_accessory/clown_mouths/classic
+	name = "Classic"
+	icon_state = "classic"
+	color_src = 0
+
+/datum/sprite_accessory/clown_mouths/classic_tintable
+	name = "Classic (Tintable)"
+	icon_state = "classic_tintable"
+
+/datum/sprite_accessory/clown_mouths/femme
+	name = "Femme (Tintable)"
+	icon_state = "femme"
+
+/datum/sprite_accessory/clown_mouths/grin
+	name = "Grin (Tintable)"
+	icon_state = "grin"
+
+/datum/sprite_accessory/clown_makeups
+	icon = 'icons/mob/clown_accessories.dmi'
+	color_src = EYECOLOR
+
+/datum/sprite_accessory/clown_makeups/classic
+	name = "Classic"
+	icon_state = "classic"
+	color_src = 0
+
+/datum/sprite_accessory/clown_makeups/classic_tintable
+	name = "Classic (Tintable)"
+	icon_state = "classic_tintable"
+
+/datum/sprite_accessory/clown_makeups/femme
+	name = "Femme (Tintable)"
+	icon_state = "femme"
+
+/datum/sprite_accessory/clown_makeups/none
+	name = "None"
+	icon_state = "None"
+
 // IPC accessories.
 
 /datum/sprite_accessory/ipc_screens

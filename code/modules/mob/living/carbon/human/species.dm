@@ -574,6 +574,18 @@
 		if(!H.dna.features["horns"] || H.dna.features["horns"] == "None" || H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
 			bodyparts_to_add -= "horns"
 
+	if("clown_mouth" in mutant_bodyparts)
+		if(!H.dna.features["clown_mouth"] || H.dna.features["clown_mouth"] == "None" || (H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || !HD)
+			bodyparts_to_add -= "clown_mouth"
+
+	if("clown_makeup" in mutant_bodyparts)
+		if(!H.dna.features["clown_makeup"] || H.dna.features["clown_makeup"] == "None" || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEYES)) || !HD)
+			bodyparts_to_add -= "clown_makeup"
+
+	if("clown_hair" in mutant_bodyparts)
+		if(!H.dna.features["clown_hair"] || H.dna.features["clown_hair"] == "None" ||  H.head && (H.head.flags_inv & HIDEHAIR) || !HD)
+			bodyparts_to_add -= "clown_hair"
+
 	if("ipc_screen" in mutant_bodyparts)
 		if(!H.dna.features["ipc_screen"] || H.dna.features["ipc_screen"] == "None" || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEYES)) || !HD)
 			bodyparts_to_add -= "ipc_screen"
@@ -681,6 +693,12 @@
 					S = GLOB.ears_list[H.dna.features["ears"]]
 				if("body_markings")
 					S = GLOB.body_markings_list[H.dna.features["body_markings"]]
+				if("clown_mouth")
+					S = GLOB.clown_mouths_list[H.dna.features["clown_mouth"]]
+				if("clown_makeup")
+					S = GLOB.clown_makeups_list[H.dna.features["clown_makeup"]]
+				if("clown_hair")
+					S = GLOB.clown_hairs_list[H.dna.features["clown_hair"]]
 				if("ipc_screen")
 					S = GLOB.ipc_screens_list[H.dna.features["ipc_screen"]]
 				if("ipc_antenna")
@@ -1755,6 +1773,10 @@
 		return 0
 	else
 		return (get_exp_format(required_playtime * 60 - my_exp))
+
+//Easy override for equipping
+/datum/species/proc/get_alternative_clothing(obj/item/I, mob/M)
+	return null
 
 #undef HEAT_DAMAGE_LEVEL_1
 #undef HEAT_DAMAGE_LEVEL_2
