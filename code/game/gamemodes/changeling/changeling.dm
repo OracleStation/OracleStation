@@ -113,14 +113,20 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	absorb_objective.gen_amount_goal(6, 8)
 	changeling.objectives += absorb_objective
 
+	var/no_assassinate = TRUE
+
 	if(prob(40))
 		var/datum/objective/assassinate/changeling_assassinate = new // ass-assinate another changeling.
 		changeling_assassinate.owner = changeling
 		changeling_assassinate.find_target_by_role("Changeling", TRUE)
-		changeling_assassinate.explanation_text += "They are known in the hivemind as [changeling_assassinate.target.changeling.changelingID]."
-		changeling.objectives += changeling_assassinate
+		if(changeling_assassinate.target && changeling_assassinate.target.current) //if we did find a target
+			no_assassinate = FALSE
+			changeling_assassinate.explanation_text += "They are known in the hivemind as [changeling_assassinate.target.changeling.changelingID]."
+			changeling.objectives += changeling_assassinate
+		else //couldn't find a target, we're leaving
+			qdel(changeling_assassinate)
 
-	else if(prob(60))
+	if(prob(60) && no_assassinate)
 		var/datum/objective/steal/steal_objective = new
 		steal_objective.owner = changeling
 		steal_objective.find_target()
