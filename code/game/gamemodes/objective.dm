@@ -44,7 +44,17 @@ GLOBAL_LIST_EMPTY(objectives)
 		target = null//we'd rather have no target than an invalid one
 	update_explanation_text()
 	return target
-
+/datum/objective/proc/find_changling_target()
+	var/list/possible_targets = list()
+	for(var/datum/mind/possible_target in get_crewmember_minds())
+		if(possible_target != owner && (possible_target != isipc(possible_target.current)) && ishuman(possible_target.current) && (possible_target.current.stat != 2) && is_unique_objective(possible_target))
+			possible_targets += possible_target
+	if(possible_targets.len > 0)
+		target = pick(possible_targets)
+	else
+		target = null//we'd rather have no target than an invalid one
+	update_explanation_text()
+	return target
 /datum/objective/proc/find_target_by_role(role, role_type=0, invert=0)//Option sets either to check assigned role or special role. Default to assigned., invert inverts the check, eg: "Don't choose a Ling"
 	for(var/datum/mind/possible_target in get_crewmember_minds())
 		if((possible_target != owner) && ishuman(possible_target.current))

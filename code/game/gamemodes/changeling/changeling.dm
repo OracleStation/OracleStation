@@ -153,7 +153,7 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 		else
 			var/datum/objective/escape/escape_with_identity/identity_theft = new
 			identity_theft.owner = changeling
-			identity_theft.find_target()
+			identity_theft.find_changling_target()
 			changeling.objectives += identity_theft
 		escape_objective_possible = FALSE
 
