@@ -171,6 +171,25 @@
 		user.mind.changeling.add_new_profile(target, user)
 	return TRUE
 
+/obj/effect/proc_holder/changeling/sting/changeling_test
+	name = "Changeling Test Sting"
+	desc = "We stealthily sting a target and check whether they are one of the hivemind."
+	helptext = "Will let you check whether your target is another changeling, as well as giving you their name."
+	sting_icon = "sting_test"
+	chemical_cost = 0
+	dna_cost = 0
+
+/obj/effect/proc_holder/changeling/sting/changeling_test/sting_action(mob/user, mob/living/carbon/human/target)
+	if(target.mind && target.mind.changeling)
+		to_chat(user, "<span class='warning'>They are one with the hivemind. We've located [target.mind.changeling.changelingID]!</span>")
+		spawn(rand(10, 20))
+			to_chat(target, "<span class='warning'>We feel...violated. Another one of the hivemind has located us through a sting!</span>")
+	else if(!target.mind)
+		to_chat(user, "<span class='notice'>This creature is far too simple to be one of us.</span>")
+	else
+		to_chat(user, "<span class='notice'>This creature is not one of the hive...</span>")
+	return TRUE
+
 /obj/effect/proc_holder/changeling/sting/mute
 	name = "Mute Sting"
 	desc = "We silently sting a human, completely silencing them for a short time."
