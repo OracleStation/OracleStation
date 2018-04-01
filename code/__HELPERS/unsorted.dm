@@ -236,7 +236,7 @@ Turf and target are separate in case you want to teleport some distance from a t
 			continue
 		if(R.stat == DEAD)
 			continue
-		if(R.emagged || R.scrambledcodes || R.syndicate)
+		if(R.emagged || R.scrambledcodes)
 			continue
 		. += R
 
@@ -1486,4 +1486,4 @@ GLOBAL_PROTECT(valid_HTTPSGet)
 				thing.use_tag = FALSE
 			else
 				return "\[[url_encode(thing.tag)]\]"
-	return "\ref[input]" 
+	return "\ref[input]"

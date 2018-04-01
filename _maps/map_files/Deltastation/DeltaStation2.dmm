@@ -4376,7 +4376,9 @@
 /turf/open/space,
 /area/solar/port/fore)
 "ajK" = (
-/obj/structure/reflector/single/anchored,
+/obj/structure/reflector/single/anchored{
+	rotation_angle = 135
+	},
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},
@@ -4404,10 +4406,8 @@
 	},
 /area/engine/atmospherics_engine)
 "ajO" = (
-/obj/machinery/camera{
-	c_tag = "Supermatter Engine - Fore";
-	name = "atmospherics camera";
-	network = list("SS13","Engine")
+/obj/structure/reflector/double/anchored{
+	rotation_angle = 45
 	},
 /turf/open/floor/plasteel/vault{
 	dir = 5
@@ -4775,14 +4775,17 @@
 	},
 /area/engine/atmospherics_engine)
 "akQ" = (
-/obj/structure/reflector/double/anchored,
+/obj/structure/reflector/double/anchored{
+	rotation_angle = 135
+	},
 /turf/open/floor/plasteel/vault{
 	dir = 5
 	},
 /area/engine/atmospherics_engine)
 "akR" = (
 /obj/structure/reflector/double/anchored{
-	dir = 1
+	dir = 1;
+	rotation_angle = 45
 	},
 /turf/open/floor/plasteel/vault{
 	dir = 5
@@ -138103,9 +138106,9 @@ aaa
 aiW
 ajL
 ajL
-alP
 ajL
-akR
+ajL
+ajL
 eqb
 eqc
 ard
@@ -138874,7 +138877,7 @@ aaf
 aiW
 ajO
 ajL
-akR
+ajL
 anb
 ajL
 epo
@@ -140414,11 +140417,11 @@ aaa
 agg
 aaf
 aiW
-ajP
 akP
 akP
 akP
-aoa
+akP
+akP
 aiW
 apR
 ebR
@@ -166656,7 +166659,7 @@ aNu
 esJ
 aQO
 esK
-esM
+esK
 aVI
 aXv
 aHu

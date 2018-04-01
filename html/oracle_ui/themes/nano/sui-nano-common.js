@@ -1,5 +1,8 @@
 function replaceContent(body) {
-    document.getElementById('maincontent').innerHTML = body;
+    var maincontent = document.getElementById('maincontent');
+    if(maincontent) {
+      maincontent.innerHTML = body;
+    }
 }
 
 function updateProgressLabels() {

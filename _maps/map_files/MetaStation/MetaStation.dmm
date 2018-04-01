@@ -84138,7 +84138,8 @@
 /area/engine/engineering)
 "deY" = (
 /obj/structure/reflector/single/anchored{
-	dir = 1
+	dir = 1;
+	rotation_angle = 315
 	},
 /turf/open/floor/plating,
 /area/engine/engineering)
@@ -84179,13 +84180,15 @@
 /area/engine/engineering)
 "dff" = (
 /obj/structure/reflector/double/anchored{
-	dir = 1
+	dir = 1;
+	rotation_angle = 45
 	},
 /turf/open/floor/plasteel/black,
 /area/engine/engineering)
 "dfg" = (
 /obj/structure/reflector/single/anchored{
-	dir = 8
+	dir = 8;
+	rotation_angle = 225
 	},
 /turf/open/floor/plating,
 /area/engine/engineering)
@@ -94030,6 +94033,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/security/brig)
+"dLN" = (
+/obj/structure/reflector/double/anchored{
+	dir = 1;
+	rotation_angle = 135
+	},
+/turf/open/floor/plasteel/black,
+/area/engine/engineering)
 
 (1,1,1) = {"
 aaa
@@ -115438,8 +115448,8 @@ aeK
 afF
 dLh
 dLm
-dLu
-dLC
+dLp
+dLp
 aax
 aaa
 aaa
@@ -115695,8 +115705,8 @@ aeL
 afV
 agE
 dLn
-dLv
-dLD
+dLn
+dLn
 aax
 aaa
 aaa
@@ -115951,9 +115961,9 @@ abe
 aeM
 afH
 agE
-dLo
-dLw
-dLE
+dLn
+dLn
+dLn
 aax
 aaa
 aaa
@@ -116207,10 +116217,10 @@ dEU
 aem
 aeN
 afI
-dLi
+dLh
 dLp
-dLx
-dLF
+dLp
+dLp
 aax
 aaa
 aaa
@@ -116466,8 +116476,8 @@ aeO
 afV
 dLj
 dLq
-dLy
-dLG
+dLq
+dLq
 aax
 aaa
 aaa
@@ -116722,9 +116732,9 @@ abe
 aeP
 afV
 agE
-dLr
-dLz
-dLH
+dLn
+dLn
+dLn
 aax
 aaa
 aaa
@@ -116979,9 +116989,9 @@ dIC
 dLg
 afV
 agE
-dLs
-dLA
-dLI
+dLn
+dLn
+dLn
 aax
 aaa
 aaa
@@ -117235,10 +117245,10 @@ adS
 add
 aeR
 afV
-dLk
+dLh
 dLt
-dLB
-dLJ
+dLp
+dLp
 aax
 aaa
 aaa
@@ -117490,7 +117500,7 @@ dID
 adw
 dIE
 dID
-aeS
+dLg
 afM
 abe
 ahx
@@ -119037,7 +119047,7 @@ afG
 dLl
 dEX
 dEY
-dLK
+dLl
 dLL
 dEY
 dEY
@@ -138850,7 +138860,7 @@ dex
 aJu
 ddZ
 ddZ
-ddZ
+dLN
 aMo
 dff
 ddZ
@@ -139108,7 +139118,7 @@ aHa
 ddZ
 ddZ
 ddZ
-ddZ
+aMo
 ddZ
 ddZ
 ddZ

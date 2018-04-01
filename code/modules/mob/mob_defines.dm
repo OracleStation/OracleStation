@@ -148,6 +148,8 @@
 
 	var/list/mousemove_intercept_objects
 
+	var/datum/click_intercept
+
 	var/ventcrawl_layer = PIPING_LAYER_DEFAULT
 
 	var/adminfrozen = 0 //handle for someone's sleeping time from before they got frozen
@@ -156,4 +158,3 @@
 	var/player_logged = FALSE //keep track at login and logout; used for SSD
 
 	var/last_pointed = 0 //for pointing cooldown
-

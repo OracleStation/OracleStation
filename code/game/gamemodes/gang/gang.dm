@@ -362,7 +362,7 @@ GLOBAL_LIST_INIT(gang_outfit_pool, list(/obj/item/clothing/suit/jacket/leather, 
 	var/len_before_addition
 
 	for(var/datum/gang/G in gangs)
-		round_credits += "<center><h1>The [G.name] Gang:</h1></center>"
+		round_credits += "<center><h1>The [G.name] Gang:</h1>"
 		len_before_addition = round_credits.len
 		for(var/datum/mind/boss in G.bosses)
 			round_credits += "<center><h2>[boss.name] as a [G.name] Gang leader</h2>"
