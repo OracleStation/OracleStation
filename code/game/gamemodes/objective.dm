@@ -371,7 +371,14 @@ GLOBAL_LIST_EMPTY(objectives)
 	var/target_missing_id
 
 /datum/objective/escape/escape_with_identity/find_target()
-	target = ..()
+	var/list/possible_targets = list()
+	for(var/datum/mind/possible_target in get_crewmember_minds())
+		if(possible_target != owner && ishuman(possible_target.current) && possible_target.current.has_dna() && (possible_target.current.stat != DEAD) && is_unique_objective(possible_target))
+			possible_targets += possible_target
+	if(possible_targets.len > 0)
+		target = pick(possible_targets)
+	else
+		target = null//we'd rather have no target than an invalid one
 	update_explanation_text()
 
 /datum/objective/escape/escape_with_identity/update_explanation_text()
