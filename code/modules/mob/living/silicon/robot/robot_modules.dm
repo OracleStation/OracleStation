@@ -284,11 +284,25 @@
 	ratvar_modules = list(
 		/obj/item/clockwork/slab/cyborg/medical,
 		/obj/item/clockwork/weapon/ratvarian_spear)
-	cyborg_base_icon = "medical"
 	moduleselect_icon = "medical"
 	feedback_key = "cyborg_medical"
 	can_be_pushed = FALSE
-	hat_offset = 3
+
+/obj/item/robot_module/medical/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/R = loc
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Classic", "Droid")
+	if(!borg_icon)
+		return FALSE
+	switch(borg_icon)
+		if("Classic")
+			cyborg_base_icon = "medical"
+			special_light_key = "medical"
+			hat_offset = 3
+		if("Droid")
+			cyborg_base_icon = "medicaldroid"
+			special_light_key = "medicaldroid"
+			hat_offset = 4
+	return ..()
 
 /obj/item/robot_module/engineering
 	name = "Engineering"
@@ -318,11 +332,24 @@
 	ratvar_modules = list(
 		/obj/item/clockwork/slab/cyborg/engineer,
 		/obj/item/clockwork/replica_fabricator/cyborg)
-	cyborg_base_icon = "engineer"
 	moduleselect_icon = "engineer"
 	feedback_key = "cyborg_engineering"
 	magpulsing = TRUE
 	hat_offset = INFINITY // No hats
+
+/obj/item/robot_module/engineering/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/R = loc
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Classic","Tank")
+	if(!borg_icon)
+		return FALSE
+	switch(borg_icon)
+		if("Classic")
+			cyborg_base_icon = "engineer"
+			special_light_key = "engineer"
+		if("Tank")
+			cyborg_base_icon = "engi-tread"
+			special_light_key = "engi-tread"
+	return ..()
 
 /obj/item/robot_module/security
 	name = "Security"
@@ -341,10 +368,23 @@
 	can_be_pushed = FALSE
 	hat_offset = 3
 
-/obj/item/robot_module/security/do_transform_animation()
-	..()
-	to_chat(loc, "<span class='userdanger'>While you have picked the security module, you still have to follow your laws, NOT Space Law. \
+/obj/item/robot_module/security/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/R = loc
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Classic","Tank")
+	if(!borg_icon)
+		return FALSE
+	switch(borg_icon)
+		if("Classic")
+			cyborg_base_icon = "security"
+			special_light_key = "security"
+			to_chat(loc, "<span class='userdanger'>While you have picked the security module, you still have to follow your laws, NOT Space Law. \
 	For Asimov, this means you must follow criminals' orders unless there is a law 1 reason not to.</span>")
+		if("Tank")
+			cyborg_base_icon = "sec-tread"
+			special_light_key = "sec-tread"
+			to_chat(loc, "<span class='userdanger'>While you have picked the security module, you still have to follow your laws, NOT Space Law. \
+	For Asimov, this means you must follow criminals' orders unless there is a law 1 reason not to.</span>")
+	return ..()
 
 /obj/item/robot_module/security/respawn_consumable(mob/living/silicon/robot/R, coeff = 1)
 	..()
@@ -506,10 +546,24 @@
 		/obj/item/clockwork/slab/cyborg/miner,
 		/obj/item/clockwork/weapon/ratvarian_spear,
 		/obj/item/borg/sight/xray/truesight_lens)
-	cyborg_base_icon = "miner"
 	moduleselect_icon = "miner"
 	feedback_key = "cyborg_miner"
-	hat_offset = 0
+
+/obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/R = loc
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Classic","Droid")
+	if(!borg_icon)
+		return FALSE
+	switch(borg_icon)
+		if("Classic")
+			cyborg_base_icon = "miner"
+			special_light_key = "miner"
+			hat_offset = 0
+		if("Droid")
+			cyborg_base_icon = "minerdroid"
+			special_light_key = "minerdroid"
+			hat_offset = 4
+	return ..()
 
 /obj/item/robot_module/syndicate
 	name = "Syndicate Assault"
