@@ -612,6 +612,7 @@
 	round_credits += "<br>"
 
 	// CIVILIANS
+	var/list/human_garbage = list()
 	round_credits += "<center><h1>The Hardy Civilians:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.civilian_positions))
