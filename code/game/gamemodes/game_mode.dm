@@ -615,10 +615,20 @@
 	round_credits += "<center><h1>The Hardy Civilians:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.civilian_positions))
-		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+		if(current.assigned_role == "Assistant")
+			human_garbage += current
+		else
+			round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
 	if(round_credits.len == len_before_addition)
 		round_credits += list("<center><h2>Everyone was stuck in traffic this morning!</h2>", "<center><h2>No civilians made it to work!</h2>")
 	round_credits += "<br>"
+
+	round_credits += "<center><h1>The Helpful Assistants:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/current in human_garbage)
+		round_credits += "<center><h2>[current.name]</h2>"
+	if(round_credits.len == len_before_addition)
+		round_credits += list("<center><h2>The station was free of <s>greytide</s> assistance!</h2>", "<center><h2>Not a single Assistant showed up on the station today!</h2>")
 
 	round_credits += "<center><h1>Thanks for playing</h1>"
 
