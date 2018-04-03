@@ -42,7 +42,7 @@ GLOBAL_LIST(end_titles)
 	. = ..()
 	parent = P
 	maptext = credited
-	maptext_height = world.icon_size * 1
+	maptext_height = world.icon_size * 2
 	maptext_width = world.icon_size * 13
 	var/matrix/M = matrix(transform)
 	M.Translate(0, CREDIT_ANIMATE_HEIGHT)

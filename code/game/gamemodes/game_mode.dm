@@ -631,6 +631,8 @@
 	if(round_credits.len == len_before_addition)
 		round_credits += list("<center><h2>The station was free of <s>greytide</s> assistance!</h2>", "<center><h2>Not a single Assistant showed up on the station today!</h2>")
 
+	round_credits += "<br>"
+	round_credits += "<br>"
 	round_credits += "<center><h1>Thanks for playing</h1>"
 
 	return round_credits
