@@ -1208,6 +1208,8 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	set category = "Special Verbs"
 	set desc = "Cleans the air in a radius of harmful gasses like plasma and n2o "
 	var/size = input("How big?", "Input") in list(5, 10, 20, "Cancel")
+	if(!check_rights(R_ADMIN))
+		return
 	if(size == "Cancel")
 		return 0
 	for(var/turf/open/floor/T in range(size))
@@ -1230,6 +1232,8 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	set category = "Special Verbs"
 	set desc = "Spawns plating over space breachs"
 	var/size = input("How big?", "Input") in list(5, 10, "Cancel")
+	if(!check_rights(R_ADMIN))
+		return
 	if(size == "Cancel")
 		return 0
 	for(var/turf/open/space/T in range(size))
