@@ -182,7 +182,7 @@
 	if(target.mind && target.mind.changeling)
 		to_chat(user, "<span class='warning'>They are one with the hivemind. We've located [target.mind.changeling.changelingID]!</span>")
 		spawn(rand(10, 20))
-			to_chat(target, "<span class='warning'>We feel...violated. Another one of the hivemind has located us through a sting!</span>")
+			to_chat(target, "<span class='warning'>We feel... violated. Another one of the hivemind has located us through a sting!</span>")
 	else if(!target.mind)
 		to_chat(user, "<span class='notice'>This creature is far too simple to be one of us.</span>")
 	else
