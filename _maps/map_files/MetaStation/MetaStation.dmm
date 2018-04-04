@@ -20476,6 +20476,9 @@
 "aNO" = (
 /obj/structure/closet/secure_closet/quartermaster,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/top,
+/obj/machinery/keycard_auth{
+	pixel_y = 25
+	},
 /turf/open/floor/plasteel/brown{
 	dir = 9
 	},
