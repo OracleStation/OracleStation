@@ -148,38 +148,6 @@
 /proc/is_internal_objective(datum/objective/O)
 	return (istype(O, /datum/objective/assassinate/internal)||istype(O, /datum/objective/destroy/internal))
 
-/datum/antagonist/traitor/proc/replace_escape_objective()
-	if(!owner||!owner.objectives)
-		return
-	for (var/objective_ in owner.objectives)
-		if(!(istype(objective_, /datum/objective/escape)||istype(objective_, /datum/objective/survive)))
-			continue
-		remove_objective(objective_)
-
-	var/datum/objective/martyr/martyr_objective = new
-	martyr_objective.owner = owner
-	add_objective(martyr_objective)
-
-/datum/antagonist/traitor/proc/reinstate_escape_objective()
-	if(!owner||!owner.objectives)
-		return
-	for (var/objective_ in owner.objectives)
-		if(!istype(objective_, /datum/objective/martyr))
-			continue
-		remove_objective(objective_)
-
-/datum/antagonist/traitor/human/sleeper_agent/reinstate_escape_objective()
-	..()
-	var/datum/objective/escape/escape_objective = new
-	escape_objective.owner = owner
-	add_objective(escape_objective)
-
-/datum/antagonist/traitor/AI/sleeper_agent/reinstate_escape_objective()
-	..()
-	var/datum/objective/survive/survive_objective = new
-	survive_objective.owner = owner
-	add_objective(survive_objective)
-
 /datum/antagonist/traitor/proc/steal_targets(datum/mind/victim)
 	var/datum/antagonist/traitor/human/sleeper_agent/this = src //Should only use this if sleeper agent
 
@@ -222,11 +190,7 @@
 			this.last_man_standing = FALSE
 			return
 	if(this.last_man_standing)
-		if(this.syndicate)
-			to_chat(owner.current,"<span class='userdanger'> All the loyalist agents are dead, and no more is required of you. Die a glorious death, agent. </span>")
-		else
-			to_chat(owner.current,"<span class='userdanger'> All the other agents are dead, and you're the last loose end. Stage a Syndicate terrorist attack to cover up for today's events and die a glorious death.</span>")
-		replace_escape_objective(owner)
+		to_chat(owner.current,"<span class='userdanger'> All the [this.syndicate ? "Nanotrasen" : "Syndicate"] agents are dead, and no more is required of you. [pick("Treat yourself to a cold one", "Feel free to relax before exfiltration", "Wind down a bit at the bar")], agent. </span>")
 
 /datum/antagonist/traitor/proc/sleeper_agent_process()
 	var/datum/antagonist/traitor/human/sleeper_agent/this = src //Should only use this if sleeper agent
@@ -247,11 +211,7 @@
 				if(objective.stolen)
 					var/fail_msg = "<span class='userdanger'>Your sensors tell you that [objective.target.current.real_name], one of the targets you were meant to have killed, pulled one over on you, and is still alive - do the job properly this time! </span>"
 					if(this.last_man_standing)
-						if(this.syndicate)
-							fail_msg += "<span class='userdanger'> You no longer have permission to die. </span>"
-						else
-							fail_msg += "<span class='userdanger'> The truth could still slip out!</font><B><font size=5 color=red> Cease any terrorist actions as soon as possible, unneeded property damage or loss of employee life will lead to your contract being terminated.</span>"
-						reinstate_escape_objective(owner)
+						fail_msg += "<span class='userdanger'> Get back in there and finish the job. </span>"
 						this.last_man_standing = FALSE
 					to_chat(owner.current, fail_msg)
 					objective.stolen = FALSE
