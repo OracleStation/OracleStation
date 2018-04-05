@@ -1221,7 +1221,6 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 				A.gases["o2"][MOLES] = MOLES_O2STANDARD
 				A.gases["n2"][MOLES] = MOLES_N2STANDARD
 				A.gases["co2"][MOLES] = 0
-				A.gases["freon"][MOLES] = 0
 				A.gases["plasma"][MOLES] = 0
 				A.temperature = T20C
 	message_admins("[key_name(src)] cleaned air within [size] tiles.")
@@ -1249,7 +1248,6 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 				A.gases["o2"][MOLES] = MOLES_O2STANDARD
 				A.gases["n2"][MOLES] = MOLES_N2STANDARD
 				A.gases["co2"][MOLES] = 0
-				A.gases["freon"][MOLES] = 0
 				A.gases["plasma"][MOLES] = 0
 				A.temperature = T20C
 	message_admins("[key_name(src)] filled the hull breaches in [size] tiles.")
