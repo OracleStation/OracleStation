@@ -157,9 +157,9 @@
 			break
 
 	if(martyr_compatibility && martyr_chance)
-		var/datum/objective/martyr/martyr_objective = new
-		martyr_objective.owner = owner
-		add_objective(martyr_objective)
+		//Nothing happens.
+		//No martyr objective, but no need to escape.
+		//Do what you want, I don't care.
 		return
 
 	else
