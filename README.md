@@ -81,7 +81,7 @@ https://github.com/tgstation/tgstation-server
 
 ## MAPS
 
-Oraclestation currently comes equipped with six maps.
+Oraclestation currently comes equipped with five maps.
 
 * [BoxStation (default)](http://tgstation13.org/wiki/Boxstation)
 * [MetaStation](https://tgstation13.org/wiki/MetaStation)
