@@ -1206,7 +1206,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 /client/proc/reset_atmos()
 	set name = "Clean Air"
 	set category = "Special Verbs"
-	set desc = "Cleans the air in a radius of harmful gasses like plasma and n2o "
+	set desc = "Cleans the air in a radius of harmful gasses like plasma and n2o"
 	var/size = input("How big?", "Input") in list(5, 10, 20, "Cancel")
 	if(!check_rights(R_ADMIN))
 		return
@@ -1221,6 +1221,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 				A.gases["o2"][MOLES] = MOLES_O2STANDARD
 				A.gases["n2"][MOLES] = MOLES_N2STANDARD
 				A.gases["co2"][MOLES] = 0
+				A.gases["freon"][MOLES] = 0
 				A.gases["plasma"][MOLES] = 0
 				A.temperature = T20C
 	message_admins("[key_name(src)] cleaned air within [size] tiles.")
@@ -1228,9 +1229,9 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 
 
 /client/proc/fill_breach()
-	set name = "Fill Hull Breach"
+	set name = "Fill Hull Breaches"
 	set category = "Special Verbs"
-	set desc = "Spawns plating over space breachs"
+	set desc = "Spawns plating over space breaches"
 	var/size = input("How big?", "Input") in list(5, 10, "Cancel")
 	if(!check_rights(R_ADMIN))
 		return
@@ -1248,10 +1249,11 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 				A.gases["o2"][MOLES] = MOLES_O2STANDARD
 				A.gases["n2"][MOLES] = MOLES_N2STANDARD
 				A.gases["co2"][MOLES] = 0
+				A.gases["freon"][MOLES] = 0
 				A.gases["plasma"][MOLES] = 0
 				A.temperature = T20C
-	message_admins("[key_name(src)] filled the hullbreachs in [size] tiles.")
-	log_game("[key_name(src)] filled the hullbreachs in [size] tiles.")
+	message_admins("[key_name(src)] filled the hull breaches in [size] tiles.")
+	log_game("[key_name(src)] filled the hull breaches in [size] tiles.")
 
 
 /client/proc/smite(mob/living/carbon/human/target as mob)
