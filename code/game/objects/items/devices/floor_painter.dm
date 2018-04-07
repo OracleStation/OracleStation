@@ -17,6 +17,10 @@
 
 	var/obj/item/device/toner/ink = null
 
+	var/static/list/star_directions = list("north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest")
+	var/static/list/cardinal_directions = list("north", "east", "south", "west")
+	var/list/allowed_directions = list("south")
+
 	var/static/list/allowed_states = list(
 		"floor", "stairs", "stairs-l", "stairs-m", "stairs-r", "cafeteria", "chapel", "cmo", "barber", "bar",
 		"arrival", "arrivalcorner", "escape", "escapecorner", "freezerfloor", "solarpanel",
@@ -36,7 +40,7 @@
 		"L1","L2","L3","L4","L5","L6","L7","L8","L9","L10","L11","L12","L13","L14"
 		)
 
-/obj/item/device/floor_painter/New()
+/obj/item/device/floor_painter/Initialize()
 	..()
 	ink = new /obj/item/device/toner(src)
 
@@ -91,6 +95,9 @@
 		to_chat(user, "<span class='warning'>\The [src] can only be used on station flooring.</span>")
 		return
 
+	if(F.dir == floor_dir && F.icon_state == floor_state && F.icon_regular_floor == floor_state)
+		return //No point wasting ink
+
 	F.icon_state = floor_state
 	F.icon_regular_floor = floor_state
 	F.dir = floor_dir
@@ -115,13 +122,19 @@
 	user << browse_rsc(floor_icon, "floor.png")
 	var/dat = {"
 		<center>
-		<a href="?src=[UID()];cycleleft=1">&lt;-</a>
-		<img style="-ms-interpolation-mode: nearest-neighbor;" src="floor.png" width=128 height=128 border=4>
-		<a href="?src=[UID()];cycleright=1">-&gt;</a>
+			<img style="-ms-interpolation-mode: nearest-neighbor;" src="floor.png" width=128 height=128 border=4>
 		</center>
-		<a href="?src=[UID()];choose_state=1">Choose Style</a>
+		<center>
+			<a href="?src=[UID()];cycleleft=1">&lt;-</a>
+			<a href="?src=[UID()];choose_state=1">Choose Style</a>
+			<a href="?src=[UID()];cycleright=1">-&gt;</a>
+		</center>
 		<div class='statusDisplay'>Style: [floor_state]</div>
-		<a href="?src=[UID()];choose_dir=1">Choose Direction</a>
+		<center>
+			<a href="?src=[UID()];cycledirleft=1">&lt;-</a>
+			<a href="?src=[UID()];choose_dir=1">Choose Direction</a>
+			<a href="?src=[UID()];cycledirright=1">-&gt;</a>
+		</center>
 		<div class='statusDisplay'>Direction: [dir2text(floor_dir)]</div>
 	"}
 
@@ -137,26 +150,52 @@
 		var/state = input("Please select a style", "[src]") as null|anything in allowed_states
 		if(state)
 			floor_state = state
-			floor_dir = SOUTH // Reset dir, because some icon_states might not have that dir.
+			check_directional_tile()
 	if(href_list["choose_dir"])
-		var/seldir = input("Please select a direction", "[src]") as null|anything in list("north", "south", "east", "west", "northeast", "northwest", "southeast", "southwest")
+		var/seldir = input("Please select a direction", "[src]") as null|anything in allowed_directions
 		if(seldir)
 			floor_dir = text2dir(seldir)
+	if(href_list["cycledirleft"])
+		var/index = allowed_directions.Find(dir2text(floor_dir))
+		index--
+		if(index < 1)
+			index = allowed_directions.len
+		floor_dir = text2dir(allowed_directions[index])
+	if(href_list["cycledirright"])
+		var/index = allowed_directions.Find(dir2text(floor_dir))
+		index++
+		if(index > allowed_directions.len)
+			index = 1
+		floor_dir = text2dir(allowed_directions[index])
 	if(href_list["cycleleft"])
 		var/index = allowed_states.Find(floor_state)
 		index--
 		if(index < 1)
 			index = allowed_states.len
 		floor_state = allowed_states[index]
-		floor_dir = SOUTH
+		check_directional_tile()
 	if(href_list["cycleright"])
 		var/index = allowed_states.Find(floor_state)
 		index++
 		if(index > allowed_states.len)
 			index = 1
 		floor_state = allowed_states[index]
-		floor_dir = SOUTH
+		check_directional_tile()
 
 	floor_icon = icon('icons/turf/floors.dmi', floor_state, floor_dir)
 	if(usr)
 		attack_self(usr)
+
+/obj/item/device/floor_painter/proc/check_directional_tile()
+	var/icon/current = icon('icons/turf/floors.dmi', floor_state, NORTHWEST)
+	if(current.GetPixel(1,1) != null)
+		allowed_directions = star_directions
+	else
+		current = icon('icons/turf/floors.dmi', floor_state, WEST)
+		if(current.GetPixel(1,1) != null)
+			allowed_directions = cardinal_directions
+		else
+			allowed_directions = list("south")
+
+	if(!(dir2text(floor_dir) in allowed_directions))
+		floor_dir = SOUTH
