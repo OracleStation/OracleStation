@@ -3,6 +3,7 @@
 	anchored = TRUE
 	resistance_flags = FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	layer = TURF_LAYER
+	plane = OPENTURF_PLANE
 
 /obj/effect/decal/ex_act(severity, target)
 	destroy_effect()
