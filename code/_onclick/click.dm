@@ -396,8 +396,13 @@
 
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
 /mob/proc/face_atom(atom/A)
-	if( buckled || stat != CONSCIOUS || !A || !x || !y || !A.x || !A.y )
+	if( stat != CONSCIOUS || !A || !x || !y || !A.x || !A.y )
 		return
+
+	if(buckled) //allows rolling chairs to rotate with you, a nice touch
+		if(!buckled.can_buckled_rotate)
+			return
+
 	var/dx = A.x - x
 	var/dy = A.y - y
 	if(!dx && !dy) // Wall items are graphically shifted but on the floor
@@ -421,6 +426,9 @@
 			setDir(EAST)
 		else
 			setDir(WEST)
+
+	if(buckled && buckled.can_buckled_rotate) //face whatever we are buckled to if it can rotate too
+		buckled.setDir(dir)
 
 /obj/screen/click_catcher
 	icon = 'icons/mob/screen_gen.dmi'
