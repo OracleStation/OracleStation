@@ -43402,7 +43402,7 @@
 /obj/machinery/door/airlock/command{
 	name = "Telecomms Control Room";
 	req_access = null;
-	req_access_txt = "19; 61"
+	req_access_txt = "19; 61; 69"
 	},
 /turf/open/floor/plasteel/vault{
 	dir = 8
