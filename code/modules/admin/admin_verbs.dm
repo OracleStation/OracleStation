@@ -77,6 +77,8 @@ GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 	/client/proc/cmd_admin_rejuvenate,
 	/client/proc/cmd_admin_freeze,
 	/client/proc/respawn_character,
+	/client/proc/reset_atmos,
+	/client/proc/fill_breach,
 	/datum/admins/proc/startnow,
 	/datum/admins/proc/restart,
 	/datum/admins/proc/end_round,
