@@ -1202,6 +1202,58 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 
 	SSblackbox.add_details("admin_toggle","Toggled Hub Visibility|[GLOB.hub_visibility]") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+
+/client/proc/reset_atmos()
+	set name = "Clean Air"
+	set category = "Special Verbs"
+	set desc = "Cleans the air in a radius of harmful gasses like plasma and n2o"
+	var/size = input("How big?", "Input") in list(5, 10, 20, "Cancel")
+	if(!check_rights(R_ADMIN))
+		return
+	if(size == "Cancel")
+		return 0
+	for(var/turf/open/floor/T in range(size))
+		if(T.air)
+			var/datum/gas_mixture/A = T.air
+			T.overlays.Cut()
+			if(A)
+				A.assert_gases(arglist(GLOB.hardcoded_gases))
+				A.gases["o2"][MOLES] = MOLES_O2STANDARD
+				A.gases["n2"][MOLES] = MOLES_N2STANDARD
+				A.gases["co2"][MOLES] = 0
+				A.gases["plasma"][MOLES] = 0
+				A.temperature = T20C
+	message_admins("[key_name(src)] cleaned air within [size] tiles.")
+	log_game("[key_name(src)] cleaned air within [size] tiles.")
+
+
+/client/proc/fill_breach()
+	set name = "Fill Hull Breaches"
+	set category = "Special Verbs"
+	set desc = "Spawns plating over space breaches"
+	var/size = input("How big?", "Input") in list(5, 10, "Cancel")
+	if(!check_rights(R_ADMIN))
+		return
+	if(size == "Cancel")
+		return 0
+	for(var/turf/open/space/T in range(size))
+		T.ChangeTurf(/turf/open/floor/plating)
+	spawn(1)
+	for(var/turf/open/floor/T in range(size))
+		if(T.air)
+			var/datum/gas_mixture/A = T.air
+			T.overlays.Cut()
+			if(A)
+				A.assert_gases(arglist(GLOB.hardcoded_gases))
+				A.gases["o2"][MOLES] = MOLES_O2STANDARD
+				A.gases["n2"][MOLES] = MOLES_N2STANDARD
+				A.gases["co2"][MOLES] = 0
+				A.gases["plasma"][MOLES] = 0
+				A.temperature = T20C
+	message_admins("[key_name(src)] filled the hull breaches in [size] tiles.")
+	log_game("[key_name(src)] filled the hull breaches in [size] tiles.")
+
+
 /client/proc/smite(mob/living/carbon/human/target as mob)
 	set name = "Smite"
 	set category = "Fun"
