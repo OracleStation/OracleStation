@@ -23,8 +23,12 @@
 //Only call this if you are certain that the painter will be used right after this check!
 /obj/item/airlock_painter/proc/use(mob/user)
 	if(can_use(user))
+
+		if(ink.charges > 1)
+			playsound(src.loc, 'sound/effects/spray2.ogg', 50, 1)
+		else
+			playsound(src.loc, 'sound/effects/spray3.ogg', 50, 1)
 		ink.charges--
-		playsound(src.loc, 'sound/effects/spray2.ogg', 50, 1)
 		return 1
 	else
 		return 0
