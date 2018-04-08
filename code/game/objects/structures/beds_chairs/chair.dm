@@ -193,6 +193,7 @@
 	anchored = FALSE
 	buildstackamount = 5
 	item_chair = null
+	can_buckled_rotate = TRUE
 
 /obj/structure/chair/office/light
 	icon_state = "officechair_white"

@@ -7,6 +7,7 @@
 	var/list/mob/living/buckled_mobs = null //list()
 	var/max_buckled_mobs = 1
 	var/buckle_prevents_pull = FALSE
+	var/can_buckled_rotate = FALSE //can people rotate when buckled to this object? eg: rolling chairs
 
 //Interaction
 /atom/movable/attack_hand(mob/living/user)
