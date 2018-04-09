@@ -22,21 +22,20 @@
 	var/list/allowed_directions = list("south")
 
 	var/static/list/allowed_states = list(
-		"floor", "stairs", "stairs-l", "stairs-m", "stairs-r", "cafeteria", "chapel", "cmo", "barber", "bar",
-		"arrival", "arrivalcorner", "escape", "escapecorner", "freezerfloor", "solarpanel",
-		"delivery", "whitedelivery", "bot", "whitebot", "loadingarea", "recharge_floor",
-		"red", "redcorner", "redfull", "whitered", "whiteredcorner",
-		"blue", "bluecorner", "bluefull", "whiteblue", "whitebluecorner",
+		"floor", "delivery",  "bot", "loadingarea", "recharge_floor",	"stairs", "stairs-l", "stairs-m", "stairs-r",
+		"cafeteria", "chapel", "cmo", "barber", "bar", "freezerfloor", "solarpanel",
+		"arrival", "arrivalcorner", "escape", "escapecorner", "caution", "cautioncorner", "cautionfull",
+		"red", "redcorner", "redfull", "whitered", "whiteredcorner", "darkred", "darkredcorners",
+		"blue", "bluecorner", "bluefull", "whiteblue", "whitebluecorner", "darkblue", "darkbluecorners",
 		"green", "greencorner", "greenfull", "whitegreen", "whitegreencorner",
-		"yellow", "yellowcorner", "yellowfull", "whiteyellow", "whiteyellowcorner",
-		"purple", "purplecorner", "purplefull", "whitepurple", "whitepurplecorner",
+		"yellow", "yellowcorner", "yellowfull", "whiteyellow", "whiteyellowcorner", "darkyellow", "darkyellowcorners",
+		"purple", "purplecorner", "purplefull", "whitepurple", "whitepurplecorner", "darkpurple", "darkpurplecorners",
 		"neutral", "neutralcorner", "neutralfull", "orange", "orangecorner", "orangefull",
-		"black", "blackcorner", "caution", "cautioncorner", "cautionfull",
-		"brown", "browncorner", "white", "whitehall", "whitecorner",
+		"black", "blackcorner", "dark",
+		"brown", "browncorner", "darkbrown", "darkbrowncorners",
+		"white", "whitedelivery", "whitebot", "whitehall", "whitecorner",
 		"redblue", "bluered", "redbluefull", "redgreen", "redgreenfull",
 		"greenyellow", "greenyellowfull", "greenblue", "greenbluefull", "blueyellow", "blueyellowfull",
-		"darkpurple", "darkpurplecorners", "darkred", "darkredcorners", "darkblue", "darkbluecorners",
-		"darkyellow", "darkyellowcorners", "darkbrown", "darkbrowncorners", "dark",
 		"L1","L2","L3","L4","L5","L6","L7","L8","L9","L10","L11","L12","L13","L14"
 		)
 
@@ -106,6 +105,7 @@
 		playsound(src, 'sound/effects/spray2.ogg', 50, 1)
 	else
 		playsound(src, 'sound/effects/spray3.ogg', 50, 1)
+		ink.name = "empty " + ink.name
 
 	ink.charges -= charge_per_use
 
