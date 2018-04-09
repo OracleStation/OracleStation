@@ -170,3 +170,11 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/pigblanket
 	subcategory = CAT_MEAT
+
+/datum/crafting_recipe/food/dogtreat
+	name = "Dog Treats"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/meat/slab = 1
+		)
+	result = /obj/item/reagent_containers/food/snacks/dogtreat
+	subcategory = CAT_MEAT

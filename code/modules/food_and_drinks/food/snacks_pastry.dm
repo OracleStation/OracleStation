@@ -219,6 +219,16 @@
 	tastes = list("pretzel" = 1)
 	foodtype = GRAIN | SUGAR
 
+/obj/item/reagent_containers/food/snacks/dogtreat
+	name = "dog treat"
+	desc = "For good boys only."
+	icon_state = "good-boy"
+	bonus_reagents = list("nutriment" = 1, "vitamin" = 1)
+	list_reagents = list("nutriment" = 3)
+	filling_color = "#873608"
+	tastes = list("dog food" = 1)
+	foodtype = RAW | MEAT
+
 /obj/item/reagent_containers/food/snacks/plumphelmetbiscuit
 	name = "plump helmet biscuit"
 	desc = "This is a finely-prepared plump helmet biscuit. The ingredients are exceptionally minced plump helmet, and well-minced dwarven wheat flour."
