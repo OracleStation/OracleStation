@@ -243,7 +243,7 @@
 	var/mob/living/mob_occupant = occupant
 
 	if(istype(SSticker.mode, /datum/game_mode/cult))//thank
-		if("sacrifice" in SSticker.mode.cult_objectives)
+		if(("sacrifice" in SSticker.mode.cult_objectives) && (GLOB.sac_mind == mob_occupant.mind))
 			var/list/possible_targets = list()
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
 				if(H.mind && !is_convertable_to_cult(H) && !iscultist(H))
@@ -269,7 +269,6 @@
 					reshape.Crop(7,4,26,31)
 					reshape.Crop(-5,-3,26,30)
 					GLOB.sac_image = reshape
-
 					for(var/datum/mind/H in SSticker.mode.cult)
 						if(H.current)
 							to_chat(H.current, "<span class='danger'>Nar'Sie</span> murmurs, <span class='cultlarge'>[occupant] is beyond your reach. Sacrifice [GLOB.sac_mind.current] instead...</span></span>")
