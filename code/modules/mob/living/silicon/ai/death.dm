@@ -20,7 +20,7 @@
 	SSshuttle.autoEvac()
 
 	ShutOffDoomsdayDevice()
-
+	malf_picker.remove_malf_verbs() 
 	if(explosive)
 		spawn(10)
 			explosion(src.loc, 3, 6, 12, 15)
