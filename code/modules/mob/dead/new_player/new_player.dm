@@ -84,6 +84,8 @@
 			stat("Time To Start:", (time_remaining >= 0) ? "[round(time_remaining)]s" : "DELAYED")
 
 			stat("Players:", "[SSticker.totalPlayers]")
+			if(client.holder)
+				stat("Players Ready:", "[SSticker.totalPlayersReady]")
 
 
 /mob/dead/new_player/Topic(href, href_list[])
