@@ -2,7 +2,7 @@
 /obj/item/device/pipe_painter
 	name = "pipe painter"
 	icon = 'icons/obj/objects.dmi'
-	icon_state = "paint sprayer3"
+	icon_state = "paint_sprayer3"
 	item_state = "paint sprayer"
 	item_state = "flight"
 	flags_1 = NOBLUDGEON_1

@@ -3,7 +3,7 @@
 /obj/item/device/floor_painter
 	name = "floor painter"
 	icon = 'icons/obj/objects.dmi'
-	icon_state = "paint sprayer2"
+	icon_state = "paint_sprayer2"
 	item_state = "paint sprayer"
 
 	var/floor_icon
@@ -70,7 +70,7 @@
 		to_chat(user, "<span class='notice'>It doesn't have a toner cartridge installed.</span>")
 		return
 	var/ink_level = "high"
-	if(ink.charges <= 0)
+	if(ink.charges <= charge_per_use)
 		ink_level = "empty"
 	else if((ink.charges/ink.max_charges) <= 0.25) //25%
 		ink_level = "low"
@@ -85,7 +85,7 @@
 	if(!ink)
 		to_chat(user, "<span class='notice'>There is no toner cartridge installed in [src]!</span>")
 		return FALSE
-	else if(ink.charges <= 0)
+	else if(ink.charges <= charge_per_use)
 		to_chat(user, "<span class='notice'>[src] is out of ink!</span>")
 		return FALSE
 
