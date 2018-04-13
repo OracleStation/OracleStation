@@ -6,6 +6,7 @@
 	container_type = OPENCONTAINER_1
 	spillable = 1
 	resistance_flags = ACID_PROOF
+	you_drink_from_this = TRUE
 
 
 /obj/item/reagent_containers/glass/attack(mob/M, mob/user, obj/target)
@@ -297,6 +298,11 @@
 		slot_l_store, slot_r_store,\
 		slot_generic_dextrous_storage
 	)
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/head.dmi'
+		)
+
 
 /obj/item/reagent_containers/glass/bucket/attackby(obj/O, mob/user, params)
 	if(istype(O, /obj/item/mop))

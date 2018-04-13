@@ -9,6 +9,7 @@
 			<BR>
 			<A href='?src=[REF(src)];[HrefToken()];secrets=list_job_debug'>Show Job Debug</A><BR>
 			<A href='?src=[REF(src)];[HrefToken()];secrets=admin_log'>Admin Log</A><BR>
+			<A href='?src=[REF(src)];[HrefToken()];secrets=mentor_log'>Mentor Log</A><BR>
 			<A href='?src=[REF(src)];[HrefToken()];secrets=show_admins'>Show Admin List</A><BR>
 			<BR>
 			"}
@@ -101,6 +102,14 @@
 			if(!GLOB.admin_log.len)
 				dat += "No-one has done anything this round!"
 			usr << browse(dat, "window=admin_log")
+
+		if("mentor_log")
+			var/dat = "<B>Mentor Log<HR></B>"
+			for(var/l in GLOB.mentorlog)
+				dat += "<li>[l]</li>"
+			if(!GLOB.mentorlog.len)
+				dat += "No mentors have done anything this round!"
+			usr << browse(dat, "window=mentor_log")
 
 		if("list_job_debug")
 			var/dat = "<B>Job Debug info.</B><HR>"
@@ -438,7 +447,7 @@
 			SSblackbox.add_details("admin_secrets_fun_used","Mass Braindamage")
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
 				to_chat(H, "<span class='boldannounce'>You suddenly feel stupid.</span>")
-				H.setBrainLoss(60)
+				H.adjustBrainLoss(60, 80)
 			message_admins("[key_name_admin(usr)] made everybody retarded")
 
 		if("eagles")//SCRAW

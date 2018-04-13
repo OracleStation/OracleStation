@@ -99,7 +99,7 @@
 	access = CART_JANITOR | CART_DRONEPHONE
 	bot_access_flags = CLEAN_BOT
 
-/obj/item/cartridge/lawyer
+/obj/item/cartridge/iaa
 	name = "\improper P.R.O.V.E. cartridge"
 	icon_state = "cart-s"
 	access = CART_SECURITY

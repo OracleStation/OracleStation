@@ -162,8 +162,8 @@
 						return
 					if(SSshuttle.shuttle_purchased)
 						to_chat(usr, "A replacement shuttle has already been purchased.")
-					else if(!S.prerequisites_met())
-						to_chat(usr, "You have not met the requirements for purchasing this shuttle.")
+					else if(!S.prerequisites_met(usr))
+						//nothing, because I don't want to refactor this whole thing
 					else
 						if(SSshuttle.points >= S.credit_cost)
 							var/obj/machinery/shuttle_manipulator/M = locate() in GLOB.machines
@@ -401,6 +401,7 @@
 	if(emagged)
 		return
 	emagged = TRUE
+	SSshuttle.shuttle_purchase_requirements_met |= "emagged"
 	if(authenticated == 1)
 		authenticated = 2
 	to_chat(user, "<span class='danger'>You scramble the communication routing circuits!</span>")

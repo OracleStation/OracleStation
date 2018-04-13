@@ -123,7 +123,7 @@
 		return
 	broken = TRUE
 	spawn(1)//because otherwise it pops before the punch message; we don't want that
-		owner.visible_message("<span class='userdanger'>You hear a cracking sound coming from [owner]'s [parse_zone(src)].</span>", "<span class='warning'>You feel something crack in your [name]!</span>", "<span class='warning'>You hear an awful cracking sound.</span>")
+		owner.visible_message("<span class='userdanger'>You hear a cracking sound coming from [owner]'s [name].</span>", "<span class='warning'>You feel something crack in your [name]!</span>", "<span class='warning'>You hear an awful cracking sound.</span>")
 
 /obj/item/bodypart/proc/fix_bone()
 	broken = FALSE
@@ -155,7 +155,7 @@
 
 	if(status == BODYPART_ROBOTIC) //This makes robolimbs not damageable by chems and makes it stronger
 		brute = max(0, brute - 5)
-		burn = max(0, burn - 4)
+		burn = max(0, burn - 3)
 
 	switch(animal_origin)
 		if(ALIEN_BODYPART,LARVA_BODYPART) //aliens take double burn
@@ -267,7 +267,7 @@
 	has_bones = C.has_bones//get the carbon's default bone settings
 
 	if(C.disabilities & HUSK)
-		species_id = "husk" //overrides species_id
+		species_id = C.dna.species.husk_id //overrides species_id
 		dmg_overlay_type = "" //no damage overlay shown when husked
 		should_draw_gender = FALSE
 		should_draw_greyscale = FALSE

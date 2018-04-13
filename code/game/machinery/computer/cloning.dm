@@ -71,7 +71,7 @@
 		if(pod.occupant)
 			continue	//how though?
 
-		if(pod.growclone(R.fields["ckey"], R.fields["name"], R.fields["UI"], R.fields["SE"], R.fields["mind"], R.fields["mrace"], R.fields["features"], R.fields["factions"]))
+		if(pod.growclone(R.fields["ckey"], R.fields["name"], R.fields["UI"], R.fields["SE"], R.fields["UE"], R.fields["mind"], R.fields["mrace"], R.fields["features"], R.fields["factions"]))
 			records -= R
 
 /obj/machinery/computer/cloning/proc/updatemodules(findfirstcloner)
@@ -241,6 +241,7 @@
 
 				dat += "<b>Unique Identifier:</b><br /><span class='highlight'>[src.active_record.fields["UI"]]</span><br>"
 				dat += "<b>Structural Enzymes:</b><br /><span class='highlight'>[src.active_record.fields["SE"]]</span><br>"
+				dat += "<b>Unique Enzymes:</b><br /><span class='highlight'>[src.active_record.fields["UE"]]</span><br>"
 
 				if(diskette && diskette.fields)
 					dat += "<div class='block'>"
@@ -410,7 +411,7 @@
 			else if(pod.occupant)
 				temp = "<font class='bad'>Cloning cycle already in progress.</font>"
 				playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
-			else if(pod.growclone(C.fields["ckey"], C.fields["name"], C.fields["UI"], C.fields["SE"], C.fields["mind"], C.fields["mrace"], C.fields["features"], C.fields["factions"]))
+			else if(pod.growclone(C.fields["ckey"], C.fields["name"], C.fields["UI"], C.fields["SE"], C.fields["UE"], C.fields["mind"], C.fields["mrace"], C.fields["features"], C.fields["factions"]))
 				temp = "[C.fields["name"]] => <font class='good'>Cloning cycle in progress...</font>"
 				playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
 				records.Remove(C)
@@ -455,6 +456,10 @@
 		scantemp = "<span class='bad'>Subject no longer contains the fundamental materials required to create a living clone.</span>"
 		playsound(src, 'sound/machines/terminal_alert.ogg', 50, 0)
 		return
+	if(dna && dna.species && (DIFFICULTCLONE in dna.species.species_traits) && (src.scanner.scan_level < 2))
+		scantemp = "<span class='bad'>Subject's DNA is too complex or damage for current components to scan; upgraded components required.</span>"
+		playsound(src, 'sound/machines/terminal_alert.ogg', 50, 0)
+		return
 	if((!mob_occupant.ckey) || (!mob_occupant.client))
 		scantemp = "<span class='bad'>Mental interface failure.</span>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
@@ -484,6 +489,7 @@
 	R.fields["UE"] = dna.unique_enzymes
 	R.fields["UI"] = dna.uni_identity
 	R.fields["SE"] = dna.struc_enzymes
+	R.fields["UE"] = dna.unique_enzymes
 	R.fields["blood_type"] = dna.blood_type
 	R.fields["features"] = dna.features
 	R.fields["factions"] = mob_occupant.faction

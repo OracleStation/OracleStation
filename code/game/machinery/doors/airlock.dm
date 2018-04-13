@@ -98,6 +98,15 @@
 
 	var/static/list/airlock_overlays = list()
 
+	var/has_hatch = TRUE //If TRUE, this door has hatches, and certain small creatures can move through them without opening the door
+	var/hatchstate = 0 //0: closed, 1: open
+	var/hatch_offset_x = 0
+	var/hatch_offset_y = 0
+	var/hatch_colour = "#7d7d7d"
+	var/hatch_open_sound = 'sound/machines/hatch_open.ogg'
+	var/hatch_close_sound = 'sound/machines/hatch_close.ogg'
+	var/image/hatch_image
+
 /obj/machinery/door/airlock/Initialize()
 	. = ..()
 	wires = new /datum/wires/airlock(src)
@@ -142,8 +151,33 @@
 	diag_hud.add_to_hud(src)
 	diag_hud_set_electrified()
 
+	if(has_hatch)
+		setup_hatch()
 
 	update_icon()
+
+/obj/machinery/door/airlock/proc/setup_hatch()
+	hatch_image = image('icons/obj/doors/hatches.dmi', src, "hatch_closed", layer=(CLOSED_FIREDOOR_LAYER-0.01))
+	hatch_image.color = hatch_colour
+	hatch_image.pixel_x = hatch_offset_x
+	hatch_image.pixel_y = hatch_offset_y
+	update_icon()
+
+/obj/machinery/door/airlock/proc/open_hatch(var/atom/mover = null)
+	if(!hatchstate)
+		hatchstate = 1
+		update_icon()
+		playsound(src.loc, hatch_open_sound, 40, 1, -1)
+		addtimer(CALLBACK(src, .proc/close_hatch), 20, TIMER_OVERRIDE) //hatch stays open for 2 seconds
+
+	if(istype(mover, /mob/living/simple_animal/drone))
+		var/mob/living/simple_animal/drone/D = mover
+		D.under_door()
+
+/obj/machinery/door/airlock/proc/close_hatch()
+	hatchstate = 0
+	update_icon()
+	playsound(src.loc, hatch_close_sound, 30, 1, -1)
 
 /obj/machinery/door/airlock/proc/update_other_id()
 	for(var/obj/machinery/door/airlock/A in GLOB.airlocks)
@@ -405,6 +439,7 @@
 	var/mutable_appearance/sparks_overlay
 	var/mutable_appearance/note_overlay
 	var/notetype = note_type()
+	var/mutable_appearance/hatch_overlay
 
 	switch(state)
 		if(AIRLOCK_CLOSED)
@@ -431,6 +466,12 @@
 					lights_overlay = get_airlock_overlay("lights_emergency", overlays_file)
 			if(note)
 				note_overlay = get_airlock_overlay(notetype, note_overlay_file)
+			if(has_hatch)
+				if(hatchstate)
+					hatch_image.icon_state = "hatch_open"
+				else
+					hatch_image.icon_state = "hatch_closed"
+				hatch_overlay = hatch_image
 
 		if(AIRLOCK_DENY)
 			if(!hasPower())
@@ -454,6 +495,12 @@
 			lights_overlay = get_airlock_overlay("lights_denied", overlays_file)
 			if(note)
 				note_overlay = get_airlock_overlay(notetype, note_overlay_file)
+			if(has_hatch)
+				if(hatchstate)
+					hatch_image.icon_state = "hatch_open"
+				else
+					hatch_image.icon_state = "hatch_closed"
+				hatch_overlay = hatch_image
 
 		if(AIRLOCK_EMAG)
 			frame_overlay = get_airlock_overlay("closed", icon)
@@ -533,6 +580,8 @@
 	add_overlay(sparks_overlay)
 	add_overlay(damag_overlay)
 	add_overlay(note_overlay)
+	if(has_hatch && (AIRLOCK_CLOSED || AIRLOCK_DENY))
+		add_overlay(hatch_overlay)
 
 /proc/get_airlock_overlay(icon_state, icon_file)
 	var/obj/machinery/door/airlock/A
@@ -554,6 +603,12 @@
 				playsound(src,doorDeni,50,0,3)
 				sleep(6)
 				update_icon(AIRLOCK_CLOSED)
+
+/obj/machinery/door/airlock/CanPass(atom/movable/mover, turf/target)
+	. = ..()
+	if(density && has_hatch && mover.checkpass(PASSDOORHATCH))
+		open_hatch(mover)
+		return TRUE //If this airlock is closed, has hatches, and this creature can go through hatches, then we let it through without opening the airlock
 
 /obj/machinery/door/airlock/examine(mob/user)
 	..()
@@ -767,7 +822,7 @@
 
 	if(ishuman(user) && prob(40) && src.density)
 		var/mob/living/carbon/human/H = user
-		if(H.getBrainLoss() >= 60 && Adjacent(user))
+		if((H.disabilities & DUMB) && Adjacent(user))
 			playsound(src.loc, 'sound/effects/bang.ogg', 25, 1)
 			if(!istype(H.head, /obj/item/clothing/head/helmet))
 				H.visible_message("<span class='danger'>[user] headbutts the airlock.</span>", \
@@ -1248,7 +1303,7 @@
 		charge.forceMove(get_turf(user))
 		charge = null
 		return
-	if( beingcrowbarred && (density && welded && !operating && src.panel_open && (!hasPower()) && !src.locked) )
+	if(beingcrowbarred && panel_open && (emagged || (density && welded && !operating && !hasPower() && !locked)))
 		playsound(src.loc, I.usesound, 100, 1)
 		user.visible_message("[user] removes the electronics from the airlock assembly.", \
 							 "<span class='notice'>You start to remove electronics from the airlock assembly...</span>")

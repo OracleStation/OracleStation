@@ -269,7 +269,7 @@
 
 	var/launch_status = NOLAUNCH
 
-	var/list/movement_force = list("KNOCKDOWN" = 3, "THROW" = 0)
+	var/list/movement_force = list("KNOCKDOWN" = 3, "THROW" = 1, "IGNOREBUCKLE" = FALSE)
 
 	// A timid shuttle will not register itself with the shuttle subsystem
 	// All shuttle templates are timid

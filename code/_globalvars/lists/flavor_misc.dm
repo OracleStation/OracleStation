@@ -41,6 +41,13 @@ GLOBAL_LIST_EMPTY(r_wings_list)
 GLOBAL_LIST_EMPTY(ipc_screens_list)
 GLOBAL_LIST_EMPTY(ipc_antennas_list)
 GLOBAL_LIST_EMPTY(ipc_chassis_list)
+GLOBAL_LIST_EMPTY(vox_bodies_list)
+GLOBAL_LIST_EMPTY(vox_quills_list)
+GLOBAL_LIST_EMPTY(vox_facial_quills_list)
+GLOBAL_LIST_EMPTY(vox_eyes_list)
+GLOBAL_LIST_EMPTY(vox_tails_list)
+GLOBAL_LIST_EMPTY(vox_body_markings_list)
+GLOBAL_LIST_EMPTY(vox_tail_markings_list)
 
 GLOBAL_LIST_INIT(ghost_forms_with_directions_list, list("ghost")) //stores the ghost forms that support directional sprites
 GLOBAL_LIST_INIT(ghost_forms_with_accessories_list, list("ghost")) //stores the ghost forms that support hair and other such things
@@ -51,11 +58,13 @@ GLOBAL_LIST_INIT(security_depts_prefs, list(SEC_DEPT_RANDOM, SEC_DEPT_NONE, SEC_
 #define GBACKPACK "Grey Backpack"
 #define GSATCHEL "Grey Satchel"
 #define GDUFFELBAG "Grey Duffel Bag"
+#define GCOURIERBAG "Grey Messenger Bag"
 #define LSATCHEL "Leather Satchel"
 #define DBACKPACK "Department Backpack"
 #define DSATCHEL "Department Satchel"
 #define DDUFFELBAG "Department Duffel Bag"
-GLOBAL_LIST_INIT(backbaglist, list(DBACKPACK, DSATCHEL, DDUFFELBAG, GBACKPACK, GSATCHEL, GDUFFELBAG, LSATCHEL))
+#define DCOURIERBAG "Department Messenger Bag"
+GLOBAL_LIST_INIT(backbaglist, list(DBACKPACK, DSATCHEL, DCOURIERBAG, DDUFFELBAG, GBACKPACK, GSATCHEL, GCOURIERBAG, GDUFFELBAG, LSATCHEL))
 
 //Uplink spawn loc
 #define UPLINK_PDA		"PDA"

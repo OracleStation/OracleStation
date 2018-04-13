@@ -3,7 +3,7 @@
 	desc = "A fleshy muscle mostly used for lying."
 	icon_state = "tonguenormal"
 	zone = "mouth"
-	slot = "tongue"
+	slot = ORGAN_SLOT_TONGUE
 	attack_verb = list("licked", "slobbered", "slapped", "frenched", "tongued")
 	var/list/languages_possible
 	var/say_mod = null
@@ -15,11 +15,13 @@
 		/datum/language/common,
 		/datum/language/draconic,
 		/datum/language/canilunzt,
+		/datum/language/voxpidgin,
 		/datum/language/codespeak,
 		/datum/language/monkey,
 		/datum/language/narsie,
 		/datum/language/beachbum,
-		/datum/language/ratvar
+		/datum/language/ratvar,
+		/datum/language/aphasia
 	))
 
 /obj/item/organ/tongue/get_spans()
@@ -83,7 +85,7 @@
 	var/mob/living/carbon/human/user = usr
 	var/rendered = "<span class='abductor'><b>[user.name]:</b> [message]</span>"
 	for(var/mob/living/carbon/human/H in GLOB.living_mob_list)
-		var/obj/item/organ/tongue/T = H.getorganslot("tongue")
+		var/obj/item/organ/tongue/T = H.getorganslot(ORGAN_SLOT_TONGUE)
 		if(!T || T.type != type)
 			continue
 		else if(H.dna && H.dna.species.id == "abductor" && user.dna && user.dna.species.id == "abductor")
@@ -188,7 +190,7 @@
 	icon_state = "tonguerobot"
 	say_mod = "states"
 	attack_verb = list("beeped", "booped")
-	taste_sensitivity = NO_TASTE_SENSITIVITY // Robots have no taste.
+	taste_sensitivity = NO_TASTE_SENSITIVITY
 
 /obj/item/organ/tongue/robot/emp_act(severity)
 	owner.apply_effect(STUTTER, 120)
@@ -200,3 +202,16 @@
 
 /obj/item/organ/tongue/robot/get_spans()
 	return ..() | SPAN_ROBOT
+
+/obj/item/organ/tongue/vox
+	name = "vox tongue"
+	desc = "A half-robotic tongue, usually found inside a vox's.. Beak? You almost swear you can hear it shrieking."
+	say_mod = "shrieks"
+	icon_state = "tongue-vox"
+	taste_sensitivity = 50 // There's not much need for taste when you're a scavenger.
+	attack_verb = list("skree'd")
+
+/obj/item/organ/tongue/vox/TongueSpeech(var/message)
+	if(prob(10))
+		playsound(owner, 'sound/voice/shriek1.ogg', 25, 1, 1)
+	return message

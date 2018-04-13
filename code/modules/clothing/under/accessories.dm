@@ -261,7 +261,7 @@
 
 /obj/item/clothing/accessory/lawyers_badge
 	name = "attorney's badge"
-	desc = "Fills you with the conviction of JUSTICE. Lawyers tend to want to show it to everyone they meet."
+	desc = "Fills you with the conviction of JUSTICE. Internal Affairs Agents tend to want to show it to everyone they meet."
 	icon_state = "lawyerbadge"
 	item_color = "lawyerbadge"
 
@@ -326,4 +326,10 @@
 
 /obj/item/clothing/accessory/holster/detective
 	name = "detective's shoulder holster"
+	desc = "A holster specifically designed to carry the detective's revolver."
 	pockets = /obj/item/storage/internal/pocket/holster/detective
+
+/obj/item/clothing/accessory/holster/blueshield
+	name = "blueshield's shoulder holster"
+	desc = "A holster specifically designed to carry the blueshield's weapon."
+	pockets = /obj/item/storage/internal/pocket/holster/blueshield

@@ -4,12 +4,12 @@
 	say_mod = "states"
 	heatmod = 3 // Went cheap with Aircooling
 	coldmod = 1.5 // Don't put your computer in the freezer.
-	burnmod = 2 // Wiring doesn't hold up to fire well.
+	burnmod = 1.8 // Wiring doesn't hold up to fire well.
 	brutemod = 1.8 // Thin metal, cheap materials. Mind you brute hits have to overcome the inherent armor of BODYPART_ROBOTIC, but if it can, bigger damage.
-	toxmod = 0.5 // Although they can't be poisoned, toxins can damage components
+	toxmod = 0
 	clonemod = 0
 	siemens_coeff = 2 // Overload!
-	species_traits = list(NOBREATH, NOBLOOD, RADIMMUNE, VIRUSIMMUNE, NOZOMBIE, EASYDISMEMBER, EASYLIMBATTACHMENT, NOPAIN, NO_BONES, NOTRANSSTING, MUTCOLORS, REVIVESBYHEALING, NOSCAN, NOCHANGELING, NOHUSK, ROBOTIC_LIMBS, NOMOUTH)
+	species_traits = list(NOBREATH, NOBLOOD, RADIMMUNE, VIRUSIMMUNE, NOZOMBIE, EASYDISMEMBER, EASYLIMBATTACHMENT, NOPAIN, NO_BONES, NOTRANSSTING, MUTCOLORS, REVIVESBYHEALING, NOSCAN, NOCHANGELING, NOHUSK, ROBOTIC_LIMBS, NOMOUTH, NOTOX)
 	mutant_organs = list(/obj/item/organ/cyberimp/arm/power_cord)
 	mutant_bodyparts = list("ipc_screen", "ipc_antenna", "ipc_chassis")
 	default_features = list("mcolor" = "#7D7D7D", "ipc_screen" = "Static", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)")
@@ -39,6 +39,7 @@
 	loreblurb = "Integrated Positronic Chassis or \"IPC\" for short, are synthetic lifeforms composed of an Artificial \
 	Intelligence program encased in a bipedal robotic shell. They are fragile, allergic to EMPs, and the butt of endless toaster jokes. \
 	Just as easy to repair as they are to destroy, they might just get their last laugh in as you're choking on neurotoxins. Beep Boop."
+	var/saved_screen //for saving the screen when they die
 
 /datum/species/ipc/random_name(unique)
 	var/ipc_name = "[pick(GLOB.posibrain_names)]-[rand(100, 999)]"
@@ -46,7 +47,7 @@
 
 /datum/species/ipc/on_species_gain(mob/living/carbon/C) // Let's make that IPC actually robotic.
 	. = ..()
-	var/obj/item/organ/appendix/appendix = C.getorganslot("appendix") // Easiest way to remove it.
+	var/obj/item/organ/appendix/appendix = C.getorganslot(ORGAN_SLOT_APPENDIX) // Easiest way to remove it.
 	appendix.Remove(C)
 	QDEL_NULL(appendix)
 	if(ishuman(C) && !change_screen)
@@ -77,6 +78,10 @@ datum/species/ipc/on_species_loss(mob/living/carbon/C)
 		return 1
 
 /datum/species/ipc/spec_death(gibbed, mob/living/carbon/C)
+	saved_screen = C.dna.features["ipc_screen"]
+	C.dna.features["ipc_screen"] = "BSOD"
+	C.update_body()
+	sleep(3 SECONDS)
 	C.dna.features["ipc_screen"] = null // Turns off their monitor on death.
 	C.update_body()
 
@@ -158,6 +163,7 @@ datum/species/ipc/on_species_loss(mob/living/carbon/C)
 	H.visible_message("<span class='notice'>[H] unplugs from the [A].</span>", "<span class='notice'>You unplug from the [A].</span>")
 
 /datum/species/ipc/spec_life(mob/living/carbon/human/H)
+	. = ..()
 	if(H.health <= HEALTH_THRESHOLD_CRIT && H.stat != DEAD) // So they die eventually instead of being stuck in crit limbo.
 		H.adjustFireLoss(6) // After bodypart_robotic resistance this is ~2/second
 		if(prob(5))
@@ -166,3 +172,17 @@ datum/species/ipc/on_species_loss(mob/living/carbon/C)
 
 /datum/species/ipc/after_equip_job(datum/job/J, mob/living/carbon/human/H)
 	to_chat(H, "<span class='notice'>You are an IPC, a free synthetic! You recharge by using your power cord implant on an APC. If you get damaged, it can be fixed with a welder, or cable coil on the damaged area. You lose limbs easily, but you can plug them back in yourself. Watch out for EMPs!</span>")
+
+/datum/species/ipc/spec_revival(mob/living/carbon/human/H)
+	H.dna.features["ipc_screen"] = "BSOD"
+	H.update_body()
+	H.say("Reactivating [pick("core systems", "central subroutines", "key functions")]...")
+	sleep(3 SECONDS)
+	H.say("Reinitializing [pick("personality matrix", "behavior logic", "morality subsystems")]...")
+	sleep(3 SECONDS)
+	H.say("Finalizing setup...")
+	sleep(3 SECONDS)
+	H.say("Unit [H.real_name] is fully functional. Have a nice day.")
+	H.dna.features["ipc_screen"] = saved_screen
+	H.update_body()
+	return

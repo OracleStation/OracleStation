@@ -11,7 +11,6 @@ Quartermaster
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#d7b088"
-
 	outfit = /datum/outfit/job/quartermaster
 
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_CARGO_BOT, ACCESS_QM, ACCESS_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM)
@@ -41,6 +40,7 @@ Cargo Technician
 	spawn_positions = 2
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#dcba97"
+	wiki_page = "Cargo_Technician"
 
 	outfit = /datum/outfit/job/cargo_tech
 
@@ -69,6 +69,7 @@ Shaft Miner
 	spawn_positions = 3
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#dcba97"
+	wiki_page = "Shaft_Miner"
 
 	outfit = /datum/outfit/job/miner
 

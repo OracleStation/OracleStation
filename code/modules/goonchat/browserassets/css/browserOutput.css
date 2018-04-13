@@ -38,6 +38,24 @@ img.icon {
 	vertical-align: bottom;
 }
 
+
+.r:before { /* "repeated" badge class for combined messages */
+	content: 'x';
+}
+.r {
+	display: inline-block;
+	min-width: 0.5em;
+	font-size: 0.7em;
+	padding: 0.2em 0.3em;
+	line-height: 1;
+	color: white;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	background-color: crimson;
+	border-radius: 10px;
+}
+
 a {color: #0000ff;}
 a.visited {color: #ff00ff;}
 a:visited {color: #ff00ff;}
@@ -287,6 +305,9 @@ h1.alert, h2.alert		{color: #000000;}
 .boldnotice				{color: #000099;	font-weight: bold;}
 .adminnotice			{color: #0000ff;}
 .adminhelp              {color: #ff0000;    font-weight: bold;}
+.mentor				{color: #8A2BE2;}
+.mentoradmin				{color: #8A2BE2;	font-weight: bold;}
+.mentornotice				{color: #E236D8;}
 .unconscious			{color: #0000ff;	font-weight: bold;}
 .suicide				{color: #ff5050;	font-style: italic;}
 .green					{color: #03ff39;}

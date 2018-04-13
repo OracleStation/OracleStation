@@ -10,6 +10,7 @@
 	recommended_enemies = 2
 	required_players = 15
 	maximum_players = 50
+	title_icon = "abductors"
 	var/max_teams = 4
 	abductor_teams = 1
 	var/list/datum/mind/scientists = list()

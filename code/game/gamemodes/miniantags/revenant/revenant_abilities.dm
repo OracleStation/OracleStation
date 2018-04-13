@@ -14,7 +14,7 @@
 	if(draining)
 		to_chat(src, "<span class='revenwarning'>You are already siphoning the essence of a soul!</span>")
 		return
-	if(!target.stat)
+	if(!target.stat && !target.isLivingSSD())
 		to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] soul is too strong to harvest.</span>")
 		if(prob(10))
 			to_chat(target, "You feel as if you are being watched.")

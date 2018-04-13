@@ -84,7 +84,7 @@
 	. = 1
 
 /datum/reagent/drug/crank/addiction_act_stage1(mob/living/M)
-	M.adjustBrainLoss(5*REM)
+	M.adjustBrainLoss(3*REM)
 	..()
 
 /datum/reagent/drug/crank/addiction_act_stage2(mob/living/M)

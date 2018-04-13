@@ -1,7 +1,7 @@
 /datum/round_event_control/falsealarm
 	name 			= "False Alarm"
 	typepath 		= /datum/round_event/falsealarm
-	weight			= 20
+	weight			= 25
 	max_occurrences = 5
 
 /datum/round_event_control/falsealarm/canSpawnEvent(players_amt, gamemode)

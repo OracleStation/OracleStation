@@ -36,10 +36,9 @@
 		if(H.nutrition > NUTRITION_LEVEL_FULL)
 			H.nutrition = NUTRITION_LEVEL_FULL
 		if(light_amount > 0.2) //if there's enough light, heal
-			if(prob(light_amount * 100 * 0.5))//lumcount/2 % chance to heal
-				H.heal_overall_damage(0.5,0.5)
-				H.adjustToxLoss(-0.5)
-				H.adjustOxyLoss(-0.5)
+			H.heal_overall_damage(1,1)
+			H.adjustToxLoss(-1)
+			H.adjustOxyLoss(-1)
 
 	if(H.nutrition < NUTRITION_LEVEL_STARVING + 50)
 		H.take_overall_damage(2,0)

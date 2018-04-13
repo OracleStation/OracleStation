@@ -56,6 +56,7 @@
 #define SUPERMATTER_WARNING_PERCENT 100
 
 GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_shard)
+GLOBAL_LIST_EMPTY(supermatters)
 
 /obj/machinery/power/supermatter_shard
 	name = "supermatter shard"
@@ -141,6 +142,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_shard)
 	countdown = new(src)
 	countdown.start()
 	GLOB.poi_list |= src
+	GLOB.supermatters |= src
 	radio = new(src)
 	radio.keyslot = new radio_key
 	radio.listening = 0
@@ -154,6 +156,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_shard)
 	SSair.atmos_machinery -= src
 	QDEL_NULL(radio)
 	GLOB.poi_list -= src
+	GLOB.supermatters -= src
 	QDEL_NULL(countdown)
 	if(is_main_engine && GLOB.main_supermatter_engine == src)
 		GLOB.main_supermatter_engine = null
@@ -171,7 +174,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_shard)
 	var/mob/living/carbon/human/H = user
 	if(istype(H.glasses, /obj/item/clothing/glasses/meson))
 		return
-	var/obj/item/organ/eyes/eyes = H.getorganslot("eye_sight")
+	var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes && eyes.status == ORGAN_ROBOTIC)
 		return
 	to_chat(H, "<span class='danger'>You get headaches just from looking at it.</span>")
@@ -366,7 +369,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_shard)
 	for(var/mob/living/carbon/human/l in view(src, HALLUCINATION_RANGE(power))) // If they can see it with organic eyes and without mesons.  Bad on them.
 		if(istype(l.glasses, /obj/item/clothing/glasses/meson))
 			return
-		var/obj/item/organ/eyes/eyes = l.getorganslot("eye_sight")
+		var/obj/item/organ/eyes/eyes = l.getorganslot(ORGAN_SLOT_EYES)
 		if(eyes && eyes.status == ORGAN_ROBOTIC)
 			return
 		else

@@ -25,6 +25,8 @@ GLOBAL_LIST_EMPTY(blobs_legit) //used for win-score calculations, contains only 
 	<span class='green'>Blobs</span>: Consume the station and spread as far as you can.\n\
 	<span class='notice'>Crew</span>: Fight back the blobs and minimize station damage."
 
+	title_icon = "blob"
+
 	var/message_sent = FALSE
 
 	var/cores_to_spawn = 1

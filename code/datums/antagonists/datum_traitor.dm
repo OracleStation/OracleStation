@@ -84,15 +84,15 @@
 /datum/antagonist/traitor/apply_innate_effects()
 	if(owner.assigned_role == "Clown")
 		var/mob/living/carbon/human/traitor_mob = owner.current
-		if(traitor_mob&&istype(traitor_mob))
-			if(!silent) 
+		if(traitor_mob && istype(traitor_mob))
+			if(!silent)
 				to_chat(traitor_mob, "Your training has allowed you to overcome your clownish nature, allowing you to wield weapons without harming yourself.")
 			traitor_mob.dna.remove_mutation(CLOWNMUT)
 
 /datum/antagonist/traitor/remove_innate_effects()
 	if(owner.assigned_role == "Clown")
 		var/mob/living/carbon/human/traitor_mob = owner.current
-		if(traitor_mob&&istype(traitor_mob))
+		if(traitor_mob && istype(traitor_mob) && traitor_mob.mind.special_role != "traitor")
 			traitor_mob.dna.add_mutation(CLOWNMUT)
 
 /datum/antagonist/traitor/on_removal()
@@ -254,6 +254,18 @@
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/malf.ogg', 100, FALSE, pressure_affected = FALSE)
 	owner.current.grant_language(/datum/language/codespeak)
 
+/datum/antagonist/traitor/AI/apply_innate_effects(mob/living/mob_override)
+	. = ..()
+	var/mob/living/silicon/ai/A = mob_override || owner.current
+	if(istype(A))
+		A.hack_software = TRUE
+
+/datum/antagonist/traitor/AI/remove_innate_effects(mob/living/mob_override)
+	. = ..()
+	var/mob/living/silicon/ai/A = mob_override || owner.current
+	if(istype(A))
+		A.hack_software = FALSE
+
 /datum/antagonist/traitor/human/finalize_traitor()
 	..()
 	if(should_equip)
@@ -327,4 +339,3 @@
 	if (equipped_slot)
 		where = "In your [equipped_slot]"
 	to_chat(mob, "<BR><BR><span class='info'>[where] is a folder containing <b>secret documents</b> that another Syndicate group wants. We have set up a meeting with one of their agents on station to make an exchange. Exercise extreme caution as they cannot be trusted and may be hostile.</span><BR>")
-

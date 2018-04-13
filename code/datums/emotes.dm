@@ -14,6 +14,7 @@
 	var/message_monkey = "" //Message displayed if the user is a monkey
 	var/message_simple = "" //Message to display if the user is a simple_animal
 	var/message_ipc = "" // Message to display if the user is an IPC
+	var/message_vox = "" // Message to display if the user is a vox
 	var/message_param = "" //Message to display if a param was given
 	var/emote_type = EMOTE_VISIBLE //Whether the emote is visible or audible
 	var/restraint_check = FALSE //Checks if the mob is restrained before performing the emote
@@ -22,12 +23,24 @@
 	var/stat_allowed = CONSCIOUS
 	var/static/list/emote_list = list()
 	var/cooldown = 20 //deciseconds of cooldown
+	var/robotic_emote = FALSE
 
 /datum/emote/New()
 	if(key_third_person)
 		emote_list[key_third_person] = src
 	mob_type_allowed_typecache = typecacheof(mob_type_allowed_typecache)
 	mob_type_blacklist_typecache = typecacheof(mob_type_blacklist_typecache)
+
+/datum/emote/proc/can_run_robotic_emote(mob/user)
+	if(iscarbon(user))
+		var/obj/item/organ/tongue/T = user.getorganslot("tongue")
+		if(T && T.status == ORGAN_ROBOTIC)
+			return TRUE
+	if(issilicon(user))
+		return TRUE
+	if(isdrone(user))
+		return TRUE
+	return FALSE
 
 /datum/emote/proc/run_emote(mob/user, params, type_override)
 	. = TRUE
@@ -90,6 +103,8 @@
 		. = message_monkey
 	else if(isipc(user) && message_ipc)
 		. = message_ipc
+	else if(isvox(user) && message_vox)
+		. = message_vox
 	else if(isanimal(user) && message_simple)
 		. = message_simple
 
@@ -98,9 +113,9 @@
 
 /datum/emote/proc/can_run_emote(mob/user, help_check)
 	. = TRUE
-	if(!is_type_in_typecache(user, mob_type_allowed_typecache))
+	if(!is_type_in_typecache(user, mob_type_allowed_typecache) && !robotic_emote) // Robotic emotes ignore typecache, because users of these emotes cross multiple typecaches.
 		return FALSE
-	if(is_type_in_typecache(user, mob_type_blacklist_typecache))
+	if(is_type_in_typecache(user, mob_type_blacklist_typecache) && !robotic_emote)
 		return FALSE
 	if(world.time < user.emote_cooldown)
 		return FALSE
@@ -111,7 +126,8 @@
 			return FALSE
 		if(user.reagents && user.reagents.has_reagent("mimesbane"))
 			return FALSE
-
+	if(robotic_emote && !can_run_robotic_emote(user))
+		return FALSE
 
 /datum/emote/sound
 	var/sound //Sound to play when emote is called

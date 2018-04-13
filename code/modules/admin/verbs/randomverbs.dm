@@ -151,6 +151,9 @@
 		if(MUTE_ADMINHELP)
 			mute_string = "adminhelp, admin PM and ASAY"
 			feedback_string = "Adminhelp"
+		if(MUTE_MENTORHELP)
+			mute_string = "mentorhelp"
+			feedback_string = "Mentorhelp"
 		if(MUTE_DEADCHAT)
 			mute_string = "deadchat and DSAY"
 			feedback_string = "Deadchat"
@@ -347,7 +350,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		new_character.real_name = record_found.fields["name"]
 		new_character.gender = record_found.fields["sex"]
 		new_character.age = record_found.fields["age"]
-		new_character.hardset_dna(record_found.fields["identity"], record_found.fields["enzymes"], record_found.fields["name"], record_found.fields["blood_type"], new record_found.fields["species"], record_found.fields["features"])
+		new_character.hardset_dna(record_found.fields["identity"], record_found.fields["enzymes"], record_found.fields["b_dna"], record_found.fields["name"], record_found.fields["blood_type"], new record_found.fields["species"], record_found.fields["features"])
 	else
 		var/datum/preferences/A = new()
 		A.copy_to(new_character)
@@ -487,13 +490,17 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		M.SetSleeping(200000)//20k seconds to get your admin shit together
 		M.adminfreezeoverlay = new()
 		M.add_overlay(M.adminfreezeoverlay)
+		M.anchored = TRUE
 		log_admin("[key_name(usr)] froze [key_name(M)]!")
+		message_admins("[key_name(usr)] froze [key_name(M)]!")
 		to_chat(M, "<span class='userdanger'>You have been frozen by Administrator [usr.key]!</span>")
 	else
 		M.SetSleeping(M.adminfrozen)//set it to what it was before freezing or just 1/10th of a second if it was nothing
 		M.adminfrozen = 0
 		M.cut_overlay(M.adminfreezeoverlay)
+		M.anchored = FALSE
 		log_admin("[key_name(usr)] unfroze [key_name(M)].")
+		message_admins("[key_name(usr)] unfroze [key_name(M)].")
 		to_chat(M, "<span class='userdanger'>You have been unfrozen by Administrator [usr.key]!</span>")
 
 /client/proc/cmd_admin_create_centcom_report()
@@ -1195,6 +1202,58 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 
 	SSblackbox.add_details("admin_toggle","Toggled Hub Visibility|[GLOB.hub_visibility]") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+
+/client/proc/reset_atmos()
+	set name = "Clean Air"
+	set category = "Special Verbs"
+	set desc = "Cleans the air in a radius of harmful gasses like plasma and n2o"
+	var/size = input("How big?", "Input") in list(5, 10, 20, "Cancel")
+	if(!check_rights(R_ADMIN))
+		return
+	if(size == "Cancel")
+		return 0
+	for(var/turf/open/floor/T in range(size))
+		if(T.air)
+			var/datum/gas_mixture/A = T.air
+			T.overlays.Cut()
+			if(A)
+				A.assert_gases(arglist(GLOB.hardcoded_gases))
+				A.gases["o2"][MOLES] = MOLES_O2STANDARD
+				A.gases["n2"][MOLES] = MOLES_N2STANDARD
+				A.gases["co2"][MOLES] = 0
+				A.gases["plasma"][MOLES] = 0
+				A.temperature = T20C
+	message_admins("[key_name(src)] cleaned air within [size] tiles.")
+	log_game("[key_name(src)] cleaned air within [size] tiles.")
+
+
+/client/proc/fill_breach()
+	set name = "Fill Hull Breaches"
+	set category = "Special Verbs"
+	set desc = "Spawns plating over space breaches"
+	var/size = input("How big?", "Input") in list(5, 10, "Cancel")
+	if(!check_rights(R_ADMIN))
+		return
+	if(size == "Cancel")
+		return 0
+	for(var/turf/open/space/T in range(size))
+		T.ChangeTurf(/turf/open/floor/plating)
+	spawn(1)
+	for(var/turf/open/floor/T in range(size))
+		if(T.air)
+			var/datum/gas_mixture/A = T.air
+			T.overlays.Cut()
+			if(A)
+				A.assert_gases(arglist(GLOB.hardcoded_gases))
+				A.gases["o2"][MOLES] = MOLES_O2STANDARD
+				A.gases["n2"][MOLES] = MOLES_N2STANDARD
+				A.gases["co2"][MOLES] = 0
+				A.gases["plasma"][MOLES] = 0
+				A.temperature = T20C
+	message_admins("[key_name(src)] filled the hull breaches in [size] tiles.")
+	log_game("[key_name(src)] filled the hull breaches in [size] tiles.")
+
+
 /client/proc/smite(mob/living/carbon/human/target as mob)
 	set name = "Smite"
 	set category = "Fun"
@@ -1216,7 +1275,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			target.electrocution_animation(40)
 			to_chat(target, "<span class='userdanger'>The gods have punished you for your sins!</span>")
 		if(ADMIN_PUNISHMENT_BRAINDAMAGE)
-			target.adjustBrainLoss(75)
+			target.adjustBrainLoss(199, 199)
 		if(ADMIN_PUNISHMENT_GIB)
 			target.gib(FALSE)
 		if(ADMIN_PUNISHMENT_BSA)
