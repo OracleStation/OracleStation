@@ -822,6 +822,7 @@
 #include "code\game\objects\items\devices\chameleonproj.dm"
 #include "code\game\objects\items\devices\doorCharge.dm"
 #include "code\game\objects\items\devices\flashlight.dm"
+#include "code\game\objects\items\devices\floor_painter.dm"
 #include "code\game\objects\items\devices\forcefieldprojector.dm"
 #include "code\game\objects\items\devices\geiger_counter.dm"
 #include "code\game\objects\items\devices\gps.dm"

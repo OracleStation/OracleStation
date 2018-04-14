@@ -2,7 +2,7 @@
 	name = "airlock painter"
 	desc = "An advanced autopainter preprogrammed with several paintjobs for airlocks. Use it on an airlock during or after construction to change the paintjob."
 	icon = 'icons/obj/objects.dmi'
-	icon_state = "paint sprayer"
+	icon_state = "paint_sprayer"
 	item_state = "paint sprayer"
 
 	w_class = WEIGHT_CLASS_SMALL
@@ -23,8 +23,12 @@
 //Only call this if you are certain that the painter will be used right after this check!
 /obj/item/airlock_painter/proc/use(mob/user)
 	if(can_use(user))
+
+		if(ink.charges > 1)
+			playsound(src.loc, 'sound/effects/spray2.ogg', 50, 1)
+		else
+			playsound(src.loc, 'sound/effects/spray3.ogg', 50, 1)
 		ink.charges--
-		playsound(src.loc, 'sound/effects/spray2.ogg', 50, 1)
 		return 1
 	else
 		return 0
