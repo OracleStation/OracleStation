@@ -15,6 +15,9 @@
 	if(..()) //not dead
 		handle_blood()
 
+	if(stat != DEAD)
+		handle_brain_damage()
+
 	if(isLivingSSD())//if you're disconnected, you're going to sleep
 		if(AmountSleeping() < 20)
 			AdjustSleeping(20)
@@ -57,7 +60,7 @@
 
 	var/datum/gas_mixture/breath
 
-	if(health <= HEALTH_THRESHOLD_CRIT || (pulledby && pulledby.grab_state >= GRAB_KILL && !getorganslot("breathing_tube")))
+	if(health <= HEALTH_THRESHOLD_CRIT || (pulledby && pulledby.grab_state >= GRAB_KILL && !getorganslot("ORGAN_SLOT_BREATHING_TUBE")))
 		losebreath++
 
 	//Suffocate
@@ -104,7 +107,7 @@
 	if((status_flags & GODMODE))
 		return
 
-	var/lungs = getorganslot("lungs")
+	var/lungs = getorganslot(ORGAN_SLOT_LUNGS)
 	if(!lungs)
 		adjustOxyLoss(2)
 
@@ -215,7 +218,7 @@
 		if(internal.loc != src)
 			internal = null
 			update_internals_hud_icon(0)
-		else if ((!wear_mask || !(wear_mask.flags_1 & MASKINTERNALS_1)) && !getorganslot("breathing_tube"))
+		else if ((!wear_mask || !(wear_mask.flags_1 & MASKINTERNALS_1)) && !getorganslot(ORGAN_SLOT_BREATHING_TUBE))
 			internal = null
 			update_internals_hud_icon(0)
 		else
@@ -404,7 +407,7 @@
 /////////
 
 /mob/living/carbon/proc/handle_liver()
-	var/obj/item/organ/liver/liver = getorganslot("liver")
+	var/obj/item/organ/liver/liver = getorganslot(ORGAN_SLOT_LIVER)
 	if(liver)
 		if(liver.damage >= 100)
 			liver.failing = TRUE
@@ -416,17 +419,17 @@
 		liver_failure()
 
 /mob/living/carbon/proc/undergoing_liver_failure()
-	var/obj/item/organ/liver/liver = getorganslot("liver")
+	var/obj/item/organ/liver/liver = getorganslot(ORGAN_SLOT_LIVER)
 	if(liver && liver.failing)
 		return TRUE
 
 /mob/living/carbon/proc/return_liver_damage()
-	var/obj/item/organ/liver/liver = getorganslot("liver")
+	var/obj/item/organ/liver/liver = getorganslot(ORGAN_SLOT_LIVER)
 	if(liver)
 		return liver.damage
 
 /mob/living/carbon/proc/applyLiverDamage(var/d)
-	var/obj/item/organ/liver/L = getorganslot("liver")
+	var/obj/item/organ/liver/L = getorganslot(ORGAN_SLOT_LIVER)
 	if(L)
 		L.damage += d
 
@@ -444,3 +447,20 @@
 		adjustToxLoss(8)
 	if(prob(30))
 		to_chat(src, "<span class='notice'>You feel confused and nauseous...</span>")//actual symptoms of liver failure
+
+
+////////////////
+//BRAIN DAMAGE//
+////////////////
+
+/mob/living/carbon/proc/handle_brain_damage()
+	for(var/T in get_traumas())
+		var/datum/brain_trauma/BT = T
+		BT.on_life()
+
+	if(getBrainLoss() >= BRAIN_DAMAGE_DEATH) //rip
+		to_chat(src, "<span class='userdanger'>The last spark of life in your brain fizzles out...<span>")
+		death()
+		var/obj/item/organ/brain/B = getorganslot(ORGAN_SLOT_BRAIN)
+		if(B)
+			B.damaged_brain = TRUE

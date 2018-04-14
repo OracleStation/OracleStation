@@ -41,7 +41,6 @@
 	if(!AStar(user, target.loc, /turf/proc/Distance, user.mind.changeling.sting_range, simulated_only = 0))
 		return
 	if(target.mind && target.mind.changeling)
-		sting_feedback(user, target)
 		user.mind.changeling.chem_charges -= chemical_cost
 	return 1
 
@@ -126,6 +125,7 @@
 
 /obj/effect/proc_holder/changeling/sting/false_armblade/sting_action(mob/user, mob/target)
 	add_logs(user, target, "stung", object="falso armblade sting")
+	log_attack("[user] has stung [target] with false armblade sting")
 
 	if(!target.drop_item())
 		to_chat(user, "<span class='warning'>The [target.get_active_held_item()] is stuck to their hand, you cannot grow a false armblade over it!</span>")
@@ -168,6 +168,25 @@
 	add_logs(user, target, "stung", "extraction sting")
 	if(!(user.mind.changeling.has_dna(target.dna)))
 		user.mind.changeling.add_new_profile(target, user)
+	return TRUE
+
+/obj/effect/proc_holder/changeling/sting/changeling_test
+	name = "Changeling Test Sting"
+	desc = "We stealthily sting a target and check whether they are one of the hivemind."
+	helptext = "Will let you check whether your target is another changeling, as well as giving you their name."
+	sting_icon = "sting_test"
+	chemical_cost = 0
+	dna_cost = 0
+
+/obj/effect/proc_holder/changeling/sting/changeling_test/sting_action(mob/user, mob/living/carbon/human/target)
+	if(target.mind && target.mind.changeling)
+		to_chat(user, "<span class='warning'>They are one with the hivemind. We've located [target.mind.changeling.changelingID]!</span>")
+		spawn(rand(10, 20))
+			to_chat(target, "<span class='warning'>We feel... violated. Another one of the hivemind has located us through a sting!</span>")
+	else if(!target.mind)
+		to_chat(user, "<span class='notice'>This creature is far too simple to be one of us.</span>")
+	else
+		to_chat(user, "<span class='notice'>This creature is not one of the hive...</span>")
 	return TRUE
 
 /obj/effect/proc_holder/changeling/sting/mute

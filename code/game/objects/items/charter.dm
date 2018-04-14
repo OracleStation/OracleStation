@@ -1,4 +1,4 @@
-#define STATION_RENAME_TIME_LIMIT 3000
+#define STATION_RENAME_TIME_LIMIT 6000
 
 /obj/item/station_charter
 	name = "station charter"
@@ -12,7 +12,7 @@
 	var/unlimited_uses = FALSE
 	var/ignores_timeout = FALSE
 	var/response_timer_id = null
-	var/approval_time = 600
+	var/approval_time = 1200
 
 	var/static/regex/standard_station_regex
 
@@ -30,7 +30,7 @@
 	if(used)
 		to_chat(user, "The [name_type] has already been named.")
 		return
-	if(!ignores_timeout && (world.time-SSticker.round_start_time > STATION_RENAME_TIME_LIMIT)) //5 minutes
+	if(!ignores_timeout && (world.time-SSticker.round_start_time > STATION_RENAME_TIME_LIMIT)) //10 minutes
 		to_chat(user, "The crew has already settled into the shift. It probably wouldn't be good to rename the [name_type] right now.")
 		return
 	if(response_timer_id)
@@ -59,7 +59,7 @@
 	to_chat(user, "Your name has been sent to your employers for approval.")
 	// Autoapproves after a certain time
 	response_timer_id = addtimer(CALLBACK(src, .proc/rename_station, new_name, user.name, user.real_name, key_name(user)), approval_time, TIMER_STOPPABLE)
-	to_chat(GLOB.admins, "<span class='adminnotice'><b><font color=orange>CUSTOM STATION RENAME:</font></b>[ADMIN_LOOKUPFLW(user)] proposes to rename the [name_type] to [new_name] (will autoapprove in [DisplayTimeText(approval_time)]). [ADMIN_SMITE(user)] (<A HREF='?_src_=holder;[HrefToken(TRUE)];reject_custom_name=[REF(src)]'>REJECT</A>) [ADMIN_CENTCOM_REPLY(user)]</span>")
+	to_chat(GLOB.admins, "<span class='adminnotice'><b><font color=orange><font size=8>CUSTOM STATION RENAME:</font></b>[ADMIN_LOOKUPFLW(user)] proposes to rename the [name_type] to [new_name] (will autoapprove in [DisplayTimeText(approval_time)]). [ADMIN_SMITE(user)] (<A HREF='?_src_=holder;[HrefToken(TRUE)];reject_custom_name=[REF(src)]'>REJECT</A>) [ADMIN_CENTCOM_REPLY(user)]</span>")
 
 /obj/item/station_charter/proc/reject_proposed(user)
 	if(!user)

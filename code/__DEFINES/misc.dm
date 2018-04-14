@@ -441,3 +441,6 @@ GLOBAL_LIST_INIT(ghost_others_options, list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DE
 #define MOUSE_OPACITY_TRANSPARENT 0
 #define MOUSE_OPACITY_ICON 1
 #define MOUSE_OPACITY_OPAQUE 2
+
+//text files
+#define BRAIN_DAMAGE_FILE "traumas.json"

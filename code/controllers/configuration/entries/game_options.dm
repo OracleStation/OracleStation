@@ -218,6 +218,9 @@ CONFIG_DEF(keyed_flag_list/random_laws)
 CONFIG_DEF(keyed_number_list/law_weight)
 	splitter = ","
 
+CONFIG_DEF(keyed_number_list/antag_time_requirements)
+	splitter = ","
+
 CONFIG_DEF(number/assistant_cap)
 	value = -1
 	min_val = -1
@@ -273,3 +276,5 @@ CONFIG_DEF(number/max_chickens)
 	value = 100
 CONFIG_DEF(number/max_slimes)
 	value = 100
+
+CONFIG_DEF(flag/allow_crew_objectives)

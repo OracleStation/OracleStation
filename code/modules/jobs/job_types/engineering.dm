@@ -17,6 +17,7 @@ Chief Engineer
 	exp_requirements = 180
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_ENGINEERING
+	wiki_page = "Engineering_SOP"
 
 	outfit = /datum/outfit/job/ce
 
@@ -46,6 +47,7 @@ Chief Engineer
 	backpack = /obj/item/storage/backpack/industrial
 	satchel = /obj/item/storage/backpack/satchel/eng
 	duffelbag = /obj/item/storage/backpack/duffelbag/engineering
+	courierbag = /obj/item/storage/backpack/messenger/engi
 	box = /obj/item/storage/box/engineer
 
 /datum/outfit/job/ce/rig
@@ -75,6 +77,7 @@ Station Engineer
 	selection_color = "#fff5cc"
 	exp_requirements = 60
 	exp_type = EXP_TYPE_CREW
+	wiki_page = "Station_Engineer"
 
 	outfit = /datum/outfit/job/engineer
 
@@ -99,6 +102,7 @@ Station Engineer
 	backpack = /obj/item/storage/backpack/industrial
 	satchel = /obj/item/storage/backpack/satchel/eng
 	duffelbag = /obj/item/storage/backpack/duffelbag/engineering
+	courierbag = /obj/item/storage/backpack/messenger/engi
 	box = /obj/item/storage/box/engineer
 	backpack_contents = list(/obj/item/device/modular_computer/tablet/preset/advanced=1)
 
@@ -131,6 +135,7 @@ Atmospheric Technician
 	selection_color = "#fff5cc"
 	exp_requirements = 60
 	exp_type = EXP_TYPE_CREW
+	wiki_page = "Atmospheric_Technician"
 
 	outfit = /datum/outfit/job/atmos
 
@@ -152,6 +157,7 @@ Atmospheric Technician
 	backpack = /obj/item/storage/backpack/industrial
 	satchel = /obj/item/storage/backpack/satchel/eng
 	duffelbag = /obj/item/storage/backpack/duffelbag/engineering
+	courierbag = /obj/item/storage/backpack/messenger/engi
 	box = /obj/item/storage/box/engineer
 	backpack_contents = list(/obj/item/device/modular_computer/tablet/preset/advanced=1)
 

@@ -38,8 +38,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		"Chief Medical Officer",
 		"Blueshield",
 		"Brig Physician",
-		"Internal Affairs Agent",
-		"Quartermaster")
+		"Internal Affairs Agent")
 
 	//The scaling factor of max total positions in relation to the total amount of people on board the station in %
 	var/max_relative_positions = 30 //30%: Seems reasonable, limit of 6 @ 20 players

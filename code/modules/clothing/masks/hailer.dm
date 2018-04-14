@@ -19,6 +19,10 @@
 	var/recent_uses = 0
 	var/broken_hailer = 0
 	var/safety = TRUE
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/mask.dmi'
+		)
 
 /obj/item/clothing/mask/gas/sechailer/swat
 	name = "\improper SWAT mask"

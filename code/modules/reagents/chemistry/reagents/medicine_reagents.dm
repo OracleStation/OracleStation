@@ -59,6 +59,7 @@
 	M.confused = 0
 	M.SetSleeping(0, 0)
 	M.jitteriness = 0
+	M.cure_all_traumas(TRUE, TRUE)
 	for(var/thing in M.viruses)
 		var/datum/disease/D = thing
 		if(D.severity == NONTHREAT)
@@ -670,7 +671,7 @@
 	taste_description = "dull toxin"
 
 /datum/reagent/medicine/oculine/on_mob_life(mob/living/M)
-	var/obj/item/organ/eyes/eyes = M.getorganslot("eye_sight")
+	var/obj/item/organ/eyes/eyes = M.getorganslot(ORGAN_SLOT_EYES)
 	if (!eyes)
 		return
 	if(M.disabilities & BLIND)
@@ -799,7 +800,13 @@
 	color = "#DCDCFF"
 
 /datum/reagent/medicine/mannitol/on_mob_life(mob/living/M)
-	M.adjustBrainLoss(-3*REM)
+	M.adjustBrainLoss(-2*REM)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		if(prob(30) && C.has_trauma_type(BRAIN_TRAUMA_SPECIAL))
+			C.cure_trauma_type(BRAIN_TRAUMA_SPECIAL)
+		if(prob(10) && C.has_trauma_type(BRAIN_TRAUMA_MILD))
+			C.cure_trauma_type(BRAIN_TRAUMA_MILD)
 	..()
 
 /datum/reagent/medicine/liquid_solder
@@ -921,7 +928,7 @@
 	M.adjustFireLoss(-3 * REM, 0)
 	M.adjustOxyLoss(-15 * REM, 0)
 	M.adjustToxLoss(-3 * REM, 0)
-	M.adjustBrainLoss(2 * REM) //This does, after all, come from ambrosia, and the most powerful ambrosia in existence, at that!
+	M.adjustBrainLoss(2 * REM, 150) //This does, after all, come from ambrosia, and the most powerful ambrosia in existence, at that!
 	M.adjustCloneLoss(-1 * REM, 0)
 	M.adjustStaminaLoss(-30 * REM, 0)
 	M.jitteriness = min(max(0, M.jitteriness + 3), 30)
@@ -952,7 +959,7 @@
 	if (M.hallucination >= 5)
 		M.hallucination -= 5
 	if(prob(20))
-		M.adjustBrainLoss(1*REM)
+		M.adjustBrainLoss(1*REM, 50)
 	M.adjustStaminaLoss(2.5*REM, 0)
 	..()
 	. = 1

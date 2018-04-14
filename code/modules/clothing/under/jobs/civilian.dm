@@ -34,7 +34,6 @@
 	mutantrace_variation = MUTANTRACE_VARIATION
 	alt_covers_chest = TRUE
 
-
 /obj/item/clothing/under/rank/chaplain
 	desc = "It's a black jumpsuit, often worn by religious folk."
 	name = "chaplain's jumpsuit"
@@ -152,6 +151,7 @@
 	icon_state = "curator"
 	item_state = "curator"
 	item_color = "curator"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/rank/mime
 	name = "mime's outfit"

@@ -10,6 +10,10 @@
 	permeability_coefficient = 0.01
 	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH
 	resistance_flags = 0
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/mask.dmi'
+		)
 
 // **** Welding gas mask ****
 
@@ -163,6 +167,7 @@
 	name = "carp mask"
 	desc = "Gnash gnash."
 	icon_state = "carp_mask"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/mask/gas/tiki_mask
 	name = "tiki mask"
@@ -173,7 +178,7 @@
 	max_integrity = 100
 	actions_types = list(/datum/action/item_action/adjust)
 	dog_fashion = null
-
+	species_restricted = list("exclude","Vox Outcast")
 
 obj/item/clothing/mask/gas/tiki_mask/ui_action_click(mob/user)
 

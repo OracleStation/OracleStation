@@ -324,6 +324,13 @@ All ShuttleMove procs go here
 
 /mob/living/afterShuttleMove(list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir)
 	. = ..()
+	if(movement_force["IGNOREBUCKLE"] && buckled && prob(33))//GET READY FOR A WILD RIDE
+		src.buckled.unbuckle_mob(src)
+		src.visible_message(\
+		"<span class='warning'>[src] is torn from the buckle by the force of the movement!</span>",\
+		"<span class='warning'>You're torn from the buckle by the force of the movement!'.</span>",\
+		"<span class='italics'>You hear metal clanking.</span>")
+
 	if(movement_force && !buckled)
 		if(movement_force["THROW"])
 			var/throw_dir = move_dir
@@ -357,7 +364,7 @@ All ShuttleMove procs go here
 	var/turf/T = loc
 	if(level==1)
 		hide(T.intact)
-		
+
 /obj/structure/shuttle/beforeShuttleMove(turf/newT, rotation, move_mode)
 	. = ..()
 	. |= MOVE_CONTENTS
