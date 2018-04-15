@@ -20,6 +20,14 @@
 
 /obj/item/stack/medical/attack(mob/living/M, mob/user)
 
+	if(iscarbon(M))					//this bit here allows us to use medical stacks for surgery
+		var/mob/living/carbon/C = M	//without writing the whole codebase from scratch; really useful!
+		if(C.surgeries.len)
+			for(var/datum/surgery/surgery in C.surgeries)
+				if(surgery.location == user.zone_selected)
+					if(surgery.next_step(user))
+						return 1
+
 	if(M.stat == 2)
 		var/t_him = "it"
 		if(M.gender == MALE)
@@ -134,7 +142,7 @@
 	gender = PLURAL
 	singular_name = "medical gauze"
 	icon_state = "gauze"
-	stop_bleeding = 1800
+	stop_bleeding = 3 MINUTES
 	self_delay = 20
 	max_amount = 12
 
@@ -142,7 +150,7 @@
 	name = "improvised gauze"
 	singular_name = "improvised gauze"
 	desc = "A roll of cloth roughly cut from something that can stop bleeding, but does not heal wounds."
-	stop_bleeding = 900
+	stop_bleeding = 1.5 MINUTES
 
 /obj/item/stack/medical/gauze/cyborg
 	materials = list()

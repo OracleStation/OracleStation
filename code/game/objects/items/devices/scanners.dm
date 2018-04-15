@@ -123,7 +123,7 @@ MASS SPECTROMETER
 		var/mob/living/carbon/human/H = M
 		if(H.undergoing_cardiac_arrest() && H.stat != DEAD)
 			to_chat(user, "<span class='danger'>Subject suffering from heart attack: apply defibrillator immediately!</span>")
-		if(H.undergoing_liver_failure() && H.stat != DEAD)
+		if(H.return_liver_damage() > 95 && H.stat != DEAD)
 			to_chat(user, "<span class='danger'>Subject suffering from liver failure: apply corazone and begin a liver transplant immediately!</span>")
 
 	to_chat(user, "<span class='info'>Analyzing results for [M]:\n\tOverall status: [mob_status]</span>")
@@ -143,11 +143,11 @@ MASS SPECTROMETER
 		to_chat(user, "\t<span class='alert'>Subject appears to have [M.getCloneLoss() > 30 ? "severe" : "minor"] cellular damage.</span>")
 	if (M.reagents && M.reagents.get_reagent_amount("epinephrine"))
 		to_chat(user, "\t<span class='info'>Bloodstream analysis located [M.reagents.get_reagent_amount("epinephrine")] units of rejuvenation chemicals.</span>")
-	if (M.getBrainLoss() >= 200 || !M.getorgan(/obj/item/organ/brain))
+	if (M.getBrainLoss() >= 100 || !M.getorgan(/obj/item/organ/brain))
 		to_chat(user, "\t<span class='alert'>Subject brain function is non-existent.</span>")
-	else if (M.getBrainLoss() >= 120)
+	else if (M.getBrainLoss() >= 60)
 		to_chat(user, "\t<span class='alert'>Severe brain damage detected. Subject likely to have mental traumas.</span>")
-	else if (M.getBrainLoss() >= 45)
+	else if (M.getBrainLoss() >= 20)
 		to_chat(user, "\t<span class='alert'>Brain damage detected.</span>")
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
@@ -179,6 +179,12 @@ MASS SPECTROMETER
 		if(broken_stuff.len)
 			to_chat(user, "\t<span class='alert'>Bone fractures detected. Subject's [english_list(broken_stuff)] [broken_stuff.len > 1 ? "require" : "requires"] surgical treatment!</span>")
 
+		var/internal_damage = 0
+		for(var/obj/item/organ/O in C.internal_organs)
+			internal_damage += O.get_damage_perc()
+			if(internal_damage > 30)
+				to_chat(user, "\t<span class='alert'>Significant internal organ damage detected. More advanced scanner required for location.</span>")
+				break
 
 	// Species and body temperature
 	if(ishuman(M))

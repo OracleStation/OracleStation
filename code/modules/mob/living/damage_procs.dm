@@ -219,13 +219,27 @@
 	return amount
 
 /mob/living/proc/getBrainLoss()
-	. = 0
+	if(status_flags & GODMODE)
+		return 0
+	var/obj/item/organ/brain/B = getorganslot("brain")
+	if(B)
+		return B.get_damage_perc()
 
-/mob/living/proc/adjustBrainLoss(amount, maximum = BRAIN_DAMAGE_DEATH)
-	return
+/mob/living/proc/adjustBrainLoss(amount, maximum_perc = BRAIN_DAMAGE_DEATH)
+	if(status_flags & GODMODE)
+		return 0
+	var/obj/item/organ/brain/B = getorganslot("brain")
+	if(!B)
+		return
+	. = B.take_damage(amount, maximum_perc)
 
-/mob/living/proc/setBrainLoss(amount)
-	return
+/mob/living/proc/setBrainLoss(amount_perc)
+	if(status_flags & GODMODE)
+		return 0
+	var/obj/item/organ/brain/B = getorganslot("brain")
+	if(!B)
+		return
+	B.set_damage(amount_perc)
 
 /mob/living/proc/getStaminaLoss()
 	return staminaloss

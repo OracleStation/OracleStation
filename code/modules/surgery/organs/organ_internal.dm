@@ -15,6 +15,51 @@
 	//whether to call Remove() when qdeling the organ.
 	var/remove_on_qdel = TRUE
 
+	max_integrity = ORGAN_HEALTH_DEFAULT
+
+
+//amount: amount of damage to take
+//max: maximum PERCENTAGE of damage `amount` will get you to
+/obj/item/organ/take_damage(amount, maximum_perc = 100)
+	var/adjusted_amount = amount
+	if(amount >= 0 && maximum_perc)
+		var/min_integrity = max_integrity - (maximum_perc / 100 * max_integrity)
+		if(obj_integrity - amount < min_integrity)
+			adjusted_amount = obj_integrity - min_integrity
+
+	if(adjusted_amount)
+		if(adjusted_amount > 0)
+			..(adjusted_amount)
+		else
+			obj_integrity = min(max_integrity, obj_integrity - adjusted_amount)
+	. = adjusted_amount
+
+/obj/item/organ/proc/heal_damage(amount)//for the purists
+	take_damage(-amount)
+
+/obj/item/organ/proc/on_full_heal()//called during organ manip. fixing surgery
+	return
+
+//amount is a PERCENTAGE
+/obj/item/organ/proc/set_damage(amount_perc)
+	if(amount_perc != get_damage_perc())
+		take_damage((amount_perc / max_integrity * 100) - obj_integrity)
+
+/obj/item/organ/proc/get_damage_perc()
+	if(max_integrity <= 0)//don't divide by zero
+		return 0
+	return (max_integrity - obj_integrity) / max_integrity * 100
+
+/obj/item/organ/proc/damage_effect_check()//used to do bad things to people
+	if(owner.reagents.get_reagent_amount("corazone"))//corazone stops all organ damage effects
+		return FALSE
+	var/damage_level = get_damage_perc()
+	if(damage_level > ORGAN_DAMAGE_LOW && prob(sqrt(damage_level) && owner))//triggers once every 18 2 second ticks at 30 damage and once every 10 2 second ticks at 100 damage.
+		return TRUE
+
+/obj/item/organ/proc/damage_effect()
+	if(owner)
+		to_chat(owner, "<span class='warning'>You feel a sharp pain in your [parse_zone(zone)]!</span>")
 
 /obj/item/organ/proc/Insert(mob/living/carbon/M, special = 0, drop_if_replaced = TRUE)
 	if(!iscarbon(M) || owner == M)
@@ -54,12 +99,24 @@
 	return
 
 /obj/item/organ/proc/on_life()
+	if(damage_effect_check())
+		damage_effect()
 	return
 
 /obj/item/organ/examine(mob/user)
 	..()
+	switch(get_damage_perc())
+		if(0 to 10)
+			to_chat(user, "<span class='warning'>It's in pristine condition!</span>")
+		if(10 to 35)
+			to_chat(user, "<span class='warning'>It looks pretty banged up!</span>")
+		if(35 to 70)
+			to_chat(user, "<span class='warning'>It looks badly damaged!</span>")
+		if(70 to 100)
+			to_chat(user, "<span class='warning'>It's completely obliterated!</span>")
+
 	if(status == ORGAN_ROBOTIC && crit_fail)
-		to_chat(user, "<span class='warning'>[src] seems to be broken!</span>")
+		to_chat(user, "<span class='warning'>[src]'s circuits don't seem to be functioning properly!</span>")//for electronic organs; before they reboot; not *quite* related to damage
 
 
 /obj/item/organ/proc/prepare_eat()

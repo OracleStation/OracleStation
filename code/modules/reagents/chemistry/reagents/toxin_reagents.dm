@@ -444,7 +444,7 @@
 	toxpwr = 0
 
 /datum/reagent/toxin/neurotoxin2/on_mob_life(mob/living/M)
-	M.adjustBrainLoss(3*REM, 150)
+	M.adjustBrainLoss(3*REM, 75)
 	. = 1
 	if(M.toxloss <= 60)
 		M.adjustToxLoss(1*REM, 0)

@@ -272,7 +272,7 @@
 		M.adjustBruteLoss(-2, 0)
 		M.adjustFireLoss(-2, 0)
 	else
-		M.adjustBrainLoss(3, 150)
+		M.adjustBrainLoss(3, 75)
 		M.adjustToxLoss(1, 0)
 		M.adjustFireLoss(2, 0)
 		M.adjustOxyLoss(2, 0)
@@ -292,7 +292,7 @@
 	M.IgniteMob()			//Only problem with igniting people is currently the commonly availible fire suits make you immune to being on fire
 	M.adjustToxLoss(1, 0)
 	M.adjustFireLoss(1, 0)		//Hence the other damages... ain't I a bastard?
-	M.adjustBrainLoss(5, 150)
+	M.adjustBrainLoss(5, 75)
 	holder.remove_reagent(src.id, 1)
 
 /datum/reagent/medicine/omnizine/godblood

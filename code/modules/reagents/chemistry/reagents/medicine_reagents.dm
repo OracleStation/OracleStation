@@ -688,7 +688,7 @@
 	else if(M.eye_blind || M.eye_blurry)
 		M.set_blindness(0)
 		M.set_blurriness(0)
-	else if(eyes.eye_damage > 0)
+	else if(eyes.get_damage_perc() > 0)
 		M.adjust_eye_damage(-1)
 	..()
 
@@ -928,7 +928,7 @@
 	M.adjustFireLoss(-3 * REM, 0)
 	M.adjustOxyLoss(-15 * REM, 0)
 	M.adjustToxLoss(-3 * REM, 0)
-	M.adjustBrainLoss(2 * REM, 150) //This does, after all, come from ambrosia, and the most powerful ambrosia in existence, at that!
+	M.adjustBrainLoss(2 * REM, 75) //This does, after all, come from ambrosia, and the most powerful ambrosia in existence, at that!
 	M.adjustCloneLoss(-1 * REM, 0)
 	M.adjustStaminaLoss(-30 * REM, 0)
 	M.jitteriness = min(max(0, M.jitteriness + 3), 30)
@@ -1039,12 +1039,13 @@
 	..()
 
 /datum/reagent/medicine/corazone
-	// Heart attack code will not do damage if corazone is present
-	// because it's SPACE MAGIC ASPIRIN
+	// Stops all organ damage effects from happening
+	// Also stops heart attacks
 	name = "Corazone"
 	id = "corazone"
 	description = "A medication used to treat pain, fever, and inflammation, along with heart attacks."
 	color = "#F5F5F5"
+	metabolization_rate = 0 // it gets filtered out manually in carbon code; rip
 
 /datum/reagent/medicine/corazone/on_mob_life(mob/living/M as mob)
 	..()

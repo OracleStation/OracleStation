@@ -7,9 +7,9 @@
 	if (!eyes)
 		return
 	if(amount>0)
-		eyes.eye_damage = amount
-		if(eyes.eye_damage > 20)
-			if(eyes.eye_damage > 30)
+		eyes.set_damage(amount)
+		if(eyes.get_damage_perc() > 20)
+			if(eyes.get_damage_perc() > 30)
 				overlay_fullscreen("eye_damage", /obj/screen/fullscreen/impaired, 2)
 			else
 				overlay_fullscreen("eye_damage", /obj/screen/fullscreen/impaired, 1)
@@ -18,9 +18,9 @@
 	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
 	if (!eyes)
 		return
-	eyes.eye_damage = max(amount,0)
-	if(eyes.eye_damage > 20)
-		if(eyes.eye_damage > 30)
+	eyes.set_damage(amount)
+	if(eyes.get_damage_perc() > 20)
+		if(eyes.get_damage_perc() > 30)
 			overlay_fullscreen("eye_damage", /obj/screen/fullscreen/impaired, 2)
 		else
 			overlay_fullscreen("eye_damage", /obj/screen/fullscreen/impaired, 1)
@@ -31,9 +31,10 @@
 	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
 	if (!eyes)
 		return
-	eyes.eye_damage = max(eyes.eye_damage+amount, 0)
-	if(eyes.eye_damage > 20)
-		if(eyes.eye_damage > 30)
+	eyes.take_damage(amount)
+	var/damage_to_eyes = eyes.get_damage_perc()
+	if(damage_to_eyes > 20)
+		if(damage_to_eyes > 30)
 			overlay_fullscreen("eye_damage", /obj/screen/fullscreen/impaired, 2)
 		else
 			overlay_fullscreen("eye_damage", /obj/screen/fullscreen/impaired, 1)

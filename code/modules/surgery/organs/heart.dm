@@ -10,6 +10,7 @@
 	var/icon_base = "heart"
 	attack_verb = list("beat", "thumped")
 	var/beat = BEAT_NONE//is this mob having a heatbeat sound played? if so, which?
+	max_integrity = ORGAN_HEALTH_HIGH
 
 /obj/item/organ/heart/update_icon()
 	if(beating)
@@ -49,7 +50,19 @@
 	S.icon_state = "heart-off"
 	return S
 
+/obj/item/organ/heart/damage_effect()
+	if(owner)//at 90% heart damage this will trigger on average every 11 life() calls
+		var/heart_damaged = get_damage_perc()
+		if(heart_damaged > ORGAN_DAMAGE_HIGH && ishuman(owner))
+			var/mob/living/carbon/human/H = owner
+			H.set_heartattack(TRUE)
+			to_chat(owner, "<span class='userdanger'>Something painfully shifts in your [parse_zone(zone)] and you feel your heart suddenly stop!</span>")
+		else
+			owner.adjustStaminaLoss(rand(5, round(heart_damaged/5)))
+			..()//just prints the message
+
 /obj/item/organ/heart/on_life()
+	..()
 	if(owner.client)
 		var/sound/slowbeat = sound('sound/health/slowbeat.ogg', repeat = TRUE)
 

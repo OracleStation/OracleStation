@@ -74,7 +74,7 @@
 		O.setOxyLoss(getOxyLoss(), 0)
 		O.setCloneLoss(getCloneLoss(), 0)
 		O.adjustFireLoss(getFireLoss(), 0)
-		O.setBrainLoss(getBrainLoss(), 0)
+		O.setBrainLoss(getBrainLoss())
 		O.updatehealth()
 		O.radiation = radiation
 		for(var/T in get_traumas())
@@ -232,7 +232,7 @@
 		O.setOxyLoss(getOxyLoss(), 0)
 		O.setCloneLoss(getCloneLoss(), 0)
 		O.adjustFireLoss(getFireLoss(), 0)
-		O.setBrainLoss(getBrainLoss(), 0)
+		O.setBrainLoss(getBrainLoss())
 		O.updatehealth()
 		O.radiation = radiation
 		for(var/T in get_traumas())
