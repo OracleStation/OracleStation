@@ -1,0 +1,60 @@
+<script>
+	component.exports = {
+		computed: {
+			occupantStatState () {
+				switch (this.get('data.stat')) {
+					case 0: return 'good'
+					case 1: return 'average'
+					default: return 'bad'
+				}
+			}
+		}
+	}
+</script>
+
+<ui-display title='General'>
+	<ui-section label='Occupant'>
+		<span>{{data.name ? data.name : "No Occupant"}}</span>
+	</ui-section>
+		{{#if data.occupied}}
+			<ui-section label='State'>
+				<span class='{{occupantStatState}}'>{{data.stat == 0 ? "Conscious" : data.stat == 1 ? "Unconcious" : "Dead"}}</span>
+			</ui-section>
+		<ui-section label='Health'>
+			<ui-bar min='{{data.minHealth}}' max='{{data.maxHealth}}' value='{{data.health}}'
+			state='{{data.health >= 0 ? "good" : "average"}}'>{{Math.round(data.health)}}</ui-bar>
+		</ui-section>
+			{{#each [{label: "Brute", type: "bruteLoss"}, {label: "Burn", type: "fireLoss"}, {label: "Respiratory", type: "oxyLoss"}, {label: "Toxin", type: "toxLoss"}]}}
+				<ui-section label='{{label}}'>
+					<ui-bar min='0' max='{{data.maxHealth}}' value='{{data[type]}}' state='bad'>{{Math.round(data[type])}}</ui-bar>
+				</ui-section>
+			{{/each}}
+		{{/if}}
+</ui-display>
+
+<ui-display title='Internal Organs'>
+	<ui-section label='Occupant'>
+		<span>{{data.name ? data.name : "No Occupant"}}</span>
+	</ui-section>
+		{{#if data.occupied}}
+			{{#each data.organs}}
+				<ui-section label='{{name}}'>
+					<ui-bar min=0 max=100 value='{{damage}}'>
+				</ui-section>
+			{{/each}}
+		{{/if}}
+</ui-display>
+
+<ui-display title='Implants'>
+	{{#if data.occupied}}
+		{{#each data.implants}}
+		  <ui-section>{{name}}</ui-section>
+		{{/each}}
+	{{/if}}
+</ui-display>
+
+<ui-display title='Controls'>
+	<ui-section label='Door'>
+		<ui-button icon='{{data.open ? "unlock" : "lock"}}' action='door'>{{data.open ? "Open" : "Closed"}}</ui-button>
+	</ui-section>
+</ui-display>

@@ -11,7 +11,6 @@
 	var/uses = -1
 	var/shows_up_on_scanners = TRUE //body scanner, don't let people find storage implants this easily
 	flags_1 = DROPDEL_1
-	var/shows_up_on_scanners = TRUE
 
 
 /obj/item/implant/proc/trigger(emote, mob/living/carbon/source)
