@@ -15,12 +15,7 @@
 	. = ..()
 	ui = new /datum/oracle_ui/themed/nano(src, 400, 600, "body_scanner")
 	ui.auto_refresh = TRUE
-	//ui.can_resize = FALSE
 	ui.current_page = "empty.html"
-	ui.soft_update_all()
-
-/obj/machinery/body_scanner/process()//is this really needed?
-	ui.soft_update_fields()
 
 /obj/machinery/body_scanner/container_resist(mob/living/user)
 	visible_message("<span class='notice'>[occupant] emerges from [src]!</span>",
@@ -91,10 +86,10 @@
 			else
 				data["stat"] = "<span class='bad'><b>Dead</b></span>"
 
-		data["bruteLoss"] = carbon_occupant.getBruteLoss()
-		data["fireLoss"] = carbon_occupant.getFireLoss()
-		data["toxLoss"] = carbon_occupant.getToxLoss()
-		data["oxyLoss"] = carbon_occupant.getOxyLoss()
+		data["bruteloss"] = "[carbon_occupant.getBruteLoss()]%"
+		data["fireloss"] = "[carbon_occupant.getFireLoss()]%"
+		data["toxloss"] = "[carbon_occupant.getToxLoss()]%"
+		data["oxyloss"] = "[carbon_occupant.getOxyLoss()]%"
 
 		if(carbon_occupant.bodyparts.len)
 			data["bodyparts"] = ""//we have to pass HTML because of OUI works
@@ -105,7 +100,7 @@
 										<span class='label'>[B.name]:</span>\
 										<div class='progressBar'>\
 											<div class='progressFill bad' style=\"width: [damage]%\"></div>\
-										<div class='progressLabelNoUpdate'>[damage]</div></div>\
+										<div class='progressLabel'>[damage]%</div></div>\
 										</section>"
 
 		if(!data["bodyparts"])
@@ -120,7 +115,7 @@
 									<span class='label'>[O.name]:</span>\
 									<div class='progressBar'>\
 										<div class='progressFill bad' style=\"width: [damage]%\"></div>\
-										<div class='progressLabelNoUpdate'>[damage]</div></div>\
+										<div class='progressLabel'>[damage]%</div></div>\
 									</section>"
 
 		if(!data["organs"])

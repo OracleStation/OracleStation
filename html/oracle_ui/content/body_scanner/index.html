@@ -1,20 +1,20 @@
 <div class='display'>
 		<section>
 		<span class='label'>Occupant:</span>
-		<div class='content'>@{name}</div>
+		<div class='content' id="name">@{name}</div>
 		</section>
 
 		<section>
 		<div class='label'>Status:</div>
-		<div class='content'>@{stat}</div>
+		<div class='content' id="stat">@{stat}</div>
 		</section>
 
 		<section>
 		<div class='label'>Brute Damage:</div>
 		<div class='content'>
-			<div class='progressBar'>
-			<div class='progressFill bad' style="width: @{bruteLoss}%"></div>
-				<div class='progressLabelNoUpdate'>@{bruteLoss}</div>
+			<div class='progressBar' id="bruteloss">
+			<div class='progressFill bad' style="width: @{bruteloss}"></div>
+				<div class='progressLabel'>@{bruteloss}%</div>
 			</div>
 		</div>
 		</section>
@@ -22,9 +22,9 @@
 		<section>
 		<div class='label'>Burn Damage:</div>
 		<div class='content'>
-			<div class='progressBar'>
-			<div class='progressFill bad' style="width: @{fireLoss}%"></div>
-				<div class='progressLabelNoUpdate'>@{fireLoss}</div>
+			<div class='progressBar' id="fireloss">
+			<div class='progressFill bad' style="width: @{fireloss}"></div>
+				<div class='progressLabel'>@{fireloss}</div>
 			</div>
 		</div>
 		</section>
@@ -32,9 +32,9 @@
 		<section>
 		<div class='label'>Toxin Damage:</div>
 		<div class='content'>
-			<div class='progressBar'>
-			<div class='progressFill bad' style="width: @{toxLoss}%"></div>
-				<div class='progressLabelNoUpdate'>@{toxLoss}</div>
+			<div class='progressBar' id="toxloss">
+			<div class='progressFill bad' style="width: @{toxloss}"></div>
+				<div class='progressLabel'>@{toxloss}</div>
 			</div>
 		</div>
 		</section>
@@ -42,9 +42,9 @@
 		<section>
 		<div class='label'>Oxygen Damage:</div>
 		<div class='content'>
-			<div class='progressBar'>
-			<div class='progressFill bad' style="width: @{oxyLoss}%"></div>
-				<div class='progressLabelNoUpdate'>@{oxyLoss}</div>
+			<div class='progressBar' id="oxyloss">
+			<div class='progressFill bad' style="width: @{oxyloss}"></div>
+				<div class='progressLabel'>@{oxyloss}</div>
 			</div>
 		</div>
 		</section>
@@ -54,25 +54,25 @@
 
 <div class='display'>
 	<h1>Bodyparts:</h1><br>
-	<div class='content'>@{bodyparts}</div>
+	<div class='content' id="bodyparts">@{bodyparts}</div>
 </div>
 
 <br>
 
 <div class='display'>
 	<h1>Internal Organs:</h1><br>
-	<div class='content'>@{organs}</div>
+	<div class='content' id="organs">@{organs}</div>
 </div>
 
 <br>
 
 <div class='display'>
 	<h1>Implants:</h1><br>
-	<div class='content'>@{implants}</div>
+	<div class='content' id="implants">@{implants}</div>
 </div>
 
 <br>
 
-<div class='display'>
+<div class='display' id="eject_button">
 	@{eject_button}
 </div>
