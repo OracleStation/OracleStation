@@ -129,7 +129,7 @@
 			data["organs"] = ""
 			for(var/thing in carbon_occupant.internal_organs)
 				var/obj/item/organ/O = thing
-				var/damage = O.get_damage_perc()
+				var/damage = round(O.get_damage_perc())
 				data["organs"] += 	"<section>\
 									<span class='label'>[O.name]:</span>\
 									<div class='progressBar'>\
