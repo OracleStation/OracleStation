@@ -2,7 +2,7 @@
 	name = "body scanner"
 	desc = "An enclosed machine used to perform an advanced scan of any patient.\nDespite centuries of research it still can't scan for Syndicate implants."
 	icon = 'icons/obj/Cryogenic2.dmi'
-	icon_state = "cryopod-open"
+	icon_state = "bscanner_open"
 	density = FALSE
 	anchored = TRUE
 	state_open = TRUE
@@ -17,6 +17,25 @@
 	ui.auto_refresh = TRUE
 	ui.current_page = "empty.html"
 
+/obj/machinery/body_scanner/update_icon()
+	if(!carbon_occupant)
+		icon_state = "bscanner_open"
+		return
+
+	if(stat & BROKEN & NOPOWER)
+		icon_state = "bscanner_off"
+		return
+
+	switch(carbon_occupant.health)
+		if(50 to INFINITY)
+			icon_state = "bscanner_green"
+		if(0 to 50)
+			icon_state = "bscanner_yellow"
+		if(-99 to 0)
+			icon_state = "bscanner_red"
+		else
+			icon_state = "bscanner_death"
+
 /obj/machinery/body_scanner/container_resist(mob/living/user)
 	visible_message("<span class='notice'>[occupant] emerges from [src]!</span>",
 		"<span class='notice'>You climb out of [src]!</span>")
@@ -27,10 +46,10 @@
 
 /obj/machinery/body_scanner/open_machine()
 	if(!state_open && !panel_open)
-		icon_state = "cryopod-open"
 		carbon_occupant = null
 		..()
 		ui.change_page("empty.html")
+		update_icon()
 
 /obj/machinery/body_scanner/close_machine(mob/user)
 	if((isnull(user) || istype(user)) && state_open && !panel_open)
@@ -38,7 +57,7 @@
 		carbon_occupant = occupant
 		if(carbon_occupant && carbon_occupant.stat != DEAD)
 			to_chat(carbon_occupant, "<span class='boldnotice'>You feel cool air surround you. You go numb as your senses turn inward.</span>")
-		icon_state = "cryopod"
+		update_icon()
 		ui.change_page("index.html")
 
 /obj/machinery/body_scanner/emp_act(severity)
