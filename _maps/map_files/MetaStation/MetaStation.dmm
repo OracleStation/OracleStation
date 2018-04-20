@@ -76,7 +76,7 @@
 	id = "foreport";
 	name = "Fore-Port Solar Array"
 	},
-/turf/open/floor/plasteel/airless/solarpanel,
+/turf/open/floor/plating/airless,
 /area/solar/port/fore)
 "aam" = (
 /obj/structure/cable,
@@ -175,7 +175,7 @@
 	id = "foreport";
 	name = "Fore-Port Solar Array"
 	},
-/turf/open/floor/plasteel/airless/solarpanel,
+/turf/open/floor/plating/airless,
 /area/solar/port/fore)
 "aav" = (
 /obj/effect/landmark/marauder_entry,
@@ -560,7 +560,7 @@
 	id = "forestarboard";
 	name = "Fore-Starboard Solar Array"
 	},
-/turf/open/floor/plasteel/airless/solarpanel,
+/turf/open/floor/plating/airless,
 /area/solar/starboard/fore)
 "abw" = (
 /obj/structure/cable,
@@ -901,7 +901,7 @@
 	id = "forestarboard";
 	name = "Fore-Starboard Solar Array"
 	},
-/turf/open/floor/plasteel/airless/solarpanel,
+/turf/open/floor/plating/airless,
 /area/solar/starboard/fore)
 "acm" = (
 /obj/effect/turf_decal/stripes/line{
@@ -64983,7 +64983,7 @@
 	id = "aftport";
 	name = "Aft-Port Solar Array"
 	},
-/turf/open/floor/plasteel/airless/solarpanel,
+/turf/open/floor/plating/airless,
 /area/solar/port/aft)
 "cuf" = (
 /obj/structure/closet,
@@ -66057,7 +66057,7 @@
 	id = "aftport";
 	name = "Aft-Port Solar Array"
 	},
-/turf/open/floor/plasteel/airless/solarpanel,
+/turf/open/floor/plating/airless,
 /area/solar/port/aft)
 "cwf" = (
 /obj/structure/cable/yellow{
@@ -82456,7 +82456,7 @@
 	id = "aftstarboard";
 	name = "Aft-Starboard Solar Array"
 	},
-/turf/open/floor/plasteel/airless/solarpanel,
+/turf/open/floor/plating/airless,
 /area/solar/starboard/aft)
 "dbK" = (
 /obj/structure/lattice/catwalk,
@@ -82481,7 +82481,7 @@
 	id = "aftstarboard";
 	name = "Aft-Starboard Solar Array"
 	},
-/turf/open/floor/plasteel/airless/solarpanel,
+/turf/open/floor/plating/airless,
 /area/solar/starboard/aft)
 "dbM" = (
 /obj/structure/lattice/catwalk,
