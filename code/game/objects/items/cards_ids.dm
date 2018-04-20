@@ -59,6 +59,11 @@
 	flags_1 = NOBLUDGEON_1
 	var/prox_check = TRUE //If the emag requires you to be in range
 
+/obj/item/card/emag/cheap_emag // This is a emag for grey tiders. It doesnt do anything special but explode in their face.
+	name = "crypto sequencer"
+	desc = "It's a card with a magnetic strip attached to some circuitry. It seems cheaply made."
+
+
 /obj/item/card/emag/bluespace
 	name = "bluespace cryptographic sequencer"
 	desc = "It's a blue card with a magnetic strip attached to some circuitry. It appears to have some sort of transmitter attached to it."
@@ -74,6 +79,14 @@
 	if(!proximity && prox_check)
 		return
 	A.emag_act(user)
+
+	/obj/item/card/emag/cheap_emag/afterattack(atom/target, mob/user, proximity)
+		var/atom/A = target
+		explode()
+		user.visible_message ("<span class='warning'>The [s rc.name] exploded! </span>")
+		if(!proximity && prox_check)
+			return
+		A.emag_act(user)
 
 /obj/item/card/id
 	name = "identification card"
