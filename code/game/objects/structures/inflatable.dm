@@ -15,7 +15,7 @@
 
 /obj/structure/inflatable
 	name = "inflatable wall"
-	desc = "An inflated membrane. Do not puncture."
+	desc = "An inflated membrane. Do not puncture. Alt-click twice in quick succession to deflate."
 	density = TRUE
 	anchored = TRUE
 	opacity = FALSE
@@ -24,6 +24,7 @@
 	icon_state = "wall"
 
 	var/health = 50.0
+	var/click_state = 0
 
 /obj/structure/inflatable/Initialize(location)
 	..()
@@ -111,14 +112,27 @@
 	if(health <= 0)
 		deflate(TRUE)
 
-/obj/structure/inflatable/AltClick()
-	if(usr.stat || usr.restrained())
+/obj/structure/inflatable/AltClick(mob/user)
+	if(user.stat || user.restrained())
 		return
-	if(!Adjacent(usr))
+	if(!Adjacent(user))
 		return
-	deflate()
+	if(!click_state)
+		click_state = 1
+		visible_message("<span class='danger'>[user] unlatches the safety on the [src]'s deflate valve.</span>")
+		spawn(2 SECONDS) relatch()
 
-/obj/structure/inflatable/proc/deflate(var/violent = TRUE)
+	else
+		visible_message("<span class='danger'>[user] deflates the [src].</span>")
+		deflate()
+
+/obj/structure/inflatable/proc/relatch()
+	if(!src)
+		return
+	visible_message("<span class='danger'>The safety latch on [src]'s deflate valve re-latches itself.</span>")
+	click_state = 0
+
+/obj/structure/inflatable/proc/deflate(var/violent = FALSE)
 	playsound(loc, 'sound/machines/hiss.ogg', 75, 1)
 	if(violent)
 		visible_message("[src] rapidly deflates!")
@@ -131,16 +145,6 @@
 			var/obj/item/inflatable/R = new /obj/item/inflatable(loc)
 			src.transfer_fingerprints_to(R)
 			qdel(src)
-
-/obj/structure/inflatable/verb/hand_deflate()
-	set name = "Deflate"
-	set category = "Object"
-	set src in oview(1)
-
-	if(usr.stat || usr.restrained())
-		return
-
-	deflate()
 
 /obj/item/inflatable/door
 	name = "inflatable door"
@@ -168,7 +172,7 @@
 	var/state = 0 //closed, 1 == open
 	var/isSwitchingStates = FALSE
 
-/obj/structure/inflatable/door/attack_ai(mob/user as mob) //those aren't machinery, they're just big fucking slabs of a mineral
+/obj/structure/inflatable/door/attack_ai(mob/user as mob)
 	if(isAI(user)) //so the AI can't open it
 		return
 	else if(iscyborg(user)) //but cyborgs can
@@ -191,7 +195,7 @@
 		return
 	if(ismob(user))
 		var/mob/living/M = user
-		if(world.time - M.last_bumped <= 60)
+		if(world.time - M.last_bumped <= 6 SECONDS)
 			return //NOTE do we really need that?
 		if(M.client)
 			if(iscarbon(M))
@@ -212,7 +216,6 @@
 
 /obj/structure/inflatable/door/proc/Open()
 	isSwitchingStates = TRUE
-	//playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 100, 1)
 	flick("door_opening",src)
 	sleep(10)
 	density = FALSE
