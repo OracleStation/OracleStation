@@ -104,6 +104,18 @@
 	crate_name = "internals crate"
 	crate_type = /obj/structure/closet/crate/internals
 
+	/datum/supply_pack/misc/cheapemags
+		name = "Cheap Crypto Sequencers"
+		cost = 700
+		contains = list(/obj/item/card/emag/cheap_emag,
+						/obj/item/card/emag/cheap_emag,
+						/obj/item/card/emag/cheap_emag,
+						/obj/item/card/emag/cheap_emag,
+						/obj/item/card/emag/cheap_emag,
+						/obj/item/card/emag/cheap_emag)
+		crate_name = "emag crate"
+
+
 /datum/supply_pack/emergency/firefighting
 	name = "Firefighting Crate"
 	cost = 1000
