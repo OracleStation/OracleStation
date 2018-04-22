@@ -77654,7 +77654,7 @@
 	},
 /area/medical/medbay/central)
 "cUv" = (
-/obj/item/twohanded/required/kirbyplants/random,
+/obj/machinery/body_scanner,
 /turf/open/floor/plasteel/whiteblue/corner{
 	dir = 4
 	},

@@ -32193,7 +32193,7 @@
 /turf/open/floor/plasteel/black,
 /area/medical/sleeper)
 "bwC" = (
-/obj/machinery/computer/med_data,
+/obj/machinery/body_scanner,
 /turf/open/floor/plasteel/white,
 /area/medical/sleeper)
 "bwD" = (

@@ -35290,6 +35290,7 @@
 	},
 /area/medical/sleeper)
 "bzR" = (
+/obj/machinery/body_scanner,
 /turf/open/floor/plasteel/whiteblue/side{
 	dir = 1
 	},
