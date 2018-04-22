@@ -15,7 +15,7 @@
 
 /obj/structure/inflatable
 	name = "inflatable wall"
-	desc = "An inflated membrane. Do not puncture. Alt-click twice in quick succession to deflate."
+	desc = "An inflated membrane. Do not puncture.\n <span class=notice><B>Alt-click</B> twice in quick succession to deflate.</span>"
 	density = TRUE
 	anchored = TRUE
 	opacity = FALSE
