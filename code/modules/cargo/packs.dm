@@ -719,6 +719,14 @@
 	crate_type = /obj/structure/closet/crate/secure/engineering
 	special = TRUE
 
+/datum/supply_pack/engineering/inflatable
+	name = "Inflatable Barriers Crate"
+	cost = 800
+	contains = list(/obj/item/storage/briefcase/inflatable,
+					/obj/item/storage/briefcase/inflatable,
+					/obj/item/storage/briefcase/inflatable)
+	crate_name = "inflatable barrier crate"
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Medical /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -1762,3 +1770,5 @@
 	contains = list(/obj/vehicle/bicycle)
 	crate_name = "Bicycle Crate"
 	crate_type = /obj/structure/closet/crate/large
+
+
