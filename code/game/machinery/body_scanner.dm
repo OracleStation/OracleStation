@@ -109,6 +109,7 @@
 		data["fireloss"] = "[carbon_occupant.getFireLoss()]%"
 		data["toxloss"] = "[carbon_occupant.getToxLoss()]%"
 		data["oxyloss"] = "[carbon_occupant.getOxyLoss()]%"
+		data["blood"] = "[(carbon_occupant.blood_volume / BLOOD_VOLUME_NORMAL)*100]%"
 
 		if(carbon_occupant.bodyparts.len)
 			data["bodyparts"] = ""//we have to pass HTML because of OUI works
@@ -120,6 +121,7 @@
 										<div class='progressBar'>\
 											<div class='progressFill bad' style=\"width: [damage]%\"></div>\
 										<div class='progressLabel'>[damage]%</div></div>\
+										[B.broken ? "<span class='average'>FRACTURE</span>" : ""]\
 										</section>"
 
 		if(!data["bodyparts"])
