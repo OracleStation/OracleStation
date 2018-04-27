@@ -33,9 +33,11 @@
 		else
 			obj_integrity = min(max_integrity, obj_integrity - adjusted_amount)
 	. = adjusted_amount
+	if(owner)
+		owner.update_organ_damage_tracker()
 
 /obj/item/organ/proc/heal_damage(amount)//for the purists
-	take_damage(-amount)
+	return take_damage(-amount)
 
 /obj/item/organ/proc/on_full_heal()//called during organ manip. fixing surgery
 	return

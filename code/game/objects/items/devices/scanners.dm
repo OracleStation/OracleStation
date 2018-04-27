@@ -179,12 +179,8 @@ MASS SPECTROMETER
 		if(broken_stuff.len)
 			to_chat(user, "\t<span class='alert'>Bone fractures detected. Subject's [english_list(broken_stuff)] [broken_stuff.len > 1 ? "require" : "requires"] surgical treatment!</span>")
 
-		var/internal_damage = 0
-		for(var/obj/item/organ/O in C.internal_organs)
-			internal_damage += O.get_damage_perc()
-			if(internal_damage > 30)
-				to_chat(user, "\t<span class='alert'>Significant internal organ damage detected. More advanced scanner required for location.</span>")
-				break
+		if(C.organ_damage_tracker > 30)
+			to_chat(user, "\t<span class='alert'>Significant internal organ damage detected. More advanced scanner required for location.</span>")
 
 	// Species and body temperature
 	if(ishuman(M))
