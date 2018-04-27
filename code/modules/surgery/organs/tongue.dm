@@ -86,7 +86,7 @@
 	icon_state = "tongueayylmao"
 	say_mod = "gibbers"
 	taste_sensitivity = NO_TASTE_SENSITIVITY // ayys cannot taste anything.
-	max_integrity = 0
+	max_integrity = ORGAN_HEALTH_NONE
 
 /obj/item/organ/tongue/abductor/TongueSpeech(var/message)
 	//Hacks
