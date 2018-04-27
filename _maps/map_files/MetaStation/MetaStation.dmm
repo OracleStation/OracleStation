@@ -65933,6 +65933,7 @@
 	},
 /obj/item/stack/cable_coil,
 /obj/effect/turf_decal/delivery,
+/obj/item/device/roboanalyzer,
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
 "cFk" = (

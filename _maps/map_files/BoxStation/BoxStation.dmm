@@ -29106,6 +29106,7 @@
 /obj/structure/table,
 /obj/machinery/cell_charger,
 /obj/item/stock_parts/cell/high/plus,
+/obj/item/device/roboanalyzer,
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
 "bpV" = (

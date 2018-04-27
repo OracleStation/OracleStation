@@ -31251,6 +31251,7 @@
 	pixel_x = 24
 	},
 /obj/effect/turf_decal/bot,
+/obj/item/device/roboanalyzer,
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
 "bbb" = (
