@@ -277,12 +277,13 @@
 	if(breath_pp > 0)
 		var/ratio = safe_breath_min/breath_pp
 		H.adjustOxyLoss(min(5*ratio, HUMAN_MAX_OXYLOSS)) // Don't fuck them up too fast (space only does HUMAN_MAX_OXYLOSS after all!
+		take_damage(min(5*ratio, HUMAN_MAX_OXYLOSS - 1))
 		H.failed_last_breath = TRUE
 		. = true_pp*ratio/6
 	else
+		take_damage(HUMAN_MAX_OXYLOSS - 1)
 		H.adjustOxyLoss(HUMAN_MAX_OXYLOSS)
 		H.failed_last_breath = TRUE
-
 
 /obj/item/organ/lungs/proc/handle_breath_temperature(datum/gas_mixture/breath, mob/living/carbon/human/H) // called by human/life, handles temperatures
 	var/breath_temperature = breath.temperature
