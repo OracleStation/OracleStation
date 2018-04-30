@@ -149,3 +149,7 @@
 #define NOMOUTH			36
 #define NOTOX       37
 #define DIFFICULTCLONE 38 // Requires upgraded cloner to be cloned
+#define SPECIES_ORGANIC 39
+#define SPECIES_INORGANIC 40
+#define SPECIES_UNDEAD  41
+#define SPECIES_ROBOTIC 42
