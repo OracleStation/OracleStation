@@ -9,7 +9,7 @@
 	toxmod = 0
 	clonemod = 0
 	siemens_coeff = 2 // Overload!
-	species_traits = list(NOBREATH, NOBLOOD, RADIMMUNE, VIRUSIMMUNE, NOZOMBIE, EASYDISMEMBER, EASYLIMBATTACHMENT, NOPAIN, NO_BONES, NOTRANSSTING, MUTCOLORS, REVIVESBYHEALING, NOSCAN, NOCHANGELING, NOHUSK, ROBOTIC_LIMBS, NOMOUTH, NOTOX)
+	species_traits = list(SPECIES_ROBOTIC,NOBREATH, NOBLOOD, RADIMMUNE, NOZOMBIE, EASYDISMEMBER, EASYLIMBATTACHMENT, NOPAIN, NO_BONES, NOTRANSSTING, MUTCOLORS, REVIVESBYHEALING, NOSCAN, NOCHANGELING, NOHUSK, ROBOTIC_LIMBS, NOMOUTH, NOTOX)
 	mutant_organs = list(/obj/item/organ/cyberimp/arm/power_cord)
 	mutant_bodyparts = list("ipc_screen", "ipc_antenna", "ipc_chassis")
 	default_features = list("mcolor" = "#7D7D7D", "ipc_screen" = "Static", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)")
