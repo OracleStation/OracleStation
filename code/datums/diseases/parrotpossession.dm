@@ -12,6 +12,8 @@
 	desc = "Subject is possesed by the vengeful spirit of a parrot. Call the priest."
 	severity = MEDIUM
 	var/mob/living/simple_animal/parrot/Poly/ghost/parrot
+	infectable_hosts = list(SPECIES_ORGANIC, SPECIES_UNDEAD, SPECIES_INORGANIC, SPECIES_ROBOTIC)
+	bypasses_immunity = TRUE //2spook
 
 /datum/disease/parrot_possession/stage_act()
 	..()
