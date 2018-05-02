@@ -164,6 +164,9 @@ CONFIG_DEF(string/wikibookurl)
 CONFIG_DEF(string/discordurl)
 		value = "https://discord.gg/TsjA9wp"
 
+CONFIG_DEF(string/patreonurl)
+		value = "https://www.patreon.com/OracleStation"
+
 CONFIG_DEF(string/forumurl)
 		value = "https://www.oraclestation.com/forum/"
 

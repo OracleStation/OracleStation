@@ -67,3 +67,8 @@
 
 //Flags in the players table in the db
 #define DB_FLAG_EXEMPT 1
+
+//Donator Flags
+#define DONATOR_NONE 0
+#define DONATOR_BASIC 1
+#define DONATOR_FULL 2

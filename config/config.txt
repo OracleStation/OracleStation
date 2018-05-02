@@ -211,6 +211,9 @@ WIKIBOOKURL http://10.0.0.2:8080/wiki/
 ## Discord invite link
 # DISCORDURL https://discord.gg/TsjA9wp
 
+## Patreon Link for donations
+# PATREONURL https://www.patreon.com/OracleStation
+
 ## In-game features
 ##Toggle for having jobs load up from the .txt
 # LOAD_JOBS_FROM_TXT

@@ -110,6 +110,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/exp
 	var/list/menuoptions
 
+	var/display_donator_status = FALSE
+
 /datum/preferences/New(client/C)
 	parent = C
 	custom_names["ai"] = pick(GLOB.ai_names)
@@ -119,8 +121,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(istype(C))
 		if(!IsGuestKey(C.key))
 			load_path(C.ckey)
-			unlock_content = TRUE
-			if(unlock_content)
+			unlock_content = check_donator_status()
+			if(unlock_content >= DONATOR_FULL || check_rights(R_ADMIN))
 				max_save_slots = 8
 	var/loaded_preferences_successfully = load_preferences()
 	if(loaded_preferences_successfully)
