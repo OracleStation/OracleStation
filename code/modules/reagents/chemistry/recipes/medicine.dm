@@ -22,7 +22,7 @@
 	name = "Spaceacillin"
 	id = "spaceacillin"
 	results = list("spaceacillin" = 2)
-	required_reagents = list("fungus" = 1, "ethanol" = 1)
+	required_reagents = list("mushroomhallucinogen" = 1, "ethanol" = 1)
 
 /datum/chemical_reaction/synaptizine
 	name = "Synaptizine"
