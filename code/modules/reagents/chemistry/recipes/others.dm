@@ -583,7 +583,7 @@
 	name = "carpet"
 	id = "carpet"
 	results = list("carpet" = 2)
-	required_reagents = list("fungus" = 1, "blood" = 1)
+	required_reagents = list("mushroomhallucinogen" = 1, "blood" = 1)
 
 /datum/chemical_reaction/oil
 	name = "Oil"
