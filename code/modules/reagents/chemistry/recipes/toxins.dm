@@ -24,7 +24,7 @@
 	name = "Itching Powder"
 	id = "itching_powder"
 	results = list("itching_powder" = 3)
-	required_reagents = list("welding_fuel" = 1, "ammonia" = 1, "fungus" = 1)
+	required_reagents = list("welding_fuel" = 1, "ammonia" = 1, "mushroomhallucinogen" = 1)
 
 /datum/chemical_reaction/facid
 	name = "Fluorosulfuric acid"
