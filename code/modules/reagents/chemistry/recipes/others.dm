@@ -726,7 +726,7 @@
 /datum/chemical_reaction/synthanol
 	name = "Synthanol"
 	id = "synthanol"
-	required_reagents = list("lube" = 1, "plasma" = 1, "fuel" = 1)
+	required_reagents = list("lube" = 1, "plasma" = 1, "welding_fuel" = 1)
 	results = list("synthanol" = 3)
 
 /datum/chemical_reaction/synthanol/robottears
