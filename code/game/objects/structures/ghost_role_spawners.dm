@@ -49,7 +49,7 @@
 
 /obj/effect/mob_spawn/human/ash_walker/special(mob/living/new_spawn)
 	new_spawn.real_name = random_unique_unathi_name(gender)
-	to_chat(new_spawn, "<b>Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind. Glory to the Necropolis!</b>")
+	to_chat(new_spawn, "<b>Protect Lavaland and the Necropolis at all costs - DO NOT ABANDON YOUR LANDS! Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind. Glory to the Necropolis!</b>")
 
 	new_spawn.grant_language(/datum/language/draconic)
 	var/datum/language_holder/holder = new_spawn.get_language_holder()
