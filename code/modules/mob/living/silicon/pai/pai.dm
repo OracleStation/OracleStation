@@ -13,6 +13,7 @@
 	weather_immunities = list("ash")
 	health = 500
 	maxHealth = 500
+	can_be_held = TRUE
 
 	var/ram = 100	// Used as currency to purchase different abilities
 	var/list/software = list()
@@ -55,7 +56,10 @@
 	var/canholo = TRUE
 	var/obj/item/card/id/access_card = null
 	var/chassis = "repairbot"
-	var/list/possible_chassis = list("cat", "mouse", "monkey", "corgi", "fox", "repairbot", "rabbit")
+	var/list/possible_chassis = list("cat" = TRUE, "mouse" = TRUE, "monkey" = TRUE, "corgi" = FALSE, "fox" = FALSE, "repairbot" = TRUE, "rabbit" = TRUE)		//assoc value is whether it can be picked up.
+	var/static/item_head_icon = 'icons/mob/pai_item_head.dmi'
+	var/static/item_lh_icon = 'icons/mob/pai_item_lh.dmi'
+	var/static/item_rh_icon = 'icons/mob/pai_item_rh.dmi'
 
 	var/emitterhealth = 20
 	var/emittermaxhealth = 20

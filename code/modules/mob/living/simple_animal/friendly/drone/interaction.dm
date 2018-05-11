@@ -49,11 +49,8 @@
 			return
 		to_chat(user, "<span class='notice'>You pick [src] up.</span>")
 		drop_all_held_items()
-		var/obj/item/clothing/head/drone_holder/DH = new /obj/item/clothing/head/drone_holder(src)
-		DH.updateVisualAppearence(src)
-		DH.drone = src
+		var/obj/item/clothing/head/mob_holder/drone/DH = new(get_turf(src), src)
 		user.put_in_hands(DH)
-		forceMove(DH)
 
 /mob/living/simple_animal/drone/proc/try_reactivate(mob/living/user)
 	var/mob/dead/observer/G = get_ghost()
