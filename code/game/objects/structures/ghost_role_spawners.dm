@@ -44,12 +44,12 @@
 	anchored = FALSE
 	density = FALSE
 	flavour_text = "<font size=3><b>Y</b></font><b>ou are an ash walker. Your tribe worships <span class='danger'>the Necropolis</span>. The wastes are sacred ground, its monsters a blessed bounty. \
-	You have seen lights in the distance... they foreshadow the arrival of outsiders that seek to tear apart the Necropolis and its domain. Fresh sacrifices for your nest.</b>"
+	You have seen lights in the distance... they foreshadow the arrival of outsiders that seek to tear apart the Necropolis and its domain. Fresh sacrifices for your nest. <font size=4>DO NOT LEAVE THE NECROPOLIS UNDEFENDED.</font></b>"
 	assignedrole = "Ash Walker"
 
 /obj/effect/mob_spawn/human/ash_walker/special(mob/living/new_spawn)
 	new_spawn.real_name = random_unique_unathi_name(gender)
-	to_chat(new_spawn, "<b>Protect Lavaland and the Necropolis at all costs - DO NOT ABANDON YOUR LANDS! Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind. Glory to the Necropolis!</b>")
+	to_chat(new_spawn, "<b>Protect Lavaland and the Necropolis at all costs - <font size=4>DO NOT ABANDON YOUR LANDS!</font> Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind. Glory to the Necropolis!</b>")
 
 	new_spawn.grant_language(/datum/language/draconic)
 	var/datum/language_holder/holder = new_spawn.get_language_holder()
