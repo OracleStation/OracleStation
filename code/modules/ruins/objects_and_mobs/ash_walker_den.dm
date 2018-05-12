@@ -11,6 +11,7 @@
 	maxHealth = 200
 	loot = list(/obj/effect/collapse)
 	var/meat_counter = 6
+	anchored = TRUE //stops it being moved
 
 /mob/living/simple_animal/hostile/spawner/lavaland/ash_walker/death()
 	new /obj/item/device/assembly/signaler/anomaly (get_step(loc, pick(GLOB.alldirs)))
