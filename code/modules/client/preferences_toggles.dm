@@ -271,8 +271,7 @@ GLOBAL_LIST_INIT(ghost_forms, list("ghost","ghostking","ghostian2","skeleghost",
 							"ghost_dcyan","ghost_grey","ghost_dyellow","ghost_dpink", "ghost_purpleswirl","ghost_funkypurp","ghost_pinksherbert","ghost_blazeit",\
 							"ghost_mellow","ghost_rainbow","ghost_camo","ghost_fire", "catghost"))
 /client/proc/pick_form()
-	if(!is_content_unlocked())
-		alert("This setting is for accounts with BYOND premium only.")
+	if(!donator_level_check(DONATOR_FULL))
 		return
 	var/new_form = input(src, "Choose your ghostly form:","Ghost Form",null) as null|anything in GLOB.ghost_forms
 	if(new_form)
@@ -285,8 +284,7 @@ GLOBAL_LIST_INIT(ghost_forms, list("ghost","ghostking","ghostian2","skeleghost",
 GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOST_ORBIT_SQUARE,GHOST_ORBIT_HEXAGON,GHOST_ORBIT_PENTAGON))
 
 /client/proc/pick_ghost_orbit()
-	if(!is_content_unlocked())
-		alert("This setting is for accounts with BYOND premium only.")
+	if(!donator_level_check(DONATOR_FULL))
 		return
 	var/new_orbit = input(src, "Choose your ghostly orbit:","Ghost Orbit",null) as null|anything in GLOB.ghost_orbits
 	if(new_orbit)
@@ -295,6 +293,19 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 		if(isobserver(mob))
 			var/mob/dead/observer/O = mob
 			O.ghost_orbit = new_orbit
+
+/client/verb/toggledonator()
+	set name = "Toggle Donator Status"
+	set category = "Preferences"
+	set desc = "Toggles showing you as a donator in OOC chat"
+
+	if(!donator_level_check(DONATOR_BASIC))
+		return
+
+	prefs.display_donator_status = !prefs.display_donator_status
+	to_chat(usr, "<span class='notice'>You will [prefs.display_donator_status ? "now" : "no longer"] show up as a donator in OOC.</span>")
+	SSblackbox.add_details("preferences_verb","Toggle Donator Visibility|[prefs.display_donator_status]") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 
 /client/proc/pick_ghost_accs()
 	var/new_ghost_accs = alert("Do you want your ghost to show full accessories where possible, hide accessories but still use the directional sprites where possible, or also ignore the directions and stick to the default sprites?",,"full accessories", "only directional sprites", "default sprites")
@@ -315,7 +326,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	set name = "Ghost Customization"
 	set category = "Preferences"
 	set desc = "Customize your ghastly appearance."
-	if(is_content_unlocked())
+	if(prefs.unlock_content >= DONATOR_FULL)
 		switch(alert("Which setting do you want to change?",,"Ghost Form","Ghost Orbit","Ghost Accessories"))
 			if("Ghost Form")
 				pick_form()

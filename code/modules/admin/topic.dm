@@ -275,6 +275,38 @@
 	else if(href_list["editrights"])
 		edit_rights_topic(href_list)
 
+	else if(href_list["donatorperms"])
+		if(!check_rights(R_PERMISSIONS))
+			return
+		switch(href_list["donatorperms"])
+			if("add")//add a new donator
+				var/new_ckey = input("Add a donator ckey", "Ckey", "ckey")
+				var/new_rank = input("Choose donator rank for [new_ckey]", "Rank") as null|anything in GLOB.donator_tiers
+				if(!new_rank)
+					return
+				set_donator_status(new_ckey, new_rank)
+				return
+
+			if("remove")//remove an existing donator
+				var/new_ckey = href_list["ckey"]
+				if(!new_ckey)
+					return
+				var/confirm = input("Are you sure you want to remove donator status of [new_ckey]?", "Confirm", "No") in list("No", "Yes")
+				if(confirm != "Yes")
+					return
+				set_donator_status(new_ckey, DONATOR_NONE)
+				return
+
+			if("rank")//modify an existing donator's tier
+				var/new_ckey = href_list["ckey"]
+				if(!new_ckey)
+					return
+				var/new_rank = input("Choose donator rank for [new_ckey]", "Rank") as null|anything in GLOB.donator_tiers
+				if(!new_rank)
+					return
+				set_donator_status(new_ckey, new_rank)
+				return
+
 	else if(href_list["call_shuttle"])
 		if(!check_rights(R_ADMIN))
 			return

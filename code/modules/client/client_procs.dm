@@ -128,9 +128,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	..()	//redirect to hsrc.Topic()
 
-/client/proc/is_content_unlocked()
-	return TRUE
-
 /client/proc/handle_spam_prevention(message, mute_type)
 	if(CONFIG_GET(flag/automute_on) && !holder && last_message == message)
 		src.last_message_count++

@@ -20,6 +20,7 @@
 	load_motd()
 	load_admins()
 	load_mentors()
+	load_donators()
 	LoadVerbs(/datum/verbs/menu)
 	if(CONFIG_GET(flag/usewhitelist))
 		load_whitelist()
