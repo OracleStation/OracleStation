@@ -7,8 +7,12 @@
 			Unless it's your sorry ass being kicked, you will experience a brief lack of cooperation from your tools.</span>")
 		C.remove_admin_verbs()
 		C.holder = null
-
 	GLOB.mentors.Cut()
+
+	for(var/datum/mentors/D in GLOB.mentor_datums)
+		qdel(D)
+	GLOB.mentor_datums.Cut()
+
 	if(!CONFIG_GET(flag/mentor_legacy_system))
 		if(!SSdbcore.IsConnected())
 			log_world("Failed to connect to database in load_mentors().")
