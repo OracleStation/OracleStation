@@ -287,7 +287,7 @@
 			if("remove")
 				if(!input_ckey)
 					return
-				var/confirm = input("Are you sure you want to remove [input_ckey] from the mentor list?", "Mentor Removal") as null|anything in list("No", "Yes")
+				var/confirm = alert("Are you sure you want to remove [input_ckey] from the mentor list?", "Mentor Removal", "No", "Yes")
 				if(confirm != "Yes")
 					return
 				log_mentor_rank_delete(input_ckey)

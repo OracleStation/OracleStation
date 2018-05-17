@@ -164,9 +164,9 @@
 </tr>
 "}
 
-	for(var/men_ckey in GLOB.mentors)
+	for(var/men_ckey in GLOB.mentor_datums)
 		output += "<tr>"
-		output += "<td style='text-align:right;'>[men_ckey]<a class='small' href='?src=[REF(src)];[HrefToken()];editmentor=remove;ckey=[men_ckey]'>\[-\]</a></td>"
+		output += "<td>[men_ckey]<a class='small' href='?src=[REF(src)];[HrefToken()];editmentor=remove;ckey=[men_ckey]'>\[-\]</a></td>"
 		output += "</tr>"
 
 	output += {"
@@ -175,7 +175,7 @@
 </body>
 </html>"}
 
-	usr << browse(output,"window=editrights;size=900x650")
+	usr << browse(output,"window=editrights;size=600x200")
 
 /datum/admins/proc/log_mentor_rank_given(target_ckey)
 	if(CONFIG_GET(flag/mentor_legacy_system))
@@ -203,10 +203,11 @@
 	if(!istext(target_ckey))
 		return
 
-	var/datum/DBQuery/query_make_mentor = SSdbcore.NewQuery("INSERT INTO `[format_table_name("mentor")]` (`ckey`) VALUES (`[target_ckey]`)")
+	var/datum/DBQuery/query_make_mentor = SSdbcore.NewQuery("INSERT INTO [format_table_name("mentor")] (ckey) VALUES ('[target_ckey]')")
 	if(!query_make_mentor.warn_execute())
 		return
 	to_chat(usr, "<span class='adminnotice'><b>[target_ckey]</b> has been added as a mentor.</span>")
+	edit_mentor_permissions()
 
 /datum/admins/proc/log_mentor_rank_delete(target_ckey)
 	if(CONFIG_GET(flag/mentor_legacy_system))
@@ -234,7 +235,8 @@
 	if(!istext(target_ckey))
 		return
 
-	var/datum/DBQuery/query_delete_mentor = SSdbcore.NewQuery("DELETE FROM `[format_table_name("mentor")]` WHERE ckey=[target_ckey]")
+	var/datum/DBQuery/query_delete_mentor = SSdbcore.NewQuery("DELETE FROM [format_table_name("mentor")] WHERE ckey='[target_ckey]'")
 	if(!query_delete_mentor.warn_execute())
 		return
-	to_chat(usr, "<span class='adminnotice'>Mentor <b>[target_ckey]</b> has been removed from the mentor list.</span>")
+	to_chat(usr, "<span class='adminnotice'><b>[target_ckey]</b> has been removed from the mentor list.</span>")
+	edit_mentor_permissions()
