@@ -10,15 +10,6 @@
 	dynamic_hair_suffix = ""
 	dog_fashion = /datum/dog_fashion/head/chef
 
-/obj/item/clothing/head/chefhat/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is donning [src]! It looks like [user.p_theyre()] trying to become a chef.</span>")
-	user.say("Bork Bork Bork!")
-	sleep(20)
-	user.visible_message("<span class='suicide'>[user] climbs into an imaginary oven!</span>")
-	user.say("BOOORK!")
-	playsound(user, 'sound/machines/ding.ogg', 50, 1)
-	return(FIRELOSS)
-
 //Captain
 /obj/item/clothing/head/caphat
 	name = "captain's hat"
@@ -64,7 +55,7 @@
 	worn_x_dimension = 64
 	worn_y_dimension = 64
 	dynamic_hair_suffix = ""
-
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/witchunter_hat
 	name = "witchunter hat"
@@ -72,6 +63,7 @@
 	icon_state = "witchhunterhat"
 	item_state = "witchhunterhat"
 	flags_cover = HEADCOVERSEYES
+	species_restricted = list("exclude","Vox Outcast")
 
 //Detective
 /obj/item/clothing/head/fedora/det_hat
@@ -144,10 +136,26 @@
 	strip_delay = 60
 	dog_fashion = /datum/dog_fashion/head/warden
 
+/obj/item/clothing/head/beret/sergeantwarden
+	name = "warden's sergeant beret"
+	desc = "A dark beret with the insignia of Security. It's commonly worn by Wardens with the rank of Sergeant."
+	icon_state = "beret_corporate_warden"
+	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 30, acid = 60)
+	strip_delay = 60
+	dog_fashion = /datum/dog_fashion/head/warden
+
 /obj/item/clothing/head/beret/sec
 	name = "security beret"
 	desc = "A robust beret with the security insignia emblazoned on it. Uses reinforced fabric to offer sufficent protection."
 	icon_state = "beret_badge"
+	armor = list(melee = 40, bullet = 30, laser = 30,energy = 10, bomb = 25, bio = 0, rad = 0, fire = 20, acid = 50)
+	strip_delay = 60
+	dog_fashion = null
+
+/obj/item/clothing/head/beret/csec
+	name = "corporal security beret"
+	desc = "A robust beret with the security insignia emblazoned on it. Uses reinforced fabric to offer sufficent protection.This one signifies a corporal officer."
+	icon_state = "beret_corporate_officer"
 	armor = list(melee = 40, bullet = 30, laser = 30,energy = 10, bomb = 25, bio = 0, rad = 0, fire = 20, acid = 50)
 	strip_delay = 60
 	dog_fashion = null
@@ -168,8 +176,40 @@
 	desc = "A special beret with the security insignia emblazoned on it. For officers with class."
 	icon_state = "officerberet"
 
+/obj/item/clothing/head/beret/eng
+	name = "engineering beret"
+	desc = "A beret with the engineering insignia emblazoned on it. For engineers that are more inclined towards style than safety."
+	icon_state = "beret_engineering"
+
+/obj/item/clothing/head/beret/atmos
+	name = "atmospherics beret"
+	desc = "A beret for those who have shown immaculate proficienty in piping. Or plumbing."
+	icon_state = "beret_atmospherics"
+
+/obj/item/clothing/head/beret/ce
+	name = "chief engineer beret"
+	desc = "A white beret with the engineering insignia emblazoned on it. Its owner knows what they're doing. Probably."
+	icon_state = "beret_ce"
+
+/obj/item/clothing/head/beret/sci
+	name = "science beret"
+	desc = "A purple beret with the science insignia emblazoned on it. It has that authentic burning plasma smell."
+	icon_state = "beret_sci"
+
+//Medical
+/obj/item/clothing/head/beret/med
+	name = "medical beret"
+	desc = "A white beret with a green cross finely threaded into it. It has that sterile smell about it."
+	icon_state = "beret_med"
+
+/obj/item/clothing/head/beret/cmo
+	name = "chief medical officer beret"
+	desc = "A baby blue beret with a green cross finely threaded into it. It has that sterile smell about it."
+	icon_state = "beret_cmo"
+
 //Curator
 /obj/item/clothing/head/fedora/curator
 	name = "treasure hunter's fedora"
 	desc = "You got red text today kid, but it doesn't mean you have to like it."
 	icon_state = "curator"
+	species_restricted = list("exclude","Vox Outcast")

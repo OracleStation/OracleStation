@@ -7,7 +7,6 @@
 	var/product_path = null
 	var/amount = 0
 	var/max_amount = 0
-	var/display_color = "blue"
 
 
 /obj/machinery/vending
@@ -145,7 +144,6 @@
 		if(!start_empty)
 			R.amount = amount
 		R.max_amount = amount
-		R.display_color = pick("red","blue","green")
 
 		if(hidden)
 			hidden_records += R
@@ -371,22 +369,21 @@
 				display_records = product_records + coin_records
 			if((coin || bill) && extended_inventory)
 				display_records = product_records + hidden_records + coin_records
-			dat += "<ul>"
+			dat += "<table>"
 			for (var/datum/data/vending_product/R in display_records)
-				dat += "<li>"
+				dat += "<tr><td>" + GetIconForProduct(R) + "</td>"
+				dat += "<td style=\"width: 100%\"><b>[sanitize(R.product_name)]</b></td>"
 				if(R.amount > 0)
-					dat += "<a href='byond://?src=\ref[src];vend=\ref[R]'>Vend</a> "
+					dat += "<td><b>[R.amount]&nbsp;</b></td><td><a href='byond://?src=[REF(src)];vend=[REF(R)]'>Vend</a></td>"
 				else
-					dat += "<span class='linkOff'>Sold out</span> "
-				dat += "<font color = '[R.display_color]'><b>[sanitize(R.product_name)]</b>:</font>"
-				dat += " <b>[R.amount]</b>"
-				dat += "</li>"
-			dat += "</ul>"
+					dat += "<td>0&nbsp;</td><td><span class='linkOff'>Vend</span></td>"
+				dat += "</tr>"
+			dat += "</table>"
 		dat += "</div>"
 		if(premium.len > 0)
 			dat += "<b>Change Return:</b> "
 			if (coin || bill)
-				dat += "[(coin ? coin : "")][(bill ? bill : "")]&nbsp;&nbsp;<a href='byond://?src=\ref[src];remove_coin=1'>Remove</a>"
+				dat += "[(coin ? coin : "")][(bill ? bill : "")]&nbsp;&nbsp;<a href='byond://?src=[REF(src)];remove_coin=1'>Remove</a>"
 			else
 				dat += "<i>No money</i>&nbsp;&nbsp;<span class='linkOff'>Remove</span>"
 		if(istype(src, /obj/machinery/vending/snack))
@@ -395,7 +392,7 @@
 			for (var/O in dish_quants)
 				if(dish_quants[O] > 0)
 					var/N = dish_quants[O]
-					dat += "<a href='byond://?src=\ref[src];dispense=[sanitize(O)]'>Dispense</A> "
+					dat += "<a href='byond://?src=[REF(src)];dispense=[sanitize(O)]'>Dispense</A> "
 					dat += "<B>[capitalize(O)]: [N]</B><br>"
 			dat += "</div>"
 	user.set_machine(src)
@@ -408,6 +405,19 @@
 	popup.set_title_image(user.browse_rsc_icon(src.icon, src.icon_state))
 	popup.open()
 
+GLOBAL_LIST_EMPTY(vending_machine_icon)
+
+/obj/machinery/vending/proc/GetIconForProduct(datum/data/vending_product/P)
+	var/producticon = GLOB.vending_machine_icon[P.product_path]
+	if (producticon)
+		return producticon
+
+	var/product = new P.product_path()
+	producticon = icon2base64html(product)
+	qdel(product)
+
+	GLOB.vending_machine_icon[P.product_path] = copytext(producticon,1,0)
+	return GLOB.vending_machine_icon[P.product_path]
 
 /obj/machinery/vending/Topic(href, href_list)
 	if(..())
@@ -521,10 +531,14 @@
 		use_power(5)
 		if(icon_vend) //Show the vending animation if needed
 			flick(icon_vend,src)
-		new R.product_path(get_turf(src))
+		var/vended = new R.product_path(get_turf(src))
+		if(usr.can_put_in_hands(vended))
+			usr.put_in_hands(vended)
+			to_chat(usr, "<span class='notice'>You take [R.product_name] out of the slot.</span>")
+		else
+			to_chat(usr, "<span class='warning'>[R.product_name] falls onto the floor!</span>")
 		SSblackbox.add_details("vending_machine_usage","[src.type]|[R.product_path]")
 		vend_ready = 1
-		return
 
 		updateUsrDialog()
 		return
@@ -649,18 +663,32 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
 	icon_state = "boozeomat"        //////////////18 drink entities below, plus the glasses, in case someone wants to edit the number of bottles
 	icon_deny = "boozeomat-deny"
-	products = list(/obj/item/reagent_containers/food/drinks/bottle/gin = 5, /obj/item/reagent_containers/food/drinks/bottle/whiskey = 5,
-					/obj/item/reagent_containers/food/drinks/bottle/tequila = 5, /obj/item/reagent_containers/food/drinks/bottle/vodka = 5,
-					/obj/item/reagent_containers/food/drinks/bottle/vermouth = 5, /obj/item/reagent_containers/food/drinks/bottle/rum = 5,
-					/obj/item/reagent_containers/food/drinks/bottle/wine = 5, /obj/item/reagent_containers/food/drinks/bottle/cognac = 5,
-					/obj/item/reagent_containers/food/drinks/bottle/kahlua = 5, /obj/item/reagent_containers/food/drinks/bottle/hcider = 5,
-					/obj/item/reagent_containers/food/drinks/bottle/absinthe = 5, /obj/item/reagent_containers/food/drinks/bottle/grappa = 5,
-					/obj/item/reagent_containers/food/drinks/ale = 6, /obj/item/reagent_containers/food/drinks/bottle/orangejuice = 4,
-					/obj/item/reagent_containers/food/drinks/bottle/tomatojuice = 4, /obj/item/reagent_containers/food/drinks/bottle/limejuice = 4,
-					/obj/item/reagent_containers/food/drinks/bottle/cream = 4, /obj/item/reagent_containers/food/drinks/soda_cans/tonic = 8,
-					/obj/item/reagent_containers/food/drinks/soda_cans/cola = 8, /obj/item/reagent_containers/food/drinks/soda_cans/sodawater = 15,
-					/obj/item/reagent_containers/food/drinks/drinkingglass = 30, /obj/item/reagent_containers/food/drinks/ice = 10,
-					/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass = 12, /obj/item/reagent_containers/food/drinks/flask = 3)
+	products = list(/obj/item/reagent_containers/food/drinks/bottle/gin = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/whiskey = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/tequila = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/vodka = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/vermouth = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/rum = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/wine = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/cognac = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/kahlua = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/hcider = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/absinthe = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/grappa = 5,
+					/obj/item/reagent_containers/food/drinks/soda_cans/synthanol = 5,
+					/obj/item/reagent_containers/food/drinks/ale = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/orangejuice = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/tomatojuice = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/limejuice = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/cream = 5,
+					/obj/item/reagent_containers/food/drinks/soda_cans/tonic = 5,
+					/obj/item/reagent_containers/food/drinks/soda_cans/cola = 5,
+					/obj/item/reagent_containers/food/drinks/soda_cans/sodawater = 5,
+					/obj/item/reagent_containers/food/drinks/drinkingglass = 30,
+					/obj/item/reagent_containers/food/drinks/ice = 10,
+					/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass = 10,
+					/obj/item/reagent_containers/food/drinks/flask = 5)
+
 	contraband = list(/obj/item/reagent_containers/food/drinks/mug/tea = 12)
 	product_slogans = "I hope nobody asks me for a bloody cup o' tea...;Alcohol is humanity's friend. Would you abandon a friend?;Quite delighted to serve you!;Is nobody thirsty on this station?"
 	product_ads = "Drink up!;Booze is good for you!;Alcohol is humanity's best friend.;Quite delighted to serve you!;Care for a nice, cold beer?;Nothing cures you like booze!;Have a sip!;Have a drink!;Have a beer!;Beer is good for you!;Only the finest alcohol!;Best quality booze since 2053!;Award-winning wine!;Maximum alcohol!;Man loves beer.;A toast for progress!"
@@ -703,10 +731,10 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	desc = "Uh oh!"
 
 /obj/machinery/vending/snack/random/Initialize()
-    ..()
-    var/T = pick(subtypesof(/obj/machinery/vending/snack) - /obj/machinery/vending/snack/random)
-    new T(get_turf(src))
-    qdel(src)
+	..()
+	var/T = pick(subtypesof(/obj/machinery/vending/snack) - /obj/machinery/vending/snack/random)
+	new T(get_turf(src))
+	return INITIALIZE_HINT_QDEL
 
 /obj/machinery/vending/snack/blue
 	icon_state = "snackblue"
@@ -755,10 +783,10 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	desc = "Uh oh!"
 
 /obj/machinery/vending/cola/random/Initialize()
-    . = ..()
-    var/T = pick(subtypesof(/obj/machinery/vending/cola) - /obj/machinery/vending/cola/random)
-    new T(get_turf(src))
-    qdel(src)
+	. = ..()
+	var/T = pick(subtypesof(/obj/machinery/vending/cola) - /obj/machinery/vending/cola/random)
+	new T(get_turf(src))
+	return INITIALIZE_HINT_QDEL
 
 /obj/machinery/vending/cola/blue
 	icon_state = "Cola_Machine"
@@ -868,8 +896,8 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	req_access_txt = "5"
 	products = list(/obj/item/reagent_containers/syringe = 12, /obj/item/reagent_containers/dropper = 3, /obj/item/stack/medical/gauze = 8, /obj/item/reagent_containers/pill/patch/styptic = 5, /obj/item/reagent_containers/pill/insulin = 10,
 				/obj/item/reagent_containers/pill/patch/silver_sulf = 5, /obj/item/reagent_containers/glass/bottle/charcoal = 4, /obj/item/reagent_containers/spray/medical/sterilizer = 1,
-				/obj/item/reagent_containers/glass/bottle/epinephrine = 4, /obj/item/reagent_containers/glass/bottle/morphine = 4, /obj/item/reagent_containers/glass/bottle/salglu_solution = 3,
-				/obj/item/reagent_containers/glass/bottle/toxin = 3, /obj/item/reagent_containers/syringe/antiviral = 6, /obj/item/reagent_containers/pill/salbutamol = 2, /obj/item/device/healthanalyzer = 4, /obj/item/device/sensor_device = 2)
+				/obj/item/reagent_containers/glass/bottle/epinephrine = 4, /obj/item/reagent_containers/glass/bottle/morphine = 4, /obj/item/reagent_containers/glass/bottle/salglu_solution = 3, /obj/item/stack/medical/splint = 4,
+				/obj/item/reagent_containers/glass/bottle/toxin = 3, /obj/item/reagent_containers/syringe/antiviral = 6, /obj/item/reagent_containers/pill/salbutamol = 2, /obj/item/device/healthanalyzer = 4, /obj/item/device/sensor_device = 2, /obj/item/pinpointer/crew = 2)
 	contraband = list(/obj/item/reagent_containers/pill/tox = 3, /obj/item/reagent_containers/pill/morphine = 4, /obj/item/reagent_containers/pill/charcoal = 6)
 	premium = list(/obj/item/storage/box/hug/medical = 1, /obj/item/reagent_containers/hypospray/medipen = 3, /obj/item/storage/belt/medical = 3, /obj/item/wrench/medical = 1)
 	armor = list(melee = 100, bullet = 100, laser = 100, energy = 100, bomb = 0, bio = 0, rad = 0, fire = 100, acid = 50)
@@ -980,7 +1008,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	products = list(/obj/item/clothing/suit/chickensuit = 1, /obj/item/clothing/head/chicken = 1, /obj/item/clothing/under/gladiator = 1,
 					/obj/item/clothing/head/helmet/gladiator = 1, /obj/item/clothing/under/gimmick/rank/captain/suit = 1, /obj/item/clothing/head/flatcap = 1,
 					/obj/item/clothing/suit/toggle/labcoat/mad = 1, /obj/item/clothing/shoes/jackboots = 1,
-					/obj/item/clothing/under/schoolgirl = 1, /obj/item/clothing/under/schoolgirl/red = 1, /obj/item/clothing/under/schoolgirl/green = 1, /obj/item/clothing/under/schoolgirl/orange = 1, /obj/item/clothing/head/kitty = 1, /obj/item/clothing/under/skirt/black = 1, /obj/item/clothing/head/beret = 1,
+					/obj/item/clothing/under/schoolgirl = 1, /obj/item/clothing/under/schoolgirl/red = 1, /obj/item/clothing/under/schoolgirl/green = 1, /obj/item/clothing/under/schoolgirl/orange = 1, /obj/item/clothing/under/skirt/black = 1, /obj/item/clothing/head/beret = 1,
 					/obj/item/clothing/accessory/waistcoat = 1, /obj/item/clothing/under/suit_jacket = 1, /obj/item/clothing/head/that =1, /obj/item/clothing/under/kilt = 1, /obj/item/clothing/head/beret = 1, /obj/item/clothing/accessory/waistcoat = 1,
 					/obj/item/clothing/glasses/monocle =1, /obj/item/clothing/head/bowler = 1, /obj/item/cane = 1, /obj/item/clothing/under/sl_suit = 1,
 					/obj/item/clothing/mask/fakemoustache = 1, /obj/item/clothing/suit/bio_suit/plaguedoctorsuit = 1, /obj/item/clothing/head/plaguedoctorhat = 1, /obj/item/clothing/mask/gas/plaguedoctor = 1,
@@ -1006,7 +1034,6 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 					/obj/item/clothing/suit/hooded/bee_costume = 1,
 					/obj/item/clothing/suit/snowman = 1,
 					/obj/item/clothing/head/snowman = 1,
-					/obj/item/clothing/mask/joy = 1,
 					/obj/item/clothing/head/cueball = 1,
 					/obj/item/clothing/under/scratch = 1,
         			/obj/item/clothing/under/sailor = 1,
@@ -1067,7 +1094,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	icon_state = "engivend"
 	icon_deny = "engivend-deny"
 	req_access_txt = "11" //Engineering Equipment access
-	products = list(/obj/item/clothing/glasses/meson/engine = 2, /obj/item/device/multitool = 4, /obj/item/electronics/airlock = 10, /obj/item/electronics/apc = 10, /obj/item/electronics/airalarm = 10, /obj/item/stock_parts/cell/high = 10, /obj/item/construction/rcd/loaded = 3, /obj/item/device/geiger_counter = 5, /obj/item/grenade/chem_grenade/smart_metal_foam = 10)
+	products = list(/obj/item/clothing/glasses/meson/engine = 2, /obj/item/device/multitool = 4, /obj/item/electronics/airlock = 10, /obj/item/electronics/apc = 10, /obj/item/electronics/airalarm = 10, /obj/item/stock_parts/cell/high = 10, /obj/item/construction/rcd/loaded = 3, /obj/item/device/geiger_counter = 5, /obj/item/grenade/chem_grenade/smart_metal_foam = 10,  /obj/item/storage/briefcase/inflatable = 3)
 	contraband = list(/obj/item/stock_parts/cell/potato = 3)
 	premium = list(/obj/item/storage/belt/utility = 3, /obj/item/storage/box/smart_metal_foam = 1)
 	armor = list(melee = 100, bullet = 100, laser = 100, energy = 100, bomb = 0, bio = 0, rad = 0, fire = 100, acid = 50)
@@ -1134,8 +1161,10 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	/obj/item/clothing/head/beanie=1, /obj/item/clothing/head/beanie/black=1, /obj/item/clothing/head/beanie/red=1, /obj/item/clothing/head/beanie/green=1, /obj/item/clothing/head/beanie/darkblue=1,
 	/obj/item/clothing/head/beanie/purple=1, /obj/item/clothing/head/beanie/yellow=1, /obj/item/clothing/head/beanie/orange=1, /obj/item/clothing/head/beanie/cyan=1, /obj/item/clothing/head/beanie/christmas=1,
 	/obj/item/clothing/head/beanie/striped=1, /obj/item/clothing/head/beanie/stripedred=1, /obj/item/clothing/head/beanie/stripedblue=1, /obj/item/clothing/head/beanie/stripedgreen=1,
-	/obj/item/clothing/suit/jacket/letterman_red=1,
-	/obj/item/clothing/ears/headphones = 10)
+	/obj/item/clothing/suit/jacket/letterman_red=1, /obj/item/clothing/under/victorian_dress=1, /obj/item/clothing/under/victorian_dress/red=1, /obj/item/clothing/under/victorian_suit=1,
+	/obj/item/clothing/under/victorian_suit/redblack=1, /obj/item/clothing/under/victorian_suit/red=1, /obj/item/clothing/suit/tailcoat=1, /obj/item/clothing/suit/victorian_coat=1, /obj/item/clothing/suit/victorian_coat/red=1,
+	/obj/item/clothing/ears/headphones = 10, /obj/item/clothing/head/beret/blue = 1, /obj/item/clothing/head/beret/black = 1, /obj/item/clothing/head/beret/purple_normal = 1,
+	/obj/item/clothing/head/beret/purple = 1)
 	contraband = list(/obj/item/clothing/under/syndicate/tacticool=1, /obj/item/clothing/mask/balaclava=1, /obj/item/clothing/head/ushanka=1, /obj/item/clothing/under/soviet=1, /obj/item/storage/belt/fannypack/black=2, /obj/item/clothing/suit/jacket/letterman_syndie=1, /obj/item/clothing/under/jabroni=1, /obj/item/clothing/suit/vapeshirt=1, /obj/item/clothing/under/geisha=1)
 	premium = list(/obj/item/clothing/under/suit_jacket/checkered=1, /obj/item/clothing/head/mailman=1, /obj/item/clothing/under/rank/mailman=1, /obj/item/clothing/suit/jacket/leather=1, /obj/item/clothing/suit/jacket/leather/overcoat=1, /obj/item/clothing/under/pants/mustangjeans=1, /obj/item/clothing/neck/necklace/dope=3, /obj/item/clothing/suit/jacket/letterman_nanotrasen=1)
 	refill_canister = /obj/item/vending_refill/clothing

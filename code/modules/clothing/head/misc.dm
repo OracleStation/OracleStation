@@ -189,16 +189,6 @@
 	desc = "A really cool hat if you're a mobster. A really lame hat if you're not."
 	pockets = /obj/item/storage/internal/pocket/small
 
-/obj/item/clothing/head/fedora/suicide_act(mob/user)
-	if(user.gender == FEMALE)
-		return 0
-	var/mob/living/carbon/human/H = user
-	user.visible_message("<span class='suicide'>[user] is donning [src]! It looks like they're trying to be nice to girls.</span>")
-	user.say("M'lady.")
-	sleep(10)
-	H.facial_hair_style = "Neckbeard"
-	return(BRUTELOSS)
-
 /obj/item/clothing/head/sombrero
 	name = "sombrero"
 	icon_state = "sombrero"
@@ -258,8 +248,8 @@
 	desc = "Welcome to the rice fields, motherfucker."
 	icon_state = "rice_hat"
 
-/obj/item/clothing/head/lizard
-	name = "lizardskin cloche hat"
+/obj/item/clothing/head/unathi
+	name = "Unathi skin cloche hat"
 	desc = "How many lizards died to make this hat? Not enough."
 	icon_state = "lizard"
 
@@ -304,3 +294,46 @@
 	desc = "A hat with bells, to add some merriness to the suit."
 	icon_state = "jester_hat2"
 	dynamic_hair_suffix = ""
+
+/obj/item/clothing/head/beret/blue
+	icon_state = "beret_blue"
+
+/obj/item/clothing/head/beret/black
+	icon_state = "beret_black"
+
+/obj/item/clothing/head/beret/purple_normal
+	icon_state = "beret_purple_normal"
+
+/obj/item/clothing/head/beret/purple
+	name = "Pierson Family Beret"
+	desc = " A purple beret, with a small golden crescent moon sewn onto it."
+	icon_state = "beret_purple"
+	item_state = "purpleberet"
+
+/obj/item/clothing/head/beret/centcom/officer
+	name = "officers beret"
+	desc = "A black beret adorned with the shield—a silver kite shield with an engraved sword—of the Nanotrasen security forces, announcing to the world that the wearer is a defender of Nanotrasen."
+	icon_state = "beret_centcom_officer"
+	armor = list(melee = 80, bullet = 85, laser = 85, energy = 80, bomb = 100, bio = 100, rad = 100, fire = 100, acid = 100))
+	strip_delay = 120
+
+/obj/item/clothing/head/beret/centcom/officer/navy
+	name = "navy blue officers beret"
+	desc = "A navy blue beret adorned with the shield—a silver kite shield with an engraved sword—of the Nanotrasen security forces, announcing to the world that the wearer is a defender of Nanotrasen."
+	icon_state = "beret_centcom_officer_navy"
+	armor = list(melee = 80, bullet = 85, laser = 85, energy = 80, bomb = 100, bio = 100, rad = 100, fire = 100, acid = 100))
+	strip_delay = 120
+
+/obj/item/clothing/head/beret/centcom/captain
+	name = "captains beret"
+	desc = "A white beret adorned with the shield—a cobalt kite shield with an engraved sword—of the Nanotrasen security forces, worn only by those captaining a vessel of the Nanotrasen Navy."
+	icon_state = "beret_centcom_captain"
+	armor = list(melee = 80, bullet = 85, laser = 85, energy = 80, bomb = 100, bio = 100, rad = 100, fire = 100, acid = 100))
+	strip_delay = 120
+
+/obj/item/clothing/head/beret/centcom/bsofficer
+	name = "officers beret"
+	desc = "A black beret adorned with the shield—a silver kite shield with an engraved sword—of the Nanotrasen security forces, announcing to the world that the wearer is a defender of Nanotrasen."
+	icon_state = "beret_centcom_officer"
+	armor = list(melee = 50, bullet = 55, laser = 45, energy = 10, bomb = 10, bio = 0, rad = 0)
+	strip_delay = 60

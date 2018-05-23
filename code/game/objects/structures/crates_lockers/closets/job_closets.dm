@@ -24,7 +24,7 @@
 	new /obj/item/reagent_containers/glass/rag(src)
 	new /obj/item/reagent_containers/glass/rag(src)
 	new /obj/item/storage/box/beanbag(src)
-	new /obj/item/clothing/suit/armor/vest/alt(src)
+	new /obj/item/clothing/suit/armor/vest(src)
 	new /obj/item/clothing/glasses/sunglasses/reagent(src)
 	new /obj/item/storage/belt/bandolier(src)
 
@@ -84,15 +84,15 @@
 
 /obj/structure/closet/lawcloset/PopulateContents()
 	..()
-	new /obj/item/clothing/under/lawyer/female(src)
-	new /obj/item/clothing/under/lawyer/black(src)
-	new /obj/item/clothing/under/lawyer/red(src)
-	new /obj/item/clothing/under/lawyer/bluesuit(src)
-	new /obj/item/clothing/suit/toggle/lawyer(src)
-	new /obj/item/clothing/under/lawyer/purpsuit(src)
-	new /obj/item/clothing/suit/toggle/lawyer/purple(src)
-	new /obj/item/clothing/under/lawyer/blacksuit(src)
-	new /obj/item/clothing/suit/toggle/lawyer/black(src)
+	new /obj/item/clothing/under/iaa/female(src)
+	new /obj/item/clothing/under/iaa/black(src)
+	new /obj/item/clothing/under/iaa/red(src)
+	new /obj/item/clothing/under/iaa/bluesuit(src)
+	new /obj/item/clothing/suit/toggle/iaa(src)
+	new /obj/item/clothing/under/iaa/purpsuit(src)
+	new /obj/item/clothing/suit/toggle/iaa/purple(src)
+	new /obj/item/clothing/under/iaa/blacksuit(src)
+	new /obj/item/clothing/suit/toggle/iaa/black(src)
 	new /obj/item/clothing/shoes/laceup(src)
 	new /obj/item/clothing/shoes/laceup(src)
 	new /obj/item/clothing/accessory/lawyers_badge(src)
@@ -152,6 +152,7 @@
 		new /obj/item/clothing/head/soft/sec(src)
 	new /obj/item/clothing/mask/bandana/red(src)
 	new /obj/item/clothing/mask/bandana/red(src)
+	new /obj/item/clothing/head/beret/csec
 	return
 
 
@@ -185,6 +186,8 @@
 		new /obj/item/clothing/under/rank/atmospheric_technician(src)
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/shoes/sneakers/black(src)
+		new /obj/item/clothing/head/beret/atmos(src)
+	for(var/i in 1 to 3)
 	return
 
 /obj/structure/closet/wardrobe/engineering_yellow
@@ -204,6 +207,8 @@
 		new /obj/item/clothing/shoes/workboots(src)
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/head/hardhat(src)
+		new /obj/item/clothing/head/beret/eng(src)
+	for(var/i in 1 to 3)
 	return
 
 /obj/structure/closet/wardrobe/white/medical
@@ -229,6 +234,8 @@
 		new /obj/item/clothing/shoes/sneakers/white(src)
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/head/soft/emt(src)
+		new /obj/item/clothing/head/beret/med(src)
+	for(var/i in 1 to 3)
 	return
 
 /obj/structure/closet/wardrobe/white/medical/paramedic
@@ -264,6 +271,8 @@
 	new /obj/item/clothing/shoes/sneakers/black(src)
 	new /obj/item/clothing/gloves/fingerless(src)
 	new /obj/item/clothing/gloves/fingerless(src)
+	new /obj/item/clothing/head/beret/sci(src)
+	new /obj/item/clothing/head/beret/sci(src)
 	new /obj/item/clothing/head/soft/black(src)
 	new /obj/item/clothing/head/soft/black(src)
 	if(prob(40))
@@ -346,6 +355,9 @@
 		new /obj/item/clothing/suit/toggle/labcoat/science(src)
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/shoes/sneakers/white(src)
+		new /obj/item/clothing/head/beret/sci(src)
+		new /obj/item/clothing/head/beret/sci(src)
+		new /obj/item/clothing/head/beret/sci(src)
 	new /obj/item/device/radio/headset/headset_sci(src)
 	new /obj/item/device/radio/headset/headset_sci(src)
 	for(var/i in 1 to 3)
@@ -382,4 +394,3 @@
 	new /obj/item/clothing/under/rank/curator/treasure_hunter(src)
 	new /obj/item/clothing/shoes/workboots/mining(src)
 	new /obj/item/storage/backpack/satchel/explorer(src)
-
