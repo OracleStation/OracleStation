@@ -25,6 +25,9 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 
 #define Clamp(CLVALUE,CLMIN,CLMAX) ( max( (CLMIN), min((CLVALUE), (CLMAX)) ) )
 
+/proc/Modulus(x, y)	//Byond's modulus doesn't work with decimals.
+	return x - y * round(x / y)
+
 // cotangent
 /proc/Cot(x)
 	return 1 / Tan(x)
@@ -220,3 +223,8 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 	new_x = Clamp(new_x, 0, world.maxx)
 	new_y = Clamp(new_y, 0, world.maxy)
 	return locate(new_x, new_y, starting.z)
+
+/proc/round_down(num)
+	if(round(num) != num)
+		return round(num--)
+	else return num

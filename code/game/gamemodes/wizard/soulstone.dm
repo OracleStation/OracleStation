@@ -119,7 +119,7 @@
 ////////////////////////////Proc for moving soul in and out off stone//////////////////////////////////////
 
 
-/obj/item/device/soulstone/proc/transfer_soul(choice as text, target, mob/user).
+/obj/item/device/soulstone/proc/transfer_soul(choice as text, target, mob/user)
 	switch(choice)
 		if("FORCE")
 			if(!iscarbon(target))		//TODO: Add sacrifice stoning for non-organics, just because you have no body doesnt mean you dont have a soul
@@ -208,7 +208,7 @@
 /proc/makeNewConstruct(mob/living/simple_animal/hostile/construct/ctype, mob/target, mob/stoner = null, cultoverride = 0, loc_override = null)
 	var/mob/living/simple_animal/hostile/construct/newstruct = new ctype((loc_override) ? (loc_override) : (get_turf(target)))
 	if(stoner)
-		newstruct.faction |= "\ref[stoner]"
+		newstruct.faction |= "[REF(stoner)]"
 		newstruct.master = stoner
 		var/datum/action/innate/seek_master/SM = new()
 		SM.Grant(newstruct)
@@ -238,7 +238,7 @@
 	S.real_name = "Shade of [T.real_name]"
 	S.key = T.key
 	if(U)
-		S.faction |= "\ref[U]" //Add the master as a faction, allowing inter-mob cooperation
+		S.faction |= "[REF(U)]" //Add the master as a faction, allowing inter-mob cooperation
 	if(U && iscultist(U))
 		SSticker.mode.add_cultist(S.mind, 0)
 	S.cancel_camera()

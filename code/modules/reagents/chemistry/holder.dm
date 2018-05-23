@@ -16,8 +16,6 @@
 /datum/reagents/New(maximum=100)
 	maximum_volume = maximum
 
-	if(!(flags & REAGENT_NOREACT))
-		START_PROCESSING(SSobj, src)
 
 	//I dislike having these here but map-objects are initialised before world/New() is called. >_>
 	if(!GLOB.chemical_reagents_list)
@@ -54,7 +52,6 @@
 
 /datum/reagents/Destroy()
 	. = ..()
-	STOP_PROCESSING(SSobj, src)
 	var/list/cached_reagents = reagent_list
 	for(var/reagent in cached_reagents)
 		var/datum/reagent/R = reagent
@@ -242,6 +239,31 @@
 			continue
 		if(!C)
 			C = R.holder.my_atom
+		if(ishuman(C))
+			var/mob/living/carbon/human/H = C
+			//Check if this mob's species is set and can process this type of reagent
+			var/can_process = FALSE
+			//If we somehow avoided getting a species or reagent_tag set, we'll assume we aren't meant to process ANY reagents (CODERS: SET YOUR SPECIES AND TAG!)
+			if(H.dna && H.dna.species.reagent_tag)
+				if((R.process_flags & SYNTHETIC) && (H.dna.species.reagent_tag & PROCESS_SYNTHETIC))		//SYNTHETIC-oriented reagents require PROCESS_SYNTHETIC
+					can_process = TRUE
+				if((R.process_flags & ORGANIC) && (H.dna.species.reagent_tag & PROCESS_ORGANIC))		//ORGANIC-oriented reagents require PROCESS_ORGANIC
+					can_process = TRUE
+
+			//If handle_reagents returns 0, it's doing the reagent removal on its own
+			var/species_handled = !(H.dna.species.handle_reagents(H, R))
+			can_process = can_process && !species_handled
+			//If the mob can't process it, remove the reagent at it's normal rate without doing any addictions, overdoses, or on_mob_life() for the reagent
+			if(!can_process)
+				if(!species_handled)
+					R.holder.remove_reagent(R.id, R.metabolization_rate)
+				continue
+		//We'll assume that non-human mobs lack the ability to process synthetic-oriented reagents (adjust this if we need to change that assumption)
+		else
+			if(R.process_flags == SYNTHETIC)
+				R.holder.remove_reagent(R.id, R.metabolization_rate)
+				continue
+		//If you got this far, that means we can process whatever reagent this iteration is for. Handle things normally from here.
 		if(C && R)
 			if(C.reagent_check(R) != 1)
 				if(can_overdose)
@@ -288,24 +310,11 @@
 		C.update_stamina()
 	update_total()
 
-/datum/reagents/process()
-	var/list/cached_reagents = reagent_list
-	if(flags & REAGENT_NOREACT)
-		STOP_PROCESSING(SSobj, src)
-		return
-
-	for(var/reagent in cached_reagents)
-		var/datum/reagent/R = reagent
-		R.on_tick()
 
 /datum/reagents/proc/set_reacting(react = TRUE)
 	if(react)
-		// Order is important, process() can remove from processing if
-		// the flag is present
 		flags &= ~(REAGENT_NOREACT)
-		START_PROCESSING(SSobj, src)
 	else
-		STOP_PROCESSING(SSobj, src)
 		flags |= REAGENT_NOREACT
 
 /datum/reagents/proc/conditional_update_move(atom/A, Running = 0)
@@ -492,6 +501,22 @@
 		del_reagent(R.id)
 	return 0
 
+/datum/reagents/proc/reaction_check(mob/living/M, datum/reagent/R)
+	var/can_process = FALSE
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		//Check if this mob's species is set and can process this type of reagent
+		if(H.dna && H.dna.species.reagent_tag)
+			if((R.process_flags & SYNTHETIC) && (H.dna.species.reagent_tag & PROCESS_SYNTHETIC))		//SYNTHETIC-oriented reagents require PROCESS_SYNTHETIC
+				can_process = TRUE
+			if((R.process_flags & ORGANIC) && (H.dna.species.reagent_tag & PROCESS_ORGANIC))		//ORGANIC-oriented reagents require PROCESS_ORGANIC
+				can_process = TRUE
+	//We'll assume that non-human mobs lack the ability to process synthetic-oriented reagents (adjust this if we need to change that assumption)
+	else
+		if(R.process_flags != SYNTHETIC)
+			can_process = TRUE
+	return can_process
+
 /datum/reagents/proc/reaction(atom/A, method = TOUCH, volume_modifier = 1, show_message = 1)
 	var/react_type
 	if(isliving(A))
@@ -510,6 +535,9 @@
 		var/datum/reagent/R = reagent
 		switch(react_type)
 			if("LIVING")
+				var/check = reaction_check(A, R)
+				if(!check)
+					continue
 				var/touch_protection = 0
 				if(method == VAPOR)
 					var/mob/living/L = A

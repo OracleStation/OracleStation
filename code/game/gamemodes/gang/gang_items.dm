@@ -114,9 +114,11 @@
 	cost = 16
 	item_path = /obj/item/clothing/head/collectable/petehat/gang
 
+
 /obj/item/clothing/head/collectable/petehat/gang
 	name = "pimpin' hat"
 	desc = "The undisputed king of style."
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/collectable/petehat/gang/gang_contraband_value()
 	return 4
@@ -131,6 +133,7 @@
 	name = "golden death mask"
 	icon_state = "gskull"
 	desc = "Strike terror, and envy, into the hearts of your enemies."
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/mask/gskull/gang_contraband_value()
 	return 5
@@ -145,6 +148,7 @@
 	name = "blinged-out boots"
 	desc = "Stand aside peasants."
 	icon_state = "bling"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/shoes/gang/gang_contraband_value()
 	return 6
@@ -246,24 +250,6 @@
 	cost = 10
 	item_path = /obj/item/ammo_box/magazine/m10mm
 
-/datum/gang_item/weapon/sniper
-	name = "Black Market .50cal Sniper Rifle"
-	id = "sniper"
-	cost = 40
-	item_path = /obj/item/gun/ballistic/automatic/sniper_rifle/gang
-
-/datum/gang_item/weapon/ammo/sniper_ammo
-	name = "Smuggled .50cal Sniper Rounds"
-	id = "sniper_ammo"
-	cost = 15
-	item_path = /obj/item/ammo_box/magazine/sniper_rounds/gang
-
-
-/datum/gang_item/weapon/ammo/sleeper_ammo
-	name = "Illicit Tranquilizer Cartridges"
-	id = "sniper_ammo"
-	cost = 15
-	item_path = /obj/item/ammo_box/magazine/sniper_rounds/gang/sleeper
 
 
 /datum/gang_item/weapon/machinegun
@@ -278,7 +264,6 @@
 	id = "uzi"
 	cost = 60
 	item_path = /obj/item/gun/ballistic/automatic/mini_uzi
-
 
 /datum/gang_item/weapon/ammo/uzi_ammo
 	name = "Uzi Ammo"
@@ -431,7 +416,7 @@
 /datum/gang_item/equipment/dominator/purchase(mob/living/carbon/user, datum/gang/gang, obj/item/device/gangtool/gangtool)
 	var/area/usrarea = get_area(user.loc)
 	var/usrturf = get_turf(user.loc)
-	if(initial(usrarea.name) == "Space" || isspaceturf(usrturf) || usr.z != ZLEVEL_STATION)
+	if(initial(usrarea.name) == "Space" || isspaceturf(usrturf) || usr.z != ZLEVEL_STATION_PRIMARY)
 		to_chat(user, "<span class='warning'>You can only use this on the station!</span>")
 		return FALSE
 

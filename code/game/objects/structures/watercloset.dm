@@ -274,16 +274,16 @@
 				ismist = 0
 
 
-/obj/machinery/shower/Crossed(atom/movable/O)
+/obj/machinery/shower/Crossed(atom/movable/AM)
 	..()
 	if(on)
-		if(isliving(O))
-			var/mob/living/L = O
+		if(isliving(AM))
+			var/mob/living/L = AM
 			if(wash_mob(L)) //it's a carbon mob.
 				var/mob/living/carbon/C = L
 				C.slip(80,null,NO_SLIP_WHEN_WALKING)
-		else
-			wash_obj(O)
+		else if(isobj(AM))
+			wash_obj(AM)
 
 
 /obj/machinery/shower/proc/wash_obj(obj/O)
@@ -374,12 +374,11 @@
 /obj/machinery/shower/process()
 	if(on)
 		wash_turf()
-		for(var/atom/movable/G in loc)
-			if(isliving(G))
-				var/mob/living/L = G
-				wash_mob(L)
-			else
-				wash_obj(G)
+		for(var/atom/movable/AM in loc)
+			if(isliving(AM))
+				wash_mob(AM)
+			else if(isobj(AM))
+				wash_obj(AM)
 
 /obj/machinery/shower/deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/metal (loc, 3)
@@ -394,9 +393,6 @@
 		C.adjustFireLoss(5)
 		to_chat(C, "<span class='danger'>The water is searing!</span>")
 
-
-
-
 /obj/item/bikehorn/rubberducky
 	name = "rubber ducky"
 	desc = "Rubber ducky you're so fine, you make bathtime lots of fuuun. Rubber ducky I'm awfully fooooond of yooooouuuu~"	//thanks doohl
@@ -404,7 +400,9 @@
 	icon_state = "rubberducky"
 	item_state = "rubberducky"
 
-
+/obj/item/bikehorn/rubberducky/Initialize()
+	. = ..()
+	AddComponent(/datum/component/squeak, list('sound/items/squeaktoy.ogg'=1), 50) //credit to DANMITCH3LL of freesound.
 
 /obj/structure/sink
 	name = "sink"
@@ -535,6 +533,7 @@
 	name = "puddle"
 	desc = "A puddle used for washing one's hands and face."
 	icon_state = "puddle"
+	resistance_flags = UNACIDABLE
 
 /obj/structure/sink/puddle/attack_hand(mob/M)
 	icon_state = "puddle-splash"
@@ -545,6 +544,9 @@
 	icon_state = "puddle-splash"
 	. = ..()
 	icon_state = "puddle"
+
+/obj/structure/sink/puddle/deconstruct(disassembled = TRUE)
+	qdel(src)
 
 
 //Shower Curtains//

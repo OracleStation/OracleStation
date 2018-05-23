@@ -12,6 +12,7 @@
 	intact = 1
 	var/broken = 0
 	var/burnt = 0
+	var/current_overlay = null
 	var/floor_tile = null //tile that this floor drops
 	var/list/broken_states
 	var/list/burnt_states
@@ -21,7 +22,7 @@
 		broken_states = list("damaged1", "damaged2", "damaged3", "damaged4", "damaged5")
 	if (!burnt_states)
 		burnt_states = list()
-	..()
+	. = ..()
 	//This is so damaged or burnt tiles or platings don't get remembered as the default tile
 	var/static/list/icons_to_ignore_at_floor_init = list("damaged1","damaged2","damaged3","damaged4",
 					"damaged5","panelscorched","floorscorched1","floorscorched2","platingdmg1","platingdmg2", "foam_plating",
@@ -86,7 +87,11 @@
 	return
 
 /turf/open/floor/proc/update_icon()
+	cut_overlays()
+	atmos_overlay_types = null
 	update_visuals()
+	if (current_overlay)
+		add_overlay(current_overlay)
 	return 1
 
 /turf/open/floor/attack_paw(mob/user)
@@ -102,25 +107,27 @@
 /turf/open/floor/proc/break_tile()
 	if(broken)
 		return
-	icon_state = pick(broken_states)
+	current_overlay = pick(broken_states)
 	broken = 1
+	update_icon()
 
 /turf/open/floor/burn_tile()
 	if(broken || burnt)
 		return
 	if(burnt_states.len)
-		icon_state = pick(burnt_states)
+		current_overlay = pick(burnt_states)
 	else
-		icon_state = pick(broken_states)
+		current_overlay = pick(broken_states)
 	burnt = 1
+	update_icon()
 
 /turf/open/floor/proc/make_plating()
 	return ChangeTurf(/turf/open/floor/plating)
 
-/turf/open/floor/ChangeTurf(new_path)
+/turf/open/floor/ChangeTurf(path, new_baseturf, defer_change = FALSE, ignore_air = FALSE, forceop = FALSE)
 	if(!isfloorturf(src))
 		return ..() //fucking turfs switch the fucking src of the fucking running procs
-	if(!ispath(new_path, /turf/open/floor))
+	if(!ispath(path, /turf/open/floor))
 		return ..()
 	var/old_icon = icon_regular_floor
 	var/old_dir = dir
@@ -160,16 +167,18 @@
 	if(broken || burnt)
 		broken = 0
 		burnt = 0
+		current_overlay = null
 		if(user && !silent)
-			to_chat(user, "<span class='danger'>You remove the broken plating.</span>")
+			to_chat(user, "<span class='notice'>You remove the broken plating.</span>")
 	else
 		if(user && !silent)
-			to_chat(user, "<span class='danger'>You remove the floor tile.</span>")
+			to_chat(user, "<span class='notice'>You remove the floor tile.</span>")
 		if(floor_tile && make_tile)
 			new floor_tile(src)
 	return make_plating()
 
 /turf/open/floor/singularity_pull(S, current_size)
+	..()
 	if(current_size == STAGE_THREE)
 		if(prob(30))
 			if(floor_tile)
@@ -238,6 +247,8 @@
 			else
 				A.req_access = A.electronics.accesses
 			A.autoclose = TRUE
+			if(A.has_hatch)
+				A.setup_hatch()
 			return TRUE
 		if(RCD_DECONSTRUCT)
 			if(istype(src, baseturf))

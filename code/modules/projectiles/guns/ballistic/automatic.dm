@@ -339,7 +339,8 @@
 	can_suppress = 1
 	w_class = WEIGHT_CLASS_NORMAL
 	zoomable = TRUE
-	zoom_amt = 7 //Long range, enough to see in front of you, but no tiles behind you.
+	zoom_amt = 10 //Long range, enough to see in front of you, but no tiles behind you.
+	zoom_out_amt = 13
 	slot_flags = SLOT_BACK
 	actions_types = list()
 
@@ -355,11 +356,6 @@
 	name = "syndicate sniper rifle"
 	desc = "An illegally modified .50 cal sniper rifle with suppression compatibility. Quickscoping still doesn't work."
 	origin_tech = "combat=7;syndicate=6"
-
-/obj/item/gun/ballistic/automatic/sniper_rifle/gang
-	name = "black market sniper rifle"
-	desc = "A long ranged weapon that does significant damage. It is well worn from years of service."
-	mag_type = /obj/item/ammo_box/magazine/sniper_rounds/gang
 
 // Old Semi-Auto Rifle //
 

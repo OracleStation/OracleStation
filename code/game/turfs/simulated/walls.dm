@@ -25,6 +25,13 @@
 	/turf/closed/wall/clockwork)
 	smooth = SMOOTH_TRUE
 
+/turf/closed/wall/examine(mob/user)
+	..()
+	deconstruction_hints(user)
+
+/turf/closed/wall/proc/deconstruction_hints(mob/user)
+	to_chat(user, "<span class='notice'>The outer plating is <b>welded</b> firmly in place.</span>")
+
 /turf/closed/wall/attack_tk()
 	return
 
@@ -164,6 +171,7 @@
 	if(try_wallmount(W,user,T) || try_decon(W,user,T) || try_destroy(W,user,T))
 		return
 
+	return ..()
 
 /turf/closed/wall/proc/try_wallmount(obj/item/W, mob/user, turf/T)
 	//check for wall mounted frames
@@ -245,6 +253,7 @@
 		QDEL_IN(O, 50)
 
 /turf/closed/wall/singularity_pull(S, current_size)
+	..()
 	if(current_size >= STAGE_FIVE)
 		if(prob(50))
 			dismantle_wall()

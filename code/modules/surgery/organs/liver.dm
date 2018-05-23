@@ -8,7 +8,7 @@
 	origin_tech = "biotech=3"
 	w_class = WEIGHT_CLASS_NORMAL
 	zone = "chest"
-	slot = "liver"
+	slot = ORGAN_SLOT_LIVER
 	desc = "Pairing suggestion: chianti and fava beans."
 	var/damage = 0 //liver damage, 0 is no damage, damage=maxHealth causes liver failure
 	var/alcohol_tolerance = ALCOHOL_RATE//affects how much damage the liver takes from alcohol
@@ -45,7 +45,7 @@
 			//metabolize reagents
 			C.reagents.metabolize(C, can_overdose=TRUE)
 
-			if(damage > 10 && prob(damage/3))//the higher the damage the higher the probability
+			if(damage > 10 && prob(damage/3) && status != ORGAN_ROBOTIC)//the higher the damage the higher the probability
 				to_chat(C, "<span class='notice'>You feel [pick("nauseous", "dull pain in your lower body", "confused")].</span>")
 
 /obj/item/organ/liver/prepare_eat()
@@ -69,6 +69,7 @@
 	icon_state = "liver-c"
 	desc = "An electronic device designed to mimic the functions of a human liver. It has no benefits over an organic liver, but is easy to produce."
 	origin_tech = "biotech=4"
+	status = ORGAN_ROBOTIC
 
 /obj/item/organ/liver/cybernetic/upgraded
 	name = "upgraded cybernetic liver"
@@ -86,3 +87,23 @@
 			damage+=100
 		if(2)
 			damage+=50
+
+/obj/item/organ/liver/cybernetic/upgraded/ipc
+	name = "substance processor"
+	icon_state = "substance_processor"
+	origin_tech = "engineering=2"
+	attack_verb = list("processed")
+	desc = "A machine component, installed in the chest. This grants the Machine the ability to process chemicals that enter its systems."
+	alcohol_tolerance = 0
+	toxTolerance = -1
+	toxLethality = 0
+
+/obj/item/organ/liver/cybernetic/upgraded/ipc/emp_act(severity)
+	to_chat(owner, "<span class='warning'>Alert: Your Substance Processor has been damaged. An internal chemical leak is affecting performance.</span>")
+
+/obj/item/organ/liver/vox
+	name = "vox liver"
+	icon_state = "liver-vox"
+	desc = "A mechanically-assisted vox liver."
+	origin_tech = "biotech=4"
+	status = ORGAN_ROBOTIC

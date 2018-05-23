@@ -50,8 +50,8 @@
 /proc/random_features()
 	if(!GLOB.tails_list_human.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, GLOB.tails_list_human)
-	if(!GLOB.tails_list_lizard.len)
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/lizard, GLOB.tails_list_lizard)
+	if(!GLOB.tails_list_unathi.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/unathi, GLOB.tails_list_unathi)
 	if(!GLOB.tails_list_ethari.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/ethari, GLOB.tails_list_ethari)
 	if(!GLOB.snouts_list.len)
@@ -74,9 +74,29 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/body_markings, GLOB.body_markings_list)
 	if(!GLOB.wings_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/wings, GLOB.wings_list)
+	if(!GLOB.ipc_screens_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/ipc_screens, GLOB.ipc_screens_list)
+	if(!GLOB.ipc_antennas_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/ipc_antennas, GLOB.ipc_antennas_list)
+	if(!GLOB.ipc_chassis_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/ipc_chassis, GLOB.ipc_chassis_list)
+	if(!GLOB.vox_bodies_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_bodies, GLOB.vox_bodies_list)
+	if(!GLOB.vox_quills_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_quills, GLOB.vox_quills_list)
+	if(!GLOB.vox_facial_quills_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_facial_quills, GLOB.vox_facial_quills_list)
+	if(!GLOB.vox_eyes_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_eyes, GLOB.vox_eyes_list)
+	if(!GLOB.vox_tails_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_tails, GLOB.vox_tails_list)
+	if(!GLOB.vox_body_markings_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_body_markings, GLOB.vox_body_markings_list)
+	if(!GLOB.vox_tail_markings_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_tail_markings, GLOB.vox_tail_markings_list)
 
 	//For now we will always return none for tail_human and ears.
-	return(list("mcolor" = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"), "tail_lizard" = pick(GLOB.tails_list_lizard), "tail_ethari" = pick(GLOB.tails_list_ethari), "tail_human" = "None", "wings" = "None", "snout" = pick(GLOB.snouts_list), "snout_ethari" = pick(GLOB.snouts_ethari_list), "ears_ethari" = "Fox", "horns" = pick(GLOB.horns_list), "ears" = "None", "frills" = pick(GLOB.frills_list), "spines" = pick(GLOB.spines_list), "body_markings" = pick(GLOB.body_markings_list), "legs" = "Normal Legs"))
+	return(list("mcolor" = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"), "tail_unathi" = pick(GLOB.tails_list_unathi), "tail_ethari" = pick(GLOB.tails_list_ethari), "tail_human" = "None", "wings" = "None", "snout" = pick(GLOB.snouts_list), "snout_ethari" = pick(GLOB.snouts_ethari_list), "ears_ethari" = "Fox", "horns" = pick(GLOB.horns_list), "ears" = "None", "frills" = pick(GLOB.frills_list), "spines" = pick(GLOB.spines_list), "body_markings" = pick(GLOB.body_markings_list), "legs" = "Normal Legs", "ipc_screen" = pick(GLOB.ipc_screens_list), "ipc_antenna" = pick(GLOB.ipc_antennas_list),"ipc_chassis" = pick(GLOB.ipc_chassis_list),"vox_body" = pick(GLOB.vox_bodies_list),"vox_quills" = pick(GLOB.vox_quills_list),"vox_facial_quills" = pick(GLOB.vox_facial_quills_list),"vox_body_markings" = pick(GLOB.vox_body_markings_list),"vox_tail_markings" = pick(GLOB.vox_tail_markings_list)))
 
 /proc/random_hair_style(gender)
 	switch(gender)
@@ -106,9 +126,9 @@
 		if(i != attempts_to_find_unique_name && !findname(.))
 			break
 
-/proc/random_unique_lizard_name(gender, attempts_to_find_unique_name=10)
+/proc/random_unique_unathi_name(gender, attempts_to_find_unique_name=10)
 	for(var/i=1, i<=attempts_to_find_unique_name, i++)
-		. = capitalize(lizard_name(gender))
+		. = capitalize(unathi_name(gender))
 
 		if(i != attempts_to_find_unique_name && !findname(.))
 			break
@@ -146,7 +166,6 @@ GLOBAL_LIST_INIT(skin_tones, list(
 	))
 
 GLOBAL_LIST_EMPTY(species_list)
-GLOBAL_LIST_EMPTY(roundstart_species)
 
 /proc/age2agedescription(age)
 	switch(age)
@@ -494,6 +513,8 @@ Proc for attack log creation, because really why not
 			log_adminsay(logmessage)
 		if(LOGOOC)
 			log_ooc(logmessage)
+		if(LOGLOOC)
+			log_looc(logmessage)
 		else
 			warning("Invalid speech logging type detected. [logtype]. Defaulting to say")
 			log_say(logmessage)

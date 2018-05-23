@@ -1,5 +1,7 @@
 // simple is_type and similar inline helpers
 
+#define isdatum(D) (istype(D, /datum))
+
 #define islist(L) (istype(L, /list))
 
 #define in_range(source, user) (get_dist(source, user) <= 1)
@@ -25,6 +27,8 @@
 
 #define islava(A) (istype(A, /turf/open/lava))
 
+#define isplatingturf(A) (istype(A, /turf/open/floor/plating))
+
 //Mobs
 #define isliving(A) (istype(A, /mob/living))
 
@@ -38,7 +42,7 @@
 //Human sub-species
 #define isabductor(A) (is_species(A, /datum/species/abductor))
 #define isgolem(A) (is_species(A, /datum/species/golem))
-#define islizard(A) (is_species(A, /datum/species/lizard))
+#define isunathi(A) (is_species(A, /datum/species/unathi))
 #define isplasmaman(A) (is_species(A, /datum/species/plasmaman))
 #define ispodperson(A) (is_species(A, /datum/species/podperson))
 #define isflyperson(A) (is_species(A, /datum/species/fly))
@@ -46,6 +50,9 @@
 #define isshadowperson(A) (is_species(A, /datum/species/shadow))
 #define iszombie(A) (is_species(A, /datum/species/zombie))
 #define ishumanbasic(A) (is_species(A, /datum/species/human))
+#define isethari(A) (is_species(A, /datum/species/ethari))
+#define isipc(A) (is_species(A, /datum/species/ipc))
+#define isvox(A) (is_species(A, /datum/species/vox))
 
 //more carbon mobs
 #define ismonkey(A) (istype(A, /mob/living/carbon/monkey))

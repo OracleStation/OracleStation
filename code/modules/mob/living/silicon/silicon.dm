@@ -12,7 +12,6 @@
 	weather_immunities = list("ash")
 	possible_a_intents = list(INTENT_HELP, INTENT_HARM)
 
-	var/syndicate = 0
 	var/datum/ai_laws/laws = null//Now... THEY ALL CAN ALL HAVE LAWS
 	var/last_lawchange_announce = 0
 	var/list/alarms_to_show = list()
@@ -39,9 +38,12 @@
 	var/obj/machinery/camera/builtInCamera = null
 	var/updating = FALSE //portable camera camerachunk update
 
+	var/hack_software = FALSE //Will be able to use hacking actions
+
 /mob/living/silicon/Initialize()
 	. = ..()
 	GLOB.silicon_mobs += src
+	faction += "silicon"
 	var/datum/atom_hud/data/diagnostic/diag_hud = GLOB.huds[DATA_HUD_DIAGNOSTIC]
 	diag_hud.add_to_hud(src)
 	diag_hud_set_status()
@@ -106,7 +108,7 @@
 				if(alarm_types_show["Camera"])
 					msg += "CAMERA: [alarm_types_show["Camera"]] alarms detected. - "
 
-				msg += "<A href=?src=\ref[src];showalerts=1'>\[Show Alerts\]</a>"
+				msg += "<A href=?src=[REF(src)];showalerts=1'>\[Show Alerts\]</a>"
 				to_chat(src, msg)
 
 			if(alarms_to_clear.len < 3)
@@ -131,7 +133,7 @@
 				if(alarm_types_show["Camera"])
 					msg += "CAMERA: [alarm_types_clear["Camera"]] alarms cleared. - "
 
-				msg += "<A href=?src=\ref[src];showalerts=1'>\[Show Alerts\]</a>"
+				msg += "<A href=?src=[REF(src)];showalerts=1'>\[Show Alerts\]</a>"
 				to_chat(src, msg)
 
 
@@ -252,12 +254,12 @@
 		for(var/index = 1, index <= src.laws.devillaws.len, index++)
 			if (!src.devillawcheck[index])
 				src.devillawcheck[index] = "No"
-			list += {"<A href='byond://?src=\ref[src];lawdevil=[index]'>[src.devillawcheck[index]] 666:</A> [src.laws.devillaws[index]]<BR>"}
+			list += {"<A href='byond://?src=[REF(src)];lawdevil=[index]'>[src.devillawcheck[index]] 666:</A> [src.laws.devillaws[index]]<BR>"}
 
 	if (src.laws.zeroth)
 		if (!src.lawcheck[1])
 			src.lawcheck[1] = "No" //Given Law 0's usual nature, it defaults to NOT getting reported. --NeoFite
-		list += {"<A href='byond://?src=\ref[src];lawc=0'>[src.lawcheck[1]] 0:</A> [src.laws.zeroth]<BR>"}
+		list += {"<A href='byond://?src=[REF(src)];lawc=0'>[src.lawcheck[1]] 0:</A> [src.laws.zeroth]<BR>"}
 
 	for (var/index = 1, index <= src.laws.ion.len, index++)
 		var/law = src.laws.ion[index]
@@ -265,7 +267,7 @@
 		if (length(law) > 0)
 			if (!src.ioncheck[index])
 				src.ioncheck[index] = "Yes"
-			list += {"<A href='byond://?src=\ref[src];lawi=[index]'>[src.ioncheck[index]] [ionnum()]:</A> [law]<BR>"}
+			list += {"<A href='byond://?src=[REF(src)];lawi=[index]'>[src.ioncheck[index]] [ionnum()]:</A> [law]<BR>"}
 			src.ioncheck.len += 1
 
 	var/number = 1
@@ -277,7 +279,7 @@
 
 			if (!src.lawcheck[number+1])
 				src.lawcheck[number+1] = "Yes"
-			list += {"<A href='byond://?src=\ref[src];lawc=[number]'>[src.lawcheck[number+1]] [number]:</A> [law]<BR>"}
+			list += {"<A href='byond://?src=[REF(src)];lawc=[number]'>[src.lawcheck[number+1]] [number]:</A> [law]<BR>"}
 			number++
 
 	for (var/index = 1, index <= src.laws.supplied.len, index++)
@@ -286,9 +288,9 @@
 			src.lawcheck.len += 1
 			if (!src.lawcheck[number+1])
 				src.lawcheck[number+1] = "Yes"
-			list += {"<A href='byond://?src=\ref[src];lawc=[number]'>[src.lawcheck[number+1]] [number]:</A> [law]<BR>"}
+			list += {"<A href='byond://?src=[REF(src)];lawc=[number]'>[src.lawcheck[number+1]] [number]:</A> [law]<BR>"}
 			number++
-	list += {"<br><br><A href='byond://?src=\ref[src];laws=1'>State Laws</A>"}
+	list += {"<br><br><A href='byond://?src=[REF(src)];laws=1'>State Laws</A>"}
 
 	usr << browse(list, "window=laws")
 
@@ -310,7 +312,7 @@
 	else	//For department channels, if any, given by the internal radio.
 		for(var/key in GLOB.department_radio_keys)
 			if(GLOB.department_radio_keys[key] == Autochan)
-				radiomod = key
+				radiomod = ":" + key
 				break
 
 	to_chat(src, "<span class='notice'>Automatic announcements [Autochan == "None" ? "will not use the radio." : "set to [Autochan]."]</span>")

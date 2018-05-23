@@ -22,10 +22,6 @@ LINEN BINS
 	dog_fashion = /datum/dog_fashion/head/ghost
 	var/list/dream_messages = list("white")
 
-/obj/item/bedsheet/attack(mob/living/M, mob/user)
-	if(!attempt_initiate_surgery(src, M, user))
-		..()
-
 /obj/item/bedsheet/attack_self(mob/user)
 	user.drop_item()
 	if(layer == initial(layer))
@@ -221,6 +217,16 @@ LINEN BINS
 	icon_state = "sheetian"
 	item_color = "ian"
 	dream_messages = list("a dog", "a corgi", "woof", "bark", "arf")
+
+/obj/item/bedsheet/cosmos
+	name = "cosmic space bedsheet"
+	desc = "Made from the dreams of those who wonder at the stars."
+	icon_state = "sheetcosmos"
+	item_color = "cosmos"
+	dream_messages = list("the infinite cosmos", "Hans Zimmer music", "a flight through space", "the galaxy", "being fabulous", "shooting stars")
+	luminosity = 1
+	light_power = 2
+	light_range = 1.4
 
 
 /obj/item/bedsheet/random

@@ -43,7 +43,7 @@
 	var/active = 0
 	var/list/stored_items = list()
 	implant_color = "#DE7E00"
-	slot = "brain_antidrop"
+	slot = ORGAN_SLOT_BRAIN_ANTIDROP
 	origin_tech = "materials=4;programming=5;biotech=4"
 	actions_types = list(/datum/action/item_action/organ_action/toggle)
 
@@ -52,7 +52,7 @@
 	if(active)
 		for(var/obj/item/I in owner.held_items)
 			if(!(I.flags_1 & NODROP_1))
-				flags_1 += I
+				stored_items += I
 
 		var/list/L = owner.get_empty_held_indexes()
 		if(LAZYLEN(L) == owner.held_items.len)
@@ -87,6 +87,7 @@
 /obj/item/organ/cyberimp/brain/anti_drop/proc/release_items()
 	for(var/obj/item/I in stored_items)
 		I.flags_1 &= ~NODROP_1
+	stored_items = list()
 
 
 /obj/item/organ/cyberimp/brain/anti_drop/Remove(var/mob/living/carbon/M, special = 0)
@@ -99,7 +100,7 @@
 	name = "CNS Rebooter implant"
 	desc = "This implant will automatically give you back control over your central nervous system, reducing downtime when stunned."
 	implant_color = "#FFFF00"
-	slot = "brain_antistun"
+	slot = ORGAN_SLOT_BRAIN_ANTISTUN
 	origin_tech = "materials=5;programming=4;biotech=5"
 
 /obj/item/organ/cyberimp/brain/anti_stun/on_life()
@@ -131,7 +132,7 @@
 	name = "breathing tube implant"
 	desc = "This simple implant adds an internals connector to your back, allowing you to use internals without a mask and protecting you from being choked."
 	icon_state = "implant_mask"
-	slot = "breathing_tube"
+	slot = ORGAN_SLOT_BREATHING_TUBE
 	w_class = WEIGHT_CLASS_TINY
 	origin_tech = "materials=2;biotech=3"
 

@@ -14,7 +14,6 @@
  *		Cards
  *		Toy nuke
  *		Fake meteor
- *		Carp plushie
  *		Foam armblade
  *		Toy big red button
  *		Beach ball
@@ -40,7 +39,7 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "waterballoon-e"
 	item_state = "balloon-empty"
-	
+
 
 /obj/item/toy/balloon/New()
 	create_reagents(10)
@@ -621,31 +620,33 @@
 	var/cooldown = 0
 	var/obj/machinery/computer/holodeck/holo = null // Holodeck cards should not be infinite
 	var/list/cards = list()
+	var/standard_deck = TRUE
 
 /obj/item/toy/cards/deck/New()
 	..()
 	icon_state = "deck_[deckstyle]_full"
-	for(var/i = 2; i <= 10; i++)
-		cards += "[i] of Hearts"
-		cards += "[i] of Spades"
-		cards += "[i] of Clubs"
-		cards += "[i] of Diamonds"
-	cards += "King of Hearts"
-	cards += "King of Spades"
-	cards += "King of Clubs"
-	cards += "King of Diamonds"
-	cards += "Queen of Hearts"
-	cards += "Queen of Spades"
-	cards += "Queen of Clubs"
-	cards += "Queen of Diamonds"
-	cards += "Jack of Hearts"
-	cards += "Jack of Spades"
-	cards += "Jack of Clubs"
-	cards += "Jack of Diamonds"
-	cards += "Ace of Hearts"
-	cards += "Ace of Spades"
-	cards += "Ace of Clubs"
-	cards += "Ace of Diamonds"
+	if(standard_deck)
+		for(var/i = 2; i <= 10; i++)
+			cards += "[i] of Hearts"
+			cards += "[i] of Spades"
+			cards += "[i] of Clubs"
+			cards += "[i] of Diamonds"
+		cards += "King of Hearts"
+		cards += "King of Spades"
+		cards += "King of Clubs"
+		cards += "King of Diamonds"
+		cards += "Queen of Hearts"
+		cards += "Queen of Spades"
+		cards += "Queen of Clubs"
+		cards += "Queen of Diamonds"
+		cards += "Jack of Hearts"
+		cards += "Jack of Spades"
+		cards += "Jack of Clubs"
+		cards += "Jack of Diamonds"
+		cards += "Ace of Hearts"
+		cards += "Ace of Spades"
+		cards += "Ace of Clubs"
+		cards += "Ace of Diamonds"
 
 
 /obj/item/toy/cards/deck/attack_hand(mob/user)
@@ -750,7 +751,7 @@
 /obj/item/toy/cards/cardhand/interact(mob/user)
 	var/dat = "You have:<BR>"
 	for(var/t in currenthand)
-		dat += "<A href='?src=\ref[src];pick=[t]'>A [t].</A><BR>"
+		dat += "<A href='?src=[REF(src)];pick=[t]'>A [t].</A><BR>"
 	dat += "Which card will you remove next?"
 	var/datum/browser/popup = new(user, "cardhand", "Hand of Cards", 400, 240)
 	popup.set_title_image(user.browse_rsc_icon(src.icon, src.icon_state))
@@ -986,32 +987,6 @@
 			if(!M.stat && !isAI(M))
 				shake_camera(M, 3, 1)
 		qdel(src)
-
-/*
- * Carp plushie
- */
-
-/obj/item/toy/carpplushie
-	name = "space carp plushie"
-	desc = "An adorable stuffed toy that resembles a space carp."
-	icon = 'icons/obj/toy.dmi'
-	icon_state = "carpplushie"
-	item_state = "carp_plushie"
-	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("bitten", "eaten", "fin slapped")
-	resistance_flags = FLAMMABLE
-	var/bitesound = 'sound/weapons/bite.ogg'
-
-//Attack mob
-/obj/item/toy/carpplushie/attack(mob/M, mob/user)
-	playsound(loc, bitesound, 20, 1)	//Play bite sound in local area
-	return ..()
-
-//Attack self
-/obj/item/toy/carpplushie/attack_self(mob/user)
-	playsound(src.loc, bitesound, 20, 1)
-	to_chat(user, "<span class='notice'>You pet [src]. D'awww.</span>")
-	return ..()
 
 /*
  * Toy big red button

@@ -3,7 +3,6 @@
 	id = "agent"
 	hair_alpha = 0
 	say_mod = "declares"
-	speedmod = -2//Fast
 	brutemod = 0.7//Tough against firearms
 	burnmod = 0.65//Tough against lasers
 	coldmod = 0
@@ -13,7 +12,8 @@
 	punchstunthreshold = 25
 	attack_verb = "smash"
 	attack_sound = 'sound/weapons/resonator_blast.ogg'
+	examine_text = "a Corporate Agent"
 	blacklisted = 1
 	use_skintones = 0
-	species_traits = list(RADIMMUNE,VIRUSIMMUNE,NOBLOOD,PIERCEIMMUNE,EYECOLOR,NODISMEMBER,NOHUNGER)
+	species_traits = list(SPECIES_ORGANIC,RADIMMUNE,VIRUSIMMUNE,NOBLOOD,PIERCEIMMUNE,EYECOLOR,NODISMEMBER,NOHUNGER,NO_BONES)
 	sexes = 0

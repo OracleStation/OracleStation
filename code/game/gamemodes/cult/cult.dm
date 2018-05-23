@@ -31,7 +31,7 @@
 	name = "cult"
 	config_tag = "cult"
 	antag_flag = ROLE_CULTIST
-	restricted_jobs = list("Chaplain","AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Blueshield", "Brig Physician")
+	restricted_jobs = list("Chaplain","AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Blueshield", "Brig Physician", "Internal Affairs Agent")
 	protected_jobs = list()
 	required_players = 24
 	required_enemies = 4
@@ -42,6 +42,8 @@
 	announce_text = "Some crew members are trying to start a cult to Nar-Sie!\n\
 	<span class='cult'>Cultists</span>: Carry out Nar-Sie's will.\n\
 	<span class='notice'>Crew</span>: Prevent the cult from expanding and drive it out."
+
+	title_icon = "cult"
 
 	var/finished = 0
 
@@ -54,10 +56,10 @@
 /datum/game_mode/cult/pre_setup()
 	cult_objectives += "sacrifice"
 
-	if(config.protect_roles_from_antagonist)
+	if(CONFIG_GET(flag/protect_roles_from_antagonist))
 		restricted_jobs += protected_jobs
 
-	if(config.protect_assistant_from_antagonist)
+	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
 		restricted_jobs += "Assistant"
 
 	//cult scaling goes here
@@ -104,7 +106,7 @@
 	if(!GLOB.summon_spots.len)
 		while(GLOB.summon_spots.len < SUMMON_POSSIBILITIES)
 			var/area/summon = pick(GLOB.sortedAreas - GLOB.summon_spots)
-			if((summon.z == ZLEVEL_STATION) && summon.valid_territory)
+			if((summon.z in GLOB.station_z_levels) && summon.valid_territory)
 				GLOB.summon_spots += summon
 	cult_objectives += "eldergod"
 
@@ -144,7 +146,7 @@
 		to_chat(mob, "<span class='userdanger'>Unfortunately, you weren't able to get a [item_name]. This is very bad and you should adminhelp immediately (press F1).</span>")
 		return 0
 	else
-		to_chat(mob, "<span class='danger'>You have a [item_name] in your [where].")
+		to_chat(mob, "<span class='danger'>You have a [item_name] in your [where].</span>")
 		if(where == "backpack")
 			var/obj/item/storage/B = mob.back
 			B.orient2hud(mob)
@@ -295,3 +297,20 @@
 						SSticker.news_report = CULT_FAILURE
 			text += "<br><B>Objective #[obj_count]</B>: [explanation]"
 	to_chat(world, text)
+
+/datum/game_mode/cult/generate_credit_text()
+	var/list/round_credits = list()
+	var/len_before_addition
+
+	round_credits += "<center><h1>The Cult of Nar'Sie:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/cultist in cult)
+		round_credits += "<center><h2>[cultist.name] as a cult fanatic</h2>"
+	if(!eldergod)
+		round_credits += "<center><h2>Nar'Sie as the eldritch abomination</h2>"
+	if(len_before_addition == round_credits.len)
+		round_credits += list("<center><h2>The cultists have learned the danger of eldritch magic!</h2>", "<center><h2>They all disappeared!</h2>")
+	round_credits += "<br>"
+
+	round_credits += ..()
+	return round_credits

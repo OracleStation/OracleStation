@@ -1,7 +1,6 @@
 /mob/dead/observer/DblClickOn(var/atom/A, var/params)
-	if(client.click_intercept)
-		if(call(client.click_intercept,"InterceptClickOn")(src,params,A))
-			return
+	if(check_click_intercept(params,A))
+		return
 
 	if(can_reenter_corpse && mind && mind.current)
 		if(A == mind.current || (mind.current in A)) // double click your corpse or whatever holds it
@@ -18,11 +17,24 @@
 		update_parallax_contents()
 
 /mob/dead/observer/ClickOn(var/atom/A, var/params)
-	if(client.click_intercept)
-		if(call(client.click_intercept,"InterceptClickOn")(src,params,A))
-			return
+	if(check_click_intercept(params,A))
+		return
 
 	var/list/modifiers = params2list(params)
+
+	//admin clicks; may override some weird functionality someone puts somewhere so watch out
+	if(check_rights(R_ADMIN, 0))
+		var/mob/M
+		if(modifiers["shift"] && modifiers["ctrl"])
+			client.debug_variables(A)
+			return
+		if(modifiers["ctrl"])
+			M = get_mob_in_atom_with_warning(A)
+			if(M)
+				client.holder.show_player_panel(M)
+			return
+	//====FIN====
+
 	if(modifiers["shift"] && modifiers["middle"])
 		ShiftMiddleClickOn(A)
 		return

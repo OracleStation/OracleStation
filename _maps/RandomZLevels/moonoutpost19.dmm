@@ -1973,8 +1973,7 @@
 	})
 "cK" = (
 /obj/structure/cable,
-/obj/machinery/power/apc{
-	cell_type = 15000;
+/obj/machinery/power/apc/highcap/fifteen_k{
 	dir = 2;
 	locked = 1;
 	name = "Worn-out APC";
@@ -4917,8 +4916,7 @@
 	})
 "gG" = (
 /obj/structure/cable,
-/obj/machinery/power/apc{
-	cell_type = 15000;
+/obj/machinery/power/apc/highcap/fifteen_k{
 	dir = 4;
 	locked = 0;
 	name = "Worn-out APC";
@@ -4946,7 +4944,6 @@
 	})
 "gI" = (
 /obj/structure/table,
-/obj/item/surgical_drapes,
 /obj/machinery/light/small{
 	active_power_usage = 0;
 	dir = 4;
@@ -6981,8 +6978,7 @@
 	icon_state = "0-2";
 	d2 = 2
 	},
-/obj/machinery/power/apc{
-	cell_type = 15000;
+/obj/machinery/power/apc/highcap/fifteen_k{
 	dir = 1;
 	locked = 0;
 	name = "Worn-out APC";
@@ -9443,7 +9439,7 @@
 /obj/structure/table,
 /obj/structure/bedsheetbin,
 /obj/item/clothing/neck/tie/black,
-/obj/item/clothing/under/lawyer/blacksuit,
+/obj/item/clothing/under/iaa/blacksuit,
 /turf/open/floor/plasteel/barber{
 	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251";
 	heat_capacity = 1e+006;

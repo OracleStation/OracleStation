@@ -83,7 +83,8 @@
 	var/datum/gas_mixture/G = C.returnPipenetAir(src)
 	if(!G)
 		stack_trace("addMachineryMember: Null gasmix added to pipeline datum from [C] which is of type [C.type]. Nearby: ([C.x], [C.y], [C.z])")
-	other_airs |= G
+	else
+		other_airs |= G
 
 /datum/pipeline/proc/addMember(obj/machinery/atmospherics/A, obj/machinery/atmospherics/N)
 	if(istype(A, /obj/machinery/atmospherics/pipe))
@@ -231,7 +232,7 @@
 
 		total_gas_mixture.merge(G)
 
-		total_thermal_energy += G.thermal_energy()
+		total_thermal_energy += THERMAL_ENERGY(G)
 		total_heat_capacity += G.heat_capacity()
 
 	total_gas_mixture.temperature = total_heat_capacity ? total_thermal_energy/total_heat_capacity : 0

@@ -851,8 +851,7 @@
 /turf/open/floor/plasteel,
 /area/ai_monitored/security/armory)
 "acm" = (
-/obj/machinery/power/apc{
-	cell_type = 5000;
+/obj/machinery/power/apc/highcap/five_k{
 	dir = 4;
 	areastring = "/area/ai_monitored/security/armory";
 	name = "Armory APC";
@@ -1485,7 +1484,6 @@
 /obj/item/circular_saw,
 /obj/item/hemostat,
 /obj/item/retractor,
-/obj/item/surgical_drapes,
 /obj/item/razor,
 /turf/open/floor/plasteel/black,
 /area/security/execution/transfer)
@@ -3248,7 +3246,7 @@
 /obj/machinery/iv_drip{
 	density = 0
 	},
-/obj/item/reagent_containers/blood/empty,
+/obj/item/reagent_containers/blood,
 /turf/open/floor/plasteel/whitered/side{
 	dir = 5
 	},
@@ -6477,13 +6475,13 @@
 	pixel_y = 25
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "aoc" = (
 /obj/machinery/airalarm{
 	pixel_y = 23
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "aod" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -6918,14 +6916,14 @@
 /area/maintenance/fore)
 "aph" = (
 /turf/closed/wall,
-/area/lawoffice)
+/area/iaaoffice)
 "api" = (
 /obj/machinery/door/airlock{
 	name = "Law Office";
 	req_access_txt = "38"
 	},
 /turf/open/floor/plasteel,
-/area/lawoffice)
+/area/iaaoffice)
 "apj" = (
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
@@ -7236,7 +7234,7 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "aqa" = (
 /obj/structure/table,
 /obj/machinery/light/small{
@@ -7252,7 +7250,7 @@
 /obj/item/storage/briefcase,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "aqc" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/closed/wall,
@@ -7683,14 +7681,14 @@
 	},
 /obj/structure/closet/lawcloset,
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "arb" = (
 /obj/structure/table/wood,
 /obj/item/book/manual/wiki/security_space_law,
 /obj/item/book/manual/wiki/security_space_law,
 /obj/item/pen/red,
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "arc" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
 /turf/open/floor/plasteel,
@@ -7702,7 +7700,7 @@
 	},
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/lawoffice)
+/area/iaaoffice)
 "are" = (
 /obj/structure/table/wood,
 /obj/item/device/flashlight/lamp/green{
@@ -7710,7 +7708,7 @@
 	pixel_y = 5
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "arf" = (
 /turf/closed/wall,
 /area/crew_quarters/dorms)
@@ -8021,41 +8019,41 @@
 	pixel_x = -24
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "arW" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
 	},
 /turf/closed/wall,
-/area/lawoffice)
+/area/iaaoffice)
 "arX" = (
 /obj/structure/table/wood,
 /obj/item/folder/blue,
 /obj/item/folder/blue,
 /obj/item/folder/blue,
 /obj/item/folder/blue,
-/obj/item/stamp/law,
+/obj/item/stamp/iaa,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "arY" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "arZ" = (
 /obj/structure/chair/office/dark{
 	dir = 8
 	},
-/obj/effect/landmark/start/lawyer,
+/obj/effect/landmark/start/iaa,
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "asa" = (
 /obj/machinery/status_display{
 	density = 0;
@@ -8447,7 +8445,7 @@
 /area/crew_quarters/fitness)
 "ata" = (
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "atb" = (
 /obj/structure/table,
 /obj/item/stack/sheet/plasteel{
@@ -8462,9 +8460,9 @@
 /area/construction/mining/aux_base)
 "atc" = (
 /obj/structure/chair/office/dark,
-/obj/effect/landmark/start/lawyer,
+/obj/effect/landmark/start/iaa,
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "atd" = (
 /obj/machinery/light{
 	dir = 4
@@ -8839,7 +8837,7 @@
 "auf" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/closed/wall,
-/area/lawoffice)
+/area/iaaoffice)
 "aug" = (
 /obj/structure/table/wood,
 /obj/machinery/camera{
@@ -8860,13 +8858,13 @@
 	pixel_y = -27
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "auh" = (
 /obj/structure/table/wood,
 /obj/item/device/taperecorder,
-/obj/item/cartridge/lawyer,
+/obj/item/cartridge/iaa,
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "aui" = (
 /obj/machinery/photocopier,
 /obj/machinery/button/door{
@@ -8876,7 +8874,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/wood,
-/area/lawoffice)
+/area/iaaoffice)
 "auj" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -9301,7 +9299,7 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "Law Office APC";
-	areastring = "/area/lawoffice";
+	areastring = "/area/iaaoffice";
 	pixel_y = 24
 	},
 /obj/structure/cable{
@@ -9310,7 +9308,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plating,
-/area/lawoffice)
+/area/iaaoffice)
 "avj" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -20943,8 +20941,7 @@
 	},
 /area/bridge)
 "aWW" = (
-/obj/machinery/power/apc{
-	cell_type = 5000;
+/obj/machinery/power/apc/highcap/five_k{
 	dir = 2;
 	name = "Bridge APC";
 	areastring = "/area/bridge";
@@ -22745,7 +22742,6 @@
 /area/quartermaster/storage)
 "bbu" = (
 /obj/machinery/power/apc{
-	cell_type = 2500;
 	dir = 1;
 	name = "Captain's Office APC";
 	areastring = "/area/crew_quarters/heads/captain";
@@ -23802,8 +23798,7 @@
 /turf/open/floor/plasteel/black,
 /area/ai_monitored/turret_protected/ai_upload)
 "bed" = (
-/obj/machinery/power/apc{
-	cell_type = 5000;
+/obj/machinery/power/apc/highcap/five_k{
 	dir = 2;
 	name = "Upload APC";
 	areastring = "/area/ai_monitored/turret_protected/ai_upload";
@@ -24458,7 +24453,7 @@
 /area/crew_quarters/heads/captain)
 "bfE" = (
 /obj/structure/table/wood,
-/obj/item/pinpointer,
+/obj/item/pinpointer/nuke,
 /obj/item/disk/nuclear,
 /obj/item/storage/secure/safe{
 	pixel_x = 35;
@@ -28392,7 +28387,6 @@
 "bor" = (
 /obj/structure/table,
 /obj/item/clothing/gloves/color/latex,
-/obj/item/surgical_drapes,
 /obj/item/razor,
 /turf/open/floor/plasteel/black,
 /area/science/robotics/lab)
@@ -30517,7 +30511,6 @@
 /obj/structure/table/optable{
 	name = "Robotics Operating Table"
 	},
-/obj/item/surgical_drapes,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "bsV" = (
@@ -34247,7 +34240,6 @@
 /area/medical/sleeper)
 "bBc" = (
 /obj/structure/table,
-/obj/item/surgical_drapes,
 /obj/item/razor,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -42341,8 +42333,7 @@
 /turf/open/floor/plasteel/white,
 /area/medical/virology)
 "bSX" = (
-/obj/machinery/power/apc{
-	cell_type = 5000;
+/obj/machinery/power/apc/highcap/five_k{
 	dir = 1;
 	name = "Virology APC";
 	areastring = "/area/medical/virology";
@@ -43924,8 +43915,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	cell_type = 5000;
+/obj/machinery/power/apc/highcap/five_k{
 	dir = 1;
 	name = "Telecomms Server APC";
 	areastring = "/area/tcommsat/server";
@@ -46081,8 +46071,7 @@
 /obj/structure/closet/secure_closet/engineering_chief{
 	req_access_txt = "0"
 	},
-/obj/machinery/power/apc{
-	cell_type = 5000;
+/obj/machinery/power/apc/highcap/five_k{
 	dir = 4;
 	name = "CE Office APC";
 	areastring = "/area/crew_quarters/heads/chief";
@@ -49118,8 +49107,7 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "cib" = (
-/obj/machinery/power/apc{
-	cell_type = 15000;
+/obj/machinery/power/apc/highcap/fifteen_k{
 	dir = 1;
 	name = "Engineering APC";
 	areastring = "/area/engine/engineering";
@@ -49156,8 +49144,7 @@
 	dir = 1
 	},
 /obj/structure/reagent_dispensers/watertank,
-/obj/machinery/power/apc{
-	cell_type = 15000;
+/obj/machinery/power/apc/highcap/fifteen_k{
 	dir = 1;
 	name = "Engineering APC";
 	areastring = "/area/engine/engineering";
@@ -52656,7 +52643,6 @@
 /area/engine/engineering)
 "cpF" = (
 /obj/structure/table/optable,
-/obj/item/surgical_drapes,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/syndicate)
 "cpG" = (
@@ -55811,8 +55797,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	cell_type = 5000;
+/obj/machinery/power/apc/highcap/five_k{
 	dir = 2;
 	name = "AI Chamber APC";
 	areastring = "/area/ai_monitored/turret_protected/ai";
@@ -58176,8 +58161,8 @@
 /area/quartermaster/storage)
 "cCp" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/blood/empty,
-/obj/item/reagent_containers/blood/empty,
+/obj/item/reagent_containers/blood,
+/obj/item/reagent_containers/blood,
 /obj/item/reagent_containers/blood/AMinus,
 /obj/item/reagent_containers/blood/BMinus{
 	pixel_x = -4;
@@ -60009,7 +59994,9 @@
 /turf/open/floor/plasteel/black,
 /area/engine/engineering)
 "cGU" = (
-/obj/structure/reflector/double/anchored,
+/obj/structure/reflector/double/anchored{
+	rotation_angle = 135
+	},
 /turf/open/floor/plasteel/black,
 /area/engine/engineering)
 "cGV" = (
@@ -60171,13 +60158,15 @@
 /area/engine/engineering)
 "cHo" = (
 /obj/structure/reflector/single/anchored{
-	dir = 1
+	dir = 1;
+	rotation_angle = 315
 	},
 /turf/open/floor/plating,
 /area/engine/engineering)
 "cHp" = (
 /obj/structure/reflector/single/anchored{
-	dir = 4
+	dir = 4;
+	rotation_angle = 45
 	},
 /turf/open/floor/plating,
 /area/engine/engineering)
@@ -61645,7 +61634,6 @@
 /area/shuttle/syndicate)
 "cLl" = (
 /obj/structure/table/optable,
-/obj/item/surgical_drapes,
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},
@@ -62503,7 +62491,6 @@
 /area/quartermaster/sorting)
 "cNL" = (
 /obj/machinery/power/apc{
-	cell_type = 2500;
 	dir = 1;
 	name = "Central Maintenance APC";
 	areastring = "/area/maintenance/central";
@@ -63930,6 +63917,12 @@
 	dir = 4
 	},
 /area/construction/mining/aux_base)
+"cTF" = (
+/obj/structure/reflector/double/anchored{
+	rotation_angle = 45
+	},
+/turf/open/floor/plasteel/black,
+/area/engine/engineering)
 
 (1,1,1) = {"
 aaa
@@ -92913,7 +92906,7 @@ cSI
 csC
 cMm
 cGV
-cEj
+cGV
 cGV
 ccw
 ccw
@@ -93169,7 +93162,7 @@ cFP
 csI
 cAt
 cMm
-cEj
+cTF
 cEj
 cEj
 cHp

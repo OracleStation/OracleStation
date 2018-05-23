@@ -1,10 +1,10 @@
 #define ION_FILE "ion_laws.json"
 
-/proc/lizard_name(gender)
+/proc/unathi_name(gender)
 	if(gender == MALE)
-		return "[pick(GLOB.lizard_names_male)]-[pick(GLOB.lizard_names_male)]"
+		return "[pick(GLOB.unathi_names_male)]-[pick(GLOB.unathi_names_male)]"
 	else
-		return "[pick(GLOB.lizard_names_female)]-[pick(GLOB.lizard_names_female)]"
+		return "[pick(GLOB.unathi_names_female)]-[pick(GLOB.unathi_names_female)]"
 
 /proc/ethari_name(gender)
 	return "[pick(GLOB.ethari_names)] [pick(GLOB.ethari_names)]"
@@ -60,8 +60,9 @@ GLOBAL_VAR(command_name)
 /proc/station_name()
 	if(!GLOB.station_name)
 		var/newname
-		if(config && config.station_name)
-			newname = config.station_name
+		var/config_station_name = CONFIG_GET(string/stationname)
+		if(config_station_name)
+			newname = config_station_name
 		else
 			newname = new_station_name()
 
@@ -72,8 +73,9 @@ GLOBAL_VAR(command_name)
 /proc/set_station_name(newname)
 	GLOB.station_name = newname
 
-	if(config && config.server_name)
-		world.name = "[config.server_name][config.server_name==GLOB.station_name ? "" : ": [GLOB.station_name]"]"
+	var/config_server_name = CONFIG_GET(string/servername)
+	if(config_server_name)
+		world.name = "[config_server_name][config_server_name == GLOB.station_name ? "" : ": [GLOB.station_name]"]"
 	else
 		world.name = GLOB.station_name
 
@@ -214,7 +216,7 @@ GLOBAL_VAR(syndicate_code_response) //Code response for traitors.
 							. += pick(names)
 						else
 							if(prob(10))
-								. += pick(lizard_name(MALE),lizard_name(FEMALE))
+								. += pick(unathi_name(MALE),unathi_name(FEMALE))
 							else
 								var/new_name = pick(pick(GLOB.first_names_male,GLOB.first_names_female))
 								new_name += " "

@@ -73,6 +73,7 @@
 	var/obj/item/device/doorCharge/charge = null //If applied, causes an explosion upon opening the door
 	var/obj/item/note //Any papers pinned to the airlock
 	var/detonated = 0
+	var/abandoned = FALSE
 	var/doorOpen = 'sound/machines/airlock.ogg'
 	var/doorClose = 'sound/machines/airlockclose.ogg'
 	var/doorDeni = 'sound/machines/deniedbeep.ogg' // i'm thinkin' Deni's
@@ -97,6 +98,15 @@
 
 	var/static/list/airlock_overlays = list()
 
+	var/has_hatch = TRUE //If TRUE, this door has hatches, and certain small creatures can move through them without opening the door
+	var/hatchstate = 0 //0: closed, 1: open
+	var/hatch_offset_x = 0
+	var/hatch_offset_y = 0
+	var/hatch_colour = "#7d7d7d"
+	var/hatch_open_sound = 'sound/machines/hatch_open.ogg'
+	var/hatch_close_sound = 'sound/machines/hatch_close.ogg'
+	var/image/hatch_image
+
 /obj/machinery/door/airlock/Initialize()
 	. = ..()
 	wires = new /datum/wires/airlock(src)
@@ -117,13 +127,57 @@
 		max_integrity = normal_integrity
 	if(damage_deflection == AIRLOCK_DAMAGE_DEFLECTION_N && security_level > AIRLOCK_SECURITY_METAL)
 		damage_deflection = AIRLOCK_DAMAGE_DEFLECTION_R
+	if(abandoned)
+		var/outcome = rand(1,100)
+		switch(outcome)
+			if(1 to 9)
+				var/turf/here = get_turf(src)
+				for(var/turf/closed/T in range(2, src))
+					here.ChangeTurf(T.type)
+					return INITIALIZE_HINT_QDEL
+				here.ChangeTurf(/turf/closed/wall)
+				return INITIALIZE_HINT_QDEL
+			if(9 to 11)
+				lights = FALSE
+				locked = TRUE
+			if(12 to 15)
+				locked = TRUE
+			if(16 to 23)
+				welded = TRUE
+			if(24 to 30)
+				panel_open = TRUE
 	prepare_huds()
 	var/datum/atom_hud/data/diagnostic/diag_hud = GLOB.huds[DATA_HUD_DIAGNOSTIC]
 	diag_hud.add_to_hud(src)
 	diag_hud_set_electrified()
 
+	if(has_hatch)
+		setup_hatch()
 
 	update_icon()
+
+/obj/machinery/door/airlock/proc/setup_hatch()
+	hatch_image = image('icons/obj/doors/hatches.dmi', src, "hatch_closed", layer=(CLOSED_FIREDOOR_LAYER-0.01))
+	hatch_image.color = hatch_colour
+	hatch_image.pixel_x = hatch_offset_x
+	hatch_image.pixel_y = hatch_offset_y
+	update_icon()
+
+/obj/machinery/door/airlock/proc/open_hatch(var/atom/mover = null)
+	if(!hatchstate)
+		hatchstate = 1
+		update_icon()
+		playsound(src.loc, hatch_open_sound, 40, 1, -1)
+		addtimer(CALLBACK(src, .proc/close_hatch), 20, TIMER_OVERRIDE) //hatch stays open for 2 seconds
+
+	if(istype(mover, /mob/living/simple_animal/drone))
+		var/mob/living/simple_animal/drone/D = mover
+		D.under_door()
+
+/obj/machinery/door/airlock/proc/close_hatch()
+	hatchstate = 0
+	update_icon()
+	playsound(src.loc, hatch_close_sound, 30, 1, -1)
 
 /obj/machinery/door/airlock/proc/update_other_id()
 	for(var/obj/machinery/door/airlock/A in GLOB.airlocks)
@@ -182,23 +236,27 @@
 /obj/machinery/door/airlock/narsie_act()
 	var/turf/T = get_turf(src)
 	var/runed = prob(20)
+	var/obj/machinery/door/airlock/cult/A
 	if(glass)
 		if(runed)
-			new/obj/machinery/door/airlock/cult/glass(T)
+			A = new/obj/machinery/door/airlock/cult/glass(T)
 		else
-			new/obj/machinery/door/airlock/cult/unruned/glass(T)
+			A = new/obj/machinery/door/airlock/cult/unruned/glass(T)
 	else
 		if(runed)
-			new/obj/machinery/door/airlock/cult(T)
+			A = new/obj/machinery/door/airlock/cult(T)
 		else
-			new/obj/machinery/door/airlock/cult/unruned(T)
+			A = new/obj/machinery/door/airlock/cult/unruned(T)
+	A.name = name
 	qdel(src)
 
 /obj/machinery/door/airlock/ratvar_act() //Airlocks become pinion airlocks that only allow servants
+	var/obj/machinery/door/airlock/clockwork/A
 	if(glass)
-		new/obj/machinery/door/airlock/clockwork/brass(get_turf(src))
+		A = new/obj/machinery/door/airlock/clockwork/brass(get_turf(src))
 	else
-		new/obj/machinery/door/airlock/clockwork(get_turf(src))
+		A = new/obj/machinery/door/airlock/clockwork(get_turf(src))
+	A.name = name
 	qdel(src)
 
 /obj/machinery/door/airlock/Destroy()
@@ -381,6 +439,7 @@
 	var/mutable_appearance/sparks_overlay
 	var/mutable_appearance/note_overlay
 	var/notetype = note_type()
+	var/mutable_appearance/hatch_overlay
 
 	switch(state)
 		if(AIRLOCK_CLOSED)
@@ -407,6 +466,12 @@
 					lights_overlay = get_airlock_overlay("lights_emergency", overlays_file)
 			if(note)
 				note_overlay = get_airlock_overlay(notetype, note_overlay_file)
+			if(has_hatch)
+				if(hatchstate)
+					hatch_image.icon_state = "hatch_open"
+				else
+					hatch_image.icon_state = "hatch_closed"
+				hatch_overlay = hatch_image
 
 		if(AIRLOCK_DENY)
 			if(!hasPower())
@@ -430,6 +495,12 @@
 			lights_overlay = get_airlock_overlay("lights_denied", overlays_file)
 			if(note)
 				note_overlay = get_airlock_overlay(notetype, note_overlay_file)
+			if(has_hatch)
+				if(hatchstate)
+					hatch_image.icon_state = "hatch_open"
+				else
+					hatch_image.icon_state = "hatch_closed"
+				hatch_overlay = hatch_image
 
 		if(AIRLOCK_EMAG)
 			frame_overlay = get_airlock_overlay("closed", icon)
@@ -509,6 +580,8 @@
 	add_overlay(sparks_overlay)
 	add_overlay(damag_overlay)
 	add_overlay(note_overlay)
+	if(has_hatch && (AIRLOCK_CLOSED || AIRLOCK_DENY))
+		add_overlay(hatch_overlay)
 
 /proc/get_airlock_overlay(icon_state, icon_file)
 	var/obj/machinery/door/airlock/A
@@ -530,6 +603,12 @@
 				playsound(src,doorDeni,50,0,3)
 				sleep(6)
 				update_icon(AIRLOCK_CLOSED)
+
+/obj/machinery/door/airlock/CanPass(atom/movable/mover, turf/target)
+	. = ..()
+	if(density && has_hatch && mover.checkpass(PASSDOORHATCH))
+		open_hatch(mover)
+		return TRUE //If this airlock is closed, has hatches, and this creature can go through hatches, then we let it through without opening the airlock
 
 /obj/machinery/door/airlock/examine(mob/user)
 	..()
@@ -605,23 +684,23 @@
 	if(wires.is_cut(WIRE_IDSCAN))
 		t1 += text("IdScan wire is cut.<br>\n")
 	else if(src.aiDisabledIdScanner)
-		t1 += text("IdScan disabled. <A href='?src=\ref[];aiEnable=1'>Enable?</a><br>\n", src)
+		t1 += "IdScan disabled. <A href='?src=[REF(src)];aiEnable=1'>Enable?</a><br>\n"
 	else
-		t1 += text("IdScan enabled. <A href='?src=\ref[];aiDisable=1'>Disable?</a><br>\n", src)
+		t1 += "IdScan enabled. <A href='?src=[REF(src)];aiDisable=1'>Disable?</a><br>\n"
 
 	if(src.emergency)
-		t1 += text("Emergency Access Override is enabled. <A href='?src=\ref[];aiDisable=11'>Disable?</a><br>\n", src)
+		t1 += "Emergency Access Override is enabled. <A href='?src=[REF(src)];aiDisable=11'>Disable?</a><br>\n"
 	else
-		t1 += text("Emergency Access Override is disabled. <A href='?src=\ref[];aiEnable=11'>Enable?</a><br>\n", src)
+		t1 += "Emergency Access Override is disabled. <A href='?src=[REF(src)];aiEnable=11'>Enable?</a><br>\n"
 
 	if(wires.is_cut(WIRE_POWER1))
 		t1 += text("Main Power Input wire is cut.<br>\n")
 	if(wires.is_cut(WIRE_POWER2))
 		t1 += text("Main Power Output wire is cut.<br>\n")
 	if(!secondsMainPowerLost)
-		t1 += text("<A href='?src=\ref[];aiDisable=2'>Temporarily disrupt main power?</a>.<br>\n", src)
+		t1 += "<A href='?src=[REF(src)];aiDisable=2'>Temporarily disrupt main power?</a>.<br>\n"
 	if(!secondsBackupPowerLost)
-		t1 += text("<A href='?src=\ref[];aiDisable=3'>Temporarily disrupt backup power?</a>.<br>\n", src)
+		t1 += "<A href='?src=[REF(src)];aiDisable=3'>Temporarily disrupt backup power?</a>.<br>\n"
 
 	if(wires.is_cut(WIRE_BACKUP1))
 		t1 += text("Backup Power Input wire is cut.<br>\n")
@@ -631,53 +710,53 @@
 	if(wires.is_cut(WIRE_BOLTS))
 		t1 += text("Door bolt drop wire is cut.<br>\n")
 	else if(!src.locked)
-		t1 += text("Door bolts are up. <A href='?src=\ref[];aiDisable=4'>Drop them?</a><br>\n", src)
+		t1 += "Door bolts are up. <A href='?src=[REF(src)];aiDisable=4'>Drop them?</a><br>\n"
 	else
 		t1 += text("Door bolts are down.")
 		if(src.hasPower())
-			t1 += text(" <A href='?src=\ref[];aiEnable=4'>Raise?</a><br>\n", src)
+			t1 += " <A href='?src=[REF(src)];aiEnable=4'>Raise?</a><br>\n"
 		else
 			t1 += text(" Cannot raise door bolts due to power failure.<br>\n")
 
 	if(wires.is_cut(WIRE_LIGHT))
 		t1 += text("Door bolt lights wire is cut.<br>\n")
 	else if(!src.lights)
-		t1 += text("Door bolt lights are off. <A href='?src=\ref[];aiEnable=10'>Enable?</a><br>\n", src)
+		t1 += "Door bolt lights are off. <A href='?src=[REF(src)];aiEnable=10'>Enable?</a><br>\n"
 	else
-		t1 += text("Door bolt lights are on. <A href='?src=\ref[];aiDisable=10'>Disable?</a><br>\n", src)
+		t1 += "Door bolt lights are on. <A href='?src=[REF(src)];aiDisable=10'>Disable?</a><br>\n"
 
 	if(wires.is_cut(WIRE_SHOCK))
 		t1 += text("Electrification wire is cut.<br>\n")
 	if(secondsElectrified==ELECTRIFIED_PERMANENT)
-		t1 += text("Door is electrified indefinitely. <A href='?src=\ref[];aiDisable=5'>Un-electrify it?</a><br>\n", src)
+		t1 += "Door is electrified indefinitely. <A href='?src=[REF(src)];aiDisable=5'>Un-electrify it?</a><br>\n"
 	else if(secondsElectrified>NOT_ELECTRIFIED)
-		t1 += text("Door is electrified temporarily ([] seconds). <A href='?src=\ref[];aiDisable=5'>Un-electrify it?</a><br>\n", secondsElectrified, src)
+		t1 += text("Door is electrified temporarily ([] seconds). <A href='?src=[REF(src)];aiDisable=5'>Un-electrify it?</a><br>\n", secondsElectrified)
 	else
-		t1 += text("Door is not electrified. <A href='?src=\ref[];aiEnable=5'>Electrify it for 30 seconds?</a> Or, <A href='?src=\ref[];aiEnable=6'>Electrify it indefinitely until someone cancels the electrification?</a><br>\n", src, src)
+		t1 += "Door is not electrified. <A href='?src=[REF(src)];aiEnable=5'>Electrify it for 30 seconds?</a> Or, <A href='?src=[REF(src)];aiEnable=6'>Electrify it indefinitely until someone cancels the electrification?</a><br>\n"
 
 	if(wires.is_cut(WIRE_SAFETY))
 		t1 += text("Door force sensors not responding.</a><br>\n")
 	else if(src.safe)
-		t1 += text("Door safeties operating normally.  <A href='?src=\ref[];aiDisable=8'>Override?</a><br>\n",src)
+		t1 += "Door safeties operating normally.  <A href='?src=[REF(src)];aiDisable=8'>Override?</a><br>\n"
 	else
-		t1 += text("Danger.  Door safeties disabled.  <A href='?src=\ref[];aiEnable=8'>Restore?</a><br>\n",src)
+		t1 += "Danger.  Door safeties disabled.  <A href='?src=[REF(src)];aiEnable=8'>Restore?</a><br>\n"
 
 	if(wires.is_cut(WIRE_TIMING))
 		t1 += text("Door timing circuitry not responding.</a><br>\n")
 	else if(src.normalspeed)
-		t1 += text("Door timing circuitry operating normally.  <A href='?src=\ref[];aiDisable=9'>Override?</a><br>\n",src)
+		t1 += "Door timing circuitry operating normally.  <A href='?src=[REF(src)];aiDisable=9'>Override?</a><br>\n"
 	else
-		t1 += text("Warning.  Door timing circuitry operating abnormally.  <A href='?src=\ref[];aiEnable=9'>Restore?</a><br>\n",src)
+		t1 += "Warning.  Door timing circuitry operating abnormally.  <A href='?src=[REF(src)];aiEnable=9'>Restore?</a><br>\n"
 
 	if(src.welded)
 		t1 += text("Door appears to have been welded shut.<br>\n")
 	else if(!src.locked)
 		if(src.density)
-			t1 += text("<A href='?src=\ref[];aiEnable=7'>Open door</a><br>\n", src)
+			t1 += "<A href='?src=[REF(src)];aiEnable=7'>Open door</a><br>\n"
 		else
-			t1 += text("<A href='?src=\ref[];aiDisable=7'>Close door</a><br>\n", src)
+			t1 += "<A href='?src=[REF(src)];aiDisable=7'>Close door</a><br>\n"
 
-	t1 += text("<p><a href='?src=\ref[];close=1'>Close</a></p>\n", src)
+	t1 += "<p><a href='?src=[REF(src)];close=1'>Close</a></p>\n"
 	user << browse(t1, "window=airlock")
 	onclose(user, "airlock")
 
@@ -743,7 +822,7 @@
 
 	if(ishuman(user) && prob(40) && src.density)
 		var/mob/living/carbon/human/H = user
-		if(H.getBrainLoss() >= 60 && Adjacent(user))
+		if((H.disabilities & DUMB) && Adjacent(user))
 			playsound(src.loc, 'sound/effects/bang.ogg', 25, 1)
 			if(!istype(H.head, /obj/item/clothing/head/helmet))
 				H.visible_message("<span class='danger'>[user] headbutts the airlock.</span>", \
@@ -816,6 +895,8 @@
 					//drop door bolts
 					if(wires.is_cut(WIRE_BOLTS))
 						to_chat(usr, "You can't drop the door bolts - The door bolt dropping wire has been cut.")
+					else if(!src.hasPower())
+						to_chat(usr, "You can't drop the door bolts - Power failure.")
 					else
 						bolt()
 				if(5)
@@ -1157,7 +1238,7 @@
 		charge = C
 	else if(istype(C, /obj/item/paper) || istype(C, /obj/item/photo))
 		if(note)
-			to_chat(user, "<span class='warning'>There's already something pinned to this airlock! Use wirecutters to remove it.<spa>")
+			to_chat(user, "<span class='warning'>There's already something pinned to this airlock! Use wirecutters to remove it.</span>")
 			return
 		if(!user.transferItemToLoc(C, src))
 			to_chat(user, "<span class='warning'>For some reason, you can't attach [C]!</span>")
@@ -1222,7 +1303,7 @@
 		charge.forceMove(get_turf(user))
 		charge = null
 		return
-	if( beingcrowbarred && (density && welded && !operating && src.panel_open && (!hasPower()) && !src.locked) )
+	if(beingcrowbarred && panel_open && (emagged || (density && welded && !operating && !hasPower() && !locked)))
 		playsound(src.loc, I.usesound, 100, 1)
 		user.visible_message("[user] removes the electronics from the airlock assembly.", \
 							 "<span class='notice'>You start to remove electronics from the airlock assembly...</span>")

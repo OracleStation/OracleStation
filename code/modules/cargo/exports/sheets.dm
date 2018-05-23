@@ -52,10 +52,10 @@
 	export_types = list(/obj/item/stack/sheet/animalhide/corgi)
 
 // Lizard hide. Very expensive.
-/datum/export/stack/skin/lizard
+/datum/export/stack/skin/unathi
 	cost = 5000
-	unit_name = "lizard hide"
-	export_types = list(/obj/item/stack/sheet/animalhide/lizard)
+	unit_name = "unathi hide"
+	export_types = list(/obj/item/stack/sheet/animalhide/unathi)
 
 // Alien hide. Extremely expensive.
 /datum/export/stack/skin/xeno

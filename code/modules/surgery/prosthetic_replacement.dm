@@ -1,5 +1,5 @@
 /datum/surgery/prosthetic_replacement
-	name = "prosthetic replacement"
+	name = "bodypart attachment"
 	steps = list(/datum/surgery_step/incise, /datum/surgery_step/clamp_bleeders, /datum/surgery_step/retract_skin, /datum/surgery_step/add_prosthetic)
 	species = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
 	possible_locs = list("r_arm", "l_arm", "l_leg", "r_leg", "head")

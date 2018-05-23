@@ -4,21 +4,10 @@
 	icon_keyboard = "tech_key"
 	light_color = LIGHT_COLOR_CYAN
 	req_access = list( )
-	circuit = /obj/item/circuitboard/computer/shuttle
 	var/shuttleId
 	var/possible_destinations = ""
 	var/admin_controlled
 	var/no_destination_swap = 0
-
-/obj/machinery/computer/shuttle/Initialize()
-	..()
-	return INITIALIZE_HINT_LATELOAD
-
-/obj/machinery/computer/shuttle/LateInitialize()
-	if(istype(circuit, /obj/item/circuitboard/computer/shuttle))
-		var/obj/item/circuitboard/computer/shuttle/C = circuit
-		possible_destinations = C.possible_destinations
-		shuttleId = C.shuttleId
 
 /obj/machinery/computer/shuttle/attack_hand(mob/user)
 	if(..(user))
@@ -36,13 +25,13 @@
 			if(!M.check_dock(S))
 				continue
 			destination_found = 1
-			dat += "<A href='?src=\ref[src];move=[S.id]'>Send to [S.name]</A><br>"
+			dat += "<A href='?src=[REF(src)];move=[S.id]'>Send to [S.name]</A><br>"
 		if(!destination_found)
 			dat += "<B>Shuttle Locked</B><br>"
 			if(admin_controlled)
 				dat += "Authorized personnel only<br>"
-				dat += "<A href='?src=\ref[src];request=1]'>Request Authorization</A><br>"
-	dat += "<a href='?src=\ref[user];mach_close=computer'>Close</a>"
+				dat += "<A href='?src=[REF(src)];request=1]'>Request Authorization</A><br>"
+	dat += "<a href='?src=[REF(user)];mach_close=computer'>Close</a>"
 
 	var/datum/browser/popup = new(user, "computer", M ? M.name : "shuttle", 300, 200)
 	popup.set_content("<center>[dat]</center>")
@@ -78,7 +67,6 @@
 /obj/machinery/computer/shuttle/emag_act(mob/user)
 	if(emagged)
 		return
-	req_access = null
+	req_access = list()
 	emagged = TRUE
 	to_chat(user, "<span class='notice'>You fried the consoles ID checking system.</span>")
-

@@ -2,6 +2,7 @@
 	slot_flags = SLOT_BACK
 	lefthand_file = 'icons/mob/inhands/weapons/staves_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/staves_righthand.dmi'
+	flags_2 = NO_MAT_REDEMPTION_2
 
 /obj/item/gun/magic/staff/change
 	name = "staff of change"
@@ -26,9 +27,6 @@
 	ammo_type = /obj/item/ammo_casing/magic/heal
 	icon_state = "staffofhealing"
 	item_state = "staffofhealing"
-
-/obj/item/gun/magic/staff/healing/handle_suicide() //Stops people trying to commit suicide to heal themselves
-	return
 
 /obj/item/gun/magic/staff/chaos
 	name = "staff of chaos"

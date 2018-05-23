@@ -28,6 +28,7 @@
 	response_harm   = "squashes"
 	maxHealth = 10
 	health = 10
+	spacewalk = TRUE
 	faction = list("hostile")
 	move_to_delay = 0
 	obj_damage = 0
@@ -49,11 +50,6 @@
 	var/idle = 0
 	var/isqueen = FALSE
 	var/icon_base = "bee"
-
-
-/mob/living/simple_animal/hostile/poison/bees/Process_Spacemove(movement_dir = 0)
-	return 1
-
 
 /mob/living/simple_animal/hostile/poison/bees/Initialize()
 	..()
@@ -267,7 +263,7 @@
 			if(R && S.reagents.has_reagent(R.id, 5))
 				S.reagents.remove_reagent(R.id,5)
 				queen.assign_reagent(R)
-				user.visible_message("<span class='warning'>[user] injects [src]'s genome with [R.name], mutating it's DNA!</span>","<span class='warning'>You inject [src]'s genome with [R.name], mutating it's DNA!</span>")
+				user.visible_message("<span class='warning'>[user] injects [src]'s genome with [R.name], mutating its DNA!</span>","<span class='warning'>You inject [src]'s genome with [R.name], mutating its DNA!</span>")
 				name = queen.name
 			else
 				to_chat(user, "<span class='warning'>You don't have enough units of that chemical to modify the bee's DNA!</span>")
@@ -282,4 +278,3 @@
 /obj/item/queen_bee/Destroy()
 	QDEL_NULL(queen)
 	return ..()
-

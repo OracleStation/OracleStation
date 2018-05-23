@@ -1,5 +1,6 @@
 #define EMOTE_VISIBLE 1
 #define EMOTE_AUDIBLE 2
+#define EMOTE_SPEAK 3
 
 /datum/emote
 	var/key = "" //What calls the emote
@@ -12,20 +13,34 @@
 	var/message_AI = "" //Message displayed if the user is an AI
 	var/message_monkey = "" //Message displayed if the user is a monkey
 	var/message_simple = "" //Message to display if the user is a simple_animal
+	var/message_ipc = "" // Message to display if the user is an IPC
+	var/message_vox = "" // Message to display if the user is a vox
 	var/message_param = "" //Message to display if a param was given
 	var/emote_type = EMOTE_VISIBLE //Whether the emote is visible or audible
 	var/restraint_check = FALSE //Checks if the mob is restrained before performing the emote
-	var/muzzle_ignore = FALSE //Will only work if the emote is EMOTE_AUDIBLE
 	var/list/mob_type_allowed_typecache //Types that are allowed to use that emote
 	var/list/mob_type_blacklist_typecache //Types that are NOT allowed to use that emote
 	var/stat_allowed = CONSCIOUS
 	var/static/list/emote_list = list()
+	var/cooldown = 20 //deciseconds of cooldown
+	var/robotic_emote = FALSE
 
 /datum/emote/New()
 	if(key_third_person)
 		emote_list[key_third_person] = src
 	mob_type_allowed_typecache = typecacheof(mob_type_allowed_typecache)
 	mob_type_blacklist_typecache = typecacheof(mob_type_blacklist_typecache)
+
+/datum/emote/proc/can_run_robotic_emote(mob/user)
+	if(iscarbon(user))
+		var/obj/item/organ/tongue/T = user.getorganslot("tongue")
+		if(T && T.status == ORGAN_ROBOTIC)
+			return TRUE
+	if(issilicon(user))
+		return TRUE
+	if(isdrone(user))
+		return TRUE
+	return FALSE
 
 /datum/emote/proc/run_emote(mob/user, params, type_override)
 	. = TRUE
@@ -46,6 +61,7 @@
 
 	user.log_message(msg, INDIVIDUAL_EMOTE_LOG)
 	msg = "<b>[user]</b> " + msg
+	user.emote_cooldown = world.time + cooldown
 
 	for(var/mob/M in GLOB.dead_mob_list)
 		if(!M.client || isnewplayer(M))
@@ -71,8 +87,8 @@
 
 /datum/emote/proc/select_message_type(mob/user)
 	. = message
-	if(!muzzle_ignore && user.is_muzzled() && emote_type == EMOTE_AUDIBLE)
-		return "makes a [pick("strong ", "weak ", "")]noise."
+	if(!user.can_speak() && emote_type == EMOTE_SPEAK || user.is_muzzled() && emote_type == EMOTE_SPEAK)
+		return "makes a [pick("strong ", "weak ", "loud ")]noise."
 	if(user.mind && user.mind.miming && message_mime)
 		. = message_mime
 	if(isalienadult(user) && message_alien)
@@ -85,6 +101,10 @@
 		. = message_AI
 	else if(ismonkey(user) && message_monkey)
 		. = message_monkey
+	else if(isipc(user) && message_ipc)
+		. = message_ipc
+	else if(isvox(user) && message_vox)
+		. = message_vox
 	else if(isanimal(user) && message_simple)
 		. = message_simple
 
@@ -93,9 +113,11 @@
 
 /datum/emote/proc/can_run_emote(mob/user, help_check)
 	. = TRUE
-	if(!is_type_in_typecache(user, mob_type_allowed_typecache))
+	if(!is_type_in_typecache(user, mob_type_allowed_typecache) && !robotic_emote) // Robotic emotes ignore typecache, because users of these emotes cross multiple typecaches.
 		return FALSE
-	if(is_type_in_typecache(user, mob_type_blacklist_typecache))
+	if(is_type_in_typecache(user, mob_type_blacklist_typecache) && !robotic_emote)
+		return FALSE
+	if(world.time < user.emote_cooldown)
 		return FALSE
 	if(!help_check)
 		if(user.stat > stat_allowed  || (user.status_flags & FAKEDEATH))
@@ -104,7 +126,8 @@
 			return FALSE
 		if(user.reagents && user.reagents.has_reagent("mimesbane"))
 			return FALSE
-
+	if(robotic_emote && !can_run_robotic_emote(user))
+		return FALSE
 
 /datum/emote/sound
 	var/sound //Sound to play when emote is called

@@ -34,7 +34,6 @@
 	mutantrace_variation = MUTANTRACE_VARIATION
 	alt_covers_chest = TRUE
 
-
 /obj/item/clothing/under/rank/chaplain
 	desc = "It's a black jumpsuit, often worn by religious folk."
 	name = "chaplain's jumpsuit"
@@ -86,32 +85,32 @@
 	item_color = "janitor"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0, fire = 0, acid = 0)
 
-/obj/item/clothing/under/lawyer
+/obj/item/clothing/under/iaa
 	desc = "Slick threads."
-	name = "Lawyer suit"
+	name = "internal affairs suit"
 	can_adjust = 0
 
-/obj/item/clothing/under/lawyer/black
+/obj/item/clothing/under/iaa/black
 	icon_state = "lawyer_black"
 	item_state = "lawyer_black"
 	item_color = "lawyer_black"
 
-/obj/item/clothing/under/lawyer/female
+/obj/item/clothing/under/iaa/female
 	icon_state = "black_suit_fem"
 	item_state = "black_suit_fem"
 	item_color = "black_suit_fem"
 
-/obj/item/clothing/under/lawyer/red
+/obj/item/clothing/under/iaa/red
 	icon_state = "lawyer_red"
 	item_state = "lawyer_red"
 	item_color = "lawyer_red"
 
-/obj/item/clothing/under/lawyer/blue
+/obj/item/clothing/under/iaa/blue
 	icon_state = "lawyer_blue"
 	item_state = "lawyer_blue"
 	item_color = "lawyer_blue"
 
-/obj/item/clothing/under/lawyer/bluesuit
+/obj/item/clothing/under/iaa/bluesuit
 	name = "blue suit"
 	desc = "A classy suit and tie."
 	icon_state = "bluesuit"
@@ -120,7 +119,7 @@
 	can_adjust = 1
 	alt_covers_chest = 1
 
-/obj/item/clothing/under/lawyer/purpsuit
+/obj/item/clothing/under/iaa/purpsuit
 	name = "purple suit"
 	icon_state = "lawyer_purp"
 	item_state = "lawyer_purp"
@@ -129,7 +128,7 @@
 	can_adjust = 1
 	alt_covers_chest = 1
 
-/obj/item/clothing/under/lawyer/blacksuit
+/obj/item/clothing/under/iaa/blacksuit
 	name = "black suit"
 	desc = "A professional black suit. Nanotrasen Investigation Bureau approved!"
 	icon_state = "blacksuit"
@@ -152,6 +151,7 @@
 	icon_state = "curator"
 	item_state = "curator"
 	item_color = "curator"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/rank/mime
 	name = "mime's outfit"

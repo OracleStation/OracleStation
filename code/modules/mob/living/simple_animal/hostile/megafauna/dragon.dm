@@ -36,6 +36,7 @@ Difficulty: Medium
 	desc = "Guardians of the necropolis."
 	health = 2500
 	maxHealth = 2500
+	spacewalk = TRUE
 	attacktext = "chomps"
 	attack_sound = 'sound/magic/demon_attack1.ogg'
 	icon_state = "dragon"
@@ -96,9 +97,6 @@ Difficulty: Medium
 	if(!swooping)
 		..()
 
-/mob/living/simple_animal/hostile/megafauna/dragon/Process_Spacemove(movement_dir = 0)
-	return 1
-
 /mob/living/simple_animal/hostile/megafauna/dragon/OpenFire()
 	if(swooping)
 		return
@@ -107,7 +105,7 @@ Difficulty: Medium
 
 	if(prob(15 + anger_modifier) && !client)
 		if(health < maxHealth/2)
-			INVOKE_ASYNC(src, .proc/swoop_attack, TRUE, null, 50)
+			INVOKE_ASYNC(src, .proc/swoop_attack, TRUE, null, 75)
 		else
 			fire_rain()
 
@@ -154,11 +152,11 @@ Difficulty: Medium
 		sleep(1)
 
 /mob/living/simple_animal/hostile/megafauna/dragon/proc/triple_swoop()
-	swoop_attack(swoop_duration = 30)
-	swoop_attack(swoop_duration = 30)
-	swoop_attack(swoop_duration = 30)
+	swoop_attack(swoop_duration = 50)
+	swoop_attack(swoop_duration = 50)
+	swoop_attack(swoop_duration = 50)
 
-/mob/living/simple_animal/hostile/megafauna/dragon/proc/swoop_attack(fire_rain, atom/movable/manual_target, swoop_duration = 40)
+/mob/living/simple_animal/hostile/megafauna/dragon/proc/swoop_attack(fire_rain, atom/movable/manual_target, swoop_duration = 80)
 	if(stat || swooping)
 		return
 	if(manual_target)
@@ -384,6 +382,7 @@ Difficulty: Medium
 	melee_damage_lower = 30
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
 	loot = list()
+	crusher_loot = list()
 
 /mob/living/simple_animal/hostile/megafauna/dragon/lesser/grant_achievement(medaltype,scoretype)
 	return

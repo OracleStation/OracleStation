@@ -10,17 +10,6 @@
 	var/category = CAT_NONE //where it shows up in the crafting UI
 	var/subcategory = CAT_NONE
 
-
-/datum/crafting_recipe/pin_removal
-	name = "Pin Removal"
-	result = /obj/item/gun
-	reqs = list(/obj/item/gun = 1)
-	parts = list(/obj/item/gun = 1)
-	tools = list(/obj/item/weldingtool, /obj/item/screwdriver, /obj/item/wirecutters)
-	time = 50
-	category = CAT_WEAPONRY
-	subcategory = CAT_WEAPON
-
 /datum/crafting_recipe/IED
 	name = "IED"
 	result = /obj/item/grenade/iedcasing
@@ -204,9 +193,9 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 
-/datum/crafting_recipe/meteorshot
-	name = "Meteorshot Shell"
-	result = /obj/item/ammo_casing/shotgun/meteorshot
+/datum/crafting_recipe/meteorslug
+	name = "Meteorslug Shell"
+	result = /obj/item/ammo_casing/shotgun/meteorslug
 	reqs = list(/obj/item/ammo_casing/shotgun/techshell = 1,
 				/obj/item/rcd_ammo = 1,
 				/obj/item/stock_parts/manipulator = 2)
@@ -228,7 +217,7 @@
 
 /datum/crafting_recipe/dragonsbreath
 	name = "Dragonsbreath Shell"
-	result = /obj/item/ammo_casing/shotgun/incendiary/dragonsbreath
+	result = /obj/item/ammo_casing/shotgun/dragonsbreath
 	reqs = list(/obj/item/ammo_casing/shotgun/techshell = 1, /datum/reagent/phosphorus = 5)
 	tools = list(/obj/item/screwdriver)
 	time = 5
@@ -265,17 +254,6 @@
 				/obj/item/stack/sheet/metal = 1,
 				/obj/item/stack/cable_coil = 1,
 				/datum/reagent/fuel = 10)
-	tools = list(/obj/item/screwdriver)
-	time = 5
-	category = CAT_WEAPONRY
-	subcategory = CAT_AMMO
-
-/datum/crafting_recipe/improvisedslugoverload
-	name = "Overload Improvised Shell"
-	result = /obj/item/ammo_casing/shotgun/improvised/overload
-	reqs = list(/obj/item/ammo_casing/shotgun/improvised = 1,
-				/datum/reagent/blackpowder = 10,
-				/datum/reagent/toxin/plasma = 20)
 	tools = list(/obj/item/screwdriver)
 	time = 5
 	category = CAT_WEAPONRY
@@ -335,17 +313,17 @@
 	category = CAT_MISC
 
 /datum/crafting_recipe/lizardhat
-	name = "Lizard Cloche Hat"
-	result = /obj/item/clothing/head/lizard
+	name = "Unathi Cloche Hat"
+	result = /obj/item/clothing/head/unathi
 	time = 10
 	reqs = list(/obj/item/severedtail = 1)
 	category = CAT_MISC
 
 /datum/crafting_recipe/lizardhat_alternate
-	name = "Lizard Cloche Hat"
-	result = /obj/item/clothing/head/lizard
+	name = "Unathi Cloche Hat"
+	result = /obj/item/clothing/head/unathi
 	time = 10
-	reqs = list(/obj/item/stack/sheet/animalhide/lizard = 1)
+	reqs = list(/obj/item/stack/sheet/animalhide/unathi = 1)
 	category = CAT_MISC
 
 /datum/crafting_recipe/kittyears

@@ -3,7 +3,7 @@
 	icon_state = "eyeballs"
 	desc = "I see you!"
 	zone = "eyes"
-	slot = "eye_sight"
+	slot = ORGAN_SLOT_EYES
 	gender = PLURAL
 
 	var/sight_flags = 0
@@ -44,9 +44,11 @@
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	actions_types = list(/datum/action/item_action/organ_action/use)
+	sight_flags = SEE_BLACKNESS
 	var/night_vision = TRUE
 
 /obj/item/organ/eyes/night_vision/ui_action_click()
+	sight_flags = initial(sight_flags)
 	switch(lighting_alpha)
 		if (LIGHTING_PLANE_ALPHA_VISIBLE)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
@@ -56,25 +58,29 @@
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 		else
 			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+			sight_flags &= ~SEE_BLACKNESS
 	owner.update_sight()
 
 /obj/item/organ/eyes/night_vision/alien
 	name = "alien eyes"
 	desc = "It turned out they had them after all!"
-	see_in_dark = 8
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	sight_flags = SEE_MOBS
 
 /obj/item/organ/eyes/night_vision/zombie
 	name = "undead eyes"
 	desc = "Somewhat counterintuitively, these half rotten eyes actually have superior vision to those of a living human."
 
+/obj/item/organ/eyes/night_vision/nightmare
+	name = "burning red eyes"
+	desc = "Even without their shadowy owner, looking at these eyes gives you a sense of dread."
+	icon_state = "burning_eyes"
+
 ///Robotic
 
 /obj/item/organ/eyes/robotic
 	name = "robotic eyes"
 	icon_state = "cybernetic_eyeballs"
-	desc = "Your vision is augmented."
+	desc = "A very basic set of optical sensors with no extra vision modes or functions."
 	status = ORGAN_ROBOTIC
 
 /obj/item/organ/eyes/robotic/emp_act(severity)
@@ -313,3 +319,12 @@
 	parent = loc
 	if(!istype(parent))
 		return INITIALIZE_HINT_QDEL
+
+/obj/item/organ/eyes/vox
+	name = "vox eyes"
+	desc = "Vox perceive the universe through these strange, circuitry-embedded eyes."
+	icon_state = "eyes-vox"
+	status = ORGAN_ROBOTIC
+
+/obj/item/organ/eyes/vox/emp_act()
+	owner.hallucination += 10

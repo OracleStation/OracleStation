@@ -1,26 +1,46 @@
 /mob/living/carbon/human/gib_animation()
-	new /obj/effect/temp_visual/gib_animation(loc, "gibbed-h")
+	switch(dna.species.species_gibs)
+		if("human")
+			new /obj/effect/temp_visual/gib_animation(loc, "gibbed-h")
+		if("robotic")
+			new /obj/effect/temp_visual/gib_animation(loc, "gibbed-r")
 
 /mob/living/carbon/human/dust_animation()
-	new /obj/effect/temp_visual/dust_animation(loc, "dust-h")
+	switch(dna.species.species_gibs)
+		if("human")
+			new /obj/effect/temp_visual/dust_animation(loc, "dust-h")
+		if("robotic")
+			new /obj/effect/temp_visual/dust_animation(loc, "dust-r")
 
 /mob/living/carbon/human/spawn_gibs(with_bodyparts)
 	if(with_bodyparts)
-		new /obj/effect/gibspawner/human(get_turf(src), dna)
+		switch(dna.species.species_gibs)
+			if("human")
+				new /obj/effect/gibspawner/human(get_turf(src), dna)
+			if("robotic")
+				new /obj/effect/gibspawner/robot(get_turf(src))
 	else
-		new /obj/effect/gibspawner/humanbodypartless(get_turf(src), dna)
+		switch(dna.species.species_gibs)
+			if("human")
+				new /obj/effect/gibspawner/humanbodypartless(get_turf(src), dna)
+			if("robotic")
+				new /obj/effect/gibspawner/robot(get_turf(src))
 
 /mob/living/carbon/human/spawn_dust(just_ash = FALSE)
 	if(just_ash)
 		new /obj/effect/decal/cleanable/ash(loc)
 	else
-		new /obj/effect/decal/remains/human(loc)
+		switch(dna.species.species_gibs)
+			if("human")
+				new /obj/effect/decal/remains/human(loc)
+			if("robotic")
+				new /obj/effect/decal/remains/robot(loc)
 
 /mob/living/carbon/human/death(gibbed)
 	if(stat == DEAD)
 		return
 	stop_sound_channel(CHANNEL_HEARTBEAT)
-	var/obj/item/organ/heart/H = getorganslot("heart")
+	var/obj/item/organ/heart/H = getorganslot(ORGAN_SLOT_HEART)
 	if(H)
 		H.beat = BEAT_NONE
 

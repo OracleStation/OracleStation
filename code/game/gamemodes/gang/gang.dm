@@ -24,7 +24,7 @@ GLOBAL_LIST_INIT(gang_outfit_pool, list(/obj/item/clothing/suit/jacket/leather, 
 	name = "gang war"
 	config_tag = "gang"
 	antag_flag = ROLE_GANG
-	restricted_jobs = list("Security Officer", "Warden", "Detective", "AI", "Cyborg","Captain", "Head of Personnel", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer", "Blueshield", "Brig Physician")
+	restricted_jobs = list("Security Officer", "Warden", "Detective", "AI", "Cyborg","Captain", "Head of Personnel", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer", "Blueshield", "Brig Physician", "Internal Affairs Agent")
 	required_players = 20
 	required_enemies = 2
 	recommended_enemies = 2
@@ -39,10 +39,10 @@ GLOBAL_LIST_INIT(gang_outfit_pool, list(/obj/item/clothing/suit/jacket/leather, 
 //Gets the round setup, cancelling if there's not enough players at the start//
 ///////////////////////////////////////////////////////////////////////////////
 /datum/game_mode/gang/pre_setup()
-	if(config.protect_roles_from_antagonist)
+	if(CONFIG_GET(flag/protect_roles_from_antagonist))
 		restricted_jobs += protected_jobs
 
-	if(config.protect_assistant_from_antagonist)
+	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
 		restricted_jobs += "Assistant"
 
 	//Spawn more bosses depending on server population
@@ -357,3 +357,20 @@ GLOBAL_LIST_INIT(gang_outfit_pool, list(/obj/item/clothing/suit/jacket/leather, 
 			SSticker.mode.explosion_in_progress = 0
 			SSticker.force_ending = TRUE
 
+/datum/game_mode/gang/generate_credit_text()
+	var/list/round_credits = list()
+	var/len_before_addition
+
+	for(var/datum/gang/G in gangs)
+		round_credits += "<center><h1>The [G.name] Gang:</h1>"
+		len_before_addition = round_credits.len
+		for(var/datum/mind/boss in G.bosses)
+			round_credits += "<center><h2>[boss.name] as a [G.name] Gang leader</h2>"
+		for(var/datum/mind/gangster in G.gangsters)
+			round_credits += "<center><h2>[gangster.name] as a [G.name] gangster</h2>"
+		if(len_before_addition == round_credits.len)
+			round_credits += list("<center><h2>The [G.name] Gang was wiped out!</h2>", "<center><h2>The competition was too tough!</h2>")
+		round_credits += "<br>"
+
+	round_credits += ..()
+	return round_credits

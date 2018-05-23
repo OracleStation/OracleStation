@@ -14,7 +14,7 @@
 		var/obj/item/clothing/mask/MFP = src.wear_mask
 		number += MFP.flash_protect
 
-	var/obj/item/organ/eyes/E = getorganslot("eye_sight")
+	var/obj/item/organ/eyes/E = getorganslot(ORGAN_SLOT_EYES)
 	if(!E)
 		number = INFINITY //Can't get flashed without eyes
 	else
@@ -28,7 +28,7 @@
 		number += 1
 	if(head && (head.flags_2 & BANG_PROTECT_2))
 		number += 1
-	var/obj/item/organ/ears/E = getorganslot("ears")
+	var/obj/item/organ/ears/E = getorganslot(ORGAN_SLOT_EARS)
 	if(!E)
 		number = INFINITY
 	else
@@ -227,7 +227,7 @@
 		"<span class='danger'>[src] was shocked by \the [source]!</span>", \
 		"<span class='userdanger'>You feel a powerful shock coursing through your body!</span>", \
 		"<span class='italics'>You hear a heavy electrical crack.</span>" \
-	)
+		)
 	jitteriness += 1000 //High numbers for violent convulsions
 	do_jitter_animation(jitteriness)
 	stuttering += 2
@@ -244,12 +244,15 @@
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(on_fire)
-		to_chat(M, "<span class='warning'>You can't put them out with just your bare hands!")
+		to_chat(M, "<span class='warning'>You can't put them out with just your bare hands!</span>")
 		return
 
 	if(health >= 0 && !(status_flags & FAKEDEATH))
 
 		if(lying)
+			if(buckled)
+				to_chat(M, "<span class='warning'>You need to unbuckle [src] first to do that!")
+				return
 			M.visible_message("<span class='notice'>[M] shakes [src] trying to get [p_them()] up!</span>", \
 							"<span class='notice'>You shake [src] trying to get [p_them()] up!</span>")
 		else
@@ -271,7 +274,7 @@
 
 	var/damage = intensity - get_eye_protection()
 	if(.) // we've been flashed
-		var/obj/item/organ/eyes/eyes = getorganslot("eye_sight")
+		var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
 		if (!eyes)
 			return
 		if(visual)
@@ -315,7 +318,7 @@
 
 /mob/living/carbon/soundbang_act(intensity = 1, stun_pwr = 20, damage_pwr = 5, deafen_pwr = 15)
 	var/ear_safety = get_ear_protection()
-	var/obj/item/organ/ears/ears = getorganslot("ears")
+	var/obj/item/organ/ears/ears = getorganslot(ORGAN_SLOT_EARS)
 	var/effect_amount = intensity - ear_safety
 	if(effect_amount > 0)
 		if(stun_pwr)
@@ -331,7 +334,7 @@
 				if(prob(ears.ear_damage - 5))
 					to_chat(src, "<span class='userdanger'>You can't hear anything!</span>")
 					ears.ear_damage = min(ears.ear_damage, UNHEALING_EAR_DAMAGE)
-					// you need earmuffs, inacusiate, or replacement
+					// you need earmuffs, or replacement
 			else if(ears.ear_damage >= 5)
 				to_chat(src, "<span class='warning'>Your ears start to ring!</span>")
 			SEND_SOUND(src, sound('sound/weapons/flash_ring.ogg',0,1,0,250))
@@ -355,6 +358,6 @@
 
 /mob/living/carbon/can_hear()
 	. = FALSE
-	var/obj/item/organ/ears/ears = getorganslot("ears")
+	var/obj/item/organ/ears/ears = getorganslot(ORGAN_SLOT_EARS)
 	if(istype(ears) && !ears.deaf)
 		. = TRUE

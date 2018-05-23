@@ -23,6 +23,10 @@
 	storage_slots = 21
 	resistance_flags = 0
 	max_integrity = 300
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/back.dmi'
+		)
 
 /*
  * Backpack Types
@@ -40,19 +44,11 @@
 	max_w_class = WEIGHT_CLASS_GIGANTIC
 	max_combined_w_class = 35
 	resistance_flags = FIRE_PROOF
+	flags_2 = NO_MAT_REDEMPTION_2
 	var/pshoom = 'sound/items/pshoom.ogg'
 	var/alt_sound = 'sound/items/pshoom_2.ogg'
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0, fire = 60, acid = 50)
 
-
-/obj/item/storage/backpack/holding/suicide_act(mob/living/user)
-	user.visible_message("<span class='suicide'>[user] is jumping into [src]! It looks like [user.p_theyre()] trying to commit suicide.</span>")
-	user.drop_item()
-	user.Stun(100, ignore_canstun = TRUE)
-	sleep(20)
-	playsound(src, "rustle", 50, 1, -5)
-	qdel(user)
-	return
 
 /obj/item/storage/backpack/holding/dump_content_at(atom/dest_object, mob/user)
 	if(Adjacent(user))
@@ -100,10 +96,6 @@
 	w_class = WEIGHT_CLASS_BULKY
 	max_w_class = WEIGHT_CLASS_NORMAL
 	max_combined_w_class = 60
-
-/obj/item/storage/backpack/santabag/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] places [src] over their head and pulls it tight! It looks like they aren't in the Christmas spirit...</span>")
-	return (OXYLOSS)
 
 /obj/item/storage/backpack/cultpack
 	name = "trophy rack"
@@ -289,7 +281,7 @@
 		icon_state = initial(icon_state)
 
 /obj/item/storage/backpack/satchel/flat/Initialize(mapload)
-	..()
+	. = ..()
 	SSpersistence.new_secret_satchels += src
 
 /obj/item/storage/backpack/satchel/flat/PopulateContents()
@@ -306,7 +298,7 @@
 	var/revealed = 0
 
 /obj/item/storage/backpack/satchel/flat/secret/Initialize()
-	..()
+	. = ..()
 
 	if(isfloorturf(loc) && !istype(loc, /turf/open/floor/plating/))
 		hide(1)
@@ -320,6 +312,64 @@
 		for(var/R in reward_all_of_these)
 			new R(src)
 		revealed = 1
+
+// ------------------
+// MESSENGER BAGS FROM BAYSTATION
+// ------------------
+
+/obj/item/storage/backpack/messenger
+	name = "messenger bag"
+	desc = "A sturdy backpack worn over one shoulder."
+	icon_state = "courierbag"
+	item_state = "courierbag"
+
+/obj/item/storage/backpack/messenger/chem
+	name = "chemistry messenger bag"
+	desc = "A serile backpack worn over one shoulder. This one is in Chemsitry colors."
+	icon_state = "courierbagchem"
+	item_state = "courierbagchem"
+
+/obj/item/storage/backpack/messenger/med
+	name = "medical messenger bag"
+	desc = "A sterile backpack worn over one shoulder used in medical departments."
+	icon_state = "courierbagmed"
+	item_state = "courierbagmed"
+
+/obj/item/storage/backpack/messenger/viro
+	name = "virology messenger bag"
+	desc = "A sterile backpack worn over one shoulder. This one is in Virology colors."
+	icon_state = "courierbagviro"
+	item_state = "courierbagviro"
+
+/obj/item/storage/backpack/messenger/tox
+	name = "science messenger bag"
+	desc = "A backpack worn over one shoulder. Useful for holding science materials."
+	icon_state = "courierbagtox"
+	item_state = "courierbagtox"
+
+/obj/item/storage/backpack/messenger/com
+	name = "captain's messenger bag"
+	desc = "A special backpack worn over one shoulder. This one is made specifically for officers."
+	icon_state = "courierbagcom"
+	item_state = "courierbagcom"
+
+/obj/item/storage/backpack/messenger/engi
+	name = "engineering messenger bag"
+	desc = "A strong backpack worn over one shoulder. This one is designed for Industrial work."
+	icon_state = "courierbagengi"
+	item_state = "courierbagengi"
+
+/obj/item/storage/backpack/messenger/hyd
+	name = "hydroponics messenger bag"
+	desc = "A backpack worn over one shoulder. This one is designed for plant-related work."
+	icon_state = "courierbaghyd"
+	item_state = "courierbaghyd"
+
+/obj/item/storage/backpack/messenger/sec
+	name = "security messenger bag"
+	desc = "A tactical backpack worn over one shoulder. This one is in Security colors."
+	icon_state = "courierbagsec"
+	item_state = "courierbagsec"
 
 /obj/item/storage/backpack/duffelbag
 	name = "duffel bag"
@@ -353,7 +403,6 @@
 	new /obj/item/circular_saw(src)
 	new /obj/item/surgicaldrill(src)
 	new /obj/item/cautery(src)
-	new /obj/item/surgical_drapes(src)
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/razor(src)
 
@@ -374,7 +423,6 @@
 	new /obj/item/circular_saw(src)
 	new /obj/item/surgicaldrill(src)
 	new /obj/item/cautery(src)
-	new /obj/item/surgical_drapes(src)
 	new /obj/item/clothing/mask/surgical(src)
 
 /obj/item/storage/backpack/duffelbag/engineering
@@ -425,9 +473,9 @@
 	item_state = "duffel-syndieammo"
 
 /obj/item/storage/backpack/duffelbag/syndie/hitman/PopulateContents()
-	new /obj/item/clothing/under/lawyer/blacksuit(src)
+	new /obj/item/clothing/under/iaa/blacksuit(src)
 	new /obj/item/clothing/accessory/waistcoat(src)
-	new /obj/item/clothing/suit/toggle/lawyer/black(src)
+	new /obj/item/clothing/suit/toggle/iaa/black(src)
 	new /obj/item/clothing/shoes/laceup(src)
 	new /obj/item/clothing/gloves/color/black(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
@@ -452,7 +500,6 @@
 	new /obj/item/circular_saw(src)
 	new /obj/item/surgicaldrill(src)
 	new /obj/item/cautery(src)
-	new /obj/item/surgical_drapes(src)
 	new /obj/item/clothing/suit/straight_jacket(src)
 	new /obj/item/clothing/mask/muzzle(src)
 	new /obj/item/device/mmi/syndie(src)
@@ -468,8 +515,8 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/ammo/shotgun/PopulateContents()
 	for(var/i in 1 to 6)
-		new /obj/item/ammo_box/magazine/m12g(src)
-	new /obj/item/ammo_box/magazine/m12g/buckshot(src)
+		new /obj/item/ammo_box/magazine/m12g/buckshot(src)
+	new /obj/item/ammo_box/magazine/m12g(src)
 	new /obj/item/ammo_box/magazine/m12g/slug(src)
 	new /obj/item/ammo_box/magazine/m12g/dragon(src)
 
@@ -541,7 +588,7 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/firestarter/PopulateContents()
 	new /obj/item/clothing/under/syndicate/soviet(src)
-	new /obj/item/watertank/operator(src)
+	new /obj/item/watertank/op(src)
 	new /obj/item/clothing/suit/space/hardsuit/syndi/elite(src)
 	new /obj/item/gun/ballistic/automatic/pistol/APS(src)
 	new /obj/item/ammo_box/magazine/pistolm9mm(src)

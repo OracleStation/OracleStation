@@ -54,8 +54,6 @@
 		var/datum/mutation/human/race/R = GLOB.mutations_list[RACEMUT]
 		O.dna.struc_enzymes = R.set_se(O.dna.struc_enzymes, on=1)//we don't want to keep the race block inactive
 
-	if(suiciding)
-		O.suiciding = suiciding
 	if(hellbound)
 		O.hellbound = hellbound
 	O.loc = loc
@@ -79,6 +77,9 @@
 		O.setBrainLoss(getBrainLoss(), 0)
 		O.updatehealth()
 		O.radiation = radiation
+		for(var/T in get_traumas())
+			var/datum/brain_trauma/BT = T
+			O.gain_trauma(BT.type, BT.permanent)
 
 	//re-add implants to new mob
 	if (tr_flags & TR_KEEPIMPLANTS)
@@ -208,8 +209,6 @@
 		O.dna.struc_enzymes = R.set_se(O.dna.struc_enzymes, on=0)//we don't want to keep the race block active
 		O.domutcheck()
 
-	if(suiciding)
-		O.suiciding = suiciding
 	if(hellbound)
 		O.hellbound = hellbound
 
@@ -234,6 +233,9 @@
 		O.setBrainLoss(getBrainLoss(), 0)
 		O.updatehealth()
 		O.radiation = radiation
+		for(var/T in get_traumas())
+			var/datum/brain_trauma/BT = T
+			O.gain_trauma(BT.type, BT.permanent)
 
 	//re-add implants to new mob
 	if (tr_flags & TR_KEEPIMPLANTS)
@@ -383,7 +385,7 @@
 	else if(transfer_after)
 		R.key = key
 
-	if (config.rename_cyborg)
+	if (CONFIG_GET(flag/rename_cyborg))
 		R.rename_self("cyborg")
 
 	if(R.mmi)

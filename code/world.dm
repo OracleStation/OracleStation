@@ -8,7 +8,7 @@
 	view = "15x15"
 	cache_lifespan = 7
 	hub = "Exadv1.spacestation13"
-	name = "/tg/ Station 13"
+	name = "Oracle Station"
 	fps = 20
 #ifdef GC_FAILURE_HARD_LOOKUP
 	loop_checks = FALSE

@@ -13,7 +13,7 @@
 	var/hunger_threshold = NUTRITION_LEVEL_STARVING
 	var/synthesizing = 0
 	var/poison_amount = 5
-	slot = "stomach"
+	slot = ORGAN_SLOT_STOMACH
 	origin_tech = "materials=2;powerstorage=2;biotech=2"
 
 /obj/item/organ/cyberimp/chest/nutriment/on_life()
@@ -49,7 +49,7 @@
 	icon_state = "chest_implant"
 	implant_color = "#AD0000"
 	origin_tech = "materials=5;programming=4;biotech=4"
-	slot = "heartdrive"
+	slot = ORGAN_SLOT_HEART_AID
 	var/revive_cost = 0
 	var/reviving = 0
 	var/cooldown = 0
@@ -61,14 +61,12 @@
 		else
 			cooldown = revive_cost + world.time
 			reviving = FALSE
-			to_chat(owner, "<span class='notice'>Your reviver implant shuts down and starts recharging. It will be ready again in [revive_cost/10] seconds.</span>")
+			to_chat(owner, "<span class='notice'>Your reviver implant shuts down and starts recharging. It will be ready again in [DisplayTimeText(revive_cost)].</span>")
 		return
 
 	if(cooldown > world.time)
 		return
 	if(owner.stat != UNCONSCIOUS)
-		return
-	if(owner.suiciding)
 		return
 
 	revive_cost = 0
@@ -118,7 +116,7 @@
 	name = "implantable thrusters set"
 	desc = "An implantable set of thruster ports. They use the gas from environment or subject's internals for propulsion in zero-gravity areas. \
 	Unlike regular jetpack, this device has no stabilization system."
-	slot = "thrusters"
+	slot = ORGAN_SLOT_THRUSTERS
 	icon_state = "imp_jetpack"
 	origin_tech = "materials=4;magnets=4;biotech=4;engineering=5"
 	implant_overlay = null
@@ -200,4 +198,3 @@
 
 	toggle(silent=1)
 	return 0
-

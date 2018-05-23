@@ -2,6 +2,10 @@
 	name = "glasses"
 	materials = list(MAT_GLASS = 250)
 	var/glass_colour_type = null //colors your vision when worn
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/eyes.dmi'
+		)
 
 /obj/item/clothing/glasses/visor_toggling()
 	..()
@@ -47,7 +51,6 @@
 	item_state = "nvgmeson"
 	origin_tech = "magnets=4;engineering=5;plasmatech=4"
 	darkness_view = 8
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	glass_colour_type = /datum/client_colour/glass_colour/green
 
 /obj/item/clothing/glasses/meson/gar
@@ -136,6 +139,10 @@
 	icon_state = "glasses"
 	item_state = "glasses"
 	vision_correction = 1 //corrects nearsightedness
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/eyes.dmi'
+		)
 
 /obj/item/clothing/glasses/regular/jamjar
 	name = "jamjar glasses"
@@ -179,6 +186,7 @@
 	attack_verb = list("sliced")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/glasses/sunglasses/garb/supergarb
 	name = "black giga gar glasses"
@@ -209,6 +217,7 @@
 	force = 12
 	throwforce = 12
 	glass_colour_type = /datum/client_colour/glass_colour/red
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/glasses/welding
 	name = "welding goggles"
@@ -240,6 +249,7 @@
 	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Larger than average enhanced shielding blocks many flashes."
 	icon_state = "bigsunglasses"
 	item_state = "bigsunglasses"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/glasses/thermal
 	name = "optical thermal scanner"
@@ -302,12 +312,14 @@
 	desc = "A pair of goggles meant for low temperatures."
 	icon_state = "cold"
 	item_state = "cold"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/glasses/heat
 	name = "heat goggles"
 	desc = "A pair of goggles meant for high temperatures."
 	icon_state = "heat"
 	item_state = "heat"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/glasses/orange
 	name = "orange glasses"
@@ -315,6 +327,7 @@
 	icon_state = "orangeglasses"
 	item_state = "orangeglasses"
 	glass_colour_type = /datum/client_colour/glass_colour/lightorange
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/glasses/red
 	name = "red glasses"
@@ -322,6 +335,7 @@
 	icon_state = "redglasses"
 	item_state = "redglasses"
 	glass_colour_type = /datum/client_colour/glass_colour/red
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/glasses/godeye
 	name = "eye of god"

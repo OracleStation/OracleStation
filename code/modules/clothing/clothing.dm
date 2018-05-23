@@ -24,6 +24,7 @@
 	var/can_flashlight = 0
 	var/gang //Is this a gang outfit?
 	var/scan_reagents = 0 //Can the wearer see reagents while it's equipped?
+	var/list/species_restricted = null //Only these species can wear this kit.
 
 	//Var modification - PLEASE be careful with this I know who you are and where you live
 	var/list/user_vars_to_edit = list() //VARNAME = VARVALUE eg: "name" = "butts"
@@ -37,6 +38,59 @@
 	// THESE OVERRIDE THE HIDEHAIR FLAGS
 	var/dynamic_hair_suffix = ""//head > mask for head hair
 	var/dynamic_fhair_suffix = ""//mask > head for facial hair
+
+//BS12: Species-restricted clothing check.
+/obj/item/clothing/mob_can_equip(mob/M, slot)
+
+	//if we can't equip the item anyway, don't bother with species_restricted (also cuts down on spam)
+	if(!..())
+		return FALSE
+
+	// Skip species restriction checks on non-equipment slots
+	if(slot in list(slot_in_backpack, slot_l_store, slot_r_store))
+		return TRUE
+
+	if(species_restricted && ishuman(M))
+
+		var/wearable = null
+		var/exclusive = null
+		var/mob/living/carbon/human/H = M
+
+		if("exclude" in species_restricted)
+			exclusive = TRUE
+
+		if(H.dna.species)
+			if(exclusive)
+				if(!(H.dna.species.name in species_restricted))
+					wearable = TRUE
+			else
+				if(H.dna.species.name in species_restricted)
+					wearable = TRUE
+
+			if(!wearable)
+				to_chat(M, "<span class='warning'>Your species cannot wear [src].</span>")
+				return FALSE
+
+	return TRUE
+
+/obj/item/clothing/proc/refit_for_species(var/target_species)
+	//Set species_restricted list
+	switch(target_species)
+		if("Human")//humanoid bodytypes
+			species_restricted = list("exclude","Unathi","Ash Walker", "Ethari")
+		else
+			species_restricted = list(target_species)
+
+	//Set icon
+	if(sprite_sheets && (target_species in sprite_sheets))
+		icon_override = sprite_sheets[target_species]
+	else
+		icon_override = initial(icon_override)
+
+	if(sprite_sheets_obj && (target_species in sprite_sheets_obj))
+		icon = sprite_sheets_obj[target_species]
+	else
+		icon = initial(icon)
 
 /obj/item/clothing/New()
 	..()
@@ -162,10 +216,10 @@
 		update_clothes_damaged_state(TRUE)
 	if(ismob(loc)) //It's not important enough to warrant a message if nobody's wearing it
 		var/mob/M = loc
-		M.visible_message("<span class='warning'>[M]'s [name] starts to fall apart!", "<span class='warning'>Your [name] starts to fall apart!")
+		M.visible_message("<span class='warning'>[M]'s [name] starts to fall apart!", "<span class='warning'>Your [name] starts to fall apart!</span>")
 
 /obj/item/clothing/proc/update_clothes_damaged_state(damaging = TRUE)
-	var/index = "\ref[initial(icon)]-[initial(icon_state)]"
+	var/index = "[REF(initial(icon))]-[initial(icon_state)]"
 	var/static/list/damaged_clothes_icons = list()
 	if(damaging)
 		damaged_clothes = 1
@@ -222,7 +276,10 @@ BLIND     // can't see anything
 	var/transfer_prints = FALSE
 	strip_delay = 20
 	equip_delay_other = 40
-
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/gloves.dmi'
+		)
 
 /obj/item/clothing/gloves/worn_overlays(isinhands = FALSE)
 	. = list()
@@ -230,7 +287,7 @@ BLIND     // can't see anything
 		if(damaged_clothes)
 			. += mutable_appearance('icons/effects/item_damage.dmi', "damagedgloves")
 		if(blood_DNA)
-			. += mutable_appearance('icons/effects/blood.dmi', "bloodyhands")
+			. += mutable_appearance('icons/effects/blood.dmi', "bloodyhands", color = blood_DNA_to_color())
 
 /obj/item/clothing/gloves/update_clothes_damaged_state(damaging = TRUE)
 	..()
@@ -253,6 +310,10 @@ BLIND     // can't see anything
 	var/blockTracking = 0 //For AI tracking
 	var/can_toggle = null
 	dynamic_hair_suffix = "+generic"
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/head.dmi'
+		)
 
 /obj/item/clothing/head/Initialize()
 	. = ..()
@@ -266,24 +327,13 @@ BLIND     // can't see anything
 		if(damaged_clothes)
 			. += mutable_appearance('icons/effects/item_damage.dmi', "damagedhelmet")
 		if(blood_DNA)
-			. += mutable_appearance('icons/effects/blood.dmi', "helmetblood")
+			. += mutable_appearance('icons/effects/blood.dmi', "helmetblood", color = blood_DNA_to_color())
 
 /obj/item/clothing/head/update_clothes_damaged_state(damaging = TRUE)
 	..()
 	if(ismob(loc))
 		var/mob/M = loc
 		M.update_inv_head()
-
-/obj/item/clothing/head/equipped(mob/user, slot)
-	..()
-	if(dynamic_hair_suffix)
-		user.update_hair()
-
-/obj/item/clothing/head/dropped(mob/user)
-	..()
-	if(dynamic_hair_suffix)
-		user.update_hair()
-
 
 //Neck
 /obj/item/clothing/neck
@@ -301,7 +351,7 @@ BLIND     // can't see anything
 			if(damaged_clothes)
 				. += mutable_appearance('icons/effects/item_damage.dmi', "damagedmask")
 			if(blood_DNA)
-				. += mutable_appearance('icons/effects/blood.dmi', "maskblood")
+				. += mutable_appearance('icons/effects/blood.dmi', "maskblood", color = blood_DNA_to_color())
 
 
 //Mask
@@ -314,7 +364,10 @@ BLIND     // can't see anything
 	equip_delay_other = 40
 	var/mask_adjusted = 0
 	var/adjusted_flags = null
-
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/mask.dmi'
+		)
 
 /obj/item/clothing/mask/worn_overlays(isinhands = FALSE)
 	. = list()
@@ -323,7 +376,7 @@ BLIND     // can't see anything
 			if(damaged_clothes)
 				. += mutable_appearance('icons/effects/item_damage.dmi', "damagedmask")
 			if(blood_DNA)
-				. += mutable_appearance('icons/effects/blood.dmi', "maskblood")
+				. += mutable_appearance('icons/effects/blood.dmi', "maskblood", color = blood_DNA_to_color())
 
 /obj/item/clothing/mask/update_clothes_damaged_state(damaging = TRUE)
 	..()
@@ -372,13 +425,25 @@ BLIND     // can't see anything
 
 	body_parts_covered = FEET
 	slot_flags = SLOT_FEET
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/shoes.dmi'
+		)
 
 	permeability_coefficient = 0.50
 	slowdown = SHOES_SLOWDOWN
 	var/blood_state = BLOOD_STATE_NOT_BLOODY
-	var/list/bloody_shoes = list(BLOOD_STATE_HUMAN = 0,BLOOD_STATE_XENO = 0, BLOOD_STATE_OIL = 0, BLOOD_STATE_NOT_BLOODY = 0)
+	var/list/bloody_shoes = list(BLOOD_STATE_BLOOD = 0, BLOOD_STATE_OIL = 0, BLOOD_STATE_NOT_BLOODY = 0)
 	var/offset = 0
 	var/equipped_before_drop = FALSE
+	var/last_bloodtype = ""//used to track the last bloodtype to have graced these shoes; makes for better performing footprint shenanigans
+	var/last_blood_DNA = ""//same as last one
+
+/obj/item/clothing/shoes/transfer_blood_dna(list/blood_dna)
+	..()
+	if(blood_dna.len)
+		last_bloodtype = blood_dna[blood_dna[blood_dna.len]]//trust me this works
+		last_blood_DNA = blood_dna[blood_dna.len]
 
 /obj/item/clothing/shoes/worn_overlays(isinhands = FALSE)
 	. = list()
@@ -387,12 +452,12 @@ BLIND     // can't see anything
 		if(blood_DNA)
 			bloody = 1
 		else
-			bloody = bloody_shoes[BLOOD_STATE_HUMAN]
+			bloody = bloody_shoes[BLOOD_STATE_BLOOD]
 
 		if(damaged_clothes)
 			. += mutable_appearance('icons/effects/item_damage.dmi', "damagedshoe")
 		if(bloody)
-			. += mutable_appearance('icons/effects/blood.dmi', "shoeblood")
+			. += mutable_appearance('icons/effects/blood.dmi', "shoeblood", color = blood_DNA_to_color())
 
 /obj/item/clothing/shoes/equipped(mob/user, slot)
 	. = ..()
@@ -420,7 +485,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/shoes/clean_blood()
 	..()
-	bloody_shoes = list(BLOOD_STATE_HUMAN = 0,BLOOD_STATE_XENO = 0, BLOOD_STATE_OIL = 0, BLOOD_STATE_NOT_BLOODY = 0)
+	bloody_shoes = list(BLOOD_STATE_BLOOD = 0, BLOOD_STATE_OIL = 0, BLOOD_STATE_NOT_BLOODY = 0)
 	blood_state = BLOOD_STATE_NOT_BLOODY
 	if(ismob(loc))
 		var/mob/M = loc
@@ -439,6 +504,10 @@ BLIND     // can't see anything
 	slot_flags = SLOT_OCLOTHING
 	var/blood_overlay_type = "suit"
 	var/togglename = null
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		)
 
 
 /obj/item/clothing/suit/worn_overlays(isinhands = FALSE)
@@ -447,7 +516,7 @@ BLIND     // can't see anything
 		if(damaged_clothes)
 			. += mutable_appearance('icons/effects/item_damage.dmi', "damaged[blood_overlay_type]")
 		if(blood_DNA)
-			. += mutable_appearance('icons/effects/blood.dmi', "[blood_overlay_type]blood")
+			. += mutable_appearance('icons/effects/blood.dmi', "[blood_overlay_type]blood", color = blood_DNA_to_color())
 		var/mob/living/carbon/human/M = loc
 		if(ishuman(M) && M.w_uniform)
 			var/obj/item/clothing/under/U = M.w_uniform
@@ -486,6 +555,10 @@ BLIND     // can't see anything
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	resistance_flags = 0
 	dog_fashion = null
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/helmet.dmi'
+		)
 
 /obj/item/clothing/suit/space
 	name = "space suit"
@@ -508,6 +581,10 @@ BLIND     // can't see anything
 	strip_delay = 80
 	equip_delay_other = 80
 	resistance_flags = 0
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		)
 
 //Under clothing
 
@@ -528,6 +605,10 @@ BLIND     // can't see anything
 	var/obj/item/clothing/accessory/attached_accessory
 	var/mutable_appearance/accessory_overlay
 	var/mutantrace_variation = NO_MUTANTRACE_VARIATION //Are there special sprites for specific situations? Don't use this unless you need to.
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/uniform.dmi'
+		)
 
 /obj/item/clothing/under/worn_overlays(isinhands = FALSE)
 	. = list()
@@ -536,7 +617,7 @@ BLIND     // can't see anything
 		if(damaged_clothes)
 			. += mutable_appearance('icons/effects/item_damage.dmi', "damageduniform")
 		if(blood_DNA)
-			. += mutable_appearance('icons/effects/blood.dmi', "uniformblood")
+			. += mutable_appearance('icons/effects/blood.dmi', "uniformblood", color = blood_DNA_to_color())
 		if(accessory_overlay)
 			. += accessory_overlay
 
@@ -701,7 +782,7 @@ BLIND     // can't see anything
 		return
 	sensor_mode = modes.Find(switchMode) - 1
 
-	if (src.loc == usr)
+	if (loc == usr)
 		switch(sensor_mode)
 			if(0)
 				to_chat(usr, "<span class='notice'>You disable your suit's remote sensing equipment.</span>")
@@ -711,6 +792,18 @@ BLIND     // can't see anything
 				to_chat(usr, "<span class='notice'>Your suit will now only report your exact vital lifesigns.</span>")
 			if(3)
 				to_chat(usr, "<span class='notice'>Your suit will now report your exact vital lifesigns as well as your coordinate position.</span>")
+	else if(istype(loc, /mob))
+		usr.visible_message("<span class='notice'>[usr] attempts to adjust [loc]'s suit sensors...</span>")
+		if(do_after(usr, 15, target = loc))
+			switch(sensor_mode)
+				if(0)
+					usr.visible_message("<span class='warning'>[usr] disables [loc]'s remote sensing equipment.</span>")
+				if(1)
+					usr.visible_message("<span class='notice'>[usr] turns [loc]'s remote sensors to binary.</span>")
+				if(2)
+					usr.visible_message("<span class='notice'>[usr] sets [loc]'s sensors to track vitals.</span>")
+				if(3)
+					usr.visible_message("<span class='notice'>[usr] sets [loc]'s sensors to maximum.</span>")
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc

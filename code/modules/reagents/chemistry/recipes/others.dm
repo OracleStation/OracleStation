@@ -134,7 +134,7 @@
 	required_reagents = list("unstablemutationtoxin" = 1, "blood" = 1) //classic
 
 /datum/chemical_reaction/lizard_mutation_toxin
-	name = "Lizard Mutation Toxin"
+	name = "Unathi Mutation Toxin"
 	id = "lizardmutationtoxin"
 	results = list("lizardmutationtoxin" = 1)
 	required_reagents = list("unstablemutationtoxin" = 1, "radium" = 1) //mutant
@@ -163,10 +163,10 @@
 	results = list("abductormutationtoxin" = 1)
 	required_reagents = list("unstablemutationtoxin" = 1, "morphine" = 1)
 
-/datum/chemical_reaction/android_mutation_toxin
-	name = "Android Mutation Toxin"
-	id = "androidmutationtoxin"
-	results = list("androidmutationtoxin" = 1)
+/datum/chemical_reaction/robot_mutation_toxin
+	name = "Robot Mutation Toxin"
+	id = "ipcmutationtoxin"
+	results = list("ipcmutationtoxin" = 1)
 	required_reagents = list("unstablemutationtoxin" = 1, "teslium" = 1) //beep boop
 
 /datum/chemical_reaction/pod_mutation_toxin
@@ -181,6 +181,11 @@
 	results = list("golemmutationtoxin" = 1)
 	required_reagents = list("unstablemutationtoxin" = 1, "silver" = 1) //not too hard to get but also not just there in xenobio
 
+/datum/chemical_reaction/vox_mutation_toxin
+	name = "Vox Mutation Toxin"
+	id = "voxmutationtoxin"
+	results = list("voxmutationtoxin" = 1)
+	required_reagents = list("amutationtoxin" = 1, "eggyolk" = 1, "nitrogen" = 1)
 
 //BLACKLISTED RACES
 /datum/chemical_reaction/skeleton_mutation_toxin
@@ -578,7 +583,7 @@
 	name = "carpet"
 	id = "carpet"
 	results = list("carpet" = 2)
-	required_reagents = list("fungus" = 1, "blood" = 1)
+	required_reagents = list("mushroomhallucinogen" = 1, "blood" = 1)
 
 /datum/chemical_reaction/oil
 	name = "Oil"
@@ -715,3 +720,47 @@
 	var/location = get_turf(holder.my_atom)
 	for(var/i, i <= created_volume, i++)
 		new /obj/item/reagent_containers/food/snacks/chocolatebar(location)
+
+// IPC DRINKS
+
+/datum/chemical_reaction/synthanol
+	name = "Synthanol"
+	id = "synthanol"
+	required_reagents = list("lube" = 1, "plasma" = 1, "welding_fuel" = 1)
+	results = list("synthanol" = 3)
+
+/datum/chemical_reaction/synthanol/robottears
+	name = "Robot Tears"
+	id = "robottears"
+	required_reagents = list("synthanol" = 1, "oil" = 1, "sodawater" = 1)
+	results = list("robottears" = 3)
+
+/datum/chemical_reaction/synthanol/trinary
+	name = "Trinary"
+	id = "trinary"
+	required_reagents = list("synthanol" = 1, "limejuice" = 1, "orangejuice" = 1)
+	results = list("trinary" = 3)
+
+/datum/chemical_reaction/synthanol/servo
+	name = "Servo"
+	id = "servo"
+	required_reagents = list("synthanol" = 2, "cream" = 1, "hot_coco" = 1)
+	results = list("servo" = 4)
+
+/datum/chemical_reaction/synthanol/uplink
+	name = "Uplink"
+	id = "uplink"
+	required_reagents = list("rum" = 1, "vodka" = 1, "tequila" = 1, "whiskey" = 1, "synthanol" = 1)
+	results = list("uplink" = 5)
+
+/datum/chemical_reaction/synthanol/synthnsoda
+	name = "Synth 'n Soda"
+	id = "synthnsoda"
+	required_reagents = list("synthanol" = 1, "cola" = 1)
+	results = list("synthnsoda" = 2)
+
+/datum/chemical_reaction/synthanol/synthignon
+	name = "Synthignon"
+	id = "synthignon"
+	required_reagents = list("synthanol" = 1, "wine" = 1)
+	results = list("synthignon" = 2)

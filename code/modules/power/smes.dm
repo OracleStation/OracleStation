@@ -227,7 +227,7 @@
 
 
 /obj/machinery/power/smes/proc/chargedisplay()
-	return Clamp(round(5.5*charge/capacity),0,5)
+	return Clamp(round(7.5*charge/capacity),0,7)
 
 /obj/machinery/power/smes/process()
 	if(stat & BROKEN)
@@ -335,14 +335,16 @@
 		"inputAttempt" = input_attempt,
 		"inputting" = inputting,
 		"inputLevel" = input_level,
+		"inputLevel_text" = DisplayPower(input_level),
 		"inputLevelMax" = input_level_max,
-		"inputAvailable" = input_available,
+		"inputAvailable" = DisplayPower(input_available),
 
 		"outputAttempt" = output_attempt,
 		"outputting" = outputting,
 		"outputLevel" = output_level,
+		"outputLevel_text" = DisplayPower(output_level),
 		"outputLevelMax" = output_level_max,
-		"outputUsed" = output_used
+		"outputUsed" = DisplayPower(output_used)
 	)
 	return data
 

@@ -1,7 +1,7 @@
 /obj/item/stack/medical
 	name = "medical pack"
 	singular_name = "medical pack"
-	icon = 'icons/obj/items_and_weapons.dmi'
+	icon = 'icons/obj/stack_objects.dmi'
 	amount = 6
 	max_amount = 6
 	w_class = WEIGHT_CLASS_TINY
@@ -51,8 +51,9 @@
 					return
 
 		if(splint_fracture)
-			if(affecting.body_part in list(CHEST, HEAD))
+			if(!(affecting.body_part in list(ARM_LEFT, ARM_RIGHT, LEG_LEFT, LEG_RIGHT)))
 				to_chat(user, "<span class='warning'>You can't splint that bodypart!</span>")
+				return
 			else if(!affecting.broken)
 				to_chat(user, "<span class='warning'>[M]'s [parse_zone(user.zone_selected)] isn't broken!</span>")
 				return
@@ -166,5 +167,7 @@
 	gender = PLURAL
 	singular_name = "splint"
 	icon_state = "splint"
+	amount = 3
+	max_amount = 3
 	self_delay = 40
 	splint_fracture = TRUE

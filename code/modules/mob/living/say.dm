@@ -179,6 +179,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		spans |= SPAN_ITALICS
 	if(radio_return & REDUCE_RANGE)
 		message_range = 1
+	if(radio_return & NOPASS)
+		return 1
 
 	//No screams in space, unless you're next to someone.
 	var/turf/T = get_turf(src)
@@ -359,7 +361,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	if(message_mode == MODE_VOCALCORDS)
 		if(iscarbon(src))
 			var/mob/living/carbon/C = src
-			var/obj/item/organ/vocal_cords/V = C.getorganslot("vocal_cords")
+			var/obj/item/organ/vocal_cords/V = C.getorganslot(ORGAN_SLOT_VOICE)
 			if(V && V.can_speak_with())
 				V.handle_speech(message) //message
 				V.speak_with(message) //action
@@ -367,7 +369,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	return FALSE
 
 /mob/living/proc/treat_message(message)
-	if(getBrainLoss() >= 60)
+	if(derpspeech)
 		message = derpspeech(message, stuttering)
 
 	if(stuttering)
@@ -423,7 +425,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		. = "[verb_whisper] in [p_their()] last breath"
 	else if(stuttering)
 		. = "stammers"
-	else if(getBrainLoss() >= 60)
+	else if(derpspeech)
 		. = "gibbers"
 	else
 		. = ..()

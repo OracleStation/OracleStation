@@ -27,7 +27,8 @@
 	var/screen = 1
 	var/list/categories = list(
 							"human",
-							"lizard",
+							"unathi",
+							"ethari",
 							"plasmaman",
 							"special"
 							)
@@ -136,7 +137,7 @@
 	//i need to create a body part manually using a set icon (otherwise it doesnt appear)
 	var/obj/item/bodypart/limb
 	limb = new buildpath(loc)
-	if(selected_category=="human" || selected_category=="lizard") // Doing this because plasmamen have their limbs in a different icon file
+	if(selected_category == "human" || selected_category == "unathi" || selected_category == "ethari") // Doing this because plasmamen have their limbs in a different icon file
 		limb.icon = 'icons/mob/human_parts_greyscale.dmi'
 	else
 		limb.icon = 'icons/mob/human_parts.dmi'
@@ -160,7 +161,7 @@
 
 /obj/machinery/limbgrower/proc/main_win(mob/user)
 	var/dat = "<div class='statusDisplay'><h3>Limb Grower Menu:</h3><br>"
-	dat += "<A href='?src=\ref[src];menu=[LIMBGROWER_CHEMICAL_MENU]'>Chemical Storage</A>"
+	dat += "<A href='?src=[REF(src)];menu=[LIMBGROWER_CHEMICAL_MENU]'>Chemical Storage</A>"
 	dat += materials_printout()
 	dat += "<table style='width:100%' align='center'><tr>"
 
@@ -168,7 +169,7 @@
 		if(C=="special" && !emagged)	//Only want to show special when console is emagged
 			continue
 
-		dat += "<td><A href='?src=\ref[src];category=[C];menu=[LIMBGROWER_CATEGORY_MENU]'>[C]</A></td>"
+		dat += "<td><A href='?src=[REF(src)];category=[C];menu=[LIMBGROWER_CATEGORY_MENU]'>[C]</A></td>"
 		dat += "</tr><tr>"
 		//one category per line
 
@@ -176,7 +177,7 @@
 	return dat
 
 /obj/machinery/limbgrower/proc/category_win(mob/user,selected_category)
-	var/dat = "<A href='?src=\ref[src];menu=[LIMBGROWER_MAIN_MENU]'>Return to main menu</A>"
+	var/dat = "<A href='?src=[REF(src)];menu=[LIMBGROWER_MAIN_MENU]'>Return to main menu</A>"
 	dat += "<div class='statusDisplay'><h3>Browsing [selected_category]:</h3><br>"
 	dat += materials_printout()
 
@@ -187,7 +188,7 @@
 		if(disabled || !can_build(D))
 			dat += "<span class='linkOff'>[D.name]</span>"
 		else
-			dat += "<a href='?src=\ref[src];make=[D.id];multiplier=1'>[D.name]</a>"
+			dat += "<a href='?src=[REF(src)];make=[D.id];multiplier=1'>[D.name]</a>"
 		dat += "[get_design_cost(D)]<br>"
 
 	dat += "</div>"
@@ -195,13 +196,13 @@
 
 
 /obj/machinery/limbgrower/proc/chemical_win(mob/user)
-	var/dat = "<A href='?src=\ref[src];menu=[LIMBGROWER_MAIN_MENU]'>Return to main menu</A>"
+	var/dat = "<A href='?src=[REF(src)];menu=[LIMBGROWER_MAIN_MENU]'>Return to main menu</A>"
 	dat += "<div class='statusDisplay'><h3>Browsing Chemical Storage:</h3><br>"
 	dat += materials_printout()
 
 	for(var/datum/reagent/R in reagents.reagent_list)
 		dat += "[R.name]: [R.volume]"
-		dat += "<A href='?src=\ref[src];disposeI=[R.id]'>Purge</A><BR>"
+		dat += "<A href='?src=[REF(src)];disposeI=[R.id]'>Purge</A><BR>"
 
 	dat += "</div>"
 	return dat

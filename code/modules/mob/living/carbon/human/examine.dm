@@ -7,10 +7,18 @@
 	var/t_has = p_have()
 	var/t_is = p_are()
 
-	var/msg = "<span class='info'>*---------*\nThis is <EM>[src.name]</EM>!\n"
+	var/msg = "<span class='info'>*---------*\nThis is <EM>[src.name]</EM>"
 
 	var/list/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+
+
+	var/examine_text = dna.species.get_examine_text()
+	if((!skipface || !(slot_w_uniform in obscured)) && examine_text)//if you can see their face or their body AND there's something to see
+		msg += "<span class='bold'>, <font color='[dna.species.species_text_color]'>[examine_text]</font></span>"
+
+	msg += "!\n"
+
 
 	//uniform
 	if(w_uniform && !(slot_w_uniform in obscured))
@@ -133,8 +141,6 @@
 	var/appears_dead = 0
 	if(stat == DEAD || (status_flags & FAKEDEATH))
 		appears_dead = 1
-		if(suiciding)
-			msg += "<span class='warning'>[t_He] appear[p_s()] to have committed suicide... there is no hope of recovery.</span>\n"
 		if(hellbound)
 			msg += "<span class='warning'>[t_His] soul seems to have been ripped out of [t_his] body.  Revival is impossible.</span>\n"
 		msg += "<span class='deadsay'>[t_He] [t_is] limp and unresponsive; there are no signs of life"
@@ -199,25 +205,32 @@
 	else if(l_limbs_missing >= 2 && r_limbs_missing >= 2)
 		msg += "[t_He] doesn't seem all there.\n"
 
-	if(temp)
-		if(temp < 30)
-			msg += "[t_He] [t_has] minor bruising.\n"
-		else
-			msg += "<B>[t_He] [t_has] severe bruising!</B>\n"
+	if(!(user == src && src.hal_screwyhud == SCREWYHUD_HEALTHY)) //fake healthy
+		if(temp)
+			if(temp < 25)
+				msg += "[t_He] [t_has] minor bruising.\n"
+			else if(temp < 50)
+				msg += "[t_He] [t_has] <b>moderate</b> bruising!\n"
+			else
+				msg += "<B>[t_He] [t_has] severe bruising!</B>\n"
 
-	temp = getFireLoss()
-	if(temp)
-		if(temp < 30)
-			msg += "[t_He] [t_has] minor burns.\n"
-		else
-			msg += "<B>[t_He] [t_has] severe burns!</B>\n"
+		temp = getFireLoss()
+		if(temp)
+			if(temp < 25)
+				msg += "[t_He] [t_has] minor burns.\n"
+			else if (temp < 50)
+				msg += "[t_He] [t_has] <b>moderate</b> burns!\n"
+			else
+				msg += "<B>[t_He] [t_has] severe burns!</B>\n"
 
-	temp = getCloneLoss()
-	if(temp)
-		if(temp < 30)
-			msg += "[t_He] [t_has] minor cellular damage.\n"
-		else
-			msg += "<B>[t_He] [t_has] severe cellular damage.</B>\n"
+		temp = getCloneLoss()
+		if(temp)
+			if(temp < 25)
+				msg += "[t_He] [t_has] minor cellular damage.\n"
+			else if(temp < 50)
+				msg += "[t_He] [t_has] <b>moderate</b> cellular damage!\n"
+			else
+				msg += "<b>[t_He] [t_has] severe cellular damage!</b>\n"
 
 
 	if(fire_stacks > 0)
@@ -283,7 +296,7 @@
 	if(!appears_dead)
 		if(stat == UNCONSCIOUS)
 			msg += "[t_He] [t_is]n't responding to anything around [t_him] and seems to be asleep.\n"
-		else if(getBrainLoss() >= 60)
+		else if(disabilities & DUMB)
 			msg += "[t_He] [t_has] a stupid expression on [t_his] face.\n"
 
 		if(getorgan(/obj/item/organ/brain))
@@ -298,7 +311,7 @@
 			else if(!key)
 				msg += "<span class='deadsay'>[t_He] [t_is] totally catatonic. The stresses of life in deep-space must have been too much for [t_him]. Any recovery is unlikely.</span>\n"
 			else if(!client)
-				msg += "[t_He] [t_has] a blank, absent-minded stare and appears completely unresponsive to anything. [t_He] may snap out of it soon.\n"
+				msg += "<span class='warning'>[t_He] appears to be suffering from SSD - Space Sleep Disorder. [t_He] may snap out of it at any time! Or maybe never. It's best to leave [t_him] be.</span>\n"
 
 		if(digitalcamo)
 			msg += "[t_He] [t_is] moving [t_his] body in an unnatural and blatantly inhuman manner.\n"
@@ -312,8 +325,8 @@
 				var/datum/data/record/R = find_record("name", perpname, GLOB.data_core.general)
 				if(R)
 					msg += "<span class='deptradio'>Rank:</span> [R.fields["rank"]]<br>"
-					msg += "<a href='?src=\ref[src];hud=1;photo_front=1'>\[Front photo\]</a> "
-					msg += "<a href='?src=\ref[src];hud=1;photo_side=1'>\[Side photo\]</a><br>"
+					msg += "<a href='?src=[REF(src)];hud=1;photo_front=1'>\[Front photo\]</a> "
+					msg += "<a href='?src=[REF(src)];hud=1;photo_side=1'>\[Side photo\]</a><br>"
 				if(istype(H.glasses, /obj/item/clothing/glasses/hud/health) || istype(CIH, /obj/item/organ/cyberimp/eyes/hud/medical))
 					var/cyberimp_detect
 					for(var/obj/item/organ/cyberimp/CI in internal_organs)
@@ -324,12 +337,12 @@
 						msg += cyberimp_detect
 					if(R)
 						var/health_r = R.fields["p_stat"]
-						msg += "<a href='?src=\ref[src];hud=m;p_stat=1'>\[[health_r]\]</a>"
+						msg += "<a href='?src=[REF(src)];hud=m;p_stat=1'>\[[health_r]\]</a>"
 						health_r = R.fields["m_stat"]
-						msg += "<a href='?src=\ref[src];hud=m;m_stat=1'>\[[health_r]\]</a><br>"
+						msg += "<a href='?src=[REF(src)];hud=m;m_stat=1'>\[[health_r]\]</a><br>"
 					R = find_record("name", perpname, GLOB.data_core.medical)
 					if(R)
-						msg += "<a href='?src=\ref[src];hud=m;evaluation=1'>\[Medical evaluation\]</a><br>"
+						msg += "<a href='?src=[REF(src)];hud=m;evaluation=1'>\[Medical evaluation\]</a><br>"
 
 
 				if(istype(H.glasses, /obj/item/clothing/glasses/hud/security) || istype(CIH, /obj/item/organ/cyberimp/eyes/hud/security))
@@ -341,11 +354,11 @@
 						if(R)
 							criminal = R.fields["criminal"]
 
-						msg += "<span class='deptradio'>Criminal status:</span> <a href='?src=\ref[src];hud=s;status=1'>\[[criminal]\]</a>\n"
-						msg += "<span class='deptradio'>Security record:</span> <a href='?src=\ref[src];hud=s;view=1'>\[View\]</a> "
-						msg += "<a href='?src=\ref[src];hud=s;add_crime=1'>\[Add crime\]</a> "
-						msg += "<a href='?src=\ref[src];hud=s;view_comment=1'>\[View comment log\]</a> "
-						msg += "<a href='?src=\ref[src];hud=s;add_comment=1'>\[Add comment\]</a>\n"
+						msg += "<span class='deptradio'>Criminal status:</span> <a href='?src=[REF(src)];hud=s;status=1'>\[[criminal]\]</a>\n"
+						msg += "<span class='deptradio'>Security record:</span> <a href='?src=[REF(src)];hud=s;view=1'>\[View\]</a> "
+						msg += "<a href='?src=[REF(src)];hud=s;add_crime=1'>\[Add crime\]</a> "
+						msg += "<a href='?src=[REF(src)];hud=s;view_comment=1'>\[View comment log\]</a> "
+						msg += "<a href='?src=[REF(src)];hud=s;add_comment=1'>\[Add comment\]</a>\n"
 	msg += "*---------*</span>"
 
 	to_chat(user, msg)

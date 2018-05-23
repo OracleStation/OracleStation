@@ -261,7 +261,7 @@
 
 /obj/item/clothing/accessory/lawyers_badge
 	name = "attorney's badge"
-	desc = "Fills you with the conviction of JUSTICE. Lawyers tend to want to show it to everyone they meet."
+	desc = "Fills you with the conviction of JUSTICE. Internal Affairs Agents tend to want to show it to everyone they meet."
 	icon_state = "lawyerbadge"
 	item_color = "lawyerbadge"
 
@@ -311,3 +311,25 @@
 	item_color = "skull"
 	above_suit = TRUE
 	armor = list(melee = 5, bullet = 5, laser = 5, energy = 5, bomb = 20, bio = 20, rad = 5, fire = 0, acid = 25)
+
+////////////
+//Holsters//
+////////////
+
+/obj/item/clothing/accessory/holster
+	name = "shoulder holster"
+	desc = "A holster to carry a handgun and ammo. WARNING: Badasses only."
+	icon_state = "holster"
+	item_state = "holster"
+	item_color = "holster"
+	pockets = /obj/item/storage/internal/pocket/holster
+
+/obj/item/clothing/accessory/holster/detective
+	name = "detective's shoulder holster"
+	desc = "A holster specifically designed to carry the detective's revolver."
+	pockets = /obj/item/storage/internal/pocket/holster/detective
+
+/obj/item/clothing/accessory/holster/blueshield
+	name = "blueshield's shoulder holster"
+	desc = "A holster specifically designed to carry the blueshield's weapon."
+	pockets = /obj/item/storage/internal/pocket/holster/blueshield

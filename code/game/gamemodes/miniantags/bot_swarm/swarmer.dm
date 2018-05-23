@@ -81,7 +81,7 @@
 	attacktext = "shocks"
 	attack_sound = 'sound/effects/empulse.ogg'
 	friendly = "pinches"
-	speed = 0
+	speed = 1
 	faction = list("swarmer")
 	AIStatus = AI_OFF
 	pass_flags = PASSTABLE
@@ -257,8 +257,13 @@
 /obj/machinery/door/swarmer_act(mob/living/simple_animal/hostile/swarmer/S)
 	var/isonshuttle = istype(get_area(src), /area/shuttle)
 	for(var/turf/T in range(1, src))
-		if(isspaceturf(T) || (!isonshuttle && (istype(T.loc, /area/shuttle) || istype(T.loc, /area/space))) || (isonshuttle && !istype(T.loc, /area/shuttle)))
+		var/area/A = get_area(T)
+		if(isspaceturf(T) || (!isonshuttle && (istype(A, /area/shuttle) || istype(A, /area/space))) || (isonshuttle && !istype(A, /area/shuttle)))
 			to_chat(S, "<span class='warning'>Destroying this object has the potential to cause a hull breach. Aborting.</span>")
+			S.target = null
+			return FALSE
+		else if(istype(A, /area/engine/supermatter))
+			to_chat(S, "<span class='warning'>Disrupting the containment of a supermatter crystal would not be to our benefit. Aborting.</span>")
 			S.target = null
 			return FALSE
 	S.DisIntegrate(src)
@@ -344,8 +349,13 @@
 /turf/closed/wall/swarmer_act(mob/living/simple_animal/hostile/swarmer/S)
 	var/isonshuttle = istype(loc, /area/shuttle)
 	for(var/turf/T in range(1, src))
-		if(isspaceturf(T) || (!isonshuttle && (istype(T.loc, /area/shuttle) || istype(T.loc, /area/space))) || (isonshuttle && !istype(T.loc, /area/shuttle)))
+		var/area/A = get_area(T)
+		if(isspaceturf(T) || (!isonshuttle && (istype(A, /area/shuttle) || istype(A, /area/space))) || (isonshuttle && !istype(A, /area/shuttle)))
 			to_chat(S, "<span class='warning'>Destroying this object has the potential to cause a hull breach. Aborting.</span>")
+			S.target = null
+			return TRUE
+		else if(istype(A, /area/engine/supermatter))
+			to_chat(S, "<span class='warning'>Disrupting the containment of a supermatter crystal would not be to our benefit. Aborting.</span>")
 			S.target = null
 			return TRUE
 	return ..()
@@ -353,8 +363,13 @@
 /obj/structure/window/swarmer_act(mob/living/simple_animal/hostile/swarmer/S)
 	var/isonshuttle = istype(get_area(src), /area/shuttle)
 	for(var/turf/T in range(1, src))
-		if(isspaceturf(T) || (!isonshuttle && (istype(T.loc, /area/shuttle) || istype(T.loc, /area/space))) || (isonshuttle && !istype(T.loc, /area/shuttle)))
+		var/area/A = get_area(T)
+		if(isspaceturf(T) || (!isonshuttle && (istype(A, /area/shuttle) || istype(A, /area/space))) || (isonshuttle && !istype(A, /area/shuttle)))
 			to_chat(S, "<span class='warning'>Destroying this object has the potential to cause a hull breach. Aborting.</span>")
+			S.target = null
+			return TRUE
+		else if(istype(A, /area/engine/supermatter))
+			to_chat(S, "<span class='warning'>Disrupting the containment of a supermatter crystal would not be to our benefit. Aborting.</span>")
 			S.target = null
 			return TRUE
 	return ..()
@@ -447,7 +462,7 @@
 	if(target == src)
 		return
 
-	if(z != ZLEVEL_STATION && z != ZLEVEL_LAVALAND)
+	if(!(z in GLOB.station_z_levels) && z != ZLEVEL_LAVALAND)
 		to_chat(src, "<span class='warning'>Our bluespace transceiver cannot locate a viable bluespace link, our teleportation abilities are useless in this area.</span>")
 		return
 
@@ -457,11 +472,8 @@
 		return
 
 	var/turf/open/floor/F
-	switch(z) //Only the station/lavaland
-		if(ZLEVEL_STATION)
-			F =find_safe_turf(zlevels = ZLEVEL_STATION, extended_safety_checks = TRUE)
-		if(ZLEVEL_LAVALAND)
-			F = find_safe_turf(zlevels = ZLEVEL_LAVALAND, extended_safety_checks = TRUE)
+	F = find_safe_turf(zlevels = z, extended_safety_checks = TRUE)
+
 	if(!F)
 		return
 	// If we're getting rid of a human, slap some energy cuffs on

@@ -56,16 +56,14 @@
 	item_state = "firstaid-ointment"
 
 /obj/item/storage/firstaid/fire/Initialize(mapload)
-	..()
-	icon_state = pick("ointment","firefirstaid")
+	. = ..()
+	icon_state = pick("ointment")
 
 /obj/item/storage/firstaid/fire/PopulateContents()
 	if(empty)
 		return
-	for(var/i in 1 to 3)
+	for(var/i in 1 to 5)
 		new /obj/item/reagent_containers/pill/patch/silver_sulf(src)
-	new /obj/item/reagent_containers/pill/oxandrolone(src)
-	new /obj/item/reagent_containers/pill/oxandrolone(src)
 	new /obj/item/reagent_containers/hypospray/medipen(src)
 	new /obj/item/device/healthanalyzer(src)
 
@@ -77,7 +75,7 @@
 
 /obj/item/storage/firstaid/toxin/Initialize(mapload)
 	. = ..()
-	icon_state = pick("antitoxin","antitoxfirstaid","antitoxfirstaid2","antitoxfirstaid3")
+	icon_state = pick("antitoxin")
 
 /obj/item/storage/firstaid/toxin/PopulateContents()
 	if(empty)
@@ -117,6 +115,7 @@
 	new /obj/item/stack/medical/gauze(src)
 	new /obj/item/stack/medical/gauze(src)
 	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/firstaid/tactical
 	name = "combat medical kit"
@@ -143,7 +142,7 @@
 	name = "pill bottle"
 	desc = "It's an airtight container for storing medication."
 	icon_state = "pill_canister"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	item_state = "contsolid"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'

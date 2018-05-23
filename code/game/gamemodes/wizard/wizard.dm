@@ -18,6 +18,8 @@
 	var/use_huds = 0
 	var/finished = 0
 
+	title_icon = "wizard"
+
 /datum/game_mode/wizard/pre_setup()
 
 	var/datum/mind/wizard = pick(antag_candidates)
@@ -48,52 +50,9 @@
 
 
 /datum/game_mode/proc/forge_wizard_objectives(datum/mind/wizard)
-	switch(rand(1,100))
-		if(1 to 30)
-
-			var/datum/objective/assassinate/kill_objective = new
-			kill_objective.owner = wizard
-			kill_objective.find_target()
-			wizard.objectives += kill_objective
-
-			if (!(locate(/datum/objective/escape) in wizard.objectives))
-				var/datum/objective/escape/escape_objective = new
-				escape_objective.owner = wizard
-				wizard.objectives += escape_objective
-		if(31 to 60)
-			var/datum/objective/steal/steal_objective = new
-			steal_objective.owner = wizard
-			steal_objective.find_target()
-			wizard.objectives += steal_objective
-
-			if (!(locate(/datum/objective/escape) in wizard.objectives))
-				var/datum/objective/escape/escape_objective = new
-				escape_objective.owner = wizard
-				wizard.objectives += escape_objective
-
-		if(61 to 85)
-			var/datum/objective/assassinate/kill_objective = new
-			kill_objective.owner = wizard
-			kill_objective.find_target()
-			wizard.objectives += kill_objective
-
-			var/datum/objective/steal/steal_objective = new
-			steal_objective.owner = wizard
-			steal_objective.find_target()
-			wizard.objectives += steal_objective
-
-			if (!(locate(/datum/objective/survive) in wizard.objectives))
-				var/datum/objective/survive/survive_objective = new
-				survive_objective.owner = wizard
-				wizard.objectives += survive_objective
-
-		else
-			if (!(locate(/datum/objective/hijack) in wizard.objectives))
-				var/datum/objective/hijack/hijack_objective = new
-				hijack_objective.owner = wizard
-				wizard.objectives += hijack_objective
-	return
-
+	var/datum/objective/wizard/wizard_objective = new
+	wizard_objective.owner = wizard
+	wizard.objectives += wizard_objective
 
 /datum/game_mode/proc/name_wizard(mob/living/carbon/human/wizard_mob)
 	//Allows the wizard to choose a custom name or go with a random one. Spawn 0 so it does not lag the round starting.
@@ -106,10 +65,7 @@
 		if (!newname)
 			newname = randomname
 
-		wizard_mob.real_name = newname
-		wizard_mob.name = newname
-		if(wizard_mob.mind)
-			wizard_mob.mind.name = newname
+		wizard_mob.fully_replace_character_name(wizard_mob.real_name, newname)
 
 		/* Wizards by nature cannot be too young. */
 		if(wizard_mob.age < WIZARD_AGE_MIN)
@@ -240,15 +196,6 @@
 
 //OTHER PROCS
 
-//To batch-remove wizard spells. Linked to mind.dm.
-/mob/proc/spellremove(mob/M)
-	if(!mind)
-		return
-	for(var/X in src.mind.spell_list)
-		var/obj/effect/proc_holder/spell/spell_to_remove = X
-		qdel(spell_to_remove)
-		mind.spell_list -= spell_to_remove
-
 //returns whether the mob is a wizard (or apprentice)
 /proc/iswizard(mob/living/M)
 	return istype(M) && M.mind && SSticker && SSticker.mode && ((M.mind in SSticker.mode.wizards) || (M.mind in SSticker.mode.apprentices))
@@ -263,3 +210,20 @@
 	var/datum/atom_hud/antag/wizhud = GLOB.huds[ANTAG_HUD_WIZ]
 	wizhud.leave_hud(wiz_mind.current)
 	set_antag_hud(wiz_mind.current, null)
+
+/datum/game_mode/wizard/generate_credit_text()
+	var/list/round_credits = list()
+	var/len_before_addition
+
+	round_credits += "<center><h1>The Space Wizard Federation:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/wizard in wizards)
+		round_credits += "<center><h2>[wizard.name] as a master wizard</h2>"
+	for(var/datum/mind/apprentice in apprentices)
+		round_credits += "<center><h2>[apprentice.name] as an eager apprentice</h2>"
+	if(len_before_addition == round_credits.len)
+		round_credits += list("<center><h2>The wizards have removed themselves from this realm of existance!</h2>", "<center><h2>We couldn't locate them!</h2>")
+	round_credits += "<br>"
+
+	round_credits += ..()
+	return round_credits

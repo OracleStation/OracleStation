@@ -123,15 +123,16 @@
 
 	if(ENGINES_STARTED || (!IS_DOCKED))
 		return .
-
 	// Check to see if we've reached criteria for early launch
-	if((authorized.len >= auth_need) || emagged)
-		// shuttle timers use 1/10th seconds internally
+	if(authorized.len >= auth_need)
 		SSshuttle.emergency.setTimer(ENGINES_START_TIME)
-		var/system_error = emagged ? "SYSTEM ERROR:" : null
 		minor_announce("The emergency shuttle will launch in \
-			[TIME_LEFT] seconds", system_error, alert=TRUE)
-		. = TRUE
+			[TIME_LEFT] seconds.", alert=TRUE)
+	if(emagged)
+	  // shuttle timers use 1/10th seconds internally
+		SSshuttle.emergency.setTimer(ENGINES_START_TIME)
+		minor_announce("The emergency shuttle will launch in [TIME_LEFT] seconds.\
+		\n[pick("STRAP IN FOR EMERGENCY BURN", "PREPARE FOR LUDICROUS SPEED", "MAKING THE JUMP TO %@ERROR^& IN UNDER 12 PARSECS", "INERTIAL DAMPENERS OFFLINE")]", "SYSTEM ERROR:", alert=TRUE)
 
 /obj/machinery/computer/emergency_shuttle/emag_act(mob/user)
 	// How did you even get on the shuttle before it go to the station?
@@ -144,12 +145,13 @@
 
 	var/time = TIME_LEFT
 	message_admins("[key_name_admin(user.client)] \
-	(<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) \
-	(<A HREF='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</A>) \
+	(<A HREF='?_src_=holder;[HrefToken()];adminmoreinfo=[REF(user)]'>?</A>) \
+	(<A HREF='?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(user)]'>FLW</A>) \
 	has emagged the emergency shuttle [time] seconds before launch.", 0, 1)
 	log_game("[key_name(user)] has emagged the emergency shuttle in \
 		[COORD(src)] [time] seconds before launch.")
 	emagged = TRUE
+	SSshuttle.emergency.movement_force = list("KNOCKDOWN" = 10, "THROW" = 20, "IGNOREBUCKLE" = TRUE)
 	var/datum/species/S = new
 	for(var/i in 1 to 10)
 		// the shuttle system doesn't know who these people are, but they
@@ -206,13 +208,10 @@
 /obj/docking_port/mobile/emergency/request(obj/docking_port/stationary/S, area/signalOrigin, reason, redAlert, set_coefficient=null)
 	if(!isnum(set_coefficient))
 		var/security_num = seclevel2num(get_security_level())
-		switch(security_num)
-			if(SEC_LEVEL_GREEN)
-				set_coefficient = 2
-			if(SEC_LEVEL_BLUE)
-				set_coefficient = 1
-			else
-				set_coefficient = 0.5
+		if(security_num == SEC_LEVEL_GREEN || security_num == SEC_LEVEL_BLUE)
+			set_coefficient = 1
+		else
+			set_coefficient = 0.5
 	var/call_time = SSshuttle.emergencyCallTime * set_coefficient * engine_coeff
 	switch(mode)
 		// The shuttle can not normally be called while "recalling", so
@@ -290,12 +289,12 @@
 		if(SHUTTLE_CALL)
 			if(time_left <= 0)
 				//move emergency shuttle to station
-				if(dock(SSshuttle.getDock("emergency_home")))
+				if(dock(SSshuttle.getDock("emergency_home")) != DOCKING_SUCCESS)
 					setTimer(20)
 					return
 				mode = SHUTTLE_DOCKED
 				setTimer(SSshuttle.emergencyDockTime)
-				send2irc("Server", "The Emergency Shuttle has docked with the station.")
+				world.IRCBroadcast("The Emergency Shuttle has docked with the station.")
 				priority_announce("The Emergency Shuttle has docked with the station. You have [timeLeft(600)] minutes to board the Emergency Shuttle.", null, 'sound/ai/shuttledock.ogg', "Priority")
 				if(SSdbcore.Connect())
 					var/datum/DBQuery/query_round_shuttle_name = SSdbcore.NewQuery("UPDATE [format_table_name("round")] SET shuttle_name = '[name]' WHERE id = [GLOB.round_id]")

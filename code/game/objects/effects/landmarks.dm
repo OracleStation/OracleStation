@@ -96,8 +96,8 @@
 /obj/effect/landmark/start/librarian
 	name = "Curator"
 
-/obj/effect/landmark/start/lawyer
-	name = "Lawyer"
+/obj/effect/landmark/start/iaa
+	name = "Internal Affairs Agent"
 
 /obj/effect/landmark/start/station_engineer
 	name = "Station Engineer"
@@ -138,6 +138,9 @@
 /obj/effect/landmark/start/brig_phys
 	name = "Brig Physician"
 
+/obj/effect/landmark/start/iaa
+	name = "Internal Affairs Agent"
+
 //Department Security spawns
 
 /obj/effect/landmark/start/depsec
@@ -169,7 +172,7 @@
 /obj/effect/landmark/start/wizard/Initialize(mapload)
 	..()
 	GLOB.wizardstart += loc
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/start/new_player
 	name = "New Player"
@@ -182,7 +185,7 @@
 
 /obj/effect/landmark/start/new_player/Initialize(mapload)
 	..()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 
 
@@ -192,7 +195,7 @@
 /obj/effect/landmark/latejoin/Initialize(mapload)
 	..()
 	SSjob.latejoin_trackers += loc
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 // carp.
 /obj/effect/landmark/carpspawn
@@ -238,7 +241,7 @@
 /obj/effect/landmark/xeno_spawn/Initialize(mapload)
 	..()
 	GLOB.xeno_spawn += loc
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 // blobs.
 /obj/effect/landmark/blobstart
@@ -247,7 +250,7 @@
 /obj/effect/landmark/blobstart/Initialize(mapload)
 	..()
 	GLOB.blobstart += loc
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/secequipment
 	name = "secequipment"
@@ -255,7 +258,7 @@
 /obj/effect/landmark/secequipment/Initialize(mapload)
 	..()
 	GLOB.secequipment += loc
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/prisonwarp
 	name = "prisonwarp"
@@ -263,7 +266,7 @@
 /obj/effect/landmark/prisonwarp/Initialize(mapload)
 	..()
 	GLOB.prisonwarp += loc
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/ert_spawn
 	name = "Emergencyresponseteam"
@@ -271,7 +274,7 @@
 /obj/effect/landmark/ert_spawn/Initialize(mapload)
 	..()
 	GLOB.emergencyresponseteamspawn += loc
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/holding_facility
 	name = "Holding Facility"
@@ -279,7 +282,7 @@
 /obj/effect/landmark/holding_facility/Initialize(mapload)
 	..()
 	GLOB.holdingfacility += loc
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/thunderdome/observe
 	name = "tdomeobserve"
@@ -287,7 +290,7 @@
 /obj/effect/landmark/thunderdome/observe/Initialize(mapload)
 	..()
 	GLOB.tdomeobserve += loc
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/thunderdome/one
 	name = "tdome1"
@@ -295,7 +298,7 @@
 /obj/effect/landmark/thunderdome/one/Initialize(mapload)
 	..()
 	GLOB.tdome1	+= loc
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/thunderdome/two
 	name = "tdome2"
@@ -303,7 +306,7 @@
 /obj/effect/landmark/thunderdome/two/Initialize(mapload)
 	..()
 	GLOB.tdome2 += loc
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/thunderdome/admin
 	name = "tdomeadmin"
@@ -311,6 +314,25 @@
 /obj/effect/landmark/thunderdome/admin/Initialize(mapload)
 	..()
 	GLOB.tdomeadmin += loc
+	return INITIALIZE_HINT_QDEL
+
+//Servant spawn locations
+/obj/effect/landmark/servant_of_ratvar
+	name = "servant of ratvar spawn"
+
+/obj/effect/landmark/servant_of_ratvar/Initialize(mapload)
+	..()
+	GLOB.servant_spawns += loc
+	qdel(src)
+
+//City of Cogs entrances
+/obj/effect/landmark/city_of_cogs
+	name = "city of cogs entrance"
+	icon_state = "x4"
+
+/obj/effect/landmark/city_of_cogs/Initialize(mapload)
+	..()
+	GLOB.city_of_cogs_spawns += loc
 	qdel(src)
 
 //generic event spawns

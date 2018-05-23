@@ -11,6 +11,8 @@
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 100, bomb = 0, bio = 100, rad = 100, fire = 80, acid = 30)
 	layer = OBJ_LAYER
 	circuit = /obj/item/circuitboard/machine/thermomachine
+	pipe_flags = PIPING_ONE_PER_TURF | PIPING_DEFAULT_LAYER_ONLY
+	showpipe = TRUE
 
 	var/on = FALSE
 	var/min_temperature = 0
@@ -39,12 +41,7 @@
 		icon_state = icon_state_on
 	else
 		icon_state = initial(icon_state)
-	return
-
-/obj/machinery/atmospherics/components/unary/thermomachine/update_icon_nopipes()
-	cut_overlays()
-	if(showpipe)
-		add_overlay(getpipeimage(icon, "scrub_cap", initialize_directions))
+	..()
 
 /obj/machinery/atmospherics/components/unary/thermomachine/process_atmos()
 	..()

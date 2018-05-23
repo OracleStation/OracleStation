@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	icon_state = "magicOrange"
 	icon_living = "magicOrange"
 	icon_dead = "magicOrange"
-	speed = 0
+	speed = 1
 	a_intent = INTENT_HARM
 	stop_automated_movement = 1
 	movement_type = FLYING // Immunity to chasms and landmines, etc.
@@ -54,7 +54,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	GLOB.parasites += src
 	setthemename(theme)
 
-	..()
+	. = ..()
 
 /mob/living/simple_animal/hostile/guardian/med_hud_set_health()
 	if(summoner)
@@ -129,7 +129,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	update_health_hud() //we need to update all of our health displays to match our summoner and we can't practically give the summoner a hook to do it
 	med_hud_set_health()
 	med_hud_set_status()
-	if(summoner)
+	if(!QDELETED(summoner))
 		if(summoner.stat == DEAD)
 			forceMove(summoner.loc)
 			to_chat(src, "<span class='danger'>Your summoner has died!</span>")
@@ -159,7 +159,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 				resulthealth = round((summoner.health / summoner.maxHealth) * 100, 0.5)
 			stat(null, "Summoner Health: [resulthealth]%")
 		if(cooldown >= world.time)
-			stat(null, "Manifest/Recall Cooldown Remaining: [max(round((cooldown - world.time)*0.1, 0.1), 0)] seconds")
+			stat(null, "Manifest/Recall Cooldown Remaining: [DisplayTimeText(cooldown - world.time)]")
 
 /mob/living/simple_animal/hostile/guardian/Move() //Returns to summoner if they move out of range
 	. = ..()
@@ -178,9 +178,6 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 				new /obj/effect/temp_visual/guardian/phase/out(loc)
 				forceMove(summoner.loc)
 				new /obj/effect/temp_visual/guardian/phase(loc)
-
-/mob/living/simple_animal/hostile/guardian/canSuicide()
-	return 0
 
 /mob/living/simple_animal/hostile/guardian/AttackingTarget()
 	if(loc == summoner)
@@ -365,6 +362,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 			var/link = FOLLOW_LINK(M, src)
 			to_chat(M, "[link] [my_message]")
 
+		log_message(input, INDIVIDUAL_SAY_LOG)
 		log_talk(src,"GUARDIAN:[key_name(src)]: [input]",LOGSAY)
 
 /mob/living/proc/guardian_comm()
@@ -655,7 +653,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	name = "holoparasite injector kit"
 
 /obj/item/storage/box/syndie_kit/guardian/Initialize()
-	..()
+	. = ..()
 	new /obj/item/guardiancreator/tech/choose/traitor(src)
 	new /obj/item/paper/guides/antag/guardian(src)
 	return

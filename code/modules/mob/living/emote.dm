@@ -40,7 +40,7 @@
 	key = "choke"
 	key_third_person = "chokes"
 	message = "chokes!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/cross
 	key = "cross"
@@ -52,7 +52,7 @@
 	key = "chuckle"
 	key_third_person = "chuckles"
 	message = "chuckles."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/collapse
 	key = "collapse"
@@ -65,12 +65,6 @@
 	if(. && isliving(user))
 		var/mob/living/L = user
 		L.Unconscious(40)
-
-/datum/emote/living/cough
-	key = "cough"
-	key_third_person = "coughs"
-	message = "coughs!"
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/dance
 	key = "dance"
@@ -87,6 +81,7 @@
 	message_alien = "lets out a waning guttural screech, green blood bubbling from its maw..."
 	message_larva = "lets out a sickly hiss of air and falls limply to the floor..."
 	message_monkey = "lets out a faint chimper as it collapses and stops moving..."
+	message_ipc = "gives one shrill beep before falling limp, their monitor flashing blue before completely shutting off..."
 	message_simple =  "stops moving..."
 	stat_allowed = UNCONSCIOUS
 
@@ -143,12 +138,68 @@
 /datum/emote/living/flip
 	key = "flip"
 	key_third_person = "flips"
+	message = "does a flip!"
 	restraint_check = TRUE
 
+/datum/emote/living/flip/can_run_emote(mob/user, help_check)
+	if(!..(user, help_check))
+		return FALSE
+	if(user.incapacitated())
+		return FALSE
+	if(user.buckled)
+		return FALSE
+	return TRUE
+
+
 /datum/emote/living/flip/run_emote(mob/user, params)
-	. = ..()
-	if(!.)
-		user.SpinAnimation(7,1)
+	//the emote doesn't need much magic, so I'm overwriting everything. Bite me.
+	if(!can_run_emote(user))
+		return FALSE
+
+
+	var/mob/M = user.pulling
+	if(istype(user.loc, /obj))
+		var/obj/container = user.loc
+		to_chat(user, "<span class='warning'>You flip and smack your face into [container]!</span>")
+		container.visible_message("<span class='warning'><b>[container]</b> emits a loud thump and rattles a bit.")
+		if(isliving(user))
+			var/mob/living/L = user
+			L.Knockdown(100)//10 seconds
+		playsound(user.loc, "sound/effects/bang.ogg", 50, 1)
+		var/original_x = container.pixel_x
+		var/original_y = container.pixel_y
+		var/wiggle = 6
+		while(wiggle > 0)
+			wiggle--
+			container.pixel_x = rand(-3,3)
+			container.pixel_y = rand(-3,3)
+			sleep(1)
+		container.pixel_x = original_x
+		container.pixel_y = original_y
+		if(prob(2) && istype(container, /obj/structure/closet))
+			var/obj/structure/closet/C = container
+			if(C.locked)
+				C.bust_open()
+
+	else if(user.IsKnockdown() || user.lying)
+		user.visible_message("<b>[user]</b> flops and flails on the floor!")
+		//don't do anything! D:
+	else if(M && isliving(M) && !M.buckled && istype(M.loc, /turf/) && istype(user.loc, /turf/))
+		var/mob/living/L = user.pulling
+		var/turf/tmp = get_turf(L)
+		var/turf/T = get_turf(user)
+		if(tmp && T)
+			user.visible_message("<b>[user]</b> flips over [user.pulling]!")
+			L.forceMove(T)
+			user.forceMove(tmp)//*flip
+			user.SpinAnimation(5,1)
+
+	else
+		user.visible_message("<b>[user]</b> does a flip!")
+		user.SpinAnimation(5,1)
+
+	user.emote_cooldown = world.time + cooldown
+
 
 /datum/emote/living/frown
 	key = "frown"
@@ -159,13 +210,13 @@
 	key = "gag"
 	key_third_person = "gags"
 	message = "gags."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/gasp
 	key = "gasp"
 	key_third_person = "gasps"
 	message = "gasps!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 	stat_allowed = UNCONSCIOUS
 
 /datum/emote/living/giggle
@@ -173,14 +224,13 @@
 	key_third_person = "giggles"
 	message = "giggles."
 	message_mime = "giggles silently!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/glare
 	key = "glare"
 	key_third_person = "glares"
 	message = "glares."
 	message_param = "glares at %t."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/grin
 	key = "grin"
@@ -192,6 +242,7 @@
 	key_third_person = "groans"
 	message = "groans!"
 	message_mime = "appears to groan!"
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/grimace
 	key = "grimace"
@@ -215,7 +266,7 @@
 	key = "laugh"
 	key_third_person = "laughs"
 	message = "laughs."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/look
 	key = "look"
@@ -240,38 +291,27 @@
 	key = "pout"
 	key_third_person = "pouts"
 	message = "pouts."
-	emote_type = EMOTE_AUDIBLE
-
-/datum/emote/living/scream
-	key = "scream"
-	key_third_person = "screams"
-	message = "screams."
-	message_mime = "acts out a scream!"
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/scowl
 	key = "scowl"
 	key_third_person = "scowls"
 	message = "scowls."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/shake
 	key = "shake"
 	key_third_person = "shakes"
 	message = "shakes their head."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/shiver
 	key = "shiver"
 	key_third_person = "shiver"
 	message = "shivers."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/sigh
 	key = "sigh"
 	key_third_person = "sighs"
 	message = "sighs."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/sit
 	key = "sit"
@@ -282,12 +322,6 @@
 	key = "smile"
 	key_third_person = "smiles"
 	message = "smiles."
-
-/datum/emote/living/sneeze
-	key = "sneeze"
-	key_third_person = "sneezes"
-	message = "sneezes."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/smug
 	key = "smug"
@@ -305,7 +339,7 @@
 	key_third_person = "snores"
 	message = "snores."
 	message_mime = "sleeps soundly."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/stare
 	key = "stare"
@@ -364,6 +398,7 @@
 	key_third_person = "whimpers"
 	message = "whimpers."
 	message_mime = "appears hurt."
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/wsmile
 	key = "wsmile"
@@ -374,7 +409,7 @@
 	key = "yawn"
 	key_third_person = "yawns"
 	message = "yawns."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/custom
 	key = "me"
@@ -461,6 +496,7 @@
 	message = "beeps."
 	message_param = "beeps at %t."
 	sound = 'sound/machines/twobeep.ogg'
+	robotic_emote = TRUE
 
 /datum/emote/living/spin
 	key = "spin"
@@ -491,3 +527,79 @@
 	else
 		qdel(N)
 		to_chat(user, "<span class='warning'>You don't have any free hands to make a circle with.</span>")
+
+
+/datum/emote/living/scream
+	key = "scream"
+	key_third_person = "screams"
+	message = "screams."
+	message_ipc = "screeches electronically!"
+	message_vox = "shrieks!"
+	message_mime = "acts out a scream!"
+	emote_type = EMOTE_SPEAK
+	cooldown = 100
+
+/datum/emote/living/scream/run_emote(mob/user, params)
+	if(!..() || !user.can_speak())
+		return
+
+	var/sound_to_play = 'sound/effects/mob_effects/goonstation/male_scream.ogg'
+	var/frequency_to_use = 1
+
+	var/mob/living/carbon/human/H = user
+	if(istype(H) && H.dna && H.dna.species)
+		frequency_to_use = H.dna.species.get_age_frequency()
+		if(H.gender == FEMALE)
+			sound_to_play = H.dna.species.female_scream_sound
+		else
+			sound_to_play = H.dna.species.male_scream_sound
+	if(issilicon(user) || isdrone(user))
+		sound_to_play = 'sound/effects/mob_effects/silicon_scream.ogg'
+
+	playsound(user.loc, sound_to_play, 50, frequency = frequency_to_use)
+
+/datum/emote/living/cough
+	key = "cough"
+	key_third_person = "coughs"
+	message = "coughs."
+	message_mime = "seems to be coughing!"
+	emote_type = EMOTE_SPEAK
+	cooldown = 60
+
+/datum/emote/living/cough/run_emote(mob/user, params)
+	if(!..() || !user.can_speak())
+		return
+	var/sound_to_play = 'sound/effects/mob_effects/m_cough.ogg'
+	var/mob/living/carbon/human/H = user
+	if(istype(H) && H.dna && H.dna.species)
+		if(H.gender == FEMALE)
+			sound_to_play = H.dna.species.female_cough_sound
+		else
+			sound_to_play = H.dna.species.male_cough_sound
+	if(iscyborg(user))
+		sound_to_play = 'sound/effects/mob_effects/machine_cough.ogg'
+
+	playsound(user.loc, sound_to_play, 50)
+
+/datum/emote/living/sneeze
+	key = "sneeze"
+	key_third_person = "sneezes"
+	message = "sneezes!"
+	message_mime = "seems to be sneezing!"
+	emote_type = EMOTE_SPEAK
+	cooldown = 60
+
+/datum/emote/living/sneeze/run_emote(mob/user, params)
+	if(!..() || !user.can_speak())
+		return
+	var/sound_to_play = 'sound/effects/mob_effects/sneeze.ogg'
+	var/mob/living/carbon/human/H = user
+	if(istype(H) && H.dna && H.dna.species)
+		if(H.gender == FEMALE)
+			sound_to_play = H.dna.species.female_sneeze_sound
+		else
+			sound_to_play = H.dna.species.male_sneeze_sound
+	if(iscyborg(user))
+		sound_to_play = 'sound/effects/mob_effects/machine_sneeze.ogg'
+
+	playsound(user.loc, sound_to_play, 50)

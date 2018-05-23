@@ -42,7 +42,7 @@
 	// amounts to the occupant.
 	var/static/list/brine_types = list(
 		"salbutamol", // anti-oxyloss
-		"bicaridine", // NOBREATHE species take brute in crit
+		"styptic_powder", //heals brute damage
 		"corazone", // prevents cardiac arrest and liver failure damage
 		"mimesbane") // stops them gasping from lack of air.
 
@@ -132,7 +132,7 @@
 	return examine(user)
 
 //Start growing a human clone in the pod!
-/obj/machinery/clonepod/proc/growclone(ckey, clonename, ui, se, mindref, datum/species/mrace, list/features, factions)
+/obj/machinery/clonepod/proc/growclone(ckey, clonename, ui, se, ue, mindref, datum/species/mrace, list/features, factions)
 	if(panel_open)
 		return FALSE
 	if(mess || attempting)
@@ -163,11 +163,11 @@
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src)
 
 	if(clonemind.changeling)
-		var/obj/item/organ/brain/B = H.getorganslot("brain")
+		var/obj/item/organ/brain/B = H.getorganslot(ORGAN_SLOT_BRAIN)
 		B.vital = FALSE
 		B.decoy_override = TRUE
 
-	H.hardset_dna(ui, se, H.real_name, null, mrace, features)
+	H.hardset_dna(ui, se, ue, H.real_name, null, mrace, features)
 
 	if(efficiency > 2)
 		var/list/unclean_mutations = (GLOB.not_good_mutations|GLOB.bad_mutations)
@@ -207,7 +207,6 @@
 
 		H.set_cloned_appearance()
 
-		H.suiciding = FALSE
 	attempting = FALSE
 	return TRUE
 
@@ -221,7 +220,7 @@
 			connected_message("Clone Ejected: Loss of power.")
 
 	else if(mob_occupant && (mob_occupant.loc == src))
-		if((mob_occupant.stat == DEAD) || (mob_occupant.suiciding) || mob_occupant.hellbound)  //Autoeject corpses and suiciding dudes.
+		if((mob_occupant.stat == DEAD) || mob_occupant.hellbound)  //Autoeject corpses and unclonables
 			connected_message("Clone Rejected: Deceased.")
 			SPEAK("The cloning of [mob_occupant.real_name] has been \
 				aborted due to unrecoverable tissue failure.")
@@ -229,9 +228,9 @@
 
 		else if(mob_occupant.cloneloss > (100 - heal_level))
 			mob_occupant.Unconscious(80)
-
+			var/dmg_mult = CONFIG_GET(number/damage_multiplier)
 			 //Slowly get that clone healed and finished.
-			mob_occupant.adjustCloneLoss(-((speed_coeff/2) * config.damage_multiplier))
+			mob_occupant.adjustCloneLoss(-((speed_coeff / 2) * dmg_mult))
 			var/progress = CLONE_INITIAL_DAMAGE - mob_occupant.getCloneLoss()
 			// To avoid the default cloner making incomplete clones
 			progress += (100 - MINIMUM_HEAL_LEVEL)
@@ -249,7 +248,7 @@
 					BP.attach_limb(mob_occupant)
 
 			//Premature clones may have brain damage.
-			mob_occupant.adjustBrainLoss(-((speed_coeff/2) * config.damage_multiplier))
+			mob_occupant.adjustBrainLoss(-((speed_coeff / 2) * dmg_mult))
 
 			check_brine()
 
@@ -304,7 +303,7 @@
 			comp.AttachCloner(src)
 		else
 			P.buffer = src
-			to_chat(user, "<font color = #666633>-% Successfully stored \ref[P.buffer] [P.buffer.name] in buffer %-</font color>")
+			to_chat(user, "<font color = #666633>-% Successfully stored [REF(P.buffer)] [P.buffer.name] in buffer %-</font color>")
 		return
 
 	var/mob/living/mob_occupant = occupant

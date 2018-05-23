@@ -77,6 +77,7 @@
 	icon = 'icons/obj/machines/nuke_terminal.dmi'
 	icon_state = "nuclearbomb_base"
 	anchored = TRUE //stops it being moved
+	use_tag = TRUE
 
 /obj/machinery/nuclearbomb/syndicate
 	//ui_style = "syndicate" // actually the nuke op bomb is a stole nt bomb
@@ -362,9 +363,9 @@
 	if(safety)
 		if(timing)
 			set_security_level(previous_level)
-			for(var/obj/item/pinpointer/syndicate/S in GLOB.pinpointer_list)
+			for(var/obj/item/pinpointer/nuke/syndicate/S in GLOB.pinpointer_list)
 				S.switch_mode_to(initial(S.mode))
-				S.nuke_warning = FALSE
+				S.alert = FALSE
 		timing = FALSE
 		bomb_set = TRUE
 		detonation_timer = null
@@ -381,16 +382,16 @@
 		bomb_set = TRUE
 		set_security_level("delta")
 		detonation_timer = world.time + (timer_set * 10)
-		for(var/obj/item/pinpointer/syndicate/S in GLOB.pinpointer_list)
+		for(var/obj/item/pinpointer/nuke/syndicate/S in GLOB.pinpointer_list)
 			S.switch_mode_to(TRACK_INFILTRATOR)
 		countdown.start()
 	else
 		bomb_set = FALSE
 		detonation_timer = null
 		set_security_level(previous_level)
-		for(var/obj/item/pinpointer/syndicate/S in GLOB.pinpointer_list)
+		for(var/obj/item/pinpointer/nuke/syndicate/S in GLOB.pinpointer_list)
 			S.switch_mode_to(initial(S.mode))
-			S.nuke_warning = FALSE
+			S.alert = FALSE
 		countdown.stop()
 	update_icon()
 
@@ -435,7 +436,7 @@
 	var/off_station = 0
 	var/turf/bomb_location = get_turf(src)
 	var/area/A = get_area(bomb_location)
-	if(bomb_location && (bomb_location.z == ZLEVEL_STATION))
+	if(bomb_location && (bomb_location.z in GLOB.station_z_levels))
 		if(istype(A, /area/space))
 			off_station = NUKE_MISS_STATION
 		if((bomb_location.x < (128-NUKERANGE)) || (bomb_location.x > (128+NUKERANGE)) || (bomb_location.y < (128-NUKERANGE)) || (bomb_location.y > (128+NUKERANGE)))
@@ -523,24 +524,6 @@ This is here to make the tiles around the station mininuke change when it's arme
 	if(force)
 		GLOB.poi_list -= src
 	. = ..()
-
-/obj/item/disk/nuclear/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is going delta! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	playsound(user.loc, 'sound/machines/alarm.ogg', 50, -1, 1)
-	var/end_time = world.time + 100
-	var/newcolor = "#00FF00"
-	while(world.time < end_time)
-		if(!user)
-			return
-		if(newcolor == "#FF0000")
-			newcolor = "#00FF00"
-		else
-			newcolor = "#FF0000"
-		user.add_atom_colour(newcolor, ADMIN_COLOUR_PRIORITY)
-		sleep(1)
-	user.remove_atom_colour(ADMIN_COLOUR_PRIORITY)
-	user.visible_message("<span class='suicide'>[user] was destroyed by the nuclear blast!</span>")
-	return OXYLOSS
 
 /obj/item/disk/fakenucleardisk
 	name = "cheap plastic imitation of the nuclear authentication disk"

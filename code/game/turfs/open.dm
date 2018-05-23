@@ -4,6 +4,9 @@
 	var/wet = 0
 	var/wet_time = 0 // Time in seconds that this floor will be wet for.
 	var/mutable_appearance/wet_overlay
+	var/postdig_icon_change = FALSE
+	var/postdig_icon
+	var/list/archdrops
 
 /turf/open/indestructible
 	name = "floor"
@@ -64,6 +67,37 @@
 	desc = "A floor made of invulnerable notebook paper."
 	icon_state = "paperfloor"
 
+/turf/open/indestructible/clock_spawn_room
+	name = "cogmetal"
+	desc = "Brass plating that gently radiates heat. For some reason, it reminds you of blood."
+	icon_state = "reebe"
+	baseturf = /turf/open/indestructible/clock_spawn_room
+
+/turf/open/indestructible/clock_spawn_room/Entered()
+	..()
+	START_PROCESSING(SSfastprocess, src)
+
+/turf/open/indestructible/clock_spawn_room/Destroy()
+	STOP_PROCESSING(SSfastprocess, src)
+	. = ..()
+
+/turf/open/indestructible/clock_spawn_room/process()
+	if(!port_servants())
+		STOP_PROCESSING(SSfastprocess, src)
+
+/turf/open/indestructible/clock_spawn_room/proc/port_servants()
+	. = FALSE
+	for(var/mob/living/L in src)
+		if(is_servant_of_ratvar(L))
+			. = TRUE
+			L.forceMove(get_turf(pick(GLOB.servant_spawns)))
+			visible_message("<span class='warning'>[L] vanishes in a flash of red!</span>")
+			L.visible_message("<span class='warning'>[L] appears in a flash of red!</span>", \
+			"<span class='bold cult'>sas'so c'arta forbici</span><br><span class='danger'>You're yanked away from [src]!</span>")
+			playsound(src, 'sound/magic/enter_blood.ogg', 50, TRUE)
+			playsound(L, 'sound/magic/exit_blood.ogg', 50, TRUE)
+			flash_color(L, flash_color = "#C80000", flash_time = 10)
+
 /turf/open/Initalize_Atmos(times_fired)
 	excited = 0
 	update_visuals()
@@ -99,14 +133,10 @@
 			if (!atmos_adjacent_turfs || !atmos_adjacent_turfs[enemy_tile])
 				continue
 
-
-		var/is_active = air.compare(enemy_air)
-
-		if(is_active)
+		if(!excited && air.compare(enemy_air))
 			//testing("Active turf found. Return value of compare(): [is_active]")
-			if(!excited) //make sure we aren't already excited
-				excited = 1
-				SSair.active_turfs |= src
+			excited = TRUE
+			SSair.active_turfs |= src
 	UNSETEMPTY(atmos_adjacent_turfs)
 	if (atmos_adjacent_turfs)
 		src.atmos_adjacent_turfs = atmos_adjacent_turfs
@@ -190,6 +220,12 @@
 			new /datum/forced_movement(C, get_ranged_target_turf(C, olddir, 1), 1, FALSE)	//spinning would be bad for ice, fucks up the next dir
 		return 1
 
+/turf/open/copyTurf(turf/T)
+	. = ..()
+	if(. && isopenturf(T) && wet_time)
+		var/turf/open/O = T
+		O.MakeSlippery(wet_setting = wet, wet_time_to_add = wet_time) //we're copied, copy how wet we are also
+
 /turf/open/proc/MakeSlippery(wet_setting = TURF_WET_WATER, min_wet_time = 0, wet_time_to_add = 0) // 1 = Water, 2 = Lube, 3 = Ice, 4 = Permafrost, 5 = Slide
 	wet_time = max(wet_time+wet_time_to_add, min_wet_time)
 	if(wet >= wet_setting)
@@ -219,19 +255,30 @@
 	HandleWet()
 
 /turf/open/proc/UpdateSlip()
+	var/intensity
+	var/lube_flags
 	switch(wet)
 		if(TURF_WET_WATER)
-			AddComponent(/datum/component/slippery, 60, NO_SLIP_WHEN_WALKING)
+			intensity = 60
+			lube_flags = NO_SLIP_WHEN_WALKING
 		if(TURF_WET_LUBE)
-			AddComponent(/datum/component/slippery, 80, SLIDE | GALOSHES_DONT_HELP)
+			intensity = 80
+			lube_flags = SLIDE | GALOSHES_DONT_HELP
 		if(TURF_WET_ICE)
-			AddComponent(/datum/component/slippery, 120, SLIDE | GALOSHES_DONT_HELP)
+			intensity = 120
+			lube_flags = SLIDE | GALOSHES_DONT_HELP
 		if(TURF_WET_PERMAFROST)
-			AddComponent(/datum/component/slippery, 120, SLIDE_ICE | GALOSHES_DONT_HELP)
+			intensity = 120
+			lube_flags = SLIDE_ICE | GALOSHES_DONT_HELP
 		if(TURF_WET_SLIDE)
-			AddComponent(/datum/component/slippery, 80, SLIDE | GALOSHES_DONT_HELP)
+			intensity = 80
+			lube_flags = SLIDE | GALOSHES_DONT_HELP
 		else
 			qdel(GetComponent(/datum/component/slippery))
+			return
+	var/datum/component/slippery/S = LoadComponent(/datum/component/slippery)
+	S.intensity = intensity
+	S.lube_flags = lube_flags
 
 /turf/open/ComponentActivated(datum/component/C)
 	..()
@@ -308,4 +355,3 @@
 	UpdateSlip()
 	if(wet_overlay)
 		cut_overlay(wet_overlay)
-

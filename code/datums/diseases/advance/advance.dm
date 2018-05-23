@@ -36,7 +36,7 @@
 	var/static/list/advance_cures = 	list(
 									"sodiumchloride", "sugar", "orangejuice",
 									"spaceacillin", "salglu_solution", "ethanol",
-									"leporazine", "synaptizine", "lipolicide",
+									"teporone", "synaptizine", "lipolicide",
 									"silver", "gold"
 								)
 
@@ -183,8 +183,8 @@
 		properties["stealth"] += S.stealth
 		properties["stage_rate"] += S.stage_speed
 		properties["transmittable"] += S.transmittable
-		properties["severity"] = max(properties["severity"], S.severity) // severity is based on the highest severity symptom
-	return
+		if(!S.neutered)
+			properties["severity"] = max(properties["severity"], S.severity) // severity is based on the highest severity non-neutered symptom
 
 // Assign the properties that are in the list.
 /datum/disease/advance/proc/AssignProperties()
@@ -413,7 +413,7 @@
 			AD.Refresh()
 
 		for(var/mob/living/carbon/human/H in shuffle(GLOB.living_mob_list))
-			if(H.z != ZLEVEL_STATION)
+			if(!(H.z in GLOB.station_z_levels))
 				continue
 			if(!H.HasDisease(D))
 				H.ForceContractDisease(D)

@@ -60,9 +60,8 @@
 		return
 	next_click = world.time + 1
 
-	if(client && client.click_intercept)
-		if(call(client.click_intercept, "InterceptClickOn")(src, params, A))
-			return
+	if(check_click_intercept(params,A))
+		return
 
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"] && modifiers["middle"])
@@ -274,10 +273,9 @@
 	return
 
 /*
-	Middle click
-	Only used for swapping hands
+	Middle click for pointing
 */
-/mob/proc/MiddleClickOn(atom/A)
+/mob/proc/ShiftMiddleClickOn(atom/A)
 	return
 
 /mob/living/carbon/MiddleClickOn(atom/A)
@@ -285,9 +283,9 @@
 		next_click = world.time + 5
 		mind.changeling.chosen_sting.try_to_sting(src, A)
 	else
-		swap_hand()
+		..()
 
-/mob/living/simple_animal/drone/MiddleClickOn(atom/A)
+/mob/living/simple_animal/drone/ShiftMiddleClickOn(atom/A)
 	swap_hand()
 
 // In case of use break glass
@@ -324,7 +322,7 @@
 		ML.pulled(src)
 
 /mob/living/carbon/human/CtrlClick(mob/user)
-	if(ishuman(user) && Adjacent(user))
+	if(ishuman(user) && Adjacent(user) && !user.incapacitated())
 		if(world.time < user.next_move)
 			return FALSE
 		var/mob/living/carbon/human/H = user
@@ -355,7 +353,6 @@
 		else
 			user.listed_turf = T
 			user.client.statpanel = T.name
-	return
 
 /mob/proc/TurfAdjacent(turf/T)
 	return T.Adjacent(src)
@@ -368,7 +365,7 @@
 	A.CtrlShiftClick(src)
 	return
 
-/mob/proc/ShiftMiddleClickOn(atom/A)
+/mob/proc/MiddleClickOn(atom/A)
 	src.pointed(A)
 	return
 
@@ -381,13 +378,11 @@
 	Laser Eyes: as the name implies, handles this since nothing else does currently
 	face_atom: turns the mob towards what you clicked on
 */
-/mob/proc/LaserEyes(atom/A)
+/mob/proc/LaserEyes(atom/A, params)
 	return
 
-/mob/living/LaserEyes(atom/A)
+/mob/living/LaserEyes(atom/A, params)
 	changeNext_move(CLICK_CD_RANGE)
-	var/turf/T = get_turf(src)
-	var/turf/U = get_turf(A)
 
 	var/obj/item/projectile/beam/LE = new /obj/item/projectile/beam( loc )
 	LE.icon = 'icons/effects/genetics.dmi'
@@ -396,16 +391,18 @@
 
 	LE.firer = src
 	LE.def_zone = get_organ_target()
-	LE.original = A
-	LE.current = T
-	LE.yo = U.y - T.y
-	LE.xo = U.x - T.x
+	LE.preparePixelProjectile(A, src, params)
 	LE.fire()
 
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
 /mob/proc/face_atom(atom/A)
-	if( buckled || stat != CONSCIOUS || !A || !x || !y || !A.x || !A.y )
+	if( stat != CONSCIOUS || !A || !x || !y || !A.x || !A.y )
 		return
+
+	if(buckled) //allows rolling chairs to rotate with you, a nice touch
+		if(!buckled.can_buckled_rotate)
+			return
+
 	var/dx = A.x - x
 	var/dy = A.y - y
 	if(!dx && !dy) // Wall items are graphically shifted but on the floor
@@ -429,6 +426,9 @@
 			setDir(EAST)
 		else
 			setDir(WEST)
+
+	if(buckled && buckled.can_buckled_rotate) //face whatever we are buckled to if it can rotate too
+		buckled.setDir(dir)
 
 /obj/screen/click_catcher
 	icon = 'icons/mob/screen_gen.dmi'
@@ -455,15 +455,11 @@
 
 /obj/screen/click_catcher/Click(location, control, params)
 	var/list/modifiers = params2list(params)
-	if(modifiers["middle"] && iscarbon(usr))
-		var/mob/living/carbon/C = usr
-		C.swap_hand()
-	else
-		var/turf/T = params2turf(modifiers["screen-loc"], get_turf(usr))
-		params += "&catcher=1"
-		if(T)
-			T.Click(location, control, params)
-	. = 1
+	var/turf/T = params2turf(modifiers["screen-loc"], get_turf(usr.client ? usr.client.eye : usr))
+	params += "&catcher=1"
+	if(T)
+		T.Click(location, control, params)
+	return 1
 
 /* MouseWheelOn */
 
@@ -479,3 +475,16 @@
 		else
 			view = 1
 		add_view_range(view)
+
+/mob/proc/check_click_intercept(params,A)
+	//Client level intercept
+	if(client && client.click_intercept)
+		if(call(client.click_intercept, "InterceptClickOn")(src, params, A))
+			return TRUE
+
+	//Mob level intercept
+	if(click_intercept)
+		if(call(click_intercept, "InterceptClickOn")(src, params, A))
+			return TRUE
+
+	return FALSE

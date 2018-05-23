@@ -5,7 +5,7 @@
 	key = "cry"
 	key_third_person = "cries"
 	message = "cries."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/carbon/human/dap
 	key = "dap"
@@ -22,7 +22,7 @@
 	key = "grumble"
 	key_third_person = "grumbles"
 	message = "grumbles!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/carbon/human/handshake
 	key = "handshake"
@@ -43,7 +43,7 @@
 	key = "mumble"
 	key_third_person = "mumbles"
 	message = "mumbles!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_SPEAK
 
 /datum/emote/living/carbon/human/pale
 	key = "pale"
@@ -67,6 +67,32 @@
 	key_third_person = "shrugs"
 	message = "shrugs."
 
+/datum/emote/living/carbon/human/snap
+	key = "snap"
+	key_third_person = "snaps"
+	message = "snaps their fingers."
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/carbon/human/snap/run_emote(mob/user, params)
+	if(..())
+		playsound(user.loc, 'sound/effects/fingersnap.ogg', 50)
+
+/datum/emote/living/carbon/human/squish
+	key = "squish"
+	key_third_person = "squishes"
+	message = "squishes."
+	message_param = "squishes at %t."
+
+/datum/emote/living/carbon/human/squish/run_emote(mob/user, params)
+	if(..())
+		playsound(user.loc, 'sound/effects/slime_squish.ogg', 50)
+
+/datum/emote/living/carbon/human/squish/can_run_emote(mob/user)
+	if(!..())
+		return FALSE
+	if(isslimeperson(user))
+		return TRUE
+
 /datum/emote/living/carbon/human/wag
 	key = "wag"
 	key_third_person = "wags"
@@ -84,13 +110,13 @@
 	if(!..())
 		return FALSE
 	var/mob/living/carbon/human/H = user
-	if(H.dna && H.dna.species && (("tail_lizard" in H.dna.species.mutant_bodyparts) || ("tail_ethari" in H.dna.species.mutant_bodyparts) || (H.dna.features["tail_human"] != "None")))
+	if(H.dna && H.dna.species && (("tail_unathi" in H.dna.species.mutant_bodyparts) || ("tail_ethari" in H.dna.species.mutant_bodyparts) || (H.dna.features["tail_human"] != "None")))
 		return TRUE
 
 /datum/emote/living/carbon/human/wag/select_message_type(mob/user)
 	. = ..()
 	var/mob/living/carbon/human/H = user
-	if(("waggingtail_lizard" in H.dna.species.mutant_bodyparts) || ("waggingtail_human" in H.dna.species.mutant_bodyparts) || ("waggingtail_ethari" in H.dna.species.mutant_bodyparts))
+	if(("waggingtail_unathi" in H.dna.species.mutant_bodyparts) || ("waggingtail_human" in H.dna.species.mutant_bodyparts) || ("waggingtail_ethari" in H.dna.species.mutant_bodyparts))
 		. = null
 
 /datum/emote/living/carbon/human/wing
@@ -126,10 +152,10 @@
 /mob/living/carbon/human/proc/startTailWag()
 	if(!dna || !dna.species)
 		return
-	if("tail_lizard" in dna.species.mutant_bodyparts)
-		dna.species.mutant_bodyparts -= "tail_lizard"
+	if("tail_unathi" in dna.species.mutant_bodyparts)
+		dna.species.mutant_bodyparts -= "tail_unathi"
 		dna.species.mutant_bodyparts -= "spines"
-		dna.species.mutant_bodyparts |= "waggingtail_lizard"
+		dna.species.mutant_bodyparts |= "waggingtail_unathi"
 		dna.species.mutant_bodyparts |= "waggingspines"
 	if("tail_human" in dna.species.mutant_bodyparts)
 		dna.species.mutant_bodyparts -= "tail_human"
@@ -143,10 +169,10 @@
 /mob/living/carbon/human/proc/endTailWag()
 	if(!dna || !dna.species)
 		return
-	if("waggingtail_lizard" in dna.species.mutant_bodyparts)
-		dna.species.mutant_bodyparts -= "waggingtail_lizard"
+	if("waggingtail_unathi" in dna.species.mutant_bodyparts)
+		dna.species.mutant_bodyparts -= "waggingtail_unathi"
 		dna.species.mutant_bodyparts -= "waggingspines"
-		dna.species.mutant_bodyparts |= "tail_lizard"
+		dna.species.mutant_bodyparts |= "tail_unathi"
 		dna.species.mutant_bodyparts |= "spines"
 	if("waggingtail_human" in dna.species.mutant_bodyparts)
 		dna.species.mutant_bodyparts -= "waggingtail_human"
@@ -174,5 +200,3 @@
 	if(isturf(loc))
 		var/turf/T = loc
 		T.Entered(src)
-
-//Ayy lmao

@@ -100,7 +100,7 @@
 			src.updateUsrDialog()
 			return 1 // Disables the after-attack so we don't spray the floor/user.
 		else
-			to_chat(user, "<span class='warning'>You need more space cleaner!<span>")
+			to_chat(user, "<span class='warning'>You need more space cleaner!</span>")
 			return 1
 
 	else if(istype(O, /obj/item/soap/)) // If they're trying to clean it then let them
@@ -167,6 +167,10 @@
 	user.set_machine(src)
 	interact(user)
 
+/obj/machinery/microwave/AltClick(mob/user)
+	if(user.canUseTopic(src))
+		cook()
+
 /*******************
 *   Microwave Menu
 ********************/
@@ -198,8 +202,8 @@
 			dat += "The microwave is empty.</div>"
 		else
 			dat = "<h3>Ingredients:</h3>[dat]</div>"
-		dat += "<A href='?src=\ref[src];action=cook'>Turn on</A>"
-		dat += "<A href='?src=\ref[src];action=dispose'>Eject ingredients</A><BR>"
+		dat += "<A href='?src=[REF(src)];action=cook'>Turn on</A>"
+		dat += "<A href='?src=[REF(src)];action=dispose'>Eject ingredients</A><BR>"
 
 	var/datum/browser/popup = new(user, "microwave", name, 300, 300)
 	popup.set_content(dat)
@@ -239,7 +243,7 @@
 				metal += O.materials[MAT_METAL]
 
 		if(metal)
-			visible_message("<span class='warning'>Sparks fly around [src]!")
+			visible_message("<span class='warning'>Sparks fly around [src]!</span>")
 			if(prob(max(metal/2, 33)))
 				explosion(loc,0,1,2)
 			broke()

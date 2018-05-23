@@ -30,7 +30,7 @@
 /obj/item/drone_shell/attack_ghost(mob/user)
 	if(jobban_isbanned(user,"drone"))
 		return
-	if(config.use_age_restriction_for_jobs)
+	if(CONFIG_GET(flag/use_age_restriction_for_jobs))
 		if(!isnum(user.client.player_age)) //apparently what happens when there's no DB connected. just don't let anybody be a drone without admin intervention
 			return
 		if(user.client.player_age < DRONE_MINIMUM_AGE)
@@ -63,7 +63,7 @@
 	if(isliving(loc))
 		var/mob/living/L = loc
 		to_chat(L, "<span class='warning'>[drone] is trying to escape!</span>")
-		if(!do_after(drone, 50, target = L))
+		if(!do_after(drone, 30, target = L))
 			return
 		L.dropItemToGround(src)
 

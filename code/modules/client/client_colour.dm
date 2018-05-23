@@ -106,3 +106,8 @@
 
 /datum/client_colour/glass_colour/gray
 	colour = "#cccccc"
+
+/datum/client_colour/r_g_colorblind
+	colour = list(	0.5,0.4,0.1,\
+					0.5,0.4,0.1,\
+					0.0,0.2,0.8)

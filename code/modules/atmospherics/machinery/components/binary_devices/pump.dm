@@ -26,6 +26,9 @@ Thus, the two variables affect pump operation are set in New():
 	var/id = null
 	var/datum/radio_frequency/radio_connection
 
+	construction_type = /obj/item/pipe/directional
+	pipe_state = "pump"
+
 /obj/machinery/atmospherics/components/binary/pump/on
 	on = TRUE
 
@@ -37,10 +40,10 @@ Thus, the two variables affect pump operation are set in New():
 
 /obj/machinery/atmospherics/components/binary/pump/update_icon_nopipes()
 	if(stat & NOPOWER)
-		icon_state = "pump_off"
+		icon_state = "pump_off[piping_layer]"
 		return
 
-	icon_state = "pump_[on?"on":"off"]"
+	icon_state = "pump_[on?"on":"off"][piping_layer]"
 
 /obj/machinery/atmospherics/components/binary/pump/process_atmos()
 //	..()
@@ -178,4 +181,3 @@ Thus, the two variables affect pump operation are set in New():
 			to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first!</span>")
 		else
 			return 1
-

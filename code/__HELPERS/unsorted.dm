@@ -236,7 +236,7 @@ Turf and target are separate in case you want to teleport some distance from a t
 			continue
 		if(R.stat == DEAD)
 			continue
-		if(R.emagged || R.scrambledcodes || R.syndicate)
+		if(R.emagged || R.scrambledcodes)
 			continue
 		. += R
 
@@ -356,6 +356,17 @@ Turf and target are separate in case you want to teleport some distance from a t
 /proc/convert2mass(E)
 	var/M = E/(SPEED_OF_LIGHT_SQ)
 	return M
+
+//Takes the value of energy used/produced/ect.
+//Returns a text value of that number in W, kW, MW, or GW.
+/proc/DisplayPower(var/powerused)
+	if(powerused < 1000) //Less than a kW
+		return "[powerused] W"
+	else if(powerused < 1000000) //Less than a MW
+		return "[round((powerused * 0.001),0.01)] kW"
+	else if(powerused < 1000000000) //Less than a GW
+		return "[round((powerused * 0.000001),0.001)] MW"
+	return "[round((powerused * 0.000000001),0.0001)] GW"
 
 /proc/key_name(whom, include_link = null, include_name = 1)
 	var/mob/M
@@ -491,27 +502,16 @@ Turf and target are separate in case you want to teleport some distance from a t
 	var/y=arcsin(x/sqrt(1+x*x))
 	return y
 
-/atom/proc/GetAllContents(list/ignore_typecache)
+/atom/proc/GetAllContents()
 	var/list/processing_list = list(src)
 	var/list/assembled = list()
-	if(ignore_typecache)		//If there's a typecache, use it.
-		while(processing_list.len)
-			var/atom/A = processing_list[1]
-			processing_list -= A
-			if(ignore_typecache[A.type])
-				continue
-			processing_list |= (A.contents - assembled)
-			assembled |= A
-
-	else		//If there's none, only make this check once for performance.
-		while(processing_list.len)
-			var/atom/A = processing_list[1]
-			processing_list -= A
-
-			processing_list |= (A.contents - assembled)
-
-			assembled |= A
-
+	while(processing_list.len)
+		var/atom/A = processing_list[1]
+		processing_list.Cut(1, 2)
+		//Byond does not allow things to be in multiple contents, or double parent-child hierarchies, so only += is needed
+		//This is also why we don't need to check against assembled as we go along
+		processing_list += A.contents
+		assembled += A
 	return assembled
 
 //Step-towards method of determining whether one atom can see another. Similar to viewers()
@@ -1226,6 +1226,9 @@ proc/pick_closest_path(value, list/matches = get_fancy_list_of_atom_types())
 /proc/stack_trace(msg)
 	CRASH(msg)
 
+/datum/proc/stack_trace(msg)
+	CRASH(msg)
+
 //Key thing that stops lag. Cornerstone of performance in ss13, Just sitting here, in unsorted.dm.
 
 //Increases delay as the server gets more overloaded,
@@ -1271,7 +1274,7 @@ proc/pick_closest_path(value, list/matches = get_fancy_list_of_atom_types())
 #define QDEL_LIST(L) if(L) { for(var/I in L) qdel(I); L.Cut(); }
 #define QDEL_LIST_IN(L, time) addtimer(CALLBACK(GLOBAL_PROC, .proc/______qdel_list_wrapper, L), time, TIMER_STOPPABLE)
 #define QDEL_LIST_ASSOC(L) if(L) { for(var/I in L) { qdel(L[I]); qdel(I); } L.Cut(); }
-#define QDEL_LIST_ASSOC_VAL(L) if(L) { for(var/I in L) qel(L[I]); L.Cut(); }
+#define QDEL_LIST_ASSOC_VAL(L) if(L) { for(var/I in L) qdel(L[I]); L.Cut(); }
 
 /proc/______qdel_list_wrapper(list/L) //the underscores are to encourage people not to use this directly.
 	QDEL_LIST(L)
@@ -1454,3 +1457,33 @@ GLOBAL_PROTECT(valid_HTTPSGet)
 	var/temp = bitfield - ((bitfield>>1)&46811) - ((bitfield>>2)&37449) //0133333 and 0111111 respectively
 	temp = ((temp + (temp>>3))&29127) % 63	//070707
 	return temp
+
+/proc/get_mob_in_atom_with_warning(atom/A, mob/user = usr)
+	if(!istype(A))
+		return null
+	if(ismob(A))
+		return A
+
+	. = null
+	for(var/mob/M in A)
+		if(!.)
+			. = M
+		else
+			to_chat(user, "<span class='warning'>Multiple mobs in [A], using first mob found...</span>")
+			break
+	if(!.)
+		to_chat(user, "<span class='warning'>No mob located in [A].</span>")
+
+// \ref behaviour got changed in 512 so this is necesary to replicate old behaviour.
+// If it ever becomes necesary to get a more performant REF(), this lies here in wait
+// #define REF(thing) (thing && istype(thing, /datum) && thing:use_tag && thing:tag ? "[thing:tag]" : "\ref[thing]")
+/proc/REF(input)
+	if(istype(input, /datum))
+		var/datum/thing = input
+		if(thing.use_tag)
+			if(!thing.tag)
+				WARNING("A ref was requested of an object with use_tag set but no tag: [thing]")
+				thing.use_tag = FALSE
+			else
+				return "\[[url_encode(thing.tag)]\]"
+	return "\ref[input]"

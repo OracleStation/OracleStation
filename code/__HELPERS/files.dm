@@ -11,6 +11,8 @@
 		if(path != root)
 			choices.Insert(1,"/")
 
+		sortInsert(choices, /proc/cmp_text_asc, 0)
+
 		var/choice = input(src,"Choose a file to access:","Download",null) as null|anything in choices
 		switch(choice)
 			if(null)
@@ -43,7 +45,7 @@
 /client/proc/file_spam_check()
 	var/time_to_wait = GLOB.fileaccess_timer - world.time
 	if(time_to_wait > 0)
-		to_chat(src, "<font color='red'>Error: file_spam_check(): Spam. Please wait [round(time_to_wait/10)] seconds.</font>")
+		to_chat(src, "<font color='red'>Error: file_spam_check(): Spam. Please wait [DisplayTimeText(time_to_wait)].</font>")
 		return 1
 	GLOB.fileaccess_timer = world.time + FTPDELAY
 	return 0

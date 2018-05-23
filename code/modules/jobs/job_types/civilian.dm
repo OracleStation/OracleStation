@@ -11,6 +11,8 @@ Clown
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
+	special_notice = "There is a difference between harmless pranks and griefing. Know it."
+	wiki_page = "Clown"
 
 	outfit = /datum/outfit/job/clown
 
@@ -23,7 +25,7 @@ Clown
 /datum/outfit/job/clown
 	name = "Clown"
 	jobtype = /datum/job/clown
-
+	id = /obj/item/card/id/job/clown
 	pda_slot = /obj/item/device/pda/clown
 	uniform = /obj/item/clothing/under/rank/clown
 	shoes = /obj/item/clothing/shoes/clown_shoes
@@ -33,7 +35,6 @@ Clown
 		/obj/item/stamp/clown = 1,
 		/obj/item/reagent_containers/spray/waterflower = 1,
 		/obj/item/reagent_containers/food/snacks/grown/banana = 1,
-		/obj/item/device/instrument/bikehorn = 1,
 		)
 
 	implants = list(/obj/item/implant/sad_trombone)
@@ -58,7 +59,7 @@ Clown
 		return
 
 	H.dna.add_mutation(CLOWNMUT)
-
+	H.dna.add_mutation(WACKY)
 /*
 Mime
 */
@@ -72,6 +73,8 @@ Mime
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
+	special_notice = "There is a difference between harmless pranks and griefing. Know it."
+	wiki_page = "Mime"
 
 	outfit = /datum/outfit/job/mime
 
@@ -84,7 +87,7 @@ Mime
 /datum/outfit/job/mime
 	name = "Mime"
 	jobtype = /datum/job/mime
-
+	id = /obj/item/card/id/job/mime
 	pda_slot = /obj/item/device/pda/mime
 	uniform = /obj/item/clothing/under/rank/mime
 	mask = /obj/item/clothing/mask/gas/mime
@@ -154,46 +157,40 @@ Curator
 	H.grant_all_languages(omnitongue=TRUE)
 
 /*
-Lawyer
+Internal Affairs Agent
 */
-/datum/job/lawyer
-	title = "Lawyer"
-	flag = LAWYER
-	department_head = list("Head of Personnel")
+/datum/job/iaa
+	title = "Internal Affairs Agent"
+	flag = IAA
+	department_head = list("CentCom")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the head of personnel"
+	supervisors = "central command"
 	selection_color = "#dddddd"
-	var/lawyers = 0 //Counts lawyer amount
+	minimal_player_age = 14
+	exp_requirements = 180 //3 hours
+	exp_type = EXP_TYPE_CREW
+	wiki_page = "Standard_Operating_Procedure"
 
-	outfit = /datum/outfit/job/lawyer
+	outfit = /datum/outfit/job/iaa
+	//Basic access to each department
+	access = list(ACCESS_LAWYER, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_IAA, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_CARGO)
+	minimal_access = list(ACCESS_LAWYER, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_IAA, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_CARGO)
 
-	access = list(ACCESS_LAWYER, ACCESS_COURT, ACCESS_SEC_DOORS)
-	minimal_access = list(ACCESS_LAWYER, ACCESS_COURT, ACCESS_SEC_DOORS)
-
-/datum/outfit/job/lawyer
-	name = "Lawyer"
-	jobtype = /datum/job/lawyer
-
-	pda_slot = /obj/item/device/pda/lawyer
-	ears = /obj/item/device/radio/headset/headset_sec
-	uniform = /obj/item/clothing/under/lawyer/bluesuit
-	suit = /obj/item/clothing/suit/toggle/lawyer
+/datum/outfit/job/iaa
+	name = "Internal Affairs Agent"
+	jobtype = /datum/job/iaa
+	id = /obj/item/card/id/job/sec
+	pda_slot = /obj/item/device/pda/iaa
+	ears = /obj/item/device/radio/headset/iaa
+	uniform = /obj/item/clothing/under/iaa/blacksuit
+	suit = /obj/item/clothing/suit/toggle/iaa/black
+	glasses = /obj/item/clothing/glasses/sunglasses
 	shoes = /obj/item/clothing/shoes/laceup
-	l_hand = /obj/item/storage/briefcase/lawyer
+	l_hand = /obj/item/storage/briefcase
 	l_pocket = /obj/item/device/laser_pointer
-	r_pocket = /obj/item/clothing/accessory/lawyers_badge
+	r_pocket = /obj/item/device/assembly/flash/handheld
 
-
-/datum/outfit/job/lawyer/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	..()
-	if(visualsOnly)
-		return
-
-	var/datum/job/lawyer/J = SSjob.GetJobType(jobtype)
-	J.lawyers++
-	if(J.lawyers>1)
-		uniform = /obj/item/clothing/under/lawyer/purpsuit
-		suit = /obj/item/clothing/suit/toggle/lawyer/purple
+	implants = list(/obj/item/implant/mindshield)

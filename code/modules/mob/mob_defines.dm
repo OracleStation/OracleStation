@@ -28,7 +28,7 @@
 	var/computer_id = null
 	var/lastattacker = null
 	var/lastattacked = null
-	var/list/logging = list(INDIVIDUAL_ATTACK_LOG, INDIVIDUAL_SAY_LOG, INDIVIDUAL_EMOTE_LOG, INDIVIDUAL_OOC_LOG)
+	var/list/logging = list(INDIVIDUAL_ATTACK_LOG, INDIVIDUAL_SAY_LOG, INDIVIDUAL_EMOTE_LOG, INDIVIDUAL_OOC_LOG, INDIVIDUAL_LOOC_LOG)
 	var/obj/machinery/machine = null
 	var/other_mobs = null
 	var/disabilities = 0	//Carbon
@@ -44,7 +44,9 @@
 	var/stuttering = 0		//Carbon
 	var/slurring = 0		//Carbon
 	var/cultslurring = 0	//Carbon
+	var/derpspeech = 0      //Carbon
 	var/real_name = null
+	var/spacewalk = FALSE
 	var/druggy = 0			//Carbon
 	var/confused = 0		//Carbon
 	var/resting = 0			//Carbon
@@ -72,6 +74,8 @@
 	var/m_intent = MOVE_INTENT_RUN//Living
 	var/lastKnownIP = null
 	var/atom/movable/buckled = null//Living
+
+	var/emote_cooldown = 0
 
 	//Hands
 	var/active_hand_index = 1
@@ -143,3 +147,14 @@
 	var/list/can_ride_typecache = list()
 
 	var/list/mousemove_intercept_objects
+
+	var/datum/click_intercept
+
+	var/ventcrawl_layer = PIPING_LAYER_DEFAULT
+
+	var/adminfrozen = 0 //handle for someone's sleeping time from before they got frozen
+	var/obj/effect/overlay/adminfrozen/adminfreezeoverlay = null
+
+	var/player_logged = FALSE //keep track at login and logout; used for SSD
+
+	var/last_pointed = 0 //for pointing cooldown

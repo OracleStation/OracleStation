@@ -42,11 +42,11 @@
 
 	dat += "<hr/><br/><b>[storage_name]</b><br/>"
 	dat += "<i>Welcome, [user.real_name].</i><br/><br/><hr/>"
-	dat += "<a href='?src=\ref[src];log=1'>View storage log</a>.<br>"
+	dat += "<a href='?src=[REF(src)];log=1'>View storage log</a>.<br>"
 	if(allow_items)
-		dat += "<a href='?src=\ref[src];view=1'>View objects</a>.<br>"
-		dat += "<a href='?src=\ref[src];item=1'>Recover object</a>.<br>"
-		dat += "<a href='?src=\ref[src];allitems=1'>Recover all objects</a>.<br>"
+		dat += "<a href='?src=[REF(src)];view=1'>View objects</a>.<br>"
+		dat += "<a href='?src=[REF(src)];item=1'>Recover object</a>.<br>"
+		dat += "<a href='?src=[REF(src)];allitems=1'>Recover all objects</a>.<br>"
 
 	user << browse(dat, "window=cryopod_console")
 	onclose(user, "cryopod_console")
@@ -134,7 +134,6 @@
 	density = TRUE
 	anchored = TRUE
 	state_open = TRUE
-	unsecuring_tool = null
 
 	var/on_store_message = "has entered long-term storage."
 	var/on_store_name = "Cryogenic Oversight"
@@ -244,11 +243,11 @@
 	var/mob/living/mob_occupant = occupant
 
 	if(istype(SSticker.mode, /datum/game_mode/cult))//thank
-		if("sacrifice" in SSticker.mode.cult_objectives)
+		if(("sacrifice" in SSticker.mode.cult_objectives) && (GLOB.sac_mind == mob_occupant.mind))
 			var/list/possible_targets = list()
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
 				if(H.mind && !is_convertable_to_cult(H) && !iscultist(H))
-					possible_targets += H
+					possible_targets += H.mind
 
 			possible_targets -= mob_occupant.mind
 			if(!possible_targets.len)
@@ -270,7 +269,6 @@
 					reshape.Crop(7,4,26,31)
 					reshape.Crop(-5,-3,26,30)
 					GLOB.sac_image = reshape
-
 					for(var/datum/mind/H in SSticker.mode.cult)
 						if(H.current)
 							to_chat(H.current, "<span class='danger'>Nar'Sie</span> murmurs, <span class='cultlarge'>[occupant] is beyond your reach. Sacrifice [GLOB.sac_mind.current] instead...</span></span>")
@@ -434,7 +432,7 @@
 	to_chat(target, "<span class='boldnotice'>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</span>")
 	name = "[name] ([occupant.name])"
 	log_admin("<span class='notice'>[key_name(target)] entered a stasis pod.</span>")
-	message_admins("[key_name_admin(target)] entered a stasis pod. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+	message_admins("[key_name_admin(target)] entered a stasis pod. (<A HREF='?_src_=holder;[HrefToken()];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
 	add_fingerprint(target)
 
 //Attacks/effects.

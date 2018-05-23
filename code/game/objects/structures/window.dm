@@ -105,6 +105,7 @@
 	qdel(src)
 
 /obj/structure/window/singularity_pull(S, current_size)
+	..()
 	if(current_size >= STAGE_FIVE)
 		deconstruct(FALSE)
 
@@ -207,6 +208,7 @@
 				to_chat(user, "<span class='notice'>You begin to [anchored ? "unscrew the window from":"screw the window to"] the floor...</span>")
 				if(do_after(user, decon_speed*I.toolspeed, target = src, extra_checks = CALLBACK(src, .proc/check_anchored, anchored)))
 					anchored = !anchored
+					air_update_turf(TRUE)
 					update_nearby_icons()
 					to_chat(user, "<span class='notice'>You [anchored ? "fasten the window to":"unfasten the window from"] the floor.</span>")
 			return
@@ -305,7 +307,6 @@
 		return FALSE
 
 	setDir(target_dir)
-	air_update_turf(1)
 	ini_dir = dir
 	add_fingerprint(usr)
 	return TRUE
@@ -329,7 +330,6 @@
 		return FALSE
 
 	setDir(target_dir)
-	air_update_turf(1)
 	ini_dir = dir
 	add_fingerprint(usr)
 	return TRUE
@@ -358,11 +358,9 @@
 	move_update_air(T)
 
 /obj/structure/window/CanAtmosPass(turf/T)
-	if(get_dir(loc, T) == dir)
-		return !density
-	if(dir == FULLTILE_WINDOW_DIR)
-		return !density
-	return 1
+	if(!anchored || !density)
+		return TRUE
+	return !(FULLTILE_WINDOW_DIR == dir || dir == get_dir(loc, T))
 
 //This proc is used to update the icons of nearby windows.
 /obj/structure/window/proc/update_nearby_icons()
@@ -587,10 +585,10 @@
 	flags_1 = PREVENT_CLICK_UNDER_1
 	reinf = TRUE
 	heat_resistance = 1600
-	armor = list("melee" = 50, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 25, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 100)
+	armor = list("melee" = 50, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 50, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 100)
 	smooth = SMOOTH_TRUE
 	canSmoothWith = null
-	explosion_block = 1
+	explosion_block = 3
 	level = 3
 	glass_type = /obj/item/stack/sheet/rglass
 	glass_amount = 2
@@ -600,6 +598,26 @@
 
 /obj/structure/window/shuttle/tinted
 	opacity = TRUE
+
+/obj/structure/window/plastitanium
+	name = "plastitanium window"
+	desc = "An evil looking window of plasma and titanium."
+	icon = 'icons/obj/smooth_structures/plastitanium_window.dmi'
+	icon_state = "plastitanium_window"
+	dir = FULLTILE_WINDOW_DIR
+	max_integrity = 100
+	wtype = "shuttle"
+	fulltile = TRUE
+	flags_1 = PREVENT_CLICK_UNDER_1
+	reinf = TRUE
+	heat_resistance = 1600
+	armor = list("melee" = 50, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 50, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 100)
+	smooth = SMOOTH_TRUE
+	canSmoothWith = null
+	explosion_block = 3
+	level = 3
+	glass_type = /obj/item/stack/sheet/rglass
+	glass_amount = 2
 
 /obj/structure/window/reinforced/clockwork
 	name = "brass window"

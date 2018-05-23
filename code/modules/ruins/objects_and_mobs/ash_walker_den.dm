@@ -11,6 +11,7 @@
 	maxHealth = 200
 	loot = list(/obj/effect/collapse)
 	var/meat_counter = 6
+	anchored = TRUE //stops it being moved
 
 /mob/living/simple_animal/hostile/spawner/lavaland/ash_walker/death()
 	new /obj/item/device/assembly/signaler/anomaly (get_step(loc, pick(GLOB.alldirs)))
@@ -25,6 +26,9 @@
 		if(H.stat)
 			visible_message("<span class='warning'>Serrated tendrils eagerly pull [H] to [src], tearing the body apart as its blood seeps over the eggs.</span>")
 			playsound(get_turf(src),'sound/magic/demon_consume.ogg', 100, 1)
+			for(var/obj/item/W in H)
+				if(!H.dropItemToGround(W))
+					qdel(W)
 			if(ismegafauna(H))
 				meat_counter += 20
 			else

@@ -97,8 +97,12 @@
 
 /mob/living/carbon/update_damage_overlays()
 	remove_overlay(DAMAGE_LAYER)
+	var/dam_colors = "#E62525"
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
+		dam_colors = bloodtype_to_color(H.dna.blood_type)
 
-	var/mutable_appearance/damage_overlay = mutable_appearance('icons/mob/dam_mob.dmi', "blank", -DAMAGE_LAYER)
+	var/mutable_appearance/damage_overlay = mutable_appearance('icons/mob/dam_mob.dmi', "blank", -DAMAGE_LAYER, color = dam_colors)
 	overlays_standing[DAMAGE_LAYER] = damage_overlay
 
 	for(var/X in bodyparts)
@@ -124,7 +128,15 @@
 
 	if(wear_mask)
 		if(!(head && (head.flags_inv & HIDEMASK)))
-			overlays_standing[FACEMASK_LAYER] = wear_mask.build_worn_icon(state = wear_mask.icon_state, default_layer = FACEMASK_LAYER, default_icon_file = 'icons/mob/mask.dmi')
+			var/image/standing
+
+			if(wear_mask.icon_override)
+				standing = wear_mask.build_worn_icon(state = wear_mask.icon_state, default_layer = FACEMASK_LAYER, default_icon_file = wear_mask.icon_override)
+			else if(wear_mask.sprite_sheets && wear_mask.sprite_sheets[dna.species.name])
+				standing = wear_mask.build_worn_icon(state = wear_mask.icon_state, default_layer = FACEMASK_LAYER, default_icon_file = wear_mask.sprite_sheets[dna.species.name])
+			else
+				standing = wear_mask.build_worn_icon(state = wear_mask.icon_state, default_layer = FACEMASK_LAYER, default_icon_file = 'icons/mob/mask.dmi')
+			overlays_standing[FACEMASK_LAYER] = standing
 		update_hud_wear_mask(wear_mask)
 
 	apply_overlay(FACEMASK_LAYER)
@@ -138,7 +150,15 @@
 
 	if(wear_neck)
 		if(!(head && (head.flags_inv & HIDENECK)))
-			overlays_standing[NECK_LAYER] = wear_neck.build_worn_icon(state = wear_neck.icon_state, default_layer = NECK_LAYER, default_icon_file = 'icons/mob/neck.dmi')
+			var/image/standing
+
+			if(wear_neck.icon_override)
+				standing = wear_neck.build_worn_icon(state = wear_neck.icon_state, default_layer = NECK_LAYER, default_icon_file = wear_neck.icon_override)
+			else if(wear_neck.sprite_sheets && wear_neck.sprite_sheets[dna.species.name])
+				standing = wear_neck.build_worn_icon(state = wear_neck.icon_state, default_layer = NECK_LAYER, default_icon_file = wear_neck.sprite_sheets[dna.species.name])
+			else
+				standing = wear_neck.build_worn_icon(state = wear_neck.icon_state, default_layer = NECK_LAYER, default_icon_file = 'icons/mob/neck.dmi')
+			overlays_standing[NECK_LAYER] = standing
 		update_hud_neck(wear_neck)
 
 	apply_overlay(NECK_LAYER)
@@ -151,7 +171,15 @@
 		inv.update_icon()
 
 	if(back)
-		overlays_standing[BACK_LAYER] = back.build_worn_icon(state = back.icon_state, default_layer = BACK_LAYER, default_icon_file = 'icons/mob/back.dmi')
+		var/image/standing
+
+		if(back.icon_override)
+			standing = back.build_worn_icon(state = back.icon_state, default_layer = BACK_LAYER, default_icon_file = back.icon_override)
+		else if(back.sprite_sheets && back.sprite_sheets[dna.species.name])
+			standing = back.build_worn_icon(state = back.icon_state, default_layer = BACK_LAYER, default_icon_file = back.sprite_sheets[dna.species.name])
+		else
+			standing = back.build_worn_icon(state = back.icon_state, default_layer = BACK_LAYER, default_icon_file = 'icons/mob/back.dmi')
+		overlays_standing[BACK_LAYER] = standing
 		update_hud_back(back)
 	apply_overlay(BACK_LAYER)
 
@@ -166,7 +194,15 @@
 		inv.update_icon()
 
 	if(head)
-		overlays_standing[HEAD_LAYER] = head.build_worn_icon(state = head.icon_state, default_layer = HEAD_LAYER, default_icon_file = 'icons/mob/head.dmi')
+		var/image/standing
+
+		if(head.icon_override)
+			standing = head.build_worn_icon(state = head.icon_state, default_layer = HEAD_LAYER, default_icon_file = head.icon_override)
+		else if(head.sprite_sheets && head.sprite_sheets[dna.species.name])
+			standing = head.build_worn_icon(state = head.icon_state, default_layer = HEAD_LAYER, default_icon_file = head.sprite_sheets[dna.species.name])
+		else
+			standing = head.build_worn_icon(state = head.icon_state, default_layer = HEAD_LAYER, default_icon_file = 'icons/mob/head.dmi')
+		overlays_standing[HEAD_LAYER] = standing
 		update_hud_head(head)
 
 	apply_overlay(HEAD_LAYER)

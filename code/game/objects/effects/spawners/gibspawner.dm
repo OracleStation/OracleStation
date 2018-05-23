@@ -37,6 +37,7 @@
 				if(isturf(loc))
 					if(directions.len)
 						gib.streak(directions)
+				gib.update_icon()
 
 	qdel(src)
 

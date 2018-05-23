@@ -1,7 +1,7 @@
 /obj/structure/closet
 	name = "closet"
 	desc = "It's a basic storage unit."
-	icon = 'icons/obj/closet.dmi'
+	icon = 'goon/icons/obj/closet.dmi'
 	icon_state = "generic"
 	density = TRUE
 	var/icon_door = null
@@ -76,8 +76,12 @@
 
 /obj/structure/closet/examine(mob/user)
 	..()
+	if(welded)
+		to_chat(user, "<span class='notice'>It's welded shut.</span>")
 	if(anchored)
-		to_chat(user, "It is anchored to the ground.")
+		to_chat(user, "<span class='notice'>It is <b>bolted</b> to the ground.</span>")
+	if(opened)
+		to_chat(user, "<span class='notice'>The parts are <b>welded</b> together.</span>")
 	else if(secure && !opened)
 		to_chat(user, "<span class='notice'>Alt-click to [locked ? "unlock" : "lock"].</span>")
 
@@ -388,7 +392,7 @@
 
 /obj/structure/closet/AltClick(mob/user)
 	..()
-	if(!user.canUseTopic(src, be_close=TRUE))
+	if(!user.canUseTopic(src, be_close=TRUE) || !isturf(loc))
 		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
 		return
 	if(opened || !secure)

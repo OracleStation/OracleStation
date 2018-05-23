@@ -29,8 +29,17 @@
 /obj/effect/decal/cleanable/dirt
 	name = "dirt"
 	desc = "Someone should clean that up."
+	icon = 'icons/effects/dirt.dmi'
 	icon_state = "dirt"
+	canSmoothWith = list(/obj/effect/decal/cleanable/dirt,
+	/turf/closed/wall,
+	/obj/structure/falsewall)
+	smooth = SMOOTH_MORE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/effect/decal/cleanable/dirt/Initialize()
+	..()
+	icon_state = ""
 
 /obj/effect/decal/cleanable/flour
 	name = "flour"
@@ -95,7 +104,7 @@
 							H.nutrition += nutri_check.nutriment_factor * nutri_check.volume
 							reagents.remove_reagent(nutri_check.id,nutri_check.volume)
 			reagents.trans_to(H, reagents.total_volume)
-			qdel(src)
+			destroy_effect()
 
 /obj/effect/decal/cleanable/vomit/old
 	name = "crusty dried vomit"
@@ -148,7 +157,7 @@
 
 /obj/effect/decal/cleanable/shreds/ex_act(severity, target)
 	if(severity == 1) //so shreds created during an explosion aren't deleted by the explosion.
-		qdel(src)
+		destroy_effect()
 
 /obj/effect/decal/cleanable/shreds/Initialize()
 	pixel_x = rand(-10, 10)

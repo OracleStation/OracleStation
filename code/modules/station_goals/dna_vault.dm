@@ -90,10 +90,10 @@
 			to_chat(user, "<span class='warning'>Plant needs to be ready to harvest to perform full data scan.</span>") //Because space dna is actually magic
 			return
 		if(plants[H.myseed.type])
-			to_chat(user, "<span class='notice'>Plant data already present in local storage.<span>")
+			to_chat(user, "<span class='notice'>Plant data already present in local storage.</span>")
 			return
 		plants[H.myseed.type] = 1
-		to_chat(user, "<span class='notice'>Plant data added to local storage.<span>")
+		to_chat(user, "<span class='notice'>Plant data added to local storage.</span>")
 
 	//animals
 	var/static/list/non_simple_animals = typecacheof(list(/mob/living/carbon/monkey, /mob/living/carbon/alien))
@@ -101,22 +101,22 @@
 		if(isanimal(target))
 			var/mob/living/simple_animal/A = target
 			if(!A.healable)//simple approximation of being animal not a robot or similar
-				to_chat(user, "<span class='warning'>No compatible DNA detected</span>")
+				to_chat(user, "<span class='warning'>No compatible DNA detected.</span>")
 				return
 		if(animals[target.type])
-			to_chat(user, "<span class='notice'>Animal data already present in local storage.<span>")
+			to_chat(user, "<span class='notice'>Animal data already present in local storage.</span>")
 			return
 		animals[target.type] = 1
-		to_chat(user, "<span class='notice'>Animal data added to local storage.<span>")
+		to_chat(user, "<span class='notice'>Animal data added to local storage.</span>")
 
 	//humans
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		if(dna[H.dna.uni_identity])
-			to_chat(user, "<span class='notice'>Humanoid data already present in local storage.<span>")
+			to_chat(user, "<span class='notice'>Humanoid data already present in local storage.</span>")
 			return
 		dna[H.dna.uni_identity] = 1
-		to_chat(user, "<span class='notice'>Humanoid data added to local storage.<span>")
+		to_chat(user, "<span class='notice'>Humanoid data added to local storage.</span>")
 
 /obj/machinery/dna_vault
 	name = "DNA Vault"
@@ -253,7 +253,7 @@
 		if(VAULT_TOXIN)
 			to_chat(H, "<span class='notice'>You feel resistant to airborne toxins.</span>")
 			if(locate(/obj/item/organ/lungs) in H.internal_organs)
-				var/obj/item/organ/lungs/L = H.internal_organs_slot["lungs"]
+				var/obj/item/organ/lungs/L = H.internal_organs_slot[ORGAN_SLOT_LUNGS]
 				L.tox_breath_dam_min = 0
 				L.tox_breath_dam_max = 0
 			S.species_traits |= VIRUSIMMUNE

@@ -1,10 +1,10 @@
 /datum/round_event_control/carp_migration
 	name = "Carp Migration"
 	typepath = /datum/round_event/carp_migration
-	weight = 15
-	min_players = 2
+	weight = 20
+	min_players = 8
 	earliest_start = 6000
-	max_occurrences = 6
+	max_occurrences = 5
 
 /datum/round_event/carp_migration
 	announceWhen	= 3
@@ -24,5 +24,3 @@
 				new /mob/living/simple_animal/hostile/carp(C.loc)
 			else
 				new /mob/living/simple_animal/hostile/carp/megacarp(C.loc)
-
-

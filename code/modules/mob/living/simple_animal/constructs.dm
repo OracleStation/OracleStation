@@ -10,6 +10,7 @@
 	speak_chance = 1
 	icon = 'icons/mob/mob.dmi'
 	speed = 0
+	spacewalk = TRUE
 	a_intent = INTENT_HARM
 	stop_automated_movement = 1
 	status_flags = CANPUSH
@@ -85,9 +86,6 @@
 	else if(src != M)
 		return ..()
 
-/mob/living/simple_animal/hostile/construct/Process_Spacemove(movement_dir = 0)
-	return 1
-
 /mob/living/simple_animal/hostile/construct/narsie_act()
 	return
 
@@ -145,10 +143,13 @@
 				// redirect the projectile
 				P.original = locate(new_x, new_y, P.z)
 				P.starting = curloc
-				P.current = curloc
 				P.firer = src
 				P.yo = new_y - curloc.y
 				P.xo = new_x - curloc.x
+				var/new_angle_s = P.Angle + rand(120,240)
+				while(new_angle_s > 180)	// Translate to regular projectile degrees
+					new_angle_s -= 360
+				P.setAngle(new_angle_s)
 
 			return -1 // complete projectile permutation
 
@@ -430,4 +431,3 @@
 			hud_used.healths.icon_state = "[icon_state]_health5"
 		else
 			hud_used.healths.icon_state = "[icon_state]_health6"
-

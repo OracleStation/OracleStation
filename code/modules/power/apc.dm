@@ -55,7 +55,7 @@
 	var/areastring = null
 	var/obj/item/stock_parts/cell/cell
 	var/start_charge = 90				// initial cell charge %
-	var/cell_type = 2500				// 0=no cell, 1=regular, 2=high-cap (x5) <- old, now it's just 0=no cell, otherwise dictate cellcapacity by changing this value. 1 used to be 1000, 2 was 2500
+	var/cell_type = /obj/item/stock_parts/cell/upgraded		//Base cell has 2500 capacity. Enter the path of a different cell you want to use. cell determines charge rates, max capacity, ect. These can also be changed with other APC vars, but isn't recommended to minimize the risk of accidental usage of dirty editted APCs
 	var/opened = 0 //0=closed, 1=opened, 2=cover removed
 	var/shorted = 0
 	var/lighting = 3
@@ -84,13 +84,24 @@
 	var/beenhit = 0 // used for counting how many times it has been hit, used for Aliens at the moment
 	var/mob/living/silicon/ai/occupier = null
 	var/transfer_in_progress = FALSE //Is there an AI being transferred out of us?
+	var/obj/item/clockwork/integration_cog/integration_cog //Is there a cog siphoning power?
 	var/longtermpower = 10
 	var/auto_name = 0
 	var/failure_timer = 0
 	var/force_update = 0
+	var/emergency_lights = FALSE
 	var/update_state = -1
 	var/update_overlay = -1
 	var/icon_update_needed = FALSE
+
+/obj/machinery/power/apc/highcap/five_k
+	cell_type = /obj/item/stock_parts/cell/upgraded/plus
+
+/obj/machinery/power/apc/highcap/ten_k
+	cell_type = /obj/item/stock_parts/cell/high
+
+/obj/machinery/power/apc/highcap/fifteen_k
+	cell_type = /obj/item/stock_parts/cell/high/plus
 
 /obj/machinery/power/apc/get_cell()
 	return cell
@@ -170,8 +181,7 @@
 	has_electronics = 2 //installed and secured
 	// is starting with a power cell installed, create it and set its charge level
 	if(cell_type)
-		src.cell = new/obj/item/stock_parts/cell(src)
-		cell.maxcharge = cell_type	// cell_type is maximum charge (old default was 1000 or 2500 (values one and two respectively)
+		cell = new cell_type
 		cell.charge = start_charge * cell.maxcharge / 100 		// (convert percentage to actual value)
 
 	var/area/A = src.loc.loc
@@ -200,6 +210,8 @@
 		else
 			to_chat(user, "It's [ !terminal ? "not" : "" ] wired up.")
 			to_chat(user, "The electronics are[!has_electronics?"n't":""] installed.")
+		if(user.Adjacent(src) && integration_cog)
+			to_chat(user, "<span class='warning'>[src]'s innards have been replaced by strange brass machinery!</span>")
 
 	else
 		if (stat & MAINT)
@@ -209,6 +221,8 @@
 		else
 			to_chat(user, "The cover is closed.")
 
+	if(integration_cog && is_servant_of_ratvar(user))
+		to_chat(user, "<span class='brass'>There is an integration cog installed!</span>")
 
 // update the APC icon to show the three base states
 // also add overlays for indicator lights
@@ -393,6 +407,17 @@
 								"<span class='notice'>You remove the power control board.</span>")
 							new /obj/item/electronics/apc(loc)
 							return
+			else if(integration_cog)
+				user.visible_message("<span class='notice'>[user] starts prying [integration_cog] from [src]...</span>", \
+				"<span class='notice'>You painstakingly start tearing [integration_cog] out of [src]'s guts...</span>")
+				playsound(src, W.usesound, 50, TRUE)
+				if(!do_after(user, 100 * W.toolspeed, target = src))
+					return
+				user.visible_message("<span class='notice'>[user] destroys [integration_cog] in [src]!</span>", \
+				"<span class='notice'>[integration_cog] comes free with a clank and snaps in two as the machinery returns to normal!</span>")
+				playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
+				QDEL_NULL(integration_cog)
+				return
 			else if (opened!=2) //cover isn't removed
 				opened = 0
 				coverlocked = TRUE //closing cover relocks it
@@ -581,6 +606,35 @@
 			if (opened==2)
 				opened = 1
 			update_icon()
+	else if(istype(W, /obj/item/clockwork/integration_cog) && is_servant_of_ratvar(user))
+		if(integration_cog)
+			to_chat(user, "<span class='warning'>This APC already has a cog.</span>")
+			return
+		if(!opened)
+			user.visible_message("<span class='warning'>[user] slices [src]'s cover lock, and it swings wide open!</span>", \
+			"<span class='alloy'>You slice [src]'s cover lock apart with [W], and the cover swings open.</span>")
+			opened = TRUE
+			update_icon()
+		else
+			user.visible_message("<span class='warning'>[user] presses [W] into [src]!</span>", \
+			"<span class='alloy'>You hold [W] in place within [src], and it slowly begins to warm up...</span>")
+			playsound(src, 'sound/machines/click.ogg', 50, TRUE)
+			if(!do_after(user, 70, target = src))
+				return
+			user.visible_message("<span class='warning'>[user] installs [W] in [src]!</span>", \
+			"<span class='alloy'>Replicant alloy rapidly covers the APC's innards, replacing the machinery.</span><br>\
+			<span class='brass'>This APC will now passively provide power for the cult!</span>")
+			playsound(user, 'sound/machines/clockcult/integration_cog_install.ogg', 50, TRUE)
+			user.transferItemToLoc(W, src)
+			integration_cog = W
+			START_PROCESSING(SSfastprocess, W)
+			playsound(src, 'sound/machines/clockcult/steam_whoosh.ogg', 50, FALSE)
+			opened = FALSE
+			locked = FALSE
+			update_icon()
+		return
+	else if(istype(W, /obj/item/apc_powercord))
+		return //because we put our fancy code in the right places, and this is all in the powercord's afterattack()
 	else if(panel_open && !opened && is_wire_tool(W))
 		wires.interact(user)
 	else
@@ -651,22 +705,23 @@
 
 /obj/machinery/power/apc/ui_data(mob/user)
 	var/list/data = list(
-		"locked" = locked,
+		"locked" = locked && !(integration_cog && is_servant_of_ratvar(user)),
 		"failTime" = failure_timer,
 		"isOperating" = operating,
 		"externalPower" = main_status,
 		"powerCellStatus" = cell ? cell.percent() : null,
 		"chargeMode" = chargemode,
 		"chargingStatus" = charging,
-		"totalLoad" = lastused_total,
+		"totalLoad" = DisplayPower(lastused_total),
 		"coverLocked" = coverlocked,
 		"siliconUser" = user.has_unlimited_silicon_privilege || user.using_power_flow_console(),
 		"malfStatus" = get_malf_status(user),
+		"emergencyLights" = !emergency_lights,
 
 		"powerChannels" = list(
 			list(
 				"title" = "Equipment",
-				"powerLoad" = lastused_equip,
+				"powerLoad" = DisplayPower(lastused_equip),
 				"status" = equipment,
 				"topicParams" = list(
 					"auto" = list("eqp" = 3),
@@ -676,7 +731,7 @@
 			),
 			list(
 				"title" = "Lighting",
-				"powerLoad" = lastused_light,
+				"powerLoad" = DisplayPower(lastused_light),
 				"status" = lighting,
 				"topicParams" = list(
 					"auto" = list("lgt" = 3),
@@ -686,7 +741,7 @@
 			),
 			list(
 				"title" = "Environment",
-				"powerLoad" = lastused_environ,
+				"powerLoad" = DisplayPower(lastused_environ),
 				"status" = environ,
 				"topicParams" = list(
 					"auto" = list("env" = 3),
@@ -747,7 +802,7 @@
 	return TRUE
 
 /obj/machinery/power/apc/ui_act(action, params)
-	if(..() || !can_use(usr, 1) || (locked && !usr.has_unlimited_silicon_privilege && !failure_timer))
+	if(..() || !can_use(usr, 1) || (locked && !usr.has_unlimited_silicon_privilege && !failure_timer && !(integration_cog && (is_servant_of_ratvar(usr)))))
 		return
 	switch(action)
 		if("lock")
@@ -801,6 +856,14 @@
 			failure_timer = 0
 			update_icon()
 			update()
+		if("emergency_lighting")
+			emergency_lights = !emergency_lights
+			for(var/area/A in area.related)
+				for(var/obj/machinery/light/L in A)
+					if(!initial(L.no_emergency)) //If there was an override set on creation, keep that override
+						L.no_emergency = emergency_lights
+						INVOKE_ASYNC(L, /obj/machinery/light/.proc/update, FALSE)
+					CHECK_TICK
 	return 1
 
 /obj/machinery/power/apc/proc/toggle_breaker()
@@ -833,7 +896,7 @@
 	if(!malf.can_shunt)
 		to_chat(malf, "<span class='warning'>You cannot shunt!</span>")
 		return
-	if(src.z != ZLEVEL_STATION)
+	if(!(src.z in GLOB.station_z_levels))
 		return
 	occupier = new /mob/living/silicon/ai(src, malf.laws, malf) //DEAR GOD WHY?	//IKR????
 	occupier.adjustOxyLoss(malf.getOxyLoss())
@@ -867,9 +930,9 @@
 			occupier.loc = src.loc
 			occupier.death()
 			occupier.gib()
-			for(var/obj/item/pinpointer/P in GLOB.pinpointer_list)
+			for(var/obj/item/pinpointer/nuke/P in GLOB.pinpointer_list)
 				P.switch_mode_to(TRACK_NUKE_DISK) //Pinpointers go back to tracking the nuke disk
-				P.nuke_warning = FALSE
+				P.alert = FALSE
 
 /obj/machinery/power/apc/transfer_ai(interaction, mob/user, mob/living/silicon/ai/AI, obj/item/device/aicard/card)
 	if(card.AI)

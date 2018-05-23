@@ -135,7 +135,7 @@
 						to_chat(user, "<span class='warning'>Sticking an inactive [M.name] into the frame would sort of defeat the purpose.</span>")
 						return
 
-					if((config) && (!config.allow_ai) || jobban_isbanned(M.brainmob, "AI"))
+					if(!CONFIG_GET(flag/allow_ai) || jobban_isbanned(M.brainmob, "AI"))
 						to_chat(user, "<span class='warning'>This [M.name] does not seem to fit!</span>")
 						return
 
@@ -238,6 +238,12 @@
 	..()
 	circuit = new(src)
 
+/obj/structure/AIcore/deactivated/playable
+
+// This subclass starts eligible to join
+/obj/structure/AIcore/deactivated/playable/New()
+	..()
+	GLOB.empty_playable_ai_cores += src
 
 /*
 This is a good place for AI-related object verbs so I'm sticking it here.

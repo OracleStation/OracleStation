@@ -36,10 +36,6 @@
 	. = ..()
 	reagents.add_reagent("weedkiller", 100)
 
-/obj/item/reagent_containers/spray/weedspray/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is huffing [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return (TOXLOSS)
-
 /obj/item/reagent_containers/spray/pestspray // -- Skie
 	desc = "It's some pest eliminator spray! <I>Do not inhale!</I>"
 	icon = 'icons/obj/hydroponics/equipment.dmi'
@@ -59,10 +55,6 @@
 /obj/item/reagent_containers/spray/pestspray/Initialize()
 	. = ..()
 	reagents.add_reagent("pestkiller", 100)
-
-/obj/item/reagent_containers/spray/pestspray/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is huffing [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return (TOXLOSS)
 
 /obj/item/cultivator
 	name = "cultivator"
@@ -101,11 +93,6 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP
 
-/obj/item/hatchet/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is chopping at [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	playsound(loc, 'sound/weapons/bladeslice.ogg', 50, 1, -1)
-	return (BRUTELOSS)
-
 /obj/item/scythe
 	icon_state = "scythe0"
 	lefthand_file = 'icons/mob/inhands/weapons/polearms_lefthand.dmi'
@@ -124,16 +111,6 @@
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	var/swiping = FALSE
-
-/obj/item/scythe/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is beheading [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		var/obj/item/bodypart/BP = C.get_bodypart("head")
-		if(BP)
-			BP.drop_limb()
-			playsound(loc,pick('sound/misc/desceration-01.ogg','sound/misc/desceration-02.ogg','sound/misc/desceration-01.ogg') ,50, 1, -1)
-	return (BRUTELOSS)
 
 /obj/item/scythe/pre_attackby(atom/A, mob/living/user, params)
 	if(swiping || !istype(A, /obj/structure/spacevine) || get_turf(A) == get_turf(user))
@@ -157,7 +134,7 @@
 
 /obj/item/reagent_containers/glass/bottle/nutrient
 	name = "bottle of nutrient"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "bottle16"
 	volume = 50
 	w_class = WEIGHT_CLASS_TINY
@@ -173,7 +150,7 @@
 /obj/item/reagent_containers/glass/bottle/nutrient/ez
 	name = "bottle of E-Z-Nutrient"
 	desc = "Contains a fertilizer that causes mild mutations with each harvest."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "bottle16"
 
 /obj/item/reagent_containers/glass/bottle/nutrient/ez/Initialize()
@@ -183,7 +160,7 @@
 /obj/item/reagent_containers/glass/bottle/nutrient/l4z
 	name = "bottle of Left 4 Zed"
 	desc = "Contains a fertilizer that limits plant yields to no more than one and causes significant mutations in plants."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "bottle18"
 
 /obj/item/reagent_containers/glass/bottle/nutrient/l4z/Initialize()
@@ -193,7 +170,7 @@
 /obj/item/reagent_containers/glass/bottle/nutrient/rh
 	name = "bottle of Robust Harvest"
 	desc = "Contains a fertilizer that increases the yield of a plant by 30% while causing no mutations."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "bottle15"
 
 /obj/item/reagent_containers/glass/bottle/nutrient/rh/Initialize()
@@ -202,12 +179,12 @@
 
 /obj/item/reagent_containers/glass/bottle/nutrient/empty
 	name = "bottle"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "bottle16"
 
 /obj/item/reagent_containers/glass/bottle/killer
 	name = "bottle"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "bottle16"
 	volume = 50
 	w_class = WEIGHT_CLASS_TINY
@@ -217,7 +194,7 @@
 /obj/item/reagent_containers/glass/bottle/killer/weedkiller
 	name = "bottle of weed killer"
 	desc = "Contains a herbicide."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "bottle19"
 
 /obj/item/reagent_containers/glass/bottle/killer/weedkiller/Initialize()
@@ -227,7 +204,7 @@
 /obj/item/reagent_containers/glass/bottle/killer/pestkiller
 	name = "bottle of pest spray"
 	desc = "Contains a pesticide."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "bottle20"
 
 /obj/item/reagent_containers/glass/bottle/killer/pestkiller/Initialize()

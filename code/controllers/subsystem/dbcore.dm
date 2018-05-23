@@ -21,6 +21,7 @@ SUBSYSTEM_DEF(dbcore)
 
 	var/_db_con// This variable contains a reference to the actual database connection.
 	var/failed_connections = 0
+	var/auto_reconnecting = FALSE //So we only try and reconnect once.
 
 /datum/controller/subsystem/dbcore/PreInit()
 	if(!_db_con)
@@ -54,32 +55,42 @@ SUBSYSTEM_DEF(dbcore)
 	if(failed_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to connect anymore.
 		return FALSE
 
-	if(!config.sql_enabled)
+	if(!CONFIG_GET(flag/sql_enabled))
 		return FALSE
 
-	var/user = global.sqlfdbklogin
-	var/pass = global.sqlfdbkpass
-	var/db = global.sqlfdbkdb
-	var/address = global.sqladdress
-	var/port = global.sqlport
+	var/user = CONFIG_GET(string/feedback_login)
+	var/pass = CONFIG_GET(string/feedback_password)
+	var/db = CONFIG_GET(string/feedback_database)
+	var/address = CONFIG_GET(string/address)
+	var/port = CONFIG_GET(number/port)
 
-	doConnect("dbi:mysql:[db]:[address]:[port]", user, pass)
+	_dm_db_connect(_db_con, "dbi:mysql:[db]:[address]:[port]", user, pass, Default_Cursor, null)
 	. = IsConnected()
 	if (!.)
 		log_sql("Connect() failed | [ErrorMsg()]")
 		++failed_connections
 
-/datum/controller/subsystem/dbcore/proc/doConnect(dbi_handler, user_handler, password_handler)
-	if(!config.sql_enabled)
-		return FALSE
-	return _dm_db_connect(_db_con, dbi_handler, user_handler, password_handler, Default_Cursor, null)
+/datum/controller/subsystem/dbcore/proc/AutoReconnect()
+	if(!auto_reconnecting)
+		auto_reconnecting = TRUE
+		message_admins("MySQL connection interrupted")
+		failed_connections = 0
+		Disconnect()
+		var/success = Connect()
+		if(success)
+			message_admins("Reconnected to MySQL server!")
+		else
+			message_admins("Could not reconnect to MySQL server!")
+		auto_reconnecting = FALSE
+		return success
+	return FALSE
 
 /datum/controller/subsystem/dbcore/proc/Disconnect()
 	failed_connections = 0
 	return _dm_db_close(_db_con)
 
 /datum/controller/subsystem/dbcore/proc/IsConnected()
-	if(!config.sql_enabled)
+	if(!CONFIG_GET(flag/sql_enabled))
 		return FALSE
 	return _dm_db_is_connected(_db_con)
 
@@ -87,7 +98,7 @@ SUBSYSTEM_DEF(dbcore)
 	return _dm_db_quote(_db_con, str)
 
 /datum/controller/subsystem/dbcore/proc/ErrorMsg()
-	if(!config.sql_enabled)
+	if(!CONFIG_GET(flag/sql_enabled))
 		return "Database disabled by configuration"
 	return _dm_db_error_msg(_db_con)
 
@@ -191,13 +202,19 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 /datum/DBQuery/proc/warn_execute()
 	. = Execute()
 	if(!.)
-		to_chat(usr, "<span class='danger'>A SQL error occured during this operation, check the server logs.</span>")
+		to_chat(usr, "<span class='danger'>A SQL error occurred during this operation, check the server logs.</span>")
 
-/datum/DBQuery/proc/Execute(sql_query = sql, cursor_handler = default_cursor, log_error = TRUE)
+/datum/DBQuery/proc/Execute(sql_query = sql, cursor_handler = default_cursor, log_error = TRUE, retries = 0)
 	Close()
 	. = _dm_db_execute(_db_query, sql_query, db_connection._db_con, cursor_handler, null)
-	if(!. && log_error)
-		log_sql("[ErrorMsg()] | Query used: [sql]")
+
+	if(!.)
+		var/error_msg = ErrorMsg()
+		if(log_error)
+			log_sql("[error_msg] | Query used: [sql]")
+		if(error_msg == "MySQL server has gone away" || error_msg == "Lost connection to MySQL server during query")
+			if(SSdbcore.AutoReconnect() && retries < 5)
+				return Execute(sql_query, cursor_handler, log_error, retries + 1)
 
 /datum/DBQuery/proc/NextRow()
 	return _dm_db_next_row(_db_query,item,conversions)

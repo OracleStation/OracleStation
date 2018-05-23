@@ -6,13 +6,15 @@
 #define PLANE_SPACE -95
 #define PLANE_SPACE_PARALLAX -90
 
-#define GAME_PLANE 0
+#define GAME_PLANE -1
+#define BLACKNESS_PLANE 0 //To keep from conflicts with SEE_BLACKNESS internals
 //#define TURF_LAYER 2 //For easy recordkeeping; this is a byond define
 #define MID_TURF_LAYER 2.02
 #define HIGH_TURF_LAYER 2.03
 #define ABOVE_OPEN_TURF_LAYER 2.04
 #define CLOSED_TURF_LAYER 2.05
 #define ABOVE_NORMAL_TURF_LAYER 2.08
+#define FROST_TURF_LAYER 2.1
 #define LATTICE_LAYER 2.2
 #define DISPOSAL_PIPE_LAYER 2.3
 #define GAS_PIPE_HIDDEN_LAYER 2.35
@@ -34,6 +36,7 @@
 #define BELOW_OBJ_LAYER 2.9
 #define LOW_ITEM_LAYER 2.95
 //#define OBJ_LAYER 3 //For easy recordkeeping; this is a byond define
+#define UNDERDOOR 3.09 //Just under a closed door
 #define CLOSED_DOOR_LAYER 3.1
 #define CLOSED_FIREDOOR_LAYER 3.11
 #define ABOVE_OBJ_LAYER 3.2

@@ -28,8 +28,8 @@
 #define BAN_CHAPEL "chapel"
 #define BAN_HURTPRIEST "hurtpriest"
 #define BAN_AVOIDWATER "avoidwater"
-#define BAN_STRIKEUNCONCIOUS "strikeunconcious"
-#define BAN_HURTLIZARD "hurtlizard"
+#define BAN_STRIKEUNCONSCIOUS "strikeunconscious"
+#define BAN_HURTUNATHI "hurtunathi"
 #define BAN_HURTANIMAL "hurtanimal"
 
 #define BANISH_WATER "water"

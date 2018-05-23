@@ -712,7 +712,7 @@
 				It can cook multiple items at once.
 
 				<h2>Processor:</h2>
-				Use it to process certain ingredients (meat into faggot, doughslice into spaghetti, potato into fries,etc...)
+				Use it to process certain ingredients (meat into meatball, doughslice into spaghetti, potato into fries,etc...)
 
 				<h2>Gibber:</h2>
 				Stuff an animal in it to grind it into meat.
@@ -881,31 +881,27 @@
 		initialize_wikibook()
 	..()
 
+GLOBAL_LIST_EMPTY(cached_wiki_pages)
+
 /obj/item/book/manual/wiki/proc/initialize_wikibook()
-	if(config.wikiurl)
-		dat = {"
 
-			<html><head>
-			<style>
-				iframe {
-					display: none;
-				}
-			</style>
-			</head>
-			<body>
-			<script type="text/javascript">
-				function pageloaded(myframe) {
-					document.getElementById("loading").style.display = "none";
-					myframe.style.display = "inline";
-    			}
-			</script>
-			<p id='loading'>You start skimming through the manual...</p>
-			<iframe width='100%' height='97%' onload="pageloaded(this)" src="[config.wikiurl]/[page_link]?printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
-			</body>
+	dat = GLOB.cached_wiki_pages[page_link]
 
-			</html>
+	if (dat)
+		return TRUE
 
-			"}
+	var/http[] = world.Export("[CONFIG_GET(string/wikibookurl)][page_link]?action=render")
+
+	if(!http)
+		return FALSE
+
+	var/html = http["CONTENT"]
+	dat = file2text(html)
+	dat = replacetext(dat, "<a href=", "<a nolink=")
+	dat = replacetext(dat, "src=\"/w", "src=\"[CONFIG_GET(string/wikiurl)]/w")
+	GLOB.cached_wiki_pages[page_link] = dat
+
+	return TRUE
 
 /obj/item/book/manual/wiki/chemistry
 	name = "Chemistry Textbook"

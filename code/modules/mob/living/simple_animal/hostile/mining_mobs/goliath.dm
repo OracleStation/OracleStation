@@ -37,7 +37,7 @@
 	handle_preattack()
 
 /mob/living/simple_animal/hostile/asteroid/goliath/proc/handle_preattack()
-	if(ranged_cooldown <= world.time + ranged_cooldown_time*0.25 && !pre_attack)
+	if(ranged_cooldown <= world.time + ranged_cooldown_time*0.5 && !pre_attack)
 		pre_attack++
 	if(!pre_attack || stat || AIStatus == AI_IDLE)
 		return

@@ -108,7 +108,7 @@
 
 /obj/item/organ/heart/gland/pop/activate()
 	to_chat(owner, "<span class='notice'>You feel unlike yourself.</span>")
-	var/species = pick(list(/datum/species/lizard, /datum/species/jelly/slime, /datum/species/pod, /datum/species/fly, /datum/species/jelly, /datum/species/ethari))
+	var/species = pick(list(/datum/species/unathi, /datum/species/jelly/slime, /datum/species/pod, /datum/species/fly, /datum/species/jelly, /datum/species/ethari))
 	owner.set_species(species)
 
 /obj/item/organ/heart/gland/ventcrawling
@@ -218,7 +218,7 @@
 
 /obj/structure/spider/cocoon/abductor/proc/Copy(mob/living/carbon/human/H)
 	var/mob/living/carbon/human/interactive/greytide/clone = new(src)
-	clone.hardset_dna(H.dna.uni_identity,H.dna.struc_enzymes,H.real_name, H.dna.blood_type, H.dna.species.type, H.dna.features)
+	clone.hardset_dna(H.dna.uni_identity, H.dna.struc_enzymes, H.dna.unique_enzymes, H.real_name, H.dna.blood_type, H.dna.species, H.dna.features)
 
 /obj/structure/spider/cocoon/abductor/proc/Start()
 	hatch_time = world.time + 600

@@ -21,8 +21,8 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 
 /datum/round_event/immovable_rod/start()
 	var/startside = pick(GLOB.cardinals)
-	var/turf/startT = spaceDebrisStartLoc(startside, ZLEVEL_STATION)
-	var/turf/endT = spaceDebrisFinishLoc(startside, ZLEVEL_STATION)
+	var/turf/startT = spaceDebrisStartLoc(startside, ZLEVEL_STATION_PRIMARY)
+	var/turf/endT = spaceDebrisFinishLoc(startside, ZLEVEL_STATION_PRIMARY)
 	new /obj/effect/immovablerod(startT, endT)
 
 /obj/effect/immovablerod
@@ -44,7 +44,7 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	destination = end
 	if(notify)
 		notify_ghosts("\A [src] is inbound!",
-			enter_link="<a href=?src=\ref[src];orbit=1>(Click to orbit)</a>",
+			enter_link="<a href=?src=[REF(src)];orbit=1>(Click to orbit)</a>",
 			source=src, action=NOTIFY_ORBIT)
 	GLOB.poi_list += src
 	if(end && end.z==z_original)

@@ -25,7 +25,7 @@
 
 /mob/proc/ContractDisease(datum/disease/D)
 	if(!CanContractDisease(D))
-		return 0
+		return FALSE
 	AddDisease(D)
 
 
@@ -43,7 +43,7 @@
 		SSdisease.active_diseases += DD //Add it to the active diseases list, now that it's actually in a mob and being processed.
 
 		//Copy properties over. This is so edited diseases persist.
-		var/list/skipped = list("affected_mob","holder","carrier","stage","type","parent_type","vars","transformed","symptoms")
+		var/list/skipped = list("affected_mob","holder","carrier","stage","type","parent_type","vars","transformed","symptoms","processing")
 		for(var/V in DD.vars)
 			if(V in skipped)
 				continue
@@ -148,9 +148,19 @@
 
 
 /mob/living/carbon/human/CanContractDisease(datum/disease/D)
-	if(dna && (VIRUSIMMUNE in dna.species.species_traits) && !D.bypasses_immunity)
-		return 0
+	if(dna)
+		if((VIRUSIMMUNE in dna.species.species_traits) && !D.bypasses_immunity)
+			return FALSE
+
+		var/can_infect = FALSE
+		for(var/host_type in D.infectable_hosts)
+			if(host_type in dna.species.species_traits)
+				can_infect = TRUE
+				break
+		if(!can_infect)
+			return FALSE
+
 	for(var/thing in D.required_organs)
 		if(!((locate(thing) in bodyparts) || (locate(thing) in internal_organs)))
-			return 0
+			return FALSE
 	return ..()

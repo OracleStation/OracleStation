@@ -24,31 +24,33 @@ em						{font-style: normal;	font-weight: bold;}
 .bold					{					font-weight: bold;}
 
 .prefix					{					font-weight: bold;}
-
+.aooc					{color:#7a0b0b ;	font-weight: bold;}
 .ooc					{					font-weight: bold;}
+.looc					{color: #63b2f2;	font-weight: bold;}
 .adminobserverooc		{color: #0099cc;	font-weight: bold;}
 .adminooc				{color: #700038;	font-weight: bold;}
 
 .adminobserver			{color: #996600;	font-weight: bold;}
 .admin					{color: #386aff;	font-weight: bold;}
+.asay					{color: #9A04D1;	font-weight: bold;}
 
 .name					{					font-weight: bold;}
 
 .say					{}
-.deadsay				{color: #5c00e6;}
+.deadsay				{color: #5C00E6;}
 .radio					{color: #008000;}
 .sciradio				{color: #993399;}
-.comradio				{color: #948f02;}
-.secradio				{color: #a30000;}
-.medradio				{color: #337296;}
-.engradio				{color: #fb5613;}
-.suppradio				{color: #a8732b;}
-.servradio				{color: #6eaa2c;}
-.syndradio				{color: #6d3f40;}
+.comradio				{color: #204090;}
+.secradio				{color: #A30000;}
+.medradio				{color: #009190;}
+.engradio				{color: #A66300;}
+.suppradio				{color: #7F6539;}
+.servradio				{color: #80A000;}
+.syndradio				{color: #6D3F40;}
 .centcomradio			{color: #686868;}
-.aiprivradio			{color: #ff00ff;}
-.redteamradio           {color: #ff0000;}
-.blueteamradio          {color: #0000ff;}
+.aiprivradio			{color: #FF00FF;}
+.redteamradio           {color: #FF0000;}
+.blueteamradio          {color: #0000FF;}
 
 .yell					{					font-weight: bold;}
 
@@ -74,7 +76,11 @@ h1.alert, h2.alert		{color: #000000;}
 .notice					{color: #000099;}
 .boldnotice				{color: #000099;	font-weight: bold;}
 .adminnotice			{color: #0000ff;}
+.adminannouncement			{color: #0000ff; font-weight: bold; font-size: 8;}
 .adminhelp              {color: #ff0000;    font-weight: bold;}
+.mentor				{color: #8A2BE2;}
+.mentoradmin				{color: #8A2BE2;	font-weight: bold;}
+.mentornotice				{color: #E236D8;}
 .unconscious			{color: #0000ff;	font-weight: bold;}
 .suicide				{color: #ff5050;	font-style: italic;}
 .green					{color: #03ff39;}

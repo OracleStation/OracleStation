@@ -132,9 +132,9 @@ GLOBAL_LIST_INIT(blacklisted_malf_machines, typecacheof(list(
 	dat += "<B>Install Module:</B><BR>"
 	dat += "<I>The number afterwards is the amount of processing time it consumes.</I><BR>"
 	for(var/datum/AI_Module/large/module in possible_modules)
-		dat += "<A href='byond://?src=\ref[src];[module.mod_pick_name]=1'>[module.module_name]</A><A href='byond://?src=\ref[src];showdesc=[module.mod_pick_name]'>\[?\]</A> ([module.cost])<BR>"
+		dat += "<A href='byond://?src=[REF(src)];[module.mod_pick_name]=1'>[module.module_name]</A><A href='byond://?src=[REF(src)];showdesc=[module.mod_pick_name]'>\[?\]</A> ([module.cost])<BR>"
 	for(var/datum/AI_Module/small/module in possible_modules)
-		dat += "<A href='byond://?src=\ref[src];[module.mod_pick_name]=1'>[module.module_name]</A><A href='byond://?src=\ref[src];showdesc=[module.mod_pick_name]'>\[?\]</A> ([module.cost])<BR>"
+		dat += "<A href='byond://?src=[REF(src)];[module.mod_pick_name]=1'>[module.module_name]</A><A href='byond://?src=[REF(src)];showdesc=[module.mod_pick_name]'>\[?\]</A> ([module.cost])<BR>"
 	dat += "<HR>"
 	if(temp)
 		dat += "[temp]"
@@ -232,7 +232,7 @@ GLOBAL_LIST_INIT(blacklisted_malf_machines, typecacheof(list(
 
 /datum/action/innate/ai/nuke_station/Activate()
 	var/turf/T = get_turf(owner)
-	if(!istype(T) || T.z != ZLEVEL_STATION)
+	if(!istype(T) || !(T.z in GLOB.station_z_levels))
 		to_chat(owner, "<span class='warning'>You cannot activate the doomsday device while off-station!</span>")
 		return
 	if(alert(owner, "Send arming signal? (true = arm, false = cancel)", "purge_all_life()", "confirm = TRUE;", "confirm = FALSE;") != "confirm = TRUE;")
@@ -309,8 +309,7 @@ GLOBAL_LIST_INIT(blacklisted_malf_machines, typecacheof(list(
 	owner_AI.nuking = TRUE
 	owner_AI.doomsday_device = DOOM
 	owner_AI.doomsday_device.start()
-	for(var/pinpointer in GLOB.pinpointer_list)
-		var/obj/item/pinpointer/P = pinpointer
+	for(var/obj/item/pinpointer/nuke/P in GLOB.pinpointer_list)
 		P.switch_mode_to(TRACK_MALF_AI) //Pinpointers start tracking the AI wherever it goes
 	qdel(src)
 
@@ -356,7 +355,7 @@ GLOBAL_LIST_INIT(blacklisted_malf_machines, typecacheof(list(
 
 /obj/machinery/doomsday_device/process()
 	var/turf/T = get_turf(src)
-	if(!T || T.z != ZLEVEL_STATION)
+	if(!T || !(T.z in GLOB.station_z_levels))
 		minor_announce("DOOMSDAY DEVICE OUT OF STATION RANGE, ABORTING", "ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4", TRUE)
 		SSshuttle.clearHostileEnvironment(src)
 		qdel(src)
@@ -374,7 +373,7 @@ GLOBAL_LIST_INIT(blacklisted_malf_machines, typecacheof(list(
 			milestones[key] = TRUE
 			minor_announce("[key] SECONDS UNTIL DOOMSDAY DEVICE ACTIVATION!", "ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4", TRUE)
 
-/obj/machinery/doomsday_device/proc/detonate(z_level = ZLEVEL_STATION)
+/obj/machinery/doomsday_device/proc/detonate(z_level = ZLEVEL_STATION_PRIMARY)
 	sound_to_playing_players('sound/machines/alarm.ogg')
 	sleep(100)
 	for(var/mob/living/L in GLOB.mob_list)
@@ -426,7 +425,7 @@ GLOBAL_LIST_INIT(blacklisted_malf_machines, typecacheof(list(
 
 /datum/action/innate/ai/lockdown/Activate()
 	for(var/obj/machinery/door/D in GLOB.airlocks)
-		if(D.z != ZLEVEL_STATION)
+		if(!(D.z in GLOB.station_z_levels))
 			continue
 		INVOKE_ASYNC(D, /obj/machinery/door.proc/hostile_lockdown, src)
 		addtimer(CALLBACK(D, /obj/machinery/door.proc/disable_lockdown), 900)
@@ -504,7 +503,7 @@ GLOBAL_LIST_INIT(blacklisted_malf_machines, typecacheof(list(
 
 /datum/action/innate/ai/break_fire_alarms/Activate()
 	for(var/obj/machinery/firealarm/F in GLOB.machines)
-		if(F.z != ZLEVEL_STATION)
+		if(!(F.z in GLOB.station_z_levels))
 			continue
 		F.emagged = TRUE
 	to_chat(owner, "<span class='notice'>All thermal sensors on the station have been disabled. Fire alerts will no longer be recognized.</span>")
@@ -531,10 +530,10 @@ GLOBAL_LIST_INIT(blacklisted_malf_machines, typecacheof(list(
 
 /datum/action/innate/ai/break_air_alarms/Activate()
 	for(var/obj/machinery/airalarm/AA in GLOB.machines)
-		if(AA.z != ZLEVEL_STATION)
+		if(!(AA.z in GLOB.station_z_levels))
 			continue
 		AA.emagged = TRUE
-	to_chat(owner, "<span class='notice'>All air alarm safeties on the station have been overriden. Air alarms may now use the Flood environmental mode.")
+	to_chat(owner, "<span class='notice'>All air alarm safeties on the station have been overriden. Air alarms may now use the Flood environmental mode.</span>")
 	owner.playsound_local(owner, 'sound/machines/terminal_off.ogg', 50, 0)
 
 
@@ -672,7 +671,7 @@ GLOBAL_LIST_INIT(blacklisted_malf_machines, typecacheof(list(
 	var/obj/machinery/transformer/conveyor = new(T)
 	conveyor.masterAI = owner
 	playsound(T, 'sound/effects/phasein.ogg', 100, 1)
-	owner_AI.can_shunt = TRUE
+	owner_AI.can_shunt = FALSE
 	to_chat(owner, "<span class='warning'>You are no longer able to shunt your core to APCs.</span>")
 	adjust_uses(-1)
 
@@ -734,6 +733,31 @@ GLOBAL_LIST_INIT(blacklisted_malf_machines, typecacheof(list(
 	to_chat(owner, "<span class='notice'>Overcurrent applied to the powernet.</span>")
 	owner.playsound_local(owner, "sparks", 50, 0)
 
+//Disable Emergency Lights
+/datum/AI_Module/small/emergency_lights
+	module_name = "Disable Emergency Lights"
+	mod_pick_name = "disable_emergency_lights"
+	description = "Cuts emergency lights across the entire station. If power is lost to light fixtures, they will not attempt to fall back on emergency power reserves."
+	cost = 10
+	one_purchase = TRUE
+	power_type = /datum/action/innate/ai/emergency_lights
+	unlock_text = "<span class='notice'>You hook into the powernet and locate the connections between light fixtures and their fallbacks.</span>"
+	unlock_sound = "sparks"
+
+/datum/action/innate/ai/emergency_lights
+	name = "Disable Emergency Lights"
+	desc = "Disables all emergency lighting. Note that emergency lights can be restored through reboot at an APC."
+	button_icon_state = "emergency_lights"
+	uses = 1
+
+/datum/action/innate/ai/emergency_lights/Activate()
+	for(var/obj/machinery/light/L in GLOB.machines)
+		if(L.z in GLOB.station_z_levels)
+			L.no_emergency = TRUE
+			INVOKE_ASYNC(L, /obj/machinery/light/.proc/update, FALSE)
+		CHECK_TICK
+	to_chat(owner, "<span class='notice'>Emergency light connections severed.</span>")
+	owner.playsound_local(owner, 'sound/effects/light_flicker.ogg', 50, FALSE)
 
 //Reactivate Camera Network: Reactivates up to 30 cameras across the station.
 /datum/AI_Module/small/reactivate_cameras

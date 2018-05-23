@@ -6,7 +6,7 @@
 	desc = "Used to work with viruses."
 	density = TRUE
 	anchored = TRUE
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "mixer0"
 	circuit = /obj/item/circuitboard/computer/pandemic
 	use_power = TRUE
@@ -192,11 +192,11 @@
 			addtimer(CALLBACK(src, .proc/reset_replicator_cooldown), 50)
 			. = TRUE
 		if("create_vaccine_bottle")
-			var/index = text2num(params["index"])
-			var/datum/disease/D = SSdisease.archive_diseases[get_virus_id_by_index(index)]
+			var/id = params["index"]
+			var/datum/disease/D = SSdisease.archive_diseases[id]
 			var/obj/item/reagent_containers/glass/bottle/B = new(get_turf(src))
 			B.name = "[D.name] vaccine bottle"
-			B.reagents.add_reagent("vaccine", 15, list(index))
+			B.reagents.add_reagent("vaccine", 15, list(id))
 			wait = TRUE
 			update_icon()
 			addtimer(CALLBACK(src, .proc/reset_replicator_cooldown), 200)

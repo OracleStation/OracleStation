@@ -29,8 +29,7 @@ SUBSYSTEM_DEF(ticker)
 	var/list/availablefactions = list()		//list of factions with openings
 	var/list/scripture_states = list(SCRIPTURE_DRIVER = TRUE, \
 	SCRIPTURE_SCRIPT = FALSE, \
-	SCRIPTURE_APPLICATION = FALSE, \
-	SCRIPTURE_JUDGEMENT = FALSE) //list of clockcult scripture states for announcements
+	SCRIPTURE_APPLICATION = FALSE) //list of clockcult scripture states for announcements
 
 	var/delay_end = 0						//if set true, the round will not restart on it's own
 
@@ -64,6 +63,10 @@ SUBSYSTEM_DEF(ticker)
 	var/mode_result = "undefined"
 	var/end_state = "undefined"
 
+	//Crew Objective stuff
+	var/list/crewobjlist = list()
+	var/list/crewobjjobs = list()
+
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
 	var/list/music = world.file2list(ROUND_START_MUSIC_LIST, "\n")
@@ -73,23 +76,33 @@ SUBSYSTEM_DEF(ticker)
 		GLOB.syndicate_code_phrase	= generate_code_phrase()
 	if(!GLOB.syndicate_code_response)
 		GLOB.syndicate_code_response = generate_code_phrase()
+
+	crewobjlist = typesof(/datum/objective/crew)
+	for(var/hooray in crewobjlist) //taken from old Hippie's "job2obj" proc with adjustments.
+		var/datum/objective/crew/obj = hooray
+		var/list/availableto = splittext(initial(obj.jobs),",")
+		for(var/job in availableto)
+			crewobjjobs["[job]"] += list(obj)
+
 	..()
-	start_at = world.time + (config.lobby_countdown * 10)
 
 /datum/controller/subsystem/ticker/fire()
 	switch(current_state)
 		if(GAME_STATE_STARTUP)
 			if(Master.initializations_finished_with_no_players_logged_in)
-				start_at = world.time + (config.lobby_countdown * 10)
+				start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, "<span class='boldnotice'>Welcome to [station_name()]!</span>")
 			current_state = GAME_STATE_PREGAME
+			timeLeft = null
 			//Everyone who wants to be an observer is now spawned
 			create_observers()
 			fire()
 		if(GAME_STATE_PREGAME)
-				//lobby stats for statpanels
+			//lobby stats for statpanels
+			if(isnull(start_at))
+				start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 			if(isnull(timeLeft))
 				timeLeft = max(0,start_at - world.time)
 			totalPlayers = 0
@@ -121,6 +134,8 @@ SUBSYSTEM_DEF(ticker)
 			if(!setup())
 				//setup failed
 				current_state = GAME_STATE_STARTUP
+				start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
+				timeLeft = null
 				Master.SetRunLevel(RUNLEVEL_LOBBY)
 
 		if(GAME_STATE_PLAYING)
@@ -132,6 +147,7 @@ SUBSYSTEM_DEF(ticker)
 			if(!mode.explosion_in_progress && mode.check_finished(force_ending) || force_ending)
 				current_state = GAME_STATE_FINISHED
 				toggle_ooc(1) // Turn it on
+				toggle_looc(1)
 				declare_completion(force_ending)
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
@@ -196,8 +212,10 @@ SUBSYSTEM_DEF(ticker)
 	else
 		mode.announce()
 
-	if(!config.ooc_during_round)
-		toggle_ooc(0) // Turn it off
+	if(!CONFIG_GET(flag/ooc_during_round))
+		toggle_ooc(FALSE) // Turn it off
+	if(!CONFIG_GET(flag/looc_during_round))
+		toggle_looc(FALSE)
 
 	CHECK_TICK
 	GLOB.start_landmarks_list = shuffle(GLOB.start_landmarks_list) //Shuffle the order of spawn points so they dont always predictably spawn bottom-up and right-to-left
@@ -215,6 +233,8 @@ SUBSYSTEM_DEF(ticker)
 		var/datum/callback/cb = I
 		cb.InvokeAsync()
 	LAZYCLEARLIST(round_start_events)
+
+	roundstart_spawn_empty_ai_if_needed() // I want to make this a hook later.
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	round_start_time = world.time
@@ -245,6 +265,9 @@ SUBSYSTEM_DEF(ticker)
 		//Deleting Startpoints but we need the ai point to AI-ize people later
 		if(S.name != "AI")
 			qdel(S)
+
+	if(CONFIG_GET(flag/allow_crew_objectives))
+		generate_crew_objectives()
 
 	var/list/adm = get_admin_counts()
 	var/list/allmins = adm["present"]
@@ -387,7 +410,7 @@ SUBSYSTEM_DEF(ticker)
 		if(bomb && bomb.loc)
 			bombloc = bomb.z
 		else if(!station_missed)
-			bombloc = ZLEVEL_STATION
+			bombloc = ZLEVEL_STATION_PRIMARY
 
 		if(mode)
 			mode.explosion_in_progress = 0
@@ -462,11 +485,13 @@ SUBSYSTEM_DEF(ticker)
 	var/num_survivors = 0
 	var/num_escapees = 0
 	var/num_shuttle_escapees = 0
+	var/list/successfulCrew = list()
 
 	to_chat(world, "<BR><BR><BR><FONT size=3><B>The round has ended.</B></FONT>")
 
+	var/nocredits = CONFIG_GET(flag/no_credits_round_end)
 	for(var/client/C in GLOB.clients)
-		if(!C.credits)
+		if(!C.credits && !nocredits)
 			C.RollCredits()
 		C.playtitlemusic(40)
 
@@ -498,7 +523,7 @@ SUBSYSTEM_DEF(ticker)
 	end_state.count()
 	var/station_integrity = min(PERCENT(GLOB.start_state.score(end_state)), 100)
 
-	to_chat(world, "<BR>[GLOB.TAB]Shift Duration: <B>[round(world.time / 36000)]:[add_zero("[world.time / 600 % 60]", 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B>")
+	to_chat(world, "<BR>[GLOB.TAB]Shift Duration: <B>[DisplayTimeText(world.time - SSticker.round_start_time)]</B>")
 	to_chat(world, "<BR>[GLOB.TAB]Station Integrity: <B>[mode.station_was_nuked ? "<font color='red'>Destroyed</font>" : "[station_integrity]%"]</B>")
 	if(mode.station_was_nuked)
 		SSticker.news_report = STATION_DESTROYED_NUKE
@@ -559,7 +584,7 @@ SUBSYSTEM_DEF(ticker)
 
 	CHECK_TICK
 
-	if(config.cross_allowed)
+	if(CONFIG_GET(string/cross_server_address))
 		send_news_report()
 
 	CHECK_TICK
@@ -582,6 +607,19 @@ SUBSYSTEM_DEF(ticker)
 	log_game("Antagonists at round end were...")
 	for(var/i in total_antagonists)
 		log_game("[i]s[total_antagonists[i]].")
+
+	CHECK_TICK
+
+	if(CONFIG_GET(flag/allow_crew_objectives))
+		for(var/datum/mind/crewMind in minds)
+			if(!crewMind.current || !crewMind.objectives.len)
+				continue
+			for(var/datum/objective/crew/CO in crewMind.objectives)
+				if(CO.check_completion())
+					to_chat(crewMind.current, "<br><B>Your optional objective</B>: [CO.explanation_text] <span class='green'><B>Success!</B></span>")
+					successfulCrew += "<B>[crewMind.current.real_name]</B> (Played by: <B>[crewMind.key]</B>)<BR><B>Optional Objective</B>: [CO.explanation_text] <span class='green'><B>Success!</B></span>"
+				else
+					to_chat(crewMind.current, "<br><B>Your optional objective</B>: [CO.explanation_text] <span class='warning'><B>Failed.</B></span>")
 
 	CHECK_TICK
 
@@ -625,7 +663,8 @@ SUBSYSTEM_DEF(ticker)
 		to_chat(world, "<font color='purple'><b>Tip of the round: </b>[html_encode(m)]</font>")
 
 /datum/controller/subsystem/ticker/proc/check_queue()
-	if(!queued_players.len || !config.hard_popcap)
+	var/hpc = CONFIG_GET(number/hard_popcap)
+	if(!queued_players.len || !hpc)
 		return
 
 	queue_delay++
@@ -633,21 +672,21 @@ SUBSYSTEM_DEF(ticker)
 
 	switch(queue_delay)
 		if(5) //every 5 ticks check if there is a slot available
-			if(living_player_count() < config.hard_popcap)
+			if(living_player_count() < hpc)
 				if(next_in_line && next_in_line.client)
-					to_chat(next_in_line, "<span class='userdanger'>A slot has opened! You have approximately 20 seconds to join. <a href='?src=\ref[next_in_line];late_join=override'>\>\>Join Game\<\<</a></span>")
+					to_chat(next_in_line, "<span class='userdanger'>A slot has opened! You have approximately 20 seconds to join. <a href='?src=[REF(next_in_line)];late_join=override'>\>\>Join Game\<\<</a></span>")
 					SEND_SOUND(next_in_line, sound('sound/misc/notice1.ogg'))
 					next_in_line.LateChoices()
 					return
 				queued_players -= next_in_line //Client disconnected, remove he
 			queue_delay = 0 //No vacancy: restart timer
 		if(25 to INFINITY)  //No response from the next in line when a vacancy exists, remove he
-			to_chat(next_in_line, "<span class='danger'>No response recieved. You have been removed from the line.</span>")
+			to_chat(next_in_line, "<span class='danger'>No response received. You have been removed from the line.</span>")
 			queued_players -= next_in_line
 			queue_delay = 0
 
 /datum/controller/subsystem/ticker/proc/check_maprotate()
-	if (!config.maprotation)
+	if (!CONFIG_GET(flag/maprotation))
 		return
 	if (SSshuttle.emergency && SSshuttle.emergency.mode != SHUTTLE_ESCAPE || SSshuttle.canRecall())
 		return
@@ -657,7 +696,7 @@ SUBSYSTEM_DEF(ticker)
 	maprotatechecked = 1
 
 	//map rotate chance defaults to 75% of the length of the round (in minutes)
-	if (!prob((world.time/600)*config.maprotatechancedelta))
+	if (!prob((world.time/600)*CONFIG_GET(number/maprotatechancedelta)))
 		return
 	INVOKE_ASYNC(SSmapping, /datum/controller/subsystem/mapping/.proc/maprotate)
 
@@ -814,7 +853,7 @@ SUBSYSTEM_DEF(ticker)
 		return
 
 	if(!delay)
-		delay = config.round_end_countdown * 10
+		delay = CONFIG_GET(number/round_end_countdown) * 10
 
 	var/skip_delay = check_rights()
 	if(delay_end && !skip_delay)
@@ -843,10 +882,11 @@ SUBSYSTEM_DEF(ticker)
 		'sound/roundend/newroundsexy.ogg',
 		'sound/roundend/apcdestroyed.ogg',
 		'sound/roundend/bangindonk.ogg',
-		'sound/roundend/leavingtg.ogg',
 		'sound/roundend/its_only_game.ogg',
 		'sound/roundend/yeehaw.ogg',
 		'sound/roundend/disappointed.ogg'\
 		)
 
 	SEND_SOUND(world, sound(round_end_sound))
+
+	sleep(50)

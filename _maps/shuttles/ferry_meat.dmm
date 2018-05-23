@@ -48,7 +48,7 @@
 /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/golem/adamantine{
 	name = "golem meat"
 	},
-/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/lizard{
+/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/unathi{
 	name = "lizard meat"
 	},
 /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/plant{

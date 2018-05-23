@@ -48,6 +48,12 @@
 	var/exp_type = ""
 	var/exp_type_department = ""
 
+	//A special, very large and noticeable message for certain roles reminding them of something important. Ex: "Blueshields are not security"
+	var/special_notice = ""
+
+	// A link to the relevant wiki related to the job. Ex: "Space_law" would link to wiki.blah/Space_law
+	var/wiki_page = ""
+
 //Only override this proc
 //H is usually a human unless an /equip override transformed it
 /datum/job/proc/after_spawn(mob/living/H, mob/M)
@@ -75,7 +81,7 @@
 	if(!visualsOnly && announce)
 		announce(H)
 
-	if(config.enforce_human_authority && (title in GLOB.command_positions))
+	if(CONFIG_GET(flag/enforce_human_authority) && (title in GLOB.command_positions))
 		H.dna.features["tail_human"] = "None"
 		H.dna.features["ears"] = "None"
 		H.regenerate_icons()
@@ -86,12 +92,12 @@
 
 	. = list()
 
-	if(config.jobs_have_minimal_access)
+	if(CONFIG_GET(flag/jobs_have_minimal_access))
 		. = src.minimal_access.Copy()
 	else
 		. = src.access.Copy()
 
-	if(config.jobs_have_maint_access & EVERYONE_HAS_MAINT_ACCESS) //Config has global maint access set
+	if(CONFIG_GET(flag/everyone_has_maint_access)) //Config has global maint access set
 		. |= list(ACCESS_MAINT_TUNNELS)
 
 /datum/job/proc/announce_head(var/mob/living/carbon/human/H, var/channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
@@ -109,7 +115,7 @@
 /datum/job/proc/available_in_days(client/C)
 	if(!C)
 		return 0
-	if(!config.use_age_restriction_for_jobs)
+	if(!CONFIG_GET(flag/use_age_restriction_for_jobs))
 		return 0
 	if(!isnum(C.player_age))
 		return 0 //This is only a number if the db connection is established, otherwise it is text: "Requires database", meaning these restrictions cannot be enforced
@@ -140,6 +146,7 @@
 	var/backpack = /obj/item/storage/backpack
 	var/satchel  = /obj/item/storage/backpack/satchel
 	var/duffelbag = /obj/item/storage/backpack/duffelbag
+	var/courierbag = /obj/item/storage/backpack/messenger
 	var/box = /obj/item/storage/box/survival
 
 /datum/outfit/job/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -152,10 +159,14 @@
 			back = /obj/item/storage/backpack/duffelbag //Grey Duffel bag
 		if(LSATCHEL)
 			back = /obj/item/storage/backpack/satchel/leather //Leather Satchel
+		if(GCOURIERBAG)
+			back = /obj/item/storage/backpack/satchel
 		if(DSATCHEL)
 			back = satchel //Department satchel
 		if(DDUFFELBAG)
 			back = duffelbag //Department duffel bag
+		if(DCOURIERBAG) //Department courier bag
+			back = courierbag
 		else
 			back = backpack //Department backpack
 
@@ -181,7 +192,7 @@
 		C.update_label()
 		H.sec_hud_set_ID()
 
-	var/obj/item/device/pda/PDA = H.get_item_by_slot(pda_slot)
+	var/obj/item/device/pda/PDA = H.wear_pda
 	if(istype(PDA))
 		PDA.owner = H.real_name
 		PDA.ownjob = J.title

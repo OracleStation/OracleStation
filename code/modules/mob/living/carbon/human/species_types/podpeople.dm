@@ -3,7 +3,7 @@
 	name = "Podperson"
 	id = "pod"
 	default_color = "59CE00"
-	species_traits = list(MUTCOLORS,EYECOLOR)
+	species_traits = list(SPECIES_ORGANIC,MUTCOLORS,EYECOLOR)
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slice.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -12,6 +12,8 @@
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/plant
 	disliked_food = MEAT | DAIRY
 	liked_food = VEGETABLES | FRUIT | GRAIN
+	examine_text = "a Pod Person"
+	species_text_color = "#1beb00"
 
 /datum/species/pod/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	. = ..()
@@ -34,10 +36,9 @@
 		if(H.nutrition > NUTRITION_LEVEL_FULL)
 			H.nutrition = NUTRITION_LEVEL_FULL
 		if(light_amount > 0.2) //if there's enough light, heal
-			if(prob(light_amount * 100 * 0.5))//lumcount/2 % chance to heal
-				H.heal_overall_damage(0.5,0.5)
-				H.adjustToxLoss(-0.5)
-				H.adjustOxyLoss(-0.5)
+			H.heal_overall_damage(1,1)
+			H.adjustToxLoss(-1)
+			H.adjustOxyLoss(-1)
 
 	if(H.nutrition < NUTRITION_LEVEL_STARVING + 50)
 		H.take_overall_damage(2,0)

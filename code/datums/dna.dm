@@ -224,7 +224,7 @@
 	return dna
 
 
-/mob/living/carbon/human/proc/hardset_dna(ui, se, newreal_name, newblood_type, datum/species/mrace, newfeatures)
+/mob/living/carbon/human/proc/hardset_dna(ui, se, ue, newreal_name, newblood_type, datum/species/mrace, newfeatures)
 
 	if(newfeatures)
 		dna.features = newfeatures
@@ -253,11 +253,14 @@
 		update_body_parts()
 		update_mutations_overlay()
 
+	if(ue)
+		dna.unique_enzymes = ue
+
 
 /mob/living/carbon/proc/create_dna()
 	dna = new /datum/dna(src)
 	if(!dna.species)
-		var/rando_race = pick(config.roundstart_races)
+		var/rando_race = pick(CONFIG_GET(keyed_number_list/roundstart_races))
 		dna.species = new rando_race()
 
 //proc used to update the mob's appearance after its dna UI has been changed

@@ -17,6 +17,7 @@ Research Director
 	exp_type_department = EXP_TYPE_SCIENCE
 	exp_requirements = 180
 	exp_type = EXP_TYPE_CREW
+	wiki_page = "Science_SOP"
 
 	outfit = /datum/outfit/job/rd
 
@@ -35,7 +36,7 @@ Research Director
 	name = "Research Director"
 	jobtype = /datum/job/rd
 
-	id = /obj/item/card/id/silver
+	id = /obj/item/card/id/job/rd
 	pda_slot = /obj/item/device/pda/heads/rd
 	ears = /obj/item/device/radio/headset/heads/rd
 	uniform = /obj/item/clothing/under/rank/research_director
@@ -48,6 +49,7 @@ Research Director
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/tox
+	courierbag = /obj/item/storage/backpack/messenger/tox
 
 /datum/outfit/job/rd/rig
 	name = "Research Director (Hardsuit)"
@@ -82,7 +84,7 @@ Scientist
 /datum/outfit/job/scientist
 	name = "Scientist"
 	jobtype = /datum/job/scientist
-
+	id = /obj/item/card/id/job/science
 	pda_slot = /obj/item/device/pda/toxins
 	ears = /obj/item/device/radio/headset/headset_sci
 	uniform = /obj/item/clothing/under/rank/scientist
@@ -91,6 +93,7 @@ Scientist
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/tox
+	courierbag = /obj/item/storage/backpack/messenger/tox
 	accessory = /obj/item/clothing/accessory/pocketprotector/full
 
 /*
@@ -108,6 +111,7 @@ Roboticist
 	selection_color = "#ffeeff"
 	exp_requirements = 60
 	exp_type = EXP_TYPE_CREW
+	wiki_page = "Guide_to_robotics"
 
 	outfit = /datum/outfit/job/roboticist
 
@@ -117,7 +121,7 @@ Roboticist
 /datum/outfit/job/roboticist
 	name = "Roboticist"
 	jobtype = /datum/job/roboticist
-
+	id = /obj/item/card/id/job/science
 	belt = /obj/item/storage/belt/utility/full
 	pda_slot = /obj/item/device/pda/roboticist
 	ears = /obj/item/device/radio/headset/headset_sci
@@ -126,3 +130,4 @@ Roboticist
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/tox
+	courierbag = /obj/item/storage/backpack/messenger/tox

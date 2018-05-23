@@ -7,6 +7,7 @@
 	armor = list(melee = 60, bullet = 30/*bullet through the visor*/, laser = 60, energy = 60, bomb = 30, bio = 90, rad = 90, fire = 100, acid = 100)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	var/obj/item/clothing/suit/space/chronos/suit = null
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/helmet/space/chronos/dropped()
 	if(suit)
@@ -16,7 +17,6 @@
 /obj/item/clothing/head/helmet/space/chronos/Destroy()
 	dropped()
 	return ..()
-
 
 /obj/item/clothing/suit/space/chronos
 	name = "Chronosuit"
@@ -36,6 +36,7 @@
 	var/cooldowntime = 50 //deciseconds
 	var/teleporting = 0
 	var/phase_timer_id
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/space/chronos/New()
 	..()
@@ -202,7 +203,7 @@
 				activated = 1
 			else
 				to_chat(user, "\[ <span style='color: #ff0000;'>fail</span> \] Mounting /dev/helm")
-				to_chat(user, "<span style='color: #ff0000;'><b>FATAL: </b>Unable to locate /dev/helm. <b>Aborting...</b>")
+				to_chat(user, "<span style='color: #ff0000;'><b>FATAL: </b>Unable to locate /dev/helm. <b>Aborting...</b></span>")
 			teleport_now.Grant(user)
 		cooldown = world.time + cooldowntime
 		activating = 0

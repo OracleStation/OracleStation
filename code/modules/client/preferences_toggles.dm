@@ -78,6 +78,16 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_ghost_pda)()
 /datum/verbs/menu/Settings/Ghost/chatterbox/toggle_ghost_pda/Get_checked(client/C)
 	return C.prefs.chat_toggles & CHAT_GHOSTPDA
 
+TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_anon_dchat)()
+	set name = "Toggle Anon Dchat"
+	set category = "Preferences"
+	set desc = "Toggle Anonymouse Dead Chat"
+	usr.client.prefs.chat_toggles ^= CHAT_ANONDCHAT
+	to_chat(usr, "You will now [(usr.client.prefs.chat_toggles & CHAT_ANONDCHAT) ? "hide your Ckey when talking in dead chat" : "show your Ckey when talking in dead chat"].")
+	SSblackbox.add_details("preferences_verb","Toggle Anon Dchat|[usr.client.prefs.chat_toggles & CHAT_ANONDCHAT]") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc! //social experiment, increase the generation whenever you copypaste this shamelessly GENERATION 2
+/datum/verbs/menu/Settings/Ghost/chatterbox/toggle_anon_dchat/Get_checked(client/C)
+	return C.prefs.chat_toggles & CHAT_ANONDCHAT
+
 /datum/verbs/menu/Settings/Ghost/chatterbox/Events
 	name = "Events"
 
@@ -244,6 +254,16 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings, listen_ooc)()
 /datum/verbs/menu/Settings/listen_ooc/Get_checked(client/C)
 	return C.prefs.chat_toggles & CHAT_OOC
 
+TOGGLE_CHECKBOX(/datum/verbs/menu/Settings, listen_looc)()
+	set name = "Show/Hide LOOC"
+	set category = "Preferences"
+	set desc = "Show LOOC Chat"
+	usr.client.prefs.chat_toggles ^= CHAT_LOOC
+	usr.client.prefs.save_preferences()
+	to_chat(usr, "You will [(usr.client.prefs.chat_toggles & CHAT_LOOC) ? "now" : "no longer"] see messages on the LOOC channel.")
+	SSblackbox.add_details("preferences_verb","Toggle Seeing LOOC|[usr.client.prefs.chat_toggles & CHAT_LOOC]") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+/datum/verbs/menu/Settings/listen_looc/Get_checked(client/C)
+	return C.prefs.chat_toggles & CHAT_LOOC
 
 GLOBAL_LIST_INIT(ghost_forms, list("ghost","ghostking","ghostian2","skeleghost","ghost_red","ghost_black", \
 							"ghost_blue","ghost_yellow","ghost_green","ghost_pink", \
@@ -254,7 +274,7 @@ GLOBAL_LIST_INIT(ghost_forms, list("ghost","ghostking","ghostian2","skeleghost",
 	if(!is_content_unlocked())
 		alert("This setting is for accounts with BYOND premium only.")
 		return
-	var/new_form = input(src, "Thanks for supporting BYOND - Choose your ghostly form:","Thanks for supporting BYOND",null) as null|anything in GLOB.ghost_forms
+	var/new_form = input(src, "Choose your ghostly form:","Ghost Form",null) as null|anything in GLOB.ghost_forms
 	if(new_form)
 		prefs.ghost_form = new_form
 		prefs.save_preferences()
@@ -268,7 +288,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	if(!is_content_unlocked())
 		alert("This setting is for accounts with BYOND premium only.")
 		return
-	var/new_orbit = input(src, "Thanks for supporting BYOND - Choose your ghostly orbit:","Thanks for supporting BYOND",null) as null|anything in GLOB.ghost_orbits
+	var/new_orbit = input(src, "Choose your ghostly orbit:","Ghost Orbit",null) as null|anything in GLOB.ghost_orbits
 	if(new_orbit)
 		prefs.ghost_orbit = new_orbit
 		prefs.save_preferences()
@@ -408,4 +428,3 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	prefs.save_preferences()
 	to_chat(src, "You will [(prefs.chat_toggles & CHAT_PRAYER) ? "now" : "no longer"] see prayerchat.")
 	SSblackbox.add_details("admin_toggle","Toggle Prayer Visibility|[prefs.chat_toggles & CHAT_PRAYER]") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-

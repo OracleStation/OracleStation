@@ -2,10 +2,14 @@
 /mob/verb/say_verb(message as text)
 	set name = "Say"
 	set category = "IC"
+	var/regex/whisper_finder = regex("^\\.w\\s+|^\\.w")
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
-	usr.say(message)
+	if(findtext(message, ".w", 1, 3))
+		whisper(whisper_finder.Replace(message, ""))
+	else
+		usr.say(message)
 
 
 /mob/verb/whisper_verb(message as text)
@@ -68,7 +72,7 @@
 		K = src.key
 
 	message = src.say_quote(message, get_spans())
-	var/rendered = "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name]</span>[alt_name] <span class='message'>[message]</span></span>"
+	var/rendered = "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[src.client.prefs.chat_toggles & CHAT_ANONDCHAT ? "" : "([key]) "][name]</span>[alt_name] <span class='message'>[message]</span></span>"
 
 	deadchat_broadcast(rendered, follow_target = src, speaker_key = K)
 

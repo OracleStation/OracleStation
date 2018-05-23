@@ -8,6 +8,7 @@
 	item_state = "qmcloak"
 	w_class = WEIGHT_CLASS_SMALL
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	species_restricted = list("exclude","Vox Outcast") // These mostly look okay on vox, except for when facing south. Can be fixed by someone with actual spriting knowledge, if you want them!
 
 /obj/item/clothing/head/cloakhood
 	name = "cloak hood"
@@ -17,10 +18,6 @@
 	body_parts_covered = HEAD
 	flags_1 = NODROP_1
 	flags_inv = HIDEHAIR|HIDEEARS
-
-/obj/item/clothing/neck/cloak/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is strangling [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return(OXYLOSS)
 
 /obj/item/clothing/neck/cloak/hos
 	name = "head of security's cloak"
@@ -64,6 +61,7 @@
 	armor = list(melee = 35, bullet = 10, laser = 25, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 60, acid = 60) //a fair alternative to bone armor, requiring alternative materials and gaining a suit slot
 	hoodtype = /obj/item/clothing/head/hooded/cloakhood/goliath
 	body_parts_covered = CHEST|GROIN|ARMS
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/hooded/cloakhood/goliath
 	name = "goliath cloak hood"
@@ -83,6 +81,7 @@
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRE_IMMUNITY_SUIT_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/hooded/cloakhood/drake
 	name = "drake helm"

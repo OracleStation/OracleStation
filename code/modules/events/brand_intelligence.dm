@@ -1,7 +1,7 @@
 /datum/round_event_control/brand_intelligence
 	name = "Brand Intelligence"
 	typepath = /datum/round_event/brand_intelligence
-	weight = 5
+	weight = 8
 
 	min_players = 15
 	max_occurrences = 1
@@ -27,7 +27,7 @@
 
 /datum/round_event/brand_intelligence/start()
 	for(var/obj/machinery/vending/V in GLOB.machines)
-		if(V.z != ZLEVEL_STATION)
+		if(!(V.z in GLOB.station_z_levels))
 			continue
 		vendingMachines.Add(V)
 	if(!vendingMachines.len)

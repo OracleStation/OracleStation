@@ -25,6 +25,7 @@ Contains:
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	actions_types = list()
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/helmet/space/hardsuit/deathsquad/attack_self(mob/user)
 	return
@@ -41,6 +42,7 @@ Contains:
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/deathsquad
 	dog_fashion = /datum/dog_fashion/back/deathsquad
+	species_restricted = list("exclude","Vox Outcast")
 
 	//NEW SWAT suit
 /obj/item/clothing/suit/space/swat
@@ -87,6 +89,7 @@ Contains:
 	desc = "An old, NASA CentCom branch designed, dark red space suit helmet."
 	icon_state = "void"
 	item_state = "void"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/space/nasavoid
 	name = "NASA Voidsuit"
@@ -94,6 +97,7 @@ Contains:
 	item_state = "void"
 	desc = "An old, NASA CentCom branch designed, dark red space suit."
 	allowed = list(/obj/item/device/flashlight, /obj/item/tank/internals, /obj/item/device/multitool)
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/helmet/space/nasavoid/old
 	name = "Engineering Void Helmet"
@@ -165,6 +169,7 @@ Contains:
 	strip_delay = 130
 	flags_1 = STOPSPRESSUREDMAGE_1 | THICKMATERIAL_1 | NODROP_1
 	brightness_on = 7
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/space/hardsuit/ert
 	name = "emergency response team suit"
@@ -176,6 +181,7 @@ Contains:
 	armor = list(melee = 30, bullet = 50, laser = 30, energy = 50, bomb = 50, bio = 100, rad = 100, fire = 0, acid = 95)
 	slowdown = 0
 	strip_delay = 130
+	species_restricted = list("exclude","Vox Outcast")
 
 	//ERT Security
 /obj/item/clothing/head/helmet/space/hardsuit/ert/sec
@@ -241,6 +247,7 @@ Contains:
 	strip_delay = 130
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
 	resistance_flags = ACID_PROOF | FIRE_PROOF
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/space/freedom
 	name = "eagle suit"
@@ -253,6 +260,7 @@ Contains:
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
 	resistance_flags = ACID_PROOF | FIRE_PROOF
 	slowdown = 0
+	species_restricted = list("exclude","Vox Outcast")
 
 //Carpsuit, bestsuit, lovesuit
 /obj/item/clothing/head/helmet/space/hardsuit/carp
@@ -331,6 +339,7 @@ Contains:
 	item_state = "syndicate-helm-orange"
 	armor = list(melee = 5, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 10, fire = 0, acid = 0)
 	strip_delay = 65
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/space/fragile
 	name = "emergency space suit"
@@ -341,6 +350,7 @@ Contains:
 	slowdown = 2
 	armor = list(melee = 5, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 10, fire = 0, acid = 0)
 	strip_delay = 65
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/space/fragile/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(!torn && prob(50))

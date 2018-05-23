@@ -15,27 +15,31 @@
 	facial_hair_color = hair_color
 	eye_color = random_eye_color()
 	if(!pref_species)
-		var/rando_race = pick(config.roundstart_races)
+		var/rando_race = pick(CONFIG_GET(keyed_number_list/roundstart_races))
 		pref_species = new rando_race()
 	features = random_features()
 	age = rand(AGE_MIN,AGE_MAX)
 
-/datum/preferences/proc/update_preview_icon()
+/datum/preferences/proc/update_preview_icon(var/datum/species/optional_species = null, for_species_preview = FALSE)
 	// Silicons only need a very basic preview since there is no customization for them.
-	if(job_engsec_high)
+
+	var/icon/new_preview_icon
+	if(job_engsec_high && !for_species_preview)
 		switch(job_engsec_high)
 			if(AI_JF)
-				preview_icon = icon('icons/mob/ai.dmi', "AI", SOUTH)
-				preview_icon.Scale(64, 64)
+				new_preview_icon = icon('icons/mob/ai.dmi', "AI", SOUTH)
+				new_preview_icon.Scale(64, 64)
 				return
 			if(CYBORG)
-				preview_icon = icon('icons/mob/robots.dmi', "robot", SOUTH)
-				preview_icon.Scale(64, 64)
+				new_preview_icon = icon('icons/mob/robots.dmi', "robot", SOUTH)
+				new_preview_icon.Scale(64, 64)
 				return
 
 	// Set up the dummy for its photoshoot
 	var/mob/living/carbon/human/dummy/mannequin = new()
 	copy_to(mannequin)
+	if(optional_species)
+		mannequin.set_species(optional_species)
 
 	// Determine what job is marked as 'High' priority, and dress them up as such.
 	var/datum/job/previewJob
@@ -60,26 +64,29 @@
 	if(previewJob)
 		mannequin.job = previewJob.title
 		previewJob.equip(mannequin, TRUE)
+	COMPILE_OVERLAYS(mannequin)
 	CHECK_TICK
-	preview_icon = icon('icons/effects/effects.dmi', "nothing")
-	preview_icon.Scale(48+32, 16+32)
+	new_preview_icon = icon('icons/effects/effects.dmi', "nothing")
+	new_preview_icon.Scale(48+32, 16+32)
 	CHECK_TICK
 	mannequin.setDir(NORTH)
 
 	var/icon/stamp = getFlatIcon(mannequin)
 	CHECK_TICK
-	preview_icon.Blend(stamp, ICON_OVERLAY, 25, 17)
+	new_preview_icon.Blend(stamp, ICON_OVERLAY, 25, 17)
 	CHECK_TICK
 	mannequin.setDir(WEST)
 	stamp = getFlatIcon(mannequin)
 	CHECK_TICK
-	preview_icon.Blend(stamp, ICON_OVERLAY, 1, 9)
+	new_preview_icon.Blend(stamp, ICON_OVERLAY, 1, 9)
 	CHECK_TICK
 	mannequin.setDir(SOUTH)
 	stamp = getFlatIcon(mannequin)
 	CHECK_TICK
-	preview_icon.Blend(stamp, ICON_OVERLAY, 49, 1)
+	new_preview_icon.Blend(stamp, ICON_OVERLAY, 49, 1)
 	CHECK_TICK
-	preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2) // Scaling here to prevent blurring in the browser.
+	new_preview_icon.Scale(new_preview_icon.Width() * 2, new_preview_icon.Height() * 2) // Scaling here to prevent blurring in the browser.
 	CHECK_TICK
 	qdel(mannequin)
+	
+	return new_preview_icon

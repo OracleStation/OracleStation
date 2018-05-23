@@ -3,7 +3,7 @@
 	desc = "Creates and dispenses chemicals."
 	density = TRUE
 	anchored = TRUE
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "dispenser"
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 40
@@ -221,7 +221,7 @@
 
 /obj/machinery/chem_dispenser/constructable
 	name = "portable chem dispenser"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "minidispenser"
 	powerefficiency = 0.001
 	amount = 5
@@ -306,7 +306,7 @@
 	name = "soda dispenser"
 	desc = "Contains a large reservoir of soft drinks."
 	anchored = TRUE
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "soda_dispenser"
 	amount = 10
 	dispensable_reagents = list(
@@ -344,7 +344,7 @@
 	name = "booze dispenser"
 	desc = "Contains a large reservoir of the good stuff."
 	anchored = TRUE
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'goon/icons/obj/chemical.dmi'
 	icon_state = "booze_dispenser"
 	dispensable_reagents = list(
 		"beer",
@@ -359,7 +359,8 @@
 		"cognac",
 		"ale",
 		"absinthe",
-		"hcider"
+		"hcider",
+		"synthanol"
 	)
 	emagged_reagents = list(
 		"ethanol",

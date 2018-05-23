@@ -3,7 +3,7 @@
 #define ARCH_THRESHOLD 12
 
 #define BASIC_DEVIL 0
-#define BLOOD_LIZARD 1
+#define BLOOD_UNATHI 1
 #define TRUE_DEVIL 2
 #define ARCH_DEVIL 3
 
@@ -35,8 +35,8 @@ GLOBAL_LIST_INIT(lawlorify, list (
 			BAN_CHAPEL = "This devil avoids holy ground.",
 			BAN_HURTPRIEST = "The annointed clergy appear to be immune to his powers.",
 			BAN_AVOIDWATER = "The devil seems to have some sort of aversion to water, though it does not appear to harm him.",
-			BAN_STRIKEUNCONCIOUS = "This devil only shows interest in those who are awake.",
-			BAN_HURTLIZARD = "This devil will not strike a lizardman first.",
+			BAN_STRIKEUNCONSCIOUS = "This devil only shows interest in those who are awake.",
+			BAN_HURTUNATHI = "This devil will not strike a Unathi first.",
 			BAN_HURTANIMAL = "This devil avoids hurting animals.",
 			BANISH_WATER = "To banish the devil, you must infuse its body with holy water.",
 			BANISH_COFFIN = "This devil will return to life if its remains are not placed within a coffin.",
@@ -59,8 +59,8 @@ GLOBAL_LIST_INIT(lawlorify, list (
 			BAN_CHAPEL = "You must never attempt to enter the chapel.",
 			BAN_HURTPRIEST = "You must never attack a priest.",
 			BAN_AVOIDWATER = "You must never willingly touch a wet surface.",
-			BAN_STRIKEUNCONCIOUS = "You must never strike an unconscious person.",
-			BAN_HURTLIZARD = "You must never harm a lizardman outside of self defense.",
+			BAN_STRIKEUNCONSCIOUS = "You must never strike an unconscious person.",
+			BAN_HURTUNATHI = "You must never harm a Unathi outside of self defense.",
 			BAN_HURTANIMAL = "You must never harm a non-sentient creature or robot outside of self defense.",
 			BANE_SILVER = "Silver, in all of its forms shall be your downfall.",
 			BANE_SALT = "Salt will disrupt your magical abilities.",
@@ -147,7 +147,7 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 	return pick(OBLIGATION_FOOD, OBLIGATION_FIDDLE, OBLIGATION_DANCEOFF, OBLIGATION_GREET, OBLIGATION_PRESENCEKNOWN, OBLIGATION_SAYNAME, OBLIGATION_ANNOUNCEKILL, OBLIGATION_ANSWERTONAME)
 
 /proc/randomdevilban()
-	return pick(BAN_HURTWOMAN, BAN_CHAPEL, BAN_HURTPRIEST, BAN_AVOIDWATER, BAN_STRIKEUNCONCIOUS, BAN_HURTLIZARD, BAN_HURTANIMAL)
+	return pick(BAN_HURTWOMAN, BAN_CHAPEL, BAN_HURTPRIEST, BAN_AVOIDWATER, BAN_STRIKEUNCONSCIOUS, BAN_HURTUNATHI, BAN_HURTANIMAL)
 
 /proc/randomdevilbane()
 	return pick(BANE_SALT, BANE_LIGHT, BANE_IRON, BANE_WHITECLOTHES, BANE_SILVER, BANE_HARVEST, BANE_TOOLBOX)
@@ -164,10 +164,10 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 	update_hud()
 	switch(SOULVALUE)
 		if(0)
-			to_chat(owner.current, "<span class='warning'>Your hellish powers have been restored.")
+			to_chat(owner.current, "<span class='warning'>Your hellish powers have been restored.</span>")
 			give_appropriate_spells()
 		if(BLOOD_THRESHOLD)
-			increase_blood_lizard()
+			increase_blood_unathi()
 		if(TRUE_THRESHOLD)
 			increase_true_devil()
 		if(ARCH_THRESHOLD)
@@ -184,15 +184,15 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 		return //arch devil can't regress
 	//Yes, fallthrough behavior is intended, so I can't use a switch statement.
 	if(form == TRUE_DEVIL && SOULVALUE < TRUE_THRESHOLD)
-		regress_blood_lizard()
-	if(form == BLOOD_LIZARD && SOULVALUE < BLOOD_THRESHOLD)
+		regress_blood_unathi()
+	if(form == BLOOD_UNATHI && SOULVALUE < BLOOD_THRESHOLD)
 		regress_humanoid()
 	if(SOULVALUE < 0)
 		give_appropriate_spells()
-		to_chat(owner.current, "<span class='warning'>As punishment for your failures, all of your powers except contract creation have been revoked.")
+		to_chat(owner.current, "<span class='warning'>As punishment for your failures, all of your powers except contract creation have been revoked.</span>")
 
 /datum/antagonist/devil/proc/regress_humanoid()
-	to_chat(owner.current, "<span class='warning'>Your powers weaken, have more contracts be signed to regain power.")
+	to_chat(owner.current, "<span class='warning'>Your powers weaken, have more contracts be signed to regain power.</span>")
 	if(ishuman(owner.current))
 		var/mob/living/carbon/human/H = owner.current
 		H.set_species(/datum/species/human, 1)
@@ -202,23 +202,23 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 		owner.current.forceMove(get_turf(owner.current))//Fixes dying while jaunted leaving you permajaunted.
 	form = BASIC_DEVIL
 
-/datum/antagonist/devil/proc/regress_blood_lizard()
+/datum/antagonist/devil/proc/regress_blood_unathi()
 	var/mob/living/carbon/true_devil/D = owner.current
-	to_chat(D, "<span class='warning'>Your powers weaken, have more contracts be signed to regain power.")
+	to_chat(D, "<span class='warning'>Your powers weaken, have more contracts be signed to regain power.</span>")
 	D.oldform.loc = D.loc
 	owner.transfer_to(D.oldform)
 	give_appropriate_spells()
 	qdel(D)
-	form = BLOOD_LIZARD
+	form = BLOOD_UNATHI
 	update_hud()
 
 
-/datum/antagonist/devil/proc/increase_blood_lizard()
-	to_chat(owner.current, "<span class='warning'>You feel as though your humanoid form is about to shed.  You will soon turn into a blood lizard.")
+/datum/antagonist/devil/proc/increase_blood_unathi()
+	to_chat(owner.current, "<span class='warning'>You feel as though your humanoid form is about to shed.  You will soon turn into a blood lizard.</span>")
 	sleep(50)
 	if(ishuman(owner.current))
 		var/mob/living/carbon/human/H = owner.current
-		H.set_species(/datum/species/lizard, 1)
+		H.set_species(/datum/species/unathi, 1)
 		H.underwear = "Nude"
 		H.undershirt = "Nude"
 		H.socks = "Nude"
@@ -227,12 +227,12 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 	else //Did the devil get hit by a staff of transmutation?
 		owner.current.color = "#501010"
 	give_appropriate_spells()
-	form = BLOOD_LIZARD
+	form = BLOOD_UNATHI
 
 
 
 /datum/antagonist/devil/proc/increase_true_devil()
-	to_chat(owner.current, "<span class='warning'>You feel as though your current form is about to shed.  You will soon turn into a true devil.")
+	to_chat(owner.current, "<span class='warning'>You feel as though your current form is about to shed.  You will soon turn into a true devil.</span>")
 	sleep(50)
 	var/mob/living/carbon/true_devil/A = new /mob/living/carbon/true_devil(owner.current.loc)
 	A.faction |= "hell"
@@ -248,7 +248,7 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 	if(!ascendable)
 		return
 	var/mob/living/carbon/true_devil/D = owner.current
-	to_chat(D, "<span class='warning'>You feel as though your form is about to ascend.")
+	to_chat(D, "<span class='warning'>You feel as though your form is about to ascend.</span>")
 	sleep(50)
 	if(!D)
 		return
@@ -435,12 +435,12 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 			return -1
 		currentMob.change_mob_type( /mob/living/carbon/human, targetturf, null, 1)
 		var/mob/living/carbon/human/H = owner.current
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/lawyer/black(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/iaa/black(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/storage/briefcase(H), slot_hands)
 		H.equip_to_slot_or_del(new /obj/item/pen(H), slot_l_store)
 		if(SOULVALUE >= BLOOD_THRESHOLD)
-			H.set_species(/datum/species/lizard, 1)
+			H.set_species(/datum/species/unathi, 1)
 			H.underwear = "Nude"
 			H.undershirt = "Nude"
 			H.socks = "Nude"

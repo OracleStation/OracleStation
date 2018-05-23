@@ -12,8 +12,12 @@
 	var/can_modify_colour = TRUE
 
 
-/turf/open/floor/light/Initialize()
+/turf/open/floor/light/examine(mob/user)
 	..()
+	to_chat(user, "<span class='notice'>There's a <b>small crack</b> on the edge of it.</span>")
+
+/turf/open/floor/light/Initialize()
+	. = ..()
 	update_icon()
 
 /turf/open/floor/light/break_tile()
@@ -43,7 +47,7 @@
 		icon_state = "light_off"
 
 
-/turf/open/floor/light/ChangeTurf(turf/T)
+/turf/open/floor/light/ChangeTurf(path, new_baseturf, defer_change = FALSE, ignore_air = FALSE, forceop = FALSE)
 	set_light(0)
 	return ..()
 

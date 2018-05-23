@@ -17,6 +17,7 @@ Chief Medical Officer
 	exp_requirements = 180
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_MEDICAL
+	wiki_page = "Medical_SOP"
 
 	outfit = /datum/outfit/job/cmo
 
@@ -30,9 +31,9 @@ Chief Medical Officer
 /datum/outfit/job/cmo
 	name = "Chief Medical Officer"
 	jobtype = /datum/job/cmo
-
-	id = /obj/item/card/id/silver
+	id = /obj/item/card/id/job/cmo
 	pda_slot = /obj/item/device/pda/heads/cmo
+	l_pocket = /obj/item/pinpointer/crew
 	ears = /obj/item/device/radio/headset/heads/cmo
 	uniform = /obj/item/clothing/under/rank/chief_medical_officer
 	shoes = /obj/item/clothing/shoes/sneakers/brown
@@ -44,6 +45,7 @@ Chief Medical Officer
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
+	courierbag = /obj/item/storage/backpack/messenger/med
 
 /*
 Medical Doctor
@@ -58,6 +60,7 @@ Medical Doctor
 	spawn_positions = 3
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
+	wiki_page = "Medical_doctor"
 
 	outfit = /datum/outfit/job/doctor
 
@@ -67,7 +70,7 @@ Medical Doctor
 /datum/outfit/job/doctor
 	name = "Medical Doctor"
 	jobtype = /datum/job/doctor
-
+	id = /obj/item/card/id/job/medical
 	pda_slot = /obj/item/device/pda/medical
 	ears = /obj/item/device/radio/headset/headset_med
 	uniform = /obj/item/clothing/under/rank/medical
@@ -79,6 +82,7 @@ Medical Doctor
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
+	courierbag = /obj/item/storage/backpack/messenger/med
 
 /*
 Chemist
@@ -95,6 +99,7 @@ Chemist
 	selection_color = "#ffeef0"
 	exp_type = EXP_TYPE_CREW
 	exp_requirements = 60
+	wiki_page = "Guide_to_chemistry"
 
 	outfit = /datum/outfit/job/chemist
 
@@ -104,7 +109,7 @@ Chemist
 /datum/outfit/job/chemist
 	name = "Chemist"
 	jobtype = /datum/job/chemist
-
+	id = /obj/item/card/id/job/medical
 	glasses = /obj/item/clothing/glasses/science
 	pda_slot = /obj/item/device/pda/chemist
 	ears = /obj/item/device/radio/headset/headset_med
@@ -112,9 +117,11 @@ Chemist
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	suit =  /obj/item/clothing/suit/toggle/labcoat/chemist
 	accessory = /obj/item/clothing/accessory/pocketprotector/full
+
 	backpack = /obj/item/storage/backpack/chemistry
 	satchel = /obj/item/storage/backpack/satchel/chem
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
+	courierbag = /obj/item/storage/backpack/messenger/chem
 
 /*
 Geneticist
@@ -131,6 +138,7 @@ Geneticist
 	selection_color = "#ffeef0"
 	exp_type = EXP_TYPE_CREW
 	exp_requirements = 60
+	wiki_page = "Guide_to_genetics"
 
 	outfit = /datum/outfit/job/geneticist
 
@@ -140,7 +148,7 @@ Geneticist
 /datum/outfit/job/geneticist
 	name = "Geneticist"
 	jobtype = /datum/job/geneticist
-
+	id = /obj/item/card/id/job/medical
 	pda_slot = /obj/item/device/pda/geneticist
 	ears = /obj/item/device/radio/headset/headset_medsci
 	uniform = /obj/item/clothing/under/rank/geneticist
@@ -151,6 +159,7 @@ Geneticist
 	backpack = /obj/item/storage/backpack/genetics
 	satchel = /obj/item/storage/backpack/satchel/gen
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
+	courierbag = /obj/item/storage/backpack/messenger/med
 
 /*
 Virologist
@@ -167,6 +176,7 @@ Virologist
 	selection_color = "#ffeef0"
 	exp_type = EXP_TYPE_CREW
 	exp_requirements = 60
+	wiki_page = "Infections"
 
 	outfit = /datum/outfit/job/virologist
 
@@ -176,18 +186,19 @@ Virologist
 /datum/outfit/job/virologist
 	name = "Virologist"
 	jobtype = /datum/job/virologist
-
+	id = /obj/item/card/id/job/medical
 	pda_slot = /obj/item/device/pda/viro
 	ears = /obj/item/device/radio/headset/headset_med
 	uniform = /obj/item/clothing/under/rank/virologist
-	mask = /obj/item/clothing/mask/surgical
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	suit =  /obj/item/clothing/suit/toggle/labcoat/virologist
 	suit_store =  /obj/item/device/flashlight/pen
+	backpack_contents = list(/obj/item/clothing/mask/surgical = 1)
 
 	backpack = /obj/item/storage/backpack/virology
 	satchel = /obj/item/storage/backpack/satchel/vir
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
+	courierbag = /obj/item/storage/backpack/messenger/viro
 
 /datum/job/paramedic
 	title = "Paramedic"
@@ -201,6 +212,7 @@ Virologist
 	selection_color = "#ffeef0"
 	exp_type = EXP_TYPE_CREW
 	exp_requirements = 60
+	wiki_page = "Guide_to_medicine"
 
 	outfit = /datum/outfit/job/paramedic
 
@@ -210,7 +222,7 @@ Virologist
 /datum/outfit/job/paramedic
 	name = "Paramedic"
 	jobtype = /datum/job/paramedic
-
+	id = /obj/item/card/id/job/medical
 	pda_slot = /obj/item/device/pda/medical
 	ears = /obj/item/device/radio/headset/headset_med
 	uniform = /obj/item/clothing/under/rank/medical/paramedic
@@ -221,3 +233,4 @@ Virologist
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
+	courierbag = /obj/item/storage/backpack/messenger/med

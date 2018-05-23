@@ -33,6 +33,13 @@
 
 	sync_mind()
 
+//Reload alternate appearances
+	for(var/v in GLOB.active_alternate_appearances)
+		if(!v)
+			continue
+		var/datum/atom_hud/alternate_appearance/AA = v
+		AA.onNewMob(src)
+
 	client.sethotkeys() //set mob specific hotkeys
 
 	update_client_colour()
@@ -45,3 +52,5 @@
 		GLOB.individual_log_list[ckey] = logging
 	else
 		logging = GLOB.individual_log_list[ckey]
+
+	player_logged = FALSE
