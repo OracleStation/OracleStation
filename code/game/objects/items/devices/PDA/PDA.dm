@@ -152,13 +152,12 @@ GLOBAL_LIST_EMPTY(PDAs)
 				dat += "<ul>"
 				dat += "<li><a href='byond://?src=[REF(src)];choice=1'><img src=pda_notes.png> Notekeeper</a></li>"
 				dat += "<li><a href='byond://?src=[REF(src)];choice=2'><img src=pda_mail.png> Messenger</a></li>"
+				dat += "<li><a href='byond://?src=[REF(src)];choice=41'><img src=pda_notes.png> View Crew Manifest</a></li>"
 
 				if (cartridge)
 					if (cartridge.access & CART_CLOWN)
 						dat += "<li><a href='byond://?src=[REF(src)];choice=Honk'><img src=pda_honk.png> Honk Synthesizer</a></li>"
 						dat += "<li><a href='byond://?src=[REF(src)];choice=Trombone'><img src=pda_honk.png> Sad Trombone</a></li>"
-					if (cartridge.access & CART_MANIFEST)
-						dat += "<li><a href='byond://?src=[REF(src)];choice=41'><img src=pda_notes.png> View Crew Manifest</a></li>"
 					if(cartridge.access & CART_STATUS_DISPLAY)
 						dat += "<li><a href='byond://?src=[REF(src)];choice=42'><img src=pda_status.png> Set Status Display</a></li>"
 					dat += "</ul>"
