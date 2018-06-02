@@ -189,7 +189,7 @@
 	name = "\improper Value-PAK cartridge"
 	desc = "Now with 350% more value!" //Give the Captain...EVERYTHING! (Except Mime and Clown)
 	icon_state = "cart-c"
-	access = ~(CART_CLOWN | CART_MIME)
+	access = ~(CART_CLOWN | CART_MIME | CART_REMOTE_DOOR)
 	bot_access_flags = SEC_BOT | MULE_BOT | FLOOR_BOT | CLEAN_BOT | MED_BOT
 	spam_enabled = 1
 
