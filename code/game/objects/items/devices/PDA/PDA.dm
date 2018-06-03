@@ -247,6 +247,12 @@ GLOBAL_LIST_EMPTY(PDAs)
 				dat += tnote
 				dat += "<br>"
 
+			if(41) //crew manifest
+				dat += "<h4>Crew Manifest</h4>"
+				dat += "<center>"
+				dat += GLOB.data_core.get_manifest()
+				dat += "</center>"
+
 			if(3)
 				dat += "<h4><img src=pda_atmos.png>   Atmospheric Readings</h4>"
 
@@ -328,7 +334,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 				mode = 3
 			if("4")//Redirects to hub
 				mode = 0
-
 
 //MAIN FUNCTIONS===================================
 
