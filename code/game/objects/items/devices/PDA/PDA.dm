@@ -218,7 +218,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				if(cartridge)
 					dat += cartridge.message_header()
 
-				dat += "<h4><img src=pda_menu.png>   Detected PDAs</h4>"
+				dat += "<h4><img src=pda_mail.png>   Detected PDAs</h4>"
 
 				dat += "<ul>"
 				var/count = 0
@@ -236,13 +236,13 @@ GLOBAL_LIST_EMPTY(PDAs)
 				if(count == 0)
 					dat += "None detected.<br>"
 				else if(cartridge && cartridge.spam_enabled)
-					dat += "<a href='byond://?src=[REF(src)];choice=MessageAll'>Send To All</a>"
+					dat += "<img src=pda_mail.png>   <a href='byond://?src=[REF(src)];choice=MessageAll'>Send To All</a>"
 
 			if(21)
 				dat += "<h4><img src=pda_mail.png>   SpaceMessenger V3.9.6</h4>"
-				dat += "<a href='byond://?src=[REF(src)];choice=Clear'><img src=pda_blank.png> Clear Messages</a>"
+				dat += "<img src=pda_blank.png>   <a href='byond://?src=[REF(src)];choice=Clear'> Clear Messages</a>"
 
-				dat += "<h4><img src=pda_mail.png> Messages</h4>"
+				dat += "<h4><img src=pda_mail.png>   Messages</h4>"
 
 				dat += tnote
 				dat += "<br>"
@@ -525,7 +525,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				log_talk(user,"[user] (PDA: [name]) sent \"[message]\" to [P.name]",LOGPDA)
 		else
 			if(!multiple)
-				to_chat(user, "<span class='notice'>ERROR: Server isn't responding.</span>")
+				to_chat(user, "<span class='alert'>ERROR: Server isn't responding.</span>")
 				return
 	photo = null
 
