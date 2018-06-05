@@ -152,7 +152,6 @@
 		new /obj/item/clothing/head/soft/sec(src)
 	new /obj/item/clothing/mask/bandana/red(src)
 	new /obj/item/clothing/mask/bandana/red(src)
-	new /obj/item/clothing/head/beret/csec
 	return
 
 
@@ -177,6 +176,7 @@
 	icon_door = "atmos_wardrobe"
 
 /obj/structure/closet/wardrobe/atmospherics_yellow/PopulateContents()
+	new /obj/item/clothing/head/beret/atmos(src)
 	new /obj/item/storage/backpack/duffelbag/engineering(src)
 	new /obj/item/storage/backpack/satchel/eng(src)
 	new /obj/item/storage/backpack/industrial(src)
@@ -186,8 +186,6 @@
 		new /obj/item/clothing/under/rank/atmospheric_technician(src)
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/shoes/sneakers/black(src)
-		new /obj/item/clothing/head/beret/atmos(src)
-	for(var/i in 1 to 3)
 	return
 
 /obj/structure/closet/wardrobe/engineering_yellow
@@ -195,6 +193,7 @@
 	icon_door = "yellow"
 
 /obj/structure/closet/wardrobe/engineering_yellow/PopulateContents()
+	new /obj/item/clothing/head/beret/eng(src)
 	new /obj/item/storage/backpack/duffelbag/engineering(src)
 	new /obj/item/storage/backpack/industrial(src)
 	new /obj/item/storage/backpack/satchel/eng(src)
@@ -207,14 +206,15 @@
 		new /obj/item/clothing/shoes/workboots(src)
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/head/hardhat(src)
-		new /obj/item/clothing/head/beret/eng(src)
-	for(var/i in 1 to 3)
 	return
 
 /obj/structure/closet/wardrobe/white/medical
 	name = "medical doctor's wardrobe"
 
 /obj/structure/closet/wardrobe/white/medical/PopulateContents()
+	new /obj/item/clothing/head/beret/med(src)
+	new /obj/item/clothing/head/beret/med(src)
+	new /obj/item/clothing/head/beret/med(src)
 	new /obj/item/storage/backpack/duffelbag/med(src)
 	new /obj/item/storage/backpack/medic(src)
 	new /obj/item/storage/backpack/satchel/med(src)
@@ -234,8 +234,6 @@
 		new /obj/item/clothing/shoes/sneakers/white(src)
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/head/soft/emt(src)
-		new /obj/item/clothing/head/beret/med(src)
-	for(var/i in 1 to 3)
 	return
 
 /obj/structure/closet/wardrobe/white/medical/paramedic
@@ -261,6 +259,8 @@
 	icon_door = "black"
 
 /obj/structure/closet/wardrobe/robotics_black/PopulateContents()
+	new /obj/item/clothing/head/beret/sci(src)
+	new /obj/item/clothing/head/beret/sci(src)
 	new /obj/item/clothing/glasses/hud/diagnostic(src)
 	new /obj/item/clothing/glasses/hud/diagnostic(src)
 	new /obj/item/clothing/under/rank/roboticist(src)
@@ -271,8 +271,6 @@
 	new /obj/item/clothing/shoes/sneakers/black(src)
 	new /obj/item/clothing/gloves/fingerless(src)
 	new /obj/item/clothing/gloves/fingerless(src)
-	new /obj/item/clothing/head/beret/sci(src)
-	new /obj/item/clothing/head/beret/sci(src)
 	new /obj/item/clothing/head/soft/black(src)
 	new /obj/item/clothing/head/soft/black(src)
 	if(prob(40))
@@ -325,6 +323,7 @@
 	icon_door = "white"
 
 /obj/structure/closet/wardrobe/virology_white/PopulateContents()
+	new /obj/item/clothing/head/beret/med(src)
 	new /obj/item/clothing/under/rank/virologist(src)
 	new /obj/item/clothing/under/rank/virologist(src)
 	new /obj/item/clothing/shoes/sneakers/white(src)
@@ -344,6 +343,8 @@
 	icon_door = "white"
 
 /obj/structure/closet/wardrobe/science_white/PopulateContents()
+	new /obj/item/clothing/head/beret/sci(src)
+	new /obj/item/clothing/head/beret/sci(src)
 	new /obj/item/storage/backpack/science(src)
 	new /obj/item/storage/backpack/science(src)
 	new /obj/item/storage/backpack/satchel/tox(src)
@@ -355,9 +356,6 @@
 		new /obj/item/clothing/suit/toggle/labcoat/science(src)
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/shoes/sneakers/white(src)
-		new /obj/item/clothing/head/beret/sci(src)
-		new /obj/item/clothing/head/beret/sci(src)
-		new /obj/item/clothing/head/beret/sci(src)
 	new /obj/item/device/radio/headset/headset_sci(src)
 	new /obj/item/device/radio/headset/headset_sci(src)
 	for(var/i in 1 to 3)

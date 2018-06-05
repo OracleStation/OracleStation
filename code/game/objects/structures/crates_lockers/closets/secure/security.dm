@@ -5,6 +5,7 @@
 
 /obj/structure/closet/secure_closet/captains/PopulateContents()
 	..()
+	new /obj/item/clothing/head/beret/captain(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/captain(src)
 	if(prob(33))
 		new /obj/item/storage/backpack/captain(src)
@@ -62,6 +63,8 @@
 
 /obj/structure/closet/secure_closet/blueshield/PopulateContents()
 	..()
+	new /obj/item/clothing/head/beret/blueshield(src)
+	new /obj/item/clothing/head/beret/blueshieldnavy(src)
 	new /obj/item/storage/briefcase(src)
 	new	/obj/item/storage/firstaid/regular(src)
 	new /obj/item/storage/belt/security(src)
@@ -74,7 +77,6 @@
 	new /obj/item/clothing/suit/storage/blueshield(src)
 	new /obj/item/clothing/accessory/holster/blueshield(src)
 	new /obj/item/clothing/shoes/jackboots(src)
-	new /obj/item/clothing/head/beret/centcom/bsofficer(src)
 
 /obj/structure/closet/secure_closet/brig_phys
 	name = "\proper brig physician's locker"
@@ -95,7 +97,6 @@
 	new /obj/item/restraints/handcuffs(src)
 	new /obj/item/device/sensor_device(src)
 	new /obj/item/clothing/gloves/color/latex/nitrile(src)
-	new /obj/item/clothing/head/beret/med(src)
 
 /obj/structure/closet/secure_closet/hos
 	name = "\proper head of security's locker"
@@ -113,7 +114,6 @@
 	new /obj/item/clothing/suit/armor/hos(src)
 	new /obj/item/clothing/under/rank/head_of_security/alt(src)
 	new /obj/item/clothing/head/HoS(src)
-	new /obj/item/clothing/head/HoS/beret
 	new /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses/gars/supergars(src)
 	new /obj/item/clothing/under/rank/head_of_security/grey(src)
@@ -140,7 +140,6 @@
 	new /obj/item/clothing/suit/armor/vest/warden(src)
 	new /obj/item/clothing/head/warden(src)
 	new /obj/item/clothing/head/beret/sec/navywarden(src)
-	new /obj/item/clothing/head/beret/sergeantwarden(src)
 	new /obj/item/clothing/suit/armor/vest/warden/alt(src)
 	new /obj/item/clothing/under/rank/warden/navyblue(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)

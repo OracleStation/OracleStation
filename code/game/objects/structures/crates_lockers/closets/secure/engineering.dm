@@ -5,6 +5,7 @@
 
 /obj/structure/closet/secure_closet/engineering_chief/PopulateContents()
 	..()
+	new /obj/item/clothing/head/beret/ce(src)
 	new /obj/item/clothing/neck/cloak/ce(src)
 	new /obj/item/clothing/under/rank/chief_engineer(src)
 	new /obj/item/clothing/head/hardhat/white(src)
@@ -27,7 +28,6 @@
 	new /obj/item/door_remote/chief_engineer(src)
 	new /obj/item/pipe_dispenser(src)
 	new /obj/item/inducer(src)
-	new /obj/item/clothing/head/beret/ce(src)
 
 /obj/structure/closet/secure_closet/engineering_electrical
 	name = "electrical supplies locker"
@@ -39,7 +39,6 @@
 	..()
 	new /obj/item/clothing/gloves/color/yellow(src)
 	new /obj/item/clothing/gloves/color/yellow(src)
-	new /obj/item/clothing/head/beret/eng(src)
 	new /obj/item/inducer(src)
 	new /obj/item/inducer(src)
 	for(var/i in 1 to 3)
@@ -69,6 +68,8 @@
 
 /obj/structure/closet/secure_closet/engineering_personal/PopulateContents()
 	..()
+	new /obj/item/clothing/head/beret/eng(src)
+	new /obj/item/clothing/head/beret/eng(src)
 	new /obj/item/device/radio/headset/headset_eng(src)
 	new /obj/item/storage/toolbox/mechanical(src)
 	new /obj/item/tank/internals/emergency_oxygen/engi(src)
@@ -85,6 +86,7 @@
 
 /obj/structure/closet/secure_closet/atmospherics/PopulateContents()
 	..()
+	new /obj/item/clothing/head/beret/atmos(src)
 	new /obj/item/device/radio/headset/headset_eng(src)
 	new /obj/item/pipe_dispenser(src)
 	new /obj/item/storage/toolbox/mechanical(src)
