@@ -267,7 +267,7 @@
 	armor = list(melee = 40, bullet = 20, laser = 10, energy = 10, bomb = 10, bio = 5, rad = 5, fire = 5, acid = 30)
 	strip_delay = 60
 
-/obj/item/clothing/head/beret/Captain
+/obj/item/clothing/head/beret/captain
 	name = "captain beret"
 	desc = "A lovely blue Captain beret with a gold and white insignia."
 	icon_state = "beret_captain"

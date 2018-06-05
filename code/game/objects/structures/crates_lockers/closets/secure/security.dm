@@ -5,7 +5,7 @@
 
 /obj/structure/closet/secure_closet/captains/PopulateContents()
 	..()
-	new /obj/item/clothing/head/beret/Captain(src)
+	new /obj/item/clothing/head/beret/captain(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/captain(src)
 	if(prob(33))
 		new /obj/item/storage/backpack/captain(src)
