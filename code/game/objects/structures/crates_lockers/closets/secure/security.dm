@@ -5,6 +5,7 @@
 
 /obj/structure/closet/secure_closet/captains/PopulateContents()
 	..()
+	new /obj/item/clothing/head/beret/captain(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/captain(src)
 	if(prob(33))
 		new /obj/item/storage/backpack/captain(src)
@@ -62,6 +63,8 @@
 
 /obj/structure/closet/secure_closet/blueshield/PopulateContents()
 	..()
+	new /obj/item/clothing/head/beret/blueshield(src)
+	new /obj/item/clothing/head/beret/blueshieldnavy(src)
 	new /obj/item/storage/briefcase(src)
 	new	/obj/item/storage/firstaid/regular(src)
 	new /obj/item/storage/belt/security(src)
