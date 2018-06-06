@@ -104,10 +104,14 @@
 	access = CART_SECURITY
 	spam_enabled = 1
 
-/obj/item/cartridge/curator
-	name = "\improper Lib-Tweet cartridge"
-	icon_state = "cart-s"
-	access = CART_NEWSCASTER
+// DISABLED BECAUSE IT DONT FUCKIN' WORK
+/*
+///obj/item/cartridge/curator
+//	name = "\improper Lib-Tweet cartridge"
+//	icon_state = "cart-s"
+//	access = CART_NEWSCASTER
+*/
+
 
 /*
 /obj/item/cartridge/botanist
@@ -189,7 +193,7 @@
 	name = "\improper Value-PAK cartridge"
 	desc = "Now with 350% more value!" //Give the Captain...EVERYTHING! (Except Mime and Clown)
 	icon_state = "cart-c"
-	access = ~(CART_CLOWN | CART_MIME | CART_REMOTE_DOOR)
+	access = ~(CART_CLOWN | CART_MIME | CART_REMOTE_DOOR | CART_NEWSCASTER)
 	bot_access_flags = SEC_BOT | MULE_BOT | FLOOR_BOT | CLEAN_BOT | MED_BOT
 	spam_enabled = 1
 
@@ -224,10 +228,9 @@
 	switch(host_pda.mode)
 		if(40) //signaller
 			var/obj/item/radio/integrated/signal/S = radio
-			menu = "<h4><img src=pda_signaler.png> Remote Signaling System</h4>"
+			menu = "<h4><img src=pda_signaler.png class=pda_icon>   Remote Signaling System</h4>"
 
 			menu += {"
-<a href='byond://?src=[REF(src)];choice=Send Signal'>Send Signal</A><BR>
 Frequency:
 <a href='byond://?src=[REF(src)];choice=Signal Frequency;sfreq=-10'>-</a>
 <a href='byond://?src=[REF(src)];choice=Signal Frequency;sfreq=-2'>-</a>
@@ -240,22 +243,23 @@ Code:
 <a href='byond://?src=[REF(src)];choice=Signal Code;scode=-1'>-</a>
 [S.code]
 <a href='byond://?src=[REF(src)];choice=Signal Code;scode=1'>+</a>
-<a href='byond://?src=[REF(src)];choice=Signal Code;scode=5'>+</a><br>"}
+<a href='byond://?src=[REF(src)];choice=Signal Code;scode=5'>+</a><br><br>
+<a href='byond://?src=[REF(src)];choice=Send Signal'>Send Signal</A><BR>"}
 		if (42) //status displays
-			menu = "<h4><img src=pda_status.png> Station Status Display Interlink</h4>"
+			menu = "<h4><img src=pda_status.png class=pda_icon>   Station Status Display Interlink</h4>"
 
 			menu += "\[ <A HREF='?src=[REF(src)];choice=Status;statdisp=blank'>Clear</A> \]<BR>"
 			menu += "\[ <A HREF='?src=[REF(src)];choice=Status;statdisp=shuttle'>Shuttle ETA</A> \]<BR>"
 			menu += "\[ <A HREF='?src=[REF(src)];choice=Status;statdisp=message'>Message</A> \]"
-			menu += "<ul><li> Line 1: <A HREF='?src=[REF(src)];choice=Status;statdisp=setmsg1'>[ message1 ? message1 : "(none)"]</A>"
-			menu += "<li> Line 2: <A HREF='?src=[REF(src)];choice=Status;statdisp=setmsg2'>[ message2 ? message2 : "(none)"]</A></ul><br>"
+			menu += "<ul><li> Line 1: <A HREF='?src=[REF(src)];choice=Status;statdisp=setmsg1'>[ message1 ? message1 : "(None)"]</A>"
+			menu += "<li> Line 2: <A HREF='?src=[REF(src)];choice=Status;statdisp=setmsg2'>[ message2 ? message2 : "(None)"]</A></ul><br>"
 			menu += "\[ Alert: <A HREF='?src=[REF(src)];choice=Status;statdisp=alert;alert=default'>None</A> |"
 			menu += " <A HREF='?src=[REF(src)];choice=Status;statdisp=alert;alert=redalert'>Red Alert</A> |"
 			menu += " <A HREF='?src=[REF(src)];choice=Status;statdisp=alert;alert=lockdown'>Lockdown</A> |"
 			menu += " <A HREF='?src=[REF(src)];choice=Status;statdisp=alert;alert=biohazard'>Biohazard</A> \]<BR>"
 
 		if (43)
-			menu = "<h4><img src=pda_power.png> Power Monitors - Please select one</h4><BR>"
+			menu = "<h4><img src=pda_power.png class=pda_icon>   Power Monitors - Please select one</h4><BR>"
 			powmonitor = null
 			powermonitors = list()
 			var/powercount = 0
@@ -281,7 +285,7 @@ Code:
 				menu += "</FONT>"
 
 		if (433)
-			menu = "<h4><img src=pda_power.png> Power Monitor </h4><BR>"
+			menu = "<h4><img src=pda_power.png class=pda_icon>   Power Monitor </h4><BR>"
 			if(!powmonitor)
 				menu += "<span class='danger'>No connection<BR></span>"
 			else
@@ -308,13 +312,13 @@ Code:
 				menu += "</FONT></PRE>"
 
 		if (44) //medical records //This thing only displays a single screen so it's hard to really get the sub-menu stuff working.
-			menu = "<h4><img src=pda_medical.png> Medical Record List</h4>"
+			menu = "<h4><img src=pda_medical.png class=pda_icon>   Medical Record List</h4>"
 			if(GLOB.data_core.general)
 				for(var/datum/data/record/R in sortRecord(GLOB.data_core.general))
-					menu += "<a href='byond://?src=[REF(src)];choice=Medical Records;target=[R.fields["id"]]'>[R.fields["id"]]: [R.fields["name"]]<br>"
+					menu += "<img src=pda_medical.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=Medical Records;target=[R.fields["id"]]'>[R.fields["id"]]: [R.fields["name"]]</a><br>"
 			menu += "<br>"
 		if(441)
-			menu = "<h4><img src=pda_medical.png> Medical Record</h4>"
+			menu = "<h4><img src=pda_medical.png class=pda_icon>   Medical Record</h4>"
 
 			if(active1 in GLOB.data_core.general)
 				menu += "Name: [active1.fields["name"]] ID: [active1.fields["id"]]<br>"
@@ -329,7 +333,7 @@ Code:
 
 			menu += "<br>"
 
-			menu += "<h4><img src=pda_medical.png> Medical Data</h4>"
+			menu += "<h4><img src=pda_medical.png class=pda_icon>   Medical Data</h4>"
 			if(active2 in GLOB.data_core.medical)
 				menu += "Blood Type: [active2.fields["blood_type"]]<br><br>"
 
@@ -351,14 +355,14 @@ Code:
 
 			menu += "<br>"
 		if (45) //security records
-			menu = "<h4><img src=pda_cuffs.png> Security Record List</h4>"
+			menu = "<h4><img src=pda_cuffs.png class=pda_icon>   Security Record List</h4>"
 			if(GLOB.data_core.general)
 				for (var/datum/data/record/R in sortRecord(GLOB.data_core.general))
-					menu += "<a href='byond://?src=[REF(src)];choice=Security Records;target=[R.fields["id"]]'>[R.fields["id"]]: [R.fields["name"]]<br>"
+					menu += "<img src=pda_cuffs.png class=pda_icon>  <a href='byond://?src=[REF(src)];choice=Security Records;target=[R.fields["id"]]'>[R.fields["id"]]: [R.fields["name"]]</a><br>"
 
 			menu += "<br>"
 		if(451)
-			menu = "<h4><img src=pda_cuffs.png> Security Record</h4>"
+			menu = "<h4><img src=pda_cuffs.png class=pda_icon>   Security Record</h4>"
 
 			if(active1 in GLOB.data_core.general)
 				menu += "Name: [active1.fields["name"]] ID: [active1.fields["id"]]<br>"
@@ -373,7 +377,7 @@ Code:
 
 			menu += "<br>"
 
-			menu += "<h4><img src=pda_cuffs.png> Security Data</h4>"
+			menu += "<h4><img src=pda_cuffs.png class=pda_icon>   Security Data</h4>"
 			if(active3 in GLOB.data_core.security)
 				menu += "Criminal Status: [active3.fields["criminal"]]<br>"
 
@@ -419,7 +423,7 @@ Code:
 			menu += "<br>"
 
 		if (47) //quartermaster order records
-			menu = "<h4><img src=pda_crate.png> Supply Record Interlink</h4>"
+			menu = "<h4><img src=pda_crate.png class=pda_icon>   Supply Record Interlink</h4>"
 
 			menu += "<BR><B>Supply shuttle</B><BR>"
 			menu += "Location: "
@@ -447,10 +451,10 @@ Code:
 			for(var/S in SSshuttle.requestlist)
 				var/datum/supply_order/SO = S
 				menu += "<li>#[SO.id] - [SO.pack.name] requested by [SO.orderer]</li>"
-			menu += "</ol><font size=\"-3\">Upgrade NOW to Space Parts & Space Vendors PLUS for full remote order control and inventory management."
+			// menu += "</ol><font size=\"-3\">Upgrade NOW to Space Parts & Space Vendors PLUS for full remote order control and inventory management." DOESNT EXIST, SO COMMENTED OUT
 
 		if (49) //janitorial locator
-			menu = "<h4><img src=pda_bucket.png> Persistent Custodial Object Locator</h4>"
+			menu = "<h4><img src=pda_bucket.png class=pda_icon>   Persistent Custodial Object Locator</h4>"
 
 			var/turf/cl = get_turf(src)
 			if (cl)
@@ -511,8 +515,8 @@ Code:
 				menu += "ERROR: Unable to determine current location."
 			menu += "<br><br><A href='byond://?src=[REF(src)];choice=49'>Refresh GPS Locator</a>"
 
-		if (53) // Newscaster
-			menu = "<h4><img src=pda_notes.png> Newscaster Access</h4>"
+		if (53) // Newscaster. DOESNT FUCKING WORK REEEEEEEEEEEEEEEEE
+			menu = "<h4><img src=pda_notes.png class=pda_icon>   Newscaster Access</h4>"
 			menu += "<br> Current Newsfeed: <A href='byond://?src=[REF(src)];choice=Newscaster Switch Channel'>[current_channel ? current_channel : "None"]</a> <br>"
 			var/datum/newscaster/feed_channel/current
 			for(var/datum/newscaster/feed_channel/chan in GLOB.news_network.network_channels)
@@ -534,7 +538,7 @@ Code:
 			menu += "<br> <A href='byond://?src=[REF(src)];choice=Newscaster Message'>Post Message</a>"
 
 		if (54) // Beepsky, Medibot, Floorbot, and Cleanbot access
-			menu = "<h4><img src=pda_medbot.png> Bots Interlink</h4>"
+			menu = "<h4><img src=pda_medbot.png class=pda_icon>   Bots Interlink</h4>"
 			bot_control()
 		if (99) //Newscaster message permission error
 			menu = "<h5> ERROR : NOT AUTHORIZED [host_pda.id ? "" : "- ID SLOT EMPTY"] </h5>"
@@ -661,7 +665,6 @@ Code:
 //		menu = "Interlink Error - Please reinsert cartridge."
 //		return
 	if(active_bot)
-		menu += "<B>[active_bot]</B><BR> Status: (<A href='byond://?src=[REF(src)];op=control;bot=[REF(active_bot)]'><img src=pda_refresh.png><i>refresh</i></A>)<BR>"
 		menu += "Model: [active_bot.model]<BR>"
 		menu += "Location: [get_area(active_bot)]<BR>"
 		menu += "Mode: [active_bot.get_mode()]"
@@ -670,43 +673,43 @@ Code:
 			if(active_bot.paicard && active_bot.paicard.pai)
 				menu += "[active_bot.paicard.pai.name]"
 				if(active_bot.bot_core.allowed(usr))
-					menu += " (<A href='byond://?src=[REF(src)];op=ejectpai'><i>eject</i></A>)"
+					menu += " (<A href='byond://?src=[REF(src)];op=ejectpai'><i>Eject</i></A>)"
 			else
-				menu += "<i>none</i>"
+				menu += "<i>None</i>"
 
 		//MULEs!
 		if(active_bot.bot_type == MULE_BOT)
 			var/mob/living/simple_animal/bot/mulebot/MULE = active_bot
 			var/atom/Load = MULE.load
-			menu += "<BR>Current Load: [ !Load ? "<i>none</i>" : "[Load.name] (<A href='byond://?src=[REF(src)];mule=unload'><i>unload</i></A>)" ]<BR>"
-			menu += "Destination: [MULE.destination ? MULE.destination : "<i>None</i>"] (<A href='byond://?src=[REF(src)];mule=destination'><i>set</i></A>)<BR>"
+			menu += "<BR>Current Load: [ !Load ? "<i>None</i>" : "[Load.name] (<A href='byond://?src=[REF(src)];mule=unload'><i>Unload</i></A>)" ]<BR>"
+			menu += "Destination: [MULE.destination ? MULE.destination : "<i>None</i>"] <A href='byond://?src=[REF(src)];mule=destination'><i>Set</i></A><BR>"
 			menu += "Set ID: [MULE.suffix] <A href='byond://?src=[REF(src)];mule=setid'><i> Modify</i></A><BR>"
 			menu += "Power: [MULE.cell ? MULE.cell.percent() : 0]%<BR>"
-			menu += "Home: [!MULE.home_destination ? "<i>none</i>" : MULE.home_destination ]<BR>"
-			menu += "Delivery Reporting: <A href='byond://?src=[REF(src)];mule=report'>[MULE.report_delivery ? "(<B>On</B>)": "(<B>Off</B>)"]</A><BR>"
-			menu += "Auto Return Home: <A href='byond://?src=[REF(src)];mule=autoret'>[MULE.auto_return ? "(<B>On</B>)": "(<B>Off</B>)"]</A><BR>"
-			menu += "Auto Pickup Crate: <A href='byond://?src=[REF(src)];mule=autopick'>[MULE.auto_pickup ? "(<B>On</B>)": "(<B>Off</B>)"]</A><BR><BR>" //Hue.
+			menu += "Home: [!MULE.home_destination ? "<i>None</i>" : MULE.home_destination ]<BR>"
+			menu += "Delivery Reporting: <A href='byond://?src=[REF(src)];mule=report'>[MULE.report_delivery ? "<B>On</B>": "<B>Off</B>"]</A><BR>"
+			menu += "Auto Return Home: <A href='byond://?src=[REF(src)];mule=autoret'>[MULE.auto_return ? "<B>On</B>": "<B>Off</B>"]</A><BR>"
+			menu += "Auto Pickup Crate: <A href='byond://?src=[REF(src)];mule=autopick'>[MULE.auto_pickup ? "<B>On</B>": "<B>Off</B>"]</A><BR><BR>" //Hue.
 
-			menu += "\[<A href='byond://?src=[REF(src)];mule=stop'>Stop</A>\] "
-			menu += "\[<A href='byond://?src=[REF(src)];mule=go'>Proceed</A>\] "
-			menu += "\[<A href='byond://?src=[REF(src)];mule=home'>Return Home</A>\]<BR>"
+			menu += "<A href='byond://?src=[REF(src)];mule=stop'>Stop</A> "
+			menu += "<A href='byond://?src=[REF(src)];mule=go'>Proceed</A> "
+			menu += "<A href='byond://?src=[REF(src)];mule=home'>Return Home</A><BR>"
 
 		else
-			menu += "<BR>\[<A href='byond://?src=[REF(src)];op=patroloff'>Stop Patrol</A>\] "	//patrolon
-			menu += "\[<A href='byond://?src=[REF(src)];op=patrolon'>Start Patrol</A>\] "	//patroloff
-			menu += "\[<A href='byond://?src=[REF(src)];op=summon'>Summon Bot</A>\]<BR>"		//summon
+			menu += "<BR><A href='byond://?src=[REF(src)];op=patroloff'>Stop Patrol</A>"	//patrolon
+			menu += "<A href='byond://?src=[REF(src)];op=patrolon'>Start Patrol</A>"	//patroloff
+			menu += "<A href='byond://?src=[REF(src)];op=summon'>Summon Bot</A><BR>"		//summon
 			menu += "Keep an ID inserted to upload access codes upon summoning."
 
-		menu += "<HR><A href='byond://?src=[REF(src)];op=botlist'><img src=pda_back.png>Return to bot list</A>"
+		menu += "<HR><img src=pda_back.png class=pda_icon>   <A href='byond://?src=[REF(src)];op=botlist'>Return</A>"
 	else
-		menu += "<BR><A href='byond://?src=[REF(src)];op=botlist'><img src=pda_refresh.png>Scan for active bots</A><BR><BR>"
+		menu += "<img src=pda_refresh.png class=pda_icon>   <A href='byond://?src=[REF(src)];op=botlist'>Scan for active bots</A><BR><BR>"
 		var/turf/current_turf = get_turf(src)
 		var/zlevel = current_turf.z
 		var/botcount = 0
 		for(Bot in GLOB.living_mob_list) //Git da botz
 			if(!Bot.on || Bot.z != zlevel || Bot.remote_disabled || !(bot_access_flags & Bot.bot_type)) //Only non-emagged bots on the same Z-level are detected!
 				continue //Also, the PDA must have access to the bot type.
-			menu += "<A href='byond://?src=[REF(src)];op=control;bot=[REF(Bot)]'><b>[Bot.name]</b> ([Bot.get_mode()])<BR>"
+			menu += "<img src=pda_medbot.png class=pda_icon>   <A href='byond://?src=[REF(src)];op=control;bot=[REF(Bot)]'><b>[Bot.name]</b> ([Bot.get_mode()])</a><BR>"
 			botcount++
 		if(!botcount) //No bots at all? Lame.
 			menu += "No bots found.<BR>"

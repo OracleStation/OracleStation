@@ -213,7 +213,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				dat += "<img src=pda_bell.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=Toggle Ringer'>Ringer: [silent == 1 ? "Off" : "On"]</a><br>"
 				dat += "<img src=pda_mail.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=Toggle Messenger'>Send / Receive: [toff == 1 ? "Off" : "On"]</a><br>"
 				dat += "<img src=pda_bell.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=Ringtone'>Set Ringtone</a><br>"
-				dat += "<img src=pda_mail.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=21'>Clear Messages</a><br>"
+				dat += "<img src=pda_mail.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=21'>View Message Log</a><br>"
 
 				if(cartridge)
 					dat += cartridge.message_header()
