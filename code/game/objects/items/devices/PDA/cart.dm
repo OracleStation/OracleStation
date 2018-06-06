@@ -189,7 +189,7 @@
 	name = "\improper Value-PAK cartridge"
 	desc = "Now with 350% more value!" //Give the Captain...EVERYTHING! (Except Mime and Clown)
 	icon_state = "cart-c"
-	access = ~(CART_CLOWN | CART_MIME)
+	access = ~(CART_CLOWN | CART_MIME | CART_REMOTE_DOOR)
 	bot_access_flags = SEC_BOT | MULE_BOT | FLOOR_BOT | CLEAN_BOT | MED_BOT
 	spam_enabled = 1
 
@@ -241,16 +241,6 @@ Code:
 [S.code]
 <a href='byond://?src=[REF(src)];choice=Signal Code;scode=1'>+</a>
 <a href='byond://?src=[REF(src)];choice=Signal Code;scode=5'>+</a><br>"}
-		if (41) //crew manifest
-
-			menu = "<h4><img src=pda_notes.png> Crew Manifest</h4>"
-			menu += "Entries cannot be modified from this terminal.<br><br>"
-			if(GLOB.data_core.general)
-				for (var/datum/data/record/t in sortRecord(GLOB.data_core.general))
-					menu += "[t.fields["name"]] - [t.fields["rank"]]<br>"
-			menu += "<br>"
-
-
 		if (42) //status displays
 			menu = "<h4><img src=pda_status.png> Station Status Display Interlink</h4>"
 
