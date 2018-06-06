@@ -188,7 +188,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 					if(cartridge.access & CART_ATMOS)
 						dat += "<li><img src=pda_notes.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=Gas Scan'>[scanmode == 5 ? "Disable" : "Enable"] Gas Scanner</a></li>"
 					if(cartridge.access & CART_REMOTE_DOOR)
-						dat += "<li><img src=pda_rdoor.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=Toggle Door'Toggle Remote Door</a></li>"
+						dat += "<li><img src=pda_rdoor.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=Toggle Door'>Toggle Remote Door</a></li>"
 					if(cartridge.access & CART_DRONEPHONE)
 						dat += "<li><img src=pda_dronephone.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=Drone Phone'>Drone Phone</a></li>"
 				dat += "<li><img src=pda_atmos.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=3'>Atmospheric Scan</a></li>"
