@@ -1,6 +1,6 @@
 /obj/item/nullrod
 	name = "null rod"
-	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of Nar-Sie's followers."
+	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of illicit magic."
 	icon_state = "nullrod"
 	item_state = "nullrod"
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
@@ -11,6 +11,8 @@
 	throwforce = 10
 	w_class = WEIGHT_CLASS_TINY
 	var/reskinned = FALSE
+	var/clockwork_desc = "A rod of Obsidian, a material known for corroding the Justiciar's creations."
+	var/bonus_burn = 0
 
 /obj/item/nullrod/attack_self(mob/user)
 	if(user.mind && (user.mind.isholy) && !reskinned)
@@ -390,8 +392,29 @@
 	lefthand_file = 'icons/mob/inhands/weapons/polearms_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/polearms_righthand.dmi'
 	name = "unholy pitchfork"
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
 	desc = "Holding this makes you look absolutely devilish."
 	attack_verb = list("poked", "impaled", "pierced", "jabbed")
+	slot_flags = SLOT_BACK
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP
+	force = 10
+	bonus_burn = 5
+	
+/obj/item/nullrod/pitchfork/clockwork_spear
+	icon_state = "ratvarian_spear"
+	lefthand_file = 'icons/mob/inhands/antag/clockwork_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/clockwork_righthand.dmi'
+	name = "clockwork spear"
+	desc = "A pointy spear made of holy brass. It ticks and tocks."
+	attack_verb = list("ticked", "tocked", "singed", "speared")
+	clockwork_desc = "A disgusting and cheap replica created by the church to imitate the divine armory of the Justiciar."
+	hitsound = 'sound/magic/clockwork/ratvar_attack.ogg'
+	
+/obj/item/nullrod/attack(mob/living/target, mob/living/carbon/human/user)
+	. = ..()
+	if(!QDELETED(target) && target.stat != DEAD)
+		var/bonus_damage = bonus_burn
+		target.adjustFireLoss(bonus_damage)
+	
+	
