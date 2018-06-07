@@ -11,8 +11,8 @@
 	force = 20 //As much as a bone spear, but this is significantly more annoying to carry around due to requiring the use of both hands at all times
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
-	force_unwielded = 20 //It's never not wielded so these are the same
-	force_wielded = 20
+	force_unwielded = 25 //It's never not wielded so these are the same
+	force_wielded = 25
 	throwforce = 5
 	throw_speed = 4
 	light_range = 5
@@ -24,7 +24,7 @@
 	sharpness = IS_SHARP
 	var/list/trophies = list()
 	var/charged = TRUE
-	var/charge_time = 15
+	var/charge_time = 10
 
 /obj/item/twohanded/required/kinetic_crusher/Destroy()
 	QDEL_LIST(trophies)
