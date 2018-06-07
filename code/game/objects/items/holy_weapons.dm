@@ -402,14 +402,14 @@
 	
 /obj/item/nullrod/pitchfork/clockworkspear/clockwork 
 	icon = 'icons/obj/clockwork_objects.dmi'
-	icon_state = 'ratvarian_spear'
-	item_state = 'ratvarian_spear'
+	icon_state = "ratvarian_spear"
+	item_state = "ratvarian_spear"
 	lefthand_file = 'icons/mob/inhands/antag/clockwork_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/antag/clockwork_righthand.dmi'
 	name = "clockwork spear"
 	desc = "A pointy spear made of holy brass. It ticks and tocks."
 	attack_verb = list("ticked", "tocked", "singed", "speared")
-	clockwork_desc = "A disgusting and cheap replica created by the church to imitate the divine armory of the Justiciar."
+	var/clockwork_desc = "A disgusting and cheap replica created by the church to imitate the divine armory of the Justiciar."
 	hitsound = 'sound/magic/clockwork/ratvar_attack.ogg'
 	
 /obj/item/nullrod/attack(mob/living/target, mob/living/carbon/human/user)
