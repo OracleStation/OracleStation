@@ -515,7 +515,7 @@ Code:
 				menu += "ERROR: Unable to determine current location."
 			menu += "<br><br><A href='byond://?src=[REF(src)];choice=49'>Refresh GPS Locator</a>"
 
-		if (53) // Newscaster. DOESNT FUCKING WORK REEEEEEEEEEEEEEEEE
+		if (53) // Newscaster. DOESN'T WORK, WHICH MAKES ME FILL WITH ANGUISH
 			menu = "<h4><img src=pda_notes.png class=pda_icon>   Newscaster Access</h4>"
 			menu += "<br> Current Newsfeed: <A href='byond://?src=[REF(src)];choice=Newscaster Switch Channel'>[current_channel ? current_channel : "None"]</a> <br>"
 			var/datum/newscaster/feed_channel/current
