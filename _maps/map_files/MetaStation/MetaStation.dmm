@@ -74753,7 +74753,6 @@
 	pixel_x = 4
 	},
 /obj/item/organ/heart,
-/obj/item/device/soulstone/anybody/chaplain,
 /obj/effect/landmark/revenantspawn,
 /turf/open/floor/plasteel/cult{
 	dir = 2
