@@ -206,7 +206,7 @@
 			M.stuttering = 1
 		M.stuttering = min(M.stuttering+4, 10)
 		M.Dizzy(5)
-		if(iscultist(M) && prob(5))
+		if(iscultist(M) && prob(8))
 			M.say(pick("Av'te Nar'sie","Pa'lid Mors","INO INO ORA ANA","SAT ANA!","Daim'niodeis Arc'iai Le'eones","R'ge Na'sie","Diabo us Vo'iscum","Eld' Mon Nobis"))
 		else if(is_servant_of_ratvar(M) && prob(8))
 			switch(pick("speech", "message", "emote"))
@@ -221,8 +221,10 @@
 		if(iscultist(M) || is_servant_of_ratvar(M))
 			if(iscultist(M))
 				SSticker.mode.remove_cultist(M.mind, 1, 1)
+				M.visible_message("<span class='notice'>[M] is purged of the darkness within!</span>")
 			else if(is_servant_of_ratvar(M))
 				remove_servant_of_ratvar(M)
+				M.visible_message("<span class='notice'>[M] seems to become more dull as their link with the Justiciar is broken!</span>")
 			M.jitteriness = 0
 			M.stuttering = 0
 			holder.remove_reagent(id, volume)	// maybe this is a little too perfect and a max() cap on the statuses would be better??
