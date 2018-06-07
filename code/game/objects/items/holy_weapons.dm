@@ -11,7 +11,6 @@
 	throwforce = 10
 	w_class = WEIGHT_CLASS_TINY
 	var/reskinned = FALSE
-	var/clockwork_desc = "A rod of Obsidian, a material known for corroding the Justiciar's creations."
 	var/bonus_burn = 0
 
 /obj/item/nullrod/attack_self(mob/user)
@@ -401,10 +400,12 @@
 	force = 10
 	bonus_burn = 5
 	
-/obj/item/nullrod/pitchfork/clockwork_spear
-	icon_state = "ratvarian_spear"
+/obj/item/nullrod/pitchfork/clockworkspear/clockwork 
+	icon = 'icons/obj/clockwork_objects.dmi'
+	icon_state = 'ratvarian_spear'
+	item_state = 'ratvarian_spear'
 	lefthand_file = 'icons/mob/inhands/antag/clockwork_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/clockwork_righthand.dmi'
+	righthand_file = 'icons/mob/inhands/antag/clockwork_righthand.dmi'
 	name = "clockwork spear"
 	desc = "A pointy spear made of holy brass. It ticks and tocks."
 	attack_verb = list("ticked", "tocked", "singed", "speared")
