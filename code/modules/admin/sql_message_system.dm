@@ -45,7 +45,8 @@
 				secret = 0
 			else
 				return
-	var/datum/DBQuery/query_create_message = SSdbcore.NewQuery("INSERT INTO [format_table_name("messages")] (type, targetckey, adminckey, text, timestamp, server, secret) VALUES ('[type]', '[target_ckey]', '[admin_ckey]', '[text]', '[timestamp]', '[server]', '[secret]')")
+	var/roundid = GLOB.round_id
+	var/datum/DBQuery/query_create_message = SSdbcore.NewQuery("INSERT INTO [format_table_name("messages")] (type, targetckey, adminckey, text, timestamp, server, secret, round_id) VALUES ('[type]', '[target_ckey]', '[admin_ckey]', '[text]', '[timestamp]', '[server]', '[secret]', '[roundid]')")
 	if(!query_create_message.warn_execute())
 		return
 	if(logged)
