@@ -196,7 +196,7 @@
 			output += "<br>[text]<hr style='background:#000000; border:0; height:1px'>"
 	if(target_ckey)
 		target_ckey = sanitizeSQL(target_ckey)
-		var/datum/DBQuery/query_get_messages = SSdbcore.NewQuery("SELECT type, secret, id, adminckey, text, timestamp, server, lasteditor FROM [format_table_name("messages")] WHERE type <> 'memo' AND targetckey = '[target_ckey]' ORDER BY timestamp DESC")
+		var/datum/DBQuery/query_get_messages = SSdbcore.NewQuery("SELECT type, secret, id, adminckey, text, timestamp, server, lasteditor, round_id FROM [format_table_name("messages")] WHERE type <> 'memo' AND targetckey = '[target_ckey]' ORDER BY timestamp DESC")
 		if(!query_get_messages.warn_execute())
 			return
 		var/messagedata
@@ -215,8 +215,9 @@
 			var/timestamp = query_get_messages.item[6]
 			var/server = query_get_messages.item[7]
 			var/editor_ckey = query_get_messages.item[8]
+			var/round_id = query_get_messages.item[9]
 			var/data
-			data += "<b>[timestamp] | [server] | [admin_ckey]</b>"
+			data += "<b>[timestamp] | [server] | [admin_ckey] | Round: [round_id]</b>"
 			if(!linkless)
 				data += " <a href='?_src_=holder;[HrefToken()];deletemessage=[id]'>\[Delete\]</a>"
 				if(type == "note")
