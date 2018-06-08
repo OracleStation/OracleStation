@@ -13,6 +13,12 @@
 	var/reskinned = FALSE
 	var/bonus_burn = 0
 
+/obj/item/nullrod/attack(mob/living/target, mob/living/carbon/human/user)
+	. = ..()
+	if(!QDELETED(target) && target.stat != DEAD)
+		var/bonus_damage = bonus_burn
+		target.adjustFireLoss(bonus_damage)
+
 /obj/item/nullrod/attack_self(mob/user)
 	if(user.mind && (user.mind.isholy) && !reskinned)
 		reskin_holy_weapon(user)
@@ -326,7 +332,7 @@
 /obj/item/nullrod/carp
 	name = "carp-sie plushie"
 	desc = "An adorable stuffed toy that resembles the god of all carp. The teeth look pretty sharp. Activate it to receive the blessing of Carp-Sie."
-	icon = 'icons/obj/toy.dmi'
+	icon = 'icons/obj/plushes.dmi'
 	icon_state = "carpplushie"
 	item_state = "carp_plushie"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
@@ -394,11 +400,13 @@
 	w_class = WEIGHT_CLASS_BULKY
 	desc = "Holding this makes you look absolutely devilish."
 	attack_verb = list("poked", "impaled", "pierced", "jabbed")
-	slot_flags = SLOT_BACK
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP
-	force = 10
-	bonus_burn = 5
+	force = 18
+	
+/obj/item/nullrod/pitchfork/Initialize()
+	. = ..()
+	set_light(3,6,LIGHT_COLOR_RED)
 	
 /obj/item/nullrod/pitchfork/clockworkspear/clockwork 
 	icon = 'icons/obj/clockwork_objects.dmi'
@@ -408,14 +416,5 @@
 	righthand_file = 'icons/mob/inhands/antag/clockwork_righthand.dmi'
 	name = "clockwork spear"
 	desc = "A pointy spear made of holy brass. It ticks and tocks."
-	attack_verb = list("ticked", "tocked", "singed", "speared")
-	var/clockwork_desc = "A disgusting and cheap replica created by the church to imitate the divine armory of the Justiciar."
+	attack_verb = list("ticked", "tocked", "speared")
 	hitsound = 'sound/magic/clockwork/ratvar_attack.ogg'
-	
-/obj/item/nullrod/attack(mob/living/target, mob/living/carbon/human/user)
-	. = ..()
-	if(!QDELETED(target) && target.stat != DEAD)
-		var/bonus_damage = bonus_burn
-		target.adjustFireLoss(bonus_damage)
-	
-	
