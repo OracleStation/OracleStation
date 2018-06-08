@@ -172,9 +172,6 @@
 
 /obj/structure/closet/secure_closet/security/sec/PopulateContents()
 	..()
-	new /obj/item/gun/ballistic/automatic/pistol/enforcer
-	new /obj/item/ammo_box/magazine/enforcer
-	new /obj/item/ammo_box/magazine/enforcer
 	new /obj/item/storage/belt/security/full(src)
 
 /obj/structure/closet/secure_closet/security/cargo
@@ -204,6 +201,14 @@
 	..()
 	new /obj/item/clothing/accessory/armband/medblue(src)
 	new /obj/item/device/encryptionkey/headset_med(src)
+
+/obj/structure/closet/secure_closet/security/enforcer
+
+/obj/structure/closet/secure_closet/security/enforcer/PopulateContents()
+	..()
+	new /obj/item/gun/ballistic/automatic/pistol/enforcer(src)
+	new /obj/item/ammo_box/magazine/enforcer(src)
+	new /obj/item/ammo_box/magazine/enforcer(src)
 
 /obj/structure/closet/secure_closet/detective
 	name = "\proper detective's cabinet"
