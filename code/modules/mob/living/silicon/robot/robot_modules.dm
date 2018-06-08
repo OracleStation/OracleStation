@@ -257,6 +257,20 @@
 	feedback_key = "cyborg_standard"
 	hat_offset = -3
 
+/obj/item/robot_module/standard/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/R = loc
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Standard", "Noble", "Droid")
+	if(!borg_icon)
+		return FALSE
+	switch(borg_icon)
+		if("Standard")
+			cyborg_base_icon = "robot"
+		if("Noble")
+			cyborg_base_icon = "Noble-STD"
+		if("Droid")
+			cyborg_base_icon = "droid"
+	return ..()
+
 /obj/item/robot_module/medical
 	name = "Medical"
 	basic_modules = list(
@@ -289,6 +303,26 @@
 	feedback_key = "cyborg_medical"
 	can_be_pushed = FALSE
 	hat_offset = 3
+
+/obj/item/robot_module/medical/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/R = loc
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Droid", "Noble", "Advanced Medical Droid", "Surgeon", "Standard", "Noble", "Cricket")
+	if(!borg_icon)
+		return FALSE
+	switch(borg_icon)
+		if("Droid")
+			cyborg_base_icon = "medical"
+		if("Advanced Medical Droid" )
+			cyborg_base_icon = "droid-medical"
+		if("Surgeon")
+			cyborg_base_icon = "medicalrobot"
+		if("Standard")
+			cyborg_base_icon = "robotMedi"
+		if("Noble")
+			cyborg_base_icon = "Noble-MED"
+		if("Cricket")
+			cyborg_base_icon = "Cricket-MEDI"
+	return ..()
 
 /obj/item/robot_module/engineering
 	name = "Engineering"
@@ -324,6 +358,24 @@
 	magpulsing = TRUE
 	hat_offset = INFINITY // No hats
 
+/obj/item/robot_module/engineering/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/R = loc
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Ancient", "Standard", "Noble", "Cricket", "Landmate")
+	if(!borg_icon)
+		return FALSE
+	switch(borg_icon)
+		if("Ancient")
+			cyborg_base_icon = "Engineering"
+		if("Standard")
+			cyborg_base_icon = "robotEngi"
+		if("Noble" )
+			cyborg_base_icon = "Noble-ENG"
+		if("Cricket")
+			cyborg_base_icon = "Cricket-ENGI"
+		if("Landmate")
+			cyborg_base_icon = "engineer"
+	return ..()
+
 /obj/item/robot_module/security
 	name = "Security"
 	basic_modules = list(
@@ -356,6 +408,28 @@
 			T.update_icon()
 		else
 			T.charge_tick = 0
+
+/obj/item/robot_module/security/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/R = loc
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Ancient", "Standard", "Bloodhound", "Black Knight", "Red Knight", "Noble", "Cricket")
+	if(!borg_icon)
+		return FALSE
+	switch(borg_icon)
+		if("Ancient")
+			cyborg_base_icon = "Security"
+		if("Standard")
+			cyborg_base_icon = "robotSecy"
+		if("Bloodhound" )
+			cyborg_base_icon = "sec"
+		if("Black Knight")
+			cyborg_base_icon = "secborg"
+		if("Red Knight")
+			cyborg_base_icon = "securityrobot"
+		if("Noble")
+			cyborg_base_icon = "Noble-SEC"
+		if("Cricket")
+			cyborg_base_icon = "Cricket-SEC"
+	return ..()
 
 /obj/item/robot_module/peacekeeper
 	name = "Peacekeeper"
@@ -431,6 +505,24 @@
 	if(CL)
 		CL.reagents.add_reagent("lube", 2 * coeff)
 
+/obj/item/robot_module/janitor/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/R = loc
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Ancient", "Standard", "Mop Bucket",  "Noble", "Cricket" )
+	if(!borg_icon)
+		return FALSE
+	switch(borg_icon)
+		if("Ancient")
+			cyborg_base_icon = "janitorrobot"
+		if("Standard")
+			cyborg_base_icon = "robotJani"
+		if("Mop Bucket" )
+			cyborg_base_icon = "janitor"
+		if("Noble")
+			cyborg_base_icon = "Noble-CLN"
+		if("Cricket")
+			cyborg_base_icon = "Cricket-JANI"
+	return ..()
+
 /obj/item/robot_module/butler
 	name = "Service"
 	basic_modules = list(
@@ -466,7 +558,7 @@
 
 /obj/item/robot_module/butler/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Waitress", "Butler", "Tophat", "Kent", "Bro")
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Waitress", "Butler", "Tophat", "Kent", "Bro", "Standard", "Noble", "Cricket" )
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -484,6 +576,12 @@
 			cyborg_base_icon = "tophat"
 			special_light_key = null
 			hat_offset = INFINITY //He is already wearing a hat
+		if("Standard")
+			cyborg_base_icon = "robotServ"
+		if("Noble")
+			cyborg_base_icon = "Noble-SRV"
+		if("Cricket")
+			cyborg_base_icon = "Cricket-SERV"
 	return ..()
 
 /obj/item/robot_module/miner
@@ -510,6 +608,24 @@
 	moduleselect_icon = "miner"
 	feedback_key = "cyborg_miner"
 	hat_offset = 0
+
+/obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/R = loc
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Ancient", "Standard", "Heavy Miner", "Mining Droid",  "Noble", "Cricket" )
+	if(!borg_icon)
+		return FALSE
+	switch(borg_icon)
+		if("Standard")
+			cyborg_base_icon = "robotMine"
+		if("Heavy Miner" )
+			cyborg_base_icon = "miner"
+		if("Mining Droid")
+			cyborg_base_icon = "droid-miner"
+		if("Noble")
+			cyborg_base_icon = "Noble-DIG"
+		if("Cricket")
+			cyborg_base_icon = "Cricket-MINE"
+	return ..()
 
 /obj/item/robot_module/syndicate
 	name = "Syndicate Assault"
@@ -612,3 +728,16 @@
 	max_energy = 30
 	recharge_rate = 1
 	name = "Marker Beacon Storage"
+
+
+//These fucking cucks need headlamp sprites
+//Noble
+//Advanced Medical droid
+////droid
+//Every fucking ancient
+//the big cuck miner with a drill for an army
+//the weird surgeon guy
+
+//these cucks need fixed panel sprites
+//fucking nobles
+// the big fucking miner drill guy
