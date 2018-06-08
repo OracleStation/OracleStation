@@ -7,12 +7,13 @@
 	mouse_opacity = MOUSE_OPACITY_OPAQUE
 	density = FALSE
 	luminosity = 0
-	pass_flags = PASSTABLE | PASSMOB
+	pass_flags = PASSTABLE | PASSMOB | PASSDOORHATCH
 	mob_size = MOB_SIZE_TINY
 	desc = "A generic pAI mobile hard-light holographics emitter. It seems to be deactivated."
 	weather_immunities = list("ash")
 	health = 500
 	maxHealth = 500
+	ventcrawler = VENTCRAWLER_ALWAYS
 
 	var/ram = 100	// Used as currency to purchase different abilities
 	var/list/software = list()
@@ -264,3 +265,29 @@
 
 /mob/living/silicon/pai/generateStaticOverlay()
 	return
+
+//pAI can move through Door Hatches with the following code:
+
+var/underdoor
+	
+/mob/living/silicon/pai/Move(newloc, direct)
+	..(newloc,direct)
+	if(underdoor)
+		underdoor = FALSE
+		if(layer == UNDERDOOR)//if this is false, then we must have had our layer changed by something else. We wont do anymore checks for this move proc
+			for(var/obj/machinery/door/airlock/A in loc)
+				if(A.has_hatch)
+					underdoor = TRUE
+					break
+
+			if(!underdoor)
+				addtimer(CALLBACK(src, .proc/initial_layer), 3)
+
+/mob/living/silicon/pai/proc/initial_layer()
+	layer = initial(layer)
+
+/mob/living/silicon/pai/proc/under_door()
+	//This function puts a pAI on a layer that makes it draw under doors, then periodically checks if its still standing on a door
+	if (layer > UNDERDOOR)//Don't toggle it if we're hiding
+		layer = UNDERDOOR
+		underdoor = TRUE
