@@ -174,6 +174,17 @@
 		var/mob/living/simple_animal/drone/D = mover
 		D.under_door()
 
+/obj/machinery/door/airlock/proc/open_airlockhatch(var/atom/crawler = null)
+	if(!hatchstate)
+		hatchstate = 1
+		update_icon()
+		playsound(src.loc, hatch_open_sound, 40, 1, -1)
+		addtimer(CALLBACK(src, .proc/close_hatch), 20, TIMER_OVERRIDE) //hatch stays open for 2 seconds
+			
+	if(istype(crawler, /mob/living/silicon/pai))
+		var/mob/living/silicon/pai/D = crawler
+		D.under_door()
+
 /obj/machinery/door/airlock/proc/close_hatch()
 	hatchstate = 0
 	update_icon()
@@ -609,6 +620,12 @@
 	if(density && has_hatch && mover.checkpass(PASSDOORHATCH))
 		open_hatch(mover)
 		return TRUE //If this airlock is closed, has hatches, and this creature can go through hatches, then we let it through without opening the airlock
+		
+/obj/machinery/door/airlock/CanPass(atom/movable/crawler, turf/target)
+	. = ..()
+	if(density && has_hatch && crawler.checkpass(PASSDOORHATCH))
+		open_airlockhatch(crawler)
+		return TRUE //This is messy and I'm not entirely sure why this doesn't translate to the pAI mob but this should work.
 
 /obj/machinery/door/airlock/examine(mob/user)
 	..()
