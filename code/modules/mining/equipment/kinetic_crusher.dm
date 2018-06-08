@@ -8,7 +8,7 @@
 	name = "proto-kinetic crusher"
 	desc = "An early design of the proto-kinetic accelerator, it is little more than an combination of various mining tools cobbled together, forming a high-tech club. \
 	While it is an effective mining tool, it did little to aid any but the most skilled and/or suicidal miners against local fauna."
-	force = 20 //As much as a bone spear, but this is significantly more annoying to carry around due to requiring the use of both hands at all times
+	force = 25 //As much as a bone spear, but this is significantly more annoying to carry around due to requiring the use of both hands at all times
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
 	force_unwielded = 25 //It's never not wielded so these are the same
@@ -101,13 +101,13 @@
 			var/def_check = L.getarmor(type = "bomb")
 			if((user.dir & backstab_dir) && (L.dir & backstab_dir))
 				if(!QDELETED(C))
-					C.total_damage += 80 //cheat a little and add the total before killing it, so certain mobs don't have much lower chances of giving an item
-				L.apply_damage(80, BRUTE, blocked = def_check)
+					C.total_damage += 110 //cheat a little and add the total before killing it, so certain mobs don't have much lower chances of giving an item
+				L.apply_damage(110, BRUTE, blocked = def_check)
 				playsound(user, 'sound/weapons/kenetic_accel.ogg', 100, 1) //Seriously who spelled it wrong
 			else
 				if(!QDELETED(C))
-					C.total_damage += 50
-				L.apply_damage(50, BRUTE, blocked = def_check)
+					C.total_damage += 70
+				L.apply_damage(70, BRUTE, blocked = def_check)
 
 /obj/item/twohanded/required/kinetic_crusher/proc/Recharge()
 	if(!charged)
