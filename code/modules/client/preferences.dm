@@ -105,6 +105,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/parallax
 
+	var/ambientocclusion = TRUE
+
 	var/uplink_spawn_loc = UPLINK_PDA
 
 	var/list/exp
@@ -581,6 +583,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					button_name = GHOST_OTHERS_SIMPLE_NAME
 
 			dat += "<b>Ghosts of Others:</b> <a href='?_src_=prefs;task=input;preference=ghostothers'>[button_name]</a><br>"
+			dat += "</a><br>"
 
 			if (CONFIG_GET(flag/maprotation))
 				var/p_map = preferred_map
