@@ -214,7 +214,7 @@
 					to_chat(M, "<span class='cult'>[pick("Shai'Tye-", "Dianu-", \
 					"They will not take you from me, Serva-", "Your blood is mine!")].</span>")
 				if("emote")
-					M.visible_message("<span class='warning'>[M] [pick("bleeds from the nose", "coughs up blackened blood", "thrashes wildly for a moment")].</span>")
+					M.visible_message("<span class='warning'>[M] [pick("bleeds from the nose", "drools blackened blood", "thrashes wildly for a moment")].</span>")
 		else if(is_servant_of_ratvar(M) && prob(8))
 			switch(pick("speech", "message", "emote"))
 				if("speech")
@@ -228,7 +228,7 @@
 		if(iscultist(M) || is_servant_of_ratvar(M))
 			if(iscultist(M))
 				SSticker.mode.remove_cultist(M.mind, 1, 1)
-				M.visible_message("<span class='cult'>[M] vomits dark blood as the evil influence of Nar'sie is forced from their mind by holy power!</span>")
+				M.visible_message("<span class='cult'>[M] is purged of their dark blood as the evil influence of Nar'sie is forced from their mind by holy power!</span>")
 			else if(is_servant_of_ratvar(M))
 				remove_servant_of_ratvar(M)
 				M.visible_message("<span class='brass'>[M] slumps as their link with the Engine is severed by holy power, stealing away their magic!</span>")
