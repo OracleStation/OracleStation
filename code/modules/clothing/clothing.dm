@@ -23,7 +23,6 @@
 	var/obj/item/device/flashlight/F = null
 	var/can_flashlight = 0
 	var/gang //Is this a gang outfit?
-	var/mutantrace_variation = NO_MUTANTRACE_VARIATION //Are there special sprites for specific situations? Don't use this unless you need to.
 	var/scan_reagents = 0 //Can the wearer see reagents while it's equipped?
 	var/list/species_restricted = null //Only these species can wear this kit.
 

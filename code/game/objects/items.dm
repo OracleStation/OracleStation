@@ -45,6 +45,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	//Since any item can now be a piece of clothing, this has to be put here so all items share it.
 	var/flags_inv //This flag is used to determine when items in someone's inventory cover others. IE helmets making it so you can't see glasses, etc.
+	var/mutantrace_variation = NO_MUTANTRACE_VARIATION //Are there special sprites for specific situations? Don't use this unless you need to.
 
 	var/item_color = null //this needs deprecating, soonish
 
