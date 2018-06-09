@@ -306,10 +306,12 @@
 
 /obj/item/robot_module/medical/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Droid", "Noble", "Advanced Medical Droid", "Surgeon", "Standard", "Noble", "Cricket")
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Ancient", "Droid", "Noble", "Advanced Medical Droid", "Surgeon", "Standard", "Noble", "Cricket")
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
+		if("Ancient")
+			cyborg_base_icon = "Medbot"
 		if("Droid")
 			cyborg_base_icon = "medical"
 		if("Advanced Medical Droid" )
@@ -360,7 +362,7 @@
 
 /obj/item/robot_module/engineering/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Ancient", "Standard", "Noble", "Cricket", "Landmate")
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Ancient", "Standard", "Noble", "Cricket", "Landmate", "Droid")
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -368,6 +370,8 @@
 			cyborg_base_icon = "Engineering"
 		if("Standard")
 			cyborg_base_icon = "robotEngi"
+		if("Droid")
+			cyborg_base_icon = "engineerrobot"
 		if("Noble" )
 			cyborg_base_icon = "Noble-ENG"
 		if("Cricket")
@@ -611,7 +615,7 @@
 
 /obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Ancient", "Standard", "Heavy Miner", "Mining Droid",  "Noble", "Cricket" )
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Standard", "Heavy Miner", "Mining Droid",  "Noble", "Cricket" )
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -729,15 +733,3 @@
 	recharge_rate = 1
 	name = "Marker Beacon Storage"
 
-
-//These fucking cucks need headlamp sprites
-//Noble
-//Advanced Medical droid
-////droid
-//Every fucking ancient
-//the big cuck miner with a drill for an army
-//the weird surgeon guy
-
-//these cucks need fixed panel sprites
-//fucking nobles
-// the big fucking miner drill guy
