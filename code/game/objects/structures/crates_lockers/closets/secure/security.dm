@@ -404,7 +404,7 @@
 		new /obj/item/gun/ballistic/automatic/ar(src)
 
 /obj/structure/closet/secure_closet/hos/enforcer
-	name = "\proper head of security's locker"
+	name = "head of security's locker"
 	req_access = list(ACCESS_HOS)
 	icon_state = "hos"
 
@@ -438,7 +438,7 @@
 	new /obj/item/pinpointer/nuke(src)
 
 /obj/structure/closet/secure_closet/warden/enforcer
-	name = "\proper warden's locker"
+	name = "warden's locker"
 	req_access = list(ACCESS_ARMORY)
 	icon_state = "warden"
 
@@ -464,3 +464,4 @@
 	new /obj/item/door_remote/head_of_security(src)
 	new /obj/item/gun/ballistic/shotgun/automatic/combat/compact(src)
 	new /obj/item/pinpointer/crew(src)
+
