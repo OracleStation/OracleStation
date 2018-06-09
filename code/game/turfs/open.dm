@@ -1,6 +1,6 @@
 /turf/open
 	var/slowdown = 0 //negative for faster, positive for slower
-
+	plane = FLOOR_PLANE
 	var/wet = 0
 	var/wet_time = 0 // Time in seconds that this floor will be wet for.
 	var/mutable_appearance/wet_overlay
