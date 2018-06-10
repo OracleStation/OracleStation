@@ -121,7 +121,7 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 		changeling_assassinate.find_target_by_role("Changeling", TRUE)
 		if(changeling_assassinate.target && changeling_assassinate.target.current) //if we did find a target
 			no_assassinate = FALSE
-			changeling_assassinate.explanation_text += "They are known in the hivemind as [changeling_assassinate.target.changeling.changelingID]."
+			changeling_assassinate.explanation_text = "Assassinate [changeling_assassinate.target.changeling.changelingID], a fellow changeling. [pick("They can no longer be trusted.", "They pose a threat to the hivemind.")]"
 			changeling.objectives += changeling_assassinate
 		else //couldn't find a target, we're leaving
 			qdel(changeling_assassinate)
