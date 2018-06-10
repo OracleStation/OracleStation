@@ -81,7 +81,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "bible",  
 				H.update_damage_overlays()
 		H.visible_message("<span class='notice'>[user] heals [H] with the power of [deity_name]!</span>")
 		to_chat(H, "<span class='boldnotice'>May the power of [deity_name] compel you to be healed!</span>")
-		playsound(src.loc, "punch", 25, 1, -1)
+		playsound(src.loc, "curse3", 25, 1, -1)
 	return 1
 
 /obj/item/storage/book/bible/attack(mob/living/M, mob/living/carbon/human/user, heal_mode = TRUE)
@@ -126,12 +126,12 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "bible",  
 		if(smack)
 			M.visible_message("<span class='danger'>[user] beats [M] over the head with [src]!</span>", \
 					"<span class='userdanger'>[user] beats [M] over the head with [src]!</span>")
-			playsound(src.loc, "curse3", 25, 1, -1)
+			playsound(src.loc, "punch", 25, 1, -1)
 			add_logs(user, M, "attacked", src)
 
 	else
 		M.visible_message("<span class='danger'>[user] smacks [M]'s lifeless corpse with [src].</span>")
-		playsound(src.loc, "attackblob", 25, 1, -1)
+		playsound(src.loc, "punch", 25, 1, -1)
 
 /obj/item/storage/book/bible/afterattack(atom/A, mob/user, proximity)
 	if(!proximity)
