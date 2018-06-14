@@ -291,10 +291,17 @@
 
 /mob/proc/get_contents()
 
-/mob/living/proc/lay_down(var/force = FALSE)//force will override the cooldown
+/mob/living/proc/lay_down_helper()
 	set name = "Rest"
 	set category = "IC"
+	//BYOND cannot handle the incredible pressure of having to pass
+	//an argument to a proc that has been assigned as a verb
+	//it does not runtime, it does not do anything special
+	//it just doesn't do anything, hoping you don't notice and walk away.
+	//God, I hate this engine.
+	lay_down()
 
+/mob/living/proc/lay_down(force = FALSE)//force will override the cooldown
 	if(resting_cooldown > world.time && !force)
 		return
 
