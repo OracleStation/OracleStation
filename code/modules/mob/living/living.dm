@@ -294,19 +294,15 @@
 /mob/living/proc/lay_down()
 	set name = "Rest"
 	set category = "IC"
-	if(resting_cooldown)
-		var/seconds_remaining = (resting_cooldown_timer - world.time)/2
-		to_chat(src, "You laid down too recently, please wait [max(0, seconds_remaining)] more seconds.")
-	if(resting_cooldown && (resting_cooldown_timer <= world.time))
-		resting_cooldown = FALSE
-	if(resting_cooldown == 1)
+	
+	if(resting_cooldown > world.time)
 		return
+
+	resting_cooldown = world.time + resting_cooldown_duration
 	resting = !resting
 	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"].</span>")
 	update_canmove()
 	update_rest_icon(src)
-	resting_cooldown = 1
-	resting_cooldown_timer = world.time + resting_cooldown_duration
 
 /mob/living/proc/update_rest_icon(mob/living/M) // Just for updating the rest icon UI. Called every time rest is called.
 	return

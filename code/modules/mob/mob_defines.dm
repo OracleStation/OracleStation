@@ -52,7 +52,6 @@
 	var/resting = 0
 	var/resting_cooldown_duration = 10 // Roughly 5 seconds
 	var/resting_cooldown = 0
-	var/resting_cooldown_timer
 	var/lying = 0				//Carbon
 	var/lying_prev = 0
 	var/canmove = 1
