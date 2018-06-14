@@ -291,10 +291,14 @@
 
 /mob/proc/get_contents()
 
-/mob/living/proc/lay_down()
+/mob/living/proc/lay_down(var/force = FALSE)//force will override the cooldown
 	set name = "Rest"
 	set category = "IC"
 
+	if(resting_cooldown > world.time && !force)
+		return
+
+	resting_cooldown = world.time + resting_cooldown_duration
 	resting = !resting
 	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"].</span>")
 	update_canmove()
