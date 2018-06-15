@@ -202,6 +202,14 @@
 	new /obj/item/clothing/accessory/armband/medblue(src)
 	new /obj/item/device/encryptionkey/headset_med(src)
 
+/obj/structure/closet/secure_closet/security/enforcer
+
+/obj/structure/closet/secure_closet/security/enforcer/PopulateContents()
+	..()
+	new /obj/item/gun/ballistic/automatic/pistol/enforcer(src)
+	new /obj/item/ammo_box/magazine/enforcer(src)
+	new /obj/item/ammo_box/magazine/enforcer(src)
+
 /obj/structure/closet/secure_closet/detective
 	name = "\proper detective's cabinet"
 	req_access = list(ACCESS_FORENSICS_LOCKERS)
@@ -341,3 +349,119 @@
 	..()
 	for(var/i in 1 to 3)
 		new /obj/item/storage/box/lethalshot(src)
+
+/obj/structure/closet/secure_closet/guncabinet
+	name = "secure firearm cabinet"
+	req_access = list(ACCESS_ARMORY)
+	icon_state = "guncabinet"
+
+/obj/structure/closet/secure_closet/guncabinetenforcer
+	name = "enforcer munitions cabinet"
+	req_access = list(ACCESS_ARMORY)
+	icon_state = "guncabinet"
+
+/obj/structure/closet/secure_closet/guncabinetenforcer/PopulateContents()
+	..()
+	for(var/i in 1 to 3)
+		new /obj/item/ammo_box/magazine/enforcer/lethal(src)
+	for(var/i in 1 to 3)
+		new /obj/item/ammo_box/magazine/enforcer(src)
+
+/obj/structure/closet/secure_closet/guncabinet/wt550
+	name = "WT550 gun cabinet"
+	req_access = list(ACCESS_ARMORY)
+	icon_state = "guncabinet"
+
+/obj/structure/closet/secure_closet/guncabinet/wt550/PopulateContents()
+	..()
+	for(var/i in 1 to 6)
+		new /obj/item/ammo_box/magazine/wt550m9(src)
+	for(var/i in 1 to 3)
+		new /obj/item/gun/ballistic/automatic/wt550(src)
+
+/obj/structure/closet/secure_closet/guncabinet/proto
+	name = "NanoSmg gun cabinet"
+	req_access = list(ACCESS_ARMORY)
+	icon_state = "guncabinet"
+
+/obj/structure/closet/secure_closet/guncabinet/proto/PopulateContents()
+	..()
+	for(var/i in 1 to 6)
+		new /obj/item/ammo_box/magazine/smgm9mm(src)
+	for(var/i in 1 to 3)
+		new /obj/item/gun/ballistic/automatic/proto(src)
+
+/obj/structure/closet/secure_closet/guncabinet/ar
+	name = "NT-ARG gun cabinet"
+	req_access = list(ACCESS_ARMORY)
+	icon_state = "guncabinet"
+
+/obj/structure/closet/secure_closet/guncabinet/ar/PopulateContents()
+	..()
+	for(var/i in 1 to 6)
+		new /obj/item/ammo_box/magazine/m556(src)
+	for(var/i in 1 to 3)
+		new /obj/item/gun/ballistic/automatic/ar(src)
+
+/obj/structure/closet/secure_closet/hos/enforcer
+	name = "head of security's locker"
+	req_access = list(ACCESS_HOS)
+	icon_state = "hos"
+
+/obj/structure/closet/secure_closet/hos/enforcer/PopulateContents()
+	..()
+	new /obj/item/gun/ballistic/automatic/pistol/enforcer(src)
+	new /obj/item/ammo_box/magazine/enforcer(src)
+	new /obj/item/ammo_box/magazine/enforcer(src)
+	new /obj/item/clothing/neck/cloak/hos(src)
+	new /obj/item/cartridge/hos(src)
+	new /obj/item/device/radio/headset/heads/hos(src)
+	new /obj/item/clothing/under/hosparadefem(src)
+	new /obj/item/clothing/under/hosparademale(src)
+	new /obj/item/clothing/suit/armor/vest/leather(src)
+	new /obj/item/clothing/suit/armor/hos(src)
+	new /obj/item/clothing/under/rank/head_of_security/alt(src)
+	new /obj/item/clothing/head/HoS(src)
+	new /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch(src)
+	new /obj/item/clothing/glasses/hud/security/sunglasses/gars/supergars(src)
+	new /obj/item/clothing/under/rank/head_of_security/grey(src)
+	new /obj/item/storage/lockbox/medal/sec(src)
+	new /obj/item/device/megaphone/sec(src)
+	new /obj/item/holosign_creator/security(src)
+	new /obj/item/storage/lockbox/loyalty(src)
+	new /obj/item/clothing/mask/gas/sechailer/swat(src)
+	new /obj/item/storage/box/flashbangs(src)
+	new /obj/item/shield/riot/tele(src)
+	new /obj/item/storage/belt/security/full(src)
+	new /obj/item/gun/energy/e_gun/hos(src)
+	new /obj/item/device/flashlight/seclite(src)
+	new /obj/item/pinpointer/nuke(src)
+
+/obj/structure/closet/secure_closet/warden/enforcer
+	name = "warden's locker"
+	req_access = list(ACCESS_ARMORY)
+	icon_state = "warden"
+
+/obj/structure/closet/secure_closet/warden/enforcer/PopulateContents()
+	..()
+	new /obj/item/gun/ballistic/automatic/pistol/enforcer(src)
+	new /obj/item/ammo_box/magazine/enforcer(src)
+	new /obj/item/ammo_box/magazine/enforcer(src)
+	new /obj/item/device/radio/headset/headset_sec(src)
+	new /obj/item/clothing/suit/armor/vest/warden(src)
+	new /obj/item/clothing/head/warden(src)
+	new /obj/item/clothing/head/beret/sec/navywarden(src)
+	new /obj/item/clothing/suit/armor/vest/warden/alt(src)
+	new /obj/item/clothing/under/rank/warden/navyblue(src)
+	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
+	new /obj/item/holosign_creator/security(src)
+	new /obj/item/clothing/mask/gas/sechailer(src)
+	new /obj/item/storage/box/zipties(src)
+	new /obj/item/storage/box/flashbangs(src)
+	new /obj/item/storage/belt/security/full(src)
+	new /obj/item/device/flashlight/seclite(src)
+	new /obj/item/clothing/gloves/krav_maga/sec(src)
+	new /obj/item/door_remote/head_of_security(src)
+	new /obj/item/gun/ballistic/shotgun/automatic/combat/compact(src)
+	new /obj/item/pinpointer/crew(src)
+
