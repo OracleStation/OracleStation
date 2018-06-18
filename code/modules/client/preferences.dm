@@ -1007,6 +1007,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(S.required_playtime_remaining(parent))//we're checking against this list to prevent href shenanigans
 						to_chat(parent, "<span class='danger'>You need more playtime to play [S.name]!</span>")
 						let_them = FALSE
+
+				var/list/roundstart_species = CONFIG_GET(keyed_number_list/roundstart_races)
+				if(!(sid in roundstart_species))
+					to_chat(parent, "<span class='warning'>Whoops! Something went wrong. You should probably tell a coder.</span>")
+					message_admins("[parent.key] tried to pick a non-roundstart species. Possible href exploit.")
+					let_them = FALSE
+
 				if(let_them)
 					var/newtype = GLOB.species_list[sid]
 					pref_species = new newtype()
