@@ -39,6 +39,9 @@
 		if(broken)
 			to_chat(user, "<span class='danger'>It appears to be broken.</span>")
 			return
+		if(!secure)
+			to_chat(user, "<span class='danger'>[src] is missing a lock!</span>")
+			return
 		if(!I || !I.registered_name)
 			return
 		if(allowed(user) || !registered_name || (istype(I) && (registered_name == I.registered_name)))
@@ -53,3 +56,8 @@
 			to_chat(user, "<span class='danger'>Access Denied.</span>")
 	else
 		return ..()
+
+/obj/structure/closet/secure_closet/personal/handle_lock_addition() //If lock construction is successful we don't care what access the electronics had, so we override it
+	if(..())
+		req_access = list(ACCESS_ALL_PERSONAL_LOCKERS)
+		lockerelectronics.accesses = req_access

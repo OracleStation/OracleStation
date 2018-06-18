@@ -132,6 +132,12 @@
 	material_drop = /obj/item/stack/sheet/mineral/wood
 	material_drop_amount = 5
 
+/obj/structure/closet/coffin/handle_lock_addition()
+	return ..()
+
+/obj/structure/closet/coffin/handle_lock_removal()
+	return ..()
+
 /obj/structure/closet/wardrobe/red
 	name = "security wardrobe"
 	icon_door = "red"

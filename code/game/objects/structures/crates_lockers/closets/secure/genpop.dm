@@ -18,6 +18,11 @@
 
 	return ..()
 
+/obj/structure/closet/secure_closet/genpop/handle_lock_addition() //If lock construction is successful we don't care what access the electronics had, so we override it
+	if(..())
+		req_access = list(ACCESS_BRIG)
+		lockerelectronics.accesses = req_access
+
 /obj/structure/closet/secure_closet/genpop/proc/handle_prisoner_id(mob/user)
 	var/obj/item/card/id/prisoner/prisoner_id = null
 	for(prisoner_id in user.held_items)
@@ -84,7 +89,7 @@
 		return ..()
 
 /obj/structure/closet/secure_closet/genpop/close(mob/living/user)
-	if(registered_id != null)
+	if(registered_id != null && lockerelectronics)
 		locked = TRUE
 	return ..()
 
@@ -96,7 +101,7 @@
 		handle_prisoner_id(user)
 		return
 
-	if(!broken && opened && !locked && allowed(user) && !registered_id) //Genpop setup
+	if(!broken && opened && !locked && allowed(user) && !registered_id && lockerelectronics) //Genpop setup
 
 		registered_id = new /obj/item/card/id/prisoner/(src.contents)
 		if(handle_edit_sentence(user))

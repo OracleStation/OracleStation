@@ -33,11 +33,15 @@
 	var/material_drop_amount = 2
 	var/delivery_icon = "deliverycloset" //which icon to use when packagewrapped. null to be unwrappable.
 	var/anchorable = TRUE
-
+	var/obj/item/electronics/airlock/lockerelectronics //Installed electronics
+	var/doinglockstuff = FALSE //Someone is doing some stuff with the lock here, better not proceed further
 
 /obj/structure/closet/Initialize(mapload)
 	if(mapload && !opened)		// if closed, any item at the crate's loc is put in the contents
 		addtimer(CALLBACK(src, .proc/take_contents), 0)
+	if(secure)
+		lockerelectronics = new /obj/item/electronics/airlock(src)
+		lockerelectronics.accesses = req_access
 	. = ..()
 	update_icon()
 	PopulateContents()
@@ -47,7 +51,7 @@
 	return
 
 /obj/structure/closet/Destroy()
-	dump_contents()
+	dump_contents(override = FALSE)
 	return ..()
 
 /obj/structure/closet/update_icon()
@@ -82,6 +86,8 @@
 		to_chat(user, "<span class='notice'>It is <b>bolted</b> to the ground.</span>")
 	if(opened)
 		to_chat(user, "<span class='notice'>The parts are <b>welded</b> together.</span>")
+	else if(broken)
+		to_chat(user, "<span class='notice'>The lock is smouldering. Use a <b>screwdriver</b> to remove it.</span>")
 	else if(secure && !opened)
 		to_chat(user, "<span class='notice'>Alt-click to [locked ? "unlock" : "lock"].</span>")
 
@@ -113,9 +119,11 @@
 			return 0
 	return 1
 
-/obj/structure/closet/proc/dump_contents()
+/obj/structure/closet/proc/dump_contents(var/override = TRUE) //Override is for not revealing the locker electronics when you open the locker, for example
 	var/atom/L = drop_location()
 	for(var/atom/movable/AM in src)
+		if(AM == lockerelectronics && override)
+			continue
 		AM.forceMove(L)
 		if(throwing) // you keep some momentum when getting out of a thrown closet
 			step(AM, dir)
@@ -196,6 +204,68 @@
 	else
 		return open(user)
 
+/obj/structure/closet/proc/handle_lock_addition(mob/user, obj/item/electronics/airlock/E)
+	if(!istype(E))
+		return
+	if(doinglockstuff)
+		to_chat(user, "<span class='notice'>Someone is already doing something to [src]!</span>")
+		return
+	if(secure)
+		to_chat(user, "<span class='notice'>This locker already has a lock!</span>")
+		return
+	if(broken)
+		to_chat(user, "<span class='notice'>Remove the broken lock first!</span>")
+		return
+	user.visible_message("<span class='notice'>[user] begins installing a lock on [src]...</span>","<span class='notice'>You begin installing a lock on [src]...</span>")
+	doinglockstuff = TRUE
+	playsound(loc, 'sound/items/screwdriver.ogg', 50, 1)
+	if(!do_after(user, 100, target = src))
+		doinglockstuff = FALSE
+		return
+	if(!user.drop_item())
+		to_chat(user, "<span class='notice'>[E] is stuck to you!</span>")
+		doinglockstuff = FALSE
+		return
+	doinglockstuff = FALSE
+	to_chat(user, "<span class='notice'>You finish the lock on [src]!</span>")
+	E.forceMove(src)
+	lockerelectronics = E
+	req_access = E.accesses
+	secure = TRUE
+	update_icon()
+	return TRUE
+
+/obj/structure/closet/proc/handle_lock_removal(mob/user, obj/item/screwdriver/S)
+	if(!istype(S))
+		return
+	if(doinglockstuff)
+		to_chat(user, "<span class='notice'>Someone is already doing something to [src]!</span>")
+		return
+	if(locked)
+		to_chat(user, "<span class='notice'>Unlock it first!</span>")
+		return
+	if(!secure)
+		to_chat(user, "<span class='notice'>[src] doesn't have a lock that you can remove!</span>")
+		return
+	user.visible_message("<span class='notice'>You begin removing the [broken ? "broken": ""] lock on [src]...</span>", "<span class='notice'>[user] begins removing the [broken ? "broken": ""] lock on [src]...</span>")
+	playsound(loc, S.usesound, 50, 1)
+	doinglockstuff = TRUE
+	if(!do_after(user, 100 * S.toolspeed, target = src))
+		doinglockstuff = FALSE
+		return
+	to_chat(user, "<span class='notice'>You remove the [broken ? "broken": ""] lock from [src]!</span>")
+	if(lockerelectronics)
+		transfer_fingerprints_to(lockerelectronics)
+		lockerelectronics.forceMove(user.loc)
+		lockerelectronics = null
+	req_access = null
+	secure = FALSE
+	broken = FALSE
+	locked = FALSE
+	doinglockstuff = FALSE
+	update_icon()
+	return TRUE
+
 /obj/structure/closet/deconstruct(disassembled = TRUE)
 	if(ispath(material_drop) && material_drop_amount && !(flags_1 & NODECONSTRUCT_1))
 		new material_drop(loc, material_drop_amount)
@@ -232,6 +302,10 @@
 		if(user.drop_item()) // so we put in unlit welder too
 			W.forceMove(loc)
 			return 1
+	else if(istype(W, /obj/item/electronics/airlock))
+		handle_lock_addition(user, W)
+	else if(istype(W, /obj/item/screwdriver))
+		handle_lock_removal(user, W)
 	else if(istype(W, /obj/item/weldingtool) && can_weld_shut)
 		var/obj/item/weldingtool/WT = W
 		if(!WT.remove_fuel(0, user))
@@ -387,7 +461,7 @@
 /obj/structure/closet/proc/bust_open()
 	welded = FALSE //applies to all lockers
 	locked = FALSE //applies to critter crates and secure lockers only
-	broken = 1 //applies to secure lockers only
+	broken = TRUE //applies to secure lockers only
 	open()
 
 /obj/structure/closet/AltClick(mob/user)
@@ -402,6 +476,9 @@
 
 /obj/structure/closet/proc/togglelock(mob/living/user)
 	if(secure && !broken)
+		if(!lockerelectronics && !locked) //We can unlock lockers without lockerelectronics, but we can't lock them
+			to_chat(user, "<span class='danger'>[src] is missing locker electronics!</span>")
+			return
 		if(allowed(user))
 			if(iscarbon(user))
 				add_fingerprint(user)
@@ -420,8 +497,11 @@
 						"<span class='warning'>You scramble [src]'s lock, breaking it open!</span>",
 						"<span class='italics'>You hear a faint electrical spark.</span>")
 		playsound(src, "sparks", 50, 1)
-		broken = 1
+		broken = TRUE
 		locked = FALSE
+		if(lockerelectronics)
+			qdel(lockerelectronics)
+			lockerelectronics = null
 		update_icon()
 
 /obj/structure/closet/get_remote_view_fullscreens(mob/user)
@@ -431,16 +511,19 @@
 /obj/structure/closet/emp_act(severity)
 	for(var/obj/O in src)
 		O.emp_act(severity)
-	if(secure && !broken)
-		if(prob(50 / severity))
-			locked = !locked
-			update_icon()
-		if(prob(20 / severity) && !opened)
-			if(!locked)
-				open()
-			else
-				req_access = list()
-				req_access += pick(get_all_accesses())
+	if(!secure || broken)
+		return ..()
+	if(prob(50 / severity))
+		locked = !locked
+		update_icon()
+	if(prob(20 / severity) && !opened)
+		if(!locked)
+			open()
+		else
+			req_access = list()
+			req_access += pick(get_all_accesses())
+			if(lockerelectronics)
+				lockerelectronics.accesses = req_access
 	..()
 
 
