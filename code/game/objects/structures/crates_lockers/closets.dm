@@ -56,27 +56,27 @@
 
 /obj/structure/closet/update_icon()
 	cut_overlays()
-	if(!opened)
-		if(icon_door)
-			add_overlay("[icon_door]_door")
-		else
-			add_overlay("[icon_state]_door")
-		if(welded)
-			add_overlay("welded")
-		if(secure)
-			if(!broken)
-				if(locked)
-					add_overlay("locked")
-				else
-					add_overlay("unlocked")
-			else
-				add_overlay("off")
-
+	if(opened & icon_door_override)
+		add_overlay("[icon_door]_open")
+		return
+	else if(opened)
+		add_overlay("[icon_state]_open")
+		return
+	if(icon_door)
+		add_overlay("[icon_door]_door")
 	else
-		if(icon_door_override)
-			add_overlay("[icon_door]_open")
-		else
-			add_overlay("[icon_state]_open")
+		add_overlay("[icon_state]_door")
+	if(welded)
+		add_overlay("welded")
+	if(!secure)
+		return
+	if(broken)
+		add_overlay("off")
+		add_overlay("sparking")
+	else if(locked)
+		add_overlay("locked")
+	else if(!locked)
+		add_overlay("unlocked")
 
 /obj/structure/closet/examine(mob/user)
 	..()
@@ -87,7 +87,7 @@
 	if(opened)
 		to_chat(user, "<span class='notice'>The parts are <b>welded</b> together.</span>")
 	else if(broken)
-		to_chat(user, "<span class='notice'>The lock is smouldering. Use a <b>screwdriver</b> to remove it.</span>")
+		to_chat(user, "<span class='notice'>The lock is smouldering and sparking. Use a <b>screwdriver</b> to remove it.</span>")
 	else if(secure && !opened)
 		to_chat(user, "<span class='notice'>Alt-click to [locked ? "unlock" : "lock"].</span>")
 
@@ -208,13 +208,13 @@
 	if(!istype(E))
 		return
 	if(doinglockstuff)
-		to_chat(user, "<span class='notice'>Someone is already doing something to [src]!</span>")
+		to_chat(user, "<span class='notice'>Someone is already working on [src]!</span>")
 		return
 	if(secure)
 		to_chat(user, "<span class='notice'>This locker already has a lock!</span>")
 		return
 	if(broken)
-		to_chat(user, "<span class='notice'>Remove the broken lock first!</span>")
+		to_chat(user, "<span class='notice'><b>Unscrew</b> the broken lock first!</span>")
 		return
 	user.visible_message("<span class='notice'>[user] begins installing a lock on [src]...</span>","<span class='notice'>You begin installing a lock on [src]...</span>")
 	doinglockstuff = TRUE
