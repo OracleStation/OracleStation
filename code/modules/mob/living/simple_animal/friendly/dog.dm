@@ -12,6 +12,7 @@
 	see_in_dark = 5
 	speak_chance = 1
 	turns_per_move = 10
+	can_be_held = TRUE
 
 //Corgis and pugs are now under one dog subtype
 
@@ -31,7 +32,7 @@
 	var/facehugger
 	var/nofur = 0 		//Corgis that have risen past the material plane of existence.
 	gold_core_spawnable = 2
-	can_be_held = TRUE
+	can_be_held = "corgi"
 
 /mob/living/simple_animal/pet/dog/pug
 	name = "\improper pug"
@@ -43,6 +44,7 @@
 	icon_dead = "pug_dead"
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/pug = 3)
 	gold_core_spawnable = 2
+	can_be_held = "pug"
 
 /mob/living/simple_animal/pet/dog/Initialize()
 	. = ..()
@@ -119,13 +121,6 @@
 		return
 	..()
 	update_corgi_fluff()
-
-/mob/living/simple_animal/pet/dog/corgi/mob_pickup(mob/living/L)
-	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(src), src, "corgi", null, 'icons/mob/pets_held_lh.dmi', 'icons/mob/pets_held_rh.dmi', FALSE)
-	if(!L.put_in_hands(holder))
-		qdel(holder)
-	else
-		L.visible_message("<span class='warning'>[L] scoops up [src]!</span>")
 
 /mob/living/simple_animal/pet/dog/corgi/Topic(href, href_list)
 	if(usr.stat) return
@@ -319,6 +314,7 @@
 		icon_state = "old_corgi"
 		icon_living = "old_corgi"
 		icon_dead = "old_corgi_dead"
+		can_be_held = "old_corgi"
 		desc = "At a ripe old age of [record_age] Ian's not as spry as he used to be, but he'll always be the HoP's beloved corgi." //RIP
 		turns_per_move = 20
 
@@ -498,6 +494,7 @@
 	icon_state = "void_puppy"
 	icon_living = "void_puppy"
 	icon_dead = "void_puppy_dead"
+	can_be_held = "void_puppy"
 	nofur = 1
 	unsuitable_atmos_damage = 0
 	minbodytemp = TCMB
@@ -521,6 +518,7 @@
 	response_harm   = "kicks"
 	var/turns_since_scan = 0
 	var/puppies = 0
+	can_be_held = "lisa"
 	gold_core_spawnable = 0
 
 //Lisa already has a cute bow!

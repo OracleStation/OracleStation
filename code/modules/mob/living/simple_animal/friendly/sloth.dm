@@ -20,7 +20,7 @@
 	health = 50
 	maxHealth = 50
 	speed = 2
-
+	can_be_held = "sloth"
 
 //Cargo Sloth
 /mob/living/simple_animal/sloth/paperwork
