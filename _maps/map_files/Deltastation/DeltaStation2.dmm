@@ -75355,7 +75355,6 @@
 /obj/item/clothing/suit/jacket/letterman_nanotrasen,
 /obj/item/clothing/suit/toggle/iaa,
 /obj/item/clothing/under/maid,
-/obj/item/clothing/head/kitty,
 /obj/machinery/airalarm{
 	dir = 1;
 	pixel_y = -22
@@ -92939,7 +92938,6 @@
 "dzp" = (
 /obj/structure/table/wood,
 /obj/item/clothing/under/maid,
-/obj/item/clothing/head/kitty,
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
