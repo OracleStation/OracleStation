@@ -10,7 +10,7 @@
 //item you want to equip to the hand, and set its slots_flags = null. Only items equiped to hands need do this.
 
 /datum/round_event/wizard/cursed_items/start()
-	var/item_set = pick("wizardmimic", "swords", "bigfatdoobie", "boxing", "voicemodulators", "catgirls2015")
+	var/item_set = pick("wizardmimic", "swords", "bigfatdoobie", "boxing", "voicemodulators")
 	var/list/wearslots	= list(slot_wear_suit, slot_shoes, slot_head, slot_wear_mask, slot_gloves, slot_ears)
 	var/list/loadout = list()
 	var/ruins_spaceworthiness
@@ -32,18 +32,13 @@
 			ruins_spaceworthiness = 1
 		if("voicemodulators")
 			loadout[4] = /obj/item/clothing/mask/chameleon
-		if("catgirls2015")
-			loadout[3] = /obj/item/clothing/head/kitty
-			ruins_spaceworthiness = 1
-			ruins_wizard_loadout = 1
 
 	for(var/mob/living/carbon/human/H in GLOB.living_mob_list)
 		if(ruins_spaceworthiness && !(H.z in GLOB.station_z_levels) || isspaceturf(H.loc) || isplasmaman(H))
 			continue	//#savetheminers
 		if(ruins_wizard_loadout && H.mind && ((H.mind in SSticker.mode.wizards) || (H.mind in SSticker.mode.apprentices)))
 			continue
-		if(item_set == "catgirls2015") //Wizard code means never having to say you're sorry
-			H.gender = FEMALE
+
 		var/list/slots		= list(H.wear_suit, H.shoes, H.head, H.wear_mask, H.gloves, H.ears) //add new slots as needed to back
 		for(var/i in 1 to loadout.len)
 			if(loadout[i])
