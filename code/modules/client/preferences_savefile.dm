@@ -363,7 +363,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["snout"]	= sanitize_inlist(features["snout"], GLOB.snouts_list)
 	features["snout_ethari"] = sanitize_inlist(features["snout_ethari"], GLOB.snouts_ethari_list)
 	features["horns"] 	= sanitize_inlist(features["horns"], GLOB.horns_list)
-	features["ears"]	= sanitize_inlist(features["ears"], GLOB.ears_list, "None")
 	features["ears_ethari"] = sanitize_inlist(features["ears_ethari"], GLOB.ears_ethari_list)
 	features["frills"] 	= sanitize_inlist(features["frills"], GLOB.frills_list)
 	features["spines"] 	= sanitize_inlist(features["spines"], GLOB.spines_list)
