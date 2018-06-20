@@ -97,6 +97,9 @@
 	if(buckled)
 		to_chat(user, "<span class='warning'>[src] is buckled to something!</span>")
 		return FALSE
+	if(src == user)
+		to_chat(user, "<span class='warning'>You can't pick yourself up.</span>")
+		return FALSE
 	visible_message("<span class='warning'>[user] starts picking up [src].</span>", \
 					"<span class='userdanger'>[user] starts picking you up!</span>")
 	if(!do_after(user, 20, target = src))

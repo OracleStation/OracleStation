@@ -49,6 +49,9 @@ insert ascii eagle on american flag background here
 	if(istype(I, /obj/item/reagent_containers/food/snacks/deepfryholder))
 		to_chat(user, "<span class='userdanger'>Your cooking skills are not up to the legendary Doublefry technique.</span>")
 		return
+	if(istype(I,/obj/item/clothing/head/mob_holder))
+		to_chat(user, "<span class='warning'>That would be cruel, you monster.</span>")
+		return
 	if(default_unfasten_wrench(user, I))
 		return
 	else if(exchange_parts(user, I))
