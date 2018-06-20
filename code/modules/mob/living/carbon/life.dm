@@ -53,6 +53,8 @@
 		return
 	if(istype(loc, /obj/machinery/atmospherics/components/unary/cryo_cell))
 		return
+	if(istype(loc, /obj/item/clothing/head/mob_holder)) // Bandaid. It stops mob_holders from breathing, which is sub-optimal.
+		return
 
 	var/datum/gas_mixture/environment
 	if(loc)

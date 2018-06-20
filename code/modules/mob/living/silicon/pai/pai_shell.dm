@@ -108,7 +108,7 @@
 	. += 1 //A bit slower than humans, so they're easier to smash
 
 /mob/living/silicon/pai/mob_pickup(mob/living/L)
-	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(src), src, chassis, item_head_icon, item_lh_icon, item_rh_icon)
+	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(src), src, chassis, item_head_icon, item_lh_icon, item_rh_icon, TRUE)
 	if(!L.put_in_hands(holder))
 		qdel(holder)
 	else
