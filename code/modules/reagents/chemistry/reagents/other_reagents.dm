@@ -228,9 +228,11 @@
 		if(iscultist(M) || is_servant_of_ratvar(M))
 			if(iscultist(M))
 				SSticker.mode.remove_cultist(M.mind, 1, 1)
+				to_chat(M, "<span class='userdanger'>The influence of Nar'sie and all your memories while you were under her control have been wiped from your mind. You do not remember the faces of your fellow cultists, and their names have gone too, along with any base locations or tactics.</span>")
 				M.visible_message("<span class='cult'>[M] is purged of their dark blood as the evil influence of Nar'sie is forced from their mind by holy power!</span>")
 			else if(is_servant_of_ratvar(M))
 				remove_servant_of_ratvar(M)
+				to_chat(M, "<span class='userdanger'>Ratvar's light dims, and your ancient knowledge is lost, along with any memories you had as one of His servants. You do not remember the names of any allies and you are unable to remember anything they've said or done this shift.</span>")
 				M.visible_message("<span class='brass'>[M] slumps as their link with the Engine is severed by holy power, stealing away their magic!</span>")
 			M.jitteriness = 0
 			M.stuttering = 0
