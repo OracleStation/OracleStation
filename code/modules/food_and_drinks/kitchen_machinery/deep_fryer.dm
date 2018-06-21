@@ -50,7 +50,7 @@ insert ascii eagle on american flag background here
 		to_chat(user, "<span class='userdanger'>Your cooking skills are not up to the legendary Doublefry technique.</span>")
 		return
 	if(istype(I,/obj/item/clothing/head/mob_holder))
-		to_chat(user, "<span class='warning'>That would be cruel, you monster.</span>")
+		to_chat(user, "<span class='warning'>What the fuck is wrong with you? No!</span>")
 		return
 	if(default_unfasten_wrench(user, I))
 		return

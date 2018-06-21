@@ -58,9 +58,13 @@
 		qdel(src)
 
 /obj/item/clothing/head/mob_holder/relaymove(mob/user)
-	release()
+	to_chat(user, "<span class='warning'>You must resist in order to escape!</span>")
+	return
 
 /obj/item/clothing/head/mob_holder/container_resist()
+	if(isliving(loc))
+		var/mob/living/L = loc
+		visible_message("<span class='warning'>[src] escapes [L]!</span>")
 	release()
 
 /mob/living/proc/mob_pickup(mob/living/L)
