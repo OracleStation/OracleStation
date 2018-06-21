@@ -40,7 +40,7 @@
 	if(mapload && !opened)		// if closed, any item at the crate's loc is put in the contents
 		addtimer(CALLBACK(src, .proc/take_contents), 0)
 	if(secure)
-		lockerelectronics = new /obj/item/electronics/airlock(src)
+		lockerelectronics = new
 		lockerelectronics.accesses = req_access
 	. = ..()
 	update_icon()
@@ -75,20 +75,20 @@
 		add_overlay("sparking")
 	else if(locked)
 		add_overlay("locked")
-	else if(!locked)
+	else
 		add_overlay("unlocked")
 
 /obj/structure/closet/examine(mob/user)
 	..()
 	if(welded)
-		to_chat(user, "<span class='notice'>It's welded shut.</span>")
+		to_chat(user, "<span class='notice'>It's <b>welded</b> shut.</span>")
 	if(anchored)
 		to_chat(user, "<span class='notice'>It is <b>bolted</b> to the ground.</span>")
 	if(opened)
 		to_chat(user, "<span class='notice'>The parts are <b>welded</b> together.</span>")
 	else if(broken)
 		to_chat(user, "<span class='notice'>The lock is smouldering and sparking. Use a <b>screwdriver</b> to remove it.</span>")
-	else if(secure && !opened)
+	else if(secure)
 		to_chat(user, "<span class='notice'>Alt-click to [locked ? "unlock" : "lock"].</span>")
 
 /obj/structure/closet/CanPass(atom/movable/mover, turf/target)
@@ -122,10 +122,10 @@
 	if(!secure)
 		return FALSE
 	if(broken)
-		to_chat(user, "<span class='warning'>[src] is broken!</span>")
+		to_chat(user, "<span class='notice'>[src] is broken!</span>")
 		return FALSE
 	if(QDELETED(lockerelectronics) && locked) //Check it's not locked here in case something weird happens with lockerelectronics being null but the locker being locked
-		to_chat(user, "<span class='warning'>[src] is missing locker electronics!</span>")
+		to_chat(user, "<span class='notice'>[src] is missing locker electronics!</span>")
 		return FALSE
 	if(!check_access)
 		return TRUE

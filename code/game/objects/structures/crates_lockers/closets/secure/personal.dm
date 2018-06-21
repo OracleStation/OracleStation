@@ -1,5 +1,5 @@
 /obj/structure/closet/secure_closet/personal
-	desc = "It's a secure locker for personnel. The first card swiped gains control of this locker until the lock is removed."
+	desc = "It's a secure locker for personnel. The first card swiped gains control."
 	name = "personal closet"
 	req_access = list(ACCESS_ALL_PERSONAL_LOCKERS)
 	var/registered_name = null
@@ -51,15 +51,11 @@
 		return ..()
 	if(!can_lock(user, FALSE)) //Can't do anything if there isn't a lock!
 		return
-	if(!I.registered_name)
-		return ..()
-	else if(!registered_name)
+	if(I.registered_name && !registered_name)
 		to_chat(user, "<span class='notice'>You claim [src].</span>")
-	else if(registered_name == I.registered_name)
-		togglelock(user)
 		registered_name = I.registered_name
 	else
-		return ..()
+		..()
 
 /obj/structure/closet/secure_closet/personal/handle_lock_addition() //If lock construction is successful we don't care what access the electronics had, so we override it
 	if(..())
