@@ -133,10 +133,10 @@
 	material_drop_amount = 5
 
 /obj/structure/closet/coffin/handle_lock_addition()
-	return ..()
+	return
 
 /obj/structure/closet/coffin/handle_lock_removal()
-	return ..()
+	return
 
 /obj/structure/closet/wardrobe/red
 	name = "security wardrobe"

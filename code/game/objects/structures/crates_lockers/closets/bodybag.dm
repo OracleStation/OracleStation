@@ -47,10 +47,10 @@
 	return 0
 
 /obj/structure/closet/body_bag/handle_lock_addition()
-	return ..()
+	return
 
 /obj/structure/closet/body_bag/handle_lock_removal()
-	return ..()
+	return
 
 /obj/structure/closet/body_bag/MouseDrop(over_object, src_location, over_location)
 	..()

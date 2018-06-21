@@ -52,10 +52,10 @@
 		update_icon()
 
 /obj/structure/closet/crate/handle_lock_addition()
-	return ..()
+	return
 
 /obj/structure/closet/crate/handle_lock_removal()
-	return ..()
+	return
 
 /obj/structure/closet/crate/proc/tear_manifest(mob/user)
 	to_chat(user, "<span class='notice'>You tear the manifest off of [src].</span>")

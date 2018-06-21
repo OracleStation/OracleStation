@@ -50,10 +50,10 @@
 		playsound(loc, 'sound/machines/chime.ogg', 50, FALSE, -5)
 
 /obj/structure/closet/cardboard/handle_lock_addition() //Whoever heard of a lockable cardboard box anyway
-	return ..()
+	return
 
 /obj/structure/closet/cardboard/handle_lock_removal()
-	return ..()
+	return
 
 /mob/living/proc/do_alert_animation(atom/A)
 	var/image/I = image('goon/icons/obj/closet.dmi', A, "cardboard_special", A.layer+1)

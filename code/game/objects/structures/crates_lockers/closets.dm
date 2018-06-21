@@ -93,31 +93,57 @@
 
 /obj/structure/closet/CanPass(atom/movable/mover, turf/target)
 	if(wall_mounted)
-		return 1
+		return TRUE
 	return !density
 
 /obj/structure/closet/proc/can_open(mob/living/user)
 	if(welded || locked)
-		return 0
+		return FALSE
 	var/turf/T = get_turf(src)
 	for(var/mob/living/L in T)
 		if(L.anchored || horizontal && L.mob_size > MOB_SIZE_TINY && L.density)
-			if(user)
-				to_chat(user, "<span class='danger'>There's something large on top of [src], preventing it from opening.</span>" )
-			return 0
-	return 1
+			to_chat(user, "<span class='danger'>There's something large on top of [src], preventing it from opening.</span>" )
+			return FALSE
+	return TRUE
 
 /obj/structure/closet/proc/can_close(mob/living/user)
 	var/turf/T = get_turf(src)
 	for(var/obj/structure/closet/closet in T)
 		if(closet != src && !closet.wall_mounted)
-			return 0
+			return FALSE
 	for(var/mob/living/L in T)
 		if(L.anchored || horizontal && L.mob_size > MOB_SIZE_TINY && L.density)
 			if(user)
 				to_chat(user, "<span class='danger'>There's something too large in [src], preventing it from closing.</span>")
-			return 0
-	return 1
+			return FALSE
+	return TRUE
+
+/obj/structure/closet/proc/can_lock(mob/living/user, var/check_access = TRUE) //set check_access to FALSE if you only need to check if a locker has a functional lock rather than access
+	if(!secure)
+		return FALSE
+	if(broken)
+		to_chat(user, "<span class='warning'>[src] is broken!</span>")
+		return FALSE
+	if(QDELETED(lockerelectronics) && locked) //Check it's not locked here in case something weird happens with lockerelectronics being null but the locker being locked
+		to_chat(user, "<span class='warning'>[src] is missing locker electronics!</span>")
+		return FALSE
+	if(!check_access)
+		return TRUE
+	if(allowed(user))
+		return TRUE
+	to_chat(user, "<span class='notice'>Access denied.</span>")
+
+/obj/structure/closet/proc/togglelock(mob/living/user)
+	if(ishuman(user))
+		add_fingerprint(user)
+	if(opened)
+		return
+	if(!can_lock(user))
+		return
+	locked = !locked
+	user.visible_message("<span class='notice'>[user] [locked ? null : "un"]locks [src].</span>",
+	"<span class='notice'>You [locked ? null : "un"]lock [src].</span>")
+	update_icon()
 
 /obj/structure/closet/proc/dump_contents(var/override = TRUE) //Override is for not revealing the locker electronics when you open the locker, for example
 	var/atom/L = drop_location()
@@ -146,7 +172,7 @@
 	climb_time *= 0.5 //it's faster to climb onto an open thing
 	dump_contents()
 	update_icon()
-	return 1
+	return TRUE
 
 /obj/structure/closet/proc/insert(atom/movable/AM)
 	if(contents.len >= storage_capacity)
@@ -185,24 +211,30 @@
 	if(AM.pulledby)
 		AM.pulledby.stop_pulling()
 
-	return 1
+	return TRUE
 
 /obj/structure/closet/proc/close(mob/living/user)
 	if(!opened || !can_close(user))
-		return 0
+		return FALSE
 	take_contents()
 	playsound(loc, close_sound, 15, 1, -3)
 	climb_time = initial(climb_time)
 	opened = 0
 	density = TRUE
 	update_icon()
-	return 1
+	return TRUE
 
 /obj/structure/closet/proc/toggle(mob/living/user)
 	if(opened)
 		return close(user)
 	else
 		return open(user)
+
+/obj/structure/closet/proc/bust_open()
+	welded = FALSE //applies to all lockers
+	locked = FALSE //applies to critter crates and secure lockers only
+	broken = TRUE //applies to secure lockers only
+	open()
 
 /obj/structure/closet/proc/handle_lock_addition(mob/user, obj/item/electronics/airlock/E)
 	if(!istype(E))
@@ -247,17 +279,18 @@
 	if(!secure)
 		to_chat(user, "<span class='notice'>[src] doesn't have a lock that you can remove!</span>")
 		return
-	user.visible_message("<span class='notice'>You begin removing the [broken ? "broken": ""] lock on [src]...</span>", "<span class='notice'>[user] begins removing the [broken ? "broken": ""] lock on [src]...</span>")
+	var/brokenword = broken ? "broken" : null
+	user.visible_message("<span class='notice'>You begin removing the [brokenword] lock on [src]...</span>", "<span class='notice'>[user] begins removing the [brokenword] lock on [src]...</span>")
 	playsound(loc, S.usesound, 50, 1)
 	doinglockstuff = TRUE
 	if(!do_after(user, 100 * S.toolspeed, target = src))
 		doinglockstuff = FALSE
 		return
-	to_chat(user, "<span class='notice'>You remove the [broken ? "broken": ""] lock from [src]!</span>")
-	if(lockerelectronics)
-		transfer_fingerprints_to(lockerelectronics)
+	to_chat(user, "<span class='notice'>You remove the [brokenword] lock from [src]!</span>")
+	if(!QDELETED(lockerelectronics))
+		lockerelectronics.add_fingerprint(user)
 		lockerelectronics.forceMove(user.loc)
-		lockerelectronics = null
+	lockerelectronics = null
 	req_access = null
 	secure = FALSE
 	broken = FALSE
@@ -293,15 +326,15 @@
 										"<span class='notice'>You cut \the [src] apart with \the [WT].</span>",
 										"<span class='italics'>You hear welding.</span>")
 						deconstruct(TRUE)
-					return 0
+					return FALSE
 			else // for example cardboard box is cut with wirecutters
 				user.visible_message("<span class='notice'>[user] cut apart \the [src].</span>", \
 									"<span class='notice'>You cut \the [src] apart with \the [W].</span>")
 				deconstruct(TRUE)
-				return 0
+				return FALSE
 		if(user.drop_item()) // so we put in unlit welder too
 			W.forceMove(loc)
-			return 1
+			return TRUE
 	else if(istype(W, /obj/item/electronics/airlock))
 		handle_lock_addition(user, W)
 	else if(istype(W, /obj/item/screwdriver))
@@ -332,7 +365,7 @@
 	else if(user.a_intent != INTENT_HARM && !(W.flags_1 & NOBLUDGEON_1))
 		if(W.GetID() || !toggle(user))
 			togglelock(user)
-		return 1
+		return TRUE
 	else
 		return ..()
 
@@ -373,7 +406,7 @@
 			close()
 	else
 		O.forceMove(T)
-	return 1
+	return TRUE
 
 /obj/structure/closet/relaymove(mob/user)
 	if(user.stat || !isturf(loc) || !isliving(user))
@@ -391,10 +424,8 @@
 	..()
 	if(user.lying && get_dist(src, user) > 0)
 		return
-
 	if(!toggle(user))
 		togglelock(user)
-		return
 
 /obj/structure/closet/attack_paw(mob/user)
 	return attack_hand(user)
@@ -426,8 +457,8 @@
 /obj/structure/closet/Exit(atom/movable/AM)
 	open()
 	if(AM.loc == src)
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /obj/structure/closet/container_resist(mob/living/user)
 	if(opened)
@@ -458,38 +489,12 @@
 		if(user.loc == src) //so we don't get the message if we resisted multiple times and succeeded.
 			to_chat(user, "<span class='warning'>You fail to break out of [src]!</span>")
 
-/obj/structure/closet/proc/bust_open()
-	welded = FALSE //applies to all lockers
-	locked = FALSE //applies to critter crates and secure lockers only
-	broken = TRUE //applies to secure lockers only
-	open()
-
 /obj/structure/closet/AltClick(mob/user)
 	..()
 	if(!user.canUseTopic(src, be_close=TRUE) || !isturf(loc))
 		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
 		return
-	if(opened || !secure)
-		return
-	else
-		togglelock(user)
-
-/obj/structure/closet/proc/togglelock(mob/living/user)
-	if(secure && !broken)
-		if(!lockerelectronics && !locked) //We can unlock lockers without lockerelectronics, but we can't lock them
-			to_chat(user, "<span class='danger'>[src] is missing locker electronics!</span>")
-			return
-		if(allowed(user))
-			if(iscarbon(user))
-				add_fingerprint(user)
-			locked = !locked
-			user.visible_message("<span class='notice'>[user] [locked ? null : "un"]locks [src].</span>",
-							"<span class='notice'>You [locked ? null : "un"]lock [src].</span>")
-			update_icon()
-		else
-			to_chat(user, "<span class='notice'>Access Denied</span>")
-	else if(secure && broken)
-		to_chat(user, "<span class='warning'>\The [src] is broken!</span>")
+	togglelock(user)
 
 /obj/structure/closet/emag_act(mob/user)
 	if(secure && !broken)
@@ -499,9 +504,9 @@
 		playsound(src, "sparks", 50, 1)
 		broken = TRUE
 		locked = FALSE
-		if(lockerelectronics)
+		if(!QDELETED(lockerelectronics))
 			qdel(lockerelectronics)
-			lockerelectronics = null
+		lockerelectronics = null
 		update_icon()
 
 /obj/structure/closet/get_remote_view_fullscreens(mob/user)
@@ -522,7 +527,7 @@
 		else
 			req_access = list()
 			req_access += pick(get_all_accesses())
-			if(lockerelectronics)
+			if(!QDELETED(lockerelectronics))
 				lockerelectronics.accesses = req_access
 	..()
 

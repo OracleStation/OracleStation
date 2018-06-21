@@ -745,10 +745,10 @@ Difficulty: Very Hard
 
 
 /obj/structure/closet/stasis/handle_lock_addition()
-	return ..()
+	return
 
 /obj/structure/closet/stasis/handle_lock_removal()
-	return ..()
+	return
 
 /obj/effect/proc_holder/spell/targeted/exit_possession
 	name = "Exit Possession"

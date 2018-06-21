@@ -1,8 +1,20 @@
 /obj/structure/closet/secure_closet/personal
-	desc = "It's a secure locker for personnel. The first card swiped gains control."
+	desc = "It's a secure locker for personnel. The first card swiped gains control of this locker until the lock is removed."
 	name = "personal closet"
 	req_access = list(ACCESS_ALL_PERSONAL_LOCKERS)
 	var/registered_name = null
+
+/obj/structure/closet/secure_closet/personal/examine(mob/user)
+	..()
+	if(registered_name)
+		to_chat(user, "<span class='notice'>The display reads, \"Owned by [registered_name]\".</span>")
+
+/obj/structure/closet/secure_closet/personal/check_access(obj/item/card/id/I)
+	. = ..()
+	if(!I || !istype(I))
+		return
+	if(registered_name == I.registered_name)
+		return TRUE
 
 /obj/structure/closet/secure_closet/personal/PopulateContents()
 	..()
@@ -20,8 +32,8 @@
 	name = "patient's closet"
 
 /obj/structure/closet/secure_closet/personal/patient/PopulateContents()
-	new /obj/item/clothing/under/color/white( src )
-	new /obj/item/clothing/shoes/sneakers/white( src )
+	new /obj/item/clothing/under/color/white(src)
+	new /obj/item/clothing/shoes/sneakers/white(src)
 
 /obj/structure/closet/secure_closet/personal/cabinet
 	icon_state = "cabinet"
@@ -29,31 +41,23 @@
 	max_integrity = 70
 
 /obj/structure/closet/secure_closet/personal/cabinet/PopulateContents()
-	new /obj/item/storage/backpack/satchel/leather/withwallet( src )
+	new /obj/item/storage/backpack/satchel/leather/withwallet(src)
 	new /obj/item/device/instrument/piano_synth(src)
-	new /obj/item/device/radio/headset( src )
+	new /obj/item/device/radio/headset(src)
 
 /obj/structure/closet/secure_closet/personal/attackby(obj/item/W, mob/user, params)
 	var/obj/item/card/id/I = W.GetID()
-	if(istype(I))
-		if(broken)
-			to_chat(user, "<span class='danger'>It appears to be broken.</span>")
-			return
-		if(!secure)
-			to_chat(user, "<span class='danger'>[src] is missing a lock!</span>")
-			return
-		if(!I || !I.registered_name)
-			return
-		if(allowed(user) || !registered_name || (istype(I) && (registered_name == I.registered_name)))
-			//they can open all lockers, or nobody owns this, or they own this locker
-			locked = !locked
-			update_icon()
-
-			if(!registered_name)
-				registered_name = I.registered_name
-				desc = "Owned by [I.registered_name]."
-		else
-			to_chat(user, "<span class='danger'>Access Denied.</span>")
+	if(!I || !istype(I))
+		return ..()
+	if(!can_lock(user, FALSE)) //Can't do anything if there isn't a lock!
+		return
+	if(!I.registered_name)
+		return ..()
+	else if(!registered_name)
+		to_chat(user, "<span class='notice'>You claim [src].</span>")
+	else if(registered_name == I.registered_name)
+		togglelock(user)
+		registered_name = I.registered_name
 	else
 		return ..()
 
@@ -61,3 +65,7 @@
 	if(..())
 		req_access = list(ACCESS_ALL_PERSONAL_LOCKERS)
 		lockerelectronics.accesses = req_access
+
+/obj/structure/closet/secure_closet/personal/handle_lock_removal()
+	if(..())
+		registered_name = null

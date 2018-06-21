@@ -89,7 +89,7 @@
 		return ..()
 
 /obj/structure/closet/secure_closet/genpop/close(mob/living/user)
-	if(registered_id != null && lockerelectronics)
+	if(registered_id != null && !QDELETED(lockerelectronics))
 		locked = TRUE
 	return ..()
 
@@ -101,7 +101,7 @@
 		handle_prisoner_id(user)
 		return
 
-	if(!broken && opened && !locked && allowed(user) && !registered_id && lockerelectronics) //Genpop setup
+	if(!broken && opened && !locked && allowed(user) && !registered_id && !QDELETED(lockerelectronics)) //Genpop setup
 
 		registered_id = new /obj/item/card/id/prisoner/(src.contents)
 		if(handle_edit_sentence(user))
