@@ -716,7 +716,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 		..()
 
 /obj/item/clothing/suit/toggle/labcoat/abductor
-	name = "Alien labcoat"
+	name = "alien labcoat"
 	desc = "Most advanced form of labcoat to protect one self from alien experimentations gone wrong."
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "abductor-labcoat"
