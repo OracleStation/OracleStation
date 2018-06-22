@@ -206,8 +206,15 @@
 			M.stuttering = 1
 		M.stuttering = min(M.stuttering+4, 10)
 		M.Dizzy(5)
-		if(iscultist(M) && prob(5))
-			M.say(pick("Av'te Nar'sie","Pa'lid Mors","INO INO ORA ANA","SAT ANA!","Daim'niodeis Arc'iai Le'eones","R'ge Na'sie","Diabo us Vo'iscum","Eld' Mon Nobis"))
+		if(iscultist(M) && prob(8))
+			switch(pick("speech", "message", "emote"))
+				if("speech")
+					M.say(pick("Av'te Nar'sie","Pa'lid Mors","INO INO ORA ANA","SAT ANA!","Daim'niodeis Arc'iai Le'eones","R'ge Na'sie","Diabo us Vo'iscum","Eld' Mon Nobis"))
+				if("message")
+					to_chat(M, "<span class='cult'>[pick("Shai'Tye-", "Dianu-", \
+					"They will not take you from me, Serva-", "Your blood is mine!")].</span>")
+				if("emote")
+					M.visible_message("<span class='warning'>[M] [pick("bleeds from the nose", "drools blackened blood", "thrashes wildly for a moment")].</span>")
 		else if(is_servant_of_ratvar(M) && prob(8))
 			switch(pick("speech", "message", "emote"))
 				if("speech")
@@ -221,8 +228,12 @@
 		if(iscultist(M) || is_servant_of_ratvar(M))
 			if(iscultist(M))
 				SSticker.mode.remove_cultist(M.mind, 1, 1)
+				to_chat(M, "<span class='userdanger'>The influence of Nar'sie and all your memories while you were under her control have been wiped from your mind. You do not remember the faces of your fellow cultists, and their names have gone too, along with any base locations or tactics.</span>")
+				M.visible_message("<span class='cult'>[M] is purged of their dark blood as the evil influence of Nar'sie is forced from their mind by holy power!</span>")
 			else if(is_servant_of_ratvar(M))
 				remove_servant_of_ratvar(M)
+				to_chat(M, "<span class='userdanger'>Ratvar's light dims, and your ancient knowledge is lost, along with any memories you had as one of His servants. You do not remember the names of any allies and you are unable to remember anything they've said or done this shift.</span>")
+				M.visible_message("<span class='brass'>[M] slumps as their link with the Engine is severed by holy power, stealing away their magic!</span>")
 			M.jitteriness = 0
 			M.stuttering = 0
 			holder.remove_reagent(id, volume)	// maybe this is a little too perfect and a max() cap on the statuses would be better??
