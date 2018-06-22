@@ -1,6 +1,6 @@
 /datum/outfit/abductor
 	name = "Abductor Basic"
-	uniform = /obj/item/clothing/under/color/grey //they're greys gettit
+	uniform = /obj/item/clothing/under/abductor
 	shoes = /obj/item/clothing/shoes/combat
 	back = /obj/item/storage/backpack
 	ears = /obj/item/device/radio/headset/abductor
@@ -50,9 +50,10 @@
 
 /datum/outfit/abductor/scientist
 	name = "Abductor Scientist"
-
+	suit = /obj/item/clothing/suit/toggle/labcoat/abductor
+	suit_store = /obj/item/device/abductor/gizmo
 	backpack_contents = list(
-		/obj/item/device/abductor/gizmo = 1
+		/obj/item/paper/guides/antag/abductor = 1
 		)
 
 /datum/outfit/abductor/scientist/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
