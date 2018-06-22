@@ -717,7 +717,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 
 /obj/item/clothing/suit/toggle/labcoat/abductor
 	name = "alien labcoat"
-	desc = "Most advanced form of labcoat to protect one self from alien experimentations gone wrong."
+	desc = "Most advanced form of labcoat to protect one self from alien experimentations gone wrong. This one is in a purple color."
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "abductor-labcoat"
 	item_state = "labcoat"
@@ -729,10 +729,33 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/abductor
-	desc = "The most advanced form of jumpsuit known to reality, looks uncomfortable."
+	desc = "The most advanced form of jumpsuit known to reality, looks uncomfortable. This one is in a purple color."
 	name = "alien jumpsuit"
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "abductor-suit"
+	item_state = "bl_suit"
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 10, bio = 10, rad = 0, fire = 0, acid = 0)
+	can_adjust = 0
+	species_restricted = list("exclude","Vox Outcast")
+
+/obj/item/clothing/suit/toggle/labcoat/abductor/blue
+	name = "alien labcoat"
+	desc = "Most advanced form of labcoat to protect one self from alien experimentations gone wrong. This one is in a turquoise color."
+	icon = 'icons/obj/abductor.dmi'
+	icon_state = "abductor-labcoatblue"
+	item_state = "labcoat"
+	blood_overlay_type = "coat"
+	body_parts_covered = CHEST|ARMS
+	allowed = list( /obj/item/device/healthanalyzer, /obj/item/paper, /obj/item/device/abductor/gizmo, /obj/item/scalpel/alien, /obj/item/hemostat/alien, /obj/item/retractor/alien, /obj/item/circular_saw/alien, /obj/item/surgicaldrill/alien, /obj/item/cautery/alien)
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 50, rad = 0, fire = 50, acid = 50)
+	togglename = "buttons"
+	species_restricted = list("exclude","Vox Outcast")
+
+/obj/item/clothing/under/abductor/blue
+	desc = "The most advanced form of jumpsuit known to reality, looks uncomfortable. This one is in a turquoise color."
+	name = "alien jumpsuit"
+	icon = 'icons/obj/abductor.dmi'
+	icon_state = "abductor-suitblue"
 	item_state = "bl_suit"
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 10, bio = 10, rad = 0, fire = 0, acid = 0)
 	can_adjust = 0
