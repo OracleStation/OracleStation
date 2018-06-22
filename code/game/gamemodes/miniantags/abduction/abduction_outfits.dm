@@ -1,6 +1,5 @@
 /datum/outfit/abductor
 	name = "Abductor Basic"
-	uniform = /obj/item/clothing/under/abductor
 	shoes = /obj/item/clothing/shoes/combat
 	back = /obj/item/storage/backpack
 	ears = /obj/item/device/radio/headset/abductor
@@ -38,6 +37,7 @@
 
 /datum/outfit/abductor/agent
 	name = "Abductor Agent"
+	uniform = /obj/item/clothing/under/abductor
 	head = /obj/item/clothing/head/helmet/abductor
 	suit = /obj/item/clothing/suit/armor/abductor/vest
 	suit_store = /obj/item/abductor_baton
@@ -50,7 +50,8 @@
 
 /datum/outfit/abductor/scientist
 	name = "Abductor Scientist"
-	suit = /obj/item/clothing/suit/toggle/labcoat/abductor
+	uniform = /obj/item/clothing/under/abductor/blue
+	suit = /obj/item/clothing/suit/toggle/labcoat/abductor/blue
 	suit_store = /obj/item/device/abductor/gizmo
 	backpack_contents = list(
 		/obj/item/paper/guides/antag/abductor = 1
