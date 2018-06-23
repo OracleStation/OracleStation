@@ -34,13 +34,13 @@
 	var/delivery_icon = "deliverycloset" //which icon to use when packagewrapped. null to be unwrappable.
 	var/anchorable = TRUE
 	var/obj/item/electronics/airlock/lockerelectronics //Installed electronics
-	var/doinglockstuff = FALSE //Someone is doing some stuff with the lock here, better not proceed further
+	var/lock_in_use = FALSE //Someone is doing some stuff with the lock here, better not proceed further
 
 /obj/structure/closet/Initialize(mapload)
 	if(mapload && !opened)		// if closed, any item at the crate's loc is put in the contents
 		addtimer(CALLBACK(src, .proc/take_contents), 0)
-	if(secure)
-		lockerelectronics = new
+	if(secure || req_access)
+		lockerelectronics = new(src)
 		lockerelectronics.accesses = req_access
 	. = ..()
 	update_icon()
@@ -87,7 +87,7 @@
 	if(opened)
 		to_chat(user, "<span class='notice'>The parts are <b>welded</b> together.</span>")
 	else if(broken)
-		to_chat(user, "<span class='notice'>The lock is smouldering and sparking. Use a <b>screwdriver</b> to remove it.</span>")
+		to_chat(user, "<span class='notice'>The lock is <b>screwed</b> in.</span>")
 	else if(secure)
 		to_chat(user, "<span class='notice'>Alt-click to [locked ? "unlock" : "lock"].</span>")
 
@@ -237,10 +237,8 @@
 	open()
 
 /obj/structure/closet/proc/handle_lock_addition(mob/user, obj/item/electronics/airlock/E)
-	if(!istype(E))
-		return
-	if(doinglockstuff)
-		to_chat(user, "<span class='notice'>Someone is already working on [src]!</span>")
+	if(lock_in_use)
+		to_chat(user, "<span class='notice'>Wait for work on [src] to be done first!</span>")
 		return
 	if(secure)
 		to_chat(user, "<span class='notice'>This locker already has a lock!</span>")
@@ -248,17 +246,19 @@
 	if(broken)
 		to_chat(user, "<span class='notice'><b>Unscrew</b> the broken lock first!</span>")
 		return
+	if(!istype(E))
+		return
 	user.visible_message("<span class='notice'>[user] begins installing a lock on [src]...</span>","<span class='notice'>You begin installing a lock on [src]...</span>")
-	doinglockstuff = TRUE
+	lock_in_use = TRUE
 	playsound(loc, 'sound/items/screwdriver.ogg', 50, 1)
 	if(!do_after(user, 100, target = src))
-		doinglockstuff = FALSE
+		lock_in_use = FALSE
 		return
 	if(!user.drop_item())
 		to_chat(user, "<span class='notice'>[E] is stuck to you!</span>")
-		doinglockstuff = FALSE
+		lock_in_use = FALSE
 		return
-	doinglockstuff = FALSE
+	lock_in_use = FALSE
 	to_chat(user, "<span class='notice'>You finish the lock on [src]!</span>")
 	E.forceMove(src)
 	lockerelectronics = E
@@ -268,10 +268,8 @@
 	return TRUE
 
 /obj/structure/closet/proc/handle_lock_removal(mob/user, obj/item/screwdriver/S)
-	if(!istype(S))
-		return
-	if(doinglockstuff)
-		to_chat(user, "<span class='notice'>Someone is already doing something to [src]!</span>")
+	if(lock_in_use)
+		to_chat(user, "<span class='notice'>Wait for work on [src] to be done first!</span>")
 		return
 	if(locked)
 		to_chat(user, "<span class='notice'>Unlock it first!</span>")
@@ -279,12 +277,14 @@
 	if(!secure)
 		to_chat(user, "<span class='notice'>[src] doesn't have a lock that you can remove!</span>")
 		return
+	if(!istype(S))
+		return
 	var/brokenword = broken ? "broken" : null
 	user.visible_message("<span class='notice'>You begin removing the [brokenword] lock on [src]...</span>", "<span class='notice'>[user] begins removing the [brokenword] lock on [src]...</span>")
 	playsound(loc, S.usesound, 50, 1)
-	doinglockstuff = TRUE
+	lock_in_use = TRUE
 	if(!do_after(user, 100 * S.toolspeed, target = src))
-		doinglockstuff = FALSE
+		lock_in_use = FALSE
 		return
 	to_chat(user, "<span class='notice'>You remove the [brokenword] lock from [src]!</span>")
 	if(!QDELETED(lockerelectronics))
@@ -295,7 +295,7 @@
 	secure = FALSE
 	broken = FALSE
 	locked = FALSE
-	doinglockstuff = FALSE
+	lock_in_use = FALSE
 	update_icon()
 	return TRUE
 
