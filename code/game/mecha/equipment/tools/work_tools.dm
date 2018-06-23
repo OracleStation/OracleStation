@@ -334,8 +334,7 @@
 		if(to_load)
 			to_load = min(target.amount, to_load)
 			if(!cable)
-				cable = new(src)
-				cable.amount = 0
+				cable = new(src, 0)
 			cable.amount += to_load
 			target.use(to_load)
 			occupant_message("<span class='notice'>[to_load] meters of cable successfully loaded.</span>")

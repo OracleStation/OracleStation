@@ -98,7 +98,6 @@
 		qdel(G)
 	new /obj/item/stack/sheet/mineral/sandstone(user.drop_location(), sandAmt)
 	qdel(src)
-	return
 
 /obj/item/ore/glass/throw_impact(atom/hit_atom)
 	if(..() || !ishuman(hit_atom))
@@ -419,9 +418,7 @@
 			..()
 			return
 
-		var/obj/item/stack/cable_coil/CC = new/obj/item/stack/cable_coil(user.loc)
-		CC.amount = 1
-		CC.update_icon()
+		new /obj/item/stack/cable_coil(drop_location(), 1)
 		overlays = list()
 		string_attached = null
 		to_chat(user, "<span class='notice'>You detach the string from the coin.</span>")

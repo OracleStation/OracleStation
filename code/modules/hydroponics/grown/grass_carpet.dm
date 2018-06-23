@@ -38,7 +38,6 @@
 		qdel(G)
 	new stacktype(user.drop_location(), grassAmt)
 	qdel(src)
-	return
 
 // Carpet
 /obj/item/seeds/grass/carpet
