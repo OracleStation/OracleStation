@@ -150,9 +150,9 @@
 						pickupTarget = null
 						pickupTimer = 0
 					else if(ismob(pickupTarget.loc)) // in someones hand
-						if(istype(pickupTarget,/obj/item/clothing/head/mob_holder/))
+						if(istype(pickupTarget, /obj/item/clothing/head/mob_holder/))
 							var/obj/item/clothing/head/mob_holder/h = pickupTarget
-							if(h&&h.held_mob==src)
+							if(h && h.held_mob==src)
 								return//dont let them pickpocket themselves
 
 						var/mob/M = pickupTarget.loc
