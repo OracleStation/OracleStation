@@ -1,7 +1,7 @@
 #define CHARS_PER_LINE 5
 #define FONT_SIZE "5pt"
 #define FONT_COLOR "#09f"
-#define FONT_STYLE "Arial Black"
+#define FONT_STYLE "Small Fonts"
 #define SCROLL_SPEED 2
 
 // Status display
@@ -40,6 +40,7 @@
 
 	maptext_height = 26
 	maptext_width = 32
+	maptext_y = -1
 
 	// new display
 	// register for radio system
