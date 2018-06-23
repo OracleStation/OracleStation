@@ -113,3 +113,8 @@
 	eatverb = "devours"
 	list_reagents = list("nutriment" = 3, "vitamin" = 2)
 	foodtype = GROSS | MEAT | RAW
+
+/mob/living/simple_animal/mouse/generate_mob_holder()
+	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(src), src, (istext(can_be_held) ? can_be_held : ""), 'icons/mob/animals_held.dmi', 'icons/mob/animals_held_lh.dmi', 'icons/mob/animals_held_rh.dmi')
+	holder.w_class = 1
+	return holder

@@ -69,7 +69,7 @@
 
 /mob/living/silicon/pai/proc/choose_chassis()
 	if(!isturf(loc) && loc != card)
-		to_chat(src, "<span class='boldwarning'>You can not change your holochassis composite while not on the ground or in your card!</span>")
+		to_chat(src, "<span class='boldwarning'>You cannot change your holochassis composite while not on the ground or in your card form!</span>")
 		return FALSE
 	var/choice = input(src, "What would you like to use for your holochassis composite?") as null|anything in possible_chassis
 	if(!choice)

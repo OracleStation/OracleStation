@@ -155,13 +155,13 @@
 	var/obj/item/I = src.get_active_held_item()
 	var/mob/living/throwable_mob
 
-	if(istype(I,/obj/item/clothing/head/mob_holder))
+	if(istype(I, /obj/item/clothing/head/mob_holder))
 		var/obj/item/clothing/head/mob_holder/holder = I
 		if(holder.held_mob)
 			throwable_mob = holder.held_mob
 			holder.release()
 
-	if(!I||throwable_mob)
+	if(!I || throwable_mob)
 		if(!throwable_mob && pulling && isliving(pulling) && grab_state >= GRAB_AGGRESSIVE)
 			throwable_mob = pulling
 

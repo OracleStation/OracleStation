@@ -44,7 +44,7 @@
 	if(isturf(loc))//don't release on soft-drops
 		release()
 
-/obj/item/clothing/head/mob_holder/proc/release(del_on_release = TRUE)
+/obj/item/clothing/head/mob_holder/proc/release()
 	if(isliving(loc))
 		var/mob/living/L = loc
 		L.dropItemToGround(src)
@@ -54,7 +54,6 @@
 		m.reset_perspective()
 		m.setDir(SOUTH)
 		held_mob = null
-	if(del_on_release)
 		qdel(src)
 
 /obj/item/clothing/head/mob_holder/relaymove(mob/user)
@@ -69,28 +68,11 @@
 
 /mob/living/proc/mob_pickup(mob/living/L)
 	var/obj/item/clothing/head/mob_holder/holder = generate_mob_holder()
-	if(!holder) return
+	if(!holder)
+		return
 	drop_all_held_items()
 	L.put_in_hands(holder)
 	return
-
-/mob/living/proc/generate_mob_holder()
-	..()
-	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(src), src, (istext(can_be_held) ? can_be_held : ""), 'icons/mob/animals_held.dmi', 'icons/mob/animals_held_lh.dmi', 'icons/mob/animals_held_rh.dmi')
-	return holder
-
-/mob/living/simple_animal/drone/generate_mob_holder()
-	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(src), src, "[visualAppearence]_hat", null, null, null, TRUE)
-	return holder
-
-/mob/living/carbon/monkey/generate_mob_holder()
-	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(src), src, "monkey", 'icons/mob/animals_held.dmi', 'icons/mob/animals_held_lh.dmi', 'icons/mob/animals_held_rh.dmi', TRUE)
-	return holder
-
-/mob/living/simple_animal/mouse/generate_mob_holder()
-	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(src), src, (istext(can_be_held) ? can_be_held : ""), 'icons/mob/animals_held.dmi', 'icons/mob/animals_held_lh.dmi', 'icons/mob/animals_held_rh.dmi')
-	holder.w_class = 1
-	return holder
 
 /mob/living/proc/mob_try_pickup(mob/living/user)
 	if(!ishuman(user) || !src.Adjacent(user) || user.incapacitated() || !can_be_held)
