@@ -95,9 +95,7 @@
 				to_chat(user, "<span class='notice'>You remove the cables.</span>")
 				state = 2
 				icon_state = "2"
-				var/obj/item/stack/cable_coil/A = new (loc)
-				A.amount = 5
-				A.add_fingerprint(user)
+				new /obj/item/stack/cable_coil(drop_location(), 5)
 				return
 
 			if(istype(P, /obj/item/stack/sheet/glass))
