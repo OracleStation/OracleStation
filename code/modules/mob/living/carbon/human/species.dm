@@ -632,7 +632,7 @@
 			species_traits += DIGITIGRADE
 		var/should_be_squished = FALSE
 		if(H.wear_suit)
-			if((H.wear_suit.flags_inv & HIDEJUMPSUIT) || (H.wear_suit.body_parts_covered & LEGS))
+			if((H.wear_suit.flags_inv & HIDEJUMPSUIT) || ((H.wear_suit.body_parts_covered & LEGS) && (H.wear_suit.body_parts_covered & FEET)))
 				should_be_squished = TRUE
 		if(H.w_uniform && !H.wear_suit)
 			if(H.w_uniform.mutantrace_variation == NO_MUTANTRACE_VARIATION)
