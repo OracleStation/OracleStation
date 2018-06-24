@@ -162,12 +162,7 @@
 	update_controls()
 
 /mob/living/simple_animal/bot/floorbot/proc/empty_tiles()
-	var/turf/Tsec = get_turf(src)
-
-	while(specialtiles > initial(tiletype.max_amount))
-		new tiletype(Tsec,initial(tiletype.max_amount))
-		specialtiles -= initial(tiletype.max_amount)
-	new tiletype(Tsec,specialtiles)
+	new tiletype(drop_location(), specialtiles)
 	specialtiles = 0
 	tiletype = null
 
@@ -376,8 +371,7 @@
 	if(prob(50))
 		new /obj/item/bodypart/l_arm/robot(Tsec)
 
-	var/obj/item/stack/tile/plasteel/T = new (Tsec)
-	T.amount = 1
+	new /obj/item/stack/tile/plasteel(Tsec, 1)
 
 	do_sparks(3, TRUE, src)
 	..()
