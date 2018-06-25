@@ -28989,7 +28989,6 @@
 "bpH" = (
 /obj/structure/table/glass,
 /obj/item/folder/white,
-/obj/item/device/radio/headset/headset_medsci,
 /obj/machinery/requests_console{
 	department = "Genetics";
 	departmentType = 0;
@@ -30657,7 +30656,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel/white,
-/area/medical/genetics)
+/area/maintenance/aft)
 "btn" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -30679,7 +30678,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/white,
-/area/medical/genetics)
+/area/maintenance/aft)
 "btp" = (
 /turf/open/floor/plating,
 /area/maintenance/starboard)
@@ -31236,7 +31235,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel/whitepurple/side{
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 4
 	},
 /area/medical/genetics)
@@ -31261,7 +31260,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden,
 /turf/open/floor/plasteel/white,
-/area/medical/genetics)
+/area/maintenance/aft)
 "buz" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -31326,17 +31325,14 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/machinery/door/airlock/research{
-	name = "Genetics Research Access";
+/obj/machinery/door/airlock/medical{
+	id_tag = "GeneticsLabDoor";
+	name = "Genetics Lab";
 	req_access_txt = "9"
 	},
 /turf/open/floor/plasteel/white,
-/area/medical/genetics)
+/area/maintenance/aft)
 "buH" = (
-/obj/machinery/door/airlock/research{
-	name = "Genetics Research Access";
-	req_access_txt = "47"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -31348,8 +31344,13 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/machinery/door/airlock/research{
+	cyclelinkeddir = 1;
+	name = "Research Division Access";
+	req_access_txt = "47"
+	},
 /turf/open/floor/plasteel/white,
-/area/science/research)
+/area/maintenance/aft)
 "buI" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
@@ -31385,7 +31386,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/white,
-/area/medical/genetics)
+/area/maintenance/aft)
 "buM" = (
 /obj/machinery/keycard_auth{
 	pixel_x = -24
@@ -31683,12 +31684,13 @@
 	},
 /area/medical/genetics)
 "bvt" = (
-/obj/machinery/door/airlock/glass_research{
-	name = "Genetics Research";
-	req_access_txt = "5; 9; 68"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
+	},
+/obj/machinery/door/airlock/glass_medical{
+	id_tag = "GeneticsDoor";
+	name = "Genetics Lab";
+	req_access_txt = "9"
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/genetics)
@@ -31724,7 +31726,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel/whitepurple/side{
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 4
 	},
 /area/medical/genetics)
@@ -31740,7 +31742,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/white,
-/area/medical/genetics)
+/area/maintenance/aft)
 "bvA" = (
 /obj/structure/sign/securearea,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -31759,7 +31761,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/white,
-/area/medical/genetics)
+/area/maintenance/aft)
 "bvC" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
