@@ -468,13 +468,9 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 					var/obj/item/device/pda/PDA = worn
 					PDA.id = id
 					id.forceMove(PDA)
-				else if(istype(worn, /obj/item/storage/wallet))
-					var/obj/item/storage/wallet/W = worn
-					W.front_id = id
-					id.forceMove(W)
-					W.update_icon()
 			else
 				H.equip_to_slot(id,slot_wear_id)
+
 
 	else
 		alert("Invalid mob")
