@@ -68,7 +68,7 @@
 	var/obj/item/device/modular_computer/tablet/tablet = wear_id
 	if(istype(pda))
 		id = pda.owner
-	if(istype(id))
+	else if(istype(id))
 		. = id.registered_name
 	else if(istype(tablet))
 		var/obj/item/computer_hardware/card_slot/card_slot = tablet.all_components[MC_CARD]
