@@ -267,6 +267,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		"pda_mail.png"			= 'icons/pda_icons/pda_mail.png',
 		"pda_medical.png"		= 'icons/pda_icons/pda_medical.png',
 		"pda_menu.png"			= 'icons/pda_icons/pda_menu.png',
+		"pda_map.png"		  	= 'icons/pda_icons/pda_map.png',
 		"pda_mule.png"			= 'icons/pda_icons/pda_mule.png',
 		"pda_notes.png"			= 'icons/pda_icons/pda_notes.png',
 		"pda_power.png"			= 'icons/pda_icons/pda_power.png',

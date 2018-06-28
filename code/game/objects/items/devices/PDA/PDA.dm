@@ -151,7 +151,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				dat += "<li><img src=pda_notes.png class=pda_icon class=pda_icon>   <a href='byond://?src=[REF(src)];choice=1'>Notekeeper</a></li>"
 				dat += "<li><img src=pda_mail.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=2'>Messenger</a></li>"
 				dat += "<li><img src=pda_notes.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=41'>View Crew Manifest</a></li>"
-				dat += "<li><img src=pda_notes.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=64'>View Station Map</a></li>"
+				dat += "<li><img src=pda_map.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=64'>View Station Map</a></li>"
 
 				if(cartridge)
 					if(cartridge.access)
