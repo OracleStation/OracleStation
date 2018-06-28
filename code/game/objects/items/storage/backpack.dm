@@ -195,8 +195,6 @@
 	icon_state = "satchel"
 	resistance_flags = 0
 
-/obj/item/storage/backpack/satchel/leather/withwallet/PopulateContents()
-	new /obj/item/storage/wallet/random(src)
 
 /obj/item/storage/backpack/satchel/eng
 	name = "industrial satchel"
