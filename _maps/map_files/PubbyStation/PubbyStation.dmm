@@ -3120,6 +3120,7 @@
 	dir = 1;
 	pixel_y = 1
 	},
+/obj/item/twohanded/required/kirbyplants,
 /turf/open/floor/plasteel/red/side{
 	dir = 1
 	},
@@ -3203,9 +3204,6 @@
 /turf/open/floor/plasteel,
 /area/security/prison)
 "ahI" = (
-/obj/machinery/light{
-	dir = 1
-	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -4914,6 +4912,7 @@
 /obj/machinery/atmospherics/pipe/manifold/cyan/hidden{
 	dir = 1
 	},
+/obj/effect/landmark/start/brig_phys,
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "alt" = (
@@ -54985,8 +54984,8 @@
 	network = list("Prison");
 	pixel_y = 30
 	},
-/turf/open/floor/plasteel/red/corner{
-	dir = 4
+/turf/open/floor/plasteel/red/side{
+	dir = 1
 	},
 /area/security/prison)
 "fsV" = (
@@ -55066,6 +55065,14 @@
 /turf/open/floor/plasteel/darkred/side{
 	dir = 1
 	},
+/area/security/prison)
+"ivb" = (
+/obj/structure/closet/secure_closet/genpop,
+/obj/machinery/light{
+	dir = 4;
+	light_color = "#e8eaff"
+	},
+/turf/open/floor/plasteel/black,
 /area/security/prison)
 "iLE" = (
 /obj/machinery/camera{
@@ -55229,6 +55236,16 @@
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/black,
+/area/security/prison)
+"pYC" = (
+/obj/structure/table,
+/obj/item/device/radio/headset,
+/obj/item/device/radio/headset,
+/obj/item/device/radio/headset,
+/obj/item/device/radio/headset,
+/obj/item/device/radio/headset,
+/obj/item/device/radio/headset,
 /turf/open/floor/plasteel/black,
 /area/security/prison)
 "qad" = (
@@ -75426,7 +75443,7 @@ ahm
 ahD
 aib
 aiD
-ttx
+pYC
 agy
 akD
 als
@@ -77220,7 +77237,7 @@ agO
 ahb
 agy
 oLb
-ttx
+ivb
 hTh
 ahK
 aih
