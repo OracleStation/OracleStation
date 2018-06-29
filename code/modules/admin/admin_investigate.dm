@@ -12,6 +12,8 @@
 		return
 	switch(subject)
 		if("notes, memos, watchlist")
+			if(!check_rights(R_ADMIN))
+				return
 			browse_messages()
 		else
 			var/F = file("[GLOB.log_directory]/[subject].html")

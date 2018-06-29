@@ -65160,7 +65160,6 @@
 	dir = 1
 	},
 /obj/item/storage/box/monkeycubes,
-/obj/item/device/radio/headset/headset_medsci,
 /obj/item/device/flashlight/pen{
 	pixel_x = 4;
 	pixel_y = 3
@@ -67053,10 +67052,6 @@
 /area/medical/genetics/cloning)
 "cyc" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_research{
-	name = "Genetics Lab";
-	req_access_txt = "5; 9; 68"
-	},
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
@@ -67067,6 +67062,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	dir = 4
+	},
+/obj/machinery/door/airlock/glass_medical{
+	id_tag = "GeneticsDoor";
+	name = "Genetics Lab";
+	req_access_txt = "9"
 	},
 /turf/open/floor/plasteel/whiteblue,
 /area/medical/genetics)
@@ -67136,12 +67136,10 @@
 /area/medical/genetics)
 "cyi" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/research{
-	id_tag = "AuxGenetics";
-	locked = 0;
+/obj/machinery/door/airlock/medical{
+	id_tag = "GeneticsLabDoor";
 	name = "Genetics Lab";
-	req_access_txt = "9";
-	req_one_access_txt = "0"
+	req_access_txt = "9"
 	},
 /turf/open/floor/plasteel,
 /area/medical/genetics)
@@ -67175,18 +67173,16 @@
 /area/medical/genetics)
 "cym" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/research{
-	id_tag = "AuxGenetics";
-	locked = 0;
-	name = "Genetics Access";
-	req_access_txt = "9";
-	req_one_access_txt = "0"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	dir = 4
+	},
+/obj/machinery/door/airlock/medical{
+	id_tag = "GeneticsMedAccess";
+	name = "Genetics Access";
+	req_access_txt = "9"
 	},
 /turf/open/floor/plasteel,
 /area/medical/genetics)

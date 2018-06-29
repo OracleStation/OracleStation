@@ -548,8 +548,12 @@
 				icon_state = "alarm_b1"
 		return
 
-	if((stat & (NOPOWER|BROKEN)) || shorted)
+	if(((stat & (NOPOWER)) || shorted) & !BROKEN)
 		icon_state = "alarmp"
+		return
+
+	if(stat & BROKEN)
+		icon_state = "alarmb"
 		return
 
 	var/area/A = get_area(src)

@@ -806,7 +806,6 @@
 /area/shuttle/syndicate)
 "abQ" = (
 /obj/structure/table/optable,
-
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},
@@ -31725,7 +31724,6 @@
 /area/science/robotics/lab)
 "brC" = (
 /obj/item/clothing/gloves/color/latex,
-
 /obj/structure/window/reinforced{
 	dir = 1;
 	pixel_y = 1
@@ -33430,16 +33428,17 @@
 /turf/closed/wall/r_wall,
 /area/medical/genetics)
 "bvd" = (
-/obj/machinery/door/airlock/glass_research{
-	name = "Genetics";
-	req_access_txt = "9"
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/door/airlock/glass_medical{
+	id_tag = "GeneticsDoor";
+	name = "Genetics Lab";
+	req_access_txt = "9"
+	},
 /turf/open/floor/plasteel/whiteblue,
 /area/medical/genetics)
 "bve" = (
@@ -34109,19 +34108,19 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -26
 	},
-/turf/open/floor/plasteel/whitepurple/side{
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 9
 	},
 /area/medical/genetics)
 "bww" = (
 /obj/machinery/computer/scan_consolenew,
-/turf/open/floor/plasteel/whitepurple/side{
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 1
 	},
 /area/medical/genetics)
 "bwx" = (
 /obj/machinery/dna_scannernew,
-/turf/open/floor/plasteel/whitepurple/side{
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 1
 	},
 /area/medical/genetics)
@@ -34132,7 +34131,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/floor/plasteel/whitepurple/side{
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 1
 	},
 /area/medical/genetics)
@@ -34142,7 +34141,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/open/floor/plasteel/whitepurple/side{
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 1
 	},
 /area/medical/genetics)
@@ -34153,7 +34152,7 @@
 	pixel_y = 4
 	},
 /obj/item/storage/box/bodybags,
-/turf/open/floor/plasteel/whitepurple/side{
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 5
 	},
 /area/medical/genetics)
@@ -35113,7 +35112,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel/whitepurple/side{
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 8
 	},
 /area/medical/genetics)
@@ -35154,7 +35153,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/plasteel/whitepurple/side{
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 4
 	},
 /area/medical/genetics)
@@ -35924,7 +35923,7 @@
 /turf/open/floor/grass,
 /area/medical/genetics)
 "bzG" = (
-/turf/open/floor/plasteel/whitepurple/side{
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 8
 	},
 /area/medical/genetics)
@@ -35962,7 +35961,7 @@
 /obj/structure/mirror{
 	pixel_x = 28
 	},
-/turf/open/floor/plasteel/whitepurple/side{
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 4
 	},
 /area/medical/genetics)
@@ -36442,7 +36441,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel/whitepurple/side{
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 8
 	},
 /area/medical/genetics)
@@ -36487,7 +36486,7 @@
 	name = "Genetics Requests Console";
 	pixel_x = 32
 	},
-/turf/open/floor/plasteel/whitepurple/side{
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 4
 	},
 /area/medical/genetics)
@@ -36971,13 +36970,13 @@
 /obj/item/paper_bin{
 	layer = 2.9
 	},
-/turf/open/floor/plasteel/whitepurple/side{
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 10
 	},
 /area/medical/genetics)
 "bCa" = (
 /obj/machinery/computer/scan_consolenew,
-/turf/open/floor/plasteel/whitepurple/side,
+/turf/open/floor/plasteel/whiteblue/side,
 /area/medical/genetics)
 "bCb" = (
 /obj/machinery/dna_scannernew,
@@ -36986,7 +36985,7 @@
 	dir = 1;
 	network = list("SS13","RD")
 	},
-/turf/open/floor/plasteel/whitepurple/side,
+/turf/open/floor/plasteel/whiteblue/side,
 /area/medical/genetics)
 "bCc" = (
 /obj/structure/cable{
@@ -36994,7 +36993,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/turf/open/floor/plasteel/whitepurple/corner{
+/turf/open/floor/plasteel/whiteblue/corner{
 	dir = 8
 	},
 /area/medical/genetics)
@@ -37016,7 +37015,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/turf/open/floor/plasteel/whitepurple/side{
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 4
 	},
 /area/medical/genetics)
@@ -37537,7 +37536,7 @@
 /area/maintenance/department/engine)
 "bDl" = (
 /obj/structure/closet/secure_closet/medical1,
-/turf/open/floor/plasteel/whitepurple/side{
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 10
 	},
 /area/medical/genetics)
@@ -37548,11 +37547,11 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/turf/open/floor/plasteel/whitepurple/side,
+/turf/open/floor/plasteel/whiteblue/side,
 /area/medical/genetics)
 "bDn" = (
 /obj/structure/closet/wardrobe/genetics_white,
-/turf/open/floor/plasteel/whitepurple/side{
+/turf/open/floor/plasteel/whiteblue/side{
 	dir = 6
 	},
 /area/medical/genetics)
@@ -41542,7 +41541,6 @@
 /area/medical/surgery)
 "bLQ" = (
 /obj/structure/table,
-
 /turf/open/floor/plasteel/whiteblue/side{
 	dir = 4
 	},
@@ -72372,13 +72370,13 @@ aaa
 aaa
 aaa
 aFS
-cBO
-cBP
+cBN
+cBN
 aKs
 aFS
 aFS
-cBT
-cBU
+cBN
+cBN
 aFS
 aKs
 aFS
@@ -72632,7 +72630,7 @@ aFS
 aIs
 aJx
 aJx
-cBR
+cBN
 aMI
 aNZ
 aNZ
@@ -73146,7 +73144,7 @@ aFS
 aIu
 aJy
 aKt
-cBS
+cBN
 aIx
 aOa
 aOa
@@ -73916,14 +73914,14 @@ aGQ
 aHw
 aIw
 aIw
-cBQ
+cBN
 aIx
 aIx
 aOc
 aPj
 aOc
 aIx
-cBV
+cBN
 aMI
 aMI
 aMI
