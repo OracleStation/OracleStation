@@ -196,6 +196,7 @@
 	message = replacetext(message, "space", "spess")
 	message = replacetext(message, "carp", "crap")
 	message = replacetext(message, "reason", "raisin")
+	message = replacetext(message, "please", "pwease")
 	if(prob(50))
 		message = uppertext(message)
 		message += "[stutter(pick("!", "!!", "!!!"))]"
