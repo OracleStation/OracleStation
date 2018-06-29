@@ -12,6 +12,7 @@
         "@pick(semicolon)A PIRATE APPEAR",
         "stat me",
         "my face",
+        "that feel when",
         "roll it easy!",
         "waaaaaagh!!!",
         "red wonz go fasta",
@@ -50,6 +51,23 @@
         "@pick(semicolon)whot the fuk???????????",
         "@pick(semicolon)i ran into the supermattre ten i dsappeard halp",
         "DON'T EVER TUCH ME",
+        "@pick(semicolon)HALP MEINT!",
+        "is this los?",
+        "@pick(semicolon)REEEE!!",
+        "humanize the aliens",
+        "@pick(semicolon)REMOVE @pick(removal)!!",
+        "its treason then",
+        "rely makes U think",
+        "what did he mean by this?",
+        "upvotes please",
+        "like n subscribe",
+        "hey there utube"
+        "@pick(semicolon)BRAIN HURTY!!",
+        "@pick(semicolon)IM PIKEL RICK!!",
+        "i need cat ears",
+        "its a doggy dog world",
+        "THE FEELS",
+        "were we droppin boyz"
     ],
 
     "mutations": [
@@ -113,7 +131,15 @@
         ";",
         ".h"
     ],
-	
+
+  "removal": [
+	"CLOWN",
+	"MIME",
+  "HONK",
+	"ETHARI"
+    ],
+
+
 	"god_foe": [
         "MORTALS",
         "HERETICS",
