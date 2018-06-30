@@ -422,14 +422,15 @@
 	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/stableslimetoxin/on_mob_life(mob/living/carbon/human/H)
-	..()
 	if(!istype(H))
 		return
+	if(volume < 1)
+		return ..()
 	to_chat(H, "<span class='warning'><b>You crumple in agony as your flesh wildly morphs into new forms!</b></span>")
 	H.visible_message("<b>[H]</b> falls to the ground and screams as [H.p_their()] skin bubbles and froths!") //'froths' sounds painful when used with SKIN.
 	H.Knockdown(60)
 	addtimer(CALLBACK(src, .proc/mutate, H), 30)
-	return
+	return ..()
 
 /datum/reagent/stableslimetoxin/proc/mutate(mob/living/carbon/human/H)
 	if(QDELETED(H))
