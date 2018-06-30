@@ -63,16 +63,13 @@
 //gets name from ID or PDA itself, ID inside PDA doesn't matter
 //Useful when player is being seen by other mobs
 /mob/living/carbon/human/proc/get_id_name(if_no_id = "Unknown")
-	var/obj/item/storage/wallet/wallet = wear_id
 	var/obj/item/device/pda/pda = wear_id
 	var/obj/item/card/id/id = wear_id
 	var/obj/item/device/modular_computer/tablet/tablet = wear_id
-	if(istype(wallet))
-		id = wallet.front_id
-	if(istype(id))
+	if(istype(pda))
+		id = pda.owner
+	else if(istype(id))
 		. = id.registered_name
-	else if(istype(pda))
-		. = pda.owner
 	else if(istype(tablet))
 		var/obj/item/computer_hardware/card_slot/card_slot = tablet.all_components[MC_CARD]
 		if(card_slot && (card_slot.stored_card2 || card_slot.stored_card))

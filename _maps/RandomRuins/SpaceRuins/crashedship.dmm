@@ -2289,7 +2289,6 @@
 "gO" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/obj/item/storage/wallet/random,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
