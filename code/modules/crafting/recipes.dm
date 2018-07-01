@@ -548,7 +548,7 @@
 /datum/crafting_recipe/personal_locker
 	name = "Personal Locker"
 	result = /obj/structure/closet/secure_closet/personal
-	time = 100
+	time = 215 //Time for the locker plus time for the locker itself
 	tools = list(/obj/item/screwdriver, /obj/item/weldingtool)
 	reqs = list(/obj/item/stack/sheet/metal = 5, /obj/item/electronics/airlock)
 	category = CAT_MISC
@@ -556,7 +556,7 @@
 /datum/crafting_recipe/genpop_locker
 	name = "Genpop Locker"
 	result = /obj/structure/closet/secure_closet/genpop
-	time = 100
+	time = 215
 	tools = list(/obj/item/screwdriver, /obj/item/weldingtool)
 	reqs = list(/obj/item/stack/sheet/metal = 5, /obj/item/electronics/airlock, /obj/item/device/assembly/timer)
 	category = CAT_MISC

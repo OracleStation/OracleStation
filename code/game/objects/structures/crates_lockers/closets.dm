@@ -124,7 +124,7 @@
 	if(broken)
 		to_chat(user, "<span class='notice'>[src] is broken!</span>")
 		return FALSE
-	if(QDELETED(lockerelectronics) && locked) //Check it's not locked here in case something weird happens with lockerelectronics being null but the locker being locked
+	if(QDELETED(lockerelectronics) && !locked) //We want to be able to unlock it regardless of electronics, but only lockable with electronics
 		to_chat(user, "<span class='notice'>[src] is missing locker electronics!</span>")
 		return FALSE
 	if(!check_access)
@@ -134,8 +134,7 @@
 	to_chat(user, "<span class='notice'>Access denied.</span>")
 
 /obj/structure/closet/proc/togglelock(mob/living/user)
-	if(ishuman(user))
-		add_fingerprint(user)
+	add_fingerprint(user)
 	if(opened)
 		return
 	if(!can_lock(user))
@@ -237,6 +236,7 @@
 	open()
 
 /obj/structure/closet/proc/handle_lock_addition(mob/user, obj/item/electronics/airlock/E)
+	add_fingerprint(user)
 	if(lock_in_use)
 		to_chat(user, "<span class='notice'>Wait for work on [src] to be done first!</span>")
 		return
@@ -251,7 +251,7 @@
 	user.visible_message("<span class='notice'>[user] begins installing a lock on [src]...</span>","<span class='notice'>You begin installing a lock on [src]...</span>")
 	lock_in_use = TRUE
 	playsound(loc, 'sound/items/screwdriver.ogg', 50, 1)
-	if(!do_after(user, 100, target = src))
+	if(!do_after(user, 200, target = src))
 		lock_in_use = FALSE
 		return
 	if(!user.drop_item())
