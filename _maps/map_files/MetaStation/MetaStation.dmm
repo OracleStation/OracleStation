@@ -36423,7 +36423,7 @@
 	pixel_x = -31
 	},
 /obj/machinery/camera{
-	c_tag = "Gateway - Atrium";
+	c_tag = "Cafeteria - West";
 	dir = 4;
 	network = list("SS13")
 	},
@@ -41426,7 +41426,7 @@
 	dir = 1
 	},
 /obj/machinery/camera{
-	c_tag = "Kitchen";
+	c_tag = "Cafeteria - South";
 	dir = 1;
 	network = list("SS13")
 	},
@@ -46484,6 +46484,7 @@
 	},
 /obj/structure/table,
 /obj/machinery/reagentgrinder,
+/obj/machinery/light,
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
 	},
@@ -72070,13 +72071,6 @@
 /turf/closed/wall/r_wall,
 /area/science/xenobiology)
 "cRv" = (
-/obj/machinery/doorButtons/access_button{
-	idDoor = "xeno_airlock_exterior";
-	idSelf = "xeno_airlock_control";
-	name = "Access Button";
-	pixel_x = -24;
-	req_access_txt = "0"
-	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 2;
@@ -72090,6 +72084,13 @@
 	id_tag = "xeno_airlock_exterior";
 	locked = 1;
 	name = "Xenobiology Lab External Airlock";
+	req_access_txt = "55"
+	},
+/obj/machinery/doorButtons/access_button{
+	idDoor = "xeno_airlock_exterior";
+	idSelf = "xeno_airlock_control";
+	name = "Xenobiology Access Button";
+	pixel_x = -24;
 	req_access_txt = "55"
 	},
 /turf/open/floor/plasteel/whitepurple{
@@ -77157,14 +77158,6 @@
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "dbZ" = (
-/obj/machinery/doorButtons/access_button{
-	idDoor = "xeno_airlock_interior";
-	idSelf = "xeno_airlock_control";
-	name = "Access Button";
-	pixel_x = 29;
-	pixel_y = -8;
-	req_access_txt = "0"
-	},
 /obj/machinery/firealarm{
 	dir = 2;
 	pixel_y = 24
@@ -77176,6 +77169,14 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/top,
+/obj/machinery/doorButtons/access_button{
+	idDoor = "xeno_airlock_interior";
+	idSelf = "xeno_airlock_control";
+	name = "Xenobiology Access Button";
+	pixel_x = 29;
+	pixel_y = -8;
+	req_access_txt = "55"
+	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "dca" = (
@@ -77368,19 +77369,20 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/doorButtons/airlock_controller{
-	idExterior = "xeno_airlock_exterior";
-	idInterior = "xeno_airlock_interior";
-	idSelf = "xeno_airlock_control";
-	name = "Access Console";
-	pixel_x = -25;
-	pixel_y = -25
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	dir = 4
+	},
+/obj/machinery/doorButtons/airlock_controller{
+	idExterior = "xeno_airlock_exterior";
+	idInterior = "xeno_airlock_interior";
+	idSelf = "xeno_airlock_control";
+	name = "Xenobiology Access Console";
+	pixel_x = -25;
+	pixel_y = -25;
+	req_access_txt = "55"
 	},
 /turf/open/floor/plasteel/whitepurple/side{
 	dir = 8
@@ -84585,12 +84587,13 @@
 /obj/item/reagent_containers/food/condiment/peppermill{
 	pixel_x = 3
 	},
-/obj/machinery/camera/autoname{
-	dir = 8;
-	network = list("SS13")
-	},
 /obj/machinery/computer/security/telescreen/entertainment{
 	pixel_x = 30
+	},
+/obj/machinery/camera{
+	c_tag = "Cafeteria - East";
+	dir = 8;
+	network = list("SS13")
 	},
 /turf/open/floor/plasteel/bar,
 /area/crew_quarters/cafeteria)
