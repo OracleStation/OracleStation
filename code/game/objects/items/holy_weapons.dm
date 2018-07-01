@@ -397,5 +397,5 @@
 	sharpness = IS_SHARP
 	
 /obj/item/nullrod/pitchfork/Initialize()
-. = ..()
-set_light(3,6,LIGHT_COLOR_RED)
+	. = ..()
+	set_light(3,6,LIGHT_COLOR_RED)
