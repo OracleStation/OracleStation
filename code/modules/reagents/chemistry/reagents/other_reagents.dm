@@ -422,16 +422,16 @@
 	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/stableslimetoxin/on_mob_life(mob/living/carbon/human/H)
-	..()
 	if(!istype(H))
 		return
-	to_chat(H, "<span class='warning'><b>You crumple in agony as your flesh wildly morphs into new forms!</b></span>")
-	H.visible_message("<b>[H]</b> falls to the ground and screams as [H.p_their()] skin bubbles and froths!") //'froths' sounds painful when used with SKIN.
-	H.Knockdown(60)
-	addtimer(CALLBACK(src, .proc/mutate, H), 30)
-	return
+	if(volume >= 1)
+		to_chat(H, "<span class='warning'><b>You crumple in agony as your flesh wildly morphs into new forms!</b></span>")
+		H.visible_message("<b>[H]</b> falls to the ground and screams as [H.p_their()] skin bubbles and froths!") //'froths' sounds painful when used with SKIN.
+		H.Knockdown(60)
+		addtimer(CALLBACK(null, .proc/mutate_with_toxin, H, mutationtext, race), 30)
+	return ..()
 
-/datum/reagent/stableslimetoxin/proc/mutate(mob/living/carbon/human/H)
+/proc/mutate_with_toxin(mob/living/carbon/human/H, mutationtext = null, race = /datum/species/human)
 	if(QDELETED(H))
 		return
 	var/current_species = H.dna.species.type
