@@ -24,8 +24,8 @@
 /obj/item/stock_parts/cell/get_cell()
 	return src
 
-/obj/item/stock_parts/cell/New()
-	..()
+/obj/item/stock_parts/cell/Initialize()
+	. = ..()
 	START_PROCESSING(SSobj, src)
 	charge = maxcharge
 	if(ratingdesc)
@@ -168,8 +168,8 @@
 	materials = list(MAT_GLASS=40)
 	rating = 2
 
-/obj/item/stock_parts/cell/crap/empty/New()
-	..()
+/obj/item/stock_parts/cell/crap/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/stock_parts/cell/upgraded
@@ -192,8 +192,8 @@
 	materials = list(MAT_GLASS=40)
 	rating = 2.5
 
-/obj/item/stock_parts/cell/secborg/empty/New()
-	..()
+/obj/item/stock_parts/cell/secborg/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/stock_parts/cell/pulse //200 pulse shots
@@ -226,8 +226,8 @@
 	maxcharge = 15000
 	chargerate = 2250
 
-/obj/item/stock_parts/cell/high/empty/New()
-	..()
+/obj/item/stock_parts/cell/high/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/stock_parts/cell/super
@@ -239,8 +239,8 @@
 	rating = 4
 	chargerate = 2000
 
-/obj/item/stock_parts/cell/super/empty/New()
-	..()
+/obj/item/stock_parts/cell/super/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/stock_parts/cell/hyper
@@ -252,8 +252,8 @@
 	rating = 5
 	chargerate = 3000
 
-/obj/item/stock_parts/cell/hyper/empty/New()
-	..()
+/obj/item/stock_parts/cell/hyper/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/stock_parts/cell/bluespace
@@ -266,8 +266,8 @@
 	rating = 6
 	chargerate = 4000
 
-/obj/item/stock_parts/cell/bluespace/empty/New()
-	..()
+/obj/item/stock_parts/cell/bluespace/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/stock_parts/cell/infinite
@@ -323,8 +323,8 @@
 	maxcharge = 500
 	rating = 2
 
-/obj/item/stock_parts/cell/emproof/empty/New()
-	..()
+/obj/item/stock_parts/cell/emproof/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/stock_parts/cell/emproof/emp_act(severity)

@@ -75,13 +75,17 @@
 	icon_state = "dragon"
 	desc = "A suit of armour fashioned from the remains of an ash drake. "
 	allowed = list(/obj/item/device/flashlight, /obj/item/tank/internals, /obj/item/resonator, /obj/item/device/mining_scanner, /obj/item/device/t_scanner/adv_mining_scanner, /obj/item/gun/energy/kinetic_accelerator, /obj/item/pickaxe, /obj/item/twohanded/spear)
+	flags_inv = HIDEJUMPSUIT
 	armor = list(melee = 70, bullet = 30, laser = 50, energy = 40, bomb = 70, bio = 60, rad = 50, fire = 100, acid = 100)
 	hoodtype = /obj/item/clothing/head/hooded/cloakhood/drake
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRE_IMMUNITY_SUIT_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	species_restricted = list("exclude","Vox Outcast")
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		)
 
 /obj/item/clothing/head/hooded/cloakhood/drake
 	name = "drake helm"
@@ -91,3 +95,7 @@
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/head.dmi'
+		)
