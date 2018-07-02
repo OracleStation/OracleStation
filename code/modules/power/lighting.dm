@@ -249,18 +249,18 @@
 	icon_state = "tube-empty"
 	start_with_cell = FALSE
 
-/obj/machinery/light/built/New()
+/obj/machinery/light/built/Initialize()
+	. = ..()
 	status = LIGHT_EMPTY
 	update(0)
-	..()
 
 /obj/machinery/light/small/built
 	icon_state = "bulb-empty"
 
-/obj/machinery/light/small/built/New()
+/obj/machinery/light/small/built/Initialize()
+	. = ..()
 	status = LIGHT_EMPTY
 	update(0)
-	..()
 
 
 // create a new lighting fixture
@@ -729,8 +729,8 @@
 			desc = "A broken [name]."
 
 
-/obj/item/light/New()
-	..()
+/obj/item/light/Initialize()
+	. = ..()
 	update()
 
 
