@@ -49,8 +49,10 @@
 	var/spacewalk = FALSE
 	var/druggy = 0			//Carbon
 	var/confused = 0		//Carbon
-	var/resting = 0			//Carbon
-	var/lying = 0
+	var/resting = 0
+	var/resting_cooldown_duration = 10 // Roughly 5 seconds
+	var/resting_cooldown = 0
+	var/lying = 0				//Carbon
 	var/lying_prev = 0
 	var/canmove = 1
 	var/lastpuke = 0

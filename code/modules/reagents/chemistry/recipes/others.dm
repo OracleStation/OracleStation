@@ -125,6 +125,12 @@
 	required_reagents = list("ammonia" = 2, "nitrogen" = 1, "oxygen" = 2)
 	required_temp = 525
 
+/datum/chemical_reaction/holywater
+	name = "Holy Water"
+	id = "holywater"
+	results = list("holywater" = 3)
+	required_reagents = list("water" = 1, "mercury" = 1, "wine" = 1)
+
 ////////////////////////////////// Mutation Toxins ///////////////////////////////////
 
 /datum/chemical_reaction/stable_mutation_toxin

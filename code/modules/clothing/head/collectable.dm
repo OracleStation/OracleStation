@@ -95,16 +95,6 @@
 
 	dog_fashion = /datum/dog_fashion/head/pirate
 
-/obj/item/clothing/head/collectable/kitty
-	name = "collectable kitty ears"
-	desc = "The fur feels... a bit too realistic."
-	icon_state = "kitty"
-	item_state = "kitty"
-	dynamic_hair_suffix = ""
-	species_restricted = list("exclude","Vox Outcast") // Fuck you if you want this to work
-
-	dog_fashion = /datum/dog_fashion/head/kitty
-
 /obj/item/clothing/head/collectable/rabbitears
 	name = "collectable rabbit ears"
 	desc = "Not as lucky as the feet!"
