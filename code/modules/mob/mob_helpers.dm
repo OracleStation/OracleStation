@@ -501,3 +501,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		if("X*")//xeno blood; not actually used in many spots
 			. = "#88aa00"
 		//add more stuff to the switch if you have more blood colors for different types
+
+/proc/check_retard_speech(message = "")
+	if(GLOB.text_filter_datum.ree_check(message))
+		return TRUE
