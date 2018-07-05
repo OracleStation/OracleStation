@@ -1,6 +1,6 @@
 /obj/item/nullrod
 	name = "null rod"
-	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of Nar-Sie's followers."
+	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of illicit magic."
 	icon_state = "nullrod"
 	item_state = "nullrod"
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
@@ -11,6 +11,13 @@
 	throwforce = 10
 	w_class = WEIGHT_CLASS_TINY
 	var/reskinned = FALSE
+	var/bonus_burn = 0
+
+/obj/item/nullrod/attack(mob/living/target, mob/living/carbon/human/user)
+	. = ..()
+	if(!QDELETED(target) && target.stat != DEAD)
+		var/bonus_damage = bonus_burn
+		target.adjustFireLoss(bonus_damage)
 
 /obj/item/nullrod/attack_self(mob/user)
 	if(user.mind && (user.mind.isholy) && !reskinned)
@@ -325,7 +332,7 @@
 /obj/item/nullrod/carp
 	name = "carp-sie plushie"
 	desc = "An adorable stuffed toy that resembles the god of all carp. The teeth look pretty sharp. Activate it to receive the blessing of Carp-Sie."
-	icon = 'icons/obj/toy.dmi'
+	icon = 'icons/obj/plushes.dmi'
 	icon_state = "carpplushie"
 	item_state = "carp_plushie"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
@@ -390,8 +397,24 @@
 	lefthand_file = 'icons/mob/inhands/weapons/polearms_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/polearms_righthand.dmi'
 	name = "unholy pitchfork"
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
 	desc = "Holding this makes you look absolutely devilish."
 	attack_verb = list("poked", "impaled", "pierced", "jabbed")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP
+	force = 18
+	
+/obj/item/nullrod/pitchfork/Initialize()
+	. = ..()
+	set_light(3,6,LIGHT_COLOR_RED)
+	
+/obj/item/nullrod/pitchfork/clockworkspear/clockwork 
+	icon = 'icons/obj/clockwork_objects.dmi'
+	icon_state = "ratvarian_spear"
+	item_state = "ratvarian_spear"
+	lefthand_file = 'icons/mob/inhands/antag/clockwork_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/antag/clockwork_righthand.dmi'
+	name = "clockwork spear"
+	desc = "A pointy spear made of holy brass. It ticks and tocks."
+	attack_verb = list("ticked", "tocked", "speared")
+	hitsound = 'sound/magic/clockwork/ratvar_attack.ogg'
