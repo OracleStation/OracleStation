@@ -814,9 +814,9 @@ The _flatIcons list is a cache for generated icon files.
 	var/icon/add // Icon of overlay being added
 
 		// Current dimensions of flattened icon
-	var/{flatX1=1;flatX2=flat.Width();flatY1=1;flatY2=flat.Height()}
+	var/flatX1=1, flatX2=flat.Width(), flatY1=1, flatY2=flat.Height()
 		// Dimensions of overlay being added
-	var/{addX1;addX2;addY1;addY2}
+	var/addX1, addX2, addY1, addY2
 
 	for(var/V in layers)
 		var/image/I = V
