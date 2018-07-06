@@ -144,7 +144,6 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	if(check_retard_speech(message))
 		var/reeee = pick(GLOB.retard_lines)
 		to_chat(src, "<span class='warning'>[reeee]</span>")
-		adjustBrainLoss(20, 150)//20 damage, max 150, so 75%
 		return
 
 	var/message_range = 7
