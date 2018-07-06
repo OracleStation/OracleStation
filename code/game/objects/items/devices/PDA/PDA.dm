@@ -255,7 +255,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				currentMapDir = SSmapping.config.map_name
 				if(SSmapping.config.map_name == "PubbyStation") // Required because webmap dirs have no spaced, yet pubby name does.
 					currentMapDir = "PubbyStation"
-				dat += "<iframe src='https://affectedarc07.github.io/SS13WebMap/OracleStation/"+currentMapDir+"/index.html' width='450' height='450'>"
+				dat += "<iframe src='https://affectedarc07.github.io/SS13WebMap/Legacy/OracleStation/"+currentMapDir+"/index.html' width='450' height='450'>"
 				dat += "</center>"
 
 			if(41) //crew manifest
