@@ -876,10 +876,9 @@
 	var/page_link = ""
 	window_size = "970x710"
 
-/obj/item/book/manual/wiki/attack_self()
-	if(!dat)
-		initialize_wikibook()
-	..()
+/obj/item/book/manual/wiki/Initialize()
+	. = ..()
+	initialize_wikibook()
 
 GLOBAL_LIST_EMPTY(cached_wiki_pages)
 
@@ -887,19 +886,19 @@ GLOBAL_LIST_EMPTY(cached_wiki_pages)
 
 	dat = GLOB.cached_wiki_pages[page_link]
 
-	if (dat)
-		return TRUE
+	if (!dat)
+		var/http[] = world.Export("[CONFIG_GET(string/wikibookurl)]wiki/[page_link]?action=render")
 
-	var/http[] = world.Export("[CONFIG_GET(string/wikibookurl)][page_link]?action=render")
+		if(!http)
+			return FALSE
 
-	if(!http)
-		return FALSE
+		var/html = http["CONTENT"]
+		dat = file2text(html)
+		dat = replacetext(dat, "<a href=", "<a nolink=")
+		dat = replacetext(dat, "src=\"/w", "src=\"[CONFIG_GET(string/wikiurl)]/w")
+		GLOB.cached_wiki_pages[page_link] = dat
 
-	var/html = http["CONTENT"]
-	dat = file2text(html)
-	dat = replacetext(dat, "<a href=", "<a nolink=")
-	dat = replacetext(dat, "src=\"/w", "src=\"[CONFIG_GET(string/wikiurl)]/w")
-	GLOB.cached_wiki_pages[page_link] = dat
+	pages = splittext(dat, "<hr />")
 
 	return TRUE
 
