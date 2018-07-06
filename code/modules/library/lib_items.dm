@@ -210,10 +210,9 @@
 	//<a href="#" class="prevPage" title="Previous Page"></a>
 	data["prevPage"] = ui.act("", user, "prevPage", list(), "prevPage", currentPage <= 1)
 	data["nextPage"] = ui.act("", user, "nextPage", list(), "nextPage", currentPage >= pages.len)
-	data["pageNum"] = currentPage
-	data["numPages"] = pages.len
-	data["title"] = title
-	data["body"] = pages[currentPage]
+	data["footer"] = ui.act("[currentPage] of [pages.len]", user, "gotoPage", list(), "plainHref")
+	data["title"] = ui.act(title, user, "navigate", list("page" = 1), "plainHref")
+	data["body"] = replacetext(pages[currentPage], "#NAVIGATE;", ui.href(user, "navigate"))
 	return data
 
 /obj/item/book/oui_act(mob/user, action, list/params)
@@ -223,13 +222,23 @@
 		if("prevPage")
 			if(currentPage > 1)
 				currentPage--
-				ui.render_all()
-				playsound(src.loc, pick('sound/effects/pageturn1.ogg', 'sound/effects/pageturn2.ogg','sound/effects/pageturn3.ogg'), 50, 1)
+				turn_page()
 		if("nextPage")
 			if(currentPage < pages.len)
 				currentPage++
-				ui.render_all()
-				playsound(src.loc, pick('sound/effects/pageturn1.ogg', 'sound/effects/pageturn2.ogg','sound/effects/pageturn3.ogg'), 50, 1)
+				turn_page()
+		if("navigate")
+			currentPage = text2num(params["page"])
+			turn_page()
+		if("gotoPage")
+			var/pgnum = input(user, "What page do you want to go to?", "Goto Page") as num|null
+			if(pgnum != null && pgnum >= 1 && pgnum <= pages.len)
+				currentPage = pgnum
+				turn_page()
+
+/obj/item/book/proc/turn_page()
+	ui.render_all()
+	playsound(src.loc, pick('sound/effects/pageturn1.ogg', 'sound/effects/pageturn2.ogg','sound/effects/pageturn3.ogg'), 50, 1)
 
 /obj/item/book/attack_self(mob/user)
 	if(is_blind(user))

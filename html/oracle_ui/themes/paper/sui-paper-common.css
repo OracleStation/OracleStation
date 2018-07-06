@@ -56,6 +56,11 @@ body {
   top: 0px;
 }
 
+.plainHref, .plainHref:visited, .plainHref:hover, .plainHref:active {
+  color: inherit;
+  text-decoration: none;
+}
+
 .disabled {
   display: none;
 }
