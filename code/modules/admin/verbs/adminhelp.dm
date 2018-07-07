@@ -230,6 +230,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		ref_src = "[REF(src)]"
 	. = " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=reject'>REJT</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
+	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=mentorhelp'>MENTOR</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
 
@@ -377,6 +378,26 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	AddInteraction("Marked as IC issue by [key_name]")
 	Resolve(silent = TRUE)
 
+//Resolve ticket with Mentor Help message
+/datum/admin_help/proc/DowngradeMhelp(key_name = key_name_admin(usr))
+	if(state != AHELP_ACTIVE)
+		return
+
+	var/msg = "<font color='red' size='4'><b>- AdminHelp referred to the Mentor Team -</b></font><br>"
+	msg += "<font color='red'><b>Adminhelps are for problems you encounter in the game, not for general help with game mechanics!</b></font><br>"
+	msg += "<font color='red'>The Mentor team will be able to help you with any game mechanics questions you may have. Use the <b>Mentorhelp</b> verb in the future!</font>"
+
+	if(initiator)
+		to_chat(initiator, msg)
+		initiator.mentorhelp(name)
+
+	SSblackbox.inc("ahelp_mentorhelp")
+	msg = "Ticket [TicketHref("#[id]")] downgraded to mentor help by [key_name]"
+	message_admins(msg)
+	log_admin_private(msg)
+	AddInteraction("Downgraded to mentor help by [key_name]")
+	Resolve(silent = TRUE)
+
 //Show the ticket panel
 /datum/admin_help/proc/TicketPanel()
 	var/list/dat = list("<html><head><title>Ticket #[id]</title></head>")
@@ -433,6 +454,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			usr.client.cmd_ahelp_reply(initiator)
 		if("icissue")
 			ICIssue()
+		if("mentorhelp")
+			DowngradeMhelp()
 		if("close")
 			Close()
 		if("resolve")
