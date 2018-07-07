@@ -389,7 +389,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	if(initiator)
 		to_chat(initiator, msg)
-		initiator.mentorhelp(name)
+		initiator.mhelp(name, TRUE)
 
 	SSblackbox.inc("ahelp_mentorhelp")
 	msg = "Ticket [TicketHref("#[id]")] downgraded to mentor help by [key_name]"
