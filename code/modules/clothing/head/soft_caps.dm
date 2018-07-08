@@ -133,6 +133,12 @@
 	icon_state = "secsoft"
 	item_color = "sec"
 
+/obj/item/clothing/head/soft/sec/corp
+	name = "security cap"
+	desc = "A greyish security cap. Very fancy."
+	icon_state = "altsecsoft"
+	item_color = "altsec"
+
 /obj/item/clothing/head/soft/emt
 	name = "EMT cap"
 	desc = "It's a baseball hat with a dark turquoise color and a reflective cross on the top."
