@@ -197,7 +197,8 @@
 	..()
 
 /datum/reagent/water/holywater/on_mob_life(mob/living/M)
-	if(!data) data = 1
+	if(!data)
+		data = 1
 	data++
 	M.jitteriness = min(M.jitteriness+4,10)
 	if(data >= 30)		// 12 units, 54 seconds @ metabolism 0.4 units & tick rate 1.8 sec
@@ -241,7 +242,8 @@
 
 /datum/reagent/water/holywater/reaction_turf(turf/T, reac_volume)
 	..()
-	if(!istype(T)) return
+	if(!istype(T))
+		return
 	if(reac_volume>=10)
 		for(var/obj/effect/rune/R in T)
 			qdel(R)
@@ -424,15 +426,14 @@
 /datum/reagent/stableslimetoxin/on_mob_life(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
-	if(volume < 1)
-		return ..()
-	to_chat(H, "<span class='warning'><b>You crumple in agony as your flesh wildly morphs into new forms!</b></span>")
-	H.visible_message("<b>[H]</b> falls to the ground and screams as [H.p_their()] skin bubbles and froths!") //'froths' sounds painful when used with SKIN.
-	H.Knockdown(60)
-	addtimer(CALLBACK(src, .proc/mutate, H), 30)
+	if(volume >= 1)
+		to_chat(H, "<span class='warning'><b>You crumple in agony as your flesh wildly morphs into new forms!</b></span>")
+		H.visible_message("<b>[H]</b> falls to the ground and screams as [H.p_their()] skin bubbles and froths!") //'froths' sounds painful when used with SKIN.
+		H.Knockdown(60)
+		addtimer(CALLBACK(null, .proc/mutate_with_toxin, H, mutationtext, race), 30)
 	return ..()
 
-/datum/reagent/stableslimetoxin/proc/mutate(mob/living/carbon/human/H)
+/proc/mutate_with_toxin(mob/living/carbon/human/H, mutationtext = null, race = /datum/species/human)
 	if(QDELETED(H))
 		return
 	var/current_species = H.dna.species.type

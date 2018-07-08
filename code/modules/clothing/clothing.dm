@@ -594,6 +594,7 @@ BLIND     // can't see anything
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	permeability_coefficient = 0.90
 	slot_flags = SLOT_ICLOTHING
+	mutantrace_variation = MUTANTRACE_VARIATION // As of this line being added, all uniforms have digitigrade versions. If this isn't true on an added uniform it needs to be reverted back to NO_MUTANTRACE_VARIATION
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0, fire = 0, acid = 0)
 	var/fitted = FEMALE_UNIFORM_FULL // For use in alternate clothing styles for women
 	var/has_sensor = HAS_SENSORS // For the crew computer
@@ -604,7 +605,6 @@ BLIND     // can't see anything
 	var/alt_covers_chest = 0 // for adjusted/rolled-down jumpsuits, 0 = exposes chest and arms, 1 = exposes arms only
 	var/obj/item/clothing/accessory/attached_accessory
 	var/mutable_appearance/accessory_overlay
-	var/mutantrace_variation = NO_MUTANTRACE_VARIATION //Are there special sprites for specific situations? Don't use this unless you need to.
 	species_fit = list("Vox Outcast")
 	sprite_sheets = list(
 		"Vox Outcast" = 'icons/mob/species/vox/uniform.dmi'

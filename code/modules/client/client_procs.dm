@@ -5,8 +5,9 @@
 
 GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
-	"1408" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see"
-
+	"1408" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
+	"1428" = "bug causing right-click menus to show too many verbs that's been fixed in version 1429",
+	
 	))
 
 #define LIMITER_SIZE	5
@@ -264,7 +265,7 @@ GLOBAL_LIST(external_rsc_urls)
 	if (num2text(byond_build) in GLOB.blacklisted_builds)
 		log_access("Failed login: blacklisted byond version")
 		to_chat(src, "<span class='userdanger'>Your version of byond is blacklisted.</span>")
-		to_chat(src, "<span class='danger'>Byond build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[byond_build]].</span>")
+		to_chat(src, "<span class='danger'>Byond build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]].</span>")
 		to_chat(src, "<span class='danger'>Please download a new version of byond. if [byond_build] is the latest, you can go to http://www.byond.com/download/build/ to download other versions.</span>")
 		if(connecting_admin)
 			to_chat(src, "<span class='danger'>As an admin, you are being allowed to continue using this version, but please consider changing byond versions.</span>")
@@ -297,11 +298,19 @@ GLOBAL_LIST(external_rsc_urls)
 			qdel(src)
 			return 0
 	else if (byond_version < cwv)	//We have words for this client.
-		to_chat(src, "<span class='danger'><b>Your version of byond may be getting out of date:</b></span>")
-		to_chat(src, CONFIG_GET(string/client_warn_message))
-		to_chat(src, "Your version: [byond_version]")
-		to_chat(src, "Required version to remove this message: [cwv] or later")
-		to_chat(src, "Visit http://www.byond.com/download/ to get the latest version of byond.")
+		if(CONFIG_GET(flag/client_warn_popup))
+			var/msg = "<b>Your version of byond may be getting out of date:</b><br>"
+			msg += CONFIG_GET(string/client_warn_message) + "<br><br>"
+			msg += "Your version: [byond_version]<br>"
+			msg += "Required version to remove this message: [cwv] or later<br>"
+			msg += "Visit http://www.byond.com/download/ to get the latest version of byond.<br>"
+			src << browse(msg, "window=warning_popup")
+		else
+			to_chat(src, "<span class='danger'><b>Your version of byond may be getting out of date:</b></span>")
+			to_chat(src, CONFIG_GET(string/client_warn_message))
+			to_chat(src, "Your version: [byond_version]")
+			to_chat(src, "Required version to remove this message: [cwv] or later")
+			to_chat(src, "Visit http://www.byond.com/download/ to get the latest version of byond.")
 
 	if (connection == "web" && !connecting_admin)
 		if (!CONFIG_GET(flag/allow_webclient))
