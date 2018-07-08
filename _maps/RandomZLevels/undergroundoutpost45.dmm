@@ -4531,9 +4531,7 @@
 	name = "UO45 Crew Quarters"
 	})
 "ho" = (
-/obj/machinery/vending/boozeomat{
-	req_access_txt = "0"
-	},
+/obj/machinery/vending/boozeomat,
 /turf/open/floor/plasteel/bar{
 	heat_capacity = 1e+006
 	},

@@ -74626,7 +74626,6 @@
 /obj/machinery/vending/boozeomat{
 	icon_deny = "smartfridge";
 	icon_state = "smartfridge";
-	req_access_txt = "0";
 	use_power = 0
 	},
 /turf/closed/wall/mineral/titanium,
