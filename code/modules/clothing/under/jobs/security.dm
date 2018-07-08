@@ -32,6 +32,14 @@
 	item_state = "gy_suit"
 	item_color = "security"
 
+/obj/item/clothing/under/rank/security/corporate
+	name = "security jumpsuit"
+	desc = "A professional-looking jumpsuit for Security Officers. Caving the Clown's skull in just got ten times cooler."
+	icon_state = "altsecurity"
+	item_state = "black"
+	item_color = "altsecurity"
+	species_fit = list()//no sprites for now, because I can't be bothered
+	sprite_sheets = list()
 
 /obj/item/clothing/under/rank/warden
 	name = "security suit"
