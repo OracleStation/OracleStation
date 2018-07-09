@@ -40,7 +40,6 @@
 	item_color = "altsecurity"
 	species_fit = list()//no sprites for now, because I can't be bothered
 	sprite_sheets = list()
-	mutantrace_variation = NO_MUTANTRACE_VARIATION
 
 /obj/item/clothing/under/rank/warden
 	name = "security suit"
