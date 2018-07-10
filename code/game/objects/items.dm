@@ -10,6 +10,10 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/item_state = null
 	var/lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	var/righthand_file = 'icons/mob/inhands/items_righthand.dmi'
+	var/ground_icon = null 	// If not null, the path to the file that contains our ground icon_states.
+	var/ground_state = null	// If not null, what our icon_state is when we're on the ground.
+	var/inventory_icon = null 	// Pairs with ground_icon, the path to the file that contains our inventory icon_states. If not specified, defaults to the initial icon.
+	var/inventory_state = null	// Pairs with ground_state, what our icon_state is when we're in inventory. If not specified, defaults to the initial icon_state.
 
 	//Dimensions of the icon file used when this item is worn, eg: hats.dmi
 	//eg: 32x32 sprite, 64x64 sprite, etc.
@@ -146,6 +150,13 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			hitsound = 'sound/items/welder.ogg'
 		if(damtype == "brute")
 			hitsound = "swing_hit"
+
+	if(ground_icon && !inventory_icon)
+		inventory_icon = icon
+	if(ground_state && !inventory_state)
+		inventory_state = icon_state
+	if(istype(loc, /turf))
+		handle_inventory_transition(FALSE)
 
 /obj/item/Destroy()
 	flags_1 &= ~DROPDEL_1	//prevent reqdels
@@ -382,27 +393,43 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/proc/talk_into(mob/M, input, channel, spans, datum/language/language)
 	return ITALICS | REDUCE_RANGE
 
+/obj/item/proc/handle_inventory_transition(var/_in_inventory)
+	in_inventory = _in_inventory
+	if(!_in_inventory)
+		if(ground_icon)
+			icon = ground_icon
+		if(ground_state)
+			icon_state = ground_state
+		return
+	if(inventory_icon)
+		icon = inventory_icon
+	if(inventory_state)
+		icon_state = inventory_state
+
 /obj/item/proc/dropped(mob/user)
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.Remove(user)
 	if(DROPDEL_1 & flags_1)
 		qdel(src)
-	in_inventory = FALSE
+	handle_inventory_transition(FALSE)
 
 // called just as an item is picked up (loc is not yet changed)
 /obj/item/proc/pickup(mob/user)
-	in_inventory = TRUE
+	handle_inventory_transition(TRUE)
 	return
 
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
 /obj/item/proc/on_exit_storage(obj/item/storage/S)
-	return
+	if(istype(loc, /mob))
+		handle_inventory_transition(TRUE)
+		return
+	handle_inventory_transition(FALSE)
 
 // called when this item is added into a storage item, which is passed on as S. The loc variable is already set to the storage item.
 /obj/item/proc/on_enter_storage(obj/item/storage/S)
-	return
+	handle_inventory_transition(TRUE)
 
 // called when "found" in pockets and storage items. Returns 1 if the search should end.
 /obj/item/proc/on_found(mob/finder)
@@ -418,7 +445,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		var/datum/action/A = X
 		if(item_action_slot_check(slot, user)) //some items only give their actions buttons when in a specific slot.
 			A.Grant(user)
-	in_inventory = TRUE
+	handle_inventory_transition(TRUE)
 
 //sometimes we only want to grant the item's action if it's equipped in a specific slot.
 /obj/item/proc/item_action_slot_check(slot, mob/user)
@@ -570,7 +597,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if (callback) //call the original callback
 		. = callback.Invoke()
 	throw_speed = initial(throw_speed) //explosions change this.
-	in_inventory = FALSE
+	handle_inventory_transition(FALSE)
 
 /obj/item/proc/remove_item_from_storage(atom/newLoc) //please use this if you're going to snowflake an item out of a obj/item/storage
 	if(!newLoc)
