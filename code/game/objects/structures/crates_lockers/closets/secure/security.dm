@@ -5,11 +5,14 @@
 
 /obj/structure/closet/secure_closet/captains/PopulateContents()
 	..()
+	new /obj/item/clothing/head/beret/captain(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/captain(src)
-	if(prob(50))
+	if(prob(33))
 		new /obj/item/storage/backpack/captain(src)
-	else
+	else if(prob(50))
 		new /obj/item/storage/backpack/satchel/cap(src)
+	else
+		new /obj/item/storage/backpack/messenger/com(src)
 	new /obj/item/clothing/neck/cloak/cap(src)
 	new /obj/item/storage/backpack/duffelbag/captain(src)
 	new /obj/item/clothing/suit/captunic(src)
@@ -60,6 +63,8 @@
 
 /obj/structure/closet/secure_closet/blueshield/PopulateContents()
 	..()
+	new /obj/item/clothing/head/beret/blueshield(src)
+	new /obj/item/clothing/head/beret/blueshieldnavy(src)
 	new /obj/item/storage/briefcase(src)
 	new	/obj/item/storage/firstaid/regular(src)
 	new /obj/item/storage/belt/security(src)
@@ -70,7 +75,7 @@
 	new /obj/item/clothing/glasses/sunglasses(src)
 	new /obj/item/clothing/suit/armor/vest/blueshield(src)
 	new /obj/item/clothing/suit/storage/blueshield(src)
-	new /obj/item/storage/belt/holster(src)
+	new /obj/item/clothing/accessory/holster/blueshield(src)
 	new /obj/item/clothing/shoes/jackboots(src)
 
 /obj/structure/closet/secure_closet/brig_phys
@@ -222,7 +227,7 @@
 	new /obj/item/holosign_creator/security(src)
 	new /obj/item/reagent_containers/spray/pepper(src)
 	new /obj/item/clothing/suit/armor/vest/det_suit(src)
-	new /obj/item/storage/belt/holster/full(src)
+	new /obj/item/clothing/accessory/holster/detective(src)
 	new /obj/item/device/mass_spectrometer(src)
 
 /obj/structure/closet/secure_closet/injection

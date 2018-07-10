@@ -20,12 +20,14 @@ Now includes sanitized comments for the dead and soulless amoung us, purusing a 
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/bottom
 	layer = 2.3
 	piping_layer = 1
-	icon_state = "intact1-f"
+	icon_state = "intact1"
+	alpha = 128
 
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/top
 	layer = 2.4
 	piping_layer = 3
-	icon_state = "intact3-f"
+	icon_state = "intact3"
+	alpha = 128
 
 //scRubbers
 
@@ -42,12 +44,14 @@ Now includes sanitized comments for the dead and soulless amoung us, purusing a 
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/bottom
 	layer = 2.3
 	piping_layer = 1
-	icon_state = "intact1-f"
+	icon_state = "intact1"
+	alpha = 128
 
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top
 	layer = 2.4
 	piping_layer = 3
-	icon_state = "intact3-f"
+	icon_state = "intact3"
+	alpha = 128
 
 //supPly Main
 
@@ -64,12 +68,14 @@ Now includes sanitized comments for the dead and soulless amoung us, purusing a 
 /obj/machinery/atmospherics/pipe/simple/supplymain/hidden/bottom
 	layer = 2.3
 	piping_layer = 1
-	icon_state = "intact1-f"
+	icon_state = "intact1"
+	alpha = 128
 
 /obj/machinery/atmospherics/pipe/simple/supplymain/hidden/top
 	layer = 2.4
 	piping_layer = 3
-	icon_state = "intact3-f"
+	icon_state = "intact3"
+	alpha = 128
 
 
 /*===== equally impOrtant colored pipeS =====*/
@@ -89,12 +95,14 @@ Now includes sanitized comments for the dead and soulless amoung us, purusing a 
 /obj/machinery/atmospherics/pipe/simple/general/hidden/bottom
 	layer = 2.3
 	piping_layer = 1
-	icon_state = "intact1-f"
+	icon_state = "intact1"
+	alpha = 128
 
 /obj/machinery/atmospherics/pipe/simple/general/hidden/top
 	layer = 2.4
 	piping_layer = 3
-	icon_state = "intact3-f"
+	icon_state = "intact3"
+	alpha = 128
 
 //Dark
 
@@ -111,12 +119,14 @@ Now includes sanitized comments for the dead and soulless amoung us, purusing a 
 /obj/machinery/atmospherics/pipe/simple/dark/hidden/bottom
 	layer = 2.3
 	piping_layer = 1
-	icon_state = "intact1-f"
+	icon_state = "intact1"
+	alpha = 128
 
 /obj/machinery/atmospherics/pipe/simple/dark/hidden/top
 	layer = 2.4
 	piping_layer = 3
-	icon_state = "intact3-f"
+	icon_state = "intact3"
+	alpha = 128
 
 //Brown
 
@@ -133,12 +143,14 @@ Now includes sanitized comments for the dead and soulless amoung us, purusing a 
 /obj/machinery/atmospherics/pipe/simple/brown/hidden/bottom
 	layer = 2.3
 	piping_layer = 1
-	icon_state = "intact3-f"
+	icon_state = "intact3"
+	alpha = 128
 
 /obj/machinery/atmospherics/pipe/simple/brown/hidden/top
 	layer = 2.4
 	piping_layer = 3
-	icon_state = "intact3-f"
+	icon_state = "intact3"
+	alpha = 128
 
 //Cyan
 
@@ -155,12 +167,14 @@ Now includes sanitized comments for the dead and soulless amoung us, purusing a 
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden/bottom
 	layer = 2.3
 	piping_layer = 1
-	icon_state = "intact1-f"
+	icon_state = "intact1"
+	alpha = 128
 
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden/top
 	layer = 2.4
 	piping_layer = 3
-	icon_state = "intact3-f"
+	icon_state = "intact3"
+	alpha = 128
 
 //Green
 /obj/machinery/atmospherics/pipe/simple/green/visible/bottom
@@ -176,12 +190,14 @@ Now includes sanitized comments for the dead and soulless amoung us, purusing a 
 /obj/machinery/atmospherics/pipe/simple/green/hidden/bottom
 	layer = 2.3
 	piping_layer = 1
-	icon_state = "intact1-f"
+	icon_state = "intact1"
+	alpha = 128
 
 /obj/machinery/atmospherics/pipe/simple/green/hidden/top
 	layer = 2.4
 	piping_layer = 3
-	icon_state = "intact3-f"
+	icon_state = "intact3"
+	alpha = 128
 
 //Orange
 /obj/machinery/atmospherics/pipe/simple/orange/visible/bottom
@@ -197,12 +213,14 @@ Now includes sanitized comments for the dead and soulless amoung us, purusing a 
 /obj/machinery/atmospherics/pipe/simple/orange/hidden/bottom
 	layer = 2.3
 	piping_layer = 1
-	icon_state = "intact1-f"
+	icon_state = "intact1"
+	alpha = 128
 
 /obj/machinery/atmospherics/pipe/simple/orange/hidden/top
 	layer = 2.4
 	piping_layer = 3
-	icon_state = "intact3-f"
+	icon_state = "intact3"
+	alpha = 128
 
 //Purple
 /obj/machinery/atmospherics/pipe/simple/purple/visible/bottom
@@ -218,12 +236,14 @@ Now includes sanitized comments for the dead and soulless amoung us, purusing a 
 /obj/machinery/atmospherics/pipe/simple/purple/hidden/bottom
 	layer = 2.3
 	piping_layer = 1
-	icon_state = "intact1-f"
+	icon_state = "intact1"
+	alpha = 128
 
 /obj/machinery/atmospherics/pipe/simple/purple/hidden/top
 	layer = 2.4
 	piping_layer = 3
-	icon_state = "intact3-f"
+	icon_state = "intact3"
+	alpha = 128
 
 //vIolet
 /obj/machinery/atmospherics/pipe/simple/violet/visible/bottom
@@ -239,12 +259,14 @@ Now includes sanitized comments for the dead and soulless amoung us, purusing a 
 /obj/machinery/atmospherics/pipe/simple/violet/hidden/bottom
 	layer = 2.3
 	piping_layer = 1
-	icon_state = "intact1-f"
+	icon_state = "intact1"
+	alpha = 128
 
 /obj/machinery/atmospherics/pipe/simple/violet/hidden/top
 	layer = 2.4
 	piping_layer = 3
-	icon_state = "intact3-f"
+	icon_state = "intact3"
+	alpha = 128
 
 //Yellow
 /obj/machinery/atmospherics/pipe/simple/yellow/visible/bottom
@@ -260,9 +282,11 @@ Now includes sanitized comments for the dead and soulless amoung us, purusing a 
 /obj/machinery/atmospherics/pipe/simple/yellow/hidden/bottom
 	layer = 2.3
 	piping_layer = 1
-	icon_state = "intact3-f"
+	icon_state = "intact3"
+	alpha = 128
 
 /obj/machinery/atmospherics/pipe/simple/yellow/hidden/top
 	layer = 2.4
 	piping_layer = 3
-	icon_state = "intact3-f"
+	icon_state = "intact3"
+	alpha = 128

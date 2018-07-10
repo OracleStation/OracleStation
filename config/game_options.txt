@@ -86,7 +86,7 @@ ALERT_DELTA Destruction of the station is imminent. All crew are instructed to o
 
 PROBABILITY TRAITOR 5
 PROBABILITY TRAITORCHAN 4
-PROBABILITY INTERNAL_AFFAIRS 3
+PROBABILITY SLEEPER_AGENT 3
 PROBABILITY NUCLEAR 2
 PROBABILITY REVOLUTION 2
 PROBABILITY GANG 2
@@ -110,7 +110,7 @@ PROBABILITY SANDBOX 0
 
 CONTINUOUS TRAITOR
 CONTINUOUS TRAITORCHAN
-CONTINUOUS INTERNAL_AFFAIRS
+CONTINUOUS SLEEPER_AGENT
 #CONTINUOUS NUCLEAR
 #CONTINUOUS REVOLUTION
 CONTINUOUS GANG
@@ -134,7 +134,7 @@ CONTINUOUS SECRET_EXTENDED
 
 MIDROUND_ANTAG TRAITOR
 MIDROUND_ANTAG TRAITORCHAN
-MIDROUND_ANTAG INTERNAL_AFFAIRS
+MIDROUND_ANTAG SLEEPER_AGENT
 #MIDROUND_ANTAG  NUCLEAR
 #MIDROUND_ANTAG  REVOLUTION
 #MIDROUND_ANTAG  GANG
@@ -210,7 +210,7 @@ SHUTTLE_REFUEL_DELAY 12000
 ## Used as (Antagonists = Population / Coeff)
 ## Set to 0 to disable scaling and use default numbers instead.
 TRAITOR_SCALING_COEFF 6
-CHANGELING_SCALING_COEFF 6
+CHANGELING_SCALING_COEFF 8
 
 ## Variables calculate how number of open security officer positions will scale to population.
 ## Used as (Officers = Population / Coeff)
@@ -381,6 +381,26 @@ LAW_WEIGHT ratvar,0
 LAW_WEIGHT buildawall,0
 
 ##------------------------------------------------
+## ANTAGONIST TIME REQUIREMENTS, PUT IT IN MINUTES HOW MUCH TIME YOU NEED TO SPEND AS A LIVING THING
+## ON THE SERVER TO BE ABLE TO PLAY SPECIFIC ANTAGONISTS
+ANTAG_TIME_REQUIREMENTS traitor,600
+ANTAG_TIME_REQUIREMENTS operative,1200
+ANTAG_TIME_REQUIREMENTS changeling,600
+ANTAG_TIME_REQUIREMENTS wizard,1200
+ANTAG_TIME_REQUIREMENTS malf AI,1200
+ANTAG_TIME_REQUIREMENTS xenomorph,600
+ANTAG_TIME_REQUIREMENTS cultist,1200
+ANTAG_TIME_REQUIREMENTS blob,1200
+ANTAG_TIME_REQUIREMENTS space ninja,1200
+ANTAG_TIME_REQUIREMENTS monkey,1200
+ANTAG_TIME_REQUIREMENTS gangster,1200
+ANTAG_TIME_REQUIREMENTS abductor,1200
+ANTAG_TIME_REQUIREMENTS revenant,1200
+ANTAG_TIME_REQUIREMENTS devil,1200
+ANTAG_TIME_REQUIREMENTS servant of Ratvar,1200
+
+
+##------------------------------------------------
 
 ## SILICON LAW MAX AMOUNT ###
 ## The maximum number of laws a silicon can have
@@ -398,12 +418,15 @@ JOIN_WITH_MUTANT_RACE
 ## You probably want humans on your space station, but technically speaking you can turn them off without any ill effect
 ROUNDSTART_RACES human
 
-## Races that are okay-ish on the station. Safe to enable.
-ROUNDSTART_RACES unathi
-#ROUNDSTART_RACES plasmaman
-#ROUNDSTART_RACES slime
-ROUNDSTART_RACES ethari
-#ROUNDSTART_RACES pod
+## Races that are okay-ish on the station. Safe to enable. The number is the minimum hours required to play.
+ROUNDSTART_RACES unathi 10
+ROUNDSTART_RACES plasmaman 20
+#ROUNDSTART_RACES slime 10
+ROUNDSTART_RACES ethari 0
+ROUNDSTART_RACES human 0
+#ROUNDSTART_RACES pod 0
+ROUNDSTART_RACES ipc 10
+ROUNDSTART_RACES vox 10
 
 ## Races that aren't on the station by default.
 #ROUNDSTART_RACES jelly
@@ -497,3 +520,11 @@ MICE_ROUNDSTART 10
 ## Shutdown the world instead of rebooting
 #SHUTDOWN_FOR_UPDATE
 #UPDATE_VERSION_STRING_URI http://s3.us-east-1.oraclestation.com/master/latest/COMMIT_HASH
+
+## Mob spam prevention. The number of each mobtype that can be alive at once. Stops people from crashing the server with chickens/monkeycubes/slimes. Altering these values is recommended based on server hardware.
+MAX_CUBE_MONKEYS 100
+MAX_CHICKENS 100
+MAX_SLIMES 100
+
+## Crew objectives
+ALLOW_CREW_OBJECTIVES

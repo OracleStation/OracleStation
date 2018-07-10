@@ -72,7 +72,6 @@
 		else
 			to_chat(user, "<span class='notice'>[C] seems to not be sentient.  You cannot summon a contract for [C.p_them()].</span>")
 
-
 /obj/effect/proc_holder/spell/aimed/fireball/hellish
 	name = "Hellfire"
 	desc = "This spell launches hellfire at the target."

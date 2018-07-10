@@ -6,6 +6,7 @@
 	icon_state = "pda-clown"
 	desc = "A portable microcomputer by Thinktronic Systems, LTD. The surface is coated with polytetrafluoroethylene and banana drippings."
 	ttone = "honk"
+	var/slipvictims = list() //Track slipped people
 
 /obj/item/device/pda/clown/Initialize()
 	. = ..()
@@ -18,6 +19,7 @@
 		return
 	var/mob/living/carbon/human/M = S.slip_victim
 	if (istype(M) && (M.real_name != src.owner))
+		slipvictims |= M
 		var/obj/item/cartridge/virus/clown/cart = cartridge
 		if(istype(cart) && cart.charges < 5)
 			cart.charges++
@@ -154,12 +156,11 @@
 	icon_state = "pda-chaplain"
 	ttone = "holy"
 
-/obj/item/device/pda/lawyer
-	name = "lawyer PDA"
-	default_cartridge = /obj/item/cartridge/lawyer
+/obj/item/device/pda/iaa
+	name = "internal affairs PDA"
+	default_cartridge = /obj/item/cartridge/iaa
 	inserted_item = /obj/item/pen/fountain
 	icon_state = "pda-lawyer"
-	ttone = "objection"
 
 /obj/item/device/pda/botanist
 	name = "botanist PDA"
@@ -175,7 +176,7 @@
 	name = "curator PDA"
 	icon_state = "pda-library"
 	icon_alert = "pda-r-library"
-	default_cartridge = /obj/item/cartridge/curator
+	// default_cartridge = /obj/item/cartridge/curator
 	inserted_item = /obj/item/pen/fountain
 	desc = "A portable microcomputer by Thinktronic Systems, LTD. This model is a WGW-11 series e-reader."
 	note = "Congratulations, your station has chosen the Thinktronic 5290 WGW-11 Series E-reader and Personal Data Assistant!"

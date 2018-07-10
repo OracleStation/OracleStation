@@ -1,5 +1,3 @@
-#define DEFAULT_TASTE_SENSITIVITY 15
-
 /mob/living
 	var/last_taste_time
 	var/last_taste_text
@@ -8,11 +6,11 @@
 	return DEFAULT_TASTE_SENSITIVITY
 
 /mob/living/carbon/get_taste_sensitivity()
-	var/obj/item/organ/tongue/tongue = getorganslot("tongue")
+	var/obj/item/organ/tongue/tongue = getorganslot(ORGAN_SLOT_TONGUE)
 	if(istype(tongue))
 		. = tongue.taste_sensitivity
 	else
-		. = 101 // can't taste anything without a tongue
+		. = NO_TASTE_SENSITIVITY // can't taste anything without a tongue
 
 // non destructively tastes a reagent container
 /mob/living/proc/taste(datum/reagents/from)
@@ -25,11 +23,9 @@
 			text_output = pick("spiders","dreams","nightmares","the future","the past","victory",\
 			"defeat","pain","bliss","revenge","poison","time","space","death","life","truth","lies","justice","memory",\
 			"regrets","your soul","suffering","music","noise","blood","hunger","the american way")
-		if(text_output != last_taste_text || last_taste_time + 100 < world.time)
+		if((text_output != last_taste_text || last_taste_time + 100 < world.time) && !NO_TASTE_SENSITIVITY)
 			to_chat(src, "<span class='notice'>You can taste [text_output].</span>")
 			// "somthing indescribable" -> too many tastes, not enough flavor.
 
 			last_taste_time = world.time
 			last_taste_text = text_output
-
-#undef DEFAULT_TASTE_SENSITIVITY

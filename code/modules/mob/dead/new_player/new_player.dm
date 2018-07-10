@@ -1,4 +1,4 @@
-#define LINKIFY_READY(string, value) "<a href='byond://?src=\ref[src];ready=[value]'>[string]</a>"
+#define LINKIFY_READY(string, value) "<a href='byond://?src=[REF(src)];ready=[value]'>[string]</a>"
 
 /mob/dead/new_player
 	var/ready = FALSE
@@ -30,7 +30,7 @@
 	return
 
 /mob/dead/new_player/proc/new_player_panel()
-	var/output = "<center><p><a href='byond://?src=\ref[src];show_preferences=1'>Setup Character</a></p>"
+	var/output = "<center><p><a href='byond://?src=[REF(src)];show_preferences=1'>Setup Character</a></p>"
 
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
 		switch(ready)
@@ -41,8 +41,8 @@
 			if(PLAYER_READY_TO_OBSERVE)
 				output += "<p>\[ [LINKIFY_READY("Ready", PLAYER_READY_TO_PLAY)] | [LINKIFY_READY("Not Ready", PLAYER_NOT_READY)] | <b> Observe </b> \]</p>"
 	else
-		output += "<p><a href='byond://?src=\ref[src];manifest=1'>View the Crew Manifest</a></p>"
-		output += "<p><a href='byond://?src=\ref[src];late_join=1'>Join Game!</a></p>"
+		output += "<p><a href='byond://?src=[REF(src)];manifest=1'>View the Crew Manifest</a></p>"
+		output += "<p><a href='byond://?src=[REF(src)];late_join=1'>Join Game!</a></p>"
 		output += "<p>[LINKIFY_READY("Observe", PLAYER_READY_TO_OBSERVE)]</p>"
 
 	if(!IsGuestKey(src.key))
@@ -57,9 +57,9 @@
 					newpoll = TRUE
 
 				if(newpoll)
-					output += "<p><b><a href='byond://?src=\ref[src];showpoll=1'>Show Player Polls</A> (NEW!)</b></p>"
+					output += "<p><b><a href='byond://?src=[REF(src)];showpoll=1'>Show Player Polls</A> (NEW!)</b></p>"
 				else
-					output += "<p><a href='byond://?src=\ref[src];showpoll=1'>Show Player Polls</A></p>"
+					output += "<p><a href='byond://?src=[REF(src)];showpoll=1'>Show Player Polls</A></p>"
 
 	output += "</center>"
 
@@ -416,42 +416,80 @@
 	for(var/datum/job/job in SSjob.occupations)
 		if(job && IsJobAvailable(job.title))
 			available_job_count++;
+			break;
 
-	if(length(SSjob.prioritized_jobs))
-		dat += "<div class='notice red'>The station has flagged these jobs as high priority:<br>"
-		var/amt = length(SSjob.prioritized_jobs)
-		var/amt_count
-		for(var/datum/job/a in SSjob.prioritized_jobs)
-			amt_count++
-			if(amt_count != amt) // checks for the last job added.
-				dat += " [a.title], "
-			else
-				dat += " [a.title]. </div>"
+	if(!available_job_count)
+		dat += "<div class='notice red'>There are currently no open positions!</div>"
 
-	dat += "<div class='clearBoth'>Choose from the following open positions:</div><br>"
-	dat += "<div class='jobs'><div class='jobsColumn'>"
-	var/job_count = 0
-	for(var/datum/job/job in SSjob.occupations)
-		if(job && IsJobAvailable(job.title))
-			job_count++;
-			if (job_count > round(available_job_count / 2))
-				dat += "</div><div class='jobsColumn'>"
-			var/position_class = "otherPosition"
-			if (job.title in GLOB.command_positions)
-				position_class = "commandPosition"
-			dat += "<a class='[position_class]' href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title] ([job.current_positions])</a><br>"
-	if(!job_count) //if there's nowhere to go, assistant opens up.
+	else
+
+	// if(length(SSjob.prioritized_jobs))
+	// 	dat += "<div class='notice red'>The station has flagged these jobs as high priority:<br>"
+	// 	for(var/datum/job/a in SSjob.prioritized_jobs)
+	// 		dat += " [a.title], "
+	// 	dat += "</div>"
+
+		dat += "<div class='clearBoth'>Choose from the following open positions:</div><br>"
+		var/list/categorizedJobs = list(
+			"Command" = list(jobs = list(), titles = GLOB.command_positions, color = "#aac1ee"),
+			"Engineering" = list(jobs = list(), titles = GLOB.engineering_positions, color = "#ffd699"),
+			"Supply" = list(jobs = list(), titles = GLOB.supply_positions, color = "#ead4ae"),
+			"Miscellaneous" = list(jobs = list(), titles = list(), color = "#ffffff", colBreak = 1),
+			"Synthetic" = list(jobs = list(), titles = GLOB.nonhuman_positions, color = "#ccffcc"),
+			"Service" = list(jobs = list(), titles = GLOB.civilian_positions, color = "#cccccc"),
+			"Medical" = list(jobs = list(), titles = GLOB.medical_positions, color = "#99ffe6", colBreak = 1),
+			"Science" = list(jobs = list(), titles = GLOB.science_positions, color = "#e6b3e6"),
+			"Security" = list(jobs = list(), titles = GLOB.security_positions, color = "#ff9999"),
+		)
 		for(var/datum/job/job in SSjob.occupations)
-			if(job.title != "Assistant") continue
-			dat += "<a class='otherPosition' href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title] ([job.current_positions])</a><br>"
-			break
-	dat += "</div></div>"
+			if(job && IsJobAvailable(job.title))
+				var/categorized = 0
+				for(var/jobcat in categorizedJobs)
+					var/list/jobs = categorizedJobs[jobcat]["jobs"]
+					if(job.title in categorizedJobs[jobcat]["titles"])
+						categorized = 1
+						if(jobcat == "Command")
+
+							if(job.title == "Captain") // Put captain at top of command jobs
+								jobs.Insert(1, job)
+							else
+								jobs += job
+						else // Put heads at top of non-command jobs
+							if(job.title in GLOB.command_positions)
+								jobs.Insert(1, job)
+							else
+								jobs += job
+				if(!categorized)
+					categorizedJobs["Miscellaneous"]["jobs"] += job
+
+		dat += "<table><tr><td valign='top'>"
+		for(var/jobcat in categorizedJobs)
+			if(categorizedJobs[jobcat]["colBreak"])
+				dat += "</td><td valign='top'>"
+			if(length(categorizedJobs[jobcat]["jobs"]) < 1)
+				continue
+			var/color = categorizedJobs[jobcat]["color"]
+			dat += "<fieldset style='border: 2px solid [color]; display: inline'>"
+			dat += "<legend align='center' style='color: [color]'>[jobcat]</legend>"
+			for(var/datum/job/job in categorizedJobs[jobcat]["jobs"])
+				var/position_class = "otherPosition"
+				if(job.title in GLOB.command_positions)
+					position_class = "commandPosition"
+				if(job in SSjob.prioritized_jobs)
+					dat += "<a class='[position_class]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job.title]'><font color='lime'><b>[job.title] ([job.current_positions])</b></font></a>"
+				else
+					dat += "<a class='[position_class]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job.title]'>[job.title] ([job.current_positions])</a>"
+			dat += "</fieldset><br>"
+
+
+		dat += "</td></tr></table></center>"
+		dat += "</div></div>"
 
 	// Removing the old window method but leaving it here for reference
 	//src << browse(dat, "window=latechoices;size=300x640;can_close=1")
 
 	// Added the new browser window method
-	var/datum/browser/popup = new(src, "latechoices", "Choose Profession", 440, 500)
+	var/datum/browser/popup = new(src, "latechoices", "Choose Profession", 680, 580)
 	popup.add_stylesheet("playeroptions", 'html/browser/playeroptions.css')
 	popup.set_content(dat)
 	popup.open(FALSE) // 0 is passed to open so that it doesn't use the onclose() proc

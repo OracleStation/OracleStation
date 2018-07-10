@@ -45,10 +45,6 @@
 	origin_tech = "combat=3"
 	attack_verb = list("stung")
 
-/obj/item/grown/nettle/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is eating some of [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return (BRUTELOSS|TOXLOSS)
-
 /obj/item/grown/nettle/pickup(mob/living/user)
 	..()
 	if(!iscarbon(user))
@@ -70,7 +66,8 @@
 	return TRUE
 
 /obj/item/grown/nettle/afterattack(atom/A as mob|obj, mob/user,proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(force > 0)
 		force -= rand(1, (force / 3) + 1) // When you whack someone with it, leaves fall off
 	else

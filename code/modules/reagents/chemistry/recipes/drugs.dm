@@ -45,4 +45,4 @@
 	name = "Lysergic acid diethylamide"
 	id = "lsd"
 	results = list("lsd" = 2)
-	required_reagents = list("fungus" = 1, "diethylamine" = 1)
+	required_reagents = list("mushroomhallucinogen" = 1, "diethylamine" = 1)

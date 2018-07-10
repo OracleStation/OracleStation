@@ -4,7 +4,7 @@
 	say_mod = "rattles"
 	sexes = 0
 	meat = /obj/item/stack/sheet/mineral/plasma
-	species_traits = list(NOBLOOD,RESISTCOLD,RADIMMUNE,NOTRANSSTING,VIRUSIMMUNE,NOHUNGER)
+	species_traits = list(SPECIES_INORGANIC,NOBLOOD,RESISTCOLD,RADIMMUNE,NOTRANSSTING,VIRUSIMMUNE,NOHUNGER)
 	mutantlungs = /obj/item/organ/lungs/plasmaman
 	mutanttongue = /obj/item/organ/tongue/bone/plasmaman
 	mutantliver = /obj/item/organ/liver/plasmaman
@@ -22,6 +22,8 @@
 	ass_pic = "plasmaman"
 	examine_text = "a Plasmaman"
 	species_text_color = "#800064"
+	loreblurb = "The product of plasma experimentation on a human colony, these strange abominations lead a difficult life of breathing plasma and bursting into flames when exposed to oxygen. \
+	Logically speaking, they make for bad crewmembers. However, they don't have a choice but to work for the only corporation that can supply them with plasma."
 
 /datum/species/plasmaman/spec_life(mob/living/carbon/human/H)
 	var/datum/gas_mixture/environment = H.loc.return_air()

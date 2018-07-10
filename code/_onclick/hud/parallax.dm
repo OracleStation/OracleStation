@@ -60,8 +60,6 @@
 		var/pref = C.prefs.parallax
 		if (isnull(pref))
 			pref = PARALLAX_HIGH
-			if (C.byond_version < 511)
-				pref = PARALLAX_DISABLE
 		switch(C.prefs.parallax)
 			if (PARALLAX_INSANE)
 				C.parallax_throttle = FALSE
@@ -154,12 +152,6 @@
 			continue
 
 		var/newstate = initial(L.icon_state)
-		if (animatedir)
-			if(animatedir == NORTH || animatedir == SOUTH)
-				newstate += "_vertical"
-			else
-				newstate += "_horizontal"
-
 		var/T = PARALLAX_LOOP_TIME / L.speed
 
 		if (newstate in icon_states(L.icon))

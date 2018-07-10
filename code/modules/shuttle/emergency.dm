@@ -123,15 +123,16 @@
 
 	if(ENGINES_STARTED || (!IS_DOCKED))
 		return .
-
 	// Check to see if we've reached criteria for early launch
-	if((authorized.len >= auth_need) || emagged)
-		// shuttle timers use 1/10th seconds internally
+	if(authorized.len >= auth_need)
 		SSshuttle.emergency.setTimer(ENGINES_START_TIME)
-		var/system_error = emagged ? "SYSTEM ERROR:" : null
 		minor_announce("The emergency shuttle will launch in \
-			[TIME_LEFT] seconds", system_error, alert=TRUE)
-		. = TRUE
+			[TIME_LEFT] seconds.", alert=TRUE)
+	if(emagged)
+	  // shuttle timers use 1/10th seconds internally
+		SSshuttle.emergency.setTimer(ENGINES_START_TIME)
+		minor_announce("The emergency shuttle will launch in [TIME_LEFT] seconds.\
+		\n[pick("STRAP IN FOR EMERGENCY BURN", "PREPARE FOR LUDICROUS SPEED", "MAKING THE JUMP TO %@ERROR^& IN UNDER 12 PARSECS", "INERTIAL DAMPENERS OFFLINE")]", "SYSTEM ERROR:", alert=TRUE)
 
 /obj/machinery/computer/emergency_shuttle/emag_act(mob/user)
 	// How did you even get on the shuttle before it go to the station?
@@ -144,12 +145,13 @@
 
 	var/time = TIME_LEFT
 	message_admins("[key_name_admin(user.client)] \
-	(<A HREF='?_src_=holder;[HrefToken()];adminmoreinfo=\ref[user]'>?</A>) \
-	(<A HREF='?_src_=holder;[HrefToken()];adminplayerobservefollow=\ref[user]'>FLW</A>) \
+	(<A HREF='?_src_=holder;[HrefToken()];adminmoreinfo=[REF(user)]'>?</A>) \
+	(<A HREF='?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(user)]'>FLW</A>) \
 	has emagged the emergency shuttle [time] seconds before launch.", 0, 1)
 	log_game("[key_name(user)] has emagged the emergency shuttle in \
 		[COORD(src)] [time] seconds before launch.")
 	emagged = TRUE
+	SSshuttle.emergency.movement_force = list("KNOCKDOWN" = 10, "THROW" = 20, "IGNOREBUCKLE" = TRUE)
 	var/datum/species/S = new
 	for(var/i in 1 to 10)
 		// the shuttle system doesn't know who these people are, but they

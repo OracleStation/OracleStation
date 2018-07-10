@@ -69,7 +69,10 @@
 				else
 					to_chat(C, "<font color='[GLOB.normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[holder.fakekey ? holder.fakekey : key]:</EM> <span class='message'>[msg]</span></span></font>")
 			else if(!(key in C.prefs.ignoring))
-				to_chat(C, "<font color='[GLOB.normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[keyname]:</EM> <span class='message'>[msg]</span></span></font>")
+				var/ooc_color = GLOB.normal_ooc_colour
+				if(check_mentor())
+					ooc_color = "#12A5F4"
+				to_chat(C, "<font color='[ooc_color]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[keyname]:</EM> <span class='message'>[msg]</span></span></font>")
 
 /proc/toggle_ooc(toggle = null)
 	if(toggle != null) //if we're specifically en/disabling ooc
@@ -155,7 +158,13 @@
 			else
 				to_chat(C, "<span class='looc'><font color='black'>(R)</font>LOOC: [ADMIN_LOOKUPFLW(mob)]: [msg]</span>")
 		else if(C in clients_to_hear)
-			to_chat(C, "<span class='looc'>LOOC: [mob.name]: [msg]</span>")
+			if(isobserver(mob))
+				if((prefs.chat_toggles & CHAT_ANONDCHAT))
+					to_chat(C, "<span class='looc'>LOOC: [mob.key]: [msg]</span>")
+				else
+					to_chat(C, "<span class='looc'>LOOC: Ghost of [mob.name]: [msg]</span>")
+			else
+				to_chat(C, "<span class='looc'>LOOC: [mob.name]: [msg]</span>")
 
 /mob/proc/get_looc_source()
 	return src

@@ -150,8 +150,7 @@
 				to_chat(user, "<span class='notice'>You remove the cables.</span>")
 				state = 1
 				icon_state = "box_0"
-				var/obj/item/stack/cable_coil/A = new /obj/item/stack/cable_coil( src.loc )
-				A.amount = 5
+				new /obj/item/stack/cable_coil(drop_location(), 5)
 				return
 
 		if(3)

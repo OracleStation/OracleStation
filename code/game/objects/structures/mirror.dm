@@ -89,7 +89,7 @@
 	name = "magic mirror"
 	desc = "Turn and face the strange... face."
 	icon_state = "magic_mirror"
-	var/list/races_blacklist = list("skeleton", "agent", "angel", "military_synth", "memezombie")
+	var/list/races_blacklist = list("skeleton", "agent", "angel", "military_synth", "memezombie", "runic golem")
 	var/list/choosable_races = list()
 
 /obj/structure/mirror/magic/New()
@@ -101,7 +101,7 @@
 	..()
 
 /obj/structure/mirror/magic/lesser/New()
-	var/list/L = CONFIG_GET(keyed_flag_list/roundstart_races)
+	var/list/L = CONFIG_GET(keyed_number_list/roundstart_races)
 	choosable_races = L.Copy()
 	..()
 

@@ -184,17 +184,17 @@
 						categories[C] += D
 
 			dat += "<div class='statusDisplay'>Biomass: [points] units.</div><BR>"
-			dat += "<A href='?src=\ref[src];activate=1'>Activate</A><A href='?src=\ref[src];detach=1'>Detach Container</A>"
+			dat += "<A href='?src=[REF(src)];activate=1'>Activate</A><A href='?src=[REF(src)];detach=1'>Detach Container</A>"
 			for(var/cat in categories)
 				dat += "<h3>[cat]:</h3>"
 				dat += "<div class='statusDisplay'>"
 				for(var/V in categories[cat])
 					var/datum/design/D = V
-					dat += "[D.name]: <A href='?src=\ref[src];create=\ref[D];amount=1'>Make</A>"
+					dat += "[D.name]: <A href='?src=[REF(src)];create=[REF(D)];amount=1'>Make</A>"
 					if(cat in timesFiveCategories)
-						dat += "<A href='?src=\ref[src];create=\ref[D];amount=5'>x5</A>"
+						dat += "<A href='?src=[REF(src)];create=[REF(D)];amount=5'>x5</A>"
 					if(ispath(D.build_path, /obj/item/stack))
-						dat += "<A href='?src=\ref[src];create=\ref[D];amount=10'>x10</A>"
+						dat += "<A href='?src=[REF(src)];create=[REF(D)];amount=10'>x10</A>"
 					dat += "([D.materials[MAT_BIOMASS]/efficiency])<br>"
 				dat += "</div>"
 		else
@@ -271,8 +271,8 @@
 		if(!check_cost(D.materials, amount))
 			return 0
 
-		var/obj/item/stack/product = new D.build_path(loc)
-		product.amount = amount
+		new D.build_path(drop_location(), amount)
+
 		for(var/R in D.make_reagents)
 			beaker.reagents.add_reagent(R, D.make_reagents[R]*amount)
 	else

@@ -194,18 +194,17 @@
 	return ITALICS | REDUCE_RANGE
 
 /obj/item/device/radio/proc/talk_into_impl(atom/movable/M, message, channel, list/spans, datum/language/language)
-	if(!on) return // the device has to be on
+	if(!on)
+		return // the device has to be on
 	//  Fix for permacell radios, but kinda eh about actually fixing them.
-	if(!M || !message) return
+	if(!M || !message)
+		return
 
 	if(wires.is_cut(WIRE_TX))
 		return
 
 	if(!M.IsVocal())
 		return
-
-	if(use_command)
-		spans |= SPAN_COMMAND
 
 	/* Quick introduction:
 		This new radio system uses a very robust FTL signaling technology unoriginally

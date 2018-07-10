@@ -117,6 +117,10 @@ CONFIG_DEF(number/tick_limit_mc_init)	//SSinitialization throttling
 
 CONFIG_DEF(flag/admin_legacy_system)	//Defines whether the server uses the legacy admin system with admins.txt or the SQL system
 
+CONFIG_DEF(flag/mentors_mobname_only) // Only display mob name to mentors in mentorhelps
+
+CONFIG_DEF(flag/mentor_legacy_system) // Whether to use the legacy mentor system (flat file) instead of SQL
+
 CONFIG_DEF(string/hostedby)
 
 CONFIG_DEF(flag/norespawn)
@@ -145,12 +149,17 @@ CONFIG_DEF(flag/use_exp_restrictions_other)
 
 CONFIG_DEF(flag/use_exp_restrictions_admin_bypass)
 
+CONFIG_DEF(flag/use_exp_restrictions_species)
+
 CONFIG_DEF(string/server)
 
 CONFIG_DEF(string/banappeals)
 
 CONFIG_DEF(string/wikiurl)
 		value = "https://www.oraclestation.com/wiki/Main_Page"
+
+CONFIG_DEF(string/wikibookurl)
+		value = "http://10.0.0.2:8080/wiki/"
 
 CONFIG_DEF(string/discordurl)
 		value = "https://discord.gg/TsjA9wp"
@@ -316,6 +325,8 @@ CONFIG_DEF(number/client_warn_version)
 
 CONFIG_DEF(string/client_warn_message)
 	value = "Your version of byond may have issues or be blocked from accessing this server in the future."
+
+CONFIG_DEF(flag/client_warn_popup)
 
 CONFIG_DEF(number/client_error_version)
 	value = null

@@ -86,6 +86,7 @@ GLOBAL_LIST_INIT(hallucinations_major, list(
 
 /obj/effect/hallucination
 	invisibility = INVISIBILITY_OBSERVER
+	anchored = TRUE
 	var/mob/living/carbon/target = null
 
 /obj/effect/hallucination/simple
@@ -164,7 +165,8 @@ GLOBAL_LIST_INIT(hallucinations_major, list(
 	feedback_details += "Vent Coords: [center.x],[center.y],[center.z]"
 	flood_images += image(image_icon,center,image_state,MOB_LAYER)
 	flood_turfs += center
-	if(target.client) target.client.images |= flood_images
+	if(target.client)
+		target.client.images |= flood_images
 	next_expand = world.time + FAKE_FLOOD_EXPAND_TIME
 	START_PROCESSING(SSobj, src)
 
@@ -454,7 +456,7 @@ GLOBAL_LIST_INIT(hallucinations_major, list(
 	var/list/image/delusions = list()
 	cost = 50
 
-/datum/hallucination/delusion/New(mob/living/carbon/T, forced, force_kind = null , duration = 300,skip_nearby = 1, custom_icon = null, custom_icon_file = null)
+/datum/hallucination/delusion/New(mob/living/carbon/T, forced, force_kind = null , duration = 300,skip_nearby = 1, custom_icon = null, custom_icon_file = null, custom_name = null)
 	. = ..()
 	var/image/A = null
 	var/kind = force_kind ? force_kind : pick("monkey","corgi","carp","skeleton","demon","zombie")
@@ -467,23 +469,31 @@ GLOBAL_LIST_INIT(hallucinations_major, list(
 		switch(kind)
 			if("monkey")//Monkey
 				A = image('icons/mob/monkey.dmi',H,"monkey1")
+				A.name = "Monkey ([rand(1,999)])"
 			if("carp")//Carp
 				A = image('icons/mob/animal.dmi',H,"carp")
+				A.name = "Space Carp"
 			if("corgi")//Corgi
 				A = image('icons/mob/pets.dmi',H,"corgi")
+				A.name = "Corgi"
 			if("skeleton")//Skeletons
 				A = image('icons/mob/human.dmi',H,"skeleton")
+				A.name = "Skeleton"
 			if("zombie")//Zombies
 				A = image('icons/mob/human.dmi',H,"zombie")
+				A.name = "Zombie"
 			if("demon")//Demon
 				A = image('icons/mob/mob.dmi',H,"daemon")
+				A.name = "Demon"
 			if("custom")
 				A = image(custom_icon_file, H, custom_icon)
+				A.name = custom_name
 		A.override = 1
 		if(target.client)
 			delusions |= A
 			target.client.images |= A
-	QDEL_IN(src, duration)
+	if(duration)
+		QDEL_IN(src, duration)
 
 /datum/hallucination/delusion/Destroy()
 	for(var/image/I in delusions)
@@ -960,13 +970,18 @@ GLOBAL_LIST_INIT(hallucinations_major, list(
 		var/l = ui_hand_position(target.get_held_index_of_item(l_hand))
 		var/r = ui_hand_position(target.get_held_index_of_item(r_hand))
 		var/list/slots_free = list(l,r)
-		if(l_hand) slots_free -= l
-		if(r_hand) slots_free -= r
+		if(l_hand)
+			slots_free -= l
+		if(r_hand)
+			slots_free -= r
 		if(ishuman(target))
 			var/mob/living/carbon/human/H = target
-			if(!H.belt) slots_free += ui_belt
-			if(!H.l_store) slots_free += ui_storage1
-			if(!H.r_store) slots_free += ui_storage2
+			if(!H.belt)
+				slots_free += ui_belt
+			if(!H.l_store)
+				slots_free += ui_storage1
+			if(!H.r_store)
+				slots_free += ui_storage2
 		if(slots_free.len)
 			target.halitem.screen_loc = pick(slots_free)
 			target.halitem.layer = ABOVE_HUD_LAYER
@@ -999,7 +1014,8 @@ GLOBAL_LIST_INIT(hallucinations_major, list(
 					target.halitem.icon_state = "flashbang1"
 					target.halitem.name = "Flashbang"
 			feedback_details += "Type: [target.halitem.name]"
-			if(target.client) target.client.screen += target.halitem
+			if(target.client)
+				target.client.screen += target.halitem
 			QDEL_IN(target.halitem, rand(150, 350))
 	qdel(src)
 
@@ -1141,11 +1157,6 @@ GLOBAL_LIST_INIT(hallucinations_major, list(
 	var/obj/item/projectile/hallucination/H = new proj_type(start)
 	target.playsound_local(start, H.hal_fire_sound, 60, 1)
 	H.hal_target = target
-	H.current = start
-	H.starting = start
-	H.yo = target.y - start.y
-	H.xo = target.x - start.x
-	H.original = target
+	H.preparePixelProjectile(target, start)
 	H.fire()
 	qdel(src)
-

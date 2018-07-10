@@ -36,6 +36,7 @@
 /datum/reagent/blood/on_new(list/data)
 	if(istype(data))
 		SetViruses(src, data)
+		color = bloodtype_to_color(data["blood_type"])
 
 /datum/reagent/blood/on_merge(list/mix_data)
 	if(data && mix_data)
@@ -120,7 +121,7 @@
 	glass_name = "glass of Water"
 	glass_desc = "The father of all refreshments."
 	shot_glass_icon_state = "shotglassclear"
-
+	process_flags = ORGANIC | SYNTHETIC
 /*
  *	Water reaction to turf
  */
@@ -166,8 +167,7 @@
 
 	else if(istype(O, /obj/item/stack/sheet/hairlesshide))
 		var/obj/item/stack/sheet/hairlesshide/HH = O
-		var/obj/item/stack/sheet/wetleather/WL = new(get_turf(HH))
-		WL.amount = HH.amount
+		new /obj/item/stack/sheet/wetleather(get_turf(HH), HH.amount)
 		qdel(HH)
 
 /*
@@ -197,7 +197,8 @@
 	..()
 
 /datum/reagent/water/holywater/on_mob_life(mob/living/M)
-	if(!data) data = 1
+	if(!data)
+		data = 1
 	data++
 	M.jitteriness = min(M.jitteriness+4,10)
 	if(data >= 30)		// 12 units, 54 seconds @ metabolism 0.4 units & tick rate 1.8 sec
@@ -205,8 +206,15 @@
 			M.stuttering = 1
 		M.stuttering = min(M.stuttering+4, 10)
 		M.Dizzy(5)
-		if(iscultist(M) && prob(5))
-			M.say(pick("Av'te Nar'sie","Pa'lid Mors","INO INO ORA ANA","SAT ANA!","Daim'niodeis Arc'iai Le'eones","R'ge Na'sie","Diabo us Vo'iscum","Eld' Mon Nobis"))
+		if(iscultist(M) && prob(8))
+			switch(pick("speech", "message", "emote"))
+				if("speech")
+					M.say(pick("Av'te Nar'sie","Pa'lid Mors","INO INO ORA ANA","SAT ANA!","Daim'niodeis Arc'iai Le'eones","R'ge Na'sie","Diabo us Vo'iscum","Eld' Mon Nobis"))
+				if("message")
+					to_chat(M, "<span class='cult'>[pick("Shai'Tye-", "Dianu-", \
+					"They will not take you from me, Serva-", "Your blood is mine!")].</span>")
+				if("emote")
+					M.visible_message("<span class='warning'>[M] [pick("bleeds from the nose", "drools blackened blood", "thrashes wildly for a moment")].</span>")
 		else if(is_servant_of_ratvar(M) && prob(8))
 			switch(pick("speech", "message", "emote"))
 				if("speech")
@@ -220,8 +228,12 @@
 		if(iscultist(M) || is_servant_of_ratvar(M))
 			if(iscultist(M))
 				SSticker.mode.remove_cultist(M.mind, 1, 1)
+				to_chat(M, "<span class='userdanger'>The influence of Nar'sie and all your memories while you were under her control have been wiped from your mind. You do not remember the faces of your fellow cultists, and their names have gone too, along with any base locations or tactics.</span>")
+				M.visible_message("<span class='cult'>[M] is purged of their dark blood as the evil influence of Nar'sie is forced from their mind by holy power!</span>")
 			else if(is_servant_of_ratvar(M))
 				remove_servant_of_ratvar(M)
+				to_chat(M, "<span class='userdanger'>Ratvar's light dims, and your ancient knowledge is lost, along with any memories you had as one of His servants. You do not remember the names of any allies and you are unable to remember anything they've said or done this shift.</span>")
+				M.visible_message("<span class='brass'>[M] slumps as their link with the Engine is severed by holy power, stealing away their magic!</span>")
 			M.jitteriness = 0
 			M.stuttering = 0
 			holder.remove_reagent(id, volume)	// maybe this is a little too perfect and a max() cap on the statuses would be better??
@@ -230,7 +242,8 @@
 
 /datum/reagent/water/holywater/reaction_turf(turf/T, reac_volume)
 	..()
-	if(!istype(T)) return
+	if(!istype(T))
+		return
 	if(reac_volume>=10)
 		for(var/obj/effect/rune/R in T)
 			qdel(R)
@@ -259,7 +272,7 @@
 		M.adjustBruteLoss(-2, 0)
 		M.adjustFireLoss(-2, 0)
 	else
-		M.adjustBrainLoss(3)
+		M.adjustBrainLoss(3, 150)
 		M.adjustToxLoss(1, 0)
 		M.adjustFireLoss(2, 0)
 		M.adjustOxyLoss(2, 0)
@@ -272,13 +285,14 @@
 	id = "hell_water"
 	description = "YOUR FLESH! IT BURNS!"
 	taste_description = "burning"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/hellwater/on_mob_life(mob/living/M)
 	M.fire_stacks = min(5,M.fire_stacks + 3)
 	M.IgniteMob()			//Only problem with igniting people is currently the commonly availible fire suits make you immune to being on fire
 	M.adjustToxLoss(1, 0)
 	M.adjustFireLoss(1, 0)		//Hence the other damages... ain't I a bastard?
-	M.adjustBrainLoss(5)
+	M.adjustBrainLoss(5, 150)
 	holder.remove_reagent(src.id, 1)
 
 /datum/reagent/medicine/omnizine/godblood
@@ -407,18 +421,19 @@
 	taste_description = "slime"
 	var/datum/species/race = /datum/species/human
 	var/mutationtext = "<span class='danger'>The pain subsides. You feel... human.</span>"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/stableslimetoxin/on_mob_life(mob/living/carbon/human/H)
-	..()
 	if(!istype(H))
 		return
-	to_chat(H, "<span class='warning'><b>You crumple in agony as your flesh wildly morphs into new forms!</b></span>")
-	H.visible_message("<b>[H]</b> falls to the ground and screams as [H.p_their()] skin bubbles and froths!") //'froths' sounds painful when used with SKIN.
-	H.Knockdown(60)
-	addtimer(CALLBACK(src, .proc/mutate, H), 30)
-	return
+	if(volume >= 1)
+		to_chat(H, "<span class='warning'><b>You crumple in agony as your flesh wildly morphs into new forms!</b></span>")
+		H.visible_message("<b>[H]</b> falls to the ground and screams as [H.p_their()] skin bubbles and froths!") //'froths' sounds painful when used with SKIN.
+		H.Knockdown(60)
+		addtimer(CALLBACK(null, .proc/mutate_with_toxin, H, mutationtext, race), 30)
+	return ..()
 
-/datum/reagent/stableslimetoxin/proc/mutate(mob/living/carbon/human/H)
+/proc/mutate_with_toxin(mob/living/carbon/human/H, mutationtext = null, race = /datum/species/human)
 	if(QDELETED(H))
 		return
 	var/current_species = H.dna.species.type
@@ -493,14 +508,21 @@
 	race = /datum/species/abductor
 	mutationtext = "<span class='danger'>The pain subsides. You feel... alien.</span>"
 
-/datum/reagent/stableslimetoxin/android
-	name = "Android Mutation Toxin"
-	id = "androidmutationtoxin"
+/datum/reagent/stableslimetoxin/robot
+	name = "Robot Mutation Toxin"
+	id = "ipcmutationtoxin"
 	description = "A robotic toxin produced by slimes."
 	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/android
+	race = /datum/species/ipc
 	mutationtext = "<span class='danger'>The pain subsides. You feel... artificial.</span>"
 
+/datum/reagent/stableslimetoxin/vox
+	name = "Vox Mutation Toxin"
+	id = "voxmutationtoxin"
+	description = "A gross toxin produced by slimes."
+	color = "#3498db" // Same as vox blood
+	race = /datum/species/vox
+	mutationtext = "<span class='danger'>The pain subsides. You feel... skrek.</span>"
 
 //BLACKLISTED RACES
 /datum/reagent/stableslimetoxin/skeleton
@@ -684,7 +706,7 @@
 		step(M, pick(GLOB.cardinals))
 	if(prob(5))
 		M.emote(pick("twitch","drool","moan"))
-	M.adjustBrainLoss(2)
+	M.adjustBrainLoss(1)
 	..()
 
 /datum/reagent/sulfur
@@ -729,6 +751,7 @@
 	reagent_state = GAS
 	color = "#808080" // rgb: 128, 128, 128
 	taste_description = "acid"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/fluorine/on_mob_life(mob/living/M)
 	M.adjustToxLoss(1*REM, 0)
@@ -780,6 +803,7 @@
 	reagent_state = SOLID
 	color = "#C7C7C7" // rgb: 199,199,199
 	taste_description = "the colour blue and regret"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/radium/on_mob_life(mob/living/M)
 	M.apply_effect(2*REM/M.metabolism_efficiency,IRRADIATE,0)
@@ -863,6 +887,7 @@
 	reagent_state = SOLID
 	color = "#B8B8C0" // rgb: 184, 184, 192
 	taste_description = "the inside of a reactor"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/uranium/on_mob_life(mob/living/M)
 	M.apply_effect(1/M.metabolism_efficiency,IRRADIATE,0)
@@ -883,6 +908,7 @@
 	reagent_state = SOLID
 	color = "#0000CC"
 	taste_description = "fizzling blue"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/bluespace/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if(method == TOUCH || method == VAPOR)
@@ -922,6 +948,7 @@
 	glass_icon_state = "dr_gibb_glass"
 	glass_name = "glass of welder fuel"
 	glass_desc = "Unless you're an industrial tool, this is probably not safe for consumption."
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/fuel/reaction_mob(mob/living/M, method=TOUCH, reac_volume)//Splashing people with welding fuel to make them easy to ignite!
 	if(!isliving(M))
@@ -1037,7 +1064,7 @@
 /datum/reagent/impedrezene/on_mob_life(mob/living/M)
 	M.jitteriness = max(M.jitteriness-5,0)
 	if(prob(80))
-		M.adjustBrainLoss(1*REM)
+		M.adjustBrainLoss(2*REM)
 	if(prob(50))
 		M.drowsyness = max(M.drowsyness, 3)
 	if(prob(10))
@@ -1051,6 +1078,7 @@
 	color = "#535E66" // rgb: 83, 94, 102
 	can_synth = 0
 	taste_description = "sludge"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/nanites/reaction_mob(mob/M, method=TOUCH, reac_volume, show_message = 1, touch_protection = 0)
 	if(method==PATCH || method==INGEST || method==INJECT || (method == VAPOR && prob(min(reac_volume,100)*(1 - touch_protection))))
@@ -1313,6 +1341,7 @@
 	color = "#C8A5DC"
 	taste_description = "bitterness"
 	taste_mult = 1.5
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/stable_plasma/on_mob_life(mob/living/M)
 	if(iscarbon(M))
@@ -1576,7 +1605,7 @@
 
 /datum/reagent/romerol/on_mob_life(mob/living/carbon/human/H)
 	// Silently add the zombie infection organ to be activated upon death
-	if(!H.getorganslot("zombie_infection"))
+	if(!H.getorganslot(ORGAN_SLOT_ZOMBIE))
 		var/obj/item/organ/zombie_infection/ZI = new()
 		ZI.Insert(H)
 	..()

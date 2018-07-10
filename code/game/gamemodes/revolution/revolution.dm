@@ -14,7 +14,7 @@
 	name = "revolution"
 	config_tag = "revolution"
 	antag_flag = ROLE_REV
-	restricted_jobs = list("Security Officer", "Warden", "Detective", "AI", "Cyborg","Captain", "Head of Personnel", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer", "Blueshield", "Brig Physician")
+	restricted_jobs = list("Security Officer", "Warden", "Detective", "AI", "Cyborg","Captain", "Head of Personnel", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer", "Blueshield", "Brig Physician", "Internal Affairs Agent")
 	required_players = 20
 	required_enemies = 1
 	recommended_enemies = 3
@@ -64,8 +64,8 @@
 
 
 /datum/game_mode/revolution/post_setup()
-	var/list/heads = get_living_heads()
-	var/list/sec = get_living_sec()
+	var/list/heads = get_living_by_department(GLOB.command_positions)
+	var/list/sec = get_living_by_department(GLOB.security_positions)
 	var/weighted_score = min(max(round(heads.len - ((8 - sec.len) / 3)),1),max_headrevs)
 
 
@@ -124,7 +124,7 @@
 
 
 /datum/game_mode/proc/forge_revolutionary_objectives(datum/mind/rev_mind)
-	var/list/heads = get_living_heads()
+	var/list/heads = get_living_by_department(GLOB.command_positions)
 	for(var/datum/mind/head_mind in heads)
 		var/datum/objective/mutiny/rev_obj = new
 		rev_obj.owner = rev_mind
@@ -191,8 +191,8 @@
 //Checks if new heads have joined midround//
 ////////////////////////////////////////////
 /datum/game_mode/revolution/proc/check_heads()
-	var/list/heads = get_all_heads()
-	var/list/sec = get_all_sec()
+	var/list/heads = get_all_by_department(GLOB.command_positions)
+	var/list/sec = get_all_by_department(GLOB.security_positions)
 	if(heads_to_kill.len < heads.len)
 		var/list/new_heads = heads - heads_to_kill
 		for(var/datum/mind/head_mind in new_heads)
@@ -386,7 +386,7 @@
 
 	if( head_revolutionaries.len || revolutionaries.len || istype(SSticker.mode, /datum/game_mode/revolution) )
 		var/text = "<br><font size=3><b>The heads of staff were:</b></font>"
-		var/list/heads = get_all_heads()
+		var/list/heads = get_all_by_department(GLOB.command_positions)
 		for(var/datum/mind/head in heads)
 			var/target = (head in targets)
 			if(target)
@@ -394,3 +394,20 @@
 			text += printplayer(head, 1)
 		text += "<br>"
 		to_chat(world, text)
+
+/datum/game_mode/revolution/generate_credit_text()
+	var/list/round_credits = list()
+	var/len_before_addition
+
+	round_credits += "<center><h1>The Disgruntled Revolutionaries:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/headrev in head_revolutionaries)
+		round_credits += "<center><h2>[headrev.name] as a revolutionary leader</h2>"
+	for(var/datum/mind/grunt in revolutionaries)
+		round_credits += "<center><h2>[grunt.name] as a grunt of the revolution</h2>"
+	if(len_before_addition == round_credits.len)
+		round_credits += list("<center><h2>The revolutionaries were all destroyed as martyrs!</h2>", "<center><h2>We couldn't identify their remains!</h2>")
+	round_credits += "<br>"
+
+	round_credits += ..()
+	return round_credits

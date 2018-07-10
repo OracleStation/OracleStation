@@ -4,9 +4,10 @@
 //Admin-spawn or random event
 
 #define INVISIBILITY_REVENANT 50
+#define REVENANT_NAME_FILE "revenant_names.json"
 
 /mob/living/simple_animal/revenant
-	name = "\a Revenant"
+	name = "revenant"
 	desc = "A malevolent spirit."
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "revenant_idle"
@@ -94,6 +95,15 @@
 		AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/revenant/blight(null))
 		AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/revenant/malfunction(null))
 
+		random_revenant_name()
+
+/mob/living/simple_animal/revenant/proc/random_revenant_name()
+	var/built_name = ""
+	built_name += pick(strings(REVENANT_NAME_FILE, "spirit_type"))
+	built_name += " of "
+	built_name += pick(strings(REVENANT_NAME_FILE, "adverb"))
+	built_name += pick(strings(REVENANT_NAME_FILE, "theme"))
+	name = built_name
 //Life, Stat, Hud Updates, and Say
 /mob/living/simple_animal/revenant/Life()
 	if(stasis)

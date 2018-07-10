@@ -1,6 +1,7 @@
 /mob/living/Login()
 	..()
 	//Mind updates
+	log_message("<font color='orange'>[worldtime2text()]: LOGIN</font>", INDIVIDUAL_ATTACK_LOG)
 	sync_mind()
 	mind.show_memory(src, 0)
 

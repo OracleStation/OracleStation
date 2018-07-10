@@ -20,7 +20,7 @@
 
 /mob/living/carbon/monkey/Initialize()
 	verbs += /mob/living/proc/mob_sleep
-	verbs += /mob/living/proc/lay_down
+	verbs += /mob/living/proc/lay_down_helper
 
 	if(unique_name) //used to exclude pun pun
 		gender = pick(MALE, FEMALE)
@@ -63,7 +63,7 @@
 
 	if (bodytemperature < 283.222)
 		. += (283.222 - bodytemperature) / 10 * 1.75
-		
+
 	var/static/config_monkey_delay
 	if(isnull(config_monkey_delay))
 		config_monkey_delay = CONFIG_GET(number/monkey_delay)
@@ -141,7 +141,7 @@
 	return protection
 
 /mob/living/carbon/monkey/IsVocal()
-	if(!getorganslot("lungs"))
+	if(!getorganslot(ORGAN_SLOT_LUNGS))
 		return 0
 	return 1
 
@@ -157,3 +157,19 @@
 		var/obj/item/clothing/head/helmet/justice/escape/helmet = new(src)
 		equip_to_slot_or_del(helmet,slot_head)
 		helmet.attack_self(src) // todo encapsulate toggle
+
+
+//Special monkeycube subtype to track the number of them and prevent spam
+/mob/living/carbon/monkey/cube/Initialize()
+	. = ..()
+	GLOB.total_cube_monkeys++
+
+/mob/living/carbon/monkey/cube/death(gibbed)
+	GLOB.total_cube_monkeys--
+	..()
+
+//In case admins delete them before they die
+/mob/living/carbon/monkey/cube/Destroy()
+	if(stat != DEAD)
+		GLOB.total_cube_monkeys--
+	return ..()

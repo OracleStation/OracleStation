@@ -7,6 +7,7 @@
 	var/list/mob/living/buckled_mobs = null //list()
 	var/max_buckled_mobs = 1
 	var/buckle_prevents_pull = FALSE
+	var/can_buckled_rotate = FALSE //can people rotate when buckled to this object? eg: rolling chairs
 
 //Interaction
 /atom/movable/attack_hand(mob/living/user)
@@ -99,7 +100,7 @@
 
 //Wrapper procs that handle sanity and user feedback
 /atom/movable/proc/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
-	if(!in_range(user, src) || user.stat || user.restrained())
+	if(!in_range(user, src) || !isturf(user.loc) || user.incapacitated() || M.anchored)
 		return FALSE
 
 	add_fingerprint(user)

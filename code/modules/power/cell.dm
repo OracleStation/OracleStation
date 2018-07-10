@@ -24,8 +24,8 @@
 /obj/item/stock_parts/cell/get_cell()
 	return src
 
-/obj/item/stock_parts/cell/New()
-	..()
+/obj/item/stock_parts/cell/Initialize()
+	. = ..()
 	START_PROCESSING(SSobj, src)
 	charge = maxcharge
 	if(ratingdesc)
@@ -94,10 +94,6 @@
 		to_chat(user, "<span class='danger'>This power cell seems to be faulty!</span>")
 	else
 		to_chat(user, "The charge meter reads [round(src.percent() )]%.")
-
-/obj/item/stock_parts/cell/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is licking the electrodes of [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return (FIRELOSS)
 
 /obj/item/stock_parts/cell/attackby(obj/item/W, mob/user, params)
 	..()
@@ -172,8 +168,8 @@
 	materials = list(MAT_GLASS=40)
 	rating = 2
 
-/obj/item/stock_parts/cell/crap/empty/New()
-	..()
+/obj/item/stock_parts/cell/crap/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/stock_parts/cell/upgraded
@@ -196,8 +192,8 @@
 	materials = list(MAT_GLASS=40)
 	rating = 2.5
 
-/obj/item/stock_parts/cell/secborg/empty/New()
-	..()
+/obj/item/stock_parts/cell/secborg/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/stock_parts/cell/pulse //200 pulse shots
@@ -230,8 +226,8 @@
 	maxcharge = 15000
 	chargerate = 2250
 
-/obj/item/stock_parts/cell/high/empty/New()
-	..()
+/obj/item/stock_parts/cell/high/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/stock_parts/cell/super
@@ -243,8 +239,8 @@
 	rating = 4
 	chargerate = 2000
 
-/obj/item/stock_parts/cell/super/empty/New()
-	..()
+/obj/item/stock_parts/cell/super/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/stock_parts/cell/hyper
@@ -256,8 +252,8 @@
 	rating = 5
 	chargerate = 3000
 
-/obj/item/stock_parts/cell/hyper/empty/New()
-	..()
+/obj/item/stock_parts/cell/hyper/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/stock_parts/cell/bluespace
@@ -270,8 +266,8 @@
 	rating = 6
 	chargerate = 4000
 
-/obj/item/stock_parts/cell/bluespace/empty/New()
-	..()
+/obj/item/stock_parts/cell/bluespace/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/stock_parts/cell/infinite
@@ -327,8 +323,8 @@
 	maxcharge = 500
 	rating = 2
 
-/obj/item/stock_parts/cell/emproof/empty/New()
-	..()
+/obj/item/stock_parts/cell/emproof/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/stock_parts/cell/emproof/emp_act(severity)
@@ -349,3 +345,17 @@
 
 /obj/item/stock_parts/cell/beam_rifle/emp_act(severity)
 	charge = Clamp((charge-(10000/severity)),0,maxcharge)
+
+/obj/item/stock_parts/cell/emergency_light
+	name = "miniature power cell"
+	desc = "A tiny power cell with a very low power capacity. Used in light fixtures to power them in the event of an outage."
+	maxcharge = 120 //Emergency lights use 0.2 W per tick, meaning ~10 minutes of emergency power from a cell
+	materials = list(MAT_GLASS = 20)
+	rating = 1
+	w_class = WEIGHT_CLASS_TINY
+
+/obj/item/stock_parts/cell/emergency_light/Initialize()
+	. = ..()
+	var/area/A = get_area(src)
+	if(!A.lightswitch || !A.light_power)
+		charge = 0 //For naturally depowered areas, we start with no power

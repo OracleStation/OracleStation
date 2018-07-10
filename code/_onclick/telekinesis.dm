@@ -78,7 +78,7 @@
 	var/mob/living/carbon/tk_user = null
 
 /obj/item/tk_grab/Initialize()
-	..()
+	. = ..()
 	START_PROCESSING(SSfastprocess, src)
 
 /obj/item/tk_grab/Destroy()
@@ -184,7 +184,3 @@
 		add_overlay(focus) //this is kind of ick, but it's better than using icon()
 		focus.layer = old_layer
 		focus.plane = old_plane
-
-/obj/item/tk_grab/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is using [user.p_their()] telekinesis to choke [user.p_them()]self! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return (OXYLOSS)

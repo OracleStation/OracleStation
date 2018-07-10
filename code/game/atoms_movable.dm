@@ -69,7 +69,8 @@
 	return ..()
 
 /atom/movable/Move(atom/newloc, direct = 0)
-	if(!loc || !newloc) return 0
+	if(!loc || !newloc)
+		return 0
 	var/atom/oldloc = loc
 
 	if(loc != newloc)
@@ -504,7 +505,7 @@
 /atom/movable/vv_get_dropdown()
 	. = ..()
 	. -= "Jump to"
-	.["Follow"] = "?_src_=holder;[HrefToken()];adminplayerobservefollow=\ref[src]"
+	.["Follow"] = "?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(src)]"
 
 /atom/movable/proc/ex_check(ex_id)
 	if(!ex_id)
@@ -579,7 +580,8 @@
 		M.transferItemToLoc(src, targetturf, TRUE)	//nodrops disks when?
 	else if(istype(loc, /obj/item/storage))
 		var/obj/item/storage/S = loc
-		S.remove_from_storage(src, targetturf)
+		if(!S.remove_from_storage(src, targetturf))
+			return 0
 	else
 		forceMove(targetturf)
 	// move the disc, so ghosts remain orbiting it even if it's "destroyed"

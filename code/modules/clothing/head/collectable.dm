@@ -20,6 +20,7 @@
 	name = "collectable xenomorph helmet!"
 	desc = "Hiss hiss hiss!"
 	icon_state = "xenom"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/collectable/chef
 	name = "collectable chef's hat"
@@ -84,6 +85,7 @@
 	desc = "A collectible farmer's flat cap!"
 	icon_state = "flat_cap"
 	item_state = "detective"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/collectable/pirate
 	name = "collectable pirate hat"
@@ -92,15 +94,6 @@
 	item_state = "pirate"
 
 	dog_fashion = /datum/dog_fashion/head/pirate
-
-/obj/item/clothing/head/collectable/kitty
-	name = "collectable kitty ears"
-	desc = "The fur feels... a bit too realistic."
-	icon_state = "kitty"
-	item_state = "kitty"
-	dynamic_hair_suffix = ""
-
-	dog_fashion = /datum/dog_fashion/head/kitty
 
 /obj/item/clothing/head/collectable/rabbitears
 	name = "collectable rabbit ears"
@@ -145,6 +138,10 @@
 	item_state = "thunderdome"
 	resistance_flags = 0
 	flags_inv = HIDEHAIR
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/helmet.dmi'
+		)
 
 /obj/item/clothing/head/collectable/swat
 	name = "collectable SWAT helmet"
@@ -153,3 +150,7 @@
 	item_state = "swat"
 	resistance_flags = 0
 	flags_inv = HIDEHAIR
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/helmet.dmi'
+		)

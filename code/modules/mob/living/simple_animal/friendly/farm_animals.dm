@@ -197,6 +197,7 @@
 	. = ..()
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
+	GLOB.total_chickens++
 
 /mob/living/simple_animal/chick/Life()
 	. =..()
@@ -207,6 +208,15 @@
 		if(amount_grown >= 100)
 			new /mob/living/simple_animal/chicken(src.loc)
 			qdel(src)
+
+/mob/living/simple_animal/chick/death(gibbed)
+	GLOB.total_chickens--
+	..()
+
+/mob/living/simple_animal/chick/Destroy()
+	if(stat != DEAD)
+		GLOB.total_chickens--
+	return ..()
 
 /mob/living/simple_animal/chick/holo/Life()
 	..()
@@ -246,7 +256,6 @@
 	var/list/layMessage = list("lays an egg.","squats down and croons.","begins making a huge racket.","begins clucking raucously.")
 	var/list/validColors = list("brown","black","white")
 	gold_core_spawnable = 2
-	var/static/chicken_count = 0
 
 /mob/living/simple_animal/chicken/Initialize()
 	. = ..()
@@ -257,10 +266,15 @@
 	icon_dead = "[icon_prefix]_[body_color]_dead"
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
-	++chicken_count
+	GLOB.total_chickens++
+
+/mob/living/simple_animal/chicken/death(gibbed)
+	GLOB.total_chickens--
+	..()
 
 /mob/living/simple_animal/chicken/Destroy()
-	--chicken_count
+	if(stat != DEAD)
+		GLOB.total_chickens--
 	return ..()
 
 /mob/living/simple_animal/chicken/attackby(obj/item/O, mob/user, params)
@@ -281,14 +295,14 @@
 	. =..()
 	if(!.)
 		return
-	if((!stat && prob(3) && eggsleft > 0) && egg_type)
+	if((!stat && prob(3) && eggsleft > 0) && egg_type && GLOB.total_chickens < CONFIG_GET(number/max_chickens))
 		visible_message("[src] [pick(layMessage)]")
 		eggsleft--
 		var/obj/item/E = new egg_type(get_turf(src))
 		E.pixel_x = rand(-6,6)
 		E.pixel_y = rand(-6,6)
 		if(eggsFertile)
-			if(chicken_count < MAX_CHICKENS && prob(25))
+			if(prob(25))
 				START_PROCESSING(SSobj, E)
 
 /obj/item/reagent_containers/food/snacks/egg/var/amount_grown = 0

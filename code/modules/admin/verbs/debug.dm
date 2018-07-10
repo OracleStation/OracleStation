@@ -31,7 +31,8 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set name = "Advanced ProcCall"
 	set waitfor = 0
 
-	if(!check_rights(R_DEBUG)) return
+	if(!check_rights(R_DEBUG))
+		return
 
 	var/datum/target = null
 	var/targetselected = 0
@@ -116,7 +117,7 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 		to_chat(usr, "<span class='adminnotice'>Running your proc</span>")
 	GLOB.LastAdminCalledProc = procname
 	if(target != GLOBAL_PROC)
-		GLOB.LastAdminCalledTargetRef = "\ref[target]"
+		GLOB.LastAdminCalledTargetRef = "[REF(target)]"
 	GLOB.AdminProcCaller = ckey	//if this runtimes, too bad for you
 	++GLOB.AdminProcCallCount
 	. = world.WrapAdminProcCall(target, procname, arguments)
@@ -664,9 +665,10 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 		if ("Custom")
 			//use custom one
 			M.equipOutfit(custom)
+			M.dna.species.after_equip_job(src, M)
 		else
 			M.equipOutfit(dresscode)
-
+			M.dna.species.after_equip_job(src, M)
 
 	M.regenerate_icons()
 

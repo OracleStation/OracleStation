@@ -95,6 +95,9 @@
 					/obj/item/tank/internals/emergency_oxygen,
 					/obj/item/tank/internals/emergency_oxygen,
 					/obj/item/tank/internals/emergency_oxygen,
+					/obj/item/tank/internals/emergency_oxygen/vox,
+					/obj/item/tank/internals/emergency_oxygen/vox,
+					/obj/item/tank/internals/emergency_oxygen/vox,
 					/obj/item/tank/internals/air,
 					/obj/item/tank/internals/air,
 					/obj/item/tank/internals/air)
@@ -716,6 +719,14 @@
 	crate_type = /obj/structure/closet/crate/secure/engineering
 	special = TRUE
 
+/datum/supply_pack/engineering/inflatable
+	name = "Inflatable Barriers Crate"
+	cost = 800
+	contains = list(/obj/item/storage/briefcase/inflatable,
+					/obj/item/storage/briefcase/inflatable,
+					/obj/item/storage/briefcase/inflatable)
+	crate_name = "inflatable barrier crate"
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Medical /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -817,8 +828,8 @@
 /datum/supply_pack/medical/bloodpacks
 	name = "Blood Pack Variety Crate"
 	cost = 3500
-	contains = list(/obj/item/reagent_containers/blood/empty,
-					/obj/item/reagent_containers/blood/empty,
+	contains = list(/obj/item/reagent_containers/blood,
+					/obj/item/reagent_containers/blood,
 					/obj/item/reagent_containers/blood/APlus,
 					/obj/item/reagent_containers/blood/AMinus,
 					/obj/item/reagent_containers/blood/BPlus,
@@ -1491,17 +1502,6 @@
 	contains = list(/obj/item/stack/tile/noslip/thirty)
 	crate_name = "high-traction floor tiles crate"
 
-/datum/supply_pack/misc/plasmaman
-	name = "Plasmaman Supply Kit"
-	cost = 2000
-	contains = list(/obj/item/clothing/under/plasmaman,
-					/obj/item/clothing/under/plasmaman,
-					/obj/item/tank/internals/plasmaman/belt/full,
-					/obj/item/tank/internals/plasmaman/belt/full,
-					/obj/item/clothing/head/helmet/space/plasmaman,
-					/obj/item/clothing/head/helmet/space/plasmaman)
-	crate_name = "plasmaman supply kit"
-
 /datum/supply_pack/misc/costume
 	name = "Standard Costume Crate"
 	cost = 1000
@@ -1561,7 +1561,6 @@
 					/obj/item/clothing/head/collectable/welding,
 					/obj/item/clothing/head/collectable/flatcap,
 					/obj/item/clothing/head/collectable/pirate,
-					/obj/item/clothing/head/collectable/kitty,
 					/obj/item/clothing/head/collectable/rabbitears,
 					/obj/item/clothing/head/collectable/wizard,
 					/obj/item/clothing/head/crown/fancy,
@@ -1643,12 +1642,12 @@
 	contains = list(/obj/item/clothing/under/blacktango,
 					/obj/item/clothing/under/assistantformal,
 					/obj/item/clothing/under/assistantformal,
-					/obj/item/clothing/under/lawyer/bluesuit,
-					/obj/item/clothing/suit/toggle/lawyer,
-					/obj/item/clothing/under/lawyer/purpsuit,
-					/obj/item/clothing/suit/toggle/lawyer/purple,
-					/obj/item/clothing/under/lawyer/blacksuit,
-					/obj/item/clothing/suit/toggle/lawyer/black,
+					/obj/item/clothing/under/iaa/bluesuit,
+					/obj/item/clothing/suit/toggle/iaa,
+					/obj/item/clothing/under/iaa/purpsuit,
+					/obj/item/clothing/suit/toggle/iaa/purple,
+					/obj/item/clothing/under/iaa/blacksuit,
+					/obj/item/clothing/suit/toggle/iaa/black,
 					/obj/item/clothing/accessory/waistcoat,
 					/obj/item/clothing/neck/tie/blue,
 					/obj/item/clothing/neck/tie/red,
@@ -1770,3 +1769,5 @@
 	contains = list(/obj/vehicle/bicycle)
 	crate_name = "Bicycle Crate"
 	crate_type = /obj/structure/closet/crate/large
+
+

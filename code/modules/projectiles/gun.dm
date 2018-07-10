@@ -135,11 +135,6 @@
 		shoot_with_empty_chamber(user)
 		return
 
-	if(flag)
-		if(user.zone_selected == "mouth")
-			handle_suicide(user, target, params)
-			return
-
 
 	//Exclude lasertag guns from the CLUMSY check.
 	if(clumsy_check)
@@ -364,40 +359,6 @@
 		azoom.Remove(user)
 	if(alight)
 		alight.Remove(user)
-
-/obj/item/gun/proc/handle_suicide(mob/living/carbon/human/user, mob/living/carbon/human/target, params)
-	if(!ishuman(user) || !ishuman(target))
-		return
-
-	if(semicd)
-		return
-
-	if(user == target)
-		target.visible_message("<span class='warning'>[user] sticks [src] in [user.p_their()] mouth, ready to pull the trigger...</span>", \
-			"<span class='userdanger'>You stick [src] in your mouth, ready to pull the trigger...</span>")
-	else
-		target.visible_message("<span class='warning'>[user] points [src] at [target]'s head, ready to pull the trigger...</span>", \
-			"<span class='userdanger'>[user] points [src] at your head, ready to pull the trigger...</span>")
-
-	semicd = TRUE
-
-	if(!do_mob(user, target, 120) || user.zone_selected != "mouth")
-		if(user)
-			if(user == target)
-				user.visible_message("<span class='notice'>[user] decided not to shoot.</span>")
-			else if(target && target.Adjacent(user))
-				target.visible_message("<span class='notice'>[user] has decided to spare [target]</span>", "<span class='notice'>[user] has decided to spare your life!</span>")
-		semicd = FALSE
-		return
-
-	semicd = FALSE
-
-	target.visible_message("<span class='warning'>[user] pulls the trigger!</span>", "<span class='userdanger'>[user] pulls the trigger!</span>")
-
-	if(chambered && chambered.BB)
-		chambered.BB.damage *= 5
-
-	process_fire(target, user, 1, params)
 
 /////////////
 // ZOOMING //

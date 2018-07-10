@@ -2,7 +2,7 @@
 	if(!message || !subject)
 		return
 	var/F = file("[GLOB.log_directory]/[subject].html")
-	WRITE_FILE(F, "<small>[time_stamp()] \ref[src] ([x],[y],[z])</small> || [src] [message]<br>")
+	WRITE_FILE(F, "<small>[time_stamp()] [REF(src)] ([x],[y],[z])</small> || [src] [message]<br>")
 
 
 /client/proc/investigate_show(subject in list("hrefs","notes, memos, watchlist", INVESTIGATE_PORTAL, INVESTIGATE_SINGULO, INVESTIGATE_WIRES, INVESTIGATE_TELESCI, INVESTIGATE_GRAVITY, INVESTIGATE_RECORDS, INVESTIGATE_CARGO, INVESTIGATE_SUPERMATTER, INVESTIGATE_ATMOS, INVESTIGATE_EXPERIMENTOR, INVESTIGATE_BOTANY, INVESTIGATE_HALLUCINATIONS) )
@@ -12,6 +12,8 @@
 		return
 	switch(subject)
 		if("notes, memos, watchlist")
+			if(!check_rights(R_ADMIN))
+				return
 			browse_messages()
 		else
 			var/F = file("[GLOB.log_directory]/[subject].html")

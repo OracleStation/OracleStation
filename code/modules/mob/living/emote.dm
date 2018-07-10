@@ -81,6 +81,7 @@
 	message_alien = "lets out a waning guttural screech, green blood bubbling from its maw..."
 	message_larva = "lets out a sickly hiss of air and falls limply to the floor..."
 	message_monkey = "lets out a faint chimper as it collapses and stops moving..."
+	message_ipc = "gives one shrill beep before falling limp, their monitor flashing blue before completely shutting off..."
 	message_simple =  "stops moving..."
 	stat_allowed = UNCONSCIOUS
 
@@ -495,6 +496,7 @@
 	message = "beeps."
 	message_param = "beeps at %t."
 	sound = 'sound/machines/twobeep.ogg'
+	robotic_emote = TRUE
 
 /datum/emote/living/spin
 	key = "spin"
@@ -531,6 +533,8 @@
 	key = "scream"
 	key_third_person = "screams"
 	message = "screams."
+	message_ipc = "screeches electronically!"
+	message_vox = "shrieks!"
 	message_mime = "acts out a scream!"
 	emote_type = EMOTE_SPEAK
 	cooldown = 100
@@ -549,8 +553,8 @@
 			sound_to_play = H.dna.species.female_scream_sound
 		else
 			sound_to_play = H.dna.species.male_scream_sound
-	if(issilicon(user))
-		sound_to_play = 'sound/effects/mob_effects/goonstation/robot_scream.ogg'
+	if(issilicon(user) || isdrone(user))
+		sound_to_play = 'sound/effects/mob_effects/silicon_scream.ogg'
 
 	playsound(user.loc, sound_to_play, 50, frequency = frequency_to_use)
 
