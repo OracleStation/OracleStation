@@ -3708,7 +3708,7 @@
 	},
 /obj/item/clipboard,
 /obj/item/folder/blue,
-/obj/item/stamp/law,
+/obj/item/stamp/iaa,
 /turf/open/floor/plasteel/grimy,
 /area/centcom/control)
 "kG" = (
@@ -3797,7 +3797,7 @@
 /obj/structure/table/wood,
 /obj/item/clipboard,
 /obj/item/folder/blue,
-/obj/item/stamp/law,
+/obj/item/stamp/iaa,
 /turf/open/floor/plasteel/grimy,
 /area/centcom/control)
 "kT" = (

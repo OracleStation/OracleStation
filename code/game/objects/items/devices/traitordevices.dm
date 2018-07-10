@@ -107,8 +107,8 @@ effective or pretty fucking useless.
 	user.set_machine(src)
 
 	var/cooldown = round(max(10, (intensity*5 - wavelength/4)))
-	var/dat = "Irradiation: <A href='?src=\ref[src];rad=1'>[irradiate ? "On" : "Off"]</A><br>"
-	dat += "Scan Mode: <a href='?src=\ref[src];mode=1'>"
+	var/dat = "Irradiation: <A href='?src=[REF(src)];rad=1'>[irradiate ? "On" : "Off"]</A><br>"
+	dat += "Scan Mode: <a href='?src=[REF(src)];mode=1'>"
 	if(!scanmode)
 		dat += "Scan Health"
 	else if(scanmode == 1)
@@ -119,14 +119,14 @@ effective or pretty fucking useless.
 
 	dat += {"
 	Radiation Intensity:
-	<A href='?src=\ref[src];radint=-5'>-</A><A href='?src=\ref[src];radint=-1'>-</A>
+	<A href='?src=[REF(src)];radint=-5'>-</A><A href='?src=[REF(src)];radint=-1'>-</A>
 	[intensity]
-	<A href='?src=\ref[src];radint=1'>+</A><A href='?src=\ref[src];radint=5'>+</A><BR>
+	<A href='?src=[REF(src)];radint=1'>+</A><A href='?src=[REF(src)];radint=5'>+</A><BR>
 
 	Radiation Wavelength:
-	<A href='?src=\ref[src];radwav=-5'>-</A><A href='?src=\ref[src];radwav=-1'>-</A>
+	<A href='?src=[REF(src)];radwav=-5'>-</A><A href='?src=[REF(src)];radwav=-1'>-</A>
 	[(wavelength+(intensity*4))]
-	<A href='?src=\ref[src];radwav=1'>+</A><A href='?src=\ref[src];radwav=5'>+</A><BR>
+	<A href='?src=[REF(src)];radwav=1'>+</A><A href='?src=[REF(src)];radwav=5'>+</A><BR>
 	Laser Cooldown: [cooldown] Seconds<BR>
 	"}
 

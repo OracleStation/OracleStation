@@ -48,10 +48,13 @@
 	var/datum/object = GLOBAL_PROC
 	var/delegate
 	var/list/arguments
+	var/object_path = ""
 
 /datum/callback/New(thingtocall, proctocall, ...)
 	if (thingtocall)
 		object = thingtocall
+		if(thingtocall != GLOBAL_PROC)
+			object_path = "[object.type]"
 	delegate = proctocall
 	if (length(args) > 2)
 		arguments = args.Copy(3)

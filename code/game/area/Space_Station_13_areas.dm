@@ -665,8 +665,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Chapel Dock"
 	icon_state = "construction"
 
-/area/lawoffice
-	name = "Law Office"
+/area/iaaoffice
+	name = "Internal Affairs Office"
 	icon_state = "law"
 
 
@@ -1511,7 +1511,7 @@ GLOBAL_LIST_INIT(the_station_areas, list (
 	/area/holodeck,
 	/area/hydroponics,
 	/area/janitor,
-	/area/lawoffice,
+	/area/iaaoffice,
 	/area/library,
 	/area/maintenance,
 	/area/medical,

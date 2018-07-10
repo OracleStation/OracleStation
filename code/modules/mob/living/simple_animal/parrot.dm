@@ -184,9 +184,9 @@
 	user.set_machine(src)
 	var/dat = 	"<div align='center'><b>Inventory of [name]</b></div><p>"
 	if(ears)
-		dat +=	"<br><b>Headset:</b> [ears] (<a href='?src=\ref[src];remove_inv=ears'>Remove</a>)"
+		dat +=	"<br><b>Headset:</b> [ears] (<a href='?src=[REF(src)];remove_inv=ears'>Remove</a>)"
 	else
-		dat +=	"<br><b>Headset:</b> <a href='?src=\ref[src];add_inv=ears'>Nothing</a>"
+		dat +=	"<br><b>Headset:</b> <a href='?src=[REF(src)];add_inv=ears'>Nothing</a>"
 
 	user << browse(dat, "window=mob[real_name];size=325x500")
 	onclose(user, "mob[real_name]")
@@ -512,7 +512,8 @@
 			return
 
 		walk_to(src, parrot_interest, 1, parrot_speed)
-		if(isStuck()) return
+		if(isStuck())
+			return
 
 		return
 
@@ -532,7 +533,8 @@
 			return
 
 		walk_to(src, parrot_perch, 1, parrot_speed)
-		if(isStuck()) return
+		if(isStuck())
+			return
 
 		return
 
@@ -545,7 +547,8 @@
 		walk_away(src, parrot_interest, 1, parrot_speed)
 		/*if(parrot_been_shot > 0)
 			parrot_been_shot--  didn't work anyways, and besides, any bullet poly survives isn't worth the speed boost.*/
-		if(isStuck()) return
+		if(isStuck())
+			return
 
 		return
 
@@ -584,7 +587,8 @@
 		//Otherwise, fly towards the mob!
 		else
 			walk_to(src, parrot_interest, 1, parrot_speed)
-			if(isStuck()) return
+			if(isStuck())
+				return
 
 		return
 //-----STATE MISHAP
@@ -952,7 +956,7 @@
 
 /mob/living/simple_animal/parrot/Poly/ghost/Initialize()
 	memory_saved = 1 //At this point nothing is saved
-	..()
+	. = ..()
 
 /mob/living/simple_animal/parrot/Poly/ghost/handle_automated_speech()
 	if(ismob(loc))

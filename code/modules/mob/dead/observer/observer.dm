@@ -349,7 +349,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(message)
 		to_chat(src, "<span class='ghostalert'>[message]</span>")
 		if(source)
-			var/obj/screen/alert/A = throw_alert("\ref[source]_notify_cloning", /obj/screen/alert/notify_cloning)
+			var/obj/screen/alert/A = throw_alert("[REF(source)]_notify_cloning", /obj/screen/alert/notify_cloning)
 			if(A)
 				if(client && client.prefs && client.prefs.UI_style)
 					A.icon = ui_style2icon(client.prefs.UI_style)
@@ -361,7 +361,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				A.add_overlay(source)
 				source.layer = old_layer
 				source.plane = old_plane
-	to_chat(src, "<span class='ghostalert'><a href=?src=\ref[src];reenter=1>(Click to re-enter)</a></span>")
+	to_chat(src, "<span class='ghostalert'><a href=?src=[REF(src)];reenter=1>(Click to re-enter)</a></span>")
 	if(sound)
 		SEND_SOUND(src, sound(sound))
 
@@ -496,7 +496,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Boo!"
 	set desc= "Scare your crew members because of boredom!"
 
-	if(bootime > world.time) return
+	if(bootime > world.time)
+		return
 	var/obj/machinery/light/L = locate(/obj/machinery/light) in view(1, src)
 	if(L)
 		L.flicker()
@@ -636,7 +637,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 //this is called when a ghost is drag clicked to something.
 /mob/dead/observer/MouseDrop(atom/over)
-	if(!usr || !over) return
+	if(!usr || !over)
+		return
 	if (isobserver(usr) && usr.client.holder && isliving(over))
 		if (usr.client.holder.cmd_ghost_drag(src,over))
 			return

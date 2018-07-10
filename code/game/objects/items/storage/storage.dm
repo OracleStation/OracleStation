@@ -25,7 +25,7 @@
 	var/collection_mode = 1;  //0 = pick one at a time, 1 = pick all on tile, 2 = pick all of a type
 	var/preposition = "in" // You put things 'in' a bag, but trays need 'on'.
 	var/rustle_jimmies = TRUE	//Play the rustle sound on insertion
-	var/block_open_while_equipped = FALSE // Can we open this storage container while we're wearing it?
+	var/equipped_item_retrieval_delay = 0 // How long it takes us to pull an item out of storage if the storage item is equipped.
 
 /obj/item/storage/MouseDrop(atom/over_object)
 	if(ismob(usr)) //all the check for item manipulation are in other places, you can safely open any storages as anything and its not buggy, i checked
@@ -590,9 +590,11 @@
 /obj/item/storage/BlockReach(atom/user)
 	if(istype(user, /mob/living/carbon))
 		var/mob/living/carbon/m = user
-		if(block_open_while_equipped && slot_flags && src in m.get_all_slots())
+		if(equipped_item_retrieval_delay && slot_flags && src in m.get_all_slots())
 			if(m.s_active == src)
-				to_chat(m, "<span class='warning'>You can't reach the contents of [src].</span>")
+				playsound(loc, "rustle", 50, 1, -5)
+				if(do_after(m, equipped_item_retrieval_delay, target=src))
+					return FALSE
 				return TRUE
 			if(m.s_active in src.GetAllContents())
 				m.s_active.close(m)

@@ -72,28 +72,28 @@
 	dat += hack(user)
 	dat += showpai(user)
 	dat += "<TT><B>Floor Repairer Controls v1.1</B></TT><BR><BR>"
-	dat += "Status: <A href='?src=\ref[src];power=1'>[on ? "On" : "Off"]</A><BR>"
+	dat += "Status: <A href='?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A><BR>"
 	dat += "Maintenance panel panel is [open ? "opened" : "closed"]<BR>"
 	dat += "Special tiles: "
 	if(specialtiles)
-		dat += "<A href='?src=\ref[src];operation=eject'>Loaded \[[specialtiles]/[maxtiles]\]</a><BR>"
+		dat += "<A href='?src=[REF(src)];operation=eject'>Loaded \[[specialtiles]/[maxtiles]\]</a><BR>"
 	else
 		dat += "None Loaded<BR>"
 
 	dat += "Behaviour controls are [locked ? "locked" : "unlocked"]<BR>"
 	if(!locked || issilicon(user) || IsAdminGhost(user))
-		dat += "Add tiles to new hull plating: <A href='?src=\ref[src];operation=autotile'>[autotile ? "Yes" : "No"]</A><BR>"
-		dat += "Place floor tiles: <A href='?src=\ref[src];operation=place'>[placetiles ? "Yes" : "No"]</A><BR>"
-		dat += "Replace existing floor tiles with custom tiles: <A href='?src=\ref[src];operation=replace'>[replacetiles ? "Yes" : "No"]</A><BR>"
-		dat += "Repair damaged tiles and platings: <A href='?src=\ref[src];operation=fix'>[fixfloors ? "Yes" : "No"]</A><BR>"
-		dat += "Traction Magnets: <A href='?src=\ref[src];operation=anchor'>[anchored ? "Engaged" : "Disengaged"]</A><BR>"
-		dat += "Patrol Station: <A href='?src=\ref[src];operation=patrol'>[auto_patrol ? "Yes" : "No"]</A><BR>"
+		dat += "Add tiles to new hull plating: <A href='?src=[REF(src)];operation=autotile'>[autotile ? "Yes" : "No"]</A><BR>"
+		dat += "Place floor tiles: <A href='?src=[REF(src)];operation=place'>[placetiles ? "Yes" : "No"]</A><BR>"
+		dat += "Replace existing floor tiles with custom tiles: <A href='?src=[REF(src)];operation=replace'>[replacetiles ? "Yes" : "No"]</A><BR>"
+		dat += "Repair damaged tiles and platings: <A href='?src=[REF(src)];operation=fix'>[fixfloors ? "Yes" : "No"]</A><BR>"
+		dat += "Traction Magnets: <A href='?src=[REF(src)];operation=anchor'>[anchored ? "Engaged" : "Disengaged"]</A><BR>"
+		dat += "Patrol Station: <A href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</A><BR>"
 		var/bmode
 		if(targetdirection)
 			bmode = dir2text(targetdirection)
 		else
 			bmode = "disabled"
-		dat += "Line Mode : <A href='?src=\ref[src];operation=linemode'>[bmode]</A><BR>"
+		dat += "Line Mode : <A href='?src=[REF(src)];operation=linemode'>[bmode]</A><BR>"
 
 	return dat
 
@@ -162,12 +162,7 @@
 	update_controls()
 
 /mob/living/simple_animal/bot/floorbot/proc/empty_tiles()
-	var/turf/Tsec = get_turf(src)
-
-	while(specialtiles > initial(tiletype.max_amount))
-		new tiletype(Tsec,initial(tiletype.max_amount))
-		specialtiles -= initial(tiletype.max_amount)
-	new tiletype(Tsec,specialtiles)
+	new tiletype(drop_location(), specialtiles)
 	specialtiles = 0
 	tiletype = null
 
@@ -376,8 +371,7 @@
 	if(prob(50))
 		new /obj/item/bodypart/l_arm/robot(Tsec)
 
-	var/obj/item/stack/tile/plasteel/T = new (Tsec)
-	T.amount = 1
+	new /obj/item/stack/tile/plasteel(Tsec, 1)
 
 	do_sparks(3, TRUE, src)
 	..()

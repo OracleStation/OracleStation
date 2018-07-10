@@ -76,7 +76,11 @@ h1.alert, h2.alert		{color: #000000;}
 .notice					{color: #000099;}
 .boldnotice				{color: #000099;	font-weight: bold;}
 .adminnotice			{color: #0000ff;}
+.adminannouncement			{color: #0000ff; font-weight: bold; font-size: 8;}
 .adminhelp              {color: #ff0000;    font-weight: bold;}
+.mentor				{color: #8A2BE2;}
+.mentoradmin				{color: #8A2BE2;	font-weight: bold;}
+.mentornotice				{color: #E236D8;}
 .unconscious			{color: #0000ff;	font-weight: bold;}
 .suicide				{color: #ff5050;	font-style: italic;}
 .green					{color: #03ff39;}

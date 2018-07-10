@@ -342,14 +342,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		return 0
 	if(issilicon(M))
 		if(iscyborg(M)) //For cyborgs, returns 1 if the cyborg has a law 0 and special_role. Returns 0 if the borg is merely slaved to an AI traitor.
-			var/mob/living/silicon/robot/R = M
-			if(R.mind && R.mind.special_role)
-				if(R.laws && R.laws.zeroth && R.syndicate)
-					if(R.connected_ai)
-						if(is_special_character(R.connected_ai) && R.connected_ai.laws && (R.connected_ai.laws.zeroth_borg == R.laws.zeroth || R.connected_ai.laws.zeroth == R.laws.zeroth))
-							return 0 //AI is the real traitor here, so the borg itself is not a traitor
-						return 1 //Slaved but also a traitor
-					return 1 //Unslaved, traitor
+			return FALSE
 		else if(isAI(M))
 			var/mob/living/silicon/ai/A = M
 			if(A.laws && A.laws.zeroth && A.mind && A.mind.special_role)
@@ -398,7 +391,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 			if(flashwindow)
 				window_flash(O.client)
 			if(source)
-				var/obj/screen/alert/notify_action/A = O.throw_alert("\ref[source]_notify_action", /obj/screen/alert/notify_action)
+				var/obj/screen/alert/notify_action/A = O.throw_alert("[REF(source)]_notify_action", /obj/screen/alert/notify_action)
 				if(A)
 					if(O.client.prefs && O.client.prefs.UI_style)
 						A.icon = ui_style2icon(O.client.prefs.UI_style)
@@ -495,3 +488,20 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 /mob/proc/can_hear()
 	. = TRUE
+
+/mob/proc/has_mouth()
+	return FALSE
+
+/proc/bloodtype_to_color(var/type)
+	//all of these strings CANNOT have capitals in them, because that's how BYOND stores their colors and capitals won't work with == checks
+	. = "#dc0000"
+	switch(type)
+		if("F")//Ethari blood; a bit orange
+			. = "#db3300"
+		if("L")//lizard, a bit pink/purple
+			. = "#db004d"
+		if("V")// Voxys bloods yaya, pale-ish blue.
+			. = "#3498db"
+		if("X*")//xeno blood; not actually used in many spots
+			. = "#88aa00"
+		//add more stuff to the switch if you have more blood colors for different types

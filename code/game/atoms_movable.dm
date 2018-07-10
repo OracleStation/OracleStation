@@ -69,7 +69,8 @@
 	return ..()
 
 /atom/movable/Move(atom/newloc, direct = 0)
-	if(!loc || !newloc) return 0
+	if(!loc || !newloc)
+		return 0
 	var/atom/oldloc = loc
 
 	if(loc != newloc)
@@ -504,7 +505,7 @@
 /atom/movable/vv_get_dropdown()
 	. = ..()
 	. -= "Jump to"
-	.["Follow"] = "?_src_=holder;[HrefToken()];adminplayerobservefollow=\ref[src]"
+	.["Follow"] = "?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(src)]"
 
 /atom/movable/proc/ex_check(ex_id)
 	if(!ex_id)

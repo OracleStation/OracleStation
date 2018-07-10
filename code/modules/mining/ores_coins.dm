@@ -96,18 +96,8 @@
 	for(var/obj/item/ore/glass/G in user.loc) // The sand on the floor
 		sandAmt += 1
 		qdel(G)
-	while(sandAmt > 0)
-		var/obj/item/stack/sheet/mineral/sandstone/SS = new /obj/item/stack/sheet/mineral/sandstone(user.loc)
-		if(sandAmt >= SS.max_amount)
-			SS.amount = SS.max_amount
-		else
-			SS.amount = sandAmt
-			for(var/obj/item/stack/sheet/mineral/sandstone/SA in user.loc)
-				if(SA != SS && SA.amount < SA.max_amount)
-					SA.attackby(SS, user) //we try to transfer all old unfinished stacks to the new stack we created.
-		sandAmt -= SS.max_amount
+	new /obj/item/stack/sheet/mineral/sandstone(user.drop_location(), sandAmt)
 	qdel(src)
-	return
 
 /obj/item/ore/glass/throw_impact(atom/hit_atom)
 	if(..() || !ishuman(hit_atom))
@@ -428,13 +418,12 @@
 			..()
 			return
 
-		var/obj/item/stack/cable_coil/CC = new/obj/item/stack/cable_coil(user.loc)
-		CC.amount = 1
-		CC.update_icon()
+		new /obj/item/stack/cable_coil(drop_location(), 1)
 		overlays = list()
 		string_attached = null
 		to_chat(user, "<span class='notice'>You detach the string from the coin.</span>")
-	else ..()
+	else
+		..()
 
 /obj/item/coin/attack_self(mob/user)
 	if(cooldown < world.time)

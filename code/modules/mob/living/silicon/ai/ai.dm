@@ -173,71 +173,115 @@
 		return
 
 		//if(icon_state == initial(icon_state))
-	var/icontype = input("Please, select a display!", "AI", null/*, null*/) in list("Clown", "Monochrome", "Blue", "Inverted", "Firewall", "Green", "Red", "Static", "Red October", "House", "Heartline", "Hades", "Helios", "President", "Syndicat Meow", "Alien", "Too Deep", "Triumvirate", "Triumvirate-M", "Text", "Matrix", "Dorf", "Bliss", "Not Malf", "Fuzzy", "Goon", "Database", "Glitchman", "Murica", "Nanotrasen", "Gentoo", "Angel")
+	var/icontype = input("Please, select a display!", "AI", null/*, null*/) in list("Clown", "Monochrome", "Blue", "Inverted", "Firewall", "Green", "Red", "Static", "Red October", "House", "Heartline", "Hades", "Helios", "President", "Syndicat Meow", "Alien", "Too Deep", "Triumvirate", "Triumvirate-M", "Text", "Matrix", "Dorf", "Bliss", "Not Malf", "Fuzzy", "Goon", "Database", "Glitchman", "Murica", "Nanotrasen", "Gentoo", "Angel", "Fabulous", "Pirate", "Terminal", "Fuzz")
 	if(icontype == "Clown")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-clown2"
 	else if(icontype == "Monochrome")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-mono"
 	else if(icontype == "Blue")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai"
 	else if(icontype == "Inverted")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-u"
 	else if(icontype == "Firewall")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-magma"
 	else if(icontype == "Green")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-wierd"
 	else if(icontype == "Red")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-malf"
 	else if(icontype == "Static")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-static"
 	else if(icontype == "Red October")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-redoctober"
 	else if(icontype == "House")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-house"
 	else if(icontype == "Heartline")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-heartline"
 	else if(icontype == "Hades")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-hades"
 	else if(icontype == "Helios")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-helios"
 	else if(icontype == "President")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-pres"
 	else if(icontype == "Syndicat Meow")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-syndicatmeow"
 	else if(icontype == "Alien")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-alien"
 	else if(icontype == "Too Deep")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-toodeep"
 	else if(icontype == "Triumvirate")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-triumvirate"
 	else if(icontype == "Triumvirate-M")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-triumvirate-malf"
 	else if(icontype == "Text")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-text"
 	else if(icontype == "Matrix")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-matrix"
 	else if(icontype == "Dorf")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-dorf"
 	else if(icontype == "Bliss")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-bliss"
 	else if(icontype == "Not Malf")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-notmalf"
 	else if(icontype == "Fuzzy")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-fuzz"
 	else if(icontype == "Goon")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-goon"
 	else if(icontype == "Database")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-database"
 	else if(icontype == "Glitchman")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-glitchman"
 	else if(icontype == "Murica")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-murica"
 	else if(icontype == "Nanotrasen")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-nanotrasen"
 	else if(icontype == "Gentoo")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-gentoo"
 	else if(icontype == "Angel")
+		icon = 'icons/mob/ai.dmi'
 		icon_state = "ai-angel"
+	else if(icontype == "Pirate")
+		icon = 'icons/vg/mob/ai.dmi'
+		icon_state = "ai-pirate"
+	else if(icontype == "Fabulous")
+		icon = 'icons/vg/mob/ai.dmi'
+		icon_state = "ai-fabulous"
+	else if(icontype == "Terminal")
+		icon = 'icons/vg/mob/ai.dmi'
+		icon_state = "ai-terminal"
+	else if(icontype == "Fuzz")
+		icon = 'icons/vg//mob/ai.dmi'
+		icon_state = "ai-fuzz"
 	//else
 			//to_chat(usr, "You can only change your display once!")
 			//return
@@ -267,7 +311,7 @@
 
 /mob/living/silicon/ai/proc/ai_alerts()
 	var/dat = "<HEAD><TITLE>Current Station Alerts</TITLE><META HTTP-EQUIV='Refresh' CONTENT='10'></HEAD><BODY>\n"
-	dat += "<A HREF='?src=\ref[src];mach_close=aialerts'>Close</A><BR><BR>"
+	dat += "<A HREF='?src=[REF(src)];mach_close=aialerts'>Close</A><BR><BR>"
 	for (var/cat in alarms)
 		dat += text("<B>[]</B><BR>\n", cat)
 		var/list/L = alarms[cat]
@@ -281,11 +325,11 @@
 				if (C && istype(C, /list))
 					var/dat2 = ""
 					for (var/obj/machinery/camera/I in C)
-						dat2 += text("[]<A HREF=?src=\ref[];switchcamera=\ref[]>[]</A>", (dat2=="") ? "" : " | ", src, I, I.c_tag)
+						dat2 += text("[]<A HREF=?src=[REF(src)];switchcamera=[REF(I)]>[]</A>", (dat2=="") ? "" : " | ", I.c_tag)
 					dat += text("-- [] ([])", A.name, (dat2!="") ? dat2 : "No Camera")
 				else if (C && istype(C, /obj/machinery/camera))
 					var/obj/machinery/camera/Ctmp = C
-					dat += text("-- [] (<A HREF=?src=\ref[];switchcamera=\ref[]>[]</A>)", A.name, src, C, Ctmp.c_tag)
+					dat += text("-- [] (<A HREF=?src=[REF(src)];switchcamera=[REF(C)]>[]</A>)", A.name, Ctmp.c_tag)
 				else
 					dat += text("-- [] (No Camera)", A.name)
 				if (sources.len > 1)
@@ -537,7 +581,7 @@ GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 	var/ai_Zlevel = ai_current_turf.z
 	var/d
 	var/area/bot_area
-	d += "<A HREF=?src=\ref[src];botrefresh=1>Query network status</A><br>"
+	d += "<A HREF=?src=[REF(src)];botrefresh=1>Query network status</A><br>"
 	d += "<table width='100%'><tr><td width='40%'><h3>Name</h3></td><td width='30%'><h3>Status</h3></td><td width='30%'><h3>Location</h3></td><td width='10%'><h3>Control</h3></td></tr>"
 
 	for (Bot in GLOB.living_mob_list)
@@ -548,8 +592,8 @@ GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 			//If the bot is on, it will display the bot's current mode status. If the bot is not mode, it will just report "Idle". "Inactive if it is not on at all.
 			d += "<td width='30%'>[bot_mode]</td>"
 			d += "<td width='30%'>[bot_area.name]</td>"
-			d += "<td width='10%'><A HREF=?src=\ref[src];interface=\ref[Bot]>Interface</A></td>"
-			d += "<td width='10%'><A HREF=?src=\ref[src];callbot=\ref[Bot]>Call</A></td>"
+			d += "<td width='10%'><A HREF=?src=[REF(src)];interface=[REF(Bot)]>Interface</A></td>"
+			d += "<td width='10%'><A HREF=?src=[REF(src)];callbot=[REF(Bot)]>Call</A></td>"
 			d += "</tr>"
 			d = format_text(d)
 
@@ -605,12 +649,12 @@ GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 	L[A.name] = list(A, (C) ? C : O, list(alarmsource))
 	if (O)
 		if (C && C.can_use())
-			queueAlarm("--- [class] alarm detected in [A.name]! (<A HREF=?src=\ref[src];switchcamera=\ref[C]>[C.c_tag]</A>)", class)
+			queueAlarm("--- [class] alarm detected in [A.name]! (<A HREF=?src=[REF(src)];switchcamera=[REF(C)]>[C.c_tag]</A>)", class)
 		else if (CL && CL.len)
 			var/foo = 0
 			var/dat2 = ""
 			for (var/obj/machinery/camera/I in CL)
-				dat2 += text("[]<A HREF=?src=\ref[];switchcamera=\ref[]>[]</A>", (!foo) ? "" : " | ", src, I, I.c_tag)	//I'm not fixing this shit...
+				dat2 += text("[]<A HREF=?src=[REF(src)];switchcamera=[REF(I)]>[]</A>", (!foo) ? "" : " | ", I.c_tag)	//I'm not fixing this shit...
 				foo = 1
 			queueAlarm(text ("--- [] alarm detected in []! ([])", class, A.name, dat2), class)
 		else
@@ -768,6 +812,8 @@ GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 				"floating face" = 'icons/mob/ai.dmi',
 				"xeno queen" = 'icons/mob/alien.dmi',
 				"horror" = 'icons/mob/ai.dmi',
+				"construct" = 'icons/vg/mob/ai.dmi',
+				"alternative face" = 'icons/vg/mob/ai.dmi',
 				"ancient machine" = 'icons/mob/ancient_machine.dmi',
 				)
 
@@ -899,7 +945,7 @@ GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 	raw_message = lang_treat(speaker, message_language, raw_message, spans, message_mode)
 	var/start = "Relayed Speech: "
 	var/namepart = "[speaker.GetVoice()][speaker.get_alt_name()]"
-	var/hrefpart = "<a href='?src=\ref[src];track=[html_encode(namepart)]'>"
+	var/hrefpart = "<a href='?src=[REF(src)];track=[html_encode(namepart)]'>"
 	var/jobpart
 
 	if (iscarbon(speaker))

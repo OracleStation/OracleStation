@@ -179,7 +179,8 @@
 
 /obj/docking_port/proc/getDockedId()
 	var/obj/docking_port/P = get_docked()
-	if(P) return P.id
+	if(P)
+		return P.id
 
 /obj/docking_port/stationary
 	name = "dock"
@@ -269,7 +270,7 @@
 
 	var/launch_status = NOLAUNCH
 
-	var/list/movement_force = list("KNOCKDOWN" = 3, "THROW" = 0)
+	var/list/movement_force = list("KNOCKDOWN" = 3, "THROW" = 1, "IGNOREBUCKLE" = FALSE)
 
 	// A timid shuttle will not register itself with the shuttle subsystem
 	// All shuttle templates are timid

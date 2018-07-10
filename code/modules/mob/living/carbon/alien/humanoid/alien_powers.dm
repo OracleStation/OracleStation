@@ -164,7 +164,8 @@ Doesn't work on other aliens/AI.*/
 		return
 	var/mob/living/carbon/user = usr
 	var/obj/effect/proc_holder/alien/acid/A = locate() in user.abilities
-	if(!A) return
+	if(!A)
+		return
 	if(user.getPlasma() > A.plasma_cost && A.corrode(O))
 		user.adjustPlasma(-A.plasma_cost)
 
@@ -210,8 +211,7 @@ Doesn't work on other aliens/AI.*/
 
 	user.visible_message("<span class='danger'>[user] spits neurotoxin!", "<span class='alertalien'>You spit neurotoxin.</span>")
 	var/obj/item/projectile/bullet/neurotoxin/A = new /obj/item/projectile/bullet/neurotoxin(user.loc)
-	A.current = U
-	A.preparePixelProjectile(target, get_turf(target), user, params)
+	A.preparePixelProjectile(target, user, params)
 	A.fire()
 	user.newtonian_move(get_dir(U, T))
 	user.adjustPlasma(-p_cost)
@@ -303,13 +303,15 @@ Doesn't work on other aliens/AI.*/
 
 /mob/living/carbon/proc/getPlasma()
 	var/obj/item/organ/alien/plasmavessel/vessel = getorgan(/obj/item/organ/alien/plasmavessel)
-	if(!vessel) return 0
+	if(!vessel)
+		return 0
 	return vessel.storedPlasma
 
 
 /mob/living/carbon/proc/adjustPlasma(amount)
 	var/obj/item/organ/alien/plasmavessel/vessel = getorgan(/obj/item/organ/alien/plasmavessel)
-	if(!vessel) return 0
+	if(!vessel)
+		return 0
 	vessel.storedPlasma = max(vessel.storedPlasma + amount,0)
 	vessel.storedPlasma = min(vessel.storedPlasma, vessel.max_plasma) //upper limit of max_plasma, lower limit of 0
 	for(var/X in abilities)

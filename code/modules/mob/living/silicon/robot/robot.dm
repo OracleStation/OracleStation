@@ -639,18 +639,6 @@
 		// to have to check if every camera is null or not before doing anything, to prevent runtime errors.
 		// I could change the network to null but I don't know what would happen, and it seems too hacky for me.
 
-/mob/living/silicon/robot/proc/ResetSecurityCodes()
-	set category = "Robot Commands"
-	set name = "Reset Identity Codes"
-	set desc = "Scrambles your security and identification codes and resets your current buffers. Unlocks you and permanently severs you from your AI and the robotics console and will deactivate your camera system."
-
-	var/mob/living/silicon/robot/R = src
-
-	if(R)
-		R.UnlinkSelf()
-		to_chat(R, "Buffers flushed and reset. Camera system shutdown.  All systems operational.")
-		src.verbs -= /mob/living/silicon/robot/proc/ResetSecurityCodes
-
 /mob/living/silicon/robot/mode()
 	set name = "Activate Held Object"
 	set category = "IC"
@@ -813,13 +801,13 @@
 		return
 	switch(notifytype)
 		if(NEW_BORG) //New Cyborg
-			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - New cyborg connection detected: <a href='?src=\ref[connected_ai];track=[html_encode(name)]'>[name]</a></span><br>")
+			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - New cyborg connection detected: <a href='?src=[REF(connected_ai)];track=[html_encode(name)]'>[name]</a></span><br>")
 		if(NEW_MODULE) //New Module
 			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - Cyborg module change detected: [name] has loaded the [designation] module.</span><br>")
 		if(RENAME) //New Name
 			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - Cyborg reclassification detected: [oldname] is now designated as [newname].</span><br>")
 		if(AI_SHELL) //New Shell
-			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - New cyborg shell detected: <a href='?src=\ref[connected_ai];track=[html_encode(name)]'>[name]</a></span><br>")
+			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - New cyborg shell detected: <a href='?src=[REF(connected_ai)];track=[html_encode(name)]'>[name]</a></span><br>")
 		if(DISCONNECT) //Tampering with the wires
 			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - Remote telemetry lost with [name].</span><br>")
 

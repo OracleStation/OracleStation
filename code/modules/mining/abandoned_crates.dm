@@ -11,8 +11,8 @@
 	var/codelen = 4
 	tamperproof = 90
 
-/obj/structure/closet/crate/secure/loot/New()
-	..()
+/obj/structure/closet/crate/secure/loot/Initialize()
+	. = ..()
 	var/list/digits = list("1", "2", "3", "4", "5", "6", "7", "8", "9", "0")
 	code = ""
 	for(var/i = 0, i < codelen, i++)
@@ -72,7 +72,6 @@
 			new /obj/item/clothing/head/helmet/space(src)
 		if(61 to 62)
 			for(var/i in 1 to 5)
-				new /obj/item/clothing/head/kitty(src)
 				new /obj/item/clothing/neck/petcollar(src)
 		if(63 to 64)
 			for(var/i in 1 to rand(4, 7))

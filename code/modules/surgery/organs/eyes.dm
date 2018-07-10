@@ -3,7 +3,7 @@
 	icon_state = "eyeballs"
 	desc = "I see you!"
 	zone = "eyes"
-	slot = "eye_sight"
+	slot = ORGAN_SLOT_EYES
 	gender = PLURAL
 
 	var/sight_flags = 0
@@ -80,7 +80,7 @@
 /obj/item/organ/eyes/robotic
 	name = "robotic eyes"
 	icon_state = "cybernetic_eyeballs"
-	desc = "Your vision is augmented."
+	desc = "A very basic set of optical sensors with no extra vision modes or functions."
 	status = ORGAN_ROBOTIC
 
 /obj/item/organ/eyes/robotic/emp_act(severity)
@@ -319,3 +319,12 @@
 	parent = loc
 	if(!istype(parent))
 		return INITIALIZE_HINT_QDEL
+
+/obj/item/organ/eyes/vox
+	name = "vox eyes"
+	desc = "Vox perceive the universe through these strange, circuitry-embedded eyes."
+	icon_state = "eyes-vox"
+	status = ORGAN_ROBOTIC
+
+/obj/item/organ/eyes/vox/emp_act()
+	owner.hallucination += 10

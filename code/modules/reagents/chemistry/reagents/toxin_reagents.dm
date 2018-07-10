@@ -61,6 +61,7 @@
 	taste_mult = 1.5
 	color = "#8228A0"
 	toxpwr = 3
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/toxin/plasma/on_mob_life(mob/living/M)
 	if(holder.has_reagent("epinephrine"))
@@ -443,13 +444,14 @@
 	toxpwr = 0
 
 /datum/reagent/toxin/neurotoxin2/on_mob_life(mob/living/M)
-	if(M.brainloss + M.toxloss <= 60)
-		M.adjustBrainLoss(1*REM)
+	M.adjustBrainLoss(3*REM, 150)
+	. = 1
+	if(M.toxloss <= 60)
 		M.adjustToxLoss(1*REM, 0)
-		. = 1
+
 	if(current_cycle >= 18)
 		M.Sleeping(40, 0)
-		. = 1
+
 	..()
 
 /datum/reagent/toxin/cyanide
@@ -736,6 +738,7 @@
 	metabolization_rate = 0.8 * REAGENTS_METABOLISM
 	toxpwr = 0.25
 	taste_description = "skewing"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/toxin/skewium/on_mob_life(mob/living/M)
 	if(M.hud_used)
@@ -791,6 +794,7 @@
 	toxpwr = 1
 	var/acidpwr = 10 //the amount of protection removed from the armour
 	taste_description = "acid"
+	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/toxin/acid/reaction_mob(mob/living/carbon/C, method=TOUCH, reac_volume)
 	if(!istype(C))
@@ -913,7 +917,7 @@
 			if(prob(10))
 				M.confused += 15
 			if(prob(15))
-				M.Stun(1)
+				M.Stun(10)
 				M.emote("scream")
 		if(30 to 60)
 			M.blur_eyes(5)

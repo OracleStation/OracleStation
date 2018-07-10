@@ -60,9 +60,8 @@
 		return
 	next_click = world.time + 1
 
-	if(client && client.click_intercept)
-		if(call(client.click_intercept, "InterceptClickOn")(src, params, A))
-			return
+	if(check_click_intercept(params,A))
+		return
 
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"] && modifiers["middle"])
@@ -390,13 +389,11 @@
 	Laser Eyes: as the name implies, handles this since nothing else does currently
 	face_atom: turns the mob towards what you clicked on
 */
-/mob/proc/LaserEyes(atom/A)
+/mob/proc/LaserEyes(atom/A, params)
 	return
 
-/mob/living/LaserEyes(atom/A)
+/mob/living/LaserEyes(atom/A, params)
 	changeNext_move(CLICK_CD_RANGE)
-	var/turf/T = get_turf(src)
-	var/turf/U = get_turf(A)
 
 	var/obj/item/projectile/beam/LE = new /obj/item/projectile/beam( loc )
 	LE.icon = 'icons/effects/genetics.dmi'
@@ -405,16 +402,18 @@
 
 	LE.firer = src
 	LE.def_zone = get_organ_target()
-	LE.original = A
-	LE.current = T
-	LE.yo = U.y - T.y
-	LE.xo = U.x - T.x
+	LE.preparePixelProjectile(A, src, params)
 	LE.fire()
 
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
 /mob/proc/face_atom(atom/A)
-	if( buckled || stat != CONSCIOUS || !A || !x || !y || !A.x || !A.y )
+	if( stat != CONSCIOUS || !A || !x || !y || !A.x || !A.y )
 		return
+
+	if(buckled) //allows rolling chairs to rotate with you, a nice touch
+		if(!buckled.can_buckled_rotate)
+			return
+
 	var/dx = A.x - x
 	var/dy = A.y - y
 	if(!dx && !dy) // Wall items are graphically shifted but on the floor
@@ -438,6 +437,9 @@
 			setDir(EAST)
 		else
 			setDir(WEST)
+
+	if(buckled && buckled.can_buckled_rotate) //face whatever we are buckled to if it can rotate too
+		buckled.setDir(dir)
 
 /obj/screen/click_catcher
 	icon = 'icons/mob/screen_gen.dmi'
@@ -464,7 +466,7 @@
 
 /obj/screen/click_catcher/Click(location, control, params)
 	var/list/modifiers = params2list(params)
-	var/turf/T = params2turf(modifiers["screen-loc"], get_turf(usr))
+	var/turf/T = params2turf(modifiers["screen-loc"], get_turf(usr.client ? usr.client.eye : usr))
 	params += "&catcher=1"
 	if(T)
 		T.Click(location, control, params)
@@ -484,3 +486,16 @@
 		else
 			view = 1
 		add_view_range(view)
+
+/mob/proc/check_click_intercept(params,A)
+	//Client level intercept
+	if(client && client.click_intercept)
+		if(call(client.click_intercept, "InterceptClickOn")(src, params, A))
+			return TRUE
+
+	//Mob level intercept
+	if(click_intercept)
+		if(call(click_intercept, "InterceptClickOn")(src, params, A))
+			return TRUE
+
+	return FALSE

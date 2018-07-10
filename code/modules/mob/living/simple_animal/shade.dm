@@ -22,7 +22,7 @@
 	minbodytemp = 0
 	maxbodytemp = INFINITY
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
-	speed = -1
+	speed = 0
 	stop_automated_movement = 1
 	status_flags = 0
 	faction = list("cult")
@@ -35,11 +35,6 @@
 /mob/living/simple_animal/shade/death()
 	deathmessage = "lets out a contented sigh as [p_their()] form unwinds."
 	..()
-
-/mob/living/simple_animal/shade/canSuicide()
-	if(istype(loc, /obj/item/device/soulstone)) //do not suicide inside the soulstone
-		return 0
-	return ..()
 
 /mob/living/simple_animal/shade/attack_animal(mob/living/simple_animal/M)
 	if(isconstruct(M))

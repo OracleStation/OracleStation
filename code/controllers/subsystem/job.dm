@@ -190,6 +190,20 @@ SUBSYSTEM_DEF(job)
 				return 1
 	return 0
 
+/datum/controller/subsystem/job/proc/FillPosition(datum/job/job)
+	for(var/level = 1 to 3)
+		if(!job)
+			continue
+		if((job.current_positions >= job.total_positions) && job.total_positions != -1)
+			continue
+		var/list/candidates = FindOccupationCandidates(job, level)
+		if(!candidates.len)
+			continue
+		var/mob/dead/new_player/candidate = pick(candidates)
+		if(AssignRole(candidate, job.title))
+			return 1
+	return 0
+
 
 //This proc is called at the start of the level loop of DivideOccupations() and will cause head jobs to be checked before any other jobs of the same level
 //This is also to ensure we get as many heads as possible
@@ -424,6 +438,10 @@ SUBSYSTEM_DEF(job)
 	to_chat(M, "<b>To speak on your departments radio, use the :h button. To see others, look closely at your headset.</b>")
 	if(job.req_admin_notify)
 		to_chat(M, "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")
+	if(job.special_notice)
+		to_chat(M, "<span class='userdanger'>[job.special_notice]</span>")
+	if(job.wiki_page)
+		to_chat(M, "<span class='notice'>[CONFIG_GET(string/wikiurl)][job.wiki_page]</span>")
 	if(CONFIG_GET(number/minimal_access_threshold))
 		to_chat(M, "<FONT color='blue'><B>As this station was initially staffed with a [CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] have been added to your ID card.</B></font>")
 

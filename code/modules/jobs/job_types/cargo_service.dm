@@ -11,7 +11,6 @@ Quartermaster
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#d7b088"
-
 	outfit = /datum/outfit/job/quartermaster
 
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_CARGO_BOT, ACCESS_QM, ACCESS_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM)
@@ -20,7 +19,7 @@ Quartermaster
 /datum/outfit/job/quartermaster
 	name = "Quartermaster"
 	jobtype = /datum/job/qm
-
+	id = /obj/item/card/id/job/cargo
 	pda_slot = /obj/item/device/pda/quartermaster
 	ears = /obj/item/device/radio/headset/headset_cargo
 	uniform = /obj/item/clothing/under/rank/cargo
@@ -41,16 +40,17 @@ Cargo Technician
 	spawn_positions = 2
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#dcba97"
+	wiki_page = "Cargo_Technician"
 
 	outfit = /datum/outfit/job/cargo_tech
 
-	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_CARGO_BOT, ACCESS_QM, ACCESS_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM)
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_CARGO_BOT, ACCESS_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_CARGO, ACCESS_CARGO_BOT, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM)
 
 /datum/outfit/job/cargo_tech
 	name = "Cargo Technician"
 	jobtype = /datum/job/cargo_tech
-
+	id = /obj/item/card/id/job/cargo
 	pda_slot = /obj/item/device/pda/cargo
 	ears = /obj/item/device/radio/headset/headset_cargo
 	uniform = /obj/item/clothing/under/rank/cargotech
@@ -69,16 +69,17 @@ Shaft Miner
 	spawn_positions = 3
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#dcba97"
+	wiki_page = "Shaft_Miner"
 
 	outfit = /datum/outfit/job/miner
 
-	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_CARGO_BOT, ACCESS_QM, ACCESS_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM)
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_CARGO_BOT, ACCESS_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_MINING, ACCESS_MINING_STATION, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM)
 
 /datum/outfit/job/miner
 	name = "Shaft Miner (Lavaland)"
 	jobtype = /datum/job/mining
-
+	id = /obj/item/card/id/job/cargo
 	pda_slot = /obj/item/device/pda/shaftminer
 	ears = /obj/item/device/radio/headset/headset_cargo/mining
 	shoes = /obj/item/clothing/shoes/workboots/mining

@@ -8,6 +8,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	flags_inv = HIDEEARS|HIDEHAIR|HIDEFACE
 	armor = list(melee = 50, bullet = 70, laser = -25, energy = 0, bomb = 60, bio = 0, rad = 0, fire = 100, acid = 100)
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/helmet/clockwork/Initialize()
 	. = ..()
@@ -69,6 +70,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	armor = list(melee = 60, bullet = 70, laser = -25, energy = 0, bomb = 60, bio = 0, rad = 0, fire = 100, acid = 100)
 	allowed = list(/obj/item/clockwork, /obj/item/clothing/glasses/wraith_spectacles, /obj/item/clothing/glasses/judicial_visor, /obj/item/device/mmi/posibrain/soul_vessel)
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/armor/clockwork/Initialize()
 	. = ..()
@@ -135,6 +137,7 @@
 	permeability_coefficient = 0.05
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	armor = list(melee = 80, bullet = 70, laser = -25, energy = 0, bomb = 60, bio = 0, rad = 0, fire = 100, acid = 100)
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/gloves/clockwork/Initialize()
 	. = ..()
@@ -188,6 +191,7 @@
 	strip_delay = 50
 	equip_delay_other = 30
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/shoes/clockwork/Initialize()
 	. = ..()

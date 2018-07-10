@@ -175,6 +175,16 @@
 	materials = list(MAT_METAL = 2000, MAT_SILVER = 1500, MAT_PLASMA = 500, MAT_TITANIUM = 1500)
 	category = list("Medical Designs")
 
+/datum/design/nanopaste
+	name = "Nanopaste"
+	desc = "A tube of paste containing swarms of repair nanites. Very effective in repairing robotic machinery."
+	id = "nanopaste"
+	req_tech = list("materials" = 3, "engineering" = 2)
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 7000, MAT_GLASS = 7000)
+	build_path = /obj/item/stack/nanopaste
+	category = list("Medical")
+
 /////////////////////////////////////////
 //////////Cybernetic Implants////////////
 /////////////////////////////////////////

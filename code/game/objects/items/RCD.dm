@@ -136,10 +136,6 @@ obj/item/construction
 	var/delay_mod = 1
 
 
-/obj/item/construction/rcd/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] sets the RCD to 'Wall' and points it down [user.p_their()] throat! It looks like [user.p_theyre()] trying to commit suicide..</span>")
-	return (BRUTELOSS)
-
 /obj/item/construction/rcd/verb/toggle_window_type()
 	set name = "Toggle Window Type"
 	set category = "Object"
@@ -164,19 +160,15 @@ obj/item/construction
 	if (!ishuman(usr) && !usr.has_unlimited_silicon_privilege)
 		return ..(usr)
 
-	var/mob/living/carbon/human/H = usr
-	if(H.getBrainLoss() >= 60)
-		return
-
 	var/t1 = text("")
 
 
 	if(use_one_access)
-		t1 += "Restriction Type: <a href='?src=\ref[src];access=one'>At least one access required</a><br>"
+		t1 += "Restriction Type: <a href='?src=[REF(src)];access=one'>At least one access required</a><br>"
 	else
-		t1 += "Restriction Type: <a href='?src=\ref[src];access=one'>All accesses required</a><br>"
+		t1 += "Restriction Type: <a href='?src=[REF(src)];access=one'>All accesses required</a><br>"
 
-	t1 += "<a href='?src=\ref[src];access=all'>Remove All</a><br>"
+	t1 += "<a href='?src=[REF(src)];access=all'>Remove All</a><br>"
 
 	var/accesses = ""
 	accesses += "<div align='center'><b>Access</b></div>"
@@ -189,15 +181,15 @@ obj/item/construction
 		accesses += "<td style='width:14%' valign='top'>"
 		for(var/A in get_region_accesses(i))
 			if(A in conf_access)
-				accesses += "<a href='?src=\ref[src];access=[A]'><font color=\"red\">[replacetext(get_access_desc(A), " ", "&nbsp")]</font></a> "
+				accesses += "<a href='?src=[REF(src)];access=[A]'><font color=\"red\">[replacetext(get_access_desc(A), " ", "&nbsp")]</font></a> "
 			else
-				accesses += "<a href='?src=\ref[src];access=[A]'>[replacetext(get_access_desc(A), " ", "&nbsp")]</a> "
+				accesses += "<a href='?src=[REF(src)];access=[A]'>[replacetext(get_access_desc(A), " ", "&nbsp")]</a> "
 			accesses += "<br>"
 		accesses += "</td>"
 	accesses += "</tr></table>"
 	t1 += "<tt>[accesses]</tt>"
 
-	t1 += text("<p><a href='?src=\ref[];close=1'>Close</a></p>\n", src)
+	t1 += "<p><a href='?src=[REF(src)];close=1'>Close</a></p>\n"
 
 	var/datum/browser/popup = new(usr, "airlock_electronics", "Access Control", 900, 500)
 	popup.set_content(t1)

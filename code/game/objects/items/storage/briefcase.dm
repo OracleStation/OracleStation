@@ -27,7 +27,7 @@
 	folder_path = /obj/item/folder/blue
 
 /obj/item/storage/briefcase/lawyer/PopulateContents()
-	new /obj/item/stamp/law(src)
+	new /obj/item/stamp/iaa(src)
 	..()
 
 /obj/item/storage/briefcase/sniperbundle
@@ -52,6 +52,5 @@
 	new /obj/item/clothing/neck/tie/red(src)
 	new /obj/item/clothing/under/syndicate/sniper(src)
 	new /obj/item/ammo_box/magazine/sniper_rounds/soporific(src)
-	new /obj/item/ammo_box/magazine/sniper_rounds/haemorrhage(src)
+	new /obj/item/ammo_box/magazine/sniper_rounds/soporific(src)
 	new /obj/item/suppressor/specialoffer(src)
-

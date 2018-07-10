@@ -170,15 +170,15 @@
 			var/itemName = url_encode(O)
 			dat += "<FONT color = 'blue'><B>[capitalize(O)]</B>:"
 			dat += " [N] </font>"
-			dat += "<a href='byond://?src=\ref[src];vend=[itemName];amount=1'>Vend</A> "
+			dat += "<a href='byond://?src=[REF(src)];vend=[itemName];amount=1'>Vend</A> "
 			if(N > 5)
-				dat += "(<a href='byond://?src=\ref[src];vend=[itemName];amount=5'>x5</A>)"
+				dat += "(<a href='byond://?src=[REF(src)];vend=[itemName];amount=5'>x5</A>)"
 				if(N > 10)
-					dat += "(<a href='byond://?src=\ref[src];vend=[itemName];amount=10'>x10</A>)"
+					dat += "(<a href='byond://?src=[REF(src)];vend=[itemName];amount=10'>x10</A>)"
 					if(N > 25)
-						dat += "(<a href='byond://?src=\ref[src];vend=[itemName];amount=25'>x25</A>)"
+						dat += "(<a href='byond://?src=[REF(src)];vend=[itemName];amount=25'>x25</A>)"
 			if(N > 1)
-				dat += "(<a href='?src=\ref[src];vend=[itemName];amount=[N]'>All</A>)"
+				dat += "(<a href='?src=[REF(src)];vend=[itemName];amount=[N]'>All</A>)"
 
 			dat += "<br>"
 
@@ -244,7 +244,7 @@
 	var/dat = ..()
 	if(dat)
 		dat += "<br>"
-		dat += "<a href='byond://?src=\ref[src];dry=1'>Toggle Drying</A> "
+		dat += "<a href='byond://?src=[REF(src)];dry=1'>Toggle Drying</A> "
 		user << browse("<HEAD><TITLE>[src] supplies</TITLE></HEAD><TT>[dat]</TT>", "window=smartfridge")
 	onclose(user, "smartfridge")
 
@@ -311,8 +311,7 @@
 			qdel(S)
 		return TRUE
 	for(var/obj/item/stack/sheet/wetleather/WL in contents)
-		var/obj/item/stack/sheet/leather/L = new(loc)
-		L.amount = WL.amount
+		new /obj/item/stack/sheet/leather(drop_location(), WL.amount)
 		qdel(WL)
 		return TRUE
 	return FALSE

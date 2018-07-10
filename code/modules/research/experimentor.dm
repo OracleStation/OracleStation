@@ -139,7 +139,7 @@
 	user.set_machine(src)
 	var/dat = "<center>"
 	if(!linked_console)
-		dat += "<b><a href='byond://?src=\ref[src];function=search'>Scan for R&D Console</A></b><br>"
+		dat += "<b><a href='byond://?src=[REF(src)];function=search'>Scan for R&D Console</A></b><br>"
 	if(loaded_item)
 		dat += "<b>Loaded Item:</b> [loaded_item]<br>"
 		dat += "<b>Technology</b>:<br>"
@@ -147,19 +147,19 @@
 		for(var/T in D)
 			dat += "[T]<br>"
 		dat += "<br><br>Available tests:"
-		dat += "<br><b><a href='byond://?src=\ref[src];item=\ref[loaded_item];function=[SCANTYPE_POKE]'>Poke</A></b>"
-		dat += "<br><b><a href='byond://?src=\ref[src];item=\ref[loaded_item];function=[SCANTYPE_IRRADIATE];'>Irradiate</A></b>"
-		dat += "<br><b><a href='byond://?src=\ref[src];item=\ref[loaded_item];function=[SCANTYPE_GAS]'>Gas</A></b>"
-		dat += "<br><b><a href='byond://?src=\ref[src];item=\ref[loaded_item];function=[SCANTYPE_HEAT]'>Burn</A></b>"
-		dat += "<br><b><a href='byond://?src=\ref[src];item=\ref[loaded_item];function=[SCANTYPE_COLD]'>Freeze</A></b>"
-		dat += "<br><b><a href='byond://?src=\ref[src];item=\ref[loaded_item];function=[SCANTYPE_OBLITERATE]'>Destroy</A></b><br>"
+		dat += "<br><b><a href='byond://?src=[REF(src)];item=[REF(loaded_item)];function=[SCANTYPE_POKE]'>Poke</A></b>"
+		dat += "<br><b><a href='byond://?src=[REF(src)];item=[REF(loaded_item)];function=[SCANTYPE_IRRADIATE];'>Irradiate</A></b>"
+		dat += "<br><b><a href='byond://?src=[REF(src)];item=[REF(loaded_item)];function=[SCANTYPE_GAS]'>Gas</A></b>"
+		dat += "<br><b><a href='byond://?src=[REF(src)];item=[REF(loaded_item)];function=[SCANTYPE_HEAT]'>Burn</A></b>"
+		dat += "<br><b><a href='byond://?src=[REF(src)];item=[REF(loaded_item)];function=[SCANTYPE_COLD]'>Freeze</A></b>"
+		dat += "<br><b><a href='byond://?src=[REF(src)];item=[REF(loaded_item)];function=[SCANTYPE_OBLITERATE]'>Destroy</A></b><br>"
 		if(istype(loaded_item, /obj/item/relic))
-			dat += "<br><b><a href='byond://?src=\ref[src];item=\ref[loaded_item];function=[SCANTYPE_DISCOVER]'>Discover</A></b><br>"
-		dat += "<br><b><a href='byond://?src=\ref[src];function=eject'>Eject</A>"
+			dat += "<br><b><a href='byond://?src=[REF(src)];item=[REF(loaded_item)];function=[SCANTYPE_DISCOVER]'>Discover</A></b><br>"
+		dat += "<br><b><a href='byond://?src=[REF(src)];function=eject'>Eject</A>"
 	else
 		dat += "<b>Nothing loaded.</b>"
-	dat += "<br><a href='byond://?src=\ref[src];function=refresh'>Refresh</A><br>"
-	dat += "<br><a href='byond://?src=\ref[src];close=1'>Close</A><br></center>"
+	dat += "<br><a href='byond://?src=[REF(src)];function=refresh'>Refresh</A><br>"
+	dat += "<br><a href='byond://?src=[REF(src)];close=1'>Close</A><br></center>"
 	var/datum/browser/popup = new(user, "experimentor","Experimentor", 700, 400, src)
 	popup.set_content(dat)
 	popup.open()
@@ -338,10 +338,7 @@
 				visible_message("<span class='danger'>[src] dangerously overheats, launching a flaming fuel orb!</span>")
 				investigate_log("Experimentor has launched a <font color='red'>fireball</font> at [M]!", INVESTIGATE_EXPERIMENTOR)
 				var/obj/item/projectile/magic/aoe/fireball/FB = new /obj/item/projectile/magic/aoe/fireball(start)
-				FB.original = MT
-				FB.current = start
-				FB.yo = MT.y - start.y
-				FB.xo = MT.x - start.x
+				FB.preparePixelProjectile(MT, start)
 				FB.fire()
 		else if(prob(EFFECT_PROB_LOW-badThingCoeff))
 			visible_message("<span class='danger'>[src] malfunctions, melting [exp_on] and releasing a burst of flame!</span>")
@@ -689,9 +686,9 @@
 
 /obj/item/relic/proc/teleport(mob/user)
 	to_chat(user, "<span class='notice'>The [src] begins to vibrate!</span>")
-	addtimer(CALLBACK(src, .proc/do_teleport, user), rand(10, 30))
+	addtimer(CALLBACK(src, .proc/do_the_teleport, user), rand(10, 30))
 
-/obj/item/relic/proc/do_teleport(mob/user)
+/obj/item/relic/proc/do_the_teleport(mob/user)
 	var/turf/userturf = get_turf(user)
 	if(loc == user && userturf.z != ZLEVEL_CENTCOM) //Because Nuke Ops bringing this back on their shuttle, then looting the ERT area is 2fun4you!
 		visible_message("<span class='notice'>The [src] twists and bends, relocating itself!</span>")

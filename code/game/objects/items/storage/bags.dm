@@ -42,11 +42,6 @@
 	can_hold = list() // any
 	cant_hold = list(/obj/item/disk/nuclear)
 
-/obj/item/storage/bag/trash/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] puts [src] over [user.p_their()] head and starts chomping at the insides! Disgusting!</span>")
-	playsound(loc, 'sound/items/eatfood.ogg', 50, 1, -1)
-	return (TOXLOSS)
-
 /obj/item/storage/bag/trash/update_icon()
 	if(contents.len == 0)
 		icon_state = "[initial(icon_state)]"
@@ -173,7 +168,8 @@
 // Modified handle_item_insertion.  Would prefer not to, but...
 /obj/item/storage/bag/sheetsnatcher/handle_item_insertion(obj/item/W, prevent_warning = 0)
 	var/obj/item/stack/sheet/S = W
-	if(!istype(S)) return 0
+	if(!istype(S))
+		return 0
 
 	var/amount
 	var/inserted = 0
@@ -254,7 +250,8 @@
 // Instead of removing
 /obj/item/storage/bag/sheetsnatcher/remove_from_storage(obj/item/W, atom/new_location)
 	var/obj/item/stack/sheet/S = W
-	if(!istype(S)) return 0
+	if(!istype(S))
+		return 0
 
 	//I would prefer to drop a new stack, but the item/attack_hand code
 	// that calls this can't recieve a different object than you clicked on.

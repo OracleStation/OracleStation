@@ -151,6 +151,9 @@
 		if(MUTE_ADMINHELP)
 			mute_string = "adminhelp, admin PM and ASAY"
 			feedback_string = "Adminhelp"
+		if(MUTE_MENTORHELP)
+			mute_string = "mentorhelp"
+			feedback_string = "Mentorhelp"
 		if(MUTE_DEADCHAT)
 			mute_string = "deadchat and DSAY"
 			feedback_string = "Deadchat"
@@ -347,7 +350,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		new_character.real_name = record_found.fields["name"]
 		new_character.gender = record_found.fields["sex"]
 		new_character.age = record_found.fields["age"]
-		new_character.hardset_dna(record_found.fields["identity"], record_found.fields["enzymes"], record_found.fields["name"], record_found.fields["blood_type"], new record_found.fields["species"], record_found.fields["features"])
+		new_character.hardset_dna(record_found.fields["identity"], record_found.fields["enzymes"], record_found.fields["b_dna"], record_found.fields["name"], record_found.fields["blood_type"], new record_found.fields["species"], record_found.fields["features"])
 	else
 		var/datum/preferences/A = new()
 		A.copy_to(new_character)
@@ -487,13 +490,17 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		M.SetSleeping(200000)//20k seconds to get your admin shit together
 		M.adminfreezeoverlay = new()
 		M.add_overlay(M.adminfreezeoverlay)
+		M.anchored = TRUE
 		log_admin("[key_name(usr)] froze [key_name(M)]!")
+		message_admins("[key_name(usr)] froze [key_name(M)]!")
 		to_chat(M, "<span class='userdanger'>You have been frozen by Administrator [usr.key]!</span>")
 	else
 		M.SetSleeping(M.adminfrozen)//set it to what it was before freezing or just 1/10th of a second if it was nothing
 		M.adminfrozen = 0
 		M.cut_overlay(M.adminfreezeoverlay)
+		M.anchored = FALSE
 		log_admin("[key_name(usr)] unfroze [key_name(M)].")
+		message_admins("[key_name(usr)] unfroze [key_name(M)].")
 		to_chat(M, "<span class='userdanger'>You have been unfrozen by Administrator [usr.key]!</span>")
 
 /client/proc/cmd_admin_create_centcom_report()
@@ -576,15 +583,20 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 
 	var/devastation = input("Range of total devastation. -1 to none", text("Input"))  as num|null
-	if(devastation == null) return
+	if(devastation == null)
+		return
 	var/heavy = input("Range of heavy impact. -1 to none", text("Input"))  as num|null
-	if(heavy == null) return
+	if(heavy == null)
+		return
 	var/light = input("Range of light impact. -1 to none", text("Input"))  as num|null
-	if(light == null) return
+	if(light == null)
+		return
 	var/flash = input("Range of flash. -1 to none", text("Input"))  as num|null
-	if(flash == null) return
+	if(flash == null)
+		return
 	var/flames = input("Range of flames. -1 to none", text("Input"))  as num|null
-	if(flames == null) return
+	if(flames == null)
+		return
 
 	if ((devastation != -1) || (heavy != -1) || (light != -1) || (flash != -1) || (flames != -1))
 		if ((devastation > 20) || (heavy > 20) || (light > 20) || (flames > 20))
@@ -608,9 +620,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 
 	var/heavy = input("Range of heavy pulse.", text("Input"))  as num|null
-	if(heavy == null) return
+	if(heavy == null)
+		return
 	var/light = input("Range of light pulse.", text("Input"))  as num|null
-	if(light == null) return
+	if(light == null)
+		return
 
 	if (heavy || light)
 
@@ -872,8 +886,8 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 
 	var/dat = {"
 	<html><head><title>Create Outfit</title></head><body>
-	<form name="outfit" action="byond://?src=\ref[src];[HrefToken()]" method="get">
-	<input type="hidden" name="src" value="\ref[src]">
+	<form name="outfit" action="byond://?src=[REF(src)];[HrefToken()]" method="get">
+	<input type="hidden" name="src" value="[REF(src)]">
 	[HrefTokenFormField()]
 	<input type="hidden" name="create_outfit" value="1">
 	<table>
@@ -991,7 +1005,8 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	set name = "Toggle AntagHUD"
 	set desc = "Toggles the Admin AntagHUD"
 
-	if(!holder) return
+	if(!holder)
+		return
 
 	var/adding_hud = !has_antag_hud()
 
@@ -1118,53 +1133,6 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	log_admin("[key_name(usr)] sent \"[input]\" as the Tip of the Round.")
 	SSblackbox.add_details("admin_verb","Show Tip")
 
-#define ON_PURRBATION(H) (!(H.dna.features["tail_human"] == "None" && H.dna.features["ears"] == "None"))
-
-/proc/mass_purrbation()
-	for(var/M in GLOB.mob_list)
-		if(ishumanbasic(M))
-			purrbation_apply(M)
-		CHECK_TICK
-
-/proc/mass_remove_purrbation()
-	for(var/M in GLOB.mob_list)
-		if(ishumanbasic(M))
-			purrbation_remove(M)
-		CHECK_TICK
-
-/proc/purrbation_toggle(mob/living/carbon/human/H)
-	if(!ishumanbasic(H))
-		return
-	if(!ON_PURRBATION(H))
-		purrbation_apply(H)
-		. = TRUE
-	else
-		purrbation_remove(H)
-		. = FALSE
-
-/proc/purrbation_apply(mob/living/carbon/human/H)
-	if(!ishuman(H))
-		return
-	if(ON_PURRBATION(H))
-		return
-	to_chat(H, "Something is nya~t right.")
-	H.dna.features["tail_human"] = "Cat"
-	H.dna.features["ears"] = "Cat"
-	H.regenerate_icons()
-	playsound(get_turf(H), 'sound/effects/meow1.ogg', 50, 1, -1)
-
-/proc/purrbation_remove(mob/living/carbon/human/H)
-	if(!ishuman(H))
-		return
-	if(!ON_PURRBATION(H))
-		return
-	to_chat(H, "You are no longer a cat.")
-	H.dna.features["tail_human"] = "None"
-	H.dna.features["ears"] = "None"
-	H.regenerate_icons()
-
-#undef ON_PURRBATION
-
 /client/proc/modify_goals()
 	set category = "Debug"
 	set name = "Modify goals"
@@ -1177,8 +1145,8 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 /datum/admins/proc/modify_goals()
 	var/dat = ""
 	for(var/datum/station_goal/S in SSticker.mode.station_goals)
-		dat += "[S.name] - <a href='?src=\ref[S];[HrefToken()];announce=1'>Announce</a> | <a href='?src=\ref[S];[HrefToken()];remove=1'>Remove</a><br>"
-	dat += "<br><a href='?src=\ref[src];[HrefToken()];add_station_goal=1'>Add New Goal</a>"
+		dat += "[S.name] - <a href='?src=[REF(S)];[HrefToken()];announce=1'>Announce</a> | <a href='?src=[REF(S)];[HrefToken()];remove=1'>Remove</a><br>"
+	dat += "<br><a href='?src=[REF(src)];[HrefToken()];add_station_goal=1'>Add New Goal</a>"
 	usr << browse(dat, "window=goals;size=400x400")
 
 
@@ -1194,6 +1162,58 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 		message_admins("WARNING: The server will not show up on the hub because byond is detecting that a filewall is blocking incoming connections.")
 
 	SSblackbox.add_details("admin_toggle","Toggled Hub Visibility|[GLOB.hub_visibility]") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+
+/client/proc/reset_atmos()
+	set name = "Clean Air"
+	set category = "Special Verbs"
+	set desc = "Cleans the air in a radius of harmful gasses like plasma and n2o"
+	var/size = input("How big?", "Input") in list(5, 10, 20, "Cancel")
+	if(!check_rights(R_ADMIN))
+		return
+	if(size == "Cancel")
+		return 0
+	for(var/turf/open/floor/T in range(size))
+		if(T.air)
+			var/datum/gas_mixture/A = T.air
+			T.overlays.Cut()
+			if(A)
+				A.assert_gases(arglist(GLOB.hardcoded_gases))
+				A.gases["o2"][MOLES] = MOLES_O2STANDARD
+				A.gases["n2"][MOLES] = MOLES_N2STANDARD
+				A.gases["co2"][MOLES] = 0
+				A.gases["plasma"][MOLES] = 0
+				A.temperature = T20C
+	message_admins("[key_name(src)] cleaned air within [size] tiles.")
+	log_game("[key_name(src)] cleaned air within [size] tiles.")
+
+
+/client/proc/fill_breach()
+	set name = "Fill Hull Breaches"
+	set category = "Special Verbs"
+	set desc = "Spawns plating over space breaches"
+	var/size = input("How big?", "Input") in list(5, 10, "Cancel")
+	if(!check_rights(R_ADMIN))
+		return
+	if(size == "Cancel")
+		return 0
+	for(var/turf/open/space/T in range(size))
+		T.ChangeTurf(/turf/open/floor/plating)
+	spawn(1)
+	for(var/turf/open/floor/T in range(size))
+		if(T.air)
+			var/datum/gas_mixture/A = T.air
+			T.overlays.Cut()
+			if(A)
+				A.assert_gases(arglist(GLOB.hardcoded_gases))
+				A.gases["o2"][MOLES] = MOLES_O2STANDARD
+				A.gases["n2"][MOLES] = MOLES_N2STANDARD
+				A.gases["co2"][MOLES] = 0
+				A.gases["plasma"][MOLES] = 0
+				A.temperature = T20C
+	message_admins("[key_name(src)] filled the hull breaches in [size] tiles.")
+	log_game("[key_name(src)] filled the hull breaches in [size] tiles.")
+
 
 /client/proc/smite(mob/living/carbon/human/target as mob)
 	set name = "Smite"
@@ -1216,7 +1236,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			target.electrocution_animation(40)
 			to_chat(target, "<span class='userdanger'>The gods have punished you for your sins!</span>")
 		if(ADMIN_PUNISHMENT_BRAINDAMAGE)
-			target.adjustBrainLoss(75)
+			target.adjustBrainLoss(199, 199)
 		if(ADMIN_PUNISHMENT_GIB)
 			target.gib(FALSE)
 		if(ADMIN_PUNISHMENT_BSA)
@@ -1226,6 +1246,37 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	message_admins(msg)
 	admin_ticket_log(target, msg)
 	log_admin("[key_name(usr)] punished [key_name(target)] with [punishment].")
+
+
+/client/proc/bless(mob/living/carbon/human/target as mob)
+	set name = "Bless"
+	set category = "Fun"
+	if(!holder)
+		return
+
+	var/list/blessing_list = list(ADMIN_BLESSING_HEAL, ADMIN_BLESSING_REGEN)
+
+	var/blessing = input("Choose a blessing", "DIVINE BLESSING") as null|anything in blessing_list
+
+	if(QDELETED(target) || !blessing)
+		return
+
+	switch(blessing)
+		if(ADMIN_BLESSING_HEAL)
+			target.adjustBruteLoss(-25)
+			target.adjustFireLoss(-25)
+			target.adjustToxLoss(-25)
+			target.adjustOxyLoss(-25)
+			target.adjustBrainLoss(-50)
+		if(ADMIN_BLESSING_REGEN)
+			target.reagents.add_reagent("salglu_solution", 30)
+			target.reagents.add_reagent("salbutamol", 20)
+			target.reagents.add_reagent("spaceacillin", 20)
+
+	var/msg = "[key_name_admin(usr)] blessed [key_name_admin(target)] with [blessing]."
+	message_admins(msg)
+	admin_ticket_log(target, msg)
+	log_admin("[key_name(usr)] blessed [key_name(target)] with [blessing].")
 
 
 /client/proc/trigger_centcom_recall()
@@ -1250,7 +1301,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	var/list/msg = list()
 	msg += "<html><head><title>Playtime Report</title></head><body>Playtime:<BR><UL>"
 	for(var/client/C in GLOB.clients)
-		msg += "<LI> - [key_name_admin(C)]: <A href='?_src_=holder;[HrefToken()];getplaytimewindow=\ref[C.mob]'>" + C.get_exp_living() + "</a></LI>"
+		msg += "<LI> - [key_name_admin(C)]: <A href='?_src_=holder;[HrefToken()];getplaytimewindow=[REF(C.mob)]'>" + C.get_exp_living() + "</a></LI>"
 	msg += "</UL></BODY></HTML>"
 	src << browse(msg.Join(), "window=Player_playtime_check")
 
@@ -1264,7 +1315,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	var/list/body = list()
 	body += "<html><head><title>Playtime for [C.key]</title></head><BODY><BR>Playtime:"
 	body += C.get_exp_report()
-	body += "<A href='?_src_=holder;[HrefToken()];toggleexempt=\ref[C]'>Toggle Exempt status</a>"
+	body += "<A href='?_src_=holder;[HrefToken()];toggleexempt=[REF(C)]'>Toggle Exempt status</a>"
 	body += "</BODY></HTML>"
 	usr << browse(body.Join(), "window=playerplaytime[C.ckey];size=550x615")
 

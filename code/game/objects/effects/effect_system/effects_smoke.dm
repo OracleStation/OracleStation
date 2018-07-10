@@ -32,7 +32,7 @@
 /obj/effect/particle_effect/smoke/proc/kill_smoke()
 	STOP_PROCESSING(SSobj, src)
 	if(opaque)
-		opacity = 0
+		set_opacity(0)
 	animate(src, alpha = 0, time = 10)
 	QDEL_IN(src, 10)
 
@@ -280,7 +280,7 @@
 			var/mob/M = get_mob_by_key(carry.my_atom.fingerprintslast)
 			var/more = ""
 			if(M)
-				more = "(<A HREF='?_src_=holder;[HrefToken()];adminmoreinfo=\ref[M]'>?</a>) (<A HREF='?_src_=holder;[HrefToken()];adminplayerobservefollow=\ref[M]'>FLW</A>) "
+				more = "(<A HREF='?_src_=holder;[HrefToken()];adminmoreinfo=[REF(M)]'>?</a>) (<A HREF='?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(M)]'>FLW</A>) "
 			message_admins("Smoke: ([whereLink])[contained]. Key: [carry.my_atom.fingerprintslast][more].", 0, 1)
 			log_game("A chemical smoke reaction has taken place in ([where])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
 		else

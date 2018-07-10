@@ -6,7 +6,7 @@
 	throw_range = 5
 	layer = ABOVE_MOB_LAYER
 	zone = "head"
-	slot = "brain"
+	slot = ORGAN_SLOT_BRAIN
 	vital = TRUE
 	origin_tech = "biotech=5"
 	attack_verb = list("attacked", "slapped", "whacked")
@@ -14,16 +14,18 @@
 	var/damaged_brain = FALSE //whether the brain organ is damaged.
 	var/decoy_override = FALSE	//I apologize to the security players, and myself, who abused this, but this is going to go.
 
+	var/list/datum/brain_trauma/traumas = list()
+
 /obj/item/organ/brain/changeling_brain
 	vital = FALSE
 	decoy_override = TRUE
 
-/obj/item/organ/brain/Insert(mob/living/carbon/C, special = 0)
+/obj/item/organ/brain/Insert(mob/living/carbon/C, special = 0, no_id_transfer = FALSE)
 	..()
 
 	name = "brain"
 
-	if(C.mind && C.mind.changeling)	//congrats, you're trapped in a body you don't control
+	if(C.mind && C.mind.changeling && !no_id_transfer)	//congrats, you're trapped in a body you don't control
 		if(brainmob && !(C.stat == DEAD || (C.status_flags & FAKEDEATH)))
 			to_chat(brainmob, "<span class = danger>You can't feel your body! You're still just a brain!</span>")
 		loc = C
@@ -41,12 +43,22 @@
 
 		QDEL_NULL(brainmob)
 
+	for(var/X in traumas)
+		var/datum/brain_trauma/BT = X
+		BT.owner = owner
+		BT.on_gain()
+
 	//Update the body's icon so it doesnt appear debrained anymore
 	C.update_hair()
 
-/obj/item/organ/brain/Remove(mob/living/carbon/C, special = 0)
+/obj/item/organ/brain/Remove(mob/living/carbon/C, special = 0, no_id_transfer = FALSE)
 	..()
-	if(!gc_destroyed || (owner && !owner.gc_destroyed))
+	for(var/X in traumas)
+		var/datum/brain_trauma/BT = X
+		BT.on_lose(TRUE)
+		BT.owner = null
+
+	if((!gc_destroyed || (owner && !owner.gc_destroyed)) && !no_id_transfer)
 		transfer_identity(C)
 	C.update_hair()
 
@@ -70,7 +82,7 @@
 		C.dna.copy_dna(brainmob.stored_dna)
 		if(L.disabilities & NOCLONE)
 			brainmob.disabilities |= NOCLONE	//This is so you can't just decapitate a husked guy and clone them without needing to get a new body
-		var/obj/item/organ/zombie_infection/ZI = L.getorganslot("zombie_infection")
+		var/obj/item/organ/zombie_infection/ZI = L.getorganslot(ORGAN_SLOT_ZOMBIE)
 		if(ZI)
 			brainmob.set_species(ZI.old_species)	//For if the brain is cloned
 	if(L.mind && L.mind.current)
@@ -135,6 +147,30 @@
 	else
 		..()
 
+/obj/item/organ/brain/proc/get_brain_damage()
+	var/brain_damage_threshold = max_integrity * BRAIN_DAMAGE_INTEGRITY_MULTIPLIER
+	var/offset_integrity = obj_integrity - (max_integrity - brain_damage_threshold)
+	. = (1 - (offset_integrity / brain_damage_threshold)) * BRAIN_DAMAGE_DEATH
+
+/obj/item/organ/brain/proc/adjust_brain_damage(amount, maximum)
+	var/adjusted_amount
+	if(amount >= 0 && maximum)
+		var/brainloss = get_brain_damage()
+		var/new_brainloss = Clamp(brainloss + amount, 0, maximum)
+		if(brainloss > new_brainloss) //brainloss is over the cap already
+			return 0
+		adjusted_amount = new_brainloss - brainloss
+	else
+		adjusted_amount = amount
+
+	adjusted_amount *= BRAIN_DAMAGE_INTEGRITY_MULTIPLIER
+	if(adjusted_amount)
+		if(adjusted_amount >= 0.1)
+			take_damage(adjusted_amount)
+		else if(adjusted_amount <= -0.1)
+			obj_integrity = min(max_integrity, obj_integrity-adjusted_amount)
+	. = adjusted_amount
+
 /obj/item/organ/brain/Destroy() //copypasted from MMIs.
 	if(brainmob)
 		qdel(brainmob)
@@ -146,3 +182,151 @@
 	desc = "We barely understand the brains of terrestial animals. Who knows what we may find in the brain of such an advanced species?"
 	icon_state = "brain-x"
 	origin_tech = "biotech=6"
+
+
+////////////////////////////////////TRAUMAS////////////////////////////////////////
+
+/obj/item/organ/brain/proc/has_trauma_type(brain_trauma_type, consider_permanent = FALSE)
+	for(var/X in traumas)
+		var/datum/brain_trauma/BT = X
+		if(istype(BT, brain_trauma_type) && (consider_permanent || !BT.permanent))
+			return BT
+
+
+//Add a specific trauma
+/obj/item/organ/brain/proc/gain_trauma(datum/brain_trauma/trauma, permanent = FALSE, list/arguments)
+	var/trauma_type
+	if(ispath(trauma))
+		trauma_type = trauma
+		traumas += new trauma_type(arglist(list(src, permanent) + arguments))
+	else
+		traumas += trauma
+		trauma.permanent = permanent
+
+//Add a random trauma of a certain subtype
+/obj/item/organ/brain/proc/gain_trauma_type(brain_trauma_type = /datum/brain_trauma, permanent = FALSE)
+	var/list/datum/brain_trauma/possible_traumas = list()
+	for(var/T in subtypesof(brain_trauma_type))
+		var/datum/brain_trauma/BT = T
+		if(initial(BT.can_gain))
+			possible_traumas += BT
+
+	var/trauma_type = pick(possible_traumas)
+	traumas += new trauma_type(src, permanent)
+
+//Cure a random trauma of a certain subtype
+/obj/item/organ/brain/proc/cure_trauma_type(brain_trauma_type, cure_permanent = FALSE)
+	var/datum/brain_trauma/trauma = has_trauma_type(brain_trauma_type)
+	if(trauma && (cure_permanent || !trauma.permanent))
+		qdel(trauma)
+
+/obj/item/organ/brain/proc/cure_all_traumas(cure_permanent = FALSE)
+	for(var/X in traumas)
+		var/datum/brain_trauma/trauma = X
+		if(cure_permanent || !trauma.permanent)
+			qdel(trauma)
+
+
+/obj/item/organ/brain/cybernetic/vox
+	name = "vox brain"
+	slot = ORGAN_SLOT_BRAIN
+	desc = "A vox brain. A truly alien organ made up of both organic and synthetic parts. I bet you thought there was going to be a bird-brain joke here, didn't you?"
+	zone = "head"
+	icon_state = "brain-vox"
+	status = ORGAN_ROBOTIC
+	origin_tech = "biotech=3"
+
+/obj/item/organ/brain/cybernetic/vox/emp_act(severity)
+	to_chat(owner, "<span class='warning'>Your head hurts.</span>")
+	switch(severity)
+		if(1)
+			owner.adjustBrainLoss(rand(25, 50))
+		if(2)
+			owner.adjustBrainLoss(rand(0, 25))
+
+// IPC brain fuckery.
+/obj/item/organ/brain/mmi_holder
+	name = "brain"
+	slot = "brain"
+	zone = "chest"
+	status = ORGAN_ROBOTIC
+	remove_on_qdel = FALSE
+	var/obj/item/device/mmi/stored_mmi
+
+/obj/item/organ/brain/mmi_holder/Destroy()
+	QDEL_NULL(stored_mmi)
+	return ..()
+
+/obj/item/organ/brain/mmi_holder/Insert(mob/living/carbon/C, special = 0, no_id_transfer = FALSE)
+	owner = C
+	C.internal_organs |= src
+	C.internal_organs_slot[slot] = src
+	loc = null
+	//the above bits are copypaste from organ/proc/Insert, because I couldn't go through the parent here.
+
+	if(stored_mmi.brainmob)
+		if(C.key)
+			C.ghostize()
+		var/mob/living/brain/B = stored_mmi.brainmob
+		if(stored_mmi.brainmob.mind)
+			B.mind.transfer_to(C)
+		else
+			C.key = B.key
+
+	if(ishuman(C))
+		var/mob/living/carbon/human/H = C
+		if(H.dna && H.dna.species && (REVIVESBYHEALING in H.dna.species.species_traits))
+			if(H.health > 0 && !H.hellbound)
+				H.revive(0)
+
+	update_from_mmi()
+
+/obj/item/organ/brain/mmi_holder/Remove(var/mob/living/user, special = 0)
+	if(!special)
+		if(stored_mmi)
+			. = stored_mmi
+			if(owner.mind)
+				owner.mind.transfer_to(stored_mmi.brainmob)
+			stored_mmi.loc = owner.loc
+			if(stored_mmi.brainmob)
+				var/mob/living/brain/B = stored_mmi.brainmob
+				spawn(0)
+					if(B)
+						B.stat = 0
+			stored_mmi = null
+
+	..()
+	spawn(0)//so it can properly keep surgery going
+		qdel(src)
+
+/obj/item/organ/brain/mmi_holder/proc/update_from_mmi()
+	if(!stored_mmi)
+		return
+	name = stored_mmi.name
+	desc = stored_mmi.desc
+	icon = stored_mmi.icon
+	icon_state = stored_mmi.icon_state
+
+/obj/item/organ/brain/mmi_holder/posibrain/New(var/obj/item/device/mmi/MMI)
+	. = ..()
+	if(MMI)
+		stored_mmi = MMI
+		MMI.forceMove(src)
+	else
+		stored_mmi = new /obj/item/device/mmi/posibrain/ipc(src)
+	spawn(5)
+		if(owner && stored_mmi)
+			stored_mmi.name = "positronic brain ([owner.real_name])"
+			stored_mmi.brainmob.real_name = owner.real_name
+			stored_mmi.brainmob.name = stored_mmi.brainmob.real_name
+			stored_mmi.icon_state = "posibrain-occupied"
+			update_from_mmi()
+
+/obj/item/organ/brain/mmi_holder/emp_act(severity)
+	switch(severity)
+		if(1)
+			owner.adjustBrainLoss(75)
+			to_chat(owner, "<span class='warning'>Alert: Posibrain heavily damaged.</span>")
+		if(2)
+			owner.adjustBrainLoss(25)
+			to_chat(owner, "<span class='warning'>Alert: Posibrain damaged.</span>")

@@ -14,10 +14,17 @@
 
 		if(!client)
 			if(stat == CONSCIOUS)
-				if(!handle_combat())
-					if(prob(33) && canmove && isturf(loc) && !pulledby)
+				if(on_fire || buckled || restrained())
+					if(!resisting && prob(MONKEY_RESIST_PROB))
+						resisting = TRUE
+						walk_to(src,0)
+						resist()
+				else if(resisting)
+					resisting = FALSE
+				else if((mode == MONKEY_IDLE && !pickupTarget && !prob(MONKEY_SHENANIGAN_PROB)) || !handle_combat())
+					if(prob(25) && canmove && isturf(loc) && !pulledby)
 						step(src, pick(GLOB.cardinals))
-					if(prob(1))
+					else if(prob(1))
 						emote(pick("scratch","jump","roll","tail"))
 			else
 				walk_to(src,0)
@@ -166,4 +173,3 @@
 				I.take_damage(fire_stacks, BURN, "fire", 0)
 
 		bodytemperature += BODYTEMP_HEATING_MAX
-

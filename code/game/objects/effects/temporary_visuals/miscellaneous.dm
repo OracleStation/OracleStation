@@ -6,7 +6,9 @@
 	layer = BELOW_MOB_LAYER
 	var/splatter_type = "splatter"
 
-/obj/effect/temp_visual/dir_setting/bloodsplatter/Initialize(mapload, set_dir)
+/obj/effect/temp_visual/dir_setting/bloodsplatter/Initialize(mapload, set_dir, new_color)
+	if(new_color)
+		color = new_color
 	if(set_dir in GLOB.diagonals)
 		icon_state = "[splatter_type][pick(1, 2, 6)]"
 	else
@@ -245,6 +247,11 @@
 	icon_state = "emppulse"
 	duration = 8
 	randomdir = 0
+
+/obj/effect/temp_visual/bluespace_fissure
+	name = "bluespace fissure"
+	icon_state = "bluestream_fade"
+	duration = 9
 
 /obj/effect/temp_visual/gib_animation
 	icon = 'icons/mob/mob.dmi'

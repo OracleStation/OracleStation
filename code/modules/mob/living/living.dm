@@ -15,7 +15,7 @@
 		real_name = name
 	var/datum/atom_hud/data/human/medical/advanced/medhud = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	medhud.add_to_hud(src)
-	faction += "\ref[src]"
+	faction += "[REF(src)]"
 
 
 /mob/living/prepare_huds()
@@ -291,10 +291,21 @@
 
 /mob/proc/get_contents()
 
-/mob/living/proc/lay_down()
+/mob/living/proc/lay_down_helper()
 	set name = "Rest"
 	set category = "IC"
+	//BYOND cannot handle the incredible pressure of having to pass
+	//an argument to a proc that has been assigned as a verb
+	//it does not runtime, it does not do anything special
+	//it just doesn't do anything, hoping you don't notice and walk away.
+	//God, I hate this engine.
+	lay_down()
 
+/mob/living/proc/lay_down(force = FALSE)//force will override the cooldown
+	if(resting_cooldown > world.time && !force)
+		return
+
+	resting_cooldown = world.time + resting_cooldown_duration
 	resting = !resting
 	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"].</span>")
 	update_canmove()
@@ -355,7 +366,6 @@
 	if(stat == DEAD && can_be_revived()) //in some cases you can't revive (e.g. no brain)
 		GLOB.dead_mob_list -= src
 		GLOB.living_mob_list += src
-		suiciding = 0
 		stat = UNCONSCIOUS //the mob starts unconscious,
 		blind_eyes(1)
 		updatehealth() //then we check if the mob should wake up.
@@ -363,7 +373,7 @@
 		update_sight()
 		clear_alert("not_enough_oxy")
 		reload_fullscreen()
-		. = 1
+		. = TRUE
 		if(mind)
 			for(var/S in mind.spell_list)
 				var/obj/effect/proc_holder/spell/spell = S
@@ -807,8 +817,11 @@
 		to_chat(src, "<span class='warning'>You don't have the dexterity to do this!</span>")
 	return
 /mob/living/proc/can_use_guns(obj/item/G)
-	if (G.trigger_guard != TRIGGER_GUARD_ALLOW_ALL && !IsAdvancedToolUser())
+	if(G.trigger_guard != TRIGGER_GUARD_ALLOW_ALL && !IsAdvancedToolUser())
 		to_chat(src, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		return FALSE
+	if(disabilities & PACIFISM)
+		to_chat(src, "<span class='notice'>You don't want to risk harming anyone!</span>")
 		return FALSE
 	return TRUE
 

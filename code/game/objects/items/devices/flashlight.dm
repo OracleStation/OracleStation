@@ -38,17 +38,11 @@
 		A.UpdateButtonIcon()
 	return 1
 
-/obj/item/device/flashlight/suicide_act(mob/living/carbon/human/user)
-	user.visible_message("<span class='suicide'>[user] is putting [src] close to [user.p_their()] eyes and turning it on! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return (FIRELOSS)
-
-
-
 /obj/item/device/flashlight/attack(mob/living/carbon/M, mob/living/carbon/human/user)
 	add_fingerprint(user)
 	if(istype(M) && on && user.zone_selected in list("eyes", "mouth"))
 
-		if((user.disabilities & CLUMSY || user.getBrainLoss() >= 60) && prob(50))	//too dumb to use flashlight properly
+		if((user.disabilities & (CLUMSY | DUMB)) && prob(50))	//too dumb to use flashlight properly
 			return ..()	//just hit them in the head
 
 		if(!user.IsAdvancedToolUser())
@@ -69,7 +63,7 @@
 					to_chat(user, "<span class='notice'>You're going to need to remove that [(M.head && M.head.flags_cover & HEADCOVERSEYES) ? "helmet" : (M.wear_mask && M.wear_mask.flags_cover & MASKCOVERSEYES) ? "mask": "glasses"] first.</span>")
 					return
 
-				var/obj/item/organ/eyes/E = M.getorganslot("eye_sight")
+				var/obj/item/organ/eyes/E = M.getorganslot(ORGAN_SLOT_EYES)
 				if(!E)
 					to_chat(user, "<span class='danger'>[M] doesn't have any eyes!</span>")
 					return

@@ -3,11 +3,11 @@
 	amount = dna.species.spec_stun(src,amount)
 	return ..()
 
-/mob/living/carbon/human/Knockdown(amount, updating = 1, ignore_canstun = 0, stun = TRUE)
+/mob/living/carbon/human/Knockdown(amount, updating = 1, ignore_canknockdown = 0, stun = TRUE)
 	amount = dna.species.spec_stun(src,amount)
 	return ..()
 
-/mob/living/carbon/human/Unconscious(amount, updating = 1, ignore_canstun = 0, stun = TRUE)
+/mob/living/carbon/human/Unconscious(amount, updating = 1, ignore_canunconscious = 0, stun = TRUE)
 	amount = dna.species.spec_stun(src,amount)
 	return ..()
 
@@ -17,7 +17,7 @@
 		update_hair()
 
 /mob/living/carbon/human/become_husk()
-	if(istype(dna.species, /datum/species/skeleton)) //skeletons shouldn't be husks.
+	if(NOHUSK in dna.species.species_traits)
 		cure_husk()
 		return
 	. = ..()

@@ -137,7 +137,8 @@ Turf and target are separate in case you want to teleport some distance from a t
 				return
 			if(destination.y>world.maxy || destination.y<1)
 				return
-	else	return
+	else
+		return
 
 	return destination
 
@@ -236,7 +237,7 @@ Turf and target are separate in case you want to teleport some distance from a t
 			continue
 		if(R.stat == DEAD)
 			continue
-		if(R.emagged || R.scrambledcodes || R.syndicate)
+		if(R.emagged || R.scrambledcodes)
 			continue
 		. += R
 
@@ -1473,3 +1474,17 @@ GLOBAL_PROTECT(valid_HTTPSGet)
 			break
 	if(!.)
 		to_chat(user, "<span class='warning'>No mob located in [A].</span>")
+
+// \ref behaviour got changed in 512 so this is necesary to replicate old behaviour.
+// If it ever becomes necesary to get a more performant REF(), this lies here in wait
+// #define REF(thing) (thing && istype(thing, /datum) && thing:use_tag && thing:tag ? "[thing:tag]" : "\ref[thing]")
+/proc/REF(input)
+	if(istype(input, /datum))
+		var/datum/thing = input
+		if(thing.use_tag)
+			if(!thing.tag)
+				WARNING("A ref was requested of an object with use_tag set but no tag: [thing]")
+				thing.use_tag = FALSE
+			else
+				return "\[[url_encode(thing.tag)]\]"
+	return "\ref[input]"

@@ -94,7 +94,8 @@
 /obj/machinery/power/port_gen/pacman/examine(mob/user)
 	..()
 	to_chat(user, "<span class='notice'>The generator has [sheets] units of [sheet_name] fuel left, producing [power_gen] per cycle.</span>")
-	if(crit_fail) to_chat(user, "<span class='danger'>The generator seems to have broken down.</span>")
+	if(crit_fail)
+		to_chat(user, "<span class='danger'>The generator seems to have broken down.</span>")
 
 /obj/machinery/power/port_gen/pacman/HasFuel()
 	if(sheets >= 1 / (time_per_sheet / power_output) - sheet_left)
@@ -103,13 +104,8 @@
 
 /obj/machinery/power/port_gen/pacman/DropFuel()
 	if(sheets)
-		var/fail_safe = FALSE
-		while(sheets > 0 && fail_safe < 100)
-			fail_safe += 1
-			var/obj/item/stack/sheet/S = new sheet_path(loc)
-			var/amount = min(sheets, S.max_amount)
-			S.amount = amount
-			sheets -= amount
+		new sheet_path(drop_location(), sheets)
+		sheets = 0
 
 /obj/machinery/power/port_gen/pacman/UseFuel()
 	var/needed_sheets = 1 / (time_per_sheet * consumption / power_output)
@@ -223,16 +219,16 @@
 
 	var/dat = text("<b>[name]</b><br>")
 	if (active)
-		dat += text("Generator: <A href='?src=\ref[src];action=disable'>On</A><br>")
+		dat += text("Generator: <A href='?src=[REF(src)];action=disable'>On</A><br>")
 	else
-		dat += text("Generator: <A href='?src=\ref[src];action=enable'>Off</A><br>")
-	dat += text("[capitalize(sheet_name)]: [sheets] - <A href='?src=\ref[src];action=eject'>Eject</A><br>")
+		dat += text("Generator: <A href='?src=[REF(src)];action=enable'>Off</A><br>")
+	dat += text("[capitalize(sheet_name)]: [sheets] - <A href='?src=[REF(src)];action=eject'>Eject</A><br>")
 	var/stack_percent = round(sheet_left * 100, 1)
 	dat += text("Current stack: [stack_percent]% <br>")
-	dat += text("Power output: <A href='?src=\ref[src];action=lower_power'>-</A> [power_gen * power_output] <A href='?src=\ref[src];action=higher_power'>+</A><br>")
+	dat += text("Power output: <A href='?src=[REF(src)];action=lower_power'>-</A> [power_gen * power_output] <A href='?src=[REF(src)];action=higher_power'>+</A><br>")
 	dat += text("Power current: [(powernet == null ? "Unconnected" : "[DisplayPower(avail())]")]<br>")
 	dat += text("Heat: [current_heat]<br>")
-	dat += "<br><A href='?src=\ref[src];action=close'>Close</A>"
+	dat += "<br><A href='?src=[REF(src)];action=close'>Close</A>"
 	user << browse(dat, "window=port_gen")
 	onclose(user, "port_gen")
 

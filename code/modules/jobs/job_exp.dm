@@ -112,11 +112,15 @@ GLOBAL_PROTECT(exp_to_update)
 	return return_text
 
 
-/client/proc/get_exp_living()
-	if(!prefs.exp)
+/client/proc/get_exp_living(as_text = TRUE)
+	if(!prefs.exp && as_text)
 		return "No data"
 	var/exp_living = text2num(prefs.exp[EXP_TYPE_LIVING])
-	return get_exp_format(exp_living)
+	if(!exp_living)
+		exp_living = 0
+	if(as_text)
+		return get_exp_format(exp_living)
+	return exp_living
 
 /proc/get_exp_format(expnum)
 	if(expnum > 60)

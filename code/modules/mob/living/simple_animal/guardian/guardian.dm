@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	icon_state = "magicOrange"
 	icon_living = "magicOrange"
 	icon_dead = "magicOrange"
-	speed = 0
+	speed = 1
 	a_intent = INTENT_HARM
 	stop_automated_movement = 1
 	movement_type = FLYING // Immunity to chasms and landmines, etc.
@@ -178,9 +178,6 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 				new /obj/effect/temp_visual/guardian/phase/out(loc)
 				forceMove(summoner.loc)
 				new /obj/effect/temp_visual/guardian/phase(loc)
-
-/mob/living/simple_animal/hostile/guardian/canSuicide()
-	return 0
 
 /mob/living/simple_animal/hostile/guardian/AttackingTarget()
 	if(loc == summoner)
@@ -365,6 +362,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 			var/link = FOLLOW_LINK(M, src)
 			to_chat(M, "[link] [my_message]")
 
+		log_message(input, INDIVIDUAL_SAY_LOG)
 		log_talk(src,"GUARDIAN:[key_name(src)]: [input]",LOGSAY)
 
 /mob/living/proc/guardian_comm()

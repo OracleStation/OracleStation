@@ -3,6 +3,7 @@
 	config_tag = "traitorchan"
 	traitors_possible = 3 //hard limit on traitors if scaling is turned off
 	restricted_jobs = list("AI", "Cyborg")
+	restricted_species = list("ipc", "synth")
 	required_players = 25
 	required_enemies = 1	// how many of each type are required
 	recommended_enemies = 3
@@ -42,7 +43,8 @@
 
 	if(possible_changelings.len>0)
 		for(var/j = 0, j < num_changelings, j++)
-			if(!possible_changelings.len) break
+			if(!possible_changelings.len)
+				break
 			var/datum/mind/changeling = pick(possible_changelings)
 			antag_candidates -= changeling
 			possible_changelings -= changeling
@@ -73,6 +75,6 @@
 		if(ROLE_CHANGELING in character.client.prefs.be_special)
 			if(!jobban_isbanned(character, ROLE_CHANGELING) && !jobban_isbanned(character, "Syndicate"))
 				if(age_check(character.client))
-					if(!(character.job in restricted_jobs))
+					if(!(character.job in restricted_jobs) && !(character.dna.species.id in restricted_species))
 						character.mind.make_Changling()
 	..()

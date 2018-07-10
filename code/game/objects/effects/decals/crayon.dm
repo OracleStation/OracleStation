@@ -8,6 +8,9 @@
 
 /obj/effect/decal/cleanable/crayon/Initialize(mapload, main = "#FFFFFF", var/type = "rune1", var/e_name = "rune", var/rotation = 0, var/alt_icon = null)
 	..()
+	//add a hidden fingerprint - admin-only
+	if(usr)
+		add_hiddenprint(usr)
 
 	name = e_name
 	desc = "A [name] vandalizing the station."

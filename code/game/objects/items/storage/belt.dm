@@ -407,25 +407,6 @@
 		/obj/item/ammo_casing/shotgun
 		)
 
-/obj/item/storage/belt/holster
-	name = "shoulder holster"
-	desc = "A holster to carry a handgun and ammo. WARNING: Badasses only."
-	icon_state = "holster"
-	item_state = "holster"
-	storage_slots = 3
-	max_w_class = WEIGHT_CLASS_NORMAL
-	can_hold = list(
-		/obj/item/gun/ballistic/automatic/pistol,
-		/obj/item/gun/ballistic/revolver,
-		/obj/item/ammo_box,
-		)
-	alternate_worn_layer = UNDER_SUIT_LAYER
-
-/obj/item/storage/belt/holster/full/PopulateContents()
-	new /obj/item/gun/ballistic/revolver/detective(src)
-	new /obj/item/ammo_box/c38(src)
-	new /obj/item/ammo_box/c38(src)
-
 /obj/item/storage/belt/fannypack
 	name = "fannypack"
 	desc = "A dorky fannypack for keeping small items in."

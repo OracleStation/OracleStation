@@ -114,27 +114,15 @@ CONFIG_DEF(flag/show_game_type_odds)	//if set this allows players to see the odd
 
 CONFIG_DEF(flag/join_with_mutant_race)	//players can choose their mutant race before joining the game
 
-CONFIG_DEF(keyed_flag_list/roundstart_races)	//races you can play as from the get go. If left undefined the game's roundstart var for species is used
+CONFIG_DEF(keyed_number_list/roundstart_races)	//races you can play as from the get go. If left undefined the game's roundstart var for species is used
 	var/first_edit = TRUE
 
-/datum/config_entry/keyed_flag_list/roundstart_races/New()
+/datum/config_entry/keyed_number_list/roundstart_races/New()
 	for(var/I in subtypesof(/datum/species))
 		var/datum/species/S = I
 		if(initial(S.roundstart))
-			value[initial(S.id)] = TRUE
+			value[initial(S.id)] = S.required_playtime
 	..()
-
-/datum/config_entry/keyed_flag_list/roundstart_races/ValidateAndSet(str_val)
-	var/list/old_val
-	if(first_edit)
-		old_val = value
-		old_val = old_val.Copy()
-	. = ..()
-	if(first_edit)
-		if(!.)
-			value = old_val
-		else
-			first_edit = FALSE
 
 CONFIG_DEF(flag/join_with_mutant_humans)	//players can pick mutant bodyparts for humans before joining the game
 
@@ -230,6 +218,9 @@ CONFIG_DEF(keyed_flag_list/random_laws)
 CONFIG_DEF(keyed_number_list/law_weight)
 	splitter = ","
 
+CONFIG_DEF(keyed_number_list/antag_time_requirements)
+	splitter = ","
+
 CONFIG_DEF(number/assistant_cap)
 	value = -1
 	min_val = -1
@@ -277,3 +268,13 @@ CONFIG_DEF(number/bombcap)
 CONFIG_DEF(flag/shutdown_for_update)			// Shuts down the world instead of reboot
 CONFIG_DEF(string/update_version_string_uri)	// Location of the hash to compare against COMMIT_HASH
 	value = "http://s3.us-east-1.oraclestation.com/master/latest/COMMIT_HASH"
+
+//Mob spam prevention
+CONFIG_DEF(number/max_cube_monkeys)
+	value = 100
+CONFIG_DEF(number/max_chickens)
+	value = 100
+CONFIG_DEF(number/max_slimes)
+	value = 100
+
+CONFIG_DEF(flag/allow_crew_objectives)

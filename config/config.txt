@@ -22,6 +22,12 @@ ADMIN_LEGACY_SYSTEM
 ## Comment this out if you want to use the SQL based banning system. The legacy systems use the files in the data folder. You need to set up your database to use the SQL based system.
 BAN_LEGACY_SYSTEM
 
+## Comment this out if you want to use the SQL based mentor system, the legacy system uses mentors.txt You need to set up your database to use the SQL based system.
+MENTOR_LEGACY_SYSTEM
+
+#Mentors only see ckeys by default. Uncomment to have them only see mob names.
+#MENTORS_MOBNAME_ONLY
+
 ## Uncomment this entry to have certain jobs require your account to be at least a certain number of days old to select. You can configure the exact age requirement for different jobs by editing
 ## the minimal_player_age variable in the files in folder /code/game/jobs/job/.. for the job you want to edit. Set minimal_player_age to 0 to disable age requirement for that job.
 ## REQUIRES the database set up to work. Keep it hashed if you don't have a database set up.
@@ -44,7 +50,8 @@ BAN_LEGACY_SYSTEM
 #USE_EXP_RESTRICTIONS_OTHER
 ## Allows admins to bypass job playtime requirements.
 #USE_EXP_RESTRICTIONS_ADMIN_BYPASS
-
+## Locks certain species away from people who don't have enough XP. Define those in game_options.txt
+#USE_EXP_RESTRICTIONS_SPECIES
 
 ## log OOC channel
 LOG_OOC
@@ -183,6 +190,9 @@ CHECK_RANDOMIZER
 
 ## Wiki address
 # WIKIURL http://www.tgstation13.org/wiki
+
+## Wikibook address (for populating manuals)
+WIKIBOOKURL http://10.0.0.2:8080/wiki/
 
 ## Rules address
 # RULESURL http://www.tgstation13.org/wiki/Rules
@@ -332,7 +342,9 @@ AUTOADMIN_RANK Game Master
 ## This allows you to configure the minimum required client version, as well as a warning version, and message for both.
 ## These trigger for any version below (non-inclusive) the given version, so 510 triggers on 509 or lower.
 ## These messages will be followed by one stating the clients current version and the required version for clarity.
+## If CLIENT_WARN_POPUP is uncommented a popup window with the message will be displayed instead
 #CLIENT_WARN_VERSION 511
+#CLIENT_WARN_POPUP
 #CLIENT_WARN_MESSAGE Byond released 511 as the stable release. You can set the framerate your client runs at, which makes the game feel very different and cool. Shortly after its release we will end up using 511 client features and you will be forced to update.
 CLIENT_ERROR_VERSION 511
 CLIENT_ERROR_MESSAGE Your version of byond is not supported. Please upgrade.
@@ -364,4 +376,3 @@ DEBUG_ADMIN_HREFS
 
 ## Command to invoke on the local machine to process external commands
 #SERVICE_COMMAND python bot.py
-

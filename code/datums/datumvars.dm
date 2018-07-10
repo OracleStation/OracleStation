@@ -25,9 +25,10 @@
 /datum/proc/vv_get_dropdown()
 	. = list()
 	. += "---"
-	.["Call Proc"] = "?_src_=vars;[HrefToken()];proc_call=\ref[src]"
-	.["Mark Object"] = "?_src_=vars;[HrefToken()];mark_object=\ref[src]"
-	.["Delete"] = "?_src_=vars;[HrefToken()];delete=\ref[src]"
+	.["Call Proc"] = "?_src_=vars;[HrefToken()];proc_call=[REF(src)]"
+	.["Mark Object"] = "?_src_=vars;[HrefToken()];mark_object=[REF(src)]"
+	.["Delete"] = "?_src_=vars;[HrefToken()];delete=[REF(src)]"
+	.["Show VV To Player"] = "?_src_=vars;[HrefToken(TRUE)];expose=[REF(src)]"
 
 
 /datum/proc/on_reagent_change()
@@ -40,7 +41,7 @@
 	//set src in world
 	var/static/cookieoffset = rand(1, 9999) //to force cookies to reset after the round.
 
-	if(!usr.client || !usr.client.holder)
+	if(!usr.client || !usr.client.holder) //The usr vs src abuse in this proc is intentional and must not be changed
 		to_chat(usr, "<span class='danger'>You need to be an administrator to access this.</span>")
 		return
 
@@ -52,7 +53,7 @@
 		return
 
 	var/title = ""
-	var/refid = "\ref[D]"
+	var/refid = "[REF(D)]"
 	var/icon/sprite
 	var/hash
 
@@ -68,9 +69,9 @@
 			sprite = new /icon(AT.icon, AT.icon_state)
 			hash = md5(AT.icon)
 			hash = md5(hash + AT.icon_state)
-			usr << browse_rsc(sprite, "vv[hash].png")
+			src << browse_rsc(sprite, "vv[hash].png")
 
-	title = "[D] (\ref[D]) = [type]"
+	title = "[D] ([REF(D)]) = [type]"
 
 	var/sprite_text
 	if(sprite)
@@ -113,7 +114,7 @@
 			formatted_type = "Type too long" //No suitable splitpoint (/) found.
 
 	var/marked
-	if(holder.marked_datum && holder.marked_datum == D)
+	if(holder && holder.marked_datum && holder.marked_datum == D)
 		marked = "<br><font size='1' color='red'><b>Marked Object</b></font>"
 	var/varedited_line = ""
 	if(!islist && D.var_edited)
@@ -127,7 +128,8 @@
 			"Remove Nulls" = "?_src_=vars;[HrefToken()];listnulls=[refid]",
 			"Remove Dupes" = "?_src_=vars;[HrefToken()];listdupes=[refid]",
 			"Set len" = "?_src_=vars;[HrefToken()];listlen=[refid]",
-			"Shuffle" = "?_src_=vars;[HrefToken()];listshuffle=[refid]"
+			"Shuffle" = "?_src_=vars;[HrefToken()];listshuffle=[refid]",
+			"Show VV To Player" = "?_src_=vars;expose=[refid]"
 			)
 	else
 		dropdownoptions = D.vv_get_dropdown()
@@ -380,7 +382,7 @@
 </html>
 "}
 
-	usr << browse(html, "window=variables[refid];size=475x650")
+	src << browse(html, "window=variables[refid];size=475x650")
 
 
 #define VV_HTML_ENCODE(thing) ( sanitize ? html_encode(thing) : thing )
@@ -393,9 +395,9 @@
 				name = DA[name] //name is really the index until this line
 			else
 				value = DA[name]
-			header = "<li style='backgroundColor:white'>(<a href='?_src_=vars;[HrefToken()];listedit=\ref[DA];index=[index]'>E</a>) (<a href='?_src_=vars;[HrefToken()];listchange=\ref[DA];index=[index]'>C</a>) (<a href='?_src_=vars;[HrefToken()];listremove=\ref[DA];index=[index]'>-</a>) "
+			header = "<li style='backgroundColor:white'>(<a href='?_src_=vars;[HrefToken()];listedit=[REF(DA)];index=[index]'>E</a>) (<a href='?_src_=vars;[HrefToken()];listchange=[REF(DA)];index=[index]'>C</a>) (<a href='?_src_=vars;[HrefToken()];listremove=[REF(DA)];index=[index]'>-</a>) "
 		else
-			header = "<li style='backgroundColor:white'>(<a href='?_src_=vars;[HrefToken()];datumedit=\ref[DA];varnameedit=[name]'>E</a>) (<a href='?_src_=vars;[HrefToken()];datumchange=\ref[DA];varnamechange=[name]'>C</a>) (<a href='?_src_=vars;[HrefToken()];datummass=\ref[DA];varnamemass=[name]'>M</a>) "
+			header = "<li style='backgroundColor:white'>(<a href='?_src_=vars;[HrefToken()];datumedit=[REF(DA)];varnameedit=[name]'>E</a>) (<a href='?_src_=vars;[HrefToken()];datumchange=[REF(DA)];varnamechange=[name]'>C</a>) (<a href='?_src_=vars;[HrefToken()];datummass=[REF(DA)];varnamemass=[name]'>M</a>) "
 	else
 		header = "<li>"
 
@@ -410,7 +412,7 @@
 		#ifdef VARSICON
 		var/icon/I = new/icon(value)
 		var/rnd = rand(1,10000)
-		var/rname = "tmp\ref[I][rnd].png"
+		var/rname = "tmp[REF(I)][rnd].png"
 		usr << browse_rsc(I, rname)
 		item = "[VV_HTML_ENCODE(name)] = (<span class='value'>[value]</span>) <img class=icon src=\"[rname]\">"
 		#else
@@ -422,8 +424,8 @@
 		var/rnd = rand(1, 10000)
 		var/image/I = value
 
-		src << browse_rsc(I.icon, "tmp\ref[value][rnd].png")
-		html += "[name] = <img src=\"tmp\ref[value][rnd].png\">"
+		src << browse_rsc(I.icon, "tmp[REF(value)][rnd].png")
+ +		html += "[name] = <img src=\"tmp[REF(value)][rnd].png\">"
 		#else
 		html += "[name] = /image (<span class='value'>[value]</span>)"
 		#endif
@@ -433,14 +435,14 @@
 
 	//else if (istype(value, /client))
 	//	var/client/C = value
-	//	item = "<a href='?_src_=vars;Vars=\ref[value]'>[VV_HTML_ENCODE(name)] \ref[value]</a> = [C] [C.type]"
+	//	item = "<a href='?_src_=vars;Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] [REF(value)]</a> = [C] [C.type]"
 
 	else if (istype(value, /datum))
 		var/datum/D = value
 		if ("[D]" != "[D.type]") //if the thing as a name var, lets use it.
-			item = "<a href='?_src_=vars;[HrefToken()];Vars=\ref[value]'>[VV_HTML_ENCODE(name)] \ref[value]</a> = [D] [D.type]"
+			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] [REF(value)]</a> = [D] [D.type]"
 		else
-			item = "<a href='?_src_=vars;[HrefToken()];Vars=\ref[value]'>[VV_HTML_ENCODE(name)] \ref[value]</a> = [D.type]"
+			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] [REF(value)]</a> = [D.type]"
 
 	else if (islist(value))
 		var/list/L = value
@@ -458,9 +460,9 @@
 
 				items += debug_variable(key, val, level + 1, sanitize = sanitize)
 
-			item = "<a href='?_src_=vars;[HrefToken()];Vars=\ref[value]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a><ul>[items.Join()]</ul>"
+			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a><ul>[items.Join()]</ul>"
 		else
-			item = "<a href='?_src_=vars;[HrefToken()];Vars=\ref[value]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a>"
+			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a>"
 
 	else
 		item = "[VV_HTML_ENCODE(name)] = <span class='value'>[VV_HTML_ENCODE(value)]</span>"
@@ -545,32 +547,50 @@
 			to_chat(usr, "This can only be done to instances of type /mob")
 			return
 		M.regenerate_icons()
+	else if(href_list["expose"])
+		if(!check_rights(R_ADMIN, FALSE))
+			return
+		var/thing = locate(href_list["expose"])
+		if (!thing)
+			return
+		var/value = vv_get_value(VV_CLIENT)
+		if (value["class"] != VV_CLIENT)
+			return
+		var/client/C = value["value"]
+		if (!C)
+			return
+		var/prompt = alert("Do you want to grant [C] access to view this VV window? (they will not be able to edit or change anything nor open nested vv windows unless they themselves are an admin)", "Confirm", "Yes", "No")
+		if (prompt != "Yes" || !usr.client)
+			return
+		message_admins("[key_name_admin(usr)] Showed [key_name_admin(C)] a <a href='?_src_=vars;[HrefToken(TRUE)];datumrefresh=[REF(thing)]'>VV window</a>")
+		log_admin("Admin [key_name(usr)] Showed [key_name(C)] a VV window of a [thing]")
+		to_chat(C, "[usr.client.holder.fakekey ? "an Administrator" : "[usr.client.key]"] has granted you access to view a View Variables window")
+		C.debug_variables(thing)
+
+	//~CARN: for renaming mobs (updates their name, real_name, mind.name, their ID/PDA and datacore records).
+
+	else if(href_list["rename"])
+		if(!check_rights(R_ADMIN, FALSE))
+			return
+
+		var/mob/M = locate(href_list["rename"]) in GLOB.mob_list
+		if(!istype(M))
+			to_chat(usr, "This can only be used on instances of type /mob")
+			return
+
+		var/new_name = stripped_input(usr,"What would you like to name this mob?","Input a name",M.real_name,MAX_NAME_LEN)
+		if( !new_name || !M )
+			return
+
+		message_admins("Admin [key_name_admin(usr)] renamed [key_name_admin(M)] to [new_name].")
+		M.fully_replace_character_name(M.real_name,new_name)
+		href_list["datumrefresh"] = href_list["rename"]
 
 //Needs +VAREDIT past this point
 
 	else if(check_rights(R_VAREDIT))
 
-
-	//~CARN: for renaming mobs (updates their name, real_name, mind.name, their ID/PDA and datacore records).
-
-		if(href_list["rename"])
-			if(!check_rights(0))
-				return
-
-			var/mob/M = locate(href_list["rename"]) in GLOB.mob_list
-			if(!istype(M))
-				to_chat(usr, "This can only be used on instances of type /mob")
-				return
-
-			var/new_name = stripped_input(usr,"What would you like to name this mob?","Input a name",M.real_name,MAX_NAME_LEN)
-			if( !new_name || !M )
-				return
-
-			message_admins("Admin [key_name_admin(usr)] renamed [key_name_admin(M)] to [new_name].")
-			M.fully_replace_character_name(M.real_name,new_name)
-			href_list["datumrefresh"] = href_list["rename"]
-
-		else if(href_list["varnameedit"] && href_list["datumedit"])
+		if(href_list["varnameedit"] && href_list["datumedit"])
 			if(!check_rights(0))
 				return
 
@@ -929,6 +949,42 @@
 			manipulate_organs(C)
 			href_list["datumrefresh"] = href_list["editorgans"]
 
+		else if(href_list["givetrauma"])
+			if(!check_rights(0))
+				return
+
+			var/mob/living/carbon/C = locate(href_list["givetrauma"]) in GLOB.mob_list
+			if(!istype(C))
+				to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
+				return
+
+			var/list/traumas = subtypesof(/datum/brain_trauma)
+			var/result = input(usr, "Choose the brain trauma to apply","Traumatize") as null|anything in traumas
+			var/permanent = alert("Do you want to make the trauma unhealable?", "Permanently Traumatize", "Yes", "No")
+			if(!usr)
+				return
+			if(QDELETED(C))
+				to_chat(usr, "Mob doesn't exist anymore")
+				return
+
+			if(result)
+				C.gain_trauma(result, permanent)
+
+			href_list["datumrefresh"] = href_list["givetrauma"]
+
+		else if(href_list["curetraumas"])
+			if(!check_rights(0))
+				return
+
+			var/mob/living/carbon/C = locate(href_list["curetraumas"]) in GLOB.mob_list
+			if(!istype(C))
+				to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
+				return
+
+			C.cure_all_traumas(TRUE, TRUE)
+
+			href_list["datumrefresh"] = href_list["curetraumas"]
+
 		else if(href_list["hallucinate"])
 			if(!check_rights(0))
 				return
@@ -1109,38 +1165,6 @@
 						else
 							to_chat(usr, "Only humans can be augmented.")
 			admin_ticket_log("[key_name_admin(usr)] has modified the bodyparts of [C]")
-
-
-		else if(href_list["purrbation"])
-			if(!check_rights(R_SPAWN))
-				return
-
-			var/mob/living/carbon/human/H = locate(href_list["purrbation"]) in GLOB.mob_list
-			if(!istype(H))
-				to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
-				return
-			if(!ishumanbasic(H))
-				to_chat(usr, "This can only be done to the basic human species at the moment.")
-				return
-
-			if(!H)
-				to_chat(usr, "Mob doesn't exist anymore")
-				return
-
-			var/success = purrbation_toggle(H)
-			if(success)
-				to_chat(usr, "Put [H] on purrbation.")
-				log_admin("[key_name(usr)] has put [key_name(H)] on purrbation.")
-				var/msg = "<span class='notice'>[key_name_admin(usr)] has put [key_name(H)] on purrbation.</span>"
-				message_admins(msg)
-				admin_ticket_log(H, msg)
-
-			else
-				to_chat(usr, "Removed [H] from purrbation.")
-				log_admin("[key_name(usr)] has removed [key_name(H)] from purrbation.")
-				var/msg = "<span class='notice'>[key_name_admin(usr)] has removed [key_name(H)] from purrbation.</span>"
-				message_admins(msg)
-				admin_ticket_log(H, msg)
 
 		else if(href_list["adjustDamage"] && href_list["mobToDamage"])
 			if(!check_rights(0))

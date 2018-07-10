@@ -83,5 +83,8 @@
 		mybag = null
 		update_icon()
 
-/obj/vehicle/janicart/upgraded
+/obj/vehicle/janicart/upgraded/Initialize(mapload)
+	..()
 	floorbuffer = TRUE
+	flags_1 |= CLEAN_ON_MOVE_1
+	update_icon()

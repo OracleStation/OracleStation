@@ -23,7 +23,11 @@
 	storage_slots = 21
 	resistance_flags = 0
 	max_integrity = 300
-	block_open_while_equipped = TRUE
+	equipped_item_retrieval_delay = 30
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/back.dmi'
+		)
 
 /*
  * Backpack Types
@@ -46,15 +50,6 @@
 	var/alt_sound = 'sound/items/pshoom_2.ogg'
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0, fire = 60, acid = 50)
 
-
-/obj/item/storage/backpack/holding/suicide_act(mob/living/user)
-	user.visible_message("<span class='suicide'>[user] is jumping into [src]! It looks like [user.p_theyre()] trying to commit suicide.</span>")
-	user.drop_item()
-	user.Stun(100, ignore_canstun = TRUE)
-	sleep(20)
-	playsound(src, "rustle", 50, 1, -5)
-	qdel(user)
-	return
 
 /obj/item/storage/backpack/holding/dump_content_at(atom/dest_object, mob/user)
 	if(Adjacent(user))
@@ -102,11 +97,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	max_w_class = WEIGHT_CLASS_NORMAL
 	max_combined_w_class = 60
-	block_open_while_equipped = FALSE // Santa needs to be fast.
-
-/obj/item/storage/backpack/santabag/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] places [src] over their head and pulls it tight! It looks like they aren't in the Christmas spirit...</span>")
-	return (OXYLOSS)
+	equipped_item_retrieval_delay = 0 // Santa needs to be fast.
 
 /obj/item/storage/backpack/cultpack
 	name = "trophy rack"
@@ -199,9 +190,9 @@
 	desc = "A trendy looking satchel."
 	icon_state = "satchel-norm"
 	species_exception = list(/datum/species/angel) //satchels can be equipped since they are on the side, not back
-	block_open_while_equipped = FALSE
-	max_combined_w_class = 9
-	storage_slots = 9
+	equipped_item_retrieval_delay = 0
+	max_combined_w_class = 12
+	storage_slots = 12
 
 /obj/item/storage/backpack/satchel/leather
 	name = "leather satchel"
@@ -326,13 +317,76 @@
 			new R(src)
 		revealed = 1
 
+// ------------------
+// MESSENGER BAGS FROM BAYSTATION
+// ------------------
+
+/obj/item/storage/backpack/messenger
+	name = "messenger bag"
+	desc = "A sturdy backpack worn over one shoulder."
+	icon_state = "courierbag"
+	item_state = "courierbag"
+	equipped_item_retrieval_delay = 10
+	max_combined_w_class = 15
+	storage_slots = 15
+
+/obj/item/storage/backpack/messenger/chem
+	name = "chemistry messenger bag"
+	desc = "A serile backpack worn over one shoulder. This one is in Chemsitry colors."
+	icon_state = "courierbagchem"
+	item_state = "courierbagchem"
+
+/obj/item/storage/backpack/messenger/med
+	name = "medical messenger bag"
+	desc = "A sterile backpack worn over one shoulder used in medical departments."
+	icon_state = "courierbagmed"
+	item_state = "courierbagmed"
+
+/obj/item/storage/backpack/messenger/viro
+	name = "virology messenger bag"
+	desc = "A sterile backpack worn over one shoulder. This one is in Virology colors."
+	icon_state = "courierbagviro"
+	item_state = "courierbagviro"
+
+/obj/item/storage/backpack/messenger/tox
+	name = "science messenger bag"
+	desc = "A backpack worn over one shoulder. Useful for holding science materials."
+	icon_state = "courierbagtox"
+	item_state = "courierbagtox"
+
+/obj/item/storage/backpack/messenger/com
+	name = "captain's messenger bag"
+	desc = "A special backpack worn over one shoulder. This one is made specifically for officers."
+	icon_state = "courierbagcom"
+	item_state = "courierbagcom"
+
+/obj/item/storage/backpack/messenger/engi
+	name = "engineering messenger bag"
+	desc = "A strong backpack worn over one shoulder. This one is designed for Industrial work."
+	icon_state = "courierbagengi"
+	item_state = "courierbagengi"
+
+/obj/item/storage/backpack/messenger/hyd
+	name = "hydroponics messenger bag"
+	desc = "A backpack worn over one shoulder. This one is designed for plant-related work."
+	icon_state = "courierbaghyd"
+	item_state = "courierbaghyd"
+
+/obj/item/storage/backpack/messenger/sec
+	name = "security messenger bag"
+	desc = "A tactical backpack worn over one shoulder. This one is in Security colors."
+	icon_state = "courierbagsec"
+	item_state = "courierbagsec"
+
 /obj/item/storage/backpack/duffelbag
 	name = "duffel bag"
 	desc = "A large duffel bag for holding extra things."
 	icon_state = "duffel"
 	item_state = "duffel"
 	slowdown = 1
+	equipped_item_retrieval_delay = 50
 	max_combined_w_class = 30
+	storage_slots = 30
 
 /obj/item/storage/backpack/duffelbag/captain
 	name = "captain's duffel bag"
@@ -420,6 +474,7 @@
 	item_state = "duffel-syndie"
 	origin_tech = "syndicate=1"
 	silent = 1
+	equipped_item_retrieval_delay = 10 // Streamlined for tactical effeciency and user comfort.
 	slowdown = 0
 
 /obj/item/storage/backpack/duffelbag/syndie/hitman
@@ -428,9 +483,9 @@
 	item_state = "duffel-syndieammo"
 
 /obj/item/storage/backpack/duffelbag/syndie/hitman/PopulateContents()
-	new /obj/item/clothing/under/lawyer/blacksuit(src)
+	new /obj/item/clothing/under/iaa/blacksuit(src)
 	new /obj/item/clothing/accessory/waistcoat(src)
-	new /obj/item/clothing/suit/toggle/lawyer/black(src)
+	new /obj/item/clothing/suit/toggle/iaa/black(src)
 	new /obj/item/clothing/shoes/laceup(src)
 	new /obj/item/clothing/gloves/color/black(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
@@ -470,8 +525,8 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/ammo/shotgun/PopulateContents()
 	for(var/i in 1 to 6)
-		new /obj/item/ammo_box/magazine/m12g(src)
-	new /obj/item/ammo_box/magazine/m12g/buckshot(src)
+		new /obj/item/ammo_box/magazine/m12g/buckshot(src)
+	new /obj/item/ammo_box/magazine/m12g(src)
 	new /obj/item/ammo_box/magazine/m12g/slug(src)
 	new /obj/item/ammo_box/magazine/m12g/dragon(src)
 
@@ -543,7 +598,7 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/firestarter/PopulateContents()
 	new /obj/item/clothing/under/syndicate/soviet(src)
-	new /obj/item/watertank/operator(src)
+	new /obj/item/watertank/op(src)
 	new /obj/item/clothing/suit/space/hardsuit/syndi/elite(src)
 	new /obj/item/gun/ballistic/automatic/pistol/APS(src)
 	new /obj/item/ammo_box/magazine/pistolm9mm(src)

@@ -313,13 +313,6 @@
 	if(cooldown)
 		icon_state = "defibpaddles[wielded]_cooldown"
 
-/obj/item/twohanded/shockpaddles/suicide_act(mob/user)
-	user.visible_message("<span class='danger'>[user] is putting the live paddles on [user.p_their()] chest! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	if(req_defib)
-		defib.deductcharge(revivecost)
-	playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 50, 1, -1)
-	return (OXYLOSS)
-
 /obj/item/twohanded/shockpaddles/dropped(mob/user)
 	if(!req_defib)
 		return ..()
@@ -382,7 +375,7 @@
 	if((!req_defib && grab_ghost) || (req_defib && defib.grab_ghost))
 		H.notify_ghost_cloning("Your heart is being defibrillated!")
 		H.grab_ghost() // Shove them back in their body.
-	else if(!H.suiciding && !(H.disabilities & NOCLONE)&& !H.hellbound)
+	else if(!(H.disabilities & NOCLONE) && !H.hellbound)
 		H.notify_ghost_cloning("Your heart is being defibrillated. Re-enter your corpse if you want to be revived!", source = src)
 
 	do_help(H, user)
@@ -500,7 +493,7 @@
 
 				var/failed = null
 
-				if (H.suiciding || (H.disabilities & NOCLONE))
+				if (H.disabilities & NOCLONE)
 					failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] buzzes: Resuscitation failed - Recovery of patient impossible. Further attempts futile.</span>"
 				else if (H.hellbound)
 					failed = "<span class='warning'>[req_defib ? "[defib]" : "[src]"] buzzes: Resuscitation failed - Patient's soul appears to be on another plane of existence.  Further attempts futile.</span>"
@@ -539,7 +532,7 @@
 					H.revive()
 					H.emote("gasp")
 					if(tplus > tloss)
-						H.setBrainLoss( max(0, min(99, ((tlimit - tplus) / tlimit * 100))))
+						H.adjustBrainLoss( max(0, min(99, ((tlimit - tplus) / tlimit * 100))), 150)
 					add_logs(user, H, "revived", defib)
 				if(req_defib)
 					defib.deductcharge(revivecost)

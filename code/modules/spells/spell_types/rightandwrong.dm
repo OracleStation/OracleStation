@@ -2,7 +2,7 @@
 
 /proc/rightandwrong(summon_type, mob/user, survivor_probability) //0 = Summon Guns, 1 = Summon Magic
 	var/list/gunslist 			= list("taser","gravgun","egun","laser","revolver","detective","c20r","nuclear","deagle","gyrojet","pulse","suppressed","cannon","doublebarrel","shotgun","combatshotgun","bulldog","mateba","sabr","crossbow","saw","car","boltaction","speargun","arg","uzi","alienpistol","dragnet","turret","pulsecarbine","decloner","mindflayer","hyperkinetic","advplasmacutter","wormhole","wt550","bulldog","grenadelauncher","goldenrevolver","sniper","medibeam","scatterbeam")
-	var/list/magiclist 			= list("fireball","smoke","blind","mindswap","forcewall","knock","horsemask","charge", "summonitem", "wandnothing", "wanddeath", "wandresurrection", "wandpolymorph", "wandteleport", "wanddoor", "wandfireball", "staffchange", "staffhealing", "armor", "scrying","staffdoor","voodoo", "whistle", "battlemage", "immortality", "ghostsword", "special")
+	var/list/magiclist 			= list("fireball","smoke","blind","mindswap","forcewall","knock","charge", "summonitem", "wandnothing", "wanddeath", "wandresurrection", "wandpolymorph", "wandteleport", "wanddoor", "wandfireball", "staffchange", "staffhealing", "armor", "scrying","staffdoor","voodoo", "whistle", "battlemage", "immortality", "ghostsword", "special")
 	var/list/magicspeciallist	= list("staffchange","staffanimation", "wandbelt", "contract", "staffchaos", "necromantic", "bloodcontract")
 
 	if(user) //in this case either someone holding a spellbook or a badmin
@@ -10,9 +10,11 @@
 		message_admins("[key_name_admin(user, 1)] summoned [summon_type ? "magic" : "guns"]!")
 		log_game("[key_name(user)] summoned [summon_type ? "magic" : "guns"]!")
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(H.stat == 2 || !(H.client)) continue
+		if(H.stat == 2 || !(H.client))
+			continue
 		if(H.mind)
-			if(H.mind.special_role == "Wizard" || H.mind.special_role == "apprentice" || H.mind.special_role == "survivalist") continue
+			if(H.mind.special_role == "Wizard" || H.mind.special_role == "apprentice" || H.mind.special_role == "survivalist")
+				continue
 		if(prob(survivor_probability) && !(H.mind in SSticker.mode.traitors))
 			SSticker.mode.traitors += H.mind
 			if(!summon_type)
@@ -138,8 +140,6 @@
 					new /obj/item/spellbook/oneuse/forcewall(get_turf(H))
 				if("knock")
 					new /obj/item/spellbook/oneuse/knock(get_turf(H))
-				if("horsemask")
-					new /obj/item/spellbook/oneuse/barnyard(get_turf(H))
 				if("charge")
 					new /obj/item/spellbook/oneuse/charge(get_turf(H))
 				if("summonitem")

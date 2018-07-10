@@ -42,10 +42,7 @@
 	if(ishuman(hit_atom))
 		var/mob/living/carbon/human/H = hit_atom
 		var/mutable_appearance/creamoverlay = mutable_appearance('icons/effects/creampie.dmi')
-		if(H.dna.species.limbs_id == "lizard")
-			creamoverlay.icon_state = "creampie_lizard"
-		else
-			creamoverlay.icon_state = "creampie_human"
+		creamoverlay.icon_state = H.dna.species.creampie_id
 		H.Knockdown(20) //splat!
 		H.adjust_blurriness(1)
 		H.visible_message("<span class='warning'>[H] is creamed by [src]!</span>", "<span class='userdanger'>You've been creamed by [src]!</span>")
@@ -110,13 +107,13 @@
 	foodtype = GRAIN | VEGETABLES
 
 
-/obj/item/reagent_containers/food/snacks/pie/plump_pie/New()
+/obj/item/reagent_containers/food/snacks/pie/plump_pie/Initialize()
+	. = ..()
 	var/fey = prob(10)
 	if(fey)
 		name = "exceptional plump pie"
 		desc = "Microwave is taken by a fey mood! It has cooked an exceptional plump pie!"
 		bonus_reagents = list("nutriment" = 1, "omnizine" = 5, "vitamin" = 4)
-	..()
 	if(fey)
 		reagents.add_reagent("omnizine", 5)
 

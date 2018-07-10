@@ -41,14 +41,14 @@
 /mob/living/carbon/RestrainedClickOn(atom/A)
 	return 0
 
-/mob/living/carbon/human/RangedAttack(atom/A)
+/mob/living/carbon/human/RangedAttack(atom/A, mouseparams)
 	if(gloves)
 		var/obj/item/clothing/gloves/G = gloves
 		if(istype(G) && G.Touch(A,0)) // for magic gloves
 			return
 
 	for(var/datum/mutation/human/HM in dna.mutations)
-		HM.on_ranged_attack(src, A)
+		HM.on_ranged_attack(src, A, mouseparams)
 
 	if(isturf(A) && get_dist(src,A) <= 1)
 		src.Move_Pulled(A)
@@ -61,6 +61,7 @@
 
 /atom/proc/attack_animal(mob/user)
 	return
+
 /mob/living/RestrainedClickOn(atom/A)
 	return
 

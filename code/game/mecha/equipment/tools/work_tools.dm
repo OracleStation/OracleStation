@@ -52,7 +52,8 @@
 
 	else if(isliving(target))
 		var/mob/living/M = target
-		if(M.stat == DEAD) return
+		if(M.stat == DEAD)
+			return
 		if(chassis.occupant.a_intent == INTENT_HARM)
 			M.take_overall_damage(dam_force)
 			if(!M)
@@ -103,7 +104,8 @@
 
 	else if(isliving(target))
 		var/mob/living/M = target
-		if(M.stat == DEAD) return
+		if(M.stat == DEAD)
+			return
 		if(chassis.occupant.a_intent == INTENT_HARM)
 			target.visible_message("<span class='danger'>[chassis] destroys [target] in an unholy fury.</span>", \
 								"<span class='userdanger'>[chassis] destroys [target] in an unholy fury.</span>")
@@ -286,7 +288,7 @@
 	return
 
 /obj/item/mecha_parts/mecha_equipment/rcd/get_equip_info()
-	return "[..()] \[<a href='?src=\ref[src];mode=0'>D</a>|<a href='?src=\ref[src];mode=1'>C</a>|<a href='?src=\ref[src];mode=2'>A</a>\]"
+	return "[..()] \[<a href='?src=[REF(src)];mode=0'>D</a>|<a href='?src=[REF(src)];mode=1'>C</a>|<a href='?src=[REF(src)];mode=2'>A</a>\]"
 
 
 
@@ -302,8 +304,7 @@
 	var/max_cable = 1000
 
 /obj/item/mecha_parts/mecha_equipment/cable_layer/New()
-	cable = new(src)
-	cable.amount = 0
+	cable = new(src, 0)
 	..()
 
 /obj/item/mecha_parts/mecha_equipment/cable_layer/can_attach(obj/mecha/working/M)
@@ -335,12 +336,11 @@
 		if(to_load)
 			to_load = min(target.amount, to_load)
 			if(!cable)
-				cable = new(src)
-				cable.amount = 0
+				cable = new(src, 0)
 			cable.amount += to_load
 			target.use(to_load)
 			occupant_message("<span class='notice'>[to_load] meters of cable successfully loaded.</span>")
-			send_byjax(chassis.occupant,"exosuit.browser","\ref[src]",src.get_equip_info())
+			send_byjax(chassis.occupant,"exosuit.browser","[REF(src)]",src.get_equip_info())
 		else
 			occupant_message("<span class='warning'>Reel is full.</span>")
 	else
@@ -360,8 +360,7 @@
 			m = min(m, cable.amount)
 			if(m)
 				use_cable(m)
-				var/obj/item/stack/cable_coil/CC = new (get_turf(chassis))
-				CC.amount = m
+				new /obj/item/stack/cable_coil(get_turf(chassis), m)
 		else
 			occupant_message("There's no more cable on the reel.")
 	return
@@ -369,7 +368,7 @@
 /obj/item/mecha_parts/mecha_equipment/cable_layer/get_equip_info()
 	var/output = ..()
 	if(output)
-		return "[output] \[Cable: [cable ? cable.amount : 0] m\][(cable && cable.amount) ? "- <a href='?src=\ref[src];toggle=1'>[!equip_ready?"Dea":"A"]ctivate</a>|<a href='?src=\ref[src];cut=1'>Cut</a>" : null]"
+		return "[output] \[Cable: [cable ? cable.amount : 0] m\][(cable && cable.amount) ? "- <a href='?src=[REF(src)];toggle=1'>[!equip_ready?"Dea":"A"]ctivate</a>|<a href='?src=[REF(src)];cut=1'>Cut</a>" : null]"
 	return
 
 /obj/item/mecha_parts/mecha_equipment/cable_layer/proc/use_cable(amount)

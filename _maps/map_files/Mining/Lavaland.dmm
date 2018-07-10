@@ -1273,8 +1273,8 @@
 /area/mine/maintenance)
 "dB" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/blood/empty,
-/obj/item/reagent_containers/blood/empty{
+/obj/item/reagent_containers/blood,
+/obj/item/reagent_containers/blood{
 	pixel_x = -3;
 	pixel_y = -3
 	},
@@ -1957,6 +1957,7 @@
 	pixel_x = -5;
 	pixel_y = 30
 	},
+/obj/machinery/suit_storage_unit/mining,
 /turf/open/floor/plasteel/purple/corner{
 	dir = 4
 	},
@@ -1966,6 +1967,7 @@
 	frequency = 1439;
 	pixel_y = 23
 	},
+/obj/machinery/suit_storage_unit/mining,
 /turf/open/floor/plasteel/purple/corner{
 	dir = 1
 	},

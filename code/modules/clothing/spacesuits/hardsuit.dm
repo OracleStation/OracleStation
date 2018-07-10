@@ -13,7 +13,6 @@
 	item_color = "engineering" //Determines used sprites: hardsuit[on]-[color] and hardsuit[on]-[color]2 (lying down sprite)
 	actions_types = list(/datum/action/item_action/toggle_helmet_light)
 
-
 /obj/item/clothing/head/helmet/space/hardsuit/attack_self(mob/user)
 	on = !on
 	icon_state = "[basestate][on]-[item_color]"
@@ -71,7 +70,6 @@
 	actions_types = list(/datum/action/item_action/toggle_helmet)
 	var/helmettype = /obj/item/clothing/head/helmet/space/hardsuit
 	var/obj/item/tank/jetpack/suit/jetpack = null
-
 
 /obj/item/clothing/suit/space/hardsuit/New()
 	if(jetpack && ispath(jetpack))
@@ -324,7 +322,6 @@
 	on = FALSE
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
-
 /obj/item/clothing/suit/space/hardsuit/syndi/elite
 	name = "elite syndicate hardsuit"
 	desc = "An elite version of the syndicate hardsuit, with improved armour and fireproofing. It is in travel mode."
@@ -336,6 +333,7 @@
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRE_IMMUNITY_SUIT_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	species_restricted = list("exclude","Vox Outcast")
 
 //The Owl Hardsuit
 /obj/item/clothing/head/helmet/space/hardsuit/syndi/owl
@@ -357,7 +355,7 @@
 	item_state = "s_suit"
 	item_color = "owl"
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/syndi/owl
-
+	species_restricted = list("exclude","Vox Outcast")
 
 	//Wizard hardsuit
 /obj/item/clothing/head/helmet/space/hardsuit/wizard
@@ -383,7 +381,7 @@
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS					//Uncomment to enable firesuit protection
 	max_heat_protection_temperature = FIRE_IMMUNITY_SUIT_MAX_TEMP_PROTECT
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/wizard
-
+	species_restricted = list("exclude","Vox Outcast")
 
 	//Medical hardsuit
 /obj/item/clothing/head/helmet/space/hardsuit/medical
@@ -450,8 +448,6 @@
 	armor = list(melee = 30, bullet = 5, laser = 10, energy = 5, bomb = 100, bio = 100, rad = 60, fire = 60, acid = 80)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/rd
 
-
-
 	//Security hardsuit
 /obj/item/clothing/head/helmet/space/hardsuit/security
 	name = "security hardsuit helmet"
@@ -460,7 +456,6 @@
 	item_state = "sec_helm"
 	item_color = "sec"
 	armor = list(melee = 30, bullet = 15, laser = 30,energy = 10, bomb = 10, bio = 100, rad = 50, fire = 75, acid = 75)
-
 
 /obj/item/clothing/suit/space/hardsuit/security
 	icon_state = "hardsuit-sec"
@@ -478,7 +473,6 @@
 	icon_state = "hardsuit0-hos"
 	item_color = "hos"
 	armor = list(melee = 45, bullet = 25, laser = 30,energy = 10, bomb = 25, bio = 100, rad = 50, fire = 95, acid = 95)
-
 
 /obj/item/clothing/suit/space/hardsuit/security/hos
 	icon_state = "hardsuit-hos"
@@ -515,6 +509,7 @@
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRE_IMMUNITY_SUIT_MAX_TEMP_PROTECT //this needed to be added a long fucking time ago
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/captain
+	species_restricted = list("exclude","Vox Outcast")
 
 	//Clown
 /obj/item/clothing/head/helmet/space/hardsuit/clown
@@ -524,6 +519,7 @@
 	item_state = "hardsuit0-clown"
 	armor = list(melee = 30, bullet = 5, laser = 10, energy = 5, bomb = 10, bio = 100, rad = 75, fire = 60, acid = 30)
 	item_color = "clown"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/space/hardsuit/clown
 	name = "cosmohonk hardsuit"
@@ -532,6 +528,7 @@
 	item_state = "clown_hardsuit"
 	armor = list(melee = 30, bullet = 5, laser = 10, energy = 5, bomb = 10, bio = 100, rad = 75, fire = 60, acid = 30)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/clown
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/space/hardsuit/clown/mob_can_equip(mob/M, slot)
 	if(!..() || !ishuman(M))
@@ -551,6 +548,7 @@
 	armor = list("melee" = 30, "bullet" = 5, "laser" = 5, "energy" = 0, "bomb" = 50, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 75)
 	item_color = "ancient"
 	resistance_flags = FIRE_PROOF
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/space/hardsuit/ancient
 	name = "prototype RIG hardsuit"
@@ -562,6 +560,7 @@
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ancient
 	resistance_flags = FIRE_PROOF
 	var/footstep = 1
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/space/hardsuit/ancient/on_mob_move()
 	var/mob/living/carbon/human/H = loc
@@ -731,6 +730,7 @@
 	max_heat_protection_temperature = FIRE_IMMUNITY_SUIT_MAX_TEMP_PROTECT
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/shielded/swat
 	dog_fashion = /datum/dog_fashion/back/deathsquad
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/head/helmet/space/hardsuit/shielded/swat
 	name = "death commando helmet"

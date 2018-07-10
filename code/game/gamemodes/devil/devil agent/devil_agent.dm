@@ -10,7 +10,7 @@
 	num_modifier = 4
 	objective_count = 2
 
-	var/list/devil_target_list = list() //will update to be a child of internal affairs when bothered
+	var/list/devil_target_list = list() //will update to be a child of Sleeper Agent when bothered
 	var/list/devil_late_joining_list = list()
 	minimum_devils = 3
 
