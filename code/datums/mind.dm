@@ -182,6 +182,11 @@
 		if(changeling)
 			qdel(changeling)
 			changeling = null
+
+			var/obj/item/organ/brain/B = current.getorganslot(ORGAN_SLOT_BRAIN)
+			if(B)
+				B.vital = TRUE
+				B.decoy_override = FALSE
 	special_role = null
 	remove_antag_equip()
 	SSticker.mode.update_changeling_icons_removed(src)
