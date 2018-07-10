@@ -17,6 +17,7 @@ Chief Medical Officer
 	exp_requirements = 180
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_MEDICAL
+	wiki_page = "Medical_SOP"
 
 	outfit = /datum/outfit/job/cmo
 
@@ -59,6 +60,7 @@ Medical Doctor
 	spawn_positions = 3
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
+	wiki_page = "Medical_doctor"
 
 	outfit = /datum/outfit/job/doctor
 
@@ -97,6 +99,7 @@ Chemist
 	selection_color = "#ffeef0"
 	exp_type = EXP_TYPE_CREW
 	exp_requirements = 60
+	wiki_page = "Guide_to_chemistry"
 
 	outfit = /datum/outfit/job/chemist
 
@@ -126,27 +129,28 @@ Geneticist
 /datum/job/geneticist
 	title = "Geneticist"
 	flag = GENETICIST
-	department_head = list("Chief Medical Officer", "Research Director")
+	department_head = list("Chief Medical Officer")
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the chief medical officer and research director"
+	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
 	exp_type = EXP_TYPE_CREW
 	exp_requirements = 60
+	wiki_page = "Guide_to_genetics"
 
 	outfit = /datum/outfit/job/geneticist
 
-	access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_CHEMISTRY, ACCESS_GENETICS, ACCESS_CLONING, ACCESS_RESEARCH, ACCESS_XENOBIOLOGY, ACCESS_ROBOTICS, ACCESS_MINERAL_STOREROOM, ACCESS_TECH_STORAGE)
-	minimal_access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_GENETICS, ACCESS_CLONING, ACCESS_RESEARCH)
+	access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_CHEMISTRY, ACCESS_GENETICS, ACCESS_CLONING)
+	minimal_access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_GENETICS, ACCESS_CLONING)
 
 /datum/outfit/job/geneticist
 	name = "Geneticist"
 	jobtype = /datum/job/geneticist
 	id = /obj/item/card/id/job/medical
 	pda_slot = /obj/item/device/pda/geneticist
-	ears = /obj/item/device/radio/headset/headset_medsci
+	ears = /obj/item/device/radio/headset/headset_med
 	uniform = /obj/item/clothing/under/rank/geneticist
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	suit =  /obj/item/clothing/suit/toggle/labcoat/genetics
@@ -172,6 +176,7 @@ Virologist
 	selection_color = "#ffeef0"
 	exp_type = EXP_TYPE_CREW
 	exp_requirements = 60
+	wiki_page = "Infections"
 
 	outfit = /datum/outfit/job/virologist
 
@@ -207,6 +212,7 @@ Virologist
 	selection_color = "#ffeef0"
 	exp_type = EXP_TYPE_CREW
 	exp_requirements = 60
+	wiki_page = "Guide_to_medicine"
 
 	outfit = /datum/outfit/job/paramedic
 

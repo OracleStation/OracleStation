@@ -14,7 +14,7 @@
 	name = "revolution"
 	config_tag = "revolution"
 	antag_flag = ROLE_REV
-	restricted_jobs = list("Security Officer", "Warden", "Detective", "AI", "Cyborg","Captain", "Head of Personnel", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer", "Blueshield", "Brig Physician", "Quartermaster", "Internal Affairs Agent")
+	restricted_jobs = list("Security Officer", "Warden", "Detective", "AI", "Cyborg","Captain", "Head of Personnel", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer", "Blueshield", "Brig Physician", "Internal Affairs Agent")
 	required_players = 20
 	required_enemies = 1
 	recommended_enemies = 3
@@ -399,7 +399,7 @@
 	var/list/round_credits = list()
 	var/len_before_addition
 
-	round_credits += "<center><h1>The Disgruntled Revolutionaries:</h1></center>"
+	round_credits += "<center><h1>The Disgruntled Revolutionaries:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/headrev in head_revolutionaries)
 		round_credits += "<center><h2>[headrev.name] as a revolutionary leader</h2>"

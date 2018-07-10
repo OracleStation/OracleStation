@@ -4,7 +4,7 @@
 	id = "unathi"
 	say_mod = "hisses"
 	default_color = "00FF00"
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS)
+	species_traits = list(SPECIES_ORGANIC,MUTCOLORS,EYECOLOR,LIPS)
 	mutant_bodyparts = list("tail_unathi", "snout", "spines", "horns", "frills", "body_markings", "legs")
 	mutanttongue = /obj/item/organ/tongue/unathi
 	coldmod = 1.5

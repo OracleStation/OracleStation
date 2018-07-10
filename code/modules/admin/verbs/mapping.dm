@@ -38,6 +38,7 @@ GLOBAL_LIST_INIT(admin_verbs_debug_mapping, list(
 	/client/proc/cmd_admin_areatest_station,
 	/datum/admins/proc/show_traitor_panel,
 	/client/proc/disable_communication,
+	/client/proc/export_map,
 	/client/proc/print_pointers,
 	/client/proc/cmd_show_at_list,
 	/client/proc/cmd_show_at_markers,
@@ -193,15 +194,20 @@ GLOBAL_LIST_INIT(admin_verbs_debug_mapping, list(
 	set category = "Mapping"
 	set name = "Count Objects On Level"
 	var/level = input("Which z-level?","Level?") as text
-	if(!level) return
+	if(!level)
+		return
 	var/num_level = text2num(level)
-	if(!num_level) return
-	if(!isnum(num_level)) return
+	if(!num_level)
+		return
+	if(!isnum(num_level))
+		return
 
 	var/type_text = input("Which type path?","Path?") as text
-	if(!type_text) return
+	if(!type_text)
+		return
 	var/type_path = text2path(type_text)
-	if(!type_path) return
+	if(!type_path)
+		return
 
 	var/count = 0
 
@@ -237,9 +243,11 @@ GLOBAL_LIST_INIT(admin_verbs_debug_mapping, list(
 	set name = "Count Objects All"
 
 	var/type_text = input("Which type path?","") as text
-	if(!type_text) return
+	if(!type_text)
+		return
 	var/type_path = text2path(type_text)
-	if(!type_path) return
+	if(!type_path)
+		return
 
 	var/count = 0
 
@@ -271,3 +279,25 @@ GLOBAL_VAR_INIT(say_disabled, FALSE)
 		message_admins("[src.ckey] used 'Disable all communication verbs', killing all communication methods.")
 	else
 		message_admins("[src.ckey] used 'Disable all communication verbs', restoring all communication methods.")
+
+/client/proc/export_map()
+	set category = "Mapping"
+	set name = "Export Map"
+
+	var/dmm_suite/suite = new /dmm_suite()
+
+	var/z_level = input("Export Which Z-Level?", "Map Exporter", 2) as num
+	var/start_x = input("Start X?", "Map Exporter", 1) as num
+	var/start_y = input("Start Y?", "Map Exporter", 1) as num
+	var/end_x = input("End X?", "Map Exporter", world.maxx-1) as num
+	var/end_y = input("End Y?", "Map Exporter", world.maxy-1) as num
+	var/date = time2text(world.timeofday, "YYYY-MM-DD_hh-mm-ss")
+	var/file_name = input("Filename?", "Map Exporter", "exportedmap_[date]") as text
+	var/confirm = alert("Are you sure you want to do this? This will cause extreme lag!", "Map Exporter", "Yes", "No")
+
+	if(confirm != "Yes")
+		return
+
+	var map_text = suite.write_map(start_x, start_y, z_level, end_x, end_y, z_level, 24)
+	text2file(map_text, "data/[file_name].dmm")
+	usr << ftp("data/[file_name].dmm", "[file_name].dmm")

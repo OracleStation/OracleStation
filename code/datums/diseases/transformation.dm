@@ -16,6 +16,7 @@
 	var/list/stage4 = list("You feel white bread.")
 	var/list/stage5 = list("Oh the humanity!")
 	var/new_form = /mob/living/carbon/human
+	infectable_hosts = list(SPECIES_ORGANIC, SPECIES_UNDEAD, SPECIES_ROBOTIC)
 
 /datum/disease/transformation/stage_act()
 	..()

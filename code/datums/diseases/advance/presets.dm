@@ -30,7 +30,7 @@
 /datum/disease/advance/heal/New(var/process = TRUE, var/datum/disease/advance/D, var/copy = FALSE)
 	if(!D)
 		name = "Liver Enhancer"
-		symptoms = list(new/datum/symptom/heal)
+		symptoms = list(new/datum/symptom/heal/toxin)
 	..(process, D, copy)
 
 

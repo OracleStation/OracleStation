@@ -9,8 +9,8 @@
 	tastes = list("leaves" = 1)
 	foodtype = VEGETABLES
 
-/obj/item/reagent_containers/food/snacks/salad/New()
-	..()
+/obj/item/reagent_containers/food/snacks/salad/Initialize()
+	. = ..()
 	eatverb = pick("crunch","devour","nibble","gnaw","gobble","chomp")
 
 /obj/item/reagent_containers/food/snacks/salad/aesirsalad

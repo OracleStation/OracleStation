@@ -68,7 +68,8 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 
 	if(antag_candidates.len>0)
 		for(var/i = 0, i < num_changelings, i++)
-			if(!antag_candidates.len) break
+			if(!antag_candidates.len)
+				break
 			var/datum/mind/changeling = pick(antag_candidates)
 			antag_candidates -= changeling
 			changelings += changeling
@@ -113,7 +114,20 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	absorb_objective.gen_amount_goal(6, 8)
 	changeling.objectives += absorb_objective
 
-	if(prob(60))
+	var/no_assassinate = TRUE
+
+	if(prob(40))
+		var/datum/objective/assassinate/changeling_assassinate = new // ass-assinate another changeling.
+		changeling_assassinate.owner = changeling
+		changeling_assassinate.find_target_by_role("Changeling", TRUE)
+		if(changeling_assassinate.target && changeling_assassinate.target.current) //if we did find a target
+			no_assassinate = FALSE
+			changeling_assassinate.explanation_text = "Assassinate [changeling_assassinate.target.changeling.changelingID], a fellow changeling. [pick("They can no longer be trusted.", "They pose a threat to the hivemind.")]"
+			changeling.objectives += changeling_assassinate
+		else //couldn't find a target, we're leaving
+			qdel(changeling_assassinate)
+
+	if(prob(60) && no_assassinate)
 		var/datum/objective/steal/steal_objective = new
 		steal_objective.owner = changeling
 		steal_objective.find_target()
@@ -499,7 +513,7 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	var/list/round_credits = list()
 	var/len_before_addition
 
-	round_credits += "<center><h1>The Slippery Changelings:</h1></center>"
+	round_credits += "<center><h1>The Slippery Changelings:</h1>"
 	len_before_addition = round_credits.len
 	for(var/datum/mind/cling in changelings)
 		round_credits += "<center><h2>[cling.changeling.changelingID] in the body of [cling.name]</h2>"

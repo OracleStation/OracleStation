@@ -567,31 +567,30 @@
 		to_chat(C, "[usr.client.holder.fakekey ? "an Administrator" : "[usr.client.key]"] has granted you access to view a View Variables window")
 		C.debug_variables(thing)
 
+	//~CARN: for renaming mobs (updates their name, real_name, mind.name, their ID/PDA and datacore records).
+
+	else if(href_list["rename"])
+		if(!check_rights(R_ADMIN, FALSE))
+			return
+
+		var/mob/M = locate(href_list["rename"]) in GLOB.mob_list
+		if(!istype(M))
+			to_chat(usr, "This can only be used on instances of type /mob")
+			return
+
+		var/new_name = stripped_input(usr,"What would you like to name this mob?","Input a name",M.real_name,MAX_NAME_LEN)
+		if( !new_name || !M )
+			return
+
+		message_admins("Admin [key_name_admin(usr)] renamed [key_name_admin(M)] to [new_name].")
+		M.fully_replace_character_name(M.real_name,new_name)
+		href_list["datumrefresh"] = href_list["rename"]
+
 //Needs +VAREDIT past this point
 
 	else if(check_rights(R_VAREDIT))
 
-
-	//~CARN: for renaming mobs (updates their name, real_name, mind.name, their ID/PDA and datacore records).
-
-		if(href_list["rename"])
-			if(!check_rights(0))
-				return
-
-			var/mob/M = locate(href_list["rename"]) in GLOB.mob_list
-			if(!istype(M))
-				to_chat(usr, "This can only be used on instances of type /mob")
-				return
-
-			var/new_name = stripped_input(usr,"What would you like to name this mob?","Input a name",M.real_name,MAX_NAME_LEN)
-			if( !new_name || !M )
-				return
-
-			message_admins("Admin [key_name_admin(usr)] renamed [key_name_admin(M)] to [new_name].")
-			M.fully_replace_character_name(M.real_name,new_name)
-			href_list["datumrefresh"] = href_list["rename"]
-
-		else if(href_list["varnameedit"] && href_list["datumedit"])
+		if(href_list["varnameedit"] && href_list["datumedit"])
 			if(!check_rights(0))
 				return
 
@@ -1166,38 +1165,6 @@
 						else
 							to_chat(usr, "Only humans can be augmented.")
 			admin_ticket_log("[key_name_admin(usr)] has modified the bodyparts of [C]")
-
-
-		else if(href_list["purrbation"])
-			if(!check_rights(R_SPAWN))
-				return
-
-			var/mob/living/carbon/human/H = locate(href_list["purrbation"]) in GLOB.mob_list
-			if(!istype(H))
-				to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
-				return
-			if(!ishumanbasic(H))
-				to_chat(usr, "This can only be done to the basic human species at the moment.")
-				return
-
-			if(!H)
-				to_chat(usr, "Mob doesn't exist anymore")
-				return
-
-			var/success = purrbation_toggle(H)
-			if(success)
-				to_chat(usr, "Put [H] on purrbation.")
-				log_admin("[key_name(usr)] has put [key_name(H)] on purrbation.")
-				var/msg = "<span class='notice'>[key_name_admin(usr)] has put [key_name(H)] on purrbation.</span>"
-				message_admins(msg)
-				admin_ticket_log(H, msg)
-
-			else
-				to_chat(usr, "Removed [H] from purrbation.")
-				log_admin("[key_name(usr)] has removed [key_name(H)] from purrbation.")
-				var/msg = "<span class='notice'>[key_name_admin(usr)] has removed [key_name(H)] from purrbation.</span>"
-				message_admins(msg)
-				admin_ticket_log(H, msg)
 
 		else if(href_list["adjustDamage"] && href_list["mobToDamage"])
 			if(!check_rights(0))

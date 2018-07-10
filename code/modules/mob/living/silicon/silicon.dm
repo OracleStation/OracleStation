@@ -12,7 +12,6 @@
 	weather_immunities = list("ash")
 	possible_a_intents = list(INTENT_HELP, INTENT_HARM)
 
-	var/syndicate = 0
 	var/datum/ai_laws/laws = null//Now... THEY ALL CAN ALL HAVE LAWS
 	var/last_lawchange_announce = 0
 	var/list/alarms_to_show = list()
@@ -39,9 +38,12 @@
 	var/obj/machinery/camera/builtInCamera = null
 	var/updating = FALSE //portable camera camerachunk update
 
+	var/hack_software = FALSE //Will be able to use hacking actions
+
 /mob/living/silicon/Initialize()
 	. = ..()
 	GLOB.silicon_mobs += src
+	faction += "silicon"
 	var/datum/atom_hud/data/diagnostic/diag_hud = GLOB.huds[DATA_HUD_DIAGNOSTIC]
 	diag_hud.add_to_hud(src)
 	diag_hud_set_status()

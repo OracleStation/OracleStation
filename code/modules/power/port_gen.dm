@@ -94,7 +94,8 @@
 /obj/machinery/power/port_gen/pacman/examine(mob/user)
 	..()
 	to_chat(user, "<span class='notice'>The generator has [sheets] units of [sheet_name] fuel left, producing [power_gen] per cycle.</span>")
-	if(crit_fail) to_chat(user, "<span class='danger'>The generator seems to have broken down.</span>")
+	if(crit_fail)
+		to_chat(user, "<span class='danger'>The generator seems to have broken down.</span>")
 
 /obj/machinery/power/port_gen/pacman/HasFuel()
 	if(sheets >= 1 / (time_per_sheet / power_output) - sheet_left)
@@ -103,13 +104,8 @@
 
 /obj/machinery/power/port_gen/pacman/DropFuel()
 	if(sheets)
-		var/fail_safe = FALSE
-		while(sheets > 0 && fail_safe < 100)
-			fail_safe += 1
-			var/obj/item/stack/sheet/S = new sheet_path(loc)
-			var/amount = min(sheets, S.max_amount)
-			S.amount = amount
-			sheets -= amount
+		new sheet_path(drop_location(), sheets)
+		sheets = 0
 
 /obj/machinery/power/port_gen/pacman/UseFuel()
 	var/needed_sheets = 1 / (time_per_sheet * consumption / power_output)

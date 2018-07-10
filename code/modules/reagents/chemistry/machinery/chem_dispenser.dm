@@ -67,7 +67,8 @@
 		recharged -= 1
 
 /obj/machinery/chem_dispenser/proc/recharge()
-	if(stat & (BROKEN|NOPOWER)) return
+	if(stat & (BROKEN|NOPOWER))
+		return
 	var/usedpower = cell.give( 1 / powerefficiency) //Should always be a gain of one on the UI.
 	if(usedpower)
 		use_power(2500)
@@ -359,7 +360,8 @@
 		"cognac",
 		"ale",
 		"absinthe",
-		"hcider"
+		"hcider",
+		"synthanol"
 	)
 	emagged_reagents = list(
 		"ethanol",

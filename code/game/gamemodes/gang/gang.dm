@@ -24,7 +24,7 @@ GLOBAL_LIST_INIT(gang_outfit_pool, list(/obj/item/clothing/suit/jacket/leather, 
 	name = "gang war"
 	config_tag = "gang"
 	antag_flag = ROLE_GANG
-	restricted_jobs = list("Security Officer", "Warden", "Detective", "AI", "Cyborg","Captain", "Head of Personnel", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer", "Blueshield", "Brig Physician", "Quartermaster", "Internal Affairs Agent")
+	restricted_jobs = list("Security Officer", "Warden", "Detective", "AI", "Cyborg","Captain", "Head of Personnel", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer", "Blueshield", "Brig Physician", "Internal Affairs Agent")
 	required_players = 20
 	required_enemies = 2
 	recommended_enemies = 2
@@ -362,7 +362,7 @@ GLOBAL_LIST_INIT(gang_outfit_pool, list(/obj/item/clothing/suit/jacket/leather, 
 	var/len_before_addition
 
 	for(var/datum/gang/G in gangs)
-		round_credits += "<center><h1>The [G.name] Gang:</h1></center>"
+		round_credits += "<center><h1>The [G.name] Gang:</h1>"
 		len_before_addition = round_credits.len
 		for(var/datum/mind/boss in G.bosses)
 			round_credits += "<center><h2>[boss.name] as a [G.name] Gang leader</h2>"

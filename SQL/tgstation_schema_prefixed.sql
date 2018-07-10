@@ -248,6 +248,7 @@ CREATE TABLE `SS13_messages` (
   `secret` tinyint(1) unsigned NOT NULL,
   `lasteditor` varchar(32) DEFAULT NULL,
   `edits` text,
+  `round_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_msg_ckey_time` (`targetckey`,`timestamp`),
   KEY `idx_msg_type_ckeys_time` (`type`,`targetckey`,`adminckey`,`timestamp`),

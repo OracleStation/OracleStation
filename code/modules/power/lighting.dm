@@ -249,18 +249,18 @@
 	icon_state = "tube-empty"
 	start_with_cell = FALSE
 
-/obj/machinery/light/built/New()
+/obj/machinery/light/built/Initialize()
+	. = ..()
 	status = LIGHT_EMPTY
 	update(0)
-	..()
 
 /obj/machinery/light/small/built
 	icon_state = "bulb-empty"
 
-/obj/machinery/light/small/built/New()
+/obj/machinery/light/small/built/Initialize()
+	. = ..()
 	status = LIGHT_EMPTY
 	update(0)
-	..()
 
 
 // create a new lighting fixture
@@ -533,11 +533,13 @@
 
 /obj/machinery/light/proc/flicker(var/amount = rand(10, 20))
 	set waitfor = 0
-	if(flickering) return
+	if(flickering)
+		return
 	flickering = 1
 	if(on && status == LIGHT_OK)
 		for(var/i = 0; i < amount; i++)
-			if(status != LIGHT_OK) break
+			if(status != LIGHT_OK)
+				break
 			on = !on
 			update(0)
 			sleep(rand(5, 15))
@@ -729,8 +731,8 @@
 			desc = "A broken [name]."
 
 
-/obj/item/light/New()
-	..()
+/obj/item/light/Initialize()
+	. = ..()
 	update()
 
 

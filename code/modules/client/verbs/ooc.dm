@@ -158,7 +158,13 @@
 			else
 				to_chat(C, "<span class='looc'><font color='black'>(R)</font>LOOC: [ADMIN_LOOKUPFLW(mob)]: [msg]</span>")
 		else if(C in clients_to_hear)
-			to_chat(C, "<span class='looc'>LOOC: [mob.name]: [msg]</span>")
+			if(isobserver(mob))
+				if((prefs.chat_toggles & CHAT_ANONDCHAT))
+					to_chat(C, "<span class='looc'>LOOC: [mob.key]: [msg]</span>")
+				else
+					to_chat(C, "<span class='looc'>LOOC: Ghost of [mob.name]: [msg]</span>")
+			else
+				to_chat(C, "<span class='looc'>LOOC: [mob.name]: [msg]</span>")
 
 /mob/proc/get_looc_source()
 	return src

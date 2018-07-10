@@ -311,8 +311,7 @@
 			qdel(S)
 		return TRUE
 	for(var/obj/item/stack/sheet/wetleather/WL in contents)
-		var/obj/item/stack/sheet/leather/L = new(loc)
-		L.amount = WL.amount
+		new /obj/item/stack/sheet/leather(drop_location(), WL.amount)
 		qdel(WL)
 		return TRUE
 	return FALSE

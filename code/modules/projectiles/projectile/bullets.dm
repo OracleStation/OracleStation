@@ -8,12 +8,6 @@
 	hitsound_wall = "ricochet"
 	impact_effect_type = /obj/effect/temp_visual/impact_effect
 
-/obj/item/projectile/bullet/pellet/Range()
-	..()
-	damage += -0.75
-	if(damage < 0)
-		qdel(src)
-
 /obj/item/projectile/bullet/incendiary
 	damage = 20
 	var/fire_stacks = 4
@@ -161,7 +155,7 @@
 
 /obj/item/projectile/bullet/p50
 	name =".50 bullet"
-	speed = 0		//360 alwaysscope.
+	speed = 0.4
 	damage = 70
 	knockdown = 100
 	dismemberment = 50
@@ -277,15 +271,30 @@
 	explosion(target, -1, 0, 1)
 	return TRUE
 
+/obj/item/projectile/bullet/pellet
+	var/tile_dropoff = 0.75
+	var/tile_dropoff_s = 1.25
+
 /obj/item/projectile/bullet/pellet/shotgun_buckshot
 	name = "buckshot pellet"
 	damage = 12.5
 
 /obj/item/projectile/bullet/pellet/shotgun_rubbershot
+	name = "rubbershot pellet"
 	damage = 3
 	stamina = 25
 
+/obj/item/projectile/bullet/pellet/Range()
+	..()
+	if(damage > 0)
+		damage -= tile_dropoff
+	if(stamina > 0)
+		stamina -= tile_dropoff_s
+	if(damage < 0 && stamina < 0)
+		qdel(src)
+
 /obj/item/projectile/bullet/pellet/shotgun_improvised
+	tile_dropoff = 0.55		//Come on it does 6 damage don't be like that.
 	damage = 6
 
 /obj/item/projectile/bullet/pellet/shotgun_improvised/Initialize()
@@ -337,8 +346,8 @@
 	icon_state = "banana"
 	range = 200
 
-/obj/item/projectile/bullet/honker/New()
-	..()
+/obj/item/projectile/bullet/honker/Initialize()
+	. = ..()
 	SpinAnimation()
 
 // Mime
@@ -360,8 +369,8 @@
 	damage = 6
 	var/piercing = FALSE
 
-/obj/item/projectile/bullet/dart/New()
-	..()
+/obj/item/projectile/bullet/dart/Initialize()
+	. = ..()
 	create_reagents(50)
 	reagents.set_reacting(FALSE)
 
@@ -384,8 +393,8 @@
 	reagents.handle_reactions()
 	return TRUE
 
-/obj/item/projectile/bullet/dart/metalfoam/New()
-	..()
+/obj/item/projectile/bullet/dart/metalfoam/Initialize()
+	. = ..()
 	reagents.add_reagent("aluminium", 15)
 	reagents.add_reagent("foaming_agent", 5)
 	reagents.add_reagent("facid", 5)

@@ -23,10 +23,13 @@
 	var/full_w_class = WEIGHT_CLASS_NORMAL //The weight class the stack should have at amount > 2/3rds max_amount
 	var/novariants = TRUE //Determines whether the item should update it's sprites based on amount.
 
-/obj/item/stack/Initialize(mapload, new_amount=null , merge = TRUE)
+/obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
 	. = ..()
-	if(new_amount)
+	if(new_amount != null)
 		amount = new_amount
+	while(amount > max_amount)
+		amount -= max_amount
+		new type(loc, max_amount, FALSE)
 	if(!merge_type)
 		merge_type = type
 	if(merge)
@@ -170,9 +173,14 @@
 			if(!building_checks(R, multiplier))
 				return
 
-		var/atom/O = new R.result_type( usr.loc )
+		var/obj/O
+		if(R.max_res_amount > 1) //Is it a stack?
+			O = new R.result_type(usr.drop_location(), R.res_amount * multiplier)
+		else
+			O = new R.result_type(usr.drop_location())
 		O.setDir(usr.dir)
 		use(R.req_amount * multiplier)
+
 
 		//START: oh fuck i'm so sorry
 		if(istype(O, /obj/structure/windoor_assembly))
@@ -188,14 +196,8 @@
 			cuffs.item_color = item_color
 			cuffs.update_icon()
 
-		//is it a stack ?
-		if (R.max_res_amount > 1)
-			var/obj/item/stack/new_item = O
-			new_item.amount = R.res_amount*multiplier
-			new_item.update_icon()
-
-			if(new_item.amount <= 0)//if the stack is empty, i.e it has been merged with an existing stack and has been garbage collected
-				return
+		if (QDELETED(O))
+			return //It's a stack and has already been merged
 
 		if (isitem(O))
 			usr.put_in_hands(O)
