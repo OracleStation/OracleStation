@@ -1,3 +1,11 @@
+/client/proc/despacito()
+	set category = "Fun"
+	set name = "Despacito"
+	if(!check_rights(R_SOUNDS))
+		return
+	for(var/mob/M in GLOB.player_list)
+		SEND_SOUND(M, sound("sound/misc/despacito.ogg"))
+
 /client/proc/play_sound(S as sound)
 	set category = "Fun"
 	set name = "Play Global Sound"
