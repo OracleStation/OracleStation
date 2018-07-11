@@ -161,7 +161,10 @@
 
 /obj/structure/closet/secure_closet/security/PopulateContents()
 	..()
-	new /obj/item/clothing/suit/armor/vest(src)
+	if(prob(20))//lower prob, because they already start with those
+		new /obj/item/clothing/suit/armor/vest(src)
+	else
+		new /obj/item/clothing/suit/armor/jacket(src)
 	new /obj/item/clothing/head/helmet/sec(src)
 	new /obj/item/device/radio/headset/headset_sec(src)
 	new /obj/item/device/radio/headset/headset_sec/alt(src)
