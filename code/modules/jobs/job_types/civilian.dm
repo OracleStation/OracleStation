@@ -27,6 +27,7 @@ Clown
 	jobtype = /datum/job/clown
 	id = /obj/item/card/id/job/clown
 	pda_slot = /obj/item/device/pda/clown
+	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/clown
 	shoes = /obj/item/clothing/shoes/clown_shoes
 	mask = /obj/item/clothing/mask/gas/clown_hat
@@ -89,6 +90,7 @@ Mime
 	jobtype = /datum/job/mime
 	id = /obj/item/card/id/job/mime
 	pda_slot = /obj/item/device/pda/mime
+	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/mime
 	mask = /obj/item/clothing/mask/gas/mime
 	gloves = /obj/item/clothing/gloves/color/white
@@ -136,6 +138,7 @@ Curator
 	jobtype = /datum/job/curator
 
 	pda_slot = /obj/item/device/pda/curator
+	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/curator
 	l_hand = /obj/item/storage/bag/books
 	r_pocket = /obj/item/key/displaycase
