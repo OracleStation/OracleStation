@@ -157,9 +157,13 @@
 			break
 
 	if(martyr_compatibility && martyr_chance)
-		var/datum/objective/martyr/martyr_objective = new
-		martyr_objective.owner = owner
-		add_objective(martyr_objective)
+		//Nothing happens.
+		//This used to be the martyr objective to end your life,
+		//but since that doesn't give you a license to grief and
+		//some people might not even want to die,
+		//we're just leaving this empty.
+		//That's ltierally the best way to handle this.
+		//Feels weird, doesn't it?
 		return
 
 	else
