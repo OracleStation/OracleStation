@@ -3491,9 +3491,7 @@
 /turf/open/floor/plasteel/black,
 /area/awaymission/centcomAway/thunderdome)
 "me" = (
-/obj/machinery/vending/boozeomat{
-	req_access_txt = ""
-	},
+/obj/machinery/vending/boozeomat,
 /turf/closed/wall/r_wall,
 /area/awaymission/centcomAway/cafe)
 "mf" = (
@@ -3650,9 +3648,7 @@
 /turf/open/floor/plasteel/red,
 /area/awaymission/centcomAway/cafe)
 "mA" = (
-/obj/machinery/vending/boozeomat{
-	req_access_txt = ""
-	},
+/obj/machinery/vending/boozeomat,
 /turf/closed/wall,
 /area/awaymission/centcomAway/cafe)
 "mB" = (

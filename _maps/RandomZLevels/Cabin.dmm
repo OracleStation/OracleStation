@@ -506,9 +506,7 @@
 /turf/open/floor/wood,
 /area/awaymission/cabin)
 "bN" = (
-/obj/machinery/vending/boozeomat{
-	req_access_txt = "0"
-	},
+/obj/machinery/vending/boozeomat,
 /turf/open/floor/wood,
 /area/awaymission/cabin)
 "bO" = (
