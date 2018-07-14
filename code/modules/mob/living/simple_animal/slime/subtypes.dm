@@ -11,8 +11,9 @@
 		if("purple")
 			slime_mutation[1] = "dark purple"
 			slime_mutation[2] = "dark blue"
-			slime_mutation[3] = "green"
-			slime_mutation[4] = "green"
+			// Stops the mutation toxin memery in its tracks right here.
+			//slime_mutation[3] = "green"
+			//slime_mutation[4] = "green"
 		if("metal")
 			slime_mutation[1] = "silver"
 			slime_mutation[2] = "yellow"
