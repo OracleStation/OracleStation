@@ -60,7 +60,7 @@ To draw a rune, use an arcane tome.
 		to_chat(user, "<span class='notice'>You carefully erase the [lowertext(cultist_name)] rune.</span>")
 		qdel(src)
 	else if(istype(I, /obj/item/nullrod))
-		user.say("BEGONE FOUL MAGIKS!!")
+		user.say(pick("BEGONE FOUL MAGIKS!!", "AVAST, HERESY!!", "I BANISH YOU!!", "HOLY POWER ABJURES YOU!!", "YOU WILL BE STOPPED!!", "DEATH TO THE ONE WHO DREW THIS!!", "NAR'SIE WILL FALL!!"))
 		to_chat(user, "<span class='danger'>You disrupt the magic of [src] with [I].</span>")
 		qdel(src)
 

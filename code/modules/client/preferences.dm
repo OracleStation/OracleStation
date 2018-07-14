@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
-	var/list/features = list("mcolor" = "FFF", "tail_unathi" = "Smooth", "tail_human" = "None", "tail_ethari" = "Bushy", "snout_ethari" = "Sharp", "ears_ethari" = "Fox", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "ipc_screen" = "Blue", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)", "vox_quills" = "None", "vox_facial_quills" = "None", "vox_body_markings" = "None", "vox_body" = "Green", "vox_tail_markings" = "None")
+	var/list/features = list("mcolor" = "FFF", "tail_unathi" = "Smooth", "tail_human" = "None", "tail_ethari" = "Bushy", "snout_ethari" = "Sharp", "ears_ethari" = "Fox", "snout" = "Round", "horns" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "ipc_screen" = "Blue", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)", "vox_quills" = "None", "vox_facial_quills" = "None", "vox_body_markings" = "None", "vox_body" = "Green", "vox_tail_markings" = "None")
 	var/species_looking_at = "human"	//used as a helper to keep track of in the species selct thingy
 	var/list/custom_names = list("clown", "mime", "ai", "cyborg", "religion", "deity")
 	var/prefered_security_department = SEC_DEPT_RANDOM
@@ -214,7 +214,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						S["real_name"] >> name
 						if(!name)
 							name = "Character[i]"
-						//if(i!=1) dat += " | "
+						/*if(i!=1)
+							dat += " | " */
 						dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;num=[i];' [i == default_slot ? "class='linkOn'" : ""]>[name]</a> "
 					dat += "</center>"
 
@@ -503,14 +504,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 					dat += "</td>"
 
-				if("ears" in pref_species.mutant_bodyparts)
-					dat += "<td valign='top' width='7%'>"
-
-					dat += "<h3>Ears</h3>"
-
-					dat += "<a href='?_src_=prefs;preference=ears;task=input'>[features["ears"]]</a><BR>"
-
-					dat += "</td>"
 
 				if("wings" in pref_species.mutant_bodyparts && GLOB.r_wings_list.len >1)
 					dat += "<td valign='top' width='7%'>"
@@ -1007,6 +1000,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(S.required_playtime_remaining(parent))//we're checking against this list to prevent href shenanigans
 						to_chat(parent, "<span class='danger'>You need more playtime to play [S.name]!</span>")
 						let_them = FALSE
+
+				var/list/roundstart_species = CONFIG_GET(keyed_number_list/roundstart_races)
+				if(!(sid in roundstart_species))
+					to_chat(parent, "<span class='warning'>Whoops! Something went wrong. You should probably tell a coder.</span>")
+					message_admins("[parent.key] tried to pick a non-roundstart species. Possible href exploit.")
+					let_them = FALSE
+
 				if(let_them)
 					var/newtype = GLOB.species_list[sid]
 					pref_species = new newtype()
@@ -1212,12 +1212,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					new_horns = input(user, "Choose your character's horns:", "Character Preference") as null|anything in GLOB.horns_list
 					if(new_horns)
 						features["horns"] = new_horns
-
-				if("ears")
-					var/new_ears
-					new_ears = input(user, "Choose your character's ears:", "Character Preference") as null|anything in GLOB.ears_list
-					if(new_ears)
-						features["ears"] = new_ears
 
 				if("wings")
 					var/new_wings

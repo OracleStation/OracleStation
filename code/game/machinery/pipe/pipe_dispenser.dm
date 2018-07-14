@@ -59,6 +59,8 @@ PIPING LAYER: <A href='?src=[REF(src)];layer_down=1'>--</A><b>[piping_layer]</b>
 	if(href_list["make"])
 		if(wait < world.time)
 			var/p_type = text2path(href_list["make"])
+			if(!ispath(p_type, /obj/machinery/atmospherics))
+				return
 			var/p_dir = text2num(href_list["dir"])
 			var/obj/item/pipe/P = new (loc, p_type, p_dir)
 			P.setPipingLayer(piping_layer)

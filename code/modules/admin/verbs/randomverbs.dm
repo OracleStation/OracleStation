@@ -583,15 +583,20 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 
 	var/devastation = input("Range of total devastation. -1 to none", text("Input"))  as num|null
-	if(devastation == null) return
+	if(devastation == null)
+		return
 	var/heavy = input("Range of heavy impact. -1 to none", text("Input"))  as num|null
-	if(heavy == null) return
+	if(heavy == null)
+		return
 	var/light = input("Range of light impact. -1 to none", text("Input"))  as num|null
-	if(light == null) return
+	if(light == null)
+		return
 	var/flash = input("Range of flash. -1 to none", text("Input"))  as num|null
-	if(flash == null) return
+	if(flash == null)
+		return
 	var/flames = input("Range of flames. -1 to none", text("Input"))  as num|null
-	if(flames == null) return
+	if(flames == null)
+		return
 
 	if ((devastation != -1) || (heavy != -1) || (light != -1) || (flash != -1) || (flames != -1))
 		if ((devastation > 20) || (heavy > 20) || (light > 20) || (flames > 20))
@@ -615,9 +620,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 
 	var/heavy = input("Range of heavy pulse.", text("Input"))  as num|null
-	if(heavy == null) return
+	if(heavy == null)
+		return
 	var/light = input("Range of light pulse.", text("Input"))  as num|null
-	if(light == null) return
+	if(light == null)
+		return
 
 	if (heavy || light)
 
@@ -998,7 +1005,8 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	set name = "Toggle AntagHUD"
 	set desc = "Toggles the Admin AntagHUD"
 
-	if(!holder) return
+	if(!holder)
+		return
 
 	var/adding_hud = !has_antag_hud()
 
@@ -1124,53 +1132,6 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	message_admins("[key_name_admin(usr)] sent a tip of the round.")
 	log_admin("[key_name(usr)] sent \"[input]\" as the Tip of the Round.")
 	SSblackbox.add_details("admin_verb","Show Tip")
-
-#define ON_PURRBATION(H) (!(H.dna.features["tail_human"] == "None" && H.dna.features["ears"] == "None"))
-
-/proc/mass_purrbation()
-	for(var/M in GLOB.mob_list)
-		if(ishumanbasic(M))
-			purrbation_apply(M)
-		CHECK_TICK
-
-/proc/mass_remove_purrbation()
-	for(var/M in GLOB.mob_list)
-		if(ishumanbasic(M))
-			purrbation_remove(M)
-		CHECK_TICK
-
-/proc/purrbation_toggle(mob/living/carbon/human/H)
-	if(!ishumanbasic(H))
-		return
-	if(!ON_PURRBATION(H))
-		purrbation_apply(H)
-		. = TRUE
-	else
-		purrbation_remove(H)
-		. = FALSE
-
-/proc/purrbation_apply(mob/living/carbon/human/H)
-	if(!ishuman(H))
-		return
-	if(ON_PURRBATION(H))
-		return
-	to_chat(H, "Something is nya~t right.")
-	H.dna.features["tail_human"] = "Cat"
-	H.dna.features["ears"] = "Cat"
-	H.regenerate_icons()
-	playsound(get_turf(H), 'sound/effects/meow1.ogg', 50, 1, -1)
-
-/proc/purrbation_remove(mob/living/carbon/human/H)
-	if(!ishuman(H))
-		return
-	if(!ON_PURRBATION(H))
-		return
-	to_chat(H, "You are no longer a cat.")
-	H.dna.features["tail_human"] = "None"
-	H.dna.features["ears"] = "None"
-	H.regenerate_icons()
-
-#undef ON_PURRBATION
 
 /client/proc/modify_goals()
 	set category = "Debug"

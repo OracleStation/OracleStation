@@ -575,7 +575,8 @@
 		user.visible_message("[user] wires the airlock assembly.", \
 							"<span class='notice'>You start to wire the airlock assembly...</span>")
 		if(do_after(user, 40, target = src))
-			if(C.get_amount() < 1 || state != 0) return
+			if(C.get_amount() < 1 || state != 0)
+				return
 			C.use(1)
 			src.state = 1
 			to_chat(user, "<span class='notice'>You wire the airlock assembly.</span>")
@@ -638,7 +639,8 @@
 					user.visible_message("[user] adds [G.name] to the airlock assembly.", \
 										"<span class='notice'>You start to install [G.name] into the airlock assembly...</span>")
 					if(do_after(user, 40, target = src))
-						if(G.get_amount() < 1 || mineral) return
+						if(G.get_amount() < 1 || mineral)
+							return
 						if (G.type == /obj/item/stack/sheet/rglass)
 							to_chat(user, "<span class='notice'>You install reinforced glass windows into the airlock assembly.</span>")
 							heat_proof_finished = 1 //reinforced glass makes the airlock heat-proof
@@ -666,7 +668,8 @@
 						user.visible_message("[user] adds [G.name] to the airlock assembly.", \
 										 "<span class='notice'>You start to install [G.name] into the airlock assembly...</span>")
 						if(do_after(user, 40, target = src))
-							if(G.get_amount() < 2 || mineral) return
+							if(G.get_amount() < 2 || mineral)
+								return
 							to_chat(user, "<span class='notice'>You install [M] plating into the airlock assembly.</span>")
 							G.use(2)
 							mineral = "[M]"
