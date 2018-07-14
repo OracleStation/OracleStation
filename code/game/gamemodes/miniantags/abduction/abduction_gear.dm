@@ -724,6 +724,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 10, bio = 10, rad = 0, fire = 0, acid = 0)
 	can_adjust = 0
 	species_restricted = list("exclude","Vox Outcast")
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
 
 /obj/item/clothing/under/abductor/blue
 	desc = "The most advanced form of jumpsuit known to reality, looks uncomfortable. This one is in a turquoise color."
