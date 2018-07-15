@@ -54934,6 +54934,10 @@
 /obj/effect/spawner/structure/window/shuttle,
 /turf/open/floor/plating,
 /area/shuttle/escape)
+"cJJ" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plasteel/freezer,
+/area/medical/cryo)
 "cMb" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -54944,6 +54948,21 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/black,
 /area/security/prison)
+"cZZ" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
+"dcK" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_color = "#e8eaff"
+	},
+/turf/open/floor/plasteel/freezer,
+/area/medical/cryo)
 "djw" = (
 /obj/machinery/turnstile{
 	req_access_txt = "71"
@@ -55009,6 +55028,15 @@
 	dir = 5
 	},
 /area/security/brig)
+"gvU" = (
+/obj/machinery/door/airlock{
+	id_tag = null;
+	name = "Cryostorage"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plasteel/freezer,
+/area/medical/cryo)
 "hbw" = (
 /obj/structure/cable{
 	icon_state = "0-2";
@@ -55083,6 +55111,18 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/black,
 /area/security/prison)
+"iXB" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "jnw" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
@@ -55151,6 +55191,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/black,
 /area/security/prison)
+"kLG" = (
+/obj/machinery/cryopod,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/open/floor/plasteel/freezer,
+/area/medical/cryo)
 "kUW" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/red/corner,
@@ -55205,6 +55253,12 @@
 /obj/machinery/light,
 /turf/open/floor/plasteel/red/side,
 /area/security/prison)
+"osq" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/turf/open/floor/plasteel/freezer,
+/area/medical/cryo)
 "owE" = (
 /turf/open/floor/plasteel/red/corner,
 /area/security/prison)
@@ -55238,6 +55292,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/black,
 /area/security/prison)
+"pYd" = (
+/obj/machinery/light,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "pYC" = (
 /obj/structure/table,
 /obj/item/device/radio/headset,
@@ -55257,6 +55316,10 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/security/prison)
+"rtx" = (
+/obj/machinery/cryopod,
+/turf/open/floor/plasteel/freezer,
+/area/medical/cryo)
 "rBt" = (
 /obj/structure/bed,
 /obj/machinery/camera{
@@ -55275,6 +55338,17 @@
 	},
 /turf/open/floor/plasteel/floorgrime,
 /area/security/prison)
+"swG" = (
+/obj/machinery/cryopod,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 23
+	},
+/turf/open/floor/plasteel/freezer,
+/area/medical/cryo)
 "tjr" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
@@ -55297,6 +55371,16 @@
 /obj/machinery/light,
 /turf/open/floor/plasteel/red/side,
 /area/security/brig)
+"uIv" = (
+/turf/closed/wall,
+/area/medical/cryo)
+"uNE" = (
+/obj/machinery/computer/cryopod{
+	pixel_y = 32
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/turf/open/floor/plasteel/freezer,
+/area/medical/cryo)
 "vwf" = (
 /obj/structure/window/reinforced,
 /turf/open/floor/plasteel/darkred/side,
@@ -55325,6 +55409,15 @@
 	},
 /turf/open/floor/plasteel/vault,
 /area/security/prison)
+"yiF" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plasteel/freezer,
+/area/medical/cryo)
+"ykp" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/medical/cryo)
 
 (1,1,1) = {"
 aaa
@@ -91657,10 +91750,10 @@ aAN
 awd
 awd
 aAN
-aAN
-awd
-awd
-aAN
+uIv
+ykp
+ykp
+uIv
 aIg
 aJf
 aKb
@@ -91913,11 +92006,11 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-awd
+uIv
+osq
+dcK
+osq
+ykp
 aHN
 aIU
 aJI
@@ -92170,14 +92263,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-awd
-aHN
-aIU
-aJH
+uIv
+uNE
+cJJ
+yiF
+gvU
+cZZ
+iXB
+pYd
 aLe
 aMf
 aNF
@@ -92427,11 +92520,11 @@ ayi
 apX
 aBL
 aBL
-apX
-aaa
-aaa
-aaa
-aAN
+uIv
+rtx
+swG
+kLG
+ykp
 aHN
 aIU
 aJI
@@ -92685,10 +92778,10 @@ apX
 aBM
 aDb
 apX
-aET
-aET
-aET
-aET
+uIv
+uIv
+uIv
+uIv
 aHN
 aIU
 aJI
