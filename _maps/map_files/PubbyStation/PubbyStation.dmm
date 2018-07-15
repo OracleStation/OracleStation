@@ -14122,6 +14122,9 @@
 	dir = 4
 	},
 /obj/item/device/taperecorder,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "aFE" = (
@@ -54935,7 +54938,14 @@
 /turf/open/floor/plating,
 /area/shuttle/escape)
 "cJJ" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
 /turf/open/floor/plasteel/freezer,
 /area/medical/cryo)
 "cMb" = (
@@ -54949,8 +54959,12 @@
 /turf/open/floor/plasteel/black,
 /area/security/prison)
 "cZZ" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "dcK" = (
@@ -54960,6 +54974,9 @@
 /obj/machinery/light{
 	dir = 8;
 	light_color = "#e8eaff"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
 	},
 /turf/open/floor/plasteel/freezer,
 /area/medical/cryo)
@@ -55013,6 +55030,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/prison)
+"gbG" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "guM" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
@@ -55034,7 +55057,11 @@
 	name = "Cryostorage"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel/freezer,
 /area/medical/cryo)
 "hbw" = (
@@ -55120,7 +55147,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "jnw" = (
@@ -55249,6 +55278,13 @@
 	dir = 1
 	},
 /area/security/brig)
+"nAV" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/medical/cryo)
 "nCT" = (
 /obj/machinery/light,
 /turf/open/floor/plasteel/red/side,
@@ -55292,11 +55328,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/black,
 /area/security/prison)
-"pYd" = (
-/obj/machinery/light,
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden,
-/turf/open/floor/plasteel,
-/area/hallway/primary/central)
 "pYC" = (
 /obj/structure/table,
 /obj/item/device/radio/headset,
@@ -55318,6 +55349,11 @@
 /area/security/prison)
 "rtx" = (
 /obj/machinery/cryopod,
+/obj/machinery/camera{
+	c_tag = "Cryostorage";
+	dir = 2;
+	network = list("SS13")
+	},
 /turf/open/floor/plasteel/freezer,
 /area/medical/cryo)
 "rBt" = (
@@ -55378,7 +55414,27 @@
 /obj/machinery/computer/cryopod{
 	pixel_y = 32
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/floor/plasteel/freezer,
+/area/medical/cryo)
+"voy" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/machinery/power/apc{
+	areastring = "/area/medical/cryo";
+	dir = 8;
+	name = "Cryostorage APC";
+	pixel_x = -24
+	},
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
+	},
 /turf/open/floor/plasteel/freezer,
 /area/medical/cryo)
 "vwf" = (
@@ -55411,7 +55467,11 @@
 /area/security/prison)
 "yiF" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel/freezer,
 /area/medical/cryo)
 "ykp" = (
@@ -90723,7 +90783,7 @@ aBI
 aCX
 aBI
 aES
-aBI
+gbG
 aBI
 aGW
 aHG
@@ -90980,7 +91040,7 @@ aBJ
 aCY
 aEa
 aEa
-aEa
+aJY
 aEa
 aHm
 aIe
@@ -91237,7 +91297,7 @@ aAL
 aCZ
 aAL
 aAL
-aAL
+aJZ
 aAL
 aGU
 aCZ
@@ -91751,7 +91811,7 @@ awd
 awd
 aAN
 uIv
-ykp
+nAV
 ykp
 uIv
 aIg
@@ -92007,7 +92067,7 @@ aaa
 aaa
 aaa
 uIv
-osq
+voy
 dcK
 osq
 ykp
@@ -92270,7 +92330,7 @@ yiF
 gvU
 cZZ
 iXB
-pYd
+aJH
 aLe
 aMf
 aNF
