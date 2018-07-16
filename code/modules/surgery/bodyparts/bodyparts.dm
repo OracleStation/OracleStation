@@ -123,7 +123,7 @@
 		return
 	broken = TRUE
 	spawn(1)//because otherwise it pops before the punch message; we don't want that
-	
+
 		owner.visible_message("<span class='userdanger'>You see [owner]'s [name] deform un-naturally.</span>", "<span class='warning'>You feel something crack in your [name]!</span>", "<span class='warning'>You hear an awful cracking sound.</span>")
 
 /obj/item/bodypart/proc/fix_bone()
@@ -163,7 +163,7 @@
 			burn *= 2
 
 	//break_modifier is based on the item used: blunt = 0, sharp = 1, accurate sharp = 2
-	if(prob(break_modifier * 35 / status) && brute > 9 && owner)//0% chance for blunt objects, 20% for sharp, 40% for REALLY SHARP OHGOD; halved for robotic bodyparts
+	if(prob(break_modifier * 30 / status) && owner)//0% chance for blunt objects, 30% for sharp, 60% for REALLY SHARP OHGOD; halved for robotic bodyparts
 	//the numbers are like that to make organ damage less "averaged out". Every patient that swings by medbay will have a more unique condition, with specific organs being affected
 		var/list/organs = owner.getorganszone(body_zone)
 		if(!organs.len)
@@ -173,7 +173,7 @@
 			O.take_damage(rand(brute, brute*2))
 
 	//blunt objects break bones better, but damage organs less
-	if(brute > 9 && prob(brute*(3-break_modifier)) && ((brute_dam + burn_dam)/max_damage) > 0.3 )
+	if(prob(brute * (3-break_modifier) * 1.5) && ((brute_dam + burn_dam)/max_damage) > 0.2)
 		break_bone()
 
 	var/can_inflict = max_damage - (brute_dam + burn_dam)
