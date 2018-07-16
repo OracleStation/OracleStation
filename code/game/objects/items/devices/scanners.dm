@@ -290,10 +290,10 @@ MASS SPECTROMETER
 
 	// Clumsiness/brain damage check
 	if ((user.disabilities & (CLUMSY | DUMB)) && prob(50))
-		to_chat(user, "<span class='notice'>You stupidly try to analyze the floor's mechanical state!</span>")
+		to_chat(user, "<span class='notice'>You stupidly try to analyze the floor!</span>")
 		user.visible_message("<span class='warning'>[user] has analyzed the floor's vitals!</span>")
-		to_chat(user, "<span class='info'>Analyzing: The Floor</span>")
-		to_chat(user, "<span class='info'>\tIntegrity: ???%</span>")
+		to_chat(user, "<span class='info robot'>Analyzing: The Floor</span>")
+		to_chat(user, "<span class='info robot'>\tIntegrity: ???%</span>")
 		return
 
 	user.visible_message("<span class='notice'>[user] has analyzed [M]'s vitals.</span>")
@@ -306,25 +306,25 @@ MASS SPECTROMETER
 	if(!target || !user || user.incapacitated() || user.eye_blind)
 		return
 
-	to_chat(user, "<span class='info'>Analyzing: [target]</span>")
+	to_chat(user, "<span class='info robot'>Analyzing: [target]</span>")
 
 	if(istype(target, /mob/living/simple_animal/bot))
-		var/mob/living/simple_animal/bot/bot
-		to_chat(user, "<span class='info'>\tIntegrity: [round(target.health / target.maxHealth * 100)]%</span>")
-		to_chat(user, "<span class='info'>\tMode: [bot.get_mode()]</span>")
+		var/mob/living/simple_animal/bot/bot = target
+		to_chat(user, "<span class='info robot'>\tIntegrity: [round(target.health / target.maxHealth * 100)]%</span>")
+		to_chat(user, "<span class='info robot'>\tMode: [bot.get_mode()]</span>")
 		return
 
 	if(istype(target, /mob/living/silicon/robot))
-		var/mob/living/silicon/robot/borg
-		to_chat(user, "<span class='info'>\tType: [borg.braintype]</span>")
-		to_chat(user, "<span class='info'>\tDamage: <font color='red'>Brute</font></span>-<font color='#FF8000'>Burn</font></span>")
-		to_chat(user, "<span class='info'>\tSpecifics: <font color='red'>[borg.getBruteLoss()]</font>-<font color='#FF8000'>[borg.getFireLoss()]</font></span>")
+		var/mob/living/silicon/robot/borg = target
+		to_chat(user, "<span class='info robot'>\tType: [borg.braintype ? borg.braintype : "Empty"]</span>")
+		to_chat(user, "<span class='info robot'>\tDamage: <font color='red'>Brute</font></span>-<font color='#FF8000'>Burn</font></span>")
+		to_chat(user, "<span class='info robot'>\tSpecifics: <font color='red'>[borg.getBruteLoss()]</font>-<font color='#FF8000'>[borg.getFireLoss()]</font></span>")
 
 	if(istype(target, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = target
 
 		var/non_robotic_bodyparts = FALSE
-		to_chat(user, "<span class='info'>\t<b>Limb Damage:</b></span>")
+		to_chat(user, "<span class='info robot'>\t<b>Limb Damage:</b></span>")
 		var/limb_damage_found = FALSE
 		for(var/thing in H.bodyparts)
 			var/obj/item/bodypart/B = thing
@@ -333,29 +333,29 @@ MASS SPECTROMETER
 			if(B.status == BODYPART_ROBOTIC)
 				if(B.brute_dam || B.burn_dam)
 					limb_damage_found = TRUE
-					to_chat(user, "<span class='info'>\t\t[capitalize(B.name)]: \t<font color='red'>[B.brute_dam]</font>-<font color='#FF8000'>[B.burn_dam]</font>")
+					to_chat(user, "<span class='info robot'>\t\t[capitalize(B.name)]: \t<font color='red'>[B.brute_dam]</font>-<font color='#FF8000'>[B.burn_dam]</font>")
 			else
 				non_robotic_bodyparts = TRUE
 
 		if(!limb_damage_found)
-			to_chat(user, "<span class='info'>\t\tFull Integrity</span>")
+			to_chat(user, "<span class='info robot'>\t\tFull Integrity</span>")
 
-		to_chat(user, "<span class='info'>\t<b>Internal Damage:</b></span>")
+		to_chat(user, "<span class='info robot'>\t<b>Internal Damage:</b></span>")
 		var/internal_damage_found = FALSE
 		for(var/thing in H.internal_organs)
 			var/obj/item/organ/O = thing
 			if(O.status == ORGAN_ROBOTIC)
 				if(O.get_damage_perc())
 					internal_damage_found = TRUE
-					to_chat(user, "<span class='info'>\t\t[capitalize(O.name)]: \t[round(100 - O.get_damage_perc())]% Integrity</span>")
+					to_chat(user, "<span class='info robot'>\t\t[capitalize(O.name)]: \t[round(100 - O.get_damage_perc())]% Integrity</span>")
 			else
 				non_robotic_bodyparts = TRUE
 
 		if(!internal_damage_found)
-			to_chat(user, "<span class='info'>\t\tFull Integrity</span>")
+			to_chat(user, "<span class='info robot'>\t\tFull Integrity</span>")
 
 		if(non_robotic_bodyparts)
-			to_chat(user, "<span class='boldannounce'><b>\tNon-robotic bodyparts found, Use a Body Scanner for full diagnosis!</b></span>")
+			to_chat(user, "<span class='boldannounce robot'><b>\tNon-robotic bodyparts found, Use a Body Scanner for full diagnosis!</b></span>")
 
 /obj/item/device/analyzer
 	desc = "A hand-held environmental scanner which reports current gas levels."
