@@ -55,6 +55,7 @@
 	if((isnull(user) || istype(user)) && state_open && !panel_open)
 		..(user)
 		carbon_occupant = occupant
+		ui.close(user)
 		if(carbon_occupant && carbon_occupant.stat != DEAD)
 			to_chat(carbon_occupant, "<span class='boldnotice'>You feel cool air surround you. You go numb as your senses turn inward.</span>")
 		update_icon()
@@ -111,8 +112,14 @@
 		data["oxyloss"] = "[carbon_occupant.getOxyLoss()]%"
 		data["blood"] = "[(carbon_occupant.blood_volume / BLOOD_VOLUME_NORMAL)*100]%"
 
+		data["bodyparts"] = ""//we have to pass HTML because of OUI works
+		for(var/thing in carbon_occupant.get_missing_limbs())
+			data["bodyparts"] +=	 "<section>\
+									<span class='label'>[parse_zone(thing)]:</span>\
+									<span class='bad'>MISSING</span>\
+									</section>"
+
 		if(carbon_occupant.bodyparts.len)
-			data["bodyparts"] = ""//we have to pass HTML because of OUI works
 			for(var/thing in carbon_occupant.bodyparts)
 				var/obj/item/bodypart/B = thing
 				var/damage = round((B.brute_dam + B.burn_dam) / B.max_damage * 100)
@@ -125,7 +132,7 @@
 										</section>"
 
 		if(!data["bodyparts"])
-			data["bodyparts"] = "<span class='average'><b>No Bodyparts Found!</b></span>"
+			data["bodyparts"] = "<span class='average'><b>Subject does not have any bodyparts!</b></span>"
 
 		if(carbon_occupant.internal_organs.len)
 			data["organs"] = ""
