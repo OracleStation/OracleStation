@@ -573,7 +573,7 @@
 	description = "An unstable and unpredictable corruptive toxin produced by slimes."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	mutationtext = "<span class='danger'>The pain subsides. You feel... slimy.</span>"
-	race = /datum/species/slime
+	race = /datum/species/jelly/slime
 
 /datum/reagent/mulligan
 	name = "Mulligan Toxin"
