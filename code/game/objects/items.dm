@@ -269,13 +269,13 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(throwing)
 		throwing.finalize(FALSE)
 	if(loc == user)
-		if(!user.dropItemToGround(src))
+		if(!user.temporarilyRemoveItemFromInventory(src))// changed this line from dropItemToGround() to this; not sure why it works, but it works ~Flatty
 			return
 
 	pickup(user)
 	add_fingerprint(user)
 	if(!user.put_in_active_hand(src))
-		dropped(user)
+		src.forceMove(user.loc)// this line had dropped() on it and I am also not sure why this works but it does ~Flatty
 
 
 /obj/item/attack_paw(mob/user)

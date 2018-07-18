@@ -165,6 +165,8 @@
 
 /mob/proc/put_in_hand(obj/item/I, hand_index)
 	if(can_put_in_hand(I, hand_index))
+		if(isturf(I.loc))
+			I.do_pickup_animation(src)
 		I.forceMove(src)
 		held_items[hand_index] = I
 		I.layer = ABOVE_HUD_LAYER
