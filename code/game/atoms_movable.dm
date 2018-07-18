@@ -468,6 +468,7 @@
 	animate(pixel_x = initial(pixel_x), pixel_y = final_pixel_y, time = 2, easing = CUBIC_EASING)
 
 /atom/movable/proc/do_item_attack_animation(atom/A, visual_effect_icon, obj/item/used_item)
+	set waitfor = FALSE
 	var/image/I
 	if(visual_effect_icon)
 		I = image('icons/effects/effects.dmi', A, visual_effect_icon, A.layer + 0.1)
@@ -498,9 +499,17 @@
 		return
 
 	flick_overlay(I, GLOB.clients, 5) // 5 ticks/half a second
-
+	var/matrix/M = new
+	M.Scale(0.9)
+	M.Turn(pick(-20, 20))
 	// And animate the attack!
-	animate(I, alpha = 175, pixel_x = 0, pixel_y = 0, pixel_z = 0, time = 3, easing = CUBIC_EASING)
+	animate(I, alpha = 175, pixel_x = 0, pixel_y = 0, pixel_z = 0, time = 2, easing = CUBIC_EASING)
+	sleep(2)
+	animate(I, transform = M, time = 1) // apply the fancy matrix
+	sleep(1)
+	animate(I, transform = matrix(), time = 1) // back to a default matrix
+	sleep(1)
+	animate(I, alpha = 0, time = 1)
 
 /atom/movable/vv_get_dropdown()
 	. = ..()
