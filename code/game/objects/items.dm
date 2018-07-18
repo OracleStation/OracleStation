@@ -264,7 +264,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(istype(loc, /obj/item/storage))
 		//If the item is in a storage item, take it out
 		var/obj/item/storage/S = loc
-		S.remove_from_storage(src, user.loc)
+		S.remove_from_storage(src, S.loc)
 
 	if(throwing)
 		throwing.finalize(FALSE)
@@ -286,7 +286,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	if(istype(loc, /obj/item/storage))
 		var/obj/item/storage/S = loc
-		S.remove_from_storage(src, user.loc)
+		S.remove_from_storage(src, S.loc)
 
 	if(throwing)
 		throwing.finalize(FALSE)
