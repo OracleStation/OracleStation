@@ -340,12 +340,12 @@
 	name = "lollipop fabricator"
 	desc = "Reward good humans with this. Toggle in-module to switch between dispensing and high velocity ejection modes."
 	icon_state = "lollipop"
-	var/candy = 30
-	var/candymax = 30
-	var/charge_delay = 10
+	var/candy = 15
+	var/candymax = 15
+	var/charge_delay = 40
 	var/charging = 0
 	var/mode = 1
-	var/firedelay = 0
+	var/firedelay = 50
 	var/hitspeed = 2
 	var/hitdamage = 0
 	var/emaggedhitdamage = 3
