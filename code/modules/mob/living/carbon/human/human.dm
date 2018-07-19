@@ -610,11 +610,8 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 
 //Used for new human mobs created by cloning/goleming/podding
 /mob/living/carbon/human/proc/set_cloned_appearance()
-	if(gender == MALE)
-		facial_hair_style = "Full Beard"
-	else
-		facial_hair_style = "Shaved"
-	hair_style = pick("Bedhead", "Bedhead 2", "Bedhead 3")
+	facial_hair_style = "Shaved"
+	hair_style = "Bald"
 	underwear = "Nude"
 	update_body()
 	update_hair()
