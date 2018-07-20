@@ -284,7 +284,7 @@
 	max_combined_w_class = 21
 	w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/briefcase/PopulateContents()
+/obj/item/storage/briefcase/inflatable/PopulateContents()
 	new /obj/item/inflatable/door(src)
 	new /obj/item/inflatable/door(src)
 	new /obj/item/inflatable/door(src)
