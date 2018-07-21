@@ -174,7 +174,7 @@ GLOBAL_LIST_EMPTY(supermatters)
 	var/mob/living/carbon/human/H = user
 	if(istype(H.glasses, /obj/item/clothing/glasses/meson))
 		return
-	var/obj/item/organ/eyes/eyes = H.getorganslot("eye_sight")
+	var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes && eyes.status == ORGAN_ROBOTIC)
 		return
 	to_chat(H, "<span class='danger'>You get headaches just from looking at it.</span>")
@@ -369,7 +369,7 @@ GLOBAL_LIST_EMPTY(supermatters)
 	for(var/mob/living/carbon/human/l in view(src, HALLUCINATION_RANGE(power))) // If they can see it with organic eyes and without mesons.  Bad on them.
 		if(istype(l.glasses, /obj/item/clothing/glasses/meson))
 			return
-		var/obj/item/organ/eyes/eyes = l.getorganslot("eye_sight")
+		var/obj/item/organ/eyes/eyes = l.getorganslot(ORGAN_SLOT_EYES)
 		if(eyes && eyes.status == ORGAN_ROBOTIC)
 			return
 		else

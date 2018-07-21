@@ -34,8 +34,8 @@
 	var/ride_allow_incapacitated = FALSE
 	var/allow_riding = TRUE
 
-/obj/item/robot_module/New()
-	..()
+/obj/item/robot_module/Initialize()
+	. = ..()
 	for(var/i in basic_modules)
 		var/obj/item/I = new i(src)
 		basic_modules += I
@@ -529,6 +529,16 @@
 	moduleselect_icon = "malf"
 	can_be_pushed = FALSE
 	hat_offset = 3
+
+/obj/item/robot_module/syndicate/rebuild_modules()
+	..()
+	var/mob/living/silicon/robot/Syndi = loc
+	Syndi.faction  -= "silicon" //ai turrets
+
+/obj/item/robot_module/syndicate/remove_module(obj/item/I, delete_after)
+	..()
+	var/mob/living/silicon/robot/Syndi = loc
+	Syndi.faction += "silicon" //ai is your bff now!
 
 /obj/item/robot_module/syndicate_medical
 	name = "Syndicate Medical"

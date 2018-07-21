@@ -306,7 +306,7 @@
 	sword.assigned = assigned
 	sword.faction = list("[assigned]")
 
-	var/randomize = pick("mobster","roman","wizard","cyborg","syndicate","assistant", "animu", "cultist", "highlander", "clown", "killer", "pirate", "soviet", "officer", "gladiator")
+	var/randomize = pick("mobster","roman","wizard","cyborg","syndicate","assistant", "cultist", "highlander", "clown", "killer", "pirate", "soviet", "officer", "gladiator")
 
 	switch(randomize)
 		if("mobster")
@@ -354,13 +354,6 @@
 			M.equip_to_slot_or_del(new /obj/item/clothing/under/color/grey(M), slot_w_uniform)
 			M.equip_to_slot_or_del(new /obj/item/device/radio/headset(M), slot_ears)
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/sneakers/black(M), slot_shoes)
-			M.put_in_hands_or_del(sword)
-
-		if("animu")
-			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(M), slot_shoes)
-			M.equip_to_slot_or_del(new /obj/item/device/radio/headset(M), slot_ears)
-			M.equip_to_slot_or_del(new /obj/item/clothing/head/kitty(M), slot_head)
-			M.equip_to_slot_or_del(new /obj/item/clothing/under/schoolgirl/red(M), slot_w_uniform)
 			M.put_in_hands_or_del(sword)
 
 		if("cultist")

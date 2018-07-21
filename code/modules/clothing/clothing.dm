@@ -24,6 +24,7 @@
 	var/can_flashlight = 0
 	var/gang //Is this a gang outfit?
 	var/scan_reagents = 0 //Can the wearer see reagents while it's equipped?
+	var/list/species_restricted = null //Only these species can wear this kit.
 
 	//Var modification - PLEASE be careful with this I know who you are and where you live
 	var/list/user_vars_to_edit = list() //VARNAME = VARVALUE eg: "name" = "butts"
@@ -37,6 +38,59 @@
 	// THESE OVERRIDE THE HIDEHAIR FLAGS
 	var/dynamic_hair_suffix = ""//head > mask for head hair
 	var/dynamic_fhair_suffix = ""//mask > head for facial hair
+
+//BS12: Species-restricted clothing check.
+/obj/item/clothing/mob_can_equip(mob/M, slot)
+
+	//if we can't equip the item anyway, don't bother with species_restricted (also cuts down on spam)
+	if(!..())
+		return FALSE
+
+	// Skip species restriction checks on non-equipment slots
+	if(slot in list(slot_in_backpack, slot_l_store, slot_r_store))
+		return TRUE
+
+	if(species_restricted && ishuman(M))
+
+		var/wearable = null
+		var/exclusive = null
+		var/mob/living/carbon/human/H = M
+
+		if("exclude" in species_restricted)
+			exclusive = TRUE
+
+		if(H.dna.species)
+			if(exclusive)
+				if(!(H.dna.species.name in species_restricted))
+					wearable = TRUE
+			else
+				if(H.dna.species.name in species_restricted)
+					wearable = TRUE
+
+			if(!wearable)
+				to_chat(M, "<span class='warning'>Your species cannot wear [src].</span>")
+				return FALSE
+
+	return TRUE
+
+/obj/item/clothing/proc/refit_for_species(var/target_species)
+	//Set species_restricted list
+	switch(target_species)
+		if("Human")//humanoid bodytypes
+			species_restricted = list("exclude","Unathi","Ash Walker", "Ethari")
+		else
+			species_restricted = list(target_species)
+
+	//Set icon
+	if(sprite_sheets && (target_species in sprite_sheets))
+		icon_override = sprite_sheets[target_species]
+	else
+		icon_override = initial(icon_override)
+
+	if(sprite_sheets_obj && (target_species in sprite_sheets_obj))
+		icon = sprite_sheets_obj[target_species]
+	else
+		icon = initial(icon)
 
 /obj/item/clothing/New()
 	..()
@@ -222,7 +276,10 @@ BLIND     // can't see anything
 	var/transfer_prints = FALSE
 	strip_delay = 20
 	equip_delay_other = 40
-
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/gloves.dmi'
+		)
 
 /obj/item/clothing/gloves/worn_overlays(isinhands = FALSE)
 	. = list()
@@ -253,6 +310,10 @@ BLIND     // can't see anything
 	var/blockTracking = 0 //For AI tracking
 	var/can_toggle = null
 	dynamic_hair_suffix = "+generic"
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/head.dmi'
+		)
 
 /obj/item/clothing/head/Initialize()
 	. = ..()
@@ -303,7 +364,10 @@ BLIND     // can't see anything
 	equip_delay_other = 40
 	var/mask_adjusted = 0
 	var/adjusted_flags = null
-
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/mask.dmi'
+		)
 
 /obj/item/clothing/mask/worn_overlays(isinhands = FALSE)
 	. = list()
@@ -361,6 +425,10 @@ BLIND     // can't see anything
 
 	body_parts_covered = FEET
 	slot_flags = SLOT_FEET
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/shoes.dmi'
+		)
 
 	permeability_coefficient = 0.50
 	slowdown = SHOES_SLOWDOWN
@@ -436,6 +504,10 @@ BLIND     // can't see anything
 	slot_flags = SLOT_OCLOTHING
 	var/blood_overlay_type = "suit"
 	var/togglename = null
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		)
 
 
 /obj/item/clothing/suit/worn_overlays(isinhands = FALSE)
@@ -483,6 +555,10 @@ BLIND     // can't see anything
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	resistance_flags = 0
 	dog_fashion = null
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/helmet.dmi'
+		)
 
 /obj/item/clothing/suit/space
 	name = "space suit"
@@ -505,6 +581,10 @@ BLIND     // can't see anything
 	strip_delay = 80
 	equip_delay_other = 80
 	resistance_flags = 0
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		)
 
 //Under clothing
 
@@ -514,6 +594,7 @@ BLIND     // can't see anything
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	permeability_coefficient = 0.90
 	slot_flags = SLOT_ICLOTHING
+	mutantrace_variation = MUTANTRACE_VARIATION // As of this line being added, all uniforms have digitigrade versions. If this isn't true on an added uniform it needs to be reverted back to NO_MUTANTRACE_VARIATION
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0, fire = 0, acid = 0)
 	var/fitted = FEMALE_UNIFORM_FULL // For use in alternate clothing styles for women
 	var/has_sensor = HAS_SENSORS // For the crew computer
@@ -524,7 +605,10 @@ BLIND     // can't see anything
 	var/alt_covers_chest = 0 // for adjusted/rolled-down jumpsuits, 0 = exposes chest and arms, 1 = exposes arms only
 	var/obj/item/clothing/accessory/attached_accessory
 	var/mutable_appearance/accessory_overlay
-	var/mutantrace_variation = NO_MUTANTRACE_VARIATION //Are there special sprites for specific situations? Don't use this unless you need to.
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/uniform.dmi'
+		)
 
 /obj/item/clothing/under/worn_overlays(isinhands = FALSE)
 	. = list()

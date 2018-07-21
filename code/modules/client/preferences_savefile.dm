@@ -138,7 +138,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["tgui_lock"]			>> tgui_lock
 	S["windowflash"]		>> windowflashing
 	S["be_special"] 		>> be_special
-
+	S["crew_objectives"]			>> crew_objectives
 
 	S["default_slot"]		>> default_slot
 	S["chat_toggles"]		>> chat_toggles
@@ -171,6 +171,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	tgui_fancy		= sanitize_integer(tgui_fancy, 0, 1, initial(tgui_fancy))
 	tgui_lock		= sanitize_integer(tgui_lock, 0, 1, initial(tgui_lock))
 	windowflashing		= sanitize_integer(windowflashing, 0, 1, initial(windowflashing))
+	crew_objectives		= sanitize_integer(crew_objectives, 0, 1, initial(crew_objectives))
 	default_slot	= sanitize_integer(default_slot, 1, max_save_slots, initial(default_slot))
 	toggles			= sanitize_integer(toggles, 0, 65535, initial(toggles))
 	clientfps		= sanitize_integer(clientfps, 0, 1000, 0)
@@ -203,6 +204,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["tgui_fancy"], tgui_fancy)
 	WRITE_FILE(S["tgui_lock"], tgui_lock)
 	WRITE_FILE(S["windowflash"], windowflashing)
+	WRITE_FILE(S["crew_objectives"], crew_objectives)
 	WRITE_FILE(S["be_special"], be_special)
 	WRITE_FILE(S["default_slot"], default_slot)
 	WRITE_FILE(S["toggles"], toggles)
@@ -280,24 +282,28 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["uplink_loc"]			>> uplink_spawn_loc
 	S["feature_mcolor"]					>> features["mcolor"]
 	S["feature_unathi_tail"]			>> features["tail_unathi"]
-	S["feature_ethari_tail"]				>> features["tail_ethari"]
+	S["feature_ethari_tail"]			>> features["tail_ethari"]
 	S["feature_unathi_snout"]			>> features["snout"]
-	S["feature_snout_ethari"]				>> features["snout_ethari"]
+	S["feature_snout_ethari"]			>> features["snout_ethari"]
 	S["feature_unathi_horns"]			>> features["horns"]
 	S["feature_unathi_frills"]			>> features["frills"]
 	S["feature_unathi_spines"]			>> features["spines"]
 	S["feature_unathi_body_markings"]	>> features["body_markings"]
 	S["feature_unathi_legs"]			>> features["legs"]
 	S["feature_ears_ethari"]			>> features["ears_ethari"]
-	S["feature_ipc_screen"]			>> features["ipc_screen"]
-	S["feature_ipc_antenna"]				>> features["ipc_antenna"]
-	S["feature_ipc_chassis"]				>> features["ipc_chassis"]
+	S["feature_ipc_screen"]				>> features["ipc_screen"]
+	S["feature_ipc_antenna"]			>> features["ipc_antenna"]
+	S["feature_ipc_chassis"]			>> features["ipc_chassis"]
+	S["feature_vox_body"]				>> features["vox_body"]
+	S["feature_vox_quills"]				>> features["vox_quills"]
+	S["feature_vox_facial_quills"]		>> features["vox_facial_quills"]
+	S["feature_vox_body_markings"]		>> features["vox_body_markings"]
+	S["feature_vox_tail_markings"]		>> features["vox_tail_markings"]
+
 	if(!CONFIG_GET(flag/join_with_mutant_humans))
 		features["tail_human"] = "none"
-		features["ears"] = "none"
 	else
 		S["feature_human_tail"]				>> features["tail_human"]
-		S["feature_human_ears"]				>> features["ears"]
 	S["clown_name"]			>> custom_names["clown"]
 	S["mime_name"]			>> custom_names["mime"]
 	S["ai_name"]			>> custom_names["ai"]
@@ -357,7 +363,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["snout"]	= sanitize_inlist(features["snout"], GLOB.snouts_list)
 	features["snout_ethari"] = sanitize_inlist(features["snout_ethari"], GLOB.snouts_ethari_list)
 	features["horns"] 	= sanitize_inlist(features["horns"], GLOB.horns_list)
-	features["ears"]	= sanitize_inlist(features["ears"], GLOB.ears_list, "None")
 	features["ears_ethari"] = sanitize_inlist(features["ears_ethari"], GLOB.ears_ethari_list)
 	features["frills"] 	= sanitize_inlist(features["frills"], GLOB.frills_list)
 	features["spines"] 	= sanitize_inlist(features["spines"], GLOB.spines_list)
@@ -366,6 +371,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["ipc_screen"]	= sanitize_inlist(features["ipc_screen"], GLOB.ipc_screens_list)
 	features["ipc_antenna"]	 = sanitize_inlist(features["ipc_antenna"], GLOB.ipc_antennas_list)
 	features["ipc_chassis"]	 = sanitize_inlist(features["ipc_chassis"], GLOB.ipc_chassis_list)
+	features["vox_body"]	 = sanitize_inlist(features["vox_body"], GLOB.vox_bodies_list)
+	features["vox_eyes"]	 = sanitize_inlist(features["vox_eyes"], GLOB.vox_eyes_list)
+	features["vox_tail"]	 = sanitize_inlist(features["vox_tail"], GLOB.vox_tails_list)
+	features["vox_quills"]	 = sanitize_inlist(features["vox_quills"], GLOB.vox_quills_list, "None")
+	features["vox_facial_quills"]	 = sanitize_inlist(features["vox_facial_quills"], GLOB.vox_facial_quills_list, "None")
+	features["vox_body_markings"]	 = sanitize_inlist(features["vox_body_markings"], GLOB.vox_body_markings_list, "None")
+	features["vox_tail_markings"]	 = sanitize_inlist(features["vox_tail_markings"], GLOB.vox_tail_markings_list, "None")
 
 	joblessrole	= sanitize_integer(joblessrole, 1, 3, initial(joblessrole))
 	job_civilian_high = sanitize_integer(job_civilian_high, 0, 65535, initial(job_civilian_high))
@@ -410,21 +422,26 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["uplink_loc"]			, uplink_spawn_loc)
 	WRITE_FILE(S["species"]			, pref_species.id)
 	WRITE_FILE(S["feature_mcolor"]					, features["mcolor"])
-	WRITE_FILE(S["feature_unathi_tail"]			, features["tail_unathi"])
+	WRITE_FILE(S["feature_unathi_tail"]				, features["tail_unathi"])
 	WRITE_FILE(S["feature_human_tail"]				, features["tail_human"])
 	WRITE_FILE(S["feature_unathi_snout"]			, features["snout"])
 	WRITE_FILE(S["feature_snout_ethari"]			, features["snout_ethari"])
-	WRITE_FILE(S["feature_ethari_tail"]			, features["tail_ethari"])
-	WRITE_FILE(S["feature_ears_ethari"]			, features["ears_ethari"])
+	WRITE_FILE(S["feature_ethari_tail"]				, features["tail_ethari"])
+	WRITE_FILE(S["feature_ears_ethari"]				, features["ears_ethari"])
 	WRITE_FILE(S["feature_unathi_horns"]			, features["horns"])
 	WRITE_FILE(S["feature_human_ears"]				, features["ears"])
 	WRITE_FILE(S["feature_unathi_frills"]			, features["frills"])
 	WRITE_FILE(S["feature_unathi_spines"]			, features["spines"])
 	WRITE_FILE(S["feature_unathi_body_markings"]	, features["body_markings"])
-	WRITE_FILE(S["feature_unathi_legs"]			, features["legs"])
-	WRITE_FILE(S["feature_ipc_screen"]			, features["ipc_screen"])
-	WRITE_FILE(S["feature_ipc_antenna"]			, features["ipc_antenna"])
-	WRITE_FILE(S["feature_ipc_chassis"]			, features["ipc_chassis"])
+	WRITE_FILE(S["feature_unathi_legs"]				, features["legs"])
+	WRITE_FILE(S["feature_ipc_screen"]				, features["ipc_screen"])
+	WRITE_FILE(S["feature_ipc_antenna"]				, features["ipc_antenna"])
+	WRITE_FILE(S["feature_ipc_chassis"]				, features["ipc_chassis"])
+	WRITE_FILE(S["feature_vox_body"]				, features["vox_body"])
+	WRITE_FILE(S["feature_vox_quills"]				, features["vox_quills"])
+	WRITE_FILE(S["feature_vox_facial_quills"]		, features["vox_facial_quills"])
+	WRITE_FILE(S["feature_vox_body_markings"]		, features["vox_body_markings"])
+	WRITE_FILE(S["feature_vox_tail_markings"]		, features["vox_tail_markings"])
 	WRITE_FILE(S["clown_name"]			, custom_names["clown"])
 	WRITE_FILE(S["mime_name"]			, custom_names["mime"])
 	WRITE_FILE(S["ai_name"]			, custom_names["ai"])

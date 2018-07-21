@@ -19,10 +19,12 @@ Head of Security
 	supervisors = "the captain"
 	selection_color = "#ffdddd"
 	req_admin_notify = 1
-	minimal_player_age = 14
+	minimal_player_age = 30
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_SECURITY
+	special_notice = "Space Law is THE LAW. Not a suggestion."
+	wiki_page = "Security_SOP"
 
 	outfit = /datum/outfit/job/hos
 
@@ -55,6 +57,7 @@ Head of Security
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec
+	courierbag = /obj/item/storage/backpack/messenger/sec
 	box = /obj/item/storage/box/security
 
 	implants = list(/obj/item/implant/mindshield)
@@ -75,6 +78,8 @@ Warden
 	minimal_player_age = 7
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
+	special_notice = "Space Law is THE LAW. Not a suggestion."
+	wiki_page = "Space_Law"
 
 	outfit = /datum/outfit/job/warden
 
@@ -105,6 +110,7 @@ Warden
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec
+	courierbag = /obj/item/storage/backpack/messenger/sec
 	box = /obj/item/storage/box/security
 
 	implants = list(/obj/item/implant/mindshield)
@@ -127,6 +133,7 @@ Detective
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
 	special_notice = "You are not a security officer, do not do their job for them. However, you can help them if they need immediate assistance."
+	wiki_page = "Space_Law"
 
 	outfit = /datum/outfit/job/detective
 
@@ -148,18 +155,10 @@ Detective
 	r_pocket = /obj/item/lighter
 	backpack_contents = list(/obj/item/storage/box/evidence=1,\
 		/obj/item/device/detective_scanner=1,\
+		/obj/item/storage/fancy/cigarettes=1,\
 		/obj/item/melee/classic_baton=1)
-	mask = /obj/item/clothing/mask/cigarette
 
 	implants = list(/obj/item/implant/mindshield)
-
-/datum/outfit/job/detective/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	..()
-	var/obj/item/clothing/mask/cigarette/cig = H.wear_mask
-	cig.light("")
-
-	if(visualsOnly)
-		return
 
 /*
 Security Officer
@@ -177,6 +176,8 @@ Security Officer
 	minimal_player_age = 7
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
+	special_notice = "Space Law is THE LAW. Not a suggestion."
+	wiki_page = "Space_Law"
 
 	outfit = /datum/outfit/job/security
 
@@ -287,6 +288,7 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec
+	courierbag = /obj/item/storage/backpack/messenger/sec
 	box = /obj/item/storage/box/security
 
 	implants = list(/obj/item/implant/mindshield)
@@ -304,6 +306,7 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 	minimal_player_age = 7
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
+	special_notice = "You are not a security officer, do not do their job for them. However, you can help them if they need immediate assistance. You are to tend to the medical needs of officers and prisoners."
 
 	outfit = /datum/outfit/job/brig_phys
 
@@ -325,6 +328,10 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 	head = /obj/item/clothing/head/soft/sec/brig_phys
 	implants = list(/obj/item/implant/mindshield)
 
+	backpack = /obj/item/storage/backpack/security
+	satchel = /obj/item/storage/backpack/satchel/sec
+	duffelbag = /obj/item/storage/backpack/duffelbag/sec
+	courierbag = /obj/item/storage/backpack/messenger/sec
 
 /obj/item/device/radio/headset/headset_sec/alt/department/Initialize()
 	. = ..()

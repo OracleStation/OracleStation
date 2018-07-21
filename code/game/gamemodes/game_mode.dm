@@ -1,5 +1,3 @@
-
-
 /*
  * GAMEMODES (by Rastaf0)
  *
@@ -23,8 +21,8 @@
 	var/list/datum/mind/modePlayer = new
 	var/list/datum/mind/antag_candidates = list()	// List of possible starting antags goes here
 	var/list/restricted_jobs = list()	// Jobs it doesn't make sense to be.  I.E chaplain or AI cultist
+	var/list/restricted_species = list() // Species that can't be traitors
 	var/list/protected_jobs = list()	// Jobs that can't be traitors because
-	var/list/protected_species = list() // Species that can't be traitors
 	var/required_players = 0
 	var/maximum_players = -1 // -1 is no maximum, positive numbers limit the selection of a mode on overstaffed stations
 	var/required_enemies = 0
@@ -39,6 +37,9 @@
 
 	var/announce_span = "warning" //The gamemode's name will be in this span during announcement.
 	var/announce_text = "This gamemode forgot to set a descriptive text! Uh oh!" //Used to describe a gamemode when it's announced.
+
+	// title_icon and title_icon_state are used for the credits that roll at the end
+	var/title_icon
 
 	var/const/waittime_l = 600
 	var/const/waittime_h = 1800 // started at 1800
@@ -311,13 +312,43 @@
 		set_security_level(SEC_LEVEL_BLUE)
 
 
+/datum/game_mode/proc/is_player_eligible_for_role(role, mob/dead/new_player/player)
+	if(!player.client || player.ready != PLAYER_READY_TO_PLAY)
+		return FALSE
+
+	if(jobban_isbanned(player, "Syndicate") || jobban_isbanned(player, role))
+		return FALSE
+
+	if(!age_check(player.client))
+		return FALSE
+
+	if(restricted_species)
+		for(var/species in restricted_species)
+			if(player.client.prefs.pref_species.id == species)
+				return FALSE
+
+	if(restricted_jobs)
+		for(var/job in restricted_jobs)
+			if(player.mind.assigned_role == job)
+				return FALSE
+
+	if(CONFIG_GET(flag/use_exp_tracking))
+		var/list/role_reqs = CONFIG_GET(keyed_number_list/antag_time_requirements)
+		var/req = role_reqs[lowertext(role)]
+		if(!req)
+			req = 0
+		if(player.client.get_exp_living(FALSE) < req)
+			return FALSE
+
+	return TRUE
+
+// Returns candidates who would prefer to be antag first. If there are not enough players to reach recommended_enemies
+// it will return all eligble players instead.
+//
+// This may return less than recommended_enemies if there are not enough eligble players for this role.
 /datum/game_mode/proc/get_players_for_role(role)
 	var/list/players = list()
-	var/list/candidates = list()
-	var/list/drafted = list()
-	var/datum/mind/applicant = null
 
-	// Ultimate randomizing code right here
 	for(var/mob/dead/new_player/player in GLOB.player_list)
 		if(player.client && player.ready == PLAYER_READY_TO_PLAY)
 			players += player
@@ -326,82 +357,21 @@
 	// Goodbye antag dante
 	players = shuffle(players)
 
+	var/list/candidates_preferred = list()
+	var/list/candidates_nothanks = list()
+
 	for(var/mob/dead/new_player/player in players)
-		if(player.client && player.ready == PLAYER_READY_TO_PLAY)
+		if(is_player_eligible_for_role(role, player))
 			if(role in player.client.prefs.be_special)
-				if(!jobban_isbanned(player, "Syndicate") && !jobban_isbanned(player, role)) //Nodrak/Carn: Antag Job-bans
-					if(age_check(player.client)) //Must be older than the minimum age
-						candidates += player.mind				// Get a list of all the people who want to be the antagonist for this round
+				candidates_preferred += player.mind
+			else
+				candidates_nothanks += player.mind
 
-	if(protected_species)
-		for(var/mob/dead/new_player/player in candidates)
-			if(player.client.prefs.pref_species.id in protected_species)
-				candidates -= player
+	if(candidates_preferred.len < recommended_enemies)
+		for(var/datum/mind/player in candidates_nothanks)
+			candidates_preferred += player
 
-	if(restricted_jobs)
-		for(var/datum/mind/player in candidates)
-			for(var/job in restricted_jobs)					// Remove people who want to be antagonist but have a job already that precludes it
-				if(player.assigned_role == job)
-					candidates -= player
-
-	if(candidates.len < recommended_enemies)
-		for(var/mob/dead/new_player/player in players)
-			if(player.client && player.ready == PLAYER_READY_TO_PLAY)
-				if(!(role in player.client.prefs.be_special)) // We don't have enough people who want to be antagonist, make a separate list of people who don't want to be one
-					if(!jobban_isbanned(player, "Syndicate") && !jobban_isbanned(player, role)) //Nodrak/Carn: Antag Job-bans
-						drafted += player.mind
-
-	if(protected_species)
-		for(var/mob/dead/new_player/player in drafted)
-			if(player.client.prefs.pref_species.id in protected_species)
-				drafted -= player
-
-	if(restricted_jobs)
-		for(var/datum/mind/player in drafted)				// Remove people who can't be an antagonist
-			for(var/job in restricted_jobs)
-				if(player.assigned_role == job)
-					drafted -= player
-
-	drafted = shuffle(drafted) // Will hopefully increase randomness, Donkie
-
-	while(candidates.len < recommended_enemies)				// Pick randomlly just the number of people we need and add them to our list of candidates
-		if(drafted.len > 0)
-			applicant = pick(drafted)
-			if(applicant)
-				candidates += applicant
-				drafted.Remove(applicant)
-
-		else												// Not enough scrubs, ABORT ABORT ABORT
-			break
-
-	if(protected_species)
-		for(var/mob/dead/new_player/player in drafted)
-			if(player.client.prefs.pref_species.id in protected_species)
-				drafted -= player
-
-	if(restricted_jobs)
-		for(var/datum/mind/player in drafted)				// Remove people who can't be an antagonist
-			for(var/job in restricted_jobs)
-				if(player.assigned_role == job)
-					drafted -= player
-
-	drafted = shuffle(drafted) // Will hopefully increase randomness, Donkie
-
-	while(candidates.len < recommended_enemies)				// Pick randomlly just the number of people we need and add them to our list of candidates
-		if(drafted.len > 0)
-			applicant = pick(drafted)
-			if(applicant)
-				candidates += applicant
-				drafted.Remove(applicant)
-
-		else												// Not enough scrubs, ABORT ABORT ABORT
-			break
-
-	return candidates		// Returns: The number of people who had the antagonist role set to yes, regardless of recomended_enemies, if that number is greater than recommended_enemies
-							//			recommended_enemies if the number of people with that role set to yes is less than recomended_enemies,
-							//			Less if there are not enough valid players in the game entirely to make recommended_enemies.
-
-
+	return candidates_preferred
 
 /datum/game_mode/proc/num_players()
 	. = 0
@@ -412,39 +382,40 @@
 ///////////////////////////////////
 //Keeps track of all living heads//
 ///////////////////////////////////
-/datum/game_mode/proc/get_living_heads()
+/datum/game_mode/proc/get_living_by_department(var/department)
 	. = list()
 	for(var/mob/living/carbon/human/player in GLOB.mob_list)
-		if(player.stat != DEAD && player.mind && (player.mind.assigned_role in GLOB.command_positions))
+		if(player.stat != DEAD && player.mind && (player.mind.assigned_role in department))
 			. |= player.mind
 
 
 ////////////////////////////
 //Keeps track of all heads//
 ////////////////////////////
-/datum/game_mode/proc/get_all_heads()
+/datum/game_mode/proc/get_all_by_department(var/department)
 	. = list()
 	for(var/mob/player in GLOB.mob_list)
-		if(player.mind && (player.mind.assigned_role in GLOB.command_positions))
+		if(player.mind && (player.mind.assigned_role in department))
 			. |= player.mind
 
-//////////////////////////////////////////////
-//Keeps track of all living security members//
-//////////////////////////////////////////////
-/datum/game_mode/proc/get_living_sec()
+/////////////////////////////////////////////
+//Keeps track of all living silicon members//
+/////////////////////////////////////////////
+/datum/game_mode/proc/get_living_silicon()
 	. = list()
-	for(var/mob/living/carbon/human/player in GLOB.mob_list)
-		if(player.stat != DEAD && player.mind && (player.mind.assigned_role in GLOB.security_positions))
+	for(var/mob/living/silicon/player in GLOB.mob_list)
+		if(player.stat != DEAD && player.mind && (player.mind.assigned_role in GLOB.nonhuman_positions))
 			. |= player.mind
 
-////////////////////////////////////////
-//Keeps track of all  security members//
-////////////////////////////////////////
-/datum/game_mode/proc/get_all_sec()
+///////////////////////////////////////
+//Keeps track of all silicon members //
+///////////////////////////////////////
+/datum/game_mode/proc/get_all_silicon()
 	. = list()
-	for(var/mob/living/carbon/human/player in GLOB.mob_list)
-		if(player.mind && (player.mind.assigned_role in GLOB.security_positions))
+	for(var/mob/living/silicon/player in GLOB.mob_list)
+		if(player.mind && (player.mind.assigned_role in GLOB.nonhuman_positions))
 			. |= player.mind
+
 
 //////////////////////////
 //Reports player logouts//
@@ -572,3 +543,96 @@
 	for(var/V in station_goals)
 		var/datum/station_goal/G = V
 		G.print_result()
+
+/datum/game_mode/proc/generate_credit_text()
+	var/list/round_credits = list()
+	var/len_before_addition
+
+	// HEADS OF STAFF
+	round_credits += "<center><h1>The Glorious Command Staff:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.command_positions))
+		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+	if(round_credits.len == len_before_addition)
+		round_credits += list("<center><h2>A serious bureaucratic error has occurred!</h2>", "<center><h2>No one was in charge of the crew!</h2>")
+	round_credits += "<br>"
+
+	// SILICONS
+	round_credits += "<center><h1>The Silicon \"Intelligences\":</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/current in SSticker.mode.get_all_silicon())
+		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+	if(round_credits.len == len_before_addition)
+		round_credits += list("<center><h2>[station_name()] had no silicon helpers!</h2>", "<center><h2>Not a single door was opened today!</h2>")
+	round_credits += "<br>"
+
+	// SECURITY
+	round_credits += "<center><h1>The Brave Security Officers:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.security_positions))
+		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+	if(round_credits.len == len_before_addition)
+		round_credits += list("<center><h2>[station_name()] has fallen to Communism!</h2>", "<center><h2>No one was there to protect the crew!</h2>")
+	round_credits += "<br>"
+
+	// MEDICAL
+	round_credits += "<center><h1>The Wise Medical Department:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.medical_positions))
+		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+	if(round_credits.len == len_before_addition)
+		round_credits += list("<center><h2>Healthcare was not included!</h2>", "<center><h2>There were no doctors today!</h2>")
+	round_credits += "<br>"
+
+	// ENGINEERING
+	round_credits += "<center><h1>The Industrious Engineers:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.engineering_positions))
+		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+	if(round_credits.len == len_before_addition)
+		round_credits += list("<center><h2>[station_name()] probably did not last long!</h2>", "<center><h2>No one was holding the station together!</h2>")
+	round_credits += "<br>"
+
+	// SCIENCE
+	round_credits += "<center><h1>The Inventive Science Employees:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.science_positions))
+		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+	if(round_credits.len == len_before_addition)
+		round_credits += list("<center><h2>No one was doing \"science\" today!</h2>", "<center><h2>Everyone probably made it out alright, then!</h2>")
+	round_credits += "<br>"
+
+	// CARGO
+	round_credits += "<center><h1>The Rugged Cargo Crew:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.supply_positions))
+		round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+	if(round_credits.len == len_before_addition)
+		round_credits += list("<center><h2>The station was freed from paperwork!</h2>", "<center><h2>No one worked in cargo today!</h2>")
+	round_credits += "<br>"
+
+	// CIVILIANS
+	var/list/human_garbage = list()
+	round_credits += "<center><h1>The Hardy Civilians:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/current in SSticker.mode.get_all_by_department(GLOB.civilian_positions))
+		if(current.assigned_role == "Assistant")
+			human_garbage += current
+		else
+			round_credits += "<center><h2>[current.name] as the [current.assigned_role]</h2>"
+	if(round_credits.len == len_before_addition)
+		round_credits += list("<center><h2>Everyone was stuck in traffic this morning!</h2>", "<center><h2>No civilians made it to work!</h2>")
+	round_credits += "<br>"
+
+	round_credits += "<center><h1>The Helpful Assistants:</h1>"
+	len_before_addition = round_credits.len
+	for(var/datum/mind/current in human_garbage)
+		round_credits += "<center><h2>[current.name]</h2>"
+	if(round_credits.len == len_before_addition)
+		round_credits += list("<center><h2>The station was free of <s>greytide</s> assistance!</h2>", "<center><h2>Not a single Assistant showed up on the station today!</h2>")
+
+	round_credits += "<br>"
+	round_credits += "<br>"
+	round_credits += "<center><h1>Thanks for playing</h1>"
+
+	return round_credits

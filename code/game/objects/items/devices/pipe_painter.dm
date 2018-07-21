@@ -1,8 +1,9 @@
 
 /obj/item/device/pipe_painter
 	name = "pipe painter"
-	icon = 'icons/obj/bureaucracy.dmi'
-	icon_state = "labeler1"
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "paint_sprayer3"
+	item_state = "paint sprayer"
 	item_state = "flight"
 	flags_1 = NOBLUDGEON_1
 	var/list/modes = list(
@@ -31,6 +32,7 @@
 	P.pipe_color = modes[mode]
 	user.visible_message("<span class='notice'>[user] paints \the [P] [mode].</span>","<span class='notice'>You paint \the [P] [mode].</span>")
 	P.update_node_icon() //updates the neighbors
+	playsound(src, 'sound/effects/spray2.ogg', 50, 1)
 
 /obj/item/device/pipe_painter/attack_self(mob/user)
 	mode = input("Which colour do you want to use?","Pipe painter") in modes

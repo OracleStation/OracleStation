@@ -71,7 +71,7 @@
 	origin_tech = "engineering=2"
 	w_class = WEIGHT_CLASS_NORMAL
 	zone = "chest"
-	slot = "stomach"
+	slot = ORGAN_SLOT_STOMACH
 	attack_verb = list("assault and battery'd")
 	desc = "A micro-cell, for IPC use only. Do not swallow."
 	status = ORGAN_ROBOTIC
@@ -84,3 +84,13 @@
 		if(2)
 			owner.nutrition = 250
 			to_chat(owner, "<span class='warning'>Alert: EMP Detected. Cycling battery.</span>")
+
+/obj/item/organ/stomach/vox
+	name = "vox stomach"
+	icon_state = "stomach-vox"
+	origin_tech = "engineering=3"
+	desc = "A vox stomach. If the mere concept wasn't disgusting enough, it appears to have metal components grown into it."
+	status = ORGAN_ROBOTIC
+
+/obj/item/organ/stomach/vox/emp_act()
+	owner.adjust_disgust(10)

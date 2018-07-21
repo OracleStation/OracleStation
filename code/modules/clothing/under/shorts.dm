@@ -4,7 +4,6 @@
 	gender = PLURAL
 	body_parts_covered = GROIN
 	fitted = NO_FEMALE_UNIFORM
-	mutantrace_variation = MUTANTRACE_VARIATION
 	can_adjust = 0
 
 /obj/item/clothing/under/shorts/red
@@ -36,3 +35,4 @@
 	name = "purple athletic shorts"
 	icon_state = "purpleshorts"
 	item_color = "purpleshorts"
+	species_restricted = list("exclude","Vox Outcast")

@@ -826,7 +826,6 @@
 	})
 "cd" = (
 /obj/structure/table/wood,
-/obj/item/clothing/head/collectable/kitty,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/guestroom{
 	name = "Hotel Guest Room 5"
@@ -2899,12 +2898,6 @@
 /area/ruin/space/has_grav/hotel/workroom)
 "hE" = (
 /obj/structure/table,
-/obj/item/card/id/away/hotel,
-/obj/item/card/id/away/hotel,
-/obj/item/card/id/away/hotel,
-/obj/item/card/id/away/hotel,
-/obj/item/card/id/away/hotel,
-/obj/item/card/id/away/hotel,
 /turf/open/floor/plasteel/black,
 /area/ruin/space/has_grav/hotel/workroom)
 "hF" = (
@@ -4510,7 +4503,6 @@
 /area/ruin/space/has_grav/hotel/pool)
 "lS" = (
 /obj/structure/table,
-/obj/item/card/id/away/hotel/securty,
 /turf/open/floor/plasteel/darkred,
 /area/ruin/space/has_grav/hotel/security)
 "lT" = (
@@ -7269,7 +7261,7 @@ hW
 ih
 ih
 fi
-iX
+hQ
 hf
 cQ
 cQ

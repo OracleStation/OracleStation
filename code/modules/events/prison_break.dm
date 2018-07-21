@@ -3,13 +3,13 @@
 	typepath = /datum/round_event/grey_tide
 	max_occurrences = 2
 	min_players = 5
+	weight = 5
 
 /datum/round_event/grey_tide
 	announceWhen = 50
 	endWhen = 20
 	var/list/area/areasToOpen = list()
 	var/list/potential_areas = list(/area/bridge,
-									/area/engine,
 									/area/medical,
 									/area/security,
 									/area/quartermaster,

@@ -79,7 +79,8 @@
 			return -1
 		if(target_zone != "chest")
 			to_chat(user, "<span class='notice'>You have to install [tool] in [target]'s chest!</span>")
-		if(target.internal_organs_slot["brain"])
+			return -1
+		if(target.internal_organs_slot[ORGAN_SLOT_BRAIN])
 			to_chat(user, "<span class='notice'>[target] already has a brain! You'd rather not find out what would happen with two in there.</span>")
 			return -1
 		var/obj/item/device/mmi/P = tool
@@ -116,7 +117,8 @@
 			I = input("Remove which organ?", "Surgery", null, null) as null|anything in organs
 			if(I && user && target && user.Adjacent(target) && user.get_active_held_item() == tool)
 				I = organs[I]
-				if(!I) return -1
+				if(!I)
+					return -1
 				user.visible_message("<span class='notice'>[user] begins to extract [I] from [target]'s [parse_zone(target_zone)].</span>",
 					"<span class='notice'>You begin to extract [I] from [target]'s [parse_zone(target_zone)]...</span>")
 			else

@@ -474,7 +474,7 @@
 	if(message)
 		if(!check_rights(R_SERVER,0))
 			message = adminscrub(message,500)
-		to_chat(world, "<span class='adminnotice'><b>[usr.client.holder.fakekey ? "Administrator" : usr.key] Announces:</b></span>\n \t [message]")
+		to_chat(world, "<span class='adminannouncement'><b>[usr.client.holder.fakekey ? "Administrator" : usr.key] Announces:</span><span class='adminnotice'>\n \t [message]</b></span>")
 		log_admin("Announce: [key_name(usr)] : [message]")
 	SSblackbox.add_details("admin_verb","Announce") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

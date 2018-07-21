@@ -329,3 +329,8 @@
 	name = "nanotrasen logo"
 	desc = "The Nanotrasen corporate logo."
 	icon_state = "nanotrasen_sign1"
+
+/obj/structure/sign/numbered/aisle
+	name = "Aisle Number"
+	desc = "This sign indicated an aisle in a telecommunications setup."
+	icon_state = "aislenum"

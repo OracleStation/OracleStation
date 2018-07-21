@@ -3,7 +3,7 @@
 
 /obj/item/clothing/under/trek
 	can_adjust = 0
-
+	species_restricted = list("Human")
 
 //TOS
 /obj/item/clothing/under/trek/command

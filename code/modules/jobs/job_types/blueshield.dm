@@ -44,6 +44,7 @@ Blueshield
   backpack = /obj/item/storage/backpack/security
   satchel = /obj/item/storage/backpack/satchel/sec
   duffelbag = /obj/item/storage/backpack/duffelbag/sec
+  courierbag = /obj/item/storage/backpack/messenger/sec
 
   backpack_contents = list(
     /obj/item/blueshield_gun_package = 1

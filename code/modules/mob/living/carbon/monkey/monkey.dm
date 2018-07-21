@@ -20,7 +20,7 @@
 
 /mob/living/carbon/monkey/Initialize()
 	verbs += /mob/living/proc/mob_sleep
-	verbs += /mob/living/proc/lay_down
+	verbs += /mob/living/proc/lay_down_helper
 
 	if(unique_name) //used to exclude pun pun
 		gender = pick(MALE, FEMALE)
@@ -141,7 +141,7 @@
 	return protection
 
 /mob/living/carbon/monkey/IsVocal()
-	if(!getorganslot("lungs"))
+	if(!getorganslot(ORGAN_SLOT_LUNGS))
 		return 0
 	return 1
 

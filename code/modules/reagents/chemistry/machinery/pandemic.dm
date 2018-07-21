@@ -37,6 +37,10 @@
 	if(D)
 		return D.GetDiseaseID()
 
+/obj/machinery/computer/pandemic/proc/get_resistances(index)
+	var/datum/reagent/blood/B = locate() in beaker.reagents.reagent_list
+	return B.data["resistances"]
+
 /obj/machinery/computer/pandemic/proc/get_viruses_data(datum/reagent/blood/B)
 	. = list()
 	var/list/V = B.get_diseases()
@@ -97,7 +101,7 @@
 	var/list/resistances = B.data["resistances"]
 	for(var/id in resistances)
 		var/list/this = list()
-		var/datum/disease/D = SSdisease.archive_diseases[id]
+		var/datum/disease/D = new(resistances[id])
 		if(D)
 			this["id"] = id
 			this["name"] = D.name
@@ -192,11 +196,10 @@
 			addtimer(CALLBACK(src, .proc/reset_replicator_cooldown), 50)
 			. = TRUE
 		if("create_vaccine_bottle")
-			var/id = params["index"]
-			var/datum/disease/D = SSdisease.archive_diseases[id]
+			var/list/data = get_resistances()
 			var/obj/item/reagent_containers/glass/bottle/B = new(get_turf(src))
-			B.name = "[D.name] vaccine bottle"
-			B.reagents.add_reagent("vaccine", 15, list(id))
+			B.name = "vaccine bottle"
+			B.reagents.add_reagent("vaccine", 15, data)
 			wait = TRUE
 			update_icon()
 			addtimer(CALLBACK(src, .proc/reset_replicator_cooldown), 200)

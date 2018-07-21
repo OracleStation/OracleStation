@@ -12,6 +12,7 @@ Clown
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
 	special_notice = "There is a difference between harmless pranks and griefing. Know it."
+	wiki_page = "Clown"
 
 	outfit = /datum/outfit/job/clown
 
@@ -26,6 +27,7 @@ Clown
 	jobtype = /datum/job/clown
 	id = /obj/item/card/id/job/clown
 	pda_slot = /obj/item/device/pda/clown
+	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/clown
 	shoes = /obj/item/clothing/shoes/clown_shoes
 	mask = /obj/item/clothing/mask/gas/clown_hat
@@ -58,7 +60,7 @@ Clown
 		return
 
 	H.dna.add_mutation(CLOWNMUT)
-
+	H.dna.add_mutation(WACKY)
 /*
 Mime
 */
@@ -73,6 +75,7 @@ Mime
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
 	special_notice = "There is a difference between harmless pranks and griefing. Know it."
+	wiki_page = "Mime"
 
 	outfit = /datum/outfit/job/mime
 
@@ -87,6 +90,7 @@ Mime
 	jobtype = /datum/job/mime
 	id = /obj/item/card/id/job/mime
 	pda_slot = /obj/item/device/pda/mime
+	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/mime
 	mask = /obj/item/clothing/mask/gas/mime
 	gloves = /obj/item/clothing/gloves/color/white
@@ -134,6 +138,7 @@ Curator
 	jobtype = /datum/job/curator
 
 	pda_slot = /obj/item/device/pda/curator
+	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/curator
 	l_hand = /obj/item/storage/bag/books
 	r_pocket = /obj/item/key/displaycase
@@ -170,6 +175,7 @@ Internal Affairs Agent
 	minimal_player_age = 14
 	exp_requirements = 180 //3 hours
 	exp_type = EXP_TYPE_CREW
+	wiki_page = "Standard_Operating_Procedure"
 
 	outfit = /datum/outfit/job/iaa
 	//Basic access to each department
@@ -184,9 +190,9 @@ Internal Affairs Agent
 	ears = /obj/item/device/radio/headset/iaa
 	uniform = /obj/item/clothing/under/iaa/blacksuit
 	suit = /obj/item/clothing/suit/toggle/iaa/black
-	glasses = /obj/item/clothing/glasses/
+	glasses = /obj/item/clothing/glasses/sunglasses
 	shoes = /obj/item/clothing/shoes/laceup
-	l_hand = /obj/item/storage/briefcase
+	l_hand = /obj/item/storage/briefcase/iaa
 	l_pocket = /obj/item/device/laser_pointer
 	r_pocket = /obj/item/device/assembly/flash/handheld
 

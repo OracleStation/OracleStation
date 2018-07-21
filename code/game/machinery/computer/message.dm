@@ -82,7 +82,8 @@
 	if(hacking || emagged)
 		screen = 2
 	else if(!auth || !linkedServer || (linkedServer.stat & (NOPOWER|BROKEN)))
-		if(!linkedServer || (linkedServer.stat & (NOPOWER|BROKEN))) message = noserver
+		if(!linkedServer || (linkedServer.stat & (NOPOWER|BROKEN)))
+			message = noserver
 		screen = 0
 
 	switch(screen)
@@ -104,7 +105,8 @@
 			else
 				for(var/n = ++i; n <= optioncount; n++)
 					dat += "<dd><font color='blue'>&#09;[n]. ---------------</font><br></dd>"
-			if(issilicon(usr) && is_special_character(usr))
+			var/mob/living/silicon/S = usr
+			if(istype(S) && S.hack_software)
 				//Malf/Traitor AIs can bruteforce into the system to gain the Key.
 				dat += "<dd><A href='?src=[REF(src)];hack=1'><i><font color='Red'>*&@#. Bruteforce Key</font></i></font></a><br></dd>"
 			else
@@ -267,7 +269,8 @@
 
 		//Turn the server on/off.
 		if (href_list["active"])
-			if(auth) linkedServer.active = !linkedServer.active
+			if(auth)
+				linkedServer.active = !linkedServer.active
 		//Find a server
 		if (href_list["find"])
 			if(GLOB.message_servers && GLOB.message_servers.len > 1)
@@ -325,7 +328,8 @@
 
 		//Hack the Console to get the password
 		if (href_list["hack"])
-			if(issilicon(usr) && is_special_character(usr))
+			var/mob/living/silicon/S = usr
+			if(istype(S) && S.hack_software)
 				src.hacking = 1
 				src.screen = 2
 				//Time it takes to bruteforce is dependant on the password length.

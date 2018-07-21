@@ -3,7 +3,7 @@
 	desc = "I feel bad for the heartless bastard who lost this."
 	icon_state = "heart-on"
 	zone = "chest"
-	slot = "heart"
+	slot = ORGAN_SLOT_HEART
 	origin_tech = "biotech=5"
 	// Heart attack code is in code/modules/mob/living/carbon/human/life.dm
 	var/beating = 1
@@ -53,7 +53,6 @@
 	if(owner.client)
 		var/sound/slowbeat = sound('sound/health/slowbeat.ogg', repeat = TRUE)
 
-		var/sound/fastbeat = sound('sound/health/fastbeat.ogg', repeat = TRUE)
 		var/mob/living/carbon/H = owner
 		if(H.health <= HEALTH_THRESHOLD_CRIT && beat != BEAT_SLOW)
 			beat = BEAT_SLOW
@@ -62,11 +61,6 @@
 		if(beat == BEAT_SLOW && H.health > HEALTH_THRESHOLD_CRIT)
 			H.stop_sound_channel(CHANNEL_HEARTBEAT)
 			beat = BEAT_NONE
-
-		if(H.jitteriness)
-			if(!beat || beat == BEAT_SLOW)
-				H.playsound_local(get_turf(H),fastbeat,40,0, channel = CHANNEL_HEARTBEAT)
-				beat = BEAT_FAST
 
 /obj/item/organ/heart/cursed
 	name = "cursed heart"
@@ -154,3 +148,11 @@
 
 /obj/item/organ/heart/cybernetic/emp_act()
 	Stop()
+
+/obj/item/organ/heart/vox
+	name = "vox heart"
+	desc = "A vox's heart. It appears to have circuitry and components woven into it."
+	icon_state = "heartvox-off"
+	icon_base = "heartvox"
+	status = ORGAN_ROBOTIC
+	origin_tech = "biotech=5"

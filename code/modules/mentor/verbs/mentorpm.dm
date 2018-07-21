@@ -58,7 +58,7 @@
 	log_mentor("Mentor PM: [key_name(src)]->[key_name(C)]: [msg]")
 
 	msg = emoji_parse(msg)
-	C << 'sound/items/bikehorn.ogg'
+	C << 'sound/misc/notice2.ogg'
 	var/show_char = CONFIG_GET(flag/mentors_mobname_only)
 	if(check_mentor_other(C))
 		if(check_mentor())	//both are mentors
@@ -75,11 +75,9 @@
 			to_chat(src, "<span class='mentornotice'>Mentor PM to-<b>[key_name_mentor(C, C, 1, 0, show_char)]</b>: [msg]</span>")
 
 	//we don't use message_Mentors here because the sender/receiver might get it too
-	var/show_char_sender = !check_mentor_other(src) && CONFIG_GET(flag/mentors_mobname_only)
-	var/show_char_recip = !check_mentor_other(C) && CONFIG_GET(flag/mentors_mobname_only)
 	for(var/client/X in GLOB.mentors)
 		if(X.key!=key && X.key!=C.key)	//check client/X is an Mentor and isn't the sender or recipient
-			to_chat(X, "<B><span class='mentornotice'>Mentor PM: [key_name_mentor(src, X, 0, 0, show_char_sender)]-&gt;[key_name_mentor(C, X, 0, 0, show_char_recip)]:</B> \blue [msg]</span>") //inform X
+			to_chat(X, "<span class='mentornotice'><B>Mentor PM: [key_name(src, X, 0)]-&gt;[key_name(C, X, 0)]:</B> [msg]</span>") //inform X
 	for(var/client/A in GLOB.admins)
 		if(A.key!=key && A.key!=C.key)	//check client/A is an Mentor and isn't the sender or recipient
-			to_chat(A, "<B><span class='mentornotice'>Mentor PM: [key_name_mentor(src, A, 0, 0, show_char_sender)]-&gt;[key_name_mentor(C, A, 0, 0, show_char_recip)]:</B> \blue [msg]</span>") //inform A
+			to_chat(A, "<span class='mentornotice'><B>Mentor PM: [key_name(src, A, 0)]-&gt;[key_name(C, A, 0)]:</B> [msg]</span>") //inform A

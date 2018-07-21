@@ -10,6 +10,10 @@
 	max_integrity = 250
 	resistance_flags = 0
 	armor = list(melee = 30, bullet = 30, laser = 30, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 50, acid = 50)
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		)
 
 /obj/item/clothing/suit/armor/vest
 	name = "armor vest"
@@ -74,6 +78,18 @@
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	heat_protection = CHEST|GROIN|LEGS|ARMS
+	resistance_flags = FLAMMABLE
+	dog_fashion = null
+
+/obj/item/clothing/suit/armor/jacket
+	name = "security jacket"
+	desc = "A sturdy, canvas military jacket. It is adorned with Nanotrasen Corporate Security insignia."
+	icon_state = "secmiljacket"
+	item_state = "hostrench"
+	body_parts_covered = CHEST|ARMS
+	armor = list(melee = 18, bullet = 20, laser = 18, energy = 5, bomb = 15, bio = 0, rad = 0, fire = 70, acid = 90)
+	cold_protection = CHEST|ARMS
+	heat_protection = CHEST|ARMS
 	dog_fashion = null
 
 /obj/item/clothing/suit/armor/vest/capcarapace
@@ -90,6 +106,7 @@
 	name = "syndicate captain's vest"
 	desc = "A sinister looking vest of advanced armor worn over a black and red fireproof jacket. The gold collar and shoulders denote that this belongs to a high ranking syndicate officer."
 	icon_state = "syndievest"
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/armor/vest/capcarapace/alt
 	name = "captain's parade jacket"
@@ -123,6 +140,7 @@
 	blood_overlay_type = "armor"
 	armor = list(melee = 35, bullet = 25, laser = 25, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 50, acid = 50)
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/armor/bulletproof
 	name = "bulletproof armor"
@@ -356,6 +374,7 @@
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
 	armor = list(melee = 80, bullet = 80, laser = 50, energy = 50, bomb = 100, bio = 100, rad = 100, fire = 90, acid = 90)
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/suit/armor/heavy
 	name = "heavy armor"

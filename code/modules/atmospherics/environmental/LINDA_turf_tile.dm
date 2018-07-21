@@ -102,16 +102,16 @@
 
 	if (atmos_overlay_types)
 		for(var/overlay in atmos_overlay_types-new_overlay_types) //doesn't remove overlays that would only be added
-			cut_overlay(overlay)
+			vars["vis_contents"] -= overlay
 
 	if (new_overlay_types.len)
 		if (atmos_overlay_types)
-			add_overlay(new_overlay_types - atmos_overlay_types) //don't add overlays that already exist
+			vars["vis_contents"] += new_overlay_types - atmos_overlay_types //don't add overlays that already exist
 		else
-			add_overlay(new_overlay_types)
+			vars["vis_contents"] += new_overlay_types
 
 	UNSETEMPTY(new_overlay_types)
-	atmos_overlay_types = new_overlay_types
+	src.atmos_overlay_types = new_overlay_types
 
 GLOBAL_VAR(iceoverlaymaster)
 

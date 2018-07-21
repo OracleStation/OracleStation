@@ -26,7 +26,7 @@
 	if(istype(W, /obj/item/reagent_containers/syringe))
 		if(!contains_sample)
 			for(var/datum/reagent/blood/bloodSample in W.reagents.reagent_list)
-				if(bloodSample.data["mind"] && bloodSample.data["cloneable"] == 1)
+				if(bloodSample.data["mind"] && bloodSample.data["cloneable"] != 0)
 					mind = bloodSample.data["mind"]
 					ckey = bloodSample.data["ckey"]
 					realName = bloodSample.data["real_name"]

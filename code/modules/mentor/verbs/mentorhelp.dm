@@ -1,7 +1,9 @@
 /client/verb/mentorhelp(msg as text)
 	set category = "Mentor"
 	set name = "Mentorhelp"
+	src.mhelp(msg, FALSE)
 
+/client/proc/mhelp(msg, silent=FALSE)
 	//clean the input msg
 	if(!msg)
 		return
@@ -16,14 +18,15 @@
 	log_mentor("MENTORHELP: [key_name_mentor(src, 0, 0, 0, 0)]: [msg]")
 
 	for(var/client/X in GLOB.mentors)
-		X << 'sound/items/bikehorn.ogg'
+		X << 'sound/misc/notice2.ogg'
 		to_chat(X, mentor_msg)
 
 	for(var/client/A in GLOB.admins)
-		A << 'sound/items/bikehorn.ogg'
+		A << 'sound/misc/notice2.ogg'
 		to_chat(A, mentor_msg)
 
-	to_chat(src, "<span class='mentornotice'>PM to-<b>Mentors</b>: [msg]</span>")
+	if(!silent)
+		to_chat(src, "<span class='mentornotice'>PM to-<b>Mentors</b>: [msg]</span>")
 
 	//spam prevention, 60 second delay
 	src.verbs -= /client/verb/mentorhelp

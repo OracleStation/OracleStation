@@ -3,7 +3,12 @@
 	////////////
 #define UPLOAD_LIMIT		1048576	//Restricts client uploads to the server to 1MB //Could probably do with being lower.
 
-GLOBAL_LIST_INIT(blacklisted_builds, list(1407 = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see"))
+GLOBAL_LIST_INIT(blacklisted_builds, list(
+	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
+	"1408" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
+	"1428" = "bug causing right-click menus to show too many verbs that's been fixed in version 1429",
+	
+	))
 
 #define LIMITER_SIZE	5
 #define CURRENT_SECOND	1
@@ -184,6 +189,7 @@ GLOBAL_LIST(external_rsc_urls)
 	GLOB.directory[ckey] = src
 
 	GLOB.ahelp_tickets.ClientLogin(src)
+	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
 
 	//Admin Authorisation
 	var/localhost_addresses = list("127.0.0.1", "::1")
@@ -208,6 +214,7 @@ GLOBAL_LIST(external_rsc_urls)
 	if(holder)
 		GLOB.admins |= src
 		holder.owner = src
+		connecting_admin = TRUE
 
 	//Mentor Authorisation
 	var/mentor = GLOB.mentor_datums[ckey]
@@ -221,6 +228,8 @@ GLOBAL_LIST(external_rsc_urls)
 	if(!prefs)
 		prefs = new /datum/preferences(src)
 		GLOB.preferences_datums[ckey] = prefs
+	if(!prefs.parent)
+		prefs.parent = src
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
 	fps = prefs.clientfps
@@ -253,10 +262,10 @@ GLOBAL_LIST(external_rsc_urls)
 	. = ..()	//calls mob.Login()
 
 	#if DM_VERSION >= 512
-	if (byond_build in GLOB.blacklisted_builds)
+	if (num2text(byond_build) in GLOB.blacklisted_builds)
 		log_access("Failed login: blacklisted byond version")
 		to_chat(src, "<span class='userdanger'>Your version of byond is blacklisted.</span>")
-		to_chat(src, "<span class='danger'>Byond build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[byond_build]].</span>")
+		to_chat(src, "<span class='danger'>Byond build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]].</span>")
 		to_chat(src, "<span class='danger'>Please download a new version of byond. if [byond_build] is the latest, you can go to http://www.byond.com/download/build/ to download other versions.</span>")
 		if(connecting_admin)
 			to_chat(src, "<span class='danger'>As an admin, you are being allowed to continue using this version, but please consider changing byond versions.</span>")
@@ -289,13 +298,21 @@ GLOBAL_LIST(external_rsc_urls)
 			qdel(src)
 			return 0
 	else if (byond_version < cwv)	//We have words for this client.
-		to_chat(src, "<span class='danger'><b>Your version of byond may be getting out of date:</b></span>")
-		to_chat(src, CONFIG_GET(string/client_warn_message))
-		to_chat(src, "Your version: [byond_version]")
-		to_chat(src, "Required version to remove this message: [cwv] or later")
-		to_chat(src, "Visit http://www.byond.com/download/ to get the latest version of byond.")
+		if(CONFIG_GET(flag/client_warn_popup))
+			var/msg = "<b>Your version of byond may be getting out of date:</b><br>"
+			msg += CONFIG_GET(string/client_warn_message) + "<br><br>"
+			msg += "Your version: [byond_version]<br>"
+			msg += "Required version to remove this message: [cwv] or later<br>"
+			msg += "Visit http://www.byond.com/download/ to get the latest version of byond.<br>"
+			src << browse(msg, "window=warning_popup")
+		else
+			to_chat(src, "<span class='danger'><b>Your version of byond may be getting out of date:</b></span>")
+			to_chat(src, CONFIG_GET(string/client_warn_message))
+			to_chat(src, "Your version: [byond_version]")
+			to_chat(src, "Required version to remove this message: [cwv] or later")
+			to_chat(src, "Visit http://www.byond.com/download/ to get the latest version of byond.")
 
-	if (connection == "web" && !holder)
+	if (connection == "web" && !connecting_admin)
 		if (!CONFIG_GET(flag/allow_webclient))
 			to_chat(src, "Web client is disabled")
 			qdel(src)
@@ -376,7 +393,7 @@ GLOBAL_LIST(external_rsc_urls)
 		winset(src, "[topmenu.type]", "parent=menu;name=[url_encode(topmenuname)]")
 		var/list/entries = topmenu.Generate_list(src)
 		for (var/child in entries)
-			winset(src, "[url_encode(child)]", "[entries[child]]")
+			winset(src, "[child]", "[entries[child]]")
 			if (!ispath(child, /datum/verbs/menu))
 				var/atom/verb/verbpath = child
 				if (copytext(verbpath.name,1,2) != "@")

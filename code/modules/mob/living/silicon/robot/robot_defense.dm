@@ -113,11 +113,6 @@
 		log_game("[key_name(user)] attempted to emag cyborg [key_name(src)], but they serve only Ratvar.")
 		return
 
-	if(syndicate)
-		to_chat(src, "<span class='danger'>ALERT: Foreign software execution prevented.</span>")
-		log_game("[key_name(user)] attempted to emag cyborg [key_name(src)], but they were a syndicate cyborg.")
-		return
-
 	var/ai_is_antag = 0
 	if(connected_ai && connected_ai.mind)
 		if(connected_ai.mind.special_role)

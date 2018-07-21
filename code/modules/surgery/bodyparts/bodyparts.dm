@@ -123,7 +123,8 @@
 		return
 	broken = TRUE
 	spawn(1)//because otherwise it pops before the punch message; we don't want that
-		owner.visible_message("<span class='userdanger'>You hear a cracking sound coming from [owner]'s [name].</span>", "<span class='warning'>You feel something crack in your [name]!</span>", "<span class='warning'>You hear an awful cracking sound.</span>")
+	
+		owner.visible_message("<span class='userdanger'>You see [owner]'s [name] deform un-naturally.</span>", "<span class='warning'>You feel something crack in your [name]!</span>", "<span class='warning'>You hear an awful cracking sound.</span>")
 
 /obj/item/bodypart/proc/fix_bone()
 	broken = FALSE
@@ -267,7 +268,7 @@
 	has_bones = C.has_bones//get the carbon's default bone settings
 
 	if(C.disabilities & HUSK)
-		species_id = "husk" //overrides species_id
+		species_id = C.dna.species.husk_id //overrides species_id
 		dmg_overlay_type = "" //no damage overlay shown when husked
 		should_draw_gender = FALSE
 		should_draw_greyscale = FALSE

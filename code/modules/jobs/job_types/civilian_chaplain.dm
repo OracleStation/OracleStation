@@ -68,7 +68,7 @@ Chaplain
 			B.name = "Guys Gone Wild"
 		if("lol", "wtf", "gay", "penis", "ass", "poo", "badmin", "shitmin", "deadmin", "cock", "cocks", "meme", "memes")
 			B.name = pick("Woodys Got Wood: The Aftermath", "War of the Cocks", "Sweet Bro and Hella Jef: Expanded Edition")
-			H.setBrainLoss(100) // starts off retarded as fuck
+			H.adjustBrainLoss(100) // starts off retarded as fuck
 		if("science")
 			B.name = pick("Principle of Relativity", "Quantum Enigma: Physics Encounters Consciousness", "Programming the Universe", "Quantum Physics and Theology", "String Theory for Dummies", "How To: Build Your Own Warp Drive", "The Mysteries of Bluespace", "Playing God: Collector's Edition")
 		else
@@ -88,6 +88,7 @@ Chaplain
 	jobtype = /datum/job/chaplain
 
 	pda_slot = /obj/item/device/pda/chaplain
+	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/chaplain
 	backpack_contents = list(/obj/item/device/camera/spooky = 1)
 	accessory = /obj/item/clothing/accessory/pocketprotector/cosmetology

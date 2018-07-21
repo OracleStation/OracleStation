@@ -4,6 +4,10 @@
 	icon_state = "cargosoft"
 	item_state = "helmet"
 	item_color = "cargo"
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/head.dmi'
+		)
 
 	dog_fashion = /datum/dog_fashion/head/cargo_tech
 
@@ -128,6 +132,12 @@
 	name = "security medic cap"
 	icon_state = "secsoft"
 	item_color = "sec"
+
+/obj/item/clothing/head/soft/sec/corp
+	name = "security cap"
+	desc = "A greyish security cap. Very fancy."
+	icon_state = "altsecsoft"
+	item_color = "altsec"
 
 /obj/item/clothing/head/soft/emt
 	name = "EMT cap"

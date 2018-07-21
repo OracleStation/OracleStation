@@ -52,6 +52,7 @@
 #define ishumanbasic(A) (is_species(A, /datum/species/human))
 #define isethari(A) (is_species(A, /datum/species/ethari))
 #define isipc(A) (is_species(A, /datum/species/ipc))
+#define isvox(A) (is_species(A, /datum/species/vox))
 
 //more carbon mobs
 #define ismonkey(A) (istype(A, /mob/living/carbon/monkey))

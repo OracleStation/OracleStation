@@ -150,6 +150,10 @@
 		new /obj/item/clothing/head/beret/sec(src)
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/head/soft/sec(src)
+	for(var/i in 1 to 3)
+		new /obj/item/clothing/head/soft/sec/corp(src)
+	for(var/i in 1 to 3)
+		new /obj/item/clothing/under/rank/security/corporate(src)
 	new /obj/item/clothing/mask/bandana/red(src)
 	new /obj/item/clothing/mask/bandana/red(src)
 	return
@@ -176,6 +180,7 @@
 	icon_door = "atmos_wardrobe"
 
 /obj/structure/closet/wardrobe/atmospherics_yellow/PopulateContents()
+	new /obj/item/clothing/head/beret/atmos(src)
 	new /obj/item/storage/backpack/duffelbag/engineering(src)
 	new /obj/item/storage/backpack/satchel/eng(src)
 	new /obj/item/storage/backpack/industrial(src)
@@ -192,6 +197,7 @@
 	icon_door = "yellow"
 
 /obj/structure/closet/wardrobe/engineering_yellow/PopulateContents()
+	new /obj/item/clothing/head/beret/eng(src)
 	new /obj/item/storage/backpack/duffelbag/engineering(src)
 	new /obj/item/storage/backpack/industrial(src)
 	new /obj/item/storage/backpack/satchel/eng(src)
@@ -210,6 +216,9 @@
 	name = "medical doctor's wardrobe"
 
 /obj/structure/closet/wardrobe/white/medical/PopulateContents()
+	new /obj/item/clothing/head/beret/med(src)
+	new /obj/item/clothing/head/beret/med(src)
+	new /obj/item/clothing/head/beret/med(src)
 	new /obj/item/storage/backpack/duffelbag/med(src)
 	new /obj/item/storage/backpack/medic(src)
 	new /obj/item/storage/backpack/satchel/med(src)
@@ -254,6 +263,8 @@
 	icon_door = "black"
 
 /obj/structure/closet/wardrobe/robotics_black/PopulateContents()
+	new /obj/item/clothing/head/beret/sci(src)
+	new /obj/item/clothing/head/beret/sci(src)
 	new /obj/item/clothing/glasses/hud/diagnostic(src)
 	new /obj/item/clothing/glasses/hud/diagnostic(src)
 	new /obj/item/clothing/under/rank/roboticist(src)
@@ -316,6 +327,7 @@
 	icon_door = "white"
 
 /obj/structure/closet/wardrobe/virology_white/PopulateContents()
+	new /obj/item/clothing/head/beret/med(src)
 	new /obj/item/clothing/under/rank/virologist(src)
 	new /obj/item/clothing/under/rank/virologist(src)
 	new /obj/item/clothing/shoes/sneakers/white(src)
@@ -335,6 +347,8 @@
 	icon_door = "white"
 
 /obj/structure/closet/wardrobe/science_white/PopulateContents()
+	new /obj/item/clothing/head/beret/sci(src)
+	new /obj/item/clothing/head/beret/sci(src)
 	new /obj/item/storage/backpack/science(src)
 	new /obj/item/storage/backpack/science(src)
 	new /obj/item/storage/backpack/satchel/tox(src)

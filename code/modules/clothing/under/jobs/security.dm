@@ -20,6 +20,10 @@
 	alt_covers_chest = 1
 	sensor_mode = SENSOR_COORDS
 	random_sensor = 0
+	species_fit = list("Vox Outcast")
+	sprite_sheets = list(
+		"Vox Outcast" = 'icons/mob/species/vox/uniform.dmi'
+		)
 
 /obj/item/clothing/under/rank/security/grey
 	name = "grey security jumpsuit"
@@ -28,6 +32,14 @@
 	item_state = "gy_suit"
 	item_color = "security"
 
+/obj/item/clothing/under/rank/security/corporate
+	name = "security jumpsuit"
+	desc = "A professional-looking jumpsuit for Security Officers. Caving the Clown's skull in just got ten times cooler."
+	icon_state = "altsecurity"
+	item_state = "black"
+	item_color = "altsecurity"
+	species_fit = list()//no sprites for now, because I can't be bothered
+	sprite_sheets = list()
 
 /obj/item/clothing/under/rank/warden
 	name = "security suit"
@@ -122,6 +134,7 @@
 	item_state = "officerblueclothes"
 	item_color = "officerblueclothes"
 	alt_covers_chest = 1
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/rank/head_of_security/navyblue
 	desc = "The insignia on this uniform tells you that this uniform belongs to the Head of Security."
@@ -130,6 +143,7 @@
 	item_state = "hosblueclothes"
 	item_color = "hosblueclothes"
 	alt_covers_chest = 1
+	species_restricted = list("exclude","Vox Outcast")
 
 /obj/item/clothing/under/rank/warden/navyblue
 	desc = "The insignia on this uniform tells you that this uniform belongs to the Warden."
@@ -138,6 +152,7 @@
 	item_state = "wardenblueclothes"
 	item_color = "wardenblueclothes"
 	alt_covers_chest = 1
+	species_restricted = list("exclude","Vox Outcast")
 
 /*
  *Blueshirt
@@ -149,3 +164,4 @@
 	item_state = "blueshift"
 	item_color = "blueshift"
 	can_adjust = 0
+	species_restricted = list("exclude","Vox Outcast")
