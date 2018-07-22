@@ -460,13 +460,13 @@
 	race = /datum/species/unathi
 	mutationtext = "<span class='danger'>The pain subsides. You feel... scaly.</span>"
 
-/datum/reagent/stableslimetoxin/ethari
-	name = "Ethari Mutation Toxin"
-	id = "etharimutationtoxin"
-	description = "A foxing toxin produced by slimes."
-	color = "#FF9429" //RGB: 94, 255, 59
-	race = /datum/species/ethari
-	mutationtext = "<span class='danger'>The pain subsides. You feel... furry.</span>"//I'm so sorry
+//datum/reagent/stableslimetoxin/ethari
+	//name = "Ethari Mutation Toxin"
+	//id = "etharimutationtoxin"
+	//description = "A foxing toxin produced by slimes."
+	//color = "#FF9429" //RGB: 94, 255, 59
+	//race = /datum/species/ethari
+	//mutationtext = "<span class='danger'>The pain subsides. You feel... furry.</span>"//I'm so sorry
 
 /datum/reagent/stableslimetoxin/fly
 	name = "Fly Mutation Toxin"
