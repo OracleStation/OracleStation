@@ -16,13 +16,12 @@
 	var/amount = 4
 	var/lifetime = 5
 	var/opaque = 1 //whether the smoke can block the view when in enough amount
+	use_fade = TRUE
 
-/obj/effect/particle_effect/smoke/New()
-	..()
-	alpha = 0
+/obj/effect/particle_effect/smoke/Initialize()
 	create_reagents(500)
-	animate(src, alpha = 255, time = 5)
 	START_PROCESSING(SSobj, src)
+	return ..()
 
 
 /obj/effect/particle_effect/smoke/Destroy()
@@ -210,6 +209,7 @@
 
 /obj/effect/particle_effect/smoke/chem
 	lifetime = 10
+	use_fade = FALSE
 
 
 /obj/effect/particle_effect/smoke/chem/process()
@@ -246,11 +246,11 @@
 	effect_type = /obj/effect/particle_effect/smoke/chem
 
 /datum/effect_system/smoke_spread/chem/New()
-	..()
 	chemholder = new /obj()
 	var/datum/reagents/R = new/datum/reagents(500)
 	chemholder.reagents = R
 	R.my_atom = chemholder
+	..()
 
 /datum/effect_system/smoke_spread/chem/Destroy()
 	qdel(chemholder)
@@ -293,12 +293,14 @@
 	if(holder)
 		location = get_turf(holder)
 	var/obj/effect/particle_effect/smoke/chem/S = new effect_type(location)
+	S.alpha = 0
 
 	if(chemholder.reagents.total_volume > 1) // can't split 1 very well
 		chemholder.reagents.copy_to(S, chemholder.reagents.total_volume)
 
 	if(mixcolor)
 		S.add_atom_colour(mixcolor, FIXED_COLOUR_PRIORITY) // give the smoke color, if it has any to begin with
+	animate(S, alpha = 255, time = 5)
 	S.amount = amount
 	if(S.amount)
 		S.spread_smoke() //calling process right now so the smoke immediately attacks mobs.
