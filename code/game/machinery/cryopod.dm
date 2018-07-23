@@ -387,7 +387,7 @@
 
 	var/generic_plsnoleave_message = " Please adminhelp before leaving the round, even if there are no administrators online!"
 
-	if(target == user && world.time - target.client.cryo_warned > 5 * 600)//if we haven't warned them in the last 5 minutes
+	if(target == user && world.time - target.client.cryo_warned > 5 MINUTES)//if we haven't warned them in the last 5 minutes
 		var/caught = FALSE
 		if(target.mind.assigned_role in GLOB.command_positions)
 			alert("You're a Head of Staff![generic_plsnoleave_message]")
@@ -418,6 +418,10 @@
 		if(caught)
 			target.client.cryo_warned = world.time
 			return
+
+	if(!target || user.incapacitated() || !target.Adjacent(user) || !Adjacent(user) || (!ishuman(user) && !iscyborg(user)) || !istype(user.loc, /turf) || target.buckled)
+		return
+		//rerun the checks in case of shenanigans
 
 	if(target == user)
 		visible_message("[user] starts climbing into the cryo pod.")
