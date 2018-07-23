@@ -471,10 +471,14 @@
 
 	if(mess)
 		icon_state = "pod_g"
-		var/image/occupant_overlay = image(CRYOMOBS, "clone_skele")
-		occupant_overlay.pixel_y = 27 + round(sin(world.time) * 3)
-		occupant_overlay.pixel_x = round(sin(world.time * 3))
-		add_overlay(occupant_overlay)
+		var/image/gib1 = image(CRYOMOBS, "gibup")
+		var/image/gib2 = image(CRYOMOBS, "gibdown")
+		gib1.pixel_y = 27 + round(sin(world.time) * 3)
+		gib1.pixel_x = round(sin(world.time * 3))
+		gib2.pixel_y = 27 + round(cos(world.time) * 3)
+		gib2.pixel_x = round(cos(world.time * 3))
+		add_overlay(gib2)
+		add_overlay(gib1)
 		add_overlay("cover-on")
 
 	else if(occupant)
