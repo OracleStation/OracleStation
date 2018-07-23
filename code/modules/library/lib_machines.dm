@@ -472,6 +472,7 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 				B.title = title
 				B.author = author
 				B.dat = content
+				B.pages += content
 				B.icon_state = "book[rand(1,8)]"
 				visible_message("[src]'s printer hums as it produces a completely bound book. How did it do that?")
 				break
