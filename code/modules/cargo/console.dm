@@ -21,9 +21,10 @@
 /obj/machinery/computer/cargo/Initialize(mapload, obj/item/circuitboard/computer/cargo/C)
 	. = ..()
 
-	// Propagate contraband/emag values from the circuit board used to construct the console.
-	contraband = C.contraband
-	emagged = C.emagged
+	if (C)
+		// Propagate contraband/emag values from the circuit board used to construct the console.
+		contraband = C.contraband
+		emagged = C.emagged
 
 	// This also permamently sets this on the circuit board to preserve the values when the console is deconstructed.
 	var/obj/item/circuitboard/computer/cargo/board = circuit
