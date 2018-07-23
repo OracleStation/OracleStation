@@ -55,6 +55,30 @@
 		"Security" = "security")
 	max_integrity = 200
 
+/obj/machinery/pdapainter/emag_act(mob/user)
+	if(emagged)
+		return
+	pda_icons += list(
+		"Transparent" = "pda-clear",
+		"Syndicate" = "pda-syndi"
+		)
+	id_icons += list(
+		"CentComm" = "centcomm",
+		"Deathsquad" = "deathsquad",
+		"ERT (Blank)" = "ERT_empty",
+		"ERT (Engineer)" = "ERT_engineer",
+		"ERT (Janitor)" = "ERT_janitorial",
+		"ERT (Leader)" = "ERT_leader",
+		"ERT (Medical)" = "ERT_medical",
+		"ERT (Security)" = "ERT_security",
+		"Generic NanoTrasen" = "nanotrasen",
+		"Lifetime" = "lifetime",
+		"Rainbow" = "rainbow",
+		"Syndicate" = "syndie",
+		"Syndicate Commander" = "commander",
+		)
+	to_chat(user, "<span class='warning'>You short out the design locking circuitry, allowing contraband and special designs.</span>")
+	emagged = TRUE
 /obj/machinery/pdapainter/update_icon()
 	cut_overlays()
 
@@ -189,38 +213,30 @@
 				storedid.icon_state = id_icons[newidskin]
 				ejectid()
 		else
-			to_chat(user, "<span class='notice'>The [src] is empty.</span>")
+			to_chat(user, "<span class='notice'>[src] is empty.</span>")
 
-
-/obj/machinery/pdapainter/verb/ejectpda()
-	set name = "Eject PDA"
-	set category = "Object"
-	set src in oview(1)
-
+/obj/machinery/pdapainter/AltClick(mob/user)
 	if(usr.stat || usr.restrained() || !usr.canmove)
 		return
+	if(storedpda || storedid)
+		ejectid()
+		ejectpda()
+		to_chat(usr, "<span class='notice'>You eject the contents.</span>")
+	else
+		to_chat(usr, "<span class='notice'>[src] is empty.")
 
+
+/obj/machinery/pdapainter/proc/ejectpda()
 	if(storedpda)
 		storedpda.loc = get_turf(src.loc)
 		storedpda = null
 		update_icon()
-	else
-		to_chat(usr, "<span class='notice'>The [src] is empty.</span>")
 
-/obj/machinery/pdapainter/verb/ejectid()
-	set name = "Eject ID"
-	set category = "Object"
-	set src in oview(1)
-
-	if(usr.stat || usr.restrained() || !usr.canmove)
-		return
-
+/obj/machinery/pdapainter/proc/ejectid()
 	if(storedid)
 		storedid.loc = get_turf(src.loc)
 		storedid = null
 		update_icon()
-	else
-		to_chat(usr, "<span class='notice'>The [src] is empty.</span>")
 
 /obj/machinery/pdapainter/power_change()
 	..()
