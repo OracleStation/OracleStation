@@ -78,3 +78,6 @@ GLOBAL_LIST_EMPTY(oui_file_cache)
 
 /datum/oracle_ui/themed/nano
 	theme = "nano"
+
+/datum/oracle_ui/themed/paper
+	theme = "paper"
