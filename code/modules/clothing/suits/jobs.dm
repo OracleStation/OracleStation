@@ -88,7 +88,6 @@
 	desc = "An apron-jacket used by a high class chef."
 	icon_state = "chef"
 	item_state = "chef"
-	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.50
 	body_parts_covered = CHEST|GROIN|ARMS
 	allowed = list(/obj/item/kitchen)

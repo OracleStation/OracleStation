@@ -429,7 +429,6 @@
 	icon_state = "golem"
 	item_state = "golem"
 	w_class = WEIGHT_CLASS_BULKY
-	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.50
 	body_parts_covered = FULL_BODY
 	flags_inv = HIDEGLOVES | HIDESHOES | HIDEJUMPSUIT
