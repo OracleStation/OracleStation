@@ -6,7 +6,6 @@
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|HIDEFACIALHAIR
 	w_class = WEIGHT_CLASS_NORMAL
 	item_state = "gas_alt"
-	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH
 	resistance_flags = 0
