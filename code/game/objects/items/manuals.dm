@@ -973,3 +973,74 @@ GLOBAL_LIST_EMPTY(cached_wiki_pages)
 	author = "Engineering Encyclopedia"
 	title = "Hacking"
 	page_link = "Hacking"
+
+/obj/item/book/manual/wiki/general_sop
+	name = "General Standard Operating Procedures"
+	icon_state ="book10"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "General Standard Operating Procedures"
+	page_link = "General SOP"
+
+/obj/item/book/manual/wiki/command_sop
+	name = "Command Standard Operating Procedures"
+	icon_state ="book11"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "Command Standard Operating Procedures"
+	page_link = "Command SOP"
+
+/obj/item/book/manual/wiki/engineering_sop
+	name = "Engineering Standard Operating Procedures"
+	icon_state ="book3"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "Engineering Standard Operating Procedures"
+	page_link = "Engineering SOP"
+
+/obj/item/book/manual/wiki/medical_sop
+	name = "Medical Standard Operating Procedures"
+	icon_state ="book4"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "Medical Standard Operating Procedures"
+	page_link = "Medical SOP"
+
+/obj/item/book/manual/wiki/service_sop
+	name = "Service Standard Operating Procedures"
+	icon_state ="book5"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "Service Standard Operating Procedures"
+	page_link = "Service SOP"
+
+/obj/item/book/manual/wiki/cargo_sop
+	name = "Cargo Standard Operating Procedures"
+	icon_state ="book12"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "Cargo Standard Operating Procedures"
+	page_link = "Cargo SOP"
+
+/obj/item/book/manual/wiki/science_sop
+	name = "Science Standard Operating Procedures"
+	icon_state ="book6"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "Science Standard Operating Procedures"
+	page_link = "Science SOP"
+
+/obj/item/book/manual/wiki/security_sop
+	name = "Security Standard Operating Procedures"
+	icon_state ="book2"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "Security Standard Operating Procedures"
+	page_link = "Security SOP"
+
+/obj/item/book/manual/wiki/crewResources_sop
+	name = "Crew Resources Procedures"
+	icon_state ="book9"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "Crew Resources Procedures"
+	page_link = "Crew Resources SOP"
+
+/obj/item/book/manual/wiki/ultimate_sop
+	name = "Complete Standard Operating Procedures"
+	desc = "A complete set of all of Nanotrasen's Standard Operating Procedures in one book."
+	icon_state ="booksop"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "Complete Standard Operating Procedures"
+	page_link = "Standard Operating Procedure"
