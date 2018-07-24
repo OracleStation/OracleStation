@@ -531,7 +531,7 @@
 	use_to_pickup = 1 // for picking up broken bulbs, not that most people will try
 
 /obj/item/storage/box/lights/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/device/lightreplacer))
+	if(issilicon(user) && istype(I, /obj/item/device/lightreplacer))
 		I.attackby(src, user)
 	else
 		..()
