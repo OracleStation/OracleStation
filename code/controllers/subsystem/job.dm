@@ -441,7 +441,7 @@ SUBSYSTEM_DEF(job)
 	if(job.special_notice)
 		to_chat(M, "<span class='userdanger'>[job.special_notice]</span>")
 	if(job.wiki_page)
-		to_chat(M, "<span class='notice'>[CONFIG_GET(string/wikiurl)][job.wiki_page]</span>")
+		to_chat(M, "<span class='notice'>[CONFIG_GET(string/wikiurl)]/wiki/[job.wiki_page]</span>")
 	if(CONFIG_GET(number/minimal_access_threshold))
 		to_chat(M, "<FONT color='blue'><B>As this station was initially staffed with a [CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] have been added to your ID card.</B></font>")
 
