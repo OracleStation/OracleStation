@@ -126,6 +126,8 @@ SUBSYSTEM_DEF(mapping)
 	if(config.minetype != "lavaland")
 		INIT_ANNOUNCE("WARNING: A map without lavaland set as its minetype was loaded! This is being ignored! Update the maploader code!")
 
+	set_station_name(config.station_name)
+
 	CreateSpace(ZLEVEL_SPACEMAX)
 
 	if(LAZYLEN(FailedZs))	//but seriously, unless the server's filesystem is messed up this will never happen
