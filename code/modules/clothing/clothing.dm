@@ -392,7 +392,6 @@ BLIND     // can't see anything
 	mask_adjusted = !mask_adjusted
 	if(!mask_adjusted)
 		src.icon_state = initial(icon_state)
-		gas_transfer_coefficient = initial(gas_transfer_coefficient)
 		permeability_coefficient = initial(permeability_coefficient)
 		flags_1 |= visor_flags
 		flags_inv |= visor_flags_inv
@@ -402,7 +401,6 @@ BLIND     // can't see anything
 	else
 		icon_state += "_up"
 		to_chat(user, "<span class='notice'>You push \the [src] out of the way.</span>")
-		gas_transfer_coefficient = null
 		permeability_coefficient = null
 		flags_1 &= ~visor_flags
 		flags_inv &= ~visor_flags_inv
@@ -567,7 +565,6 @@ BLIND     // can't see anything
 	icon_state = "spaceold"
 	item_state = "s_suit"
 	w_class = WEIGHT_CLASS_BULKY
-	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
 	flags_1 = STOPSPRESSUREDMAGE_1 | THICKMATERIAL_1
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS

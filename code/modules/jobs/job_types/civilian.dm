@@ -89,6 +89,7 @@ Mime
 	jobtype = /datum/job/mime
 	id = /obj/item/card/id/job/mime
 	belt2 = /obj/item/device/pda/mime
+	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/mime
 	mask = /obj/item/clothing/mask/gas/mime
 	gloves = /obj/item/clothing/gloves/color/white
@@ -134,8 +135,8 @@ Curator
 /datum/outfit/job/curator
 	name = "Curator"
 	jobtype = /datum/job/curator
-
 	belt2 = /obj/item/device/pda/curator
+	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/curator
 	l_hand = /obj/item/storage/bag/books
 	r_pocket = /obj/item/key/displaycase
@@ -189,7 +190,7 @@ Internal Affairs Agent
 	suit = /obj/item/clothing/suit/toggle/iaa/black
 	glasses = /obj/item/clothing/glasses/sunglasses
 	shoes = /obj/item/clothing/shoes/laceup
-	l_hand = /obj/item/storage/briefcase
+	l_hand = /obj/item/storage/briefcase/iaa
 	l_pocket = /obj/item/device/laser_pointer
 	r_pocket = /obj/item/device/assembly/flash/handheld
 
