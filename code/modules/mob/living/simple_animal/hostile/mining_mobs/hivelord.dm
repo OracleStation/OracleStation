@@ -244,15 +244,15 @@
 			if(mob_species == /datum/species/plasmaman)
 				uniform = /obj/item/clothing/under/plasmaman
 				head = /obj/item/clothing/head/helmet/space/plasmaman
-				belt = /obj/item/tank/internals/plasmaman/belt
+				belt1 = /obj/item/tank/internals/plasmaman/belt
 			else
 				uniform = /obj/item/clothing/under/rank/miner/lavaland
 				if (prob(4))
-					belt = pickweight(list(/obj/item/storage/belt/mining = 2, /obj/item/storage/belt/mining/alt = 2))
+					belt1 = pickweight(list(/obj/item/storage/belt/mining = 2, /obj/item/storage/belt/mining/alt = 2))
 				else if(prob(10))
-					belt = pickweight(list(/obj/item/pickaxe = 8, /obj/item/pickaxe/mini = 4, /obj/item/pickaxe/silver = 2, /obj/item/pickaxe/diamond = 1))
+					belt1 = pickweight(list(/obj/item/pickaxe = 8, /obj/item/pickaxe/mini = 4, /obj/item/pickaxe/silver = 2, /obj/item/pickaxe/diamond = 1))
 				else
-					belt = /obj/item/tank/internals/emergency_oxygen/engi
+					belt1 = /obj/item/tank/internals/emergency_oxygen/engi
 			if(mob_species != /datum/species/unathi)
 				shoes = /obj/item/clothing/shoes/workboots/mining
 			gloves = /obj/item/clothing/gloves/color/black
@@ -275,7 +275,7 @@
 			if(prob(5))
 				back = pickweight(list(/obj/item/twohanded/bonespear = 3, /obj/item/twohanded/fireaxe/boneaxe = 2))
 			if(prob(10))
-				belt = /obj/item/storage/belt/mining/primitive
+				belt1 = /obj/item/storage/belt/mining/primitive
 			if(prob(30))
 				r_pocket = /obj/item/kitchen/knife/combat/bone
 			if(prob(30))
@@ -283,7 +283,7 @@
 		if("Clown")
 			name = pick(GLOB.clown_names)
 			outfit = /datum/outfit/job/clown
-			belt = null
+			belt1 = null
 			backpack_contents = list()
 			if(prob(70))
 				backpack_contents += pick(list(/obj/item/stamp/clown = 1, /obj/item/reagent_containers/spray/waterflower = 1, /obj/item/reagent_containers/food/snacks/grown/banana = 1, /obj/item/device/megaphone/clown = 1, /obj/item/reagent_containers/food/drinks/soda_cans/canned_laughter = 1, /obj/item/pneumatic_cannon/pie = 1))
@@ -298,7 +298,7 @@
 			if(prob(30))
 				glasses = pickweight(list(/obj/item/clothing/glasses/meson = 2, /obj/item/clothing/glasses/hud/health = 2, /obj/item/clothing/glasses/hud/diagnostic =2, /obj/item/clothing/glasses/science = 2, /obj/item/clothing/glasses/welding = 2, /obj/item/clothing/glasses/night = 1))
 			if(prob(10))
-				belt = pick(list(/obj/item/storage/belt/mining/vendor, /obj/item/storage/belt/utility/full))
+				belt1 = pick(list(/obj/item/storage/belt/mining/vendor, /obj/item/storage/belt/utility/full))
 			if(prob(50))
 				neck = /obj/item/bedsheet/rd/royal_cape
 			if(prob(10))
@@ -311,7 +311,7 @@
 			head = /obj/item/clothing/head/helmet/knight
 			suit = /obj/item/clothing/suit/armor/riot/knight
 			back = /obj/item/shield/riot/buckler
-			belt = /obj/item/nullrod/claymore
+			belt1 = /obj/item/nullrod/claymore
 			r_pocket = /obj/item/tank/internals/emergency_oxygen
 			mask = /obj/item/clothing/mask/breath
 		if("Operative")
@@ -338,7 +338,3 @@
 			glasses =  /obj/item/clothing/glasses/night/cultblind
 			backpack_contents = list(/obj/item/reagent_containers/food/drinks/bottle/unholywater = 1, /obj/item/device/cult_shift = 1, /obj/item/device/flashlight/flare/culttorch = 1, /obj/item/stack/sheet/runed_metal = 15)
 	. = ..()
-
-
-
-

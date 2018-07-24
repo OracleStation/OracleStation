@@ -65,7 +65,7 @@
 	ears = /obj/item/device/radio/headset
 	suit = /obj/item/clothing/suit/redtag
 	back = /obj/item/storage/backpack
-	suit_store = /obj/item/gun/energy/laser/redtag
+	belt1 = /obj/item/gun/energy/laser/redtag
 	backpack_contents = list(/obj/item/storage/box=1)
 
 /datum/outfit/laser_tag/blue
@@ -75,7 +75,7 @@
 	head = /obj/item/clothing/head/helmet/bluetaghelm
 	gloves = /obj/item/clothing/gloves/color/blue
 	suit = /obj/item/clothing/suit/bluetag
-	suit_store = /obj/item/gun/energy/laser/bluetag
+	belt1 = /obj/item/gun/energy/laser/bluetag
 
 /datum/outfit/pirate
 	name = "Pirate"
@@ -150,7 +150,7 @@
 	l_pocket = /obj/item/melee/transforming/energy/sword/saber
 	l_hand = /obj/item/storage/secure/briefcase
 	id = /obj/item/card/id/syndicate
-	pda_slot = /obj/item/device/pda/heads
+	belt1 = /obj/item/device/pda/heads
 
 /datum/outfit/assassin/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	var/obj/item/clothing/under/U = H.w_uniform
@@ -170,7 +170,7 @@
 	sec_briefcase.handle_item_insertion(new /obj/item/ammo_box/a357,1)
 	sec_briefcase.handle_item_insertion(new /obj/item/grenade/plastic/x4,1)
 
-	var/obj/item/device/pda/heads/pda = H.belt
+	var/obj/item/device/pda/heads/pda = H.belt1
 	pda.owner = H.real_name
 	pda.ownjob = "Reaper"
 	pda.update_label()
@@ -192,7 +192,7 @@
 	glasses = /obj/item/clothing/glasses/eyepatch
 	mask = /obj/item/clothing/mask/cigarette/cigar/cohiba
 	head = /obj/item/clothing/head/centhat
-	belt = /obj/item/gun/ballistic/revolver/mateba
+	belt1 = /obj/item/gun/ballistic/revolver/mateba
 	r_pocket = /obj/item/lighter
 	l_pocket = /obj/item/ammo_box/a357
 	back = /obj/item/storage/backpack/satchel/leather
@@ -221,7 +221,7 @@
 	ears = /obj/item/device/radio/headset/headset_cent/commander
 	mask = /obj/item/clothing/mask/cigarette/cigar/havana
 	head = /obj/item/clothing/head/helmet/space/beret
-	belt = /obj/item/gun/energy/pulse/pistol/m1911
+	belt1 = /obj/item/gun/energy/pulse/pistol/m1911
 	r_pocket = /obj/item/lighter
 	back = /obj/item/storage/backpack/satchel/leather
 	id = /obj/item/card/id
@@ -289,7 +289,7 @@
 	glasses = /obj/item/clothing/glasses/thermal/eyepatch
 	suit = /obj/item/clothing/suit/pirate/captain
 	back = /obj/item/storage/backpack/satchel/leather
-	belt = /obj/item/gun/ballistic/revolver/mateba
+	belt1 = /obj/item/gun/ballistic/revolver/mateba
 
 	id = /obj/item/card/id
 
@@ -346,8 +346,8 @@
 	back = /obj/item/storage/backpack/security
 	l_pocket = /obj/item/melee/transforming/energy/sword/saber
 	r_pocket = /obj/item/shield/energy
-	suit_store = /obj/item/tank/internals/emergency_oxygen
-	belt = /obj/item/gun/ballistic/revolver/mateba
+	belt2 = /obj/item/tank/internals/emergency_oxygen
+	belt1 = /obj/item/gun/ballistic/revolver/mateba
 	r_hand = /obj/item/gun/energy/pulse
 	id = /obj/item/card/id
 	ears = /obj/item/device/radio/headset/headset_cent/alt
@@ -390,8 +390,4 @@
 	back = /obj/item/chrono_eraser
 	head = /obj/item/clothing/head/helmet/space/chronos
 	mask = /obj/item/clothing/mask/breath
-	suit_store = /obj/item/tank/internals/oxygen
-
-
-
-
+	belt1 = /obj/item/tank/internals/oxygen

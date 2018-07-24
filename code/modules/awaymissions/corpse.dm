@@ -124,7 +124,8 @@
 	var/glasses = -1
 	var/mask = -1
 	var/head = -1
-	var/belt = -1
+	var/belt1 = -1
+	var/belt2 = -1
 	var/r_pocket = -1
 	var/l_pocket = -1
 	var/back = -1
@@ -152,7 +153,7 @@
 	H.undershirt = "Nude"
 	H.socks = "Nude"
 	if(outfit)
-		var/static/list/slots = list("uniform", "r_hand", "l_hand", "suit", "shoes", "gloves", "ears", "glasses", "mask", "head", "belt", "r_pocket", "l_pocket", "back", "id", "pda_slot", "neck", "backpack_contents", "suit_store")
+		var/static/list/slots = list("uniform", "r_hand", "l_hand", "suit", "shoes", "gloves", "ears", "glasses", "mask", "head", "belt1", "belt2", "r_pocket", "l_pocket", "back", "id", "neck", "backpack_contents")
 		for(var/slot in slots)
 			var/T = vars[slot]
 			if(!isnum(T))

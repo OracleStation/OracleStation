@@ -48,13 +48,6 @@
 		else
 			msg += "[t_He] [t_is] wearing [icon2html(wear_suit, user)] \a [wear_suit].\n"
 
-		//suit/armor storage
-		if(s_store)
-			if(s_store.blood_DNA)
-				msg += "<span class='warning'>[t_He] [t_is] carrying [icon2html(s_store, user)] [s_store.gender==PLURAL?"some":"a"] blood-stained [s_store.name] on [t_his] [wear_suit.name]!</span>\n"
-			else
-				msg += "[t_He] [t_is] carrying [icon2html(s_store, user)] \a [s_store] on [t_his] [wear_suit.name].\n"
-
 	//back
 	if(back)
 		if(back.blood_DNA)
@@ -91,11 +84,17 @@
 			msg += "<span class='warning'>[t_He] [t_is] [icon2html(handcuffed, user)] handcuffed!</span>\n"
 
 	//belt
-	if(belt)
-		if(belt.blood_DNA)
-			msg += "<span class='warning'>[t_He] [t_has] [icon2html(belt, user)] [belt.gender==PLURAL?"some":"a"] blood-stained [belt.name] about [t_his] waist!</span>\n"
+	if(belt1)
+		if(belt1.blood_DNA)
+			msg += "<span class='warning'>[t_He] [t_has] [icon2html(belt1, user)] [belt1.gender==PLURAL?"some":"a"] blood-stained [belt1.name] about [t_his] waist!</span>\n"
 		else
-			msg += "[t_He] [t_has] [icon2html(belt, user)] \a [belt] about [t_his] waist.\n"
+			msg += "[t_He] [t_has] [icon2html(belt1, user)] \a [belt1] about [t_his] waist.\n"
+
+	if(belt2)
+		if(belt2.blood_DNA)
+			msg += "<span class='warning'>[t_He] [t_has] [icon2html(belt2, user)] [belt2.gender==PLURAL?"some":"a"] blood-stained [belt2.name] about [t_his] waist!</span>\n"
+		else
+			msg += "[t_He] [t_has] [icon2html(belt2, user)] \a [belt2] about [t_his] waist.\n"
 
 	//shoes
 	if(shoes && !(slot_shoes in obscured))

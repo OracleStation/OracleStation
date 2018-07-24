@@ -867,8 +867,8 @@
 					to_chat(H, "<span class='warning'>The footwear around here isn't compatible with your feet!</span>")
 				return 0
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
-		if(slot_belt)
-			if(H.belt)
+		if(slot_belt1)
+			if(H.belt1)
 				return 0
 
 			var/obj/item/bodypart/O = H.get_bodypart("chest")
@@ -877,8 +877,27 @@
 				if(!disable_warning)
 					to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [I.name]!</span>")
 				return 0
-			if( !(I.slot_flags & SLOT_BELT) )
+			if(!(I.slot_flags & SLOT_BELT || I.slot_flags & SLOT_BELT_GREEDY))
+				return 0
+			if(H.belt2 && I.slot_flags & SLOT_BELT_GREEDY && H.belt2.slot_flags & SLOT_BELT_GREEDY)
+				to_chat(H, "<span class='warning'>You can't equip [I] and [H.belt2] to your belt at the same time!</span>")
+				return 0
+			return equip_delay_self_check(I, H, bypass_equip_delay_self)
+		if(slot_belt2)
+			if(H.belt2)
+				return 0
+
+			var/obj/item/bodypart/O = H.get_bodypart("chest")
+
+			if(!H.w_uniform && !nojumpsuit && (!O || O.status != BODYPART_ROBOTIC))
+				if(!disable_warning)
+					to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [I.name]!</span>")
+				return 0
+			if(!(I.slot_flags & SLOT_BELT || I.slot_flags & SLOT_BELT_GREEDY))
 				return
+			if(H.belt1 && I.slot_flags & SLOT_BELT_GREEDY && H.belt1.slot_flags & SLOT_BELT_GREEDY)
+				to_chat(H, "<span class='warning'>You can't equip [I] and [H.belt1] to your belt at the same time!</span>")
+				return 0
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(slot_glasses)
 			if(H.glasses)
@@ -922,18 +941,6 @@
 			if( !(I.slot_flags & SLOT_ID) )
 				return 0
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
-		if(slot_wear_pda)
-			if(H.wear_pda)
-				return 0
-
-			var/obj/item/bodypart/O = H.get_bodypart("chest")
-			if(!H.w_uniform && !nojumpsuit && (!O || O.status != BODYPART_ROBOTIC))
-				if(!disable_warning)
-					to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [I.name]!</span>")
-				return 0
-			if( !(I.slot_flags & SLOT_PDA) )
-				return 0
-			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(slot_l_store)
 			if(I.flags_1 & NODROP_1) //Pockets aren't visible, so you can't move NODROP_1 items into them.
 				return 0
@@ -965,26 +972,6 @@
 			if(I.slot_flags & SLOT_DENYPOCKET)
 				return 0
 			if( I.w_class <= WEIGHT_CLASS_SMALL || (I.slot_flags & SLOT_POCKET) )
-				return 1
-			return 0
-		if(slot_s_store)
-			if(I.flags_1 & NODROP_1)
-				return 0
-			if(H.s_store)
-				return 0
-			if(!H.wear_suit)
-				if(!disable_warning)
-					to_chat(H, "<span class='warning'>You need a suit before you can attach this [I.name]!</span>")
-				return 0
-			if(!H.wear_suit.allowed)
-				if(!disable_warning)
-					to_chat(H, "You somehow have a suit with no defined allowed items for suit storage, stop that.")
-				return 0
-			if(I.w_class > WEIGHT_CLASS_BULKY)
-				if(!disable_warning)
-					to_chat(H, "The [I.name] is too big to attach.") //should be src?
-				return 0
-			if( istype(I, /obj/item/device/pda) || istype(I, /obj/item/pen) || is_type_in_list(I, H.wear_suit.allowed) )
 				return 1
 			return 0
 		if(slot_handcuffed)

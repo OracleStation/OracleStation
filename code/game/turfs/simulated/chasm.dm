@@ -98,8 +98,13 @@
 			return FALSE
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
-		if(istype(H.belt, /obj/item/device/wormhole_jaunter))
-			var/obj/item/device/wormhole_jaunter/J = H.belt
+		var/obj/item/device/wormhole_jaunter/J
+		if(istype(H.belt1, /obj/item/device/wormhole_jaunter))
+			J = H.belt1
+		if(istype(H.belt2, /obj/item/device/wormhole_jaunter))
+			J = H.belt2
+
+		if(J)
 			//To freak out any bystanders
 			visible_message("<span class='boldwarning'>[H] falls into [src]!</span>")
 			J.chasm_react(H)

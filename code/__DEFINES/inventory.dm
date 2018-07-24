@@ -24,11 +24,12 @@
 #define SLOT_FEET		128
 #define SLOT_ID			256
 #define SLOT_BELT		512
-#define SLOT_BACK		1024
-#define SLOT_POCKET		2048 // this is to allow items with a w_class of WEIGHT_CLASS_NORMAL or WEIGHT_CLASS_BULKY to fit in pockets.
-#define SLOT_DENYPOCKET	4096 // this is to deny items with a w_class of WEIGHT_CLASS_SMALL or WEIGHT_CLASS_TINY to fit in pockets.
-#define SLOT_NECK		8192
-#define SLOT_PDA		16384 // Do not remove: Causes the community to get angry
+#define SLOT_BELT_GREEDY		1024 // Fits in the belt slot, but you can only have one such item equipped in both belt slots.
+#define SLOT_BACK		2048
+#define SLOT_POCKET		4096 // this is to allow items with a w_class of WEIGHT_CLASS_NORMAL or WEIGHT_CLASS_BULKY to fit in pockets.
+#define SLOT_DENYPOCKET	8192 // this is to deny items with a w_class of WEIGHT_CLASS_SMALL or WEIGHT_CLASS_TINY to fit in pockets.
+#define SLOT_NECK		16384
+// Fuck the community.
 
 //SLOTS
 #define slot_back			1
@@ -36,25 +37,24 @@
 #define slot_handcuffed		3
 #define slot_hands			4 //wherever you provide a slot for hands you provide slot_hands
 								//slot_hands as a slot will pick ANY available hand
-#define slot_belt			5
-#define slot_wear_id		6
-#define slot_ears			7
-#define slot_glasses		8
-#define slot_gloves			9
-#define slot_neck			10
-#define slot_head			11
-#define slot_shoes			12
-#define slot_wear_suit		13
-#define slot_w_uniform		14
-#define slot_l_store		15
-#define slot_r_store		16
-#define slot_s_store		17
+#define slot_belt1			5
+#define slot_belt2			6
+#define slot_wear_id		7
+#define slot_ears			8
+#define slot_glasses		9
+#define slot_gloves			10
+#define slot_neck			11
+#define slot_head			12
+#define slot_shoes			13
+#define slot_wear_suit		14
+#define slot_w_uniform		15
+#define slot_l_store		16
+#define slot_r_store		17
 #define slot_in_backpack	18
 #define slot_legcuffed		19
 #define slot_generic_dextrous_storage	20
-#define slot_wear_pda		21
 
-#define slots_amt			21 // Keep this up to date!
+#define slots_amt			20 // Keep this up to date!
 
 //I hate that this has to exist
 /proc/slotdefine2slotbit(slotdefine) //Keep this up to date with the value of SLOT BITMASKS and SLOTS (the two define sections above)
@@ -66,7 +66,7 @@
 			. = SLOT_MASK
 		if(slot_neck)
 			. = SLOT_NECK
-		if(slot_belt)
+		if(slot_belt1 || slot_belt2)
 			. = SLOT_BELT
 		if(slot_wear_id)
 			. = SLOT_ID

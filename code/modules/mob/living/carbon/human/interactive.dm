@@ -271,7 +271,7 @@
 	MYPDA.owner = real_name
 	MYPDA.ownjob = "Crew"
 	MYPDA.name = "PDA-[real_name] ([myjob.title])"
-	equip_to_slot_or_del(MYPDA, slot_belt)
+	equip_to_slot_or_del(MYPDA, slot_belt2)
 	zone_selected = "chest"
 	//arms
 	for(var/X in bodyparts)

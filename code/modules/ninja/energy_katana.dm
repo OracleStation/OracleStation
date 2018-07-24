@@ -112,7 +112,9 @@
 
 	if(user.put_in_hands(src))
 		msg = "Your Energy Katana teleports into your hand!"
-	else if(user.equip_to_slot_if_possible(src, slot_belt, 0, 1, 1))
+	else if(user.equip_to_slot_if_possible(src, slot_belt1, 0, 1, 1))
+		msg = "Your Energy Katana teleports back to you, sheathing itself as it does so!</span>"
+	else if(user.equip_to_slot_if_possible(src, slot_belt2, 0, 1, 1))
 		msg = "Your Energy Katana teleports back to you, sheathing itself as it does so!</span>"
 	else
 		msg = "Your Energy Katana teleports to your location!"

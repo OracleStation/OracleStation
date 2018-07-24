@@ -89,7 +89,7 @@
 /mob/living/simple_animal/hostile/guardian/dextrous/getBackSlot()
 	return slot_generic_dextrous_storage
 
-/mob/living/simple_animal/hostile/guardian/dextrous/getBeltSlot()
+/mob/living/simple_animal/hostile/guardian/dextrous/getBeltSlots()
 	return slot_generic_dextrous_storage
 
 /mob/living/simple_animal/hostile/guardian/dextrous/proc/update_inv_internal_storage()

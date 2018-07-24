@@ -143,13 +143,6 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	dat += "<tr><td>&nbsp;</td></tr>"
 
 	dat += "<tr><td><B>Exosuit:</B></td><td><A href='?src=[REF(src)];item=[slot_wear_suit]'>[(wear_suit && !(wear_suit.flags_1&ABSTRACT_1)) ? wear_suit : "<font color=grey>Empty</font>"]</A></td></tr>"
-	if(wear_suit)
-		dat += "<tr><td>&nbsp;&#8627;<B>Suit Storage:</B></td><td><A href='?src=[REF(src)];item=[slot_s_store]'>[(s_store && !(s_store.flags_1&ABSTRACT_1)) ? s_store : "<font color=grey>Empty</font>"]</A>"
-		if(has_breathable_mask && istype(s_store, /obj/item/tank))
-			dat += "&nbsp;<A href='?src=[REF(src)];internal=[slot_s_store]'>[internal ? "Disable Internals" : "Set Internals"]</A>"
-		dat += "</td></tr>"
-	else
-		dat += "<tr><td><font color=grey>&nbsp;&#8627;<B>Suit Storage:</B></font></td></tr>"
 
 	if(slot_shoes in obscured)
 		dat += "<tr><td><font color=grey><B>Shoes:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
@@ -170,16 +163,19 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 		dat += "<tr><td><font color=grey>&nbsp;&#8627;<B>Pockets:</B></font></td></tr>"
 		dat += "<tr><td><font color=grey>&nbsp;&#8627;<B>ID:</B></font></td></tr>"
 		dat += "<tr><td><font color=grey>&nbsp;&#8627;<B>Belt:</B></font></td></tr>"
-		dat += "<tr><td><font color=grey>&nbsp;&#8627;<B>PDA:</B></font></td></tr>"
+		dat += "<tr><td><font color=grey>&nbsp;&#8627;<B>Belt:</B></font></td></tr>"
 	else
-		dat += "<tr><td>&nbsp;&#8627;<B>Belt:</B></td><td><A href='?src=[REF(src)];item=[slot_belt]'>[(belt && !(belt.flags_1&ABSTRACT_1)) ? belt : "<font color=grey>Empty</font>"]</A>"
-		if(has_breathable_mask && istype(belt, /obj/item/tank))
-			dat += "&nbsp;<A href='?src=[REF(src)];internal=[slot_belt]'>[internal ? "Disable Internals" : "Set Internals"]</A>"
+		dat += "<tr><td>&nbsp;&#8627;<B>Belt:</B></td><td><A href='?src=[REF(src)];item=[slot_belt1]'>[(belt1 && !(belt1.flags_1&ABSTRACT_1)) ? belt1 : "<font color=grey>Empty</font>"]</A>"
+		if(has_breathable_mask && istype(belt1, /obj/item/tank))
+			dat += "&nbsp;<A href='?src=[REF(src)];internal=[slot_belt1]'>[internal ? "Disable Internals" : "Set Internals"]</A>"
+		dat += "</td></tr>"
+		dat += "<tr><td>&nbsp;&#8627;<B>Belt:</B></td><td><A href='?src=[REF(src)];item=[slot_belt2]'>[(belt2 && !(belt2.flags_1&ABSTRACT_1)) ? belt2 : "<font color=grey>Empty</font>"]</A>"
+		if(has_breathable_mask && istype(belt1, /obj/item/tank))
+			dat += "&nbsp;<A href='?src=[REF(src)];internal=[slot_belt2]'>[internal ? "Disable Internals" : "Set Internals"]</A>"
 		dat += "</td></tr>"
 		dat += "<tr><td>&nbsp;&#8627;<B>Pockets:</B></td><td><A href='?src=[REF(src)];pockets=left'>[(l_store && !(l_store.flags_1&ABSTRACT_1)) ? "Left (Full)" : "<font color=grey>Left (Empty)</font>"]</A>"
 		dat += "&nbsp;<A href='?src=[REF(src)];pockets=right'>[(r_store && !(r_store.flags_1&ABSTRACT_1)) ? "Right (Full)" : "<font color=grey>Right (Empty)</font>"]</A></td></tr>"
 		dat += "<tr><td>&nbsp;&#8627;<B>ID:</B></td><td><A href='?src=[REF(src)];item=[slot_wear_id]'>[(wear_id && !(wear_id.flags_1&ABSTRACT_1)) ? wear_id : "<font color=grey>Empty</font>"]</A></td></tr>"
-		dat += "<tr><td>&nbsp;&#8627;<B>PDA:</B></td><td><A href='?src=[REF(src)];item=[slot_wear_pda]'>[(wear_pda && !(wear_pda.flags_1&ABSTRACT_1)) ? wear_pda : "<font color=grey>Empty</font>"]</A></td></tr>"
 		if(istype(w_uniform, /obj/item/clothing/under))
 			var/obj/item/clothing/under/U = w_uniform
 			dat += "<tr><td>&nbsp;&#8627;<B>Suit Sensors:</b></td><td><A href='?src=[REF(src)];set_sensor=1'>[U.has_sensor >= 2 ? "<font color=grey>--SENSORS LOCKED--</font></a>" : "Set Sensors</a>"]</td></tr>"
@@ -549,7 +545,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 				threatcount += 4
 			if(is_holding_item_of_type(/obj/item/gun/energy/laser/redtag))
 				threatcount += 4
-			if(istype(belt, /obj/item/gun/energy/laser/redtag))
+			if(istype(belt1, /obj/item/gun/energy/laser/redtag) || istype(belt2, /obj/item/gun/energy/laser/redtag))
 				threatcount += 2
 
 		if(lasercolor == "r")
@@ -557,7 +553,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 				threatcount += 4
 			if(is_holding_item_of_type(/obj/item/gun/energy/laser/bluetag))
 				threatcount += 4
-			if(istype(belt, /obj/item/gun/energy/laser/bluetag))
+			if(istype(belt1, /obj/item/gun/energy/laser/bluetag) || istype(belt2, /obj/item/gun/energy/laser/bluetag))
 				threatcount += 2
 
 		return threatcount
@@ -573,7 +569,9 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 			for(var/obj/item/I in held_items)
 				if(weaponcheck.Invoke(I))
 					threatcount += 4
-			if(weaponcheck.Invoke(belt))
+			if(weaponcheck.Invoke(belt1))
+				threatcount += 2
+			if(weaponcheck.Invoke(belt2))
 				threatcount += 2
 
 	//Check for arrest warrant

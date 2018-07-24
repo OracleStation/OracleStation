@@ -976,8 +976,10 @@ GLOBAL_LIST_INIT(hallucinations_major, list(
 			slots_free -= r
 		if(ishuman(target))
 			var/mob/living/carbon/human/H = target
-			if(!H.belt)
-				slots_free += ui_belt
+			if(!H.belt1)
+				slots_free += ui_belt1
+			if(!H.belt2)
+				slots_free += ui_belt2
 			if(!H.l_store)
 				slots_free += ui_storage1
 			if(!H.r_store)

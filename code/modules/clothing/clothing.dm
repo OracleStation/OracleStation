@@ -149,7 +149,8 @@
 		var/obj/item/I = pockets.contents[1]
 		if(!I)
 			return
-		pockets.remove_from_storage(I, get_turf(src))
+		if(!pockets.remove_from_storage(I, get_turf(src)))
+			return
 
 		if(!user.put_in_hands(I))
 			to_chat(user, "<span class='notice'>You fumble for [I] and it falls on the floor.</span>")

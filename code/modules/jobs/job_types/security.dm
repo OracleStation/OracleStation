@@ -42,7 +42,7 @@ Head of Security
 	jobtype = /datum/job/hos
 
 	id = /obj/item/card/id/job/hos
-	pda_slot = /obj/item/device/pda/heads/hos
+	belt2 = /obj/item/device/pda/heads/hos
 	ears = /obj/item/device/radio/headset/heads/hos/alt
 	uniform = /obj/item/clothing/under/rank/head_of_security
 	shoes = /obj/item/clothing/shoes/jackboots
@@ -50,7 +50,7 @@ Head of Security
 	gloves = /obj/item/clothing/gloves/color/black/hos
 	head = /obj/item/clothing/head/HoS/beret
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	suit_store = /obj/item/gun/energy/e_gun
+	belt1 = /obj/item/gun/energy/e_gun
 	r_pocket = /obj/item/device/assembly/flash/handheld
 	l_pocket = /obj/item/restraints/handcuffs
 
@@ -95,7 +95,7 @@ Warden
 	name = "Warden"
 	jobtype = /datum/job/warden
 	id = /obj/item/card/id/job/sec
-	pda_slot = /obj/item/device/pda/warden
+	belt2 = /obj/item/device/pda/warden
 	ears = /obj/item/device/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/warden
 	shoes = /obj/item/clothing/shoes/jackboots
@@ -105,7 +105,7 @@ Warden
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	r_pocket = /obj/item/device/assembly/flash/handheld
 	l_pocket = /obj/item/restraints/handcuffs
-	suit_store = /obj/item/gun/energy/e_gun/advtaser
+	belt1 = /obj/item/gun/energy/e_gun/advtaser
 
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec
@@ -144,7 +144,7 @@ Detective
 	name = "Detective"
 	jobtype = /datum/job/detective
 	id = /obj/item/card/id/job/sec
-	pda_slot = /obj/item/device/pda/detective
+	belt2 = /obj/item/device/pda/detective
 	ears = /obj/item/device/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/det
 	shoes = /obj/item/clothing/shoes/sneakers/brown
@@ -274,7 +274,7 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 	name = "Security Officer"
 	jobtype = /datum/job/officer
 	id = /obj/item/card/id/job/sec
-	pda_slot = /obj/item/device/pda/security
+	belt2 = /obj/item/device/pda/security
 	ears = /obj/item/device/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/security
 	gloves = /obj/item/clothing/gloves/color/black
@@ -283,7 +283,7 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 	shoes = /obj/item/clothing/shoes/jackboots
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/device/assembly/flash/handheld
-	suit_store = /obj/item/gun/energy/e_gun/advtaser
+	belt1 = /obj/item/gun/energy/e_gun/advtaser
 
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec
@@ -317,13 +317,13 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 	name = "Brig Physician"
 	jobtype = /datum/job/brig_phys
 	id = /obj/item/card/id/job/sec
-	pda_slot = /obj/item/device/pda/security
+	belt2 = /obj/item/device/pda/security
 	ears = /obj/item/device/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/brig_phys
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	suit = /obj/item/clothing/suit/hazardvest/brig_phys
-	suit_store = /obj/item/device/flashlight/seclite
+	belt1 = /obj/item/device/flashlight/seclite
 	l_hand = /obj/item/storage/firstaid/regular
 	head = /obj/item/clothing/head/soft/sec/brig_phys
 	implants = list(/obj/item/implant/mindshield)

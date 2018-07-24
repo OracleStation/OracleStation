@@ -81,7 +81,6 @@ There are several things that need to be remembered:
 		update_inv_glasses()
 		update_inv_ears()
 		update_inv_shoes()
-		update_inv_s_store()
 		update_inv_wear_mask()
 		update_inv_head()
 		update_inv_belt()
@@ -335,32 +334,6 @@ There are several things that need to be remembered:
 
 	apply_overlay(SHOES_LAYER)
 
-
-/mob/living/carbon/human/update_inv_s_store()
-	remove_overlay(SUIT_STORE_LAYER)
-
-	if(client && hud_used)
-		var/obj/screen/inventory/inv = hud_used.inv_slots[slot_s_store]
-		inv.update_icon()
-
-	if(s_store)
-		s_store.screen_loc = ui_sstore1
-		if(client && hud_used && hud_used.hud_shown)
-			client.screen += s_store
-		update_observer_view(s_store)
-		var/t_state = s_store.item_state
-		if(!t_state)
-			t_state = s_store.icon_state
-		overlays_standing[SUIT_STORE_LAYER]	= mutable_appearance('icons/mob/belt_mirror.dmi', t_state, -SUIT_STORE_LAYER)
-		var/mutable_appearance/s_store_overlay = overlays_standing[SUIT_LAYER]
-		if(OFFSET_S_STORE in dna.species.offset_features)
-			s_store_overlay.pixel_x += dna.species.offset_features[OFFSET_S_STORE][1]
-			s_store_overlay.pixel_y += dna.species.offset_features[OFFSET_S_STORE][2]
-		overlays_standing[SUIT_STORE_LAYER] = s_store_overlay
-
-	apply_overlay(SUIT_STORE_LAYER)
-
-
 /mob/living/carbon/human/update_inv_head()
 	..()
 	update_mutant_bodyparts()
@@ -377,34 +350,56 @@ There are several things that need to be remembered:
 	remove_overlay(BELT_LAYER)
 
 	if(client && hud_used)
-		var/obj/screen/inventory/inv = hud_used.inv_slots[slot_belt]
+		var/obj/screen/inventory/inv = hud_used.inv_slots[slot_belt1]
+		inv.update_icon()
+		inv = hud_used.inv_slots[slot_belt2]
 		inv.update_icon()
 
-	if(belt)
-		belt.screen_loc = ui_belt
-		if(client && hud_used && hud_used.hud_shown)
-			client.screen += belt
-		update_observer_view(belt)
+	var/mutable_appearance/belt_overlay = new()
 
-		var/t_state = belt.item_state
+	if(belt1)
+		belt1.screen_loc = ui_belt1
+		if(client && hud_used && hud_used.hud_shown)
+			client.screen += belt1
+		update_observer_view(belt1)
+
+		var/t_state = belt1.item_state
 		if(!t_state)
-			t_state = belt.icon_state
+			t_state = belt1.icon_state
 		var/image/standing
 
-		if(belt.icon_override)
+		if(belt1.icon_override)
 			t_state = "[t_state]_be"
-			standing = belt.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = belt.icon_override)
-		else if(belt.sprite_sheets && belt.sprite_sheets[dna.species.name])
-			standing = belt.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = belt.sprite_sheets[dna.species.name])
+			standing = belt1.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = belt1.icon_override)
+		else if(belt1.sprite_sheets && belt1.sprite_sheets[dna.species.name])
+			standing = belt1.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = belt1.sprite_sheets[dna.species.name])
 		else
-			standing = belt.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = 'icons/mob/belt.dmi')
+			standing = belt1.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = 'icons/mob/belt.dmi')
+		belt_overlay.overlays.Add(standing)
 
-		overlays_standing[BELT_LAYER] = standing
-		var/mutable_appearance/belt_overlay = overlays_standing[BELT_LAYER]
-		if(OFFSET_BELT in dna.species.offset_features)
-			belt_overlay.pixel_x += dna.species.offset_features[OFFSET_BELT][1]
-			belt_overlay.pixel_y += dna.species.offset_features[OFFSET_BELT][2]
-		overlays_standing[BELT_LAYER] = belt_overlay
+	if(belt2)
+		belt2.screen_loc = ui_belt2
+		if(client && hud_used && hud_used.hud_shown)
+			client.screen += belt2
+		update_observer_view(belt2)
+
+		var/t_state = belt2.item_state
+		if(!t_state)
+			t_state = belt2.icon_state
+		var/image/standing
+		if(belt2.icon_override)
+			t_state = "[t_state]_be"
+			standing = belt2.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = belt2.icon_override)
+		else if(belt2.sprite_sheets && belt2.sprite_sheets[dna.species.name])
+			standing = belt2.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = belt2.sprite_sheets[dna.species.name])
+		else
+			standing = belt2.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = 'icons/mob/belt_mirror.dmi')
+		belt_overlay.overlays.Add(standing)
+
+	if(OFFSET_BELT in dna.species.offset_features)
+		belt_overlay.pixel_x += dna.species.offset_features[OFFSET_BELT][1]
+		belt_overlay.pixel_y += dna.species.offset_features[OFFSET_BELT][2]
+	overlays_standing[BELT_LAYER] = belt_overlay
 
 	apply_overlay(BELT_LAYER)
 
@@ -442,16 +437,6 @@ There are several things that need to be remembered:
 	update_mutant_bodyparts()
 
 	apply_overlay(SUIT_LAYER)
-
-/mob/living/carbon/human/update_inv_wear_pda()
-	if(client && hud_used)
-		var/obj/screen/inventory/inv = hud_used.inv_slots[slot_wear_pda]
-		if(inv)
-			inv.update_icon()
-
-		if(wear_pda)
-			client.screen += wear_pda
-			wear_pda.screen_loc = ui_pda
 
 /mob/living/carbon/human/update_inv_pockets()
 	if(client && hud_used)

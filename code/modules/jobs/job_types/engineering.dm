@@ -34,13 +34,13 @@ Chief Engineer
 	name = "Chief Engineer"
 	jobtype = /datum/job/chief_engineer
 	id = /obj/item/card/id/job/ce
-	belt = /obj/item/storage/belt/utility/chief/full
-	pda_slot = /obj/item/device/pda/heads/ce
+	belt1 = /obj/item/storage/belt/utility/chief/full
 	ears = /obj/item/device/radio/headset/heads/ce
 	uniform = /obj/item/clothing/under/rank/chief_engineer
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	head = /obj/item/clothing/head/hardhat/white
 	gloves = /obj/item/clothing/gloves/color/black/ce
+	belt2 = /obj/item/device/pda/heads/ce
 	accessory = /obj/item/clothing/accessory/pocketprotector/full
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1, /obj/item/device/modular_computer/tablet/preset/advanced=1)
 
@@ -56,10 +56,10 @@ Chief Engineer
 	mask = /obj/item/clothing/mask/breath
 	suit = /obj/item/clothing/suit/space/hardsuit/engine/elite
 	shoes = /obj/item/clothing/shoes/magboots/advance
-	suit_store = /obj/item/tank/internals/oxygen
+	l_pocket = /obj/item/tank/internals/emergency_oxygen/engi
 	gloves = /obj/item/clothing/gloves/color/yellow
 	head = null
-	internals_slot = slot_s_store
+	internals_slot = slot_l_store
 
 
 /*
@@ -90,13 +90,13 @@ Station Engineer
 	name = "Station Engineer"
 	jobtype = /datum/job/engineer
 	id = /obj/item/card/id/job/engineering
-	belt = /obj/item/storage/belt/utility/full/engi
-	pda_slot = /obj/item/device/pda/engineering
+	belt1 = /obj/item/storage/belt/utility/full/engi
 	ears = /obj/item/device/radio/headset/headset_eng
 	uniform = /obj/item/clothing/under/rank/engineer
 	shoes = /obj/item/clothing/shoes/workboots
 	head = /obj/item/clothing/head/hardhat
 	r_pocket = /obj/item/device/t_scanner
+	belt2 = /obj/item/device/pda/engineering
 	accessory = /obj/item/clothing/accessory/pocketprotector/full
 
 	backpack = /obj/item/storage/backpack/industrial
@@ -115,9 +115,9 @@ Station Engineer
 
 	mask = /obj/item/clothing/mask/breath
 	suit = /obj/item/clothing/suit/space/hardsuit/engine
-	suit_store = /obj/item/tank/internals/oxygen
+	l_pocket = /obj/item/tank/internals/emergency_oxygen/engi
 	head = null
-	internals_slot = slot_s_store
+	internals_slot = slot_l_store
 
 
 /*
@@ -147,11 +147,11 @@ Atmospheric Technician
 	name = "Atmospheric Technician"
 	jobtype = /datum/job/atmos
 	id = /obj/item/card/id/job/engineering
-	belt = /obj/item/storage/belt/utility/atmostech
-	pda_slot = /obj/item/device/pda/atmos
+	belt1 = /obj/item/storage/belt/utility/atmostech
 	ears = /obj/item/device/radio/headset/headset_eng
 	uniform = /obj/item/clothing/under/rank/atmospheric_technician
 	r_pocket = /obj/item/device/analyzer
+	belt2 = /obj/item/device/pda/atmos
 	accessory = /obj/item/clothing/accessory/pocketprotector/full
 
 	backpack = /obj/item/storage/backpack/industrial
@@ -166,5 +166,5 @@ Atmospheric Technician
 
 	mask = /obj/item/clothing/mask/gas
 	suit = /obj/item/clothing/suit/space/hardsuit/engine/atmos
-	suit_store = /obj/item/tank/internals/oxygen
-	internals_slot = slot_s_store
+	l_pocket = /obj/item/tank/internals/emergency_oxygen/engi
+	internals_slot = slot_l_store

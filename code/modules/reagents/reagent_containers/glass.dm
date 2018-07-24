@@ -295,7 +295,7 @@
 		slot_wear_mask, slot_head, slot_neck,\
 		slot_shoes, slot_gloves,\
 		slot_ears, slot_glasses,\
-		slot_belt, slot_s_store,\
+		slot_belt1, slot_belt2,\
 		slot_l_store, slot_r_store,\
 		slot_generic_dextrous_storage
 	)

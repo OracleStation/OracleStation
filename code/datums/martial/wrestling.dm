@@ -448,7 +448,7 @@
 /obj/item/storage/belt/champion/wrestling/equipped(mob/user, slot)
 	if(!ishuman(user))
 		return
-	if(slot == slot_belt)
+	if(slot == slot_belt1 || slot == slot_belt2)
 		var/mob/living/carbon/human/H = user
 		style.teach(H,1)
 	return
@@ -457,6 +457,6 @@
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
-	if(H.get_item_by_slot(slot_belt) == src)
+	if(H.get_item_by_slot(slot_belt1) == src || H.get_item_by_slot(slot_belt2) == src)
 		style.remove(H)
 	return

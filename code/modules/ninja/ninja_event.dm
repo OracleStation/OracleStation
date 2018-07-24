@@ -71,7 +71,7 @@ Contents:
 	var/datum/antagonist/ninja/ninjadatum = add_ninja(Ninja)
 	ninjadatum.equip_space_ninja()
 
-	Ninja.internal = Ninja.s_store
+	Ninja.internal = Ninja.belt2
 	Ninja.update_internals_hud_icon(1)
 
 	if(Ninja.mind != Mind)			//something has gone wrong!
