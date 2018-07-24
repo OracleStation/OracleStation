@@ -750,6 +750,8 @@
 			rigged = 1
 
 		S.reagents.clear_reagents()
+	else if(istype(I, /obj/item/device/lightreplacer))
+		I.attackby(src, user)
 	else
 		..()
 	return
