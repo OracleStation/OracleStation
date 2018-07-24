@@ -20,7 +20,7 @@ Head of Security
 	selection_color = "#ffdddd"
 	req_admin_notify = 1
 	minimal_player_age = 30
-	exp_requirements = 300
+	exp_requirements = 600
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_SECURITY
 	special_notice = "Space Law is THE LAW. Not a suggestion."
@@ -304,7 +304,7 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 	supervisors = "the head of security"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
-	exp_requirements = 300
+	exp_requirements = 120
 	exp_type = EXP_TYPE_CREW
 	special_notice = "You are not a security officer, do not do their job for them. However, you can help them if they need immediate assistance. You are to tend to the medical needs of officers and prisoners."
 
