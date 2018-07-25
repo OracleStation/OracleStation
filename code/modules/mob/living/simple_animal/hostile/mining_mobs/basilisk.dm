@@ -16,7 +16,7 @@
 	ranged_cooldown_time = 30
 	ranged_telegraph = "gathers energy and stares at *TARGET*!"
 	ranged_telegraph_sound = 'sound/magic/magic_missile.ogg'
-	ranged_telegraph_time = 7
+	ranged_telegraph_time = 10
 	throw_message = "does nothing against the hard shell of"
 	vision_range = 2
 	speed = 3
