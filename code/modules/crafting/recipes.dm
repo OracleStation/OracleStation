@@ -326,22 +326,6 @@
 	reqs = list(/obj/item/stack/sheet/animalhide/unathi = 1)
 	category = CAT_MISC
 
-/datum/crafting_recipe/skateboard
-	name = "Skateboard"
-	result = /obj/vehicle/scooter/skateboard
-	time = 60
-	reqs = list(/obj/item/stack/sheet/metal = 5,
-				/obj/item/stack/rods = 10)
-	category = CAT_MISC
-
-/datum/crafting_recipe/scooter
-	name = "Scooter"
-	result = /obj/vehicle/scooter
-	time = 65
-	reqs = list(/obj/item/stack/sheet/metal = 5,
-				/obj/item/stack/rods = 12)
-	category = CAT_MISC
-
 /datum/crafting_recipe/papersack
 	name = "Paper Sack"
 	result = /obj/item/storage/box/papersack
