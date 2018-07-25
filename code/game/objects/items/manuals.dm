@@ -876,30 +876,51 @@
 	var/page_link = ""
 	window_size = "970x710"
 
-/obj/item/book/manual/wiki/attack_self()
-	if(!dat)
-		initialize_wikibook()
-	..()
+
+/obj/item/book/manual/wiki/Initialize()
+	. = ..()
+	initialize_wikibook()
 
 GLOBAL_LIST_EMPTY(cached_wiki_pages)
 
 /obj/item/book/manual/wiki/proc/initialize_wikibook()
 
-	dat = GLOB.cached_wiki_pages[page_link]
+	pages = GLOB.cached_wiki_pages[page_link]
 
-	if (dat)
-		return TRUE
+	if (!pages)
+		var/http[] = world.Export("[CONFIG_GET(string/wikibookurl)]wiki/[page_link]?action=render")
 
-	var/http[] = world.Export("[CONFIG_GET(string/wikibookurl)][page_link]?action=render")
+		if(!http)
+			return FALSE
 
-	if(!http)
-		return FALSE
+		var/html = http["CONTENT"]
+		dat = file2text(html)
+		dat = replacetext(dat, "<a href=", "<a nolink=")
+		dat = replacetext(dat, "src=\"/w", "src=\"[CONFIG_GET(string/wikiurl)]/w")
+		var/list/split = splittext(dat, "<hr />")
 
-	var/html = http["CONTENT"]
-	dat = file2text(html)
-	dat = replacetext(dat, "<a href=", "<a nolink=")
-	dat = replacetext(dat, "src=\"/w", "src=\"[CONFIG_GET(string/wikiurl)]/w")
-	GLOB.cached_wiki_pages[page_link] = dat
+		if(split.len > 1)
+			var/regex/title_find = new ("<h\\d>(.*)</h\\d>")
+			var/tableOfContents = {"<h1>Table of Contents</h1>
+<ol>
+"}
+			var/i = 1
+			for(var/page in split)
+				var/result = title_find.Find(page)
+				if(result)
+					var/header = title_find.group[1]
+					if(i == 1)
+						header = "Table of Contents"
+					tableOfContents += "<li><a href=\"#NAVIGATE;page=[i]\">[header]</a></li>\n"
+				i++
+			tableOfContents += "</ol>"
+			split[1] = tableOfContents
+
+		pages = split
+
+		GLOB.cached_wiki_pages[page_link] = pages
+
+	dat = "PAGES"
 
 	return TRUE
 
@@ -930,7 +951,7 @@ GLOBAL_LIST_EMPTY(cached_wiki_pages)
 	icon_state = "bookSpaceLaw"
 	author = "Nanotrasen"
 	title = "Space Law"
-	page_link = "Space_Law"
+	page_link = "Ingame_Space_Law"
 
 /obj/item/book/manual/wiki/infections
 	name = "Infections - Making your own pandemic!"

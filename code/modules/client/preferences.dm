@@ -105,6 +105,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/parallax
 
+	var/ambientocclusion = TRUE
+
 	var/uplink_spawn_loc = UPLINK_PDA
 
 	var/list/exp
@@ -608,6 +610,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				else
 					dat += "High"
 			dat += "</a><br>"
+
+			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'>[ambientocclusion ? "Enabled" : "Disabled"]</a><br>"
 
 			dat += "</td><td width='300px' height='300px' valign='top'>"
 
@@ -1473,6 +1477,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					parallax = Wrap(parallax - 1, PARALLAX_INSANE, PARALLAX_DISABLE + 1)
 					if (parent && parent.mob && parent.mob.hud_used)
 						parent.mob.hud_used.update_parallax_pref(parent.mob)
+
+				if("ambientocclusion")
+					ambientocclusion = !ambientocclusion
+					if(parent && parent.screen && parent.screen.len)
+						var/obj/screen/plane_master/game_world/PM = locate(/obj/screen/plane_master/game_world) in parent.screen
+						PM.filters = null //byond doesn't support finding specific filters within the filters var, as the filters var is a fake list
+						if(ambientocclusion)
+							PM.filters += AMBIENT_OCCLUSION
 
 				if("save")
 					save_preferences()

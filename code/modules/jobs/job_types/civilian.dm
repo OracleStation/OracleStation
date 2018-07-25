@@ -192,7 +192,7 @@ Internal Affairs Agent
 	suit = /obj/item/clothing/suit/toggle/iaa/black
 	glasses = /obj/item/clothing/glasses/sunglasses
 	shoes = /obj/item/clothing/shoes/laceup
-	l_hand = /obj/item/storage/briefcase
+	l_hand = /obj/item/storage/briefcase/iaa
 	l_pocket = /obj/item/device/laser_pointer
 	r_pocket = /obj/item/device/assembly/flash/handheld
 
