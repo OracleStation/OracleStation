@@ -12,7 +12,7 @@ AI
 	supervisors = "your laws"
 	req_admin_notify = 1
 	minimal_player_age = 30
-	exp_requirements = 600
+	exp_requirements = 900
 	exp_type = EXP_TYPE_CREW
 
 /datum/job/ai/equip(mob/living/carbon/human/H)

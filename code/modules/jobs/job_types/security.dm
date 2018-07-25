@@ -20,7 +20,7 @@ Head of Security
 	selection_color = "#ffdddd"
 	req_admin_notify = 1
 	minimal_player_age = 30
-	exp_requirements = 600
+	exp_requirements = 900
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_SECURITY
 	special_notice = "Space Law is THE LAW. Not a suggestion."

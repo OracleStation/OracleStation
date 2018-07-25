@@ -14,7 +14,7 @@ Chief Engineer
 	selection_color = "#ffeeaa"
 	req_admin_notify = 1
 	minimal_player_age = 7
-	exp_requirements = 360
+	exp_requirements = 900
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_ENGINEERING
 	wiki_page = "Engineering_SOP"
