@@ -59,7 +59,10 @@
 /obj/item/storage/wallet/update_icon()
 	icon_state = "wallet"
 	if(front_id)
-		icon_state = "wallet_[front_id.icon_state]"
+		if ("wallet_[front_id.icon_state]" in icon_states(src.icon))
+			icon_state = "wallet_[front_id.icon_state]"
+		else
+			icon_state = "wallet_id"
 
 
 
