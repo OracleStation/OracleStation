@@ -157,7 +157,7 @@
 			break
 
 	if(martyr_compatibility && martyr_chance)
-		//Nothing happens.
+		forge_single_objective(TRUE)
 		//This used to be the martyr objective to end your life,
 		//but since that doesn't give you a license to grief and
 		//some people might not even want to die,
@@ -190,9 +190,9 @@
 	add_objective(survive_objective)
 /datum/antagonist/traitor/proc/forge_single_objective()
 	return 0
-/datum/antagonist/traitor/human/forge_single_objective() //Returns how many objectives are added
+/datum/antagonist/traitor/human/forge_single_objective(martyr_compatible = FALSE) //Returns how many objectives are added
 	.=1
-	if(prob(50))
+	if(prob(50) || martyr_compatible)
 		var/list/active_ais = active_ais()
 		if(active_ais.len && prob(100/GLOB.joined_player_list.len))
 			var/datum/objective/destroy/destroy_objective = new
