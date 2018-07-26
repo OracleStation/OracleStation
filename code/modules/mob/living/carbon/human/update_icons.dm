@@ -355,7 +355,7 @@ There are several things that need to be remembered:
 		inv = hud_used.inv_slots[slot_belt2]
 		inv.update_icon()
 
-	var/mutable_appearance/belt_overlay = new()
+	var/list/standing = list()
 
 	if(belt1)
 		belt1.screen_loc = ui_belt1
@@ -366,16 +366,14 @@ There are several things that need to be remembered:
 		var/t_state = belt1.item_state
 		if(!t_state)
 			t_state = belt1.icon_state
-		var/image/standing
 
 		if(belt1.icon_override)
 			t_state = "[t_state]_be"
-			standing = belt1.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = belt1.icon_override)
+			standing += belt1.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = belt1.icon_override)
 		else if(belt1.sprite_sheets && belt1.sprite_sheets[dna.species.name])
-			standing = belt1.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = belt1.sprite_sheets[dna.species.name])
+			standing += belt1.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = belt1.sprite_sheets[dna.species.name])
 		else
-			standing = belt1.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = 'icons/mob/belt.dmi')
-		belt_overlay.overlays.Add(standing)
+			standing += belt1.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = 'icons/mob/belt.dmi')
 
 	if(belt2)
 		belt2.screen_loc = ui_belt2
@@ -386,22 +384,23 @@ There are several things that need to be remembered:
 		var/t_state = belt2.item_state
 		if(!t_state)
 			t_state = belt2.icon_state
-		var/image/standing
 		if(belt2.icon_override)
 			t_state = "[t_state]_be"
-			standing = belt2.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = belt2.icon_override)
+			standing += belt2.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = belt2.icon_override)
 		else if(belt2.sprite_sheets && belt2.sprite_sheets[dna.species.name])
-			standing = belt2.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = belt2.sprite_sheets[dna.species.name])
+			standing += belt2.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = belt2.sprite_sheets[dna.species.name])
 		else
-			standing = belt2.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = 'icons/mob/belt_mirror.dmi')
-		belt_overlay.overlays.Add(standing)
+			standing += belt2.build_worn_icon(state = "[t_state]", default_layer = BELT_LAYER, default_icon_file = 'icons/mob/belt_mirror.dmi')
 
-	if(OFFSET_BELT in dna.species.offset_features)
-		belt_overlay.pixel_x += dna.species.offset_features[OFFSET_BELT][1]
-		belt_overlay.pixel_y += dna.species.offset_features[OFFSET_BELT][2]
-	overlays_standing[BELT_LAYER] = belt_overlay
-
-	apply_overlay(BELT_LAYER)
+	if(standing.len)
+		overlays_standing[BELT_LAYER] = standing
+		var/mutable_appearance/belt_overlay = overlays_standing[BELT_LAYER]
+		if(OFFSET_BELT in dna.species.offset_features)
+			for(var/mutable_appearance/m in belt_overlay)
+				m.pixel_x += dna.species.offset_features[OFFSET_BELT][1]
+				m.pixel_y += dna.species.offset_features[OFFSET_BELT][2]
+		overlays_standing[BELT_LAYER] = belt_overlay
+		apply_overlay(BELT_LAYER)
 
 
 

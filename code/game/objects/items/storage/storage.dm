@@ -374,8 +374,8 @@
 
 	var/atom/current = src
 	while(istype(current, /obj/item/storage))
-		if(ismob(loc))
-			var/mob/M = loc
+		if(ismob(current.loc))
+			var/mob/M = current.loc
 			var/obj/item/storage/S = current
 			if(S.equipped_item_retrieval_delay && S in M.get_all_slots())
 				if(!do_after(M, S.equipped_item_retrieval_delay, target=M))
