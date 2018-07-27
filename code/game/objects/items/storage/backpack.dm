@@ -325,7 +325,7 @@
 
 /obj/item/storage/backpack/messenger/chem
 	name = "chemistry messenger bag"
-	desc = "A serile backpack worn over one shoulder. This one is in Chemsitry colors."
+	desc = "A serile backpack worn over one shoulder. This one is in Chemistry colors."
 	icon_state = "courierbagchem"
 	item_state = "courierbagchem"
 
@@ -370,6 +370,12 @@
 	desc = "A tactical backpack worn over one shoulder. This one is in Security colors."
 	icon_state = "courierbagsec"
 	item_state = "courierbagsec"
+
+/obj/item/storage/backpack/messenger/para
+	name = "paramedic messenger bag"
+	desc = "A fancy backpack worn over one shoulder. This one is in Paramedic colors."
+	icon_state = "courierbagpara"
+	item_state = "courierbagpara"
 
 /obj/item/storage/backpack/duffelbag
 	name = "duffel bag"

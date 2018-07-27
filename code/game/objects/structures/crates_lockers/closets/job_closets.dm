@@ -251,8 +251,7 @@
 	new /obj/item/clothing/suit/hooded/wintercoat/medical(src)
 	new /obj/item/clothing/gloves/color/latex(src)
 	new /obj/item/clothing/head/soft/emt(src)
-	new /obj/item/clothing/head/helmet/space/paramedic(src)
-	new /obj/item/clothing/suit/space/paramedic(src)
+	new /obj/item/clothing/suit/space/hardsuit/medical/emt
 	new /obj/item/clothing/suit/storage/paramedic(src)
 	new /obj/item/clothing/suit/toggle/labcoat/emt(src)
 	new /obj/item/storage/box/bodybags(src)

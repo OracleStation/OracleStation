@@ -128,4 +128,3 @@
 	item_state = "paramedic"
 	item_color = "paramedic"
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 10, fire = 0, acid = 0)
-	can_adjust = 0

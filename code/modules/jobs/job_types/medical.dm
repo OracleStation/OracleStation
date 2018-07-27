@@ -226,6 +226,7 @@ Virologist
 	pda_slot = /obj/item/device/pda/medical
 	ears = /obj/item/device/radio/headset/headset_med
 	uniform = /obj/item/clothing/under/rank/medical/paramedic
+	suit = /obj/item/clothing/suit/toggle/labcoat/emt
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	l_hand = /obj/item/storage/firstaid/regular
 	suit_store = /obj/item/device/flashlight/pen
@@ -233,4 +234,4 @@ Virologist
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
-	courierbag = /obj/item/storage/backpack/messenger/med
+	courierbag = /obj/item/storage/backpack/messenger/para
