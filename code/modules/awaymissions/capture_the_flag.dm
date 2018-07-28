@@ -511,7 +511,7 @@
 	var/obj/item/device/radio/R = H.ears
 	R.set_frequency(GLOB.REDTEAM_FREQ)
 	R.freqlock = TRUE
-	R.independent = TRUE
+	R.independent = list(GLOB.REDTEAM_FREQ)
 	H.dna.species.stunmod = 0
 
 /datum/outfit/ctf/blue/post_equip(mob/living/carbon/human/H)
@@ -519,7 +519,7 @@
 	var/obj/item/device/radio/R = H.ears
 	R.set_frequency(GLOB.BLUETEAM_FREQ)
 	R.freqlock = TRUE
-	R.independent = TRUE
+	R.independent = list(GLOB.BLUETEAM_FREQ)
 	H.dna.species.stunmod = 0
 
 

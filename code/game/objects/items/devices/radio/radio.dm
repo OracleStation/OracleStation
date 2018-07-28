@@ -23,7 +23,7 @@
 	var/subspace_switchable = 0
 	var/subspace_transmission = 0
 	var/syndie = 0//Holder to see if it's a syndicate encrpyed radio
-	var/independent = FALSE // If true, bypasses any tcomms machinery.
+	var/independent = list() // list of channels that bypass any tcomms machinery.
 	var/freqlock = 0 //Frequency lock to stop the user from untuning specialist radios.
 	var/emped = 0	//Highjacked to track the number of consecutive EMPs on the radio, allowing consecutive EMP's to stack properly.
 //			"Example" = FREQ_LISTENING|FREQ_BROADCASTING
@@ -49,7 +49,7 @@
 	channels = list()
 	translate_binary = 0
 	syndie = 0
-	independent = FALSE
+	independent = list()
 
 	if(keyslot)
 		for(var/ch_name in keyslot.channels)
@@ -64,8 +64,10 @@
 		if(keyslot.syndie)
 			syndie = 1
 
-		if(keyslot.independent)
-			independent = TRUE
+		for(var/ch_name in keyslot.independent)
+			if (ch_name in src.independent)
+				continue
+			independent += GLOB.radiochannels[ch_name]
 
 	for(var/ch_name in channels)
 		secure_radio_connections[ch_name] = add_radio(src, GLOB.radiochannels[ch_name])
@@ -299,7 +301,7 @@
 
 	/* ###### `independent` radios bypass all comms relays. ###### */
 
-	if(independent)
+	if(freqnum in independent)
 		var/datum/signal/signal = new
 		signal.transmission_method = 2
 		signal.data = list(
@@ -477,9 +479,6 @@
 			return -1
 	if(freq == GLOB.SYND_FREQ)
 		if(!(src.syndie)) //Checks to see if it's allowed on that frequency, based on the encryption keys
-			return -1
-	if(freq == GLOB.CENTCOM_FREQ)
-		if(!independent)
 			return -1
 	if (!on)
 		return -1
