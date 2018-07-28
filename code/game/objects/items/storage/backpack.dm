@@ -325,7 +325,7 @@
 
 /obj/item/storage/backpack/messenger/chem
 	name = "chemistry messenger bag"
-	desc = "A serile backpack worn over one shoulder. This one is in Chemistry colors."
+	desc = "A sterile backpack worn over one shoulder. This one is in Chemistry colors."
 	icon_state = "courierbagchem"
 	item_state = "courierbagchem"
 
