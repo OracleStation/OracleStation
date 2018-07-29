@@ -47,12 +47,6 @@
 "aj" = (
 /turf/open/floor/holofloor/asteroid,
 /area/holodeck/rec_center/bunker)
-"ak" = (
-/turf/open/floor/holofloor{
-	icon_state = "asteroid_warn_side";
-	dir = 8
-	},
-/area/holodeck/rec_center/bunker)
 "al" = (
 /obj/structure/table,
 /obj/item/stack/medical/ointment{
@@ -148,12 +142,6 @@
 	},
 /turf/open/floor/holofloor/snow,
 /area/holodeck/rec_center/winterwonderland)
-"az" = (
-/turf/open/floor/holofloor{
-	icon_state = "asteroid_warn";
-	dir = 8
-	},
-/area/holodeck/rec_center/bunker)
 "aA" = (
 /obj/structure/table,
 /obj/machinery/recharger,
@@ -415,14 +403,14 @@
 /obj/structure/table/glass,
 /obj/item/surgicaldrill,
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "br" = (
 /obj/structure/table/glass,
 /obj/item/hemostat,
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "bs" = (
@@ -432,14 +420,14 @@
 	},
 /obj/item/circular_saw,
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "bt" = (
 /obj/structure/table/glass,
 /obj/item/retractor,
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "bu" = (
@@ -447,7 +435,7 @@
 /obj/item/stack/medical/gauze,
 /obj/item/cautery,
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "bv" = (
@@ -525,20 +513,14 @@
 /area/holodeck/rec_center/pet_lounge)
 "bI" = (
 /obj/structure/table/glass,
-
 /obj/item/razor,
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "bJ" = (
 /turf/open/floor/holofloor{
 	icon_state = "white"
-	},
-/area/holodeck/rec_center/medical)
-"bK" = (
-/turf/open/floor/holofloor{
-	icon_state = "white";
 	},
 /area/holodeck/rec_center/medical)
 "bL" = (
@@ -602,21 +584,16 @@
 	icon_state = "redbluefull"
 	},
 /area/holodeck/rec_center/pet_lounge)
-"bX" = (
-/turf/open/floor/holofloor{
-	icon_state = "white";
-	},
-/area/holodeck/rec_center/medical)
 "bZ" = (
 /obj/structure/table/optable,
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "ca" = (
 /obj/machinery/computer/operating,
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "cb" = (
@@ -625,7 +602,7 @@
 /obj/item/clothing/suit/apron/surgical,
 /obj/item/clothing/mask/surgical,
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "cc" = (
@@ -668,7 +645,7 @@
 	dir = 1
 	},
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "cj" = (
@@ -680,12 +657,7 @@
 /obj/structure/table/glass,
 /obj/machinery/reagentgrinder,
 /turf/open/floor/holofloor{
-	icon_state = "white";
-	},
-/area/holodeck/rec_center/medical)
-"cl" = (
-/turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "cm" = (
@@ -696,13 +668,13 @@
 	},
 /obj/item/storage/box/beakers,
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "cn" = (
 /obj/machinery/washing_machine,
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "co" = (
@@ -776,25 +748,20 @@
 "cy" = (
 /obj/machinery/chem_master,
 /turf/open/floor/holofloor{
-	icon_state = "white";
-	},
-/area/holodeck/rec_center/medical)
-"cz" = (
-/turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "cA" = (
 /obj/structure/table/glass,
 /obj/item/device/healthanalyzer,
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "cB" = (
 /obj/structure/closet/wardrobe/white,
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "cC" = (
@@ -910,7 +877,7 @@
 	dir = 1
 	},
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "cW" = (
@@ -923,7 +890,7 @@
 	dir = 1
 	},
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "cX" = (
@@ -932,7 +899,7 @@
 	},
 /obj/machinery/computer/pandemic,
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "cY" = (
@@ -962,26 +929,10 @@
 /obj/structure/flora/ausbushes/pointybush,
 /turf/open/floor/holofloor/grass,
 /area/holodeck/rec_center/pet_lounge)
-"de" = (
-/turf/open/floor/holofloor{
-	icon_state = "white";
-	},
-/area/holodeck/rec_center/medical)
-"df" = (
-/turf/open/floor/holofloor{
-	dir = 8;
-	icon_state = "white_warn_corner"
-	},
-/area/holodeck/rec_center/medical)
 "dg" = (
 /obj/machinery/door/window/westleft,
 /turf/open/floor/holofloor{
-	icon_state = "white";
-	},
-/area/holodeck/rec_center/medical)
-"dh" = (
-/turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "di" = (
@@ -994,7 +945,7 @@
 	density = 0
 	},
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "dk" = (
@@ -1007,7 +958,7 @@
 	density = 0
 	},
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "dl" = (
@@ -1018,7 +969,7 @@
 	dir = 1
 	},
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "dm" = (
@@ -1026,7 +977,7 @@
 	density = 0
 	},
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "dn" = (
@@ -1034,7 +985,7 @@
 	dir = 1
 	},
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
 "do" = (
@@ -1062,14 +1013,6 @@
 "dr" = (
 /turf/open/floor/holofloor/beach/water,
 /area/holodeck/rec_center/beach)
-"ds" = (
-/turf/open/floor/holofloor/basalt,
-/obj/structure/table,
-/turf/open/floor/holofloor{
-	icon_state = "warningline";
-	dir = 1
-	},
-/area/holodeck/rec_center/thunderdome)
 "dt" = (
 /obj/structure/table,
 /obj/item/clothing/head/helmet/thunderdome,
@@ -1077,15 +1020,6 @@
 /obj/item/clothing/under/color/green,
 /obj/item/holo/esword/green,
 /turf/open/floor/holofloor/basalt,
-/area/holodeck/rec_center/thunderdome)
-"du" = (
-/turf/open/floor/holofloor/basalt,
-/obj/structure/table,
-/obj/machinery/readybutton,
-/turf/open/floor/holofloor{
-	icon_state = "warningline";
-	dir = 1
-	},
 /area/holodeck/rec_center/thunderdome)
 "dv" = (
 /turf/open/floor/holofloor{
@@ -1198,22 +1132,6 @@
 "dM" = (
 /turf/open/floor/holofloor,
 /area/holodeck/rec_center/school)
-"dN" = (
-/obj/machinery/conveyor/holodeck{
-	dir = 8;
-	id = "holocoaster"
-	},
-/turf/open/floor/holofloor/asteroid,
-/area/holodeck/rec_center/school)
-"dO" = (
-/obj/machinery/conveyor/holodeck{
-	dir = 6;
-	id = "holocoaster";
-	movedir = null;
-	verted = -1
-	},
-/turf/open/floor/holofloor/asteroid,
-/area/holodeck/rec_center/school)
 "dP" = (
 /turf/open/floor/holofloor{
 	dir = 8;
@@ -1228,7 +1146,7 @@
 	dir = 8
 	},
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/firingrange)
 "dR" = (
@@ -1236,7 +1154,7 @@
 	dir = 1
 	},
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/firingrange)
 "dS" = (
@@ -1247,7 +1165,7 @@
 	dir = 4
 	},
 /turf/open/floor/holofloor{
-	icon_state = "white";
+	icon_state = "white"
 	},
 /area/holodeck/rec_center/firingrange)
 "dT" = (
@@ -1436,25 +1354,11 @@
 	dir = 4
 	},
 /area/holodeck/rec_center/chapelcourt)
-"el" = (
-/obj/machinery/conveyor/holodeck{
-	id = "holocoaster"
-	},
-/turf/open/floor/holofloor/asteroid,
-/area/holodeck/rec_center/school)
 "em" = (
 /obj/structure/table/wood,
 /obj/item/folder,
 /obj/item/melee/classic_baton/telescopic,
 /turf/open/floor/holofloor,
-/area/holodeck/rec_center/school)
-"en" = (
-/obj/machinery/conveyor/holodeck{
-	dir = 1;
-	id = "holocoaster";
-	layer = 2.5
-	},
-/turf/open/floor/holofloor/asteroid,
 /area/holodeck/rec_center/school)
 "eo" = (
 /obj/structure/window/reinforced{
@@ -1577,10 +1481,6 @@
 	dir = 2
 	},
 /area/holodeck/rec_center/chapelcourt)
-"eF" = (
-/obj/item/shovel,
-/turf/open/floor/holofloor/asteroid,
-/area/holodeck/rec_center/school)
 "eG" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -1741,16 +1641,6 @@
 	dir = 2
 	},
 /area/holodeck/rec_center/chapelcourt)
-"ff" = (
-/obj/machinery/conveyor/holodeck{
-	id = "holocoaster"
-	},
-/obj/structure/chair/office{
-	dir = 1;
-	name = "coaster car"
-	},
-/turf/open/floor/holofloor/asteroid,
-/area/holodeck/rec_center/school)
 "fg" = (
 /obj/structure/table,
 /obj/item/paper,
@@ -1935,13 +1825,6 @@
 	icon_state = "green"
 	},
 /area/holodeck/rec_center/firingrange)
-"fC" = (
-/turf/open/floor/holofloor/grass,
-/turf/open/floor/holofloor{
-	icon_state = "warningline";
-	dir = 1
-	},
-/area/holodeck/rec_center/spacechess)
 "fD" = (
 /obj/structure/chair/wood/normal{
 	dir = 1
@@ -1973,29 +1856,6 @@
 	dir = 1
 	},
 /area/holodeck/rec_center/kobayashi)
-"fH" = (
-/obj/machinery/conveyor/holodeck{
-	dir = 9;
-	id = "holocoaster";
-	verted = -1
-	},
-/turf/open/floor/holofloor/asteroid,
-/area/holodeck/rec_center/school)
-"fI" = (
-/obj/machinery/conveyor/holodeck{
-	dir = 4;
-	id = "holocoaster"
-	},
-/turf/open/floor/holofloor/asteroid,
-/area/holodeck/rec_center/school)
-"fJ" = (
-/obj/machinery/conveyor/holodeck{
-	dir = 10;
-	id = "holocoaster";
-	verted = -1
-	},
-/turf/open/floor/holofloor/asteroid,
-/area/holodeck/rec_center/school)
 "fK" = (
 /obj/item/target,
 /obj/item/target/clown,
@@ -3021,10 +2881,8 @@
 /turf/open/floor/plating,
 /area/centcom/supply)
 "je" = (
-/obj/machinery/conveyor{
-	dir = 1;
-	id = "XCCQMLoad2";
-	movedir = 2
+/obj/machinery/conveyor/north{
+	id = "XCCQMLoad2"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -3033,9 +2891,7 @@
 /area/centcom/supply)
 "jf" = (
 /obj/machinery/conveyor_switch/oneway{
-	convdir = 1;
-	id = "XCCQMLoad2";
-	pixel_x = 6
+	id = "XCCQMLoad2"
 	},
 /turf/open/floor/plasteel/brown{
 	dir = 8
@@ -3095,22 +2951,18 @@
 	name = "Supply Dock Loading Door";
 	opacity = 1
 	},
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "XCCQMLoad2";
-	movedir = 8
+/obj/machinery/conveyor/east{
+	id = "XCCQMLoad2"
 	},
 /obj/effect/turf_decal/stripes/end{
-	dir = 8
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/centcom/supply)
 "jm" = (
 /obj/structure/plasticflaps,
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "XCCQMLoad2";
-	movedir = 8
+/obj/machinery/conveyor/east{
+	id = "XCCQMLoad2"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 2
@@ -3125,10 +2977,8 @@
 	name = "Supply Dock Loading Door";
 	opacity = 1
 	},
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "XCCQMLoad2";
-	movedir = 8
+/obj/machinery/conveyor/east{
+	id = "XCCQMLoad2"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 2
@@ -3136,12 +2986,12 @@
 /turf/open/floor/plasteel,
 /area/centcom/supply)
 "jo" = (
-/obj/machinery/conveyor{
-	dir = 1;
-	id = "XCCQMLoad2";
-	movedir = 2
+/obj/machinery/conveyor/northeast/ccw{
+	id = "XCCQMLoad2"
 	},
-/obj/effect/turf_decal/stripes/end,
+/obj/effect/turf_decal/stripes/end{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/centcom/supply)
 "jp" = (
@@ -3299,19 +3149,17 @@
 	name = "Supply Dock Loading Door";
 	opacity = 1
 	},
-/obj/machinery/conveyor{
-	dir = 8;
+/obj/machinery/conveyor/west{
 	id = "XCCQMLoad"
 	},
 /obj/effect/turf_decal/stripes/end{
-	dir = 8
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/centcom/supply)
 "jK" = (
 /obj/structure/plasticflaps,
-/obj/machinery/conveyor{
-	dir = 8;
+/obj/machinery/conveyor/west{
 	id = "XCCQMLoad"
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -3327,8 +3175,7 @@
 	name = "Supply Dock Loading Door";
 	opacity = 1
 	},
-/obj/machinery/conveyor{
-	dir = 8;
+/obj/machinery/conveyor/west{
 	id = "XCCQMLoad"
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -3337,8 +3184,10 @@
 /turf/open/floor/plasteel,
 /area/centcom/supply)
 "jM" = (
-/obj/machinery/conveyor{
-	dir = 8;
+/obj/effect/turf_decal/stripes/end{
+	dir = 1
+	},
+/obj/machinery/conveyor/northwest/ccw{
 	id = "XCCQMLoad"
 	},
 /obj/effect/turf_decal/stripes/end{
@@ -3358,10 +3207,8 @@
 /turf/open/floor/plasteel,
 /area/centcom/supply)
 "jP" = (
-/obj/machinery/conveyor{
-	dir = 1;
-	id = "XCCQMLoad";
-	movedir = 2
+/obj/machinery/conveyor/north{
+	id = "XCCQMLoad"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -3370,9 +3217,7 @@
 /area/centcom/supply)
 "jQ" = (
 /obj/machinery/conveyor_switch/oneway{
-	convdir = 1;
-	id = "XCCQMLoad";
-	pixel_x = 6
+	id = "XCCQMLoad"
 	},
 /turf/open/floor/plasteel/brown{
 	dir = 8
@@ -8718,7 +8563,6 @@
 /area/centcom/control)
 "wT" = (
 /obj/structure/table/optable,
-
 /turf/open/floor/plasteel/cmo,
 /area/centcom/control)
 "wU" = (
@@ -11055,10 +10899,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/centcom/holding)
-"CN" = (
-/obj/effect/spawner/structure/window/hollow/reinforced,
-/turf/open/floor/plasteel,
-/area/centcom/holding)
 "CO" = (
 /obj/structure/sink{
 	dir = 8;
@@ -12517,7 +12357,6 @@
 	},
 /area/abductor_ship)
 "GS" = (
-
 /obj/item/paper/guides/antag/abductor,
 /obj/item/scalpel/alien,
 /obj/structure/table/abductor,
@@ -13616,48 +13455,11 @@
 	},
 /turf/open/floor/holofloor,
 /area/holodeck/rec_center/school)
-"QM" = (
-/obj/structure/chair{
-	dir = 1
-	},
-/turf/open/floor/holofloor,
-/area/holodeck/rec_center/school)
 "QN" = (
 /obj/structure/table,
 /obj/item/paper,
 /obj/item/pen,
 /obj/item/clothing/under/schoolgirl/red,
-/turf/open/floor/holofloor,
-/area/holodeck/rec_center/school)
-"QO" = (
-/obj/structure/chair{
-	dir = 1
-	},
-/turf/open/floor/holofloor,
-/area/holodeck/rec_center/school)
-"QP" = (
-/obj/structure/chair{
-	dir = 1
-	},
-/turf/open/floor/holofloor,
-/area/holodeck/rec_center/school)
-"QQ" = (
-/obj/structure/table,
-/obj/item/paper,
-/obj/item/pen,
-/obj/item/clothing/under/schoolgirl/green,
-/turf/open/floor/holofloor,
-/area/holodeck/rec_center/school)
-"QR" = (
-/obj/structure/chair{
-	dir = 1
-	},
-/turf/open/floor/holofloor,
-/area/holodeck/rec_center/school)
-"QS" = (
-/obj/structure/chair{
-	dir = 1
-	},
 /turf/open/floor/holofloor,
 /area/holodeck/rec_center/school)
 
@@ -71501,13 +71303,13 @@ aR
 bl
 bq
 bI
-cl
-cl
+bJ
+bJ
 ck
 cy
-cl
+bJ
 cV
-cl
+bJ
 dj
 ac
 dA
@@ -71757,14 +71559,14 @@ bc
 bf
 bl
 br
-cl
-cl
-cl
-cl
-cl
-cl
+bJ
+bJ
+bJ
+bJ
+bJ
+bJ
 cW
-cl
+bJ
 dk
 ac
 dB
@@ -72014,12 +71816,12 @@ bb
 bg
 bl
 bs
-cl
+bJ
 bZ
 ci
 cm
 cA
-cl
+bJ
 cX
 dg
 dl
@@ -72271,14 +72073,14 @@ bb
 bg
 bl
 bt
-cl
+bJ
 ca
 ci
-cl
-cl
-cl
-cl
-cl
+bJ
+bJ
+bJ
+bJ
+bJ
 dm
 ac
 dD
@@ -72528,14 +72330,14 @@ bd
 bh
 bl
 bu
-cl
+bJ
 cb
 ci
 cn
 cB
-cl
-cl
-cl
+bJ
+bJ
+bJ
 dn
 ac
 dE
@@ -76399,9 +76201,9 @@ dM
 QJ
 QL
 fg
-QO
-QQ
-QR
+QL
+QK
+QL
 dM
 fN
 fQ
@@ -76911,11 +76713,11 @@ dM
 QI
 dM
 QK
-QM
+QL
 QN
-QP
+QL
 fr
-QS
+QL
 dM
 fN
 ab
