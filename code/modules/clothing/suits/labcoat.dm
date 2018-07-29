@@ -60,5 +60,5 @@
 /obj/item/clothing/suit/toggle/labcoat/emt
 	name = "EMT labcoat"
 	desc = "A comfortable suit for paramedics. Has dark colours."
-	icon_state = "labcoat_emt_open"
-	item_state = "labcoat_emt_open"
+	icon_state = "labcoat_emt"
+	item_state = "labcoat_emt"
