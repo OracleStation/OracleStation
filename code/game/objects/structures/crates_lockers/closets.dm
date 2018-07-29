@@ -279,14 +279,14 @@
 		return
 	if(!istype(S))
 		return
-	var/brokenword = broken ? "broken" : null
-	user.visible_message("<span class='notice'>You begin removing the [brokenword] lock on [src]...</span>", "<span class='notice'>[user] begins removing the [brokenword] lock on [src]...</span>")
+	var/brokenword = broken ? "broken " : null
+	user.visible_message("<span class='notice'>You begin removing the [brokenword]lock on [src]...</span>", "<span class='notice'>[user] begins removing the [brokenword]lock on [src]...</span>")
 	playsound(loc, S.usesound, 50, 1)
 	lock_in_use = TRUE
 	if(!do_after(user, 100 * S.toolspeed, target = src))
 		lock_in_use = FALSE
 		return
-	to_chat(user, "<span class='notice'>You remove the [brokenword] lock from [src]!</span>")
+	to_chat(user, "<span class='notice'>You remove the [brokenword]lock from [src]!</span>")
 	if(!QDELETED(lockerelectronics))
 		lockerelectronics.add_fingerprint(user)
 		lockerelectronics.forceMove(user.loc)
@@ -350,7 +350,7 @@
 				return
 			playsound(loc, WT.usesound, 50, 1)
 			welded = !welded
-			user.visible_message("<span class='notice'>[user] [welded ? "welds shut" : "unweldeds"] \the [src].</span>",
+			user.visible_message("<span class='notice'>[user] [welded ? "welds shut" : "unwelds"] \the [src].</span>",
 							"<span class='notice'>You [welded ? "weld" : "unwelded"] \the [src] with \the [WT].</span>",
 							"<span class='italics'>You hear welding.</span>")
 			update_icon()
