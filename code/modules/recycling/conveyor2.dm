@@ -12,7 +12,7 @@ GLOBAL_LIST_INIT(conveyor_switches, list())
 	icon = 'icons/obj/recycling.dmi'
 	icon_state = "conveyor_stopped_cw"
 	name = "conveyor belt"
-	desc = "A conveyor belt."
+	desc = "It can transport items placed in it very quickly. A switch can be used to control its movement."
 	layer = TURF_LAYER 		// so they appear under stuff
 	anchored = TRUE
 	var/operating = FALSE	//NB: this can be TRUE while the belt doesn't go
@@ -220,7 +220,7 @@ GLOBAL_LIST_INIT(conveyor_switches, list())
 	var/id
 	var/list/conveyors = list()
 
-/obj/machinery/conveyor_switch/Initialize(mapload, newloc, new_id)
+/obj/machinery/conveyor_switch/Initialize(mapload, new_id)
 	. = ..()
 	GLOB.conveyor_switches += src
 	if(!id)
@@ -232,7 +232,7 @@ GLOBAL_LIST_INIT(conveyor_switches, list())
 
 /obj/machinery/conveyor_switch/examine(mob/user)
 	..()
-	to_chat(user, "<span class='notice'>It's set to go in [one_way ? "one direction" : "either forward or reverse"].</span>")
+	to_chat(user, "<span class='notice'>It's set to go [one_way ? " in one direction" : "either forward or reverse"].</span>")
 
 /obj/machinery/conveyor_switch/Destroy()
 	GLOB.conveyor_switches -= src
