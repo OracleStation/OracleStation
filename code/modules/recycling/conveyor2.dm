@@ -24,8 +24,6 @@ GLOBAL_LIST_INIT(conveyor_switches, list())
 	var/reversed = FALSE	// set to TRUE to have the conveyor belt be reversed
 	speed_process = TRUE	//gotta go fast
 	var/id					//ID of the connected lever
-	var/movedir
-	var/verted
 
 	// create a conveyor
 /obj/machinery/conveyor/Initialize(mapload, new_dir, new_id)
@@ -221,7 +219,6 @@ GLOBAL_LIST_INIT(conveyor_switches, list())
 	anchored = TRUE
 	var/id
 	var/list/conveyors = list()
-	var/convdir
 
 /obj/machinery/conveyor_switch/Initialize(mapload, newloc, new_id)
 	. = ..()
