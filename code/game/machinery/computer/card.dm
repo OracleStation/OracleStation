@@ -40,6 +40,11 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		"Brig Physician",
 		"Internal Affairs Agent")
 
+	var/list/emag_blacklisted = list(
+		"Clown",
+		"Mime"
+		)
+
 	//The scaling factor of max total positions in relation to the total amount of people on board the station in %
 	var/max_relative_positions = 30 //30%: Seems reasonable, limit of 6 @ 20 players
 
@@ -107,8 +112,18 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 
 //Check if you can't open a new position for a certain job
 /obj/machinery/computer/card/proc/job_blacklisted(jobtitle)
-	return (jobtitle in blacklisted)
+	if(jobtitle in blacklisted)
+		return TRUE
+	if(!emagged && (jobtitle in emag_blacklisted))
+		return TRUE
+	return FALSE
 
+/obj/machinery/computer/card/emag_act(mob/user)
+	if(emagged)
+		return
+	if(user)
+		to_chat(user, "<span class='notice'>You silently disable the dangerous job limitations on [src].</span>")
+	emagged = TRUE
 
 //Logic check for Topic() if you can open the job
 /obj/machinery/computer/card/proc/can_open_job(datum/job/job)

@@ -279,13 +279,13 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(throwing)
 		throwing.finalize(FALSE)
 	if(loc == user)
-		if(!user.dropItemToGround(src))
+		if(!user.temporarilyRemoveItemFromInventory(src))// changed this line from dropItemToGround() to this; not sure why it works, but it works ~Flatty
 			return
 
 	pickup(user)
 	add_fingerprint(user)
 	if(!user.put_in_active_hand(src))
-		dropped(user)
+		src.forceMove(user.loc)// this line had dropped() on it and I am also not sure why this works but it does ~Flatty
 
 
 /obj/item/attack_paw(mob/user)
@@ -726,3 +726,31 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/MouseExited()
 	deltimer(tip_timer)//delete any in-progress timer if the mouse is moved off the item before it finishes
 	closeToolTip(usr)
+
+/obj/item/proc/do_pickup_animation(turf/target)
+	set waitfor = FALSE
+	var/turf/T = get_turf(src)
+	var/image/I = image(icon = src, loc = loc, layer = layer + 0.1)
+	I.plane = GAME_PLANE
+	I.transform *= 0.75
+	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
+	flick_overlay(I, GLOB.clients, 6)
+	var/matrix/M = new
+	M.Turn(pick(-30, 30))
+
+	animate(I, transform = M, time = 1)
+	sleep(1)
+	animate(I, transform = matrix(), time = 1)
+	sleep(1)
+
+	if(QDELETED(target) || QDELETED(src))
+		return
+	var/to_x = (target.x - T.x) * 32
+	var/to_y = (target.y - T.y) * 32
+
+	if(!to_x && !to_y)
+		to_y = 20
+
+	animate(I, alpha = 175, pixel_x = to_x, pixel_y = to_y, time = 3, easing = CUBIC_EASING)
+	sleep(1)
+	animate(I, alpha = 0, time = 1)

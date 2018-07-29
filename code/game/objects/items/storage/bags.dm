@@ -335,14 +335,14 @@
 /obj/item/storage/bag/tray/proc/rebuild_overlays()
 	cut_overlays()
 	for(var/obj/item/I in contents)
-		add_overlay(mutable_appearance(I.icon, I.icon_state))
+		add_overlay(new /mutable_appearance(I))
 
 /obj/item/storage/bag/tray/remove_from_storage(obj/item/W as obj, atom/new_location)
 	..()
 	rebuild_overlays()
 
 /obj/item/storage/bag/tray/handle_item_insertion(obj/item/I, prevent_warning = 0)
-	add_overlay(mutable_appearance(I.icon, I.icon_state))
+	add_overlay(new /mutable_appearance(I))
 	. = ..()
 
 

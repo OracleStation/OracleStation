@@ -613,7 +613,6 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	else
 		facial_hair_style = "Shaved"
 	hair_style = pick("Bedhead", "Bedhead 2", "Bedhead 3")
-	underwear = "Nude"
 	update_body()
 	update_hair()
 

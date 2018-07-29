@@ -33,6 +33,7 @@ Possible to do for anyone motivated enough:
 	desc = "It's a floor-mounted device for projecting holographic images."
 	icon_state = "holopad0"
 	layer = LOW_OBJ_LAYER
+	plane = OPENTURF_PLANE
 	flags_1 = HEAR_1
 	anchored = TRUE
 	use_power = IDLE_POWER_USE

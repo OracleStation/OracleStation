@@ -536,6 +536,13 @@
 	max_combined_w_class = 21
 	use_to_pickup = 1 // for picking up broken bulbs, not that most people will try
 
+/obj/item/storage/box/lights/attackby(obj/item/I, mob/user, params)
+	if(issilicon(user) && istype(I, /obj/item/device/lightreplacer))
+		I.attackby(src, user)
+	else
+		..()
+	return
+
 /obj/item/storage/box/lights/bulbs/PopulateContents()
 	for(var/i in 1 to 21)
 		new /obj/item/light/bulb(src)
