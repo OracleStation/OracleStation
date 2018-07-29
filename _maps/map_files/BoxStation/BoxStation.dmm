@@ -31423,18 +31423,14 @@
 	name = "supply dock loading door"
 	},
 /obj/machinery/conveyor/west{
-	id = "QMLoad";
-	step_x = 0;
-	step_y = 0
+	id = "QMLoad"
 	},
 /turf/open/floor/plating,
 /area/quartermaster/storage)
 "bvT" = (
 /obj/structure/plasticflaps,
 /obj/machinery/conveyor/west{
-	id = "QMLoad";
-	step_x = 0;
-	step_y = 0
+	id = "QMLoad"
 	},
 /turf/open/floor/plating,
 /area/quartermaster/storage)
@@ -31446,9 +31442,7 @@
 	supply_display = 1
 	},
 /obj/machinery/conveyor/west{
-	id = "QMLoad";
-	step_x = 0;
-	step_y = 0
+	id = "QMLoad"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -31457,9 +31451,7 @@
 /area/quartermaster/storage)
 "bvV" = (
 /obj/machinery/conveyor/west{
-	id = "QMLoad";
-	step_x = 0;
-	step_y = 0
+	id = "QMLoad"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -55121,9 +55113,7 @@
 	name = "supply dock loading door"
 	},
 /obj/machinery/conveyor/west{
-	id = "QMLoad";
-	step_x = 0;
-	step_y = 0
+	id = "QMLoad"
 	},
 /turf/open/floor/plating,
 /area/shuttle/supply)

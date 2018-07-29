@@ -17014,7 +17014,6 @@
 /area/quartermaster/storage)
 "aJD" = (
 /obj/machinery/conveyor_switch/oneway{
-	convdir = 1;
 	id = "QMLoad2";
 	pixel_x = 6
 	},
@@ -21227,7 +21226,6 @@
 /area/maintenance/port/fore)
 "aSQ" = (
 /obj/machinery/conveyor_switch/oneway{
-	convdir = 1;
 	id = "QMLoad";
 	pixel_x = 6
 	},
@@ -29160,7 +29158,6 @@
 /area/quartermaster/sorting)
 "biE" = (
 /obj/machinery/conveyor_switch/oneway{
-	convdir = -1;
 	id = "packageExternal";
 	pixel_y = 18
 	},

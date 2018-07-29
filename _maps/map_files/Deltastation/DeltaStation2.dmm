@@ -15120,7 +15120,6 @@
 "aFH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/conveyor_switch/oneway{
-	convdir = -1;
 	id = "cargodeliver";
 	name = "delivery conveyor";
 	pixel_x = -12
