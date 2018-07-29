@@ -101,7 +101,8 @@
 /obj/item/udder/gutlunch
 	name = "nutrient sac"
 
-/obj/item/udder/gutlunch/New()
+/obj/item/udder/gutlunch/Initialize()
+	. = ..()
 	reagents = new(50)
 	reagents.my_atom = src
 
@@ -110,4 +111,3 @@
 		reagents.add_reagent("cream", rand(2, 5))
 	if(prob(45))
 		reagents.add_reagent("salglu_solution", rand(2,5))
-

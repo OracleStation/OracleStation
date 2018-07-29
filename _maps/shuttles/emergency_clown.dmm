@@ -103,7 +103,8 @@
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/escape)
 "au" = (
-/turf/open/chasm/straight_down/lava_land_surface/normal_air,
+/obj/structure/chair,
+/turf/open/floor/mineral/plastitanium/brig,
 /area/shuttle/escape)
 "av" = (
 /obj/machinery/light{
@@ -129,18 +130,12 @@
 /obj/item/crowbar,
 /turf/open/floor/noslip,
 /area/shuttle/escape)
-"az" = (
-/obj/item/greentext/quiet{
-	anchored = 1
+"aA" = (
+/obj/machinery/door/airlock/glass_security{
+	name = "Holding Area";
+	req_access_txt = "2"
 	},
 /turf/open/floor/mineral/plastitanium/brig,
-/area/shuttle/escape)
-"aA" = (
-/obj/machinery/door/airlock/glass{
-	name = "Emergency Shuttle Greentext";
-	req_access_txt = "0"
-	},
-/turf/open/floor/bluespace,
 /area/shuttle/escape)
 "aB" = (
 /obj/machinery/light/small{
@@ -355,6 +350,22 @@
 /obj/structure/shuttle/engine/propulsion,
 /turf/open/floor/plating/airless,
 /area/shuttle/escape)
+"pp" = (
+/turf/open/floor/mineral/plastitanium/brig,
+/area/shuttle/escape)
+"rH" = (
+/obj/machinery/door/airlock/shuttle{
+	name = "Emergency Shuttle Airlock";
+	req_access_txt = "2"
+	},
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"Tj" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/brig,
+/area/shuttle/escape)
 
 (1,1,1) = {"
 aa
@@ -364,7 +375,7 @@ aa
 ab
 ab
 ab
-ab
+rH
 ab
 aI
 ab
@@ -387,8 +398,8 @@ ab
 ab
 ab
 au
-au
-au
+pp
+pp
 ab
 aJ
 aM
@@ -411,8 +422,8 @@ ai
 an
 ab
 au
-az
-au
+pp
+Tj
 ab
 aK
 ak
@@ -435,8 +446,8 @@ aj
 ao
 ab
 au
-au
-au
+pp
+Tj
 ab
 ak
 aN

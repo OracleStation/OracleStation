@@ -444,3 +444,6 @@ GLOBAL_LIST_INIT(ghost_others_options, list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DE
 
 //text files
 #define BRAIN_DAMAGE_FILE "traumas.json"
+
+//Filters
+#define AMBIENT_OCCLUSION filter(type="drop_shadow", x=0, y=-2, size=4, border=4, color="#04080FAA")

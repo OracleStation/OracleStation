@@ -424,10 +424,22 @@
 
 /obj/item/clothing/suit/jacket/miljacket
 	name = "military jacket"
-	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable."
-	icon_state = "militaryjacket"
-	item_state = "militaryjacket"
+	desc = "A canvas jacket styled after classical Old Earth military garb. Feels sturdy, yet comfortable. Olive green."
+	icon_state = "olivemiljacket"
+	item_state = "hostrench"
 	allowed = list(/obj/item/device/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/gun/ballistic/automatic/pistol, /obj/item/gun/ballistic/revolver, /obj/item/gun/ballistic/revolver/detective, /obj/item/device/radio)
+
+/obj/item/clothing/suit/jacket/miljacket/navy
+	name = "military jacket"
+	desc = "A canvas jacket styled after classical Old Earth military garb. Feels sturdy, yet comfortable. Navy blue."
+	icon_state = "navymiljacket"
+	item_state = "hostrench"
+
+/obj/item/clothing/suit/jacket/miljacket/desert
+	name = "military jacket"
+	desc = "A canvas jacket styled after classical Old Earth military garb. Feels sturdy, yet comfortable. Desert brown."
+	icon_state = "desertmiljacket"
+	item_state = "hostrench"
 
 /obj/item/clothing/suit/jacket/letterman
 	name = "letterman jacket"

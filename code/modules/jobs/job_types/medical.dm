@@ -14,7 +14,7 @@ Chief Medical Officer
 	selection_color = "#ffddf0"
 	req_admin_notify = 1
 	minimal_player_age = 7
-	exp_requirements = 180
+	exp_requirements = 900
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_MEDICAL
 	wiki_page = "Medical_SOP"
@@ -98,7 +98,7 @@ Chemist
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
 	exp_type = EXP_TYPE_CREW
-	exp_requirements = 60
+	exp_requirements = 120
 	wiki_page = "Guide_to_chemistry"
 
 	outfit = /datum/outfit/job/chemist
@@ -175,7 +175,7 @@ Virologist
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
 	exp_type = EXP_TYPE_CREW
-	exp_requirements = 60
+	exp_requirements = 120
 	wiki_page = "Infections"
 
 	outfit = /datum/outfit/job/virologist
@@ -226,6 +226,7 @@ Virologist
 	pda_slot = /obj/item/device/pda/medical
 	ears = /obj/item/device/radio/headset/headset_med
 	uniform = /obj/item/clothing/under/rank/medical/paramedic
+	suit = /obj/item/clothing/suit/toggle/labcoat/emt
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	l_hand = /obj/item/storage/firstaid/regular
 	suit_store = /obj/item/device/flashlight/pen
@@ -233,4 +234,4 @@ Virologist
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
-	courierbag = /obj/item/storage/backpack/messenger/med
+	courierbag = /obj/item/storage/backpack/messenger/para

@@ -186,9 +186,9 @@ GLOBAL_LIST_EMPTY(employmentCabinets)
 	icon_state = "employmentcabinet"
 	var/virgin = 1
 
-/obj/structure/filingcabinet/employment/New()
+/obj/structure/filingcabinet/employment/Initialize()
+	. = ..()
 	GLOB.employmentCabinets += src
-	return ..()
 
 /obj/structure/filingcabinet/employment/Destroy()
 	GLOB.employmentCabinets -= src

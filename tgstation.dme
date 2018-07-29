@@ -95,6 +95,7 @@
 #include "code\__HELPERS\radio.dm"
 #include "code\__HELPERS\sanitize_values.dm"
 #include "code\__HELPERS\text.dm"
+#include "code\__HELPERS\text_filter.dm"
 #include "code\__HELPERS\time.dm"
 #include "code\__HELPERS\type2type.dm"
 #include "code\__HELPERS\unique_ids.dm"

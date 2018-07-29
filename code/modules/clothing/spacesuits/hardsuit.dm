@@ -403,6 +403,18 @@
 	armor = list(melee = 30, bullet = 5, laser = 10, energy = 5, bomb = 10, bio = 100, rad = 50, fire = 75, acid = 75)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/medical
 
+/obj/item/clothing/head/helmet/space/hardsuit/medical/emt
+	name = "paramedic hardsuit helmet"
+	desc = "A sleek helmet used by the paramedic suit. Offers excellent protection from space, debris and various biohazards."
+	icon_state = "hardsuit0-paramedic"
+	item_color = "paramedic"
+
+/obj/item/clothing/suit/space/hardsuit/medical/emt
+	name = "paramedic hardsuit"
+	desc = "A sleek hardsuit used by the paramedic. Offers excellent protection from space, debris and various biohazards."
+	icon_state = "hardsuit-paramedic"
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/medical/emt
+
 	//Research Director hardsuit
 /obj/item/clothing/head/helmet/space/hardsuit/rd
 	name = "prototype hardsuit helmet"

@@ -9,7 +9,8 @@
 	var/mode = 0
 
 /obj/item/hand_labeler/afterattack(atom/A, mob/user,proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(!mode)	//if it's off, give up.
 		return
 

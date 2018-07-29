@@ -5,7 +5,7 @@ dist: trusty
 env:
     global:
     - BYOND_MAJOR="512"
-    - BYOND_MINOR="1428"
+    - BYOND_MINOR="1438"
     - NODE_VERSION="4"
     - BUILD_TOOLS=false
     - BUILD_TESTING=false

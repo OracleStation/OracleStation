@@ -16,7 +16,6 @@
 	icon_state = "bio"
 	item_state = "bio_suit"
 	w_class = WEIGHT_CLASS_BULKY
-	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	flags_1 = THICKMATERIAL_1
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS

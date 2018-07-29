@@ -1145,6 +1145,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	/obj/item/clothing/under/pants/camo = 1, /obj/item/clothing/under/pants/blackjeans=2, /obj/item/clothing/under/pants/khaki=2,
 	/obj/item/clothing/under/pants/white=2, /obj/item/clothing/under/pants/red=1, /obj/item/clothing/under/pants/black=2,
 	/obj/item/clothing/under/pants/tan=2, /obj/item/clothing/under/pants/track=1, /obj/item/clothing/suit/jacket/miljacket = 1,
+	/obj/item/clothing/suit/jacket/miljacket/desert = 1, /obj/item/clothing/suit/jacket/miljacket/navy = 1,
 	/obj/item/clothing/neck/tie/blue=1, /obj/item/clothing/neck/tie/red=1, /obj/item/clothing/neck/tie/black=1, /obj/item/clothing/neck/tie/horrible=1,
 	/obj/item/clothing/neck/scarf/red=1, /obj/item/clothing/neck/scarf/green=1, /obj/item/clothing/neck/scarf/darkblue=1,
 	/obj/item/clothing/neck/scarf/purple=1, /obj/item/clothing/neck/scarf/yellow=1, /obj/item/clothing/neck/scarf/orange=1,

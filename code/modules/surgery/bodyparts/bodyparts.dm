@@ -123,7 +123,8 @@
 		return
 	broken = TRUE
 	spawn(1)//because otherwise it pops before the punch message; we don't want that
-		owner.visible_message("<span class='userdanger'>You hear a cracking sound coming from [owner]'s [name].</span>", "<span class='warning'>You feel something crack in your [name]!</span>", "<span class='warning'>You hear an awful cracking sound.</span>")
+	
+		owner.visible_message("<span class='userdanger'>You see [owner]'s [name] deform un-naturally.</span>", "<span class='warning'>You feel something crack in your [name]!</span>", "<span class='warning'>You hear an awful cracking sound.</span>")
 
 /obj/item/bodypart/proc/fix_bone()
 	broken = FALSE

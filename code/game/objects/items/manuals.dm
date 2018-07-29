@@ -876,30 +876,51 @@
 	var/page_link = ""
 	window_size = "970x710"
 
-/obj/item/book/manual/wiki/attack_self()
-	if(!dat)
-		initialize_wikibook()
-	..()
+
+/obj/item/book/manual/wiki/Initialize()
+	. = ..()
+	initialize_wikibook()
 
 GLOBAL_LIST_EMPTY(cached_wiki_pages)
 
 /obj/item/book/manual/wiki/proc/initialize_wikibook()
 
-	dat = GLOB.cached_wiki_pages[page_link]
+	pages = GLOB.cached_wiki_pages[page_link]
 
-	if (dat)
-		return TRUE
+	if (!pages)
+		var/http[] = world.Export("[CONFIG_GET(string/wikibookurl)]wiki/[page_link]?action=render")
 
-	var/http[] = world.Export("[CONFIG_GET(string/wikibookurl)][page_link]?action=render")
+		if(!http)
+			return FALSE
 
-	if(!http)
-		return FALSE
+		var/html = http["CONTENT"]
+		dat = file2text(html)
+		dat = replacetext(dat, "<a href=", "<a nolink=")
+		dat = replacetext(dat, "src=\"/w", "src=\"[CONFIG_GET(string/wikiurl)]/w")
+		var/list/split = splittext(dat, "<hr />")
 
-	var/html = http["CONTENT"]
-	dat = file2text(html)
-	dat = replacetext(dat, "<a href=", "<a nolink=")
-	dat = replacetext(dat, "src=\"/w", "src=\"[CONFIG_GET(string/wikiurl)]/w")
-	GLOB.cached_wiki_pages[page_link] = dat
+		if(split.len > 1)
+			var/regex/title_find = new ("<h\\d>(.*)</h\\d>")
+			var/tableOfContents = {"<h1>Table of Contents</h1>
+<ol>
+"}
+			var/i = 1
+			for(var/page in split)
+				var/result = title_find.Find(page)
+				if(result)
+					var/header = title_find.group[1]
+					if(i == 1)
+						header = "Table of Contents"
+					tableOfContents += "<li><a href=\"#NAVIGATE;page=[i]\">[header]</a></li>\n"
+				i++
+			tableOfContents += "</ol>"
+			split[1] = tableOfContents
+
+		pages = split
+
+		GLOB.cached_wiki_pages[page_link] = pages
+
+	dat = "PAGES"
 
 	return TRUE
 
@@ -930,7 +951,7 @@ GLOBAL_LIST_EMPTY(cached_wiki_pages)
 	icon_state = "bookSpaceLaw"
 	author = "Nanotrasen"
 	title = "Space Law"
-	page_link = "Space_Law"
+	page_link = "Ingame_Space_Law"
 
 /obj/item/book/manual/wiki/infections
 	name = "Infections - Making your own pandemic!"
@@ -952,3 +973,74 @@ GLOBAL_LIST_EMPTY(cached_wiki_pages)
 	author = "Engineering Encyclopedia"
 	title = "Hacking"
 	page_link = "Hacking"
+
+/obj/item/book/manual/wiki/general_sop
+	name = "General Standard Operating Procedures"
+	icon_state ="bookSOPCiv"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "General Standard Operating Procedures"
+	page_link = "General SOP"
+
+/obj/item/book/manual/wiki/command_sop
+	name = "Command Standard Operating Procedures"
+	icon_state ="bookSOPComm"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "Command Standard Operating Procedures"
+	page_link = "Command SOP"
+
+/obj/item/book/manual/wiki/engineering_sop
+	name = "Engineering Standard Operating Procedures"
+	icon_state ="bookSOPEngi"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "Engineering Standard Operating Procedures"
+	page_link = "Engineering SOP"
+
+/obj/item/book/manual/wiki/medical_sop
+	name = "Medical Standard Operating Procedures"
+	icon_state ="bookSOPMedi"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "Medical Standard Operating Procedures"
+	page_link = "Medical SOP"
+
+/obj/item/book/manual/wiki/service_sop
+	name = "Service Standard Operating Procedures"
+	icon_state ="bookSOPSer"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "Service Standard Operating Procedures"
+	page_link = "Service SOP"
+
+/obj/item/book/manual/wiki/cargo_sop
+	name = "Cargo Standard Operating Procedures"
+	icon_state ="bookSOPSupply"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "Cargo Standard Operating Procedures"
+	page_link = "Cargo SOP"
+
+/obj/item/book/manual/wiki/science_sop
+	name = "Science Standard Operating Procedures"
+	icon_state ="bookSOPSci"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "Science Standard Operating Procedures"
+	page_link = "Science SOP"
+
+/obj/item/book/manual/wiki/security_sop
+	name = "Security Standard Operating Procedures"
+	icon_state ="bookSOPSec"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "Security Standard Operating Procedures"
+	page_link = "Security SOP"
+
+/obj/item/book/manual/wiki/crewResources_sop
+	name = "Crew Resources Procedures"
+	icon_state ="bookSOPCrewR"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "Crew Resources Procedures"
+	page_link = "Crew Resources SOP"
+
+/obj/item/book/manual/wiki/ultimate_sop
+	name = "Complete Standard Operating Procedures"
+	desc = "A complete set of all of Nanotrasen's Standard Operating Procedures in one book."
+	icon_state ="bookSOPC"
+	author = "Nanotrasen Internal Affairs Resources"
+	title = "Complete Standard Operating Procedures"
+	page_link = "Complete SOP"

@@ -150,6 +150,10 @@
 		new /obj/item/clothing/head/beret/sec(src)
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/head/soft/sec(src)
+	for(var/i in 1 to 3)
+		new /obj/item/clothing/head/soft/sec/corp(src)
+	for(var/i in 1 to 3)
+		new /obj/item/clothing/under/rank/security/corporate(src)
 	new /obj/item/clothing/mask/bandana/red(src)
 	new /obj/item/clothing/mask/bandana/red(src)
 	return
@@ -247,8 +251,7 @@
 	new /obj/item/clothing/suit/hooded/wintercoat/medical(src)
 	new /obj/item/clothing/gloves/color/latex(src)
 	new /obj/item/clothing/head/soft/emt(src)
-	new /obj/item/clothing/head/helmet/space/paramedic(src)
-	new /obj/item/clothing/suit/space/paramedic(src)
+	new /obj/item/clothing/suit/space/hardsuit/medical/emt
 	new /obj/item/clothing/suit/storage/paramedic(src)
 	new /obj/item/clothing/suit/toggle/labcoat/emt(src)
 	new /obj/item/storage/box/bodybags(src)
