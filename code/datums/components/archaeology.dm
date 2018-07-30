@@ -59,6 +59,7 @@
 					var/turf/open/floor/plating/asteroid/AOT = parent
 					AOT.icon_plating = "[AOT.environment_type]_dug"
 					AOT.icon_state = "[AOT.environment_type]_dug"
+					AOT.update_icon()
 				else
 					if(isplatingturf(OT))
 						var/turf/open/floor/plating/POT = parent

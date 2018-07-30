@@ -11,6 +11,7 @@
 	name = "plating"
 	icon_state = "plating"
 	intact = FALSE
+	icon = 'icons/turf/floors/plating.dmi'
 	var/attachment_holes = TRUE
 
 /turf/open/floor/plating/examine(mob/user)
@@ -24,18 +25,26 @@
 		to_chat(user, "<span class='notice'>You might be able to build ontop of it with some <i>tiles</i>...</span>")
 
 /turf/open/floor/plating/Initialize()
+
+	if(icon == 'icons/turf/floors/plating.dmi') //Hack, lots of subclasses of plating
+		smooth = SMOOTH_MORE
+		canSmoothWith = list(/turf/open/floor/plating, /turf/open/space)
+
 	if (!broken_states)
 		broken_states = list("damaged1", "damaged2", "damaged4", "damaged5")
 	if (!burnt_states)
 		burnt_states = list("floorscorched1", "floorscorched2")
+
 	. = ..()
 	icon_plating = icon_state
+	update_icon()
 
 /turf/open/floor/plating/update_icon()
 	if(!..())
 		return
 	if(!broken && !burnt)
 		icon_state = icon_plating //Because asteroids are 'platings' too.
+	underlays += image(icon, icon_state)
 
 /turf/open/floor/plating/attackby(obj/item/C, mob/user, params)
 	if(..())
