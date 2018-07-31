@@ -17251,7 +17251,6 @@
 /area/maintenance/disposal)
 "aMF" = (
 /obj/machinery/conveyor_switch/oneway{
-	convdir = 1;
 	id = "garbagestacked";
 	name = "disposal conveyor"
 	},
@@ -19440,7 +19439,6 @@
 /area/maintenance/disposal)
 "aRx" = (
 /obj/machinery/conveyor_switch/oneway{
-	convdir = -1;
 	id = "garbage";
 	name = "disposal conveyor"
 	},
@@ -21401,7 +21399,6 @@
 /area/quartermaster/storage)
 "aVB" = (
 /obj/machinery/conveyor_switch/oneway{
-	convdir = -1;
 	id = "QMLoad"
 	},
 /obj/machinery/button/door{
@@ -22689,7 +22686,6 @@
 /area/quartermaster/storage)
 "aYB" = (
 /obj/machinery/conveyor_switch/oneway{
-	convdir = 1;
 	id = "QMLoad2"
 	},
 /obj/effect/turf_decal/stripes/line{

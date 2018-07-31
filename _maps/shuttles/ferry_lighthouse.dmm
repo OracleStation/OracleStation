@@ -26,10 +26,6 @@
 "ag" = (
 /turf/open/floor/plating/airless,
 /area/shuttle/transport)
-"ah" = (
-/obj/structure/foamedmetal,
-/turf/open/space,
-/area/shuttle/transport)
 "ai" = (
 /obj/machinery/vending/liberationstation,
 /turf/open/floor/mineral/titanium/blue,
@@ -98,12 +94,6 @@
 /obj/effect/spawner/structure/window/shuttle,
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/transport)
-"ax" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall12";
-	dir = 2
-	},
-/area/shuttle/transport)
 "ay" = (
 /obj/structure/window/shuttle,
 /obj/structure/grille,
@@ -112,12 +102,6 @@
 "az" = (
 /obj/effect/spawner/structure/window/shuttle,
 /turf/open/floor/plating,
-/area/shuttle/transport)
-"aA" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_s10";
-	dir = 2
-	},
 /area/shuttle/transport)
 "aB" = (
 /obj/structure/grille{
@@ -242,21 +226,15 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/transport)
-"aZ" = (
-/turf/closed/wall/mineral/titanium/overspace,
-/area/shuttle/transport)
 "ba" = (
-/obj/machinery/conveyor{
-	dir = 1;
+/obj/machinery/conveyor/south{
 	id = "garbage"
 	},
 /turf/open/floor/wood,
 /area/shuttle/transport)
 "bb" = (
-/obj/machinery/conveyor{
-	dir = 1;
-	id = "garbage";
-	layer = 2.5
+/obj/machinery/conveyor/north{
+	id = "garbage"
 	},
 /turf/open/floor/wood,
 /area/shuttle/transport)
@@ -276,25 +254,21 @@
 /turf/open/floor/wood,
 /area/shuttle/transport)
 "be" = (
-/obj/machinery/conveyor{
-	dir = 4;
+/obj/machinery/conveyor/southeast/ccw{
 	id = "garbage"
 	},
 /turf/open/floor/wood,
 /area/shuttle/transport)
 "bf" = (
-/obj/machinery/conveyor{
-	dir = 4;
+/obj/structure/plasticflaps,
+/obj/machinery/conveyor/east{
 	id = "garbage"
 	},
-/obj/structure/plasticflaps,
 /turf/open/floor/wood,
 /area/shuttle/transport)
 "bg" = (
-/obj/machinery/conveyor{
-	dir = 10;
-	id = "garbage";
-	verted = -1
+/obj/machinery/conveyor/northeast/ccw{
+	id = "garbage"
 	},
 /turf/open/floor/wood,
 /area/shuttle/transport)
@@ -309,6 +283,18 @@
 "bj" = (
 /obj/structure/shuttle/engine/propulsion/right,
 /turf/open/floor/plating/airless,
+/area/shuttle/transport)
+"oB" = (
+/obj/machinery/conveyor/east{
+	id = "garbage"
+	},
+/turf/open/floor/wood,
+/area/shuttle/transport)
+"YH" = (
+/obj/machinery/conveyor_switch/oneway{
+	id = "garbage"
+	},
+/turf/open/floor/wood,
 /area/shuttle/transport)
 
 (1,1,1) = {"
@@ -414,7 +400,7 @@ aL
 aQ
 ap
 aL
-be
+oB
 bh
 aM
 ad
@@ -430,7 +416,7 @@ au
 au
 au
 au
-au
+YH
 aL
 bf
 aM
