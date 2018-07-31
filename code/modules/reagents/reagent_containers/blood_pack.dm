@@ -4,6 +4,7 @@
 	icon = 'icons/obj/bloodpack.dmi'
 	icon_state = "bloodpack"
 	volume = 200
+	container_type = DRAWABLE_1
 	var/blood_type = null
 	var/labelled = 0
 	var/color_to_apply = "#FFFFFF"
@@ -12,7 +13,15 @@
 /obj/item/reagent_containers/blood/Initialize()
 	. = ..()
 	if(blood_type != null)
-		reagents.add_reagent("blood", 200, list("species" = null, "donor" = null, "viruses" = null, "blood_DNA" = null, "blood_type" = blood_type, "resistances" = null, "trace_chem" = null))
+		var/species = /datum/species/human
+		switch(blood_type)
+			if("V")
+				species = /datum/species/vox
+			if("F")
+				species = /datum/species/ethari
+			if("L")
+				species = /datum/species/unathi
+		reagents.add_reagent("blood", 200, list("species" = species, "donor" = null, "viruses" = null, "blood_DNA" = null, "blood_type" = blood_type, "resistances" = null, "trace_chem" = null))
 		update_icon()
 
 /obj/item/reagent_containers/blood/on_reagent_change()
