@@ -31,7 +31,7 @@ Difficulty: Medium
 	light_color = "#E4C7C5"
 	movement_type = GROUND
 	speak_emote = list("roars")
-	speed = 1
+	speed = 5
 	move_to_delay = 3
 	projectiletype = /obj/item/projectile/kinetic/miner
 	projectilesound = 'sound/weapons/kenetic_accel.ogg'

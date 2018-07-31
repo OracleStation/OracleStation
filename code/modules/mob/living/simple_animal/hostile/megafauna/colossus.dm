@@ -39,7 +39,7 @@ Difficulty: Very Hard
 	armour_penetration = 40
 	melee_damage_lower = 40
 	melee_damage_upper = 40
-	speed = 1
+	speed = 1.5
 	move_to_delay = 10
 	ranged = 1
 	pixel_x = -32
@@ -130,17 +130,17 @@ Difficulty: Very Hard
 
 /mob/living/simple_animal/hostile/megafauna/colossus/proc/alternating_dir_shots()
 	dir_shots(GLOB.diagonals)
-	sleep(10)
+	sleep(13)
 	dir_shots(GLOB.cardinals)
-	sleep(10)
+	sleep(13)
 	dir_shots(GLOB.diagonals)
-	sleep(10)
+	sleep(13)
 	dir_shots(GLOB.cardinals)
 
 /mob/living/simple_animal/hostile/megafauna/colossus/proc/double_spiral()
 	visible_message("<span class='colossus'>\"<b>Die.</b>\"</span>")
 
-	sleep(10)
+	sleep(15)
 	INVOKE_ASYNC(src, .proc/spiral_shoot)
 	INVOKE_ASYNC(src, .proc/spiral_shoot, TRUE)
 
@@ -178,7 +178,7 @@ Difficulty: Very Hard
 	var/turf/U = get_turf(src)
 	playsound(U, 'sound/magic/clockwork/invoke_general.ogg', 300, 1, 5)
 	for(var/T in RANGE_TURFS(12, U) - U)
-		if(prob(5))
+		if(prob(4))
 			shoot_projectile(T)
 
 /mob/living/simple_animal/hostile/megafauna/colossus/proc/blast(set_angle)
@@ -188,7 +188,7 @@ Difficulty: Very Hard
 	var/angle_to_target = Get_Angle(src, target_turf)
 	if(isnum(set_angle))
 		angle_to_target = set_angle
-	var/static/list/colossus_shotgun_shot_angles = list(12.5, 7.5, 2.5, -2.5, -7.5, -12.5)
+	var/static/list/colossus_shotgun_shot_angles = list(17.5, 10, 5, -5, -10, -17.5)
 	for(var/i in colossus_shotgun_shot_angles)
 		shoot_projectile(null, angle_to_target + i)
 

@@ -233,8 +233,8 @@ Difficulty: Medium
 			negative = TRUE
 	new /obj/effect/temp_visual/dragon_flight/end(loc, negative)
 	new /obj/effect/temp_visual/dragon_swoop(loc)
-	animate(src, alpha = 255, transform = oldtransform, time = 5)
-	sleep(5)
+	animate(src, alpha = 255, transform = oldtransform, time = 8)
+	sleep(8)
 	swooping &= ~SWOOP_INVULNERABLE
 	mouse_opacity = initial(mouse_opacity)
 	icon_state = "dragon"
@@ -334,7 +334,7 @@ Difficulty: Medium
 	pixel_x = -32
 	pixel_y = -32
 	color = "#FF0000"
-	duration = 5
+	duration = 8
 
 /obj/effect/temp_visual/dragon_flight
 	icon = 'icons/mob/lavaland/64x64megafauna.dmi'
@@ -353,7 +353,7 @@ Difficulty: Medium
 		animate(src, pixel_x = -DRAKE_SWOOP_HEIGHT*0.10, pixel_z = DRAKE_SWOOP_HEIGHT*0.15, time = 3, easing = BOUNCE_EASING)
 	else
 		animate(src, pixel_x = DRAKE_SWOOP_HEIGHT*0.10, pixel_z = DRAKE_SWOOP_HEIGHT*0.15, time = 3, easing = BOUNCE_EASING)
-	sleep(3)
+	sleep(8)
 	icon_state = "swoop"
 	if(negative)
 		animate(src, pixel_x = -DRAKE_SWOOP_HEIGHT, pixel_z = DRAKE_SWOOP_HEIGHT, time = 7)
