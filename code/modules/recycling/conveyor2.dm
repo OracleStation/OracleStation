@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(conveyor_switches, list())
 	icon_state = "conveyor_stopped_cw"
 	name = "conveyor belt"
 	desc = "It can transport items placed in it very quickly. A switch can be used to control its movement."
-	layer = TURF_LAYER 		// so they appear under stuff
+	layer = CONVEYOR_LAYER
 	anchored = TRUE
 	var/operating = FALSE	//NB: this can be TRUE while the belt doesn't go
 	var/forwards			// The direction the conveyor sends you in
