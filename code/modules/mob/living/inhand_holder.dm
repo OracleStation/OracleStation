@@ -54,7 +54,7 @@
 		m.reset_perspective()
 		m.setDir(SOUTH)
 		held_mob = null
-		qdel(src)
+	qdel(src)
 
 /obj/item/clothing/head/mob_holder/relaymove(mob/user)
 	to_chat(user, "<span class='warning'>You must resist in order to escape!</span>")
@@ -103,3 +103,20 @@
 /mob/living/AltClick(mob/user)
 	mob_try_pickup(user)
 	..()
+
+
+// I didn't define these for mobs, because you shouldn't be able to breathe out of mobs and using their loc isn't always the logical thing to do.
+/obj/item/clothing/head/mob_holder/return_air()
+	var/atom/location = loc
+	if(location)
+		return location.loc.return_air(args)
+
+/obj/item/clothing/head/mob_holder/assume_air(datum/gas_mixture/env)
+	var/atom/location = loc
+	if(location)
+		return location.loc.assume_air(env)
+
+/obj/item/clothing/head/mob_holder/remove_air(amount)
+	var/atom/location = loc
+	if(location)
+		return location.loc.remove_air(amount)

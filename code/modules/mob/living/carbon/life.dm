@@ -53,8 +53,6 @@
 		return
 	if(istype(loc, /obj/machinery/atmospherics/components/unary/cryo_cell))
 		return
-	if(istype(loc, /obj/item/clothing/head/mob_holder)) // Bandaid. No idea how I'd pull the turf atmos of The mob holding the mob holder that the mob breathe()-ing is inside of.
-		return
 
 	var/datum/gas_mixture/environment
 	if(loc)
