@@ -29,6 +29,7 @@
 	var/turns_since_scan = 0
 	var/mob/living/simple_animal/mouse/movement_target
 	gold_core_spawnable = 2
+	can_be_held = "cat2"
 
 /mob/living/simple_animal/pet/cat/Initialize()
 	. = ..()
@@ -84,6 +85,7 @@
 	var/list/children = list()//Actual mob instances of children
 	var/cats_deployed = 0
 	var/memory_saved = 0
+	can_be_held = "cat"
 
 /mob/living/simple_animal/pet/cat/Runtime/Initialize()
 	if(prob(5))
@@ -237,6 +239,7 @@
 	attacked_sound = 'sound/items/eatfood.ogg'
 	deathmessage = "loses its false life and collapses!"
 	death_sound = "bodyfall"
+	can_be_held = "cak"
 
 /mob/living/simple_animal/pet/cat/cak/CheckParts(list/parts)
 	..()

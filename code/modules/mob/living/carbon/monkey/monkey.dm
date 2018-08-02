@@ -15,7 +15,7 @@
 	bodyparts = list(/obj/item/bodypart/chest/monkey, /obj/item/bodypart/head/monkey, /obj/item/bodypart/l_arm/monkey,
 					 /obj/item/bodypart/r_arm/monkey, /obj/item/bodypart/r_leg/monkey, /obj/item/bodypart/l_leg/monkey)
 	has_bones = TRUE
-
+	can_be_held = "monkey"
 
 
 /mob/living/carbon/monkey/Initialize()
@@ -173,3 +173,7 @@
 	if(stat != DEAD)
 		GLOB.total_cube_monkeys--
 	return ..()
+
+/mob/living/carbon/monkey/generate_mob_holder()
+	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(src), src, "monkey", 'icons/mob/animals_held.dmi', 'icons/mob/animals_held_lh.dmi', 'icons/mob/animals_held_rh.dmi', TRUE)
+	return holder
