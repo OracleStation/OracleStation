@@ -4287,7 +4287,6 @@
 /area/crew_quarters/heads/hos)
 "akc" = (
 /obj/structure/table/wood,
-/obj/machinery/recharger,
 /obj/machinery/status_display{
 	density = 0;
 	layer = 4;
@@ -4296,6 +4295,9 @@
 /obj/machinery/light{
 	dir = 1;
 	light_color = "#706891"
+	},
+/obj/machinery/photocopier/faxmachine/longrange{
+	department = "Head of Security"
 	},
 /turf/open/floor/plasteel/black,
 /area/crew_quarters/heads/hos)
@@ -5768,7 +5770,11 @@
 /area/crew_quarters/heads/hos)
 "anj" = (
 /obj/structure/table/wood,
-/obj/item/phone,
+/obj/machinery/recharger,
+/obj/item/phone{
+	pixel_x = 9;
+	pixel_y = 9
+	},
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/hos)
 "ank" = (
@@ -10574,13 +10580,15 @@
 /area/crew_quarters/heads/captain)
 "axT" = (
 /obj/structure/table/wood,
-/obj/machinery/recharger,
 /obj/machinery/requests_console{
 	announcementConsole = 1;
 	department = "Captain's Desk";
 	departmentType = 5;
 	name = "Captain RC";
 	pixel_y = 30
+	},
+/obj/machinery/photocopier/faxmachine/longrange{
+	department = "Captain"
 	},
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/captain)
@@ -12152,10 +12160,12 @@
 /area/bridge)
 "aBz" = (
 /obj/structure/table/wood,
-/obj/item/device/flashlight/lamp/green,
 /obj/item/storage/secure/safe{
 	pixel_x = -22;
 	pixel_y = 4
+	},
+/obj/machinery/photocopier/faxmachine/longrange{
+	department = "Head of Personnel"
 	},
 /turf/open/floor/wood,
 /area/crew_quarters/heads/hop)
@@ -13649,7 +13659,7 @@
 /area/crew_quarters/heads/captain)
 "aEz" = (
 /obj/structure/table/wood,
-/obj/item/storage/photo_album,
+/obj/machinery/recharger,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/captain)
 "aEA" = (
@@ -14056,6 +14066,7 @@
 /area/storage/primary)
 "aFw" = (
 /obj/structure/table/wood,
+/obj/item/storage/photo_album,
 /obj/item/device/camera,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/captain)
@@ -36429,9 +36440,14 @@
 "bCt" = (
 /obj/structure/table/glass,
 /obj/item/folder/white,
-/obj/item/clothing/glasses/hud/health,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/item/folder/blue,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/stamp/cmo{
+	pixel_x = -7;
+	pixel_y = 12
 	},
 /turf/open/floor/plasteel/cmo,
 /area/crew_quarters/heads/cmo)
@@ -37455,9 +37471,10 @@
 /turf/open/floor/plasteel/cmo,
 /area/crew_quarters/heads/cmo)
 "bEG" = (
-/obj/item/folder/blue,
-/obj/item/stamp/cmo,
 /obj/structure/table,
+/obj/machinery/photocopier/faxmachine{
+	department = "Chief Medical Officer"
+	},
 /turf/open/floor/plasteel/cmo,
 /area/crew_quarters/heads/cmo)
 "bEH" = (
@@ -37603,8 +37620,6 @@
 	},
 /area/crew_quarters/heads/hor)
 "bES" = (
-/obj/item/device/aicard,
-/obj/item/circuitboard/aicore,
 /obj/machinery/requests_console{
 	announcementConsole = 1;
 	department = "Research Director's Desk";
@@ -37615,6 +37630,9 @@
 	},
 /obj/machinery/light,
 /obj/structure/table/glass,
+/obj/machinery/photocopier/faxmachine{
+	department = "Research Director"
+	},
 /turf/open/floor/plasteel/darkpurple/side,
 /area/crew_quarters/heads/hor)
 "bET" = (
@@ -37656,6 +37674,8 @@
 	pixel_y = -32
 	},
 /obj/structure/table/glass,
+/obj/item/device/aicard,
+/obj/item/circuitboard/aicore,
 /turf/open/floor/plasteel/darkpurple/side,
 /area/crew_quarters/heads/hor)
 "bEV" = (
@@ -44516,25 +44536,16 @@
 /turf/closed/wall/r_wall,
 /area/crew_quarters/heads/chief)
 "bUI" = (
-/obj/item/cartridge/engineering{
-	pixel_x = 4;
-	pixel_y = 5
-	},
-/obj/item/cartridge/engineering{
-	pixel_x = -3;
-	pixel_y = 2
-	},
-/obj/item/cartridge/engineering{
-	pixel_x = 3
-	},
 /obj/structure/table/reinforced,
-/obj/item/cartridge/atmos,
 /obj/machinery/requests_console{
 	announcementConsole = 1;
 	department = "Chief Engineer's Desk";
 	departmentType = 3;
 	name = "Chief Engineer RC";
 	pixel_x = -32
+	},
+/obj/machinery/photocopier/faxmachine{
+	department = "Chief Engineer"
 	},
 /turf/open/floor/plasteel/yellow/side{
 	dir = 9
@@ -45041,6 +45052,19 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/item/cartridge/engineering{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/obj/item/cartridge/engineering{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/obj/item/cartridge/engineering{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/obj/item/cartridge/atmos,
 /turf/open/floor/plasteel/yellow/side{
 	dir = 4
 	},
@@ -55028,6 +55052,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/prison)
+"fxl" = (
+/obj/structure/table/wood,
+/obj/item/device/flashlight/lamp/green,
+/turf/open/floor/wood,
+/area/crew_quarters/heads/hop)
 "gbG" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
@@ -88467,7 +88496,7 @@ aAG
 aBA
 aCQ
 aDS
-aCS
+fxl
 aAH
 aGu
 aHh
