@@ -7,6 +7,7 @@
 	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
 	origin_tech = "materials=4;magnets=4;programming=4;biotech=4;syndicate=5;bluespace=5"
 	var/starting_tc = 0
+	shows_up_on_scanners = FALSE
 
 /obj/item/implant/uplink/New()
 	hidden_uplink = new(src)

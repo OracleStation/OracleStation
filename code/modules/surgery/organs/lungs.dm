@@ -64,6 +64,18 @@
 
 	var/crit_stabilizing_reagent = "epinephrine"
 
+	max_integrity = ORGAN_HEALTH_HIGH
+
+/obj/item/organ/lungs/proc/handle_damage_losebreath()
+	var/lung_damage = get_damage_perc()
+	if(lung_damage > ORGAN_DAMAGE_LOW && prob(sqrt(lung_damage)) && owner)
+		owner.losebreath += rand(3, sqrt(lung_damage))
+		to_chat(owner, "<span class='warning'>You feel a sharp pain in your [zone] and suddenly start choking. You can't breathe!</span>")
+
+/obj/item/organ/lungs/on_life()
+	return//nothing happens here, we overwrite the stuff from earlier, because of how closely lungs are related to life()
+	//really no way to run things on the lungs themselves, because the code is so tightly knit
+	//look at the above handle_damage_losebreath() for the code
 
 /obj/item/organ/lungs/proc/check_breath(datum/gas_mixture/breath, mob/living/carbon/human/H)
 	if((H.status_flags & GODMODE))
@@ -246,7 +258,7 @@
 		if(bz_pp > BZ_trip_balls_min)
 			H.hallucination += 20
 			if(prob(33))
-				H.adjustBrainLoss(3, 150)
+				H.adjustBrainLoss(3, 75)
 		else if(bz_pp > 0.01)
 			H.hallucination += 5//Removed at 2 per tick so this will slowly build up
 		handle_breath_temperature(breath, H)
@@ -265,12 +277,13 @@
 	if(breath_pp > 0)
 		var/ratio = safe_breath_min/breath_pp
 		H.adjustOxyLoss(min(5*ratio, HUMAN_MAX_OXYLOSS)) // Don't fuck them up too fast (space only does HUMAN_MAX_OXYLOSS after all!
+		take_damage(min(5*ratio, HUMAN_MAX_OXYLOSS - 1))
 		H.failed_last_breath = TRUE
 		. = true_pp*ratio/6
 	else
+		take_damage(HUMAN_MAX_OXYLOSS - 1)
 		H.adjustOxyLoss(HUMAN_MAX_OXYLOSS)
 		H.failed_last_breath = TRUE
-
 
 /obj/item/organ/lungs/proc/handle_breath_temperature(datum/gas_mixture/breath, mob/living/carbon/human/H) // called by human/life, handles temperatures
 	var/breath_temperature = breath.temperature

@@ -31251,6 +31251,7 @@
 	pixel_x = 24
 	},
 /obj/effect/turf_decal/bot,
+/obj/item/device/roboanalyzer,
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
 "bbb" = (
@@ -31446,10 +31447,7 @@
 /turf/open/floor/plasteel/whiteblue/corner,
 /area/medical/medbay/zone3)
 "bbs" = (
-/obj/item/twohanded/required/kirbyplants{
-	icon_state = "plant-21";
-	layer = 4.1
-	},
+/obj/machinery/body_scanner,
 /turf/open/floor/plasteel/whiteblue/corner,
 /area/medical/medbay/zone3)
 "bbt" = (

@@ -265,6 +265,16 @@ div.notice
     text-align: right;
 }
 
+/* scripts don't do anything to this span; use for non-updating progress bar labels */
+.progressLabelNoUpdate
+{
+	top: -2px;
+    height: 100%;
+    position: absolute;
+    right: 4px;
+    text-align: right;
+}
+
 .progressFill
 {
 	width: 100%;

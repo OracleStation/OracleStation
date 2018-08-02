@@ -119,11 +119,18 @@ MASS SPECTROMETER
 		mob_status = "<span class='alert'>Deceased</span>"
 		oxy_loss = max(rand(1, 40), oxy_loss, (300 - (tox_loss + fire_loss + brute_loss))) // Random oxygen loss
 
+	if(isipc(M))
+		to_chat(user, "<span class='notice'>Analyzing results for [M]:\n\tOverall status: <span class='warning'>ERROR</span></span>")
+		to_chat(user, "<span class='notice'>Species: <span class='warning'>UNKNOWN</span>")
+		to_chat(user, "<span class='info'>Body temperature: [round(M.bodytemperature-T0C,0.1)] &deg;C ([round(M.bodytemperature*1.8-459.67,0.1)] &deg;F)</span>")
+		to_chat(user, "<span class='info'>Blood level <span class='warning'>ERROR</span></span>")
+		return
+
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.undergoing_cardiac_arrest() && H.stat != DEAD)
 			to_chat(user, "<span class='danger'>Subject suffering from heart attack: apply defibrillator immediately!</span>")
-		if(H.undergoing_liver_failure() && H.stat != DEAD)
+		if(H.return_liver_damage() > 95 && H.stat != DEAD)
 			to_chat(user, "<span class='danger'>Subject suffering from liver failure: apply corazone and begin a liver transplant immediately!</span>")
 
 	to_chat(user, "<span class='info'>Analyzing results for [M]:\n\tOverall status: [mob_status]</span>")
@@ -143,11 +150,11 @@ MASS SPECTROMETER
 		to_chat(user, "\t<span class='alert'>Subject appears to have [M.getCloneLoss() > 30 ? "severe" : "minor"] cellular damage.</span>")
 	if (M.reagents && M.reagents.get_reagent_amount("epinephrine"))
 		to_chat(user, "\t<span class='info'>Bloodstream analysis located [M.reagents.get_reagent_amount("epinephrine")] units of rejuvenation chemicals.</span>")
-	if (M.getBrainLoss() >= 200 || !M.getorgan(/obj/item/organ/brain))
+	if (M.getBrainLoss() >= 100 || !M.getorgan(/obj/item/organ/brain))
 		to_chat(user, "\t<span class='alert'>Subject brain function is non-existent.</span>")
-	else if (M.getBrainLoss() >= 120)
+	else if (M.getBrainLoss() >= 60)
 		to_chat(user, "\t<span class='alert'>Severe brain damage detected. Subject likely to have mental traumas.</span>")
-	else if (M.getBrainLoss() >= 45)
+	else if (M.getBrainLoss() >= 20)
 		to_chat(user, "\t<span class='alert'>Brain damage detected.</span>")
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
@@ -179,6 +186,8 @@ MASS SPECTROMETER
 		if(broken_stuff.len)
 			to_chat(user, "\t<span class='alert'>Bone fractures detected. Subject's [english_list(broken_stuff)] [broken_stuff.len > 1 ? "require" : "requires"] surgical treatment!</span>")
 
+		if(C.organ_damage_tracker > 30)
+			to_chat(user, "\t<span class='alert'>Significant internal organ damage detected. More advanced scanner required for location.</span>")
 
 	// Species and body temperature
 	if(ishuman(M))
@@ -261,6 +270,92 @@ MASS SPECTROMETER
 		if(0)
 			to_chat(usr, "The scanner no longer shows limb damage.")
 
+/obj/item/device/roboanalyzer
+	name = "Robot Analyzer"
+	desc = "A hand-held device used for diagnosing technical faults with robots of any sort."
+	icon_state = "robohealth"
+	item_state = "robotanalyzer"
+	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
+	w_class = WEIGHT_CLASS_SMALL
+	flags_1 = CONDUCT_1 | NOBLUDGEON_1
+	slot_flags = SLOT_BELT
+	throwforce = 0
+	throw_speed = 3
+	throw_range = 7
+	materials = list(MAT_METAL=30, MAT_GLASS=20)
+	origin_tech = "magnets=1;engineering=1"
+
+/obj/item/device/roboanalyzer/attack(mob/living/M, mob/living/carbon/human/user)
+
+	// Clumsiness/brain damage check
+	if ((user.disabilities & (CLUMSY | DUMB)) && prob(50))
+		to_chat(user, "<span class='notice'>You stupidly try to analyze the floor!</span>")
+		user.visible_message("<span class='warning'>[user] has analyzed the floor's vitals!</span>")
+		to_chat(user, "<span class='info robot'>Analyzing: The Floor</span>")
+		to_chat(user, "<span class='info robot'>\tIntegrity: ???%</span>")
+		return
+
+	user.visible_message("<span class='notice'>[user] has analyzed [M]'s vitals.</span>")
+
+	roboscan(user, M)
+
+	add_fingerprint(user)
+
+/proc/roboscan(mob/user, mob/living/target)
+	if(!target || !user || user.incapacitated() || user.eye_blind)
+		return
+
+	to_chat(user, "<span class='info robot'>Analyzing: [target]</span>")
+
+	if(istype(target, /mob/living/simple_animal/bot))
+		var/mob/living/simple_animal/bot/bot = target
+		to_chat(user, "<span class='info robot'>\tIntegrity: [round(target.health / target.maxHealth * 100)]%</span>")
+		to_chat(user, "<span class='info robot'>\tMode: [bot.get_mode()]</span>")
+		return
+
+	if(istype(target, /mob/living/silicon/robot))
+		var/mob/living/silicon/robot/borg = target
+		to_chat(user, "<span class='info robot'>\tType: [borg.braintype ? borg.braintype : "Empty"]</span>")
+		to_chat(user, "<span class='info robot'>\tDamage: <font color='red'>Brute</font></span>-<font color='#FF8000'>Burn</font></span>")
+		to_chat(user, "<span class='info robot'>\tSpecifics: <font color='red'>[borg.getBruteLoss()]</font>-<font color='#FF8000'>[borg.getFireLoss()]</font></span>")
+
+	if(istype(target, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = target
+
+		var/non_robotic_bodyparts = FALSE
+		to_chat(user, "<span class='info robot'>\t<b>Limb Damage:</b></span>")
+		var/limb_damage_found = FALSE
+		for(var/thing in H.bodyparts)
+			var/obj/item/bodypart/B = thing
+			if(!B)
+				continue
+			if(B.status == BODYPART_ROBOTIC)
+				if(B.brute_dam || B.burn_dam)
+					limb_damage_found = TRUE
+					to_chat(user, "<span class='info robot'>\t\t[capitalize(B.name)]: \t<font color='red'>[B.brute_dam]</font>-<font color='#FF8000'>[B.burn_dam]</font>")
+			else
+				non_robotic_bodyparts = TRUE
+
+		if(!limb_damage_found)
+			to_chat(user, "<span class='info robot'>\t\tFull Integrity</span>")
+
+		to_chat(user, "<span class='info robot'>\t<b>Internal Damage:</b></span>")
+		var/internal_damage_found = FALSE
+		for(var/thing in H.internal_organs)
+			var/obj/item/organ/O = thing
+			if(O.status == ORGAN_ROBOTIC)
+				if(O.get_damage_perc())
+					internal_damage_found = TRUE
+					to_chat(user, "<span class='info robot'>\t\t[capitalize(O.name)]: \t[round(100 - O.get_damage_perc())]% Integrity</span>")
+			else
+				non_robotic_bodyparts = TRUE
+
+		if(!internal_damage_found)
+			to_chat(user, "<span class='info robot'>\t\tFull Integrity</span>")
+
+		if(non_robotic_bodyparts)
+			to_chat(user, "<span class='boldannounce robot'><b>\tNon-robotic bodyparts found, Use a Body Scanner for full diagnosis!</b></span>")
 
 /obj/item/device/analyzer
 	desc = "A hand-held environmental scanner which reports current gas levels."

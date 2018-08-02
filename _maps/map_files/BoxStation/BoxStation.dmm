@@ -28689,6 +28689,7 @@
 /obj/structure/table,
 /obj/machinery/cell_charger,
 /obj/item/stock_parts/cell/high/plus,
+/obj/item/device/roboanalyzer,
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
 "bpV" = (
@@ -31725,7 +31726,7 @@
 /turf/open/floor/plasteel/black,
 /area/medical/sleeper)
 "bwC" = (
-/obj/machinery/computer/med_data,
+/obj/machinery/body_scanner,
 /turf/open/floor/plasteel/white,
 /area/medical/sleeper)
 "bwD" = (

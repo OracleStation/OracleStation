@@ -5,6 +5,7 @@
 	item_color = "r"
 	origin_tech = "combat=5;magnets=3;biotech=4;syndicate=2"
 	uses = 4
+	shows_up_on_scanners = FALSE
 
 
 /obj/item/implant/freedom/activate()
