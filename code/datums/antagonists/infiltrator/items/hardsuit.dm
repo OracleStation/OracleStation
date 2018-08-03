@@ -1,9 +1,4 @@
 /obj/item/clothing/head/helmet/space/hardsuit/infiltration
-	name = "security hardsuit helmet"
-	desc = "A special helmet designed for work in a hazardous, low pressure environment. Has an additional layer of armor."
-	icon_state = "hardsuit0-sec"
-	item_state = "sec_helm"
-	item_color = "sec"
 	armor = list("melee" = 35, "bullet" = 15, "laser" = 30,"energy" = 10, "bomb" = 10, "bio" = 100, "rad" = 50, "fire" = 75, "acid" = 75)
 
 /obj/item/clothing/head/helmet/space/hardsuit/infiltration/Initialize()
