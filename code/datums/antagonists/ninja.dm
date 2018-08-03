@@ -72,7 +72,7 @@
 			if(1)	//research
 				var/datum/objective/download/O = new /datum/objective/download()
 				O.owner = owner
-				O.gen_amount_goal()
+				O.find_target()
 				owner.objectives += O
 
 			if(2)	//steal

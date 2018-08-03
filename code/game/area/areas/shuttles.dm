@@ -19,6 +19,7 @@
 	name = "Syndicate Infiltrator"
 	blob_allowed = FALSE
 	ambientsounds = HIGHSEC
+	disable_alerts = TRUE
 
 /area/shuttle/syndicate/bridge
 	name = "Syndicate Infiltrator Control"
@@ -104,3 +105,8 @@
 /area/shuttle/syndicate_scout
 	name = "Syndicate Scout"
 	blob_allowed = FALSE
+
+/area/shuttle/stealthcruiser
+	name = "Syndicate Infiltration Cruiser"
+	blob_allowed = FALSE
+	disable_alerts = TRUE

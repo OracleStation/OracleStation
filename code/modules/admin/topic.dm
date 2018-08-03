@@ -168,6 +168,14 @@
 				else
 					message_admins("[key_name_admin(usr)] tried to create a revenant. Unfortunately, there were no candidates available.")
 					log_admin("[key_name(usr)] failed to create a revenant.")
+			if("infiltrator")
+				message_admins("[key_name(usr)] is creating an infiltration team...")
+				if(src.makeInfiltratorTeam())
+					message_admins("[key_name(usr)] created an infiltration team.")
+					log_admin("[key_name(usr)] created an infiltration team.")
+				else
+					message_admins("[key_name_admin(usr)] tried to create an infiltration team. Unfortunately, there were not enough candidates available.")
+					log_admin("[key_name(usr)] failed to create an infiltration team.")
 
 	else if(href_list["forceevent"])
 		if(!check_rights(R_FUN))
@@ -904,6 +912,11 @@
 			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=alien candidate;jobban4=[REF(M)]'><font color=red>Alien</font></a></td>"
 		else
 			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=alien candidate;jobban4=[REF(M)]'>Alien</a></td>"
+
+		if(jobban_isbanned(M, ROLE_INFILTRATOR) || isbanned_dept)
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=syndicate infiltrator;jobban4=[REF(M)]'><font color=red>Infiltrator</font></a></td>"
+		else
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=syndicate infiltrator;jobban4=[REF(M)]'>Infiltrator</a></td>"
 
 		dat += "</tr></table>"
 		usr << browse(dat, "window=jobban2;size=800x450")

@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(antagonists)
+
 /datum/antagonist
 	var/name = "Antagonist"
 
@@ -13,11 +15,13 @@
 	typecache_datum_blacklist = typecacheof(typecache_datum_blacklist)
 	if(new_owner)
 		owner = new_owner
+	GLOB.antagonists += src
 
 /datum/antagonist/Destroy()
 	if(owner)
 		LAZYREMOVE(owner.antag_datums, src)
 	owner = null
+	GLOB.antagonists -= src
 	return ..()
 
 /datum/antagonist/proc/can_be_owned(datum/mind/new_owner)
@@ -28,6 +32,12 @@
 		var/datum/antagonist/A = i
 		if(is_type_in_typecache(src, A.typecache_datum_blacklist))
 			return FALSE
+
+/datum/antagonist/proc/create_team(datum/team/team)
+	return
+
+/datum/antagonist/proc/get_team()
+	return
 
 /datum/antagonist/proc/on_body_transfer(mob/living/old_body, mob/living/new_body)
 	remove_innate_effects(old_body)
@@ -54,6 +64,9 @@
 		LAZYREMOVE(owner.antag_datums, src)
 		if(!silent && owner.current)
 			farewell()
+	var/datum/team/team = get_team()
+	if(team)
+		team.remove_member(owner)
 	qdel(src)
 
 /datum/antagonist/proc/greet()

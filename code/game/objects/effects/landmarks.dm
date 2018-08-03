@@ -362,3 +362,20 @@
 	GLOB.ruin_landmarks -= src
 	ruin_template = null
 	. = ..()
+
+/obj/effect/landmark/start/infiltrator
+	name = "infiltrator"
+
+/obj/effect/landmark/start/infiltrator/Initialize()
+	..()
+	GLOB.infiltrator_start += loc
+	return INITIALIZE_HINT_QDEL
+
+/obj/effect/landmark/start/infiltrator_objective
+	name = "infiltrator objective items"
+	icon_state = "x3"
+
+/obj/effect/landmark/start/infiltrator_objective/Initialize()
+	..()
+	GLOB.infiltrator_objective_items += loc
+	return INITIALIZE_HINT_QDEL

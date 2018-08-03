@@ -128,7 +128,7 @@
 	memory = null
 
 // Datum antag mind procs
-/datum/mind/proc/add_antag_datum(datum_type)
+/datum/mind/proc/add_antag_datum(datum_type, team)
 	if(!datum_type)
 		return
 	var/datum/antagonist/A = new datum_type(src)
@@ -136,6 +136,10 @@
 		qdel(A)
 		return
 	LAZYADD(antag_datums, A)
+	A.create_team(team)
+	var/datum/team/antag_team = A.get_team()
+	if(antag_team)
+		antag_team.add_member(src)
 	A.on_gain()
 	return A
 

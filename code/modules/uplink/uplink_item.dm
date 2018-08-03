@@ -261,7 +261,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/gun/energy/kinetic_accelerator/crossbow
 	cost = 12
 	surplus = 50
-	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang, /datum/game_mode/infiltration)
 
 /datum/uplink_item/dangerous/flamethrower
 	name = "Flamethrower"
@@ -277,6 +277,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "The energy sword is an edged weapon with a blade of pure energy. The sword is small enough to be \
 			pocketed when inactive. Activating it produces a loud, distinctive noise."
 	item = /obj/item/melee/transforming/energy/sword/saber
+	exclude_modes = list(/datum/game_mode/infiltration)
 	cost = 8
 
 /datum/uplink_item/dangerous/doublesword
@@ -284,6 +285,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "The double-bladed energy sword does slightly more damage than a standard energy sword and will deflect \
 			all energy projectiles, but requires two hands to wield."
 	item = /obj/item/twohanded/dualsaber
+	exclude_modes = list(/datum/game_mode/infiltration)
 	player_minimum = 25
 	cost = 16
 
@@ -312,6 +314,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			in addition to dealing high amounts of damage to nearby personnel."
 	item = /obj/item/grenade/syndieminibomb
 	cost = 6
+	exclude_modes = list(/datum/game_mode/infiltration)
 
 /datum/uplink_item/dangerous/foamsmg
 	name = "Toy Submachine Gun"
@@ -375,7 +378,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
  			organic host as a home base and source of fuel."
  	item = /obj/item/storage/box/syndie_kit/guardian
  	cost = 14
- 	exclude_modes = list(/datum/game_mode/nuclear)
+ 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/infiltration)
  	player_minimum = 25
 
 // Ammunition
@@ -600,13 +603,13 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/sleeping_carp_scroll
 	cost = 17
 	surplus = 0
-	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang, /datum/game_mode/infiltration)
 
 /datum/uplink_item/stealthy_weapons/cqc
 	name = "CQC Manual"
 	desc = "A manual that teaches a single user tactical Close-Quarters Combat before self-destructing."
 	item = /obj/item/cqc_manual
-	include_modes = list(/datum/game_mode/nuclear)
+	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/infiltration)
 	cost = 13
 	surplus = 0
 
@@ -664,7 +667,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	cost = 25
 	surplus = 0 //this fucking thing could spawn in surplus previously
 	cant_discount = TRUE
-	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang, /datum/game_mode/infiltration)
 
 /datum/uplink_item/stealthy_weapons/dart_pistol
 	name = "Dart Pistol"
@@ -682,6 +685,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			them for longer. Beware, it has a chance to detonate your PDA."
 	item = /obj/item/cartridge/virus/syndicate
 	cost = 6
+	exclude_modes = list(/datum/game_mode/infiltration)
 
 /datum/uplink_item/stealthy_weapons/suppressor
 	name = "Universal Suppressor"
@@ -932,6 +936,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			both weal and woe on the battlefield, even if they do occasionally bite off a finger."
 	item = /obj/item/storage/book/bible/syndicate
 	cost = 9
+	exclude_modes = list(/datum/game_mode/infiltration)
 
 /datum/uplink_item/device_tools/thermal
 	name = "Thermal Imaging Glasses"
@@ -1014,6 +1019,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/storage/backpack/duffelbag/syndie/c4
 	cost = 9 //10% discount!
 	cant_discount = TRUE
+	exclude_modes = list(/datum/game_mode/infiltration)
 
 /datum/uplink_item/device_tools/x4bag
 	name = "Bag of X-4 explosives"
@@ -1022,6 +1028,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/storage/backpack/duffelbag/syndie/x4
 	cost = 4 //
 	cant_discount = TRUE
+	exclude_modes = list(/datum/game_mode/infiltration)
 
 /datum/uplink_item/device_tools/powersink
 	name = "Power Sink"
@@ -1030,6 +1037,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			traditional bags and boxes."
 	item = /obj/item/device/powersink
 	cost = 6
+	exclude_modes = list(/datum/game_mode/infiltration)
 
 /datum/uplink_item/device_tools/singularity_beacon
 	name = "Power Beacon"
@@ -1040,7 +1048,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/device/sbeacondrop
 	cost = 14
 	surplus = 0 //to prevent engine releases without hijack
-	exclude_modes = list(/datum/game_mode/gang)
+	exclude_modes = list(/datum/game_mode/gang, /datum/game_mode/infiltration)
 
 /datum/uplink_item/device_tools/syndicate_bomb
 	name = "Syndicate Bomb"
@@ -1052,6 +1060,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/device/sbeacondrop/bomb
 	cost = 11
 	surplus = 22 //bombs are expensive Syndicate probably wont give them out like candy in the equivalent of a trashbox.
+	exclude_modes = list(/datum/game_mode/infiltration)
 
 /datum/uplink_item/device_tools/syndicate_detonator
 	name = "Syndicate Detonator"
@@ -1098,9 +1107,9 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/device_tools/potion
-	name = "Sentience Potion"
-	item = /obj/item/slimepotion/sentience
-	desc = "A potion recovered at great risk by undercover syndicate operatives. Using it will make any animal sentient, and bound to serve you."
+	name = "Syndicate Sentience Potion"
+	item = /obj/item/slimepotion/sentience/nuclear
+	desc = "A potion recovered at great risk by undercover syndicate operatives and then subsequently modified with syndicate technology. Using it will make any animal sentient, and bound to serve you, as well as implanting an internal radio for communication."
 	cost = 4
 	include_modes = list(/datum/game_mode/nuclear)
 
@@ -1138,13 +1147,13 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "Syndicate agents can be trained to use a series of codewords to convey complex information, which sounds like random concepts and drinks to anyone listening. This manual teaches you this Codespeak. You can also hit someone else with the manual in order to teach them. One use."
 	item = /obj/item/codespeak_manual
 	cost = 2
-	exclude_modes = list(/datum/game_mode/nuclear)
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/infiltration)
 
 /datum/uplink_item/device_tools/codespeak_manual_deluxe
 	name = "Deluxe Codespeak Manual"
 	desc = "Syndicate agents can be trained to use a series of codewords to convey complex information, which sounds like random concepts and drinks to anyone listening. This manual teaches you this Codespeak. You can also hit someone else with the manual in order to teach them. This is the deluxe edition, which has unlimited uses."
 	cost = 4 //Was 8 before lowered so Ops got a reason to buy it
-	include_modes = list(/datum/game_mode/nuclear)
+	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/infiltration)
 
 // Implants
 /datum/uplink_item/implants
@@ -1198,6 +1207,12 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	cost = 20
 	include_modes = list(/datum/game_mode/nuclear)
 
+/datum/uplink_item/implants/radio
+	name = "Internal Syndicate Radio Implant"
+	desc = "An implant injected into the body, allowing the use of an internal syndicate radio. Used just like a regular headset, but can be disabled to use external headsets normally and to avoid detection."
+	item = /obj/item/storage/box/syndie_kit/imp_radio
+	cost = 4
+
 
 // Cybernetics
 /datum/uplink_item/cyber_implants
@@ -1219,6 +1234,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	desc = "These cybernetic eyes will give you thermal vision. Comes with a free autosurgeon."
 	item = /obj/item/device/autosurgeon/thermal_eyes
 	cost = 8
+	include_modes = list(/datum/game_mode/infiltration, /datum/game_mode/nuclear)
 
 /datum/uplink_item/cyber_implants/xray
 	name = "X-Ray Vision Implant"
@@ -1334,6 +1350,26 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	cost = 5 //you need two for full damage, so total of 10 for maximum damage
 	limited_stock = 2 //you can't use more than two!
 	restricted_roles = list("Shaft Miner")
+
+
+//Infiltrator shit
+/datum/uplink_item/infiltration
+	category = "Infiltration Gear"
+	include_modes = list(/datum/game_mode/infiltration)
+	surplus = 0
+
+/datum/uplink_item/infiltration/pinpointer_upgrade
+	name = "Pinpointer Upgrade"
+	desc = "An infiltration pinpointer upgrade that allows pinpointers to track objective targets."
+	item = /obj/item/infiltrator_pinpointer_upgrade
+	cost = 8
+
+
+/datum/uplink_item/infiltration/extra_stealthsuit
+	name = "Chameleon Hardsuit"
+	desc = "An infiltration hardsuit, capable of changing it's appearance instantly."
+	item = /obj/item/clothing/suit/space/hardsuit/infiltration
+	cost = 10
 
 // Pointless
 /datum/uplink_item/badass

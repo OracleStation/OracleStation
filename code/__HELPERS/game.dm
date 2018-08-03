@@ -573,3 +573,17 @@
 	var/pressure = environment.return_pressure()
 	if(pressure <= LAVALAND_EQUIPMENT_EFFECT_PRESSURE)
 		return TRUE
+
+/proc/considered_alive(datum/mind/M, enforce_human = TRUE)
+	if(M && M.current)
+		if(enforce_human)
+			var/mob/living/carbon/human/H
+			if(ishuman(M.current))
+				H = M.current
+			return M.current.stat != DEAD && !issilicon(M.current) && !isbrain(M.current) && (!H || H.dna.species.id != "memezombies")
+		else if(isliving(M.current))
+			return M.current.stat != DEAD
+	return FALSE
+
+/proc/considered_afk(datum/mind/M)
+	return !M || !M.current || !M.current.client || M.current.client.is_afk()

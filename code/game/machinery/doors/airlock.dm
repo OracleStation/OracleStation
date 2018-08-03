@@ -127,6 +127,8 @@
 		max_integrity = normal_integrity
 	if(damage_deflection == AIRLOCK_DAMAGE_DEFLECTION_N && security_level > AIRLOCK_SECURITY_METAL)
 		damage_deflection = AIRLOCK_DAMAGE_DEFLECTION_R
+	if (cyclelinkeddir)
+		cyclelinkairlock()
 	if(abandoned)
 		var/outcome = rand(1,100)
 		switch(outcome)
