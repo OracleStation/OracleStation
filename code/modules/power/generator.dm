@@ -2,6 +2,7 @@
 	name = "thermoelectric generator"
 	desc = "It's a high efficiency thermoelectric generator."
 	icon_state = "teg"
+	icon = 'icons/vg/obj/teg.dmi'
 	density = TRUE
 	use_power = NO_POWER_USE
 
@@ -43,13 +44,12 @@
 	else
 		cut_overlays()
 
-		var/L = min(round(lastgenlev/100000),11)
+		var/L = min(round(lastgenlev/200000),11)
 		if(L != 0)
-			add_overlay(image('icons/obj/power.dmi', "teg-op[L]"))
+			add_overlay("teg-op[L]")
 
-		if(hot_circ && cold_circ)
-			add_overlay("teg-oc[lastcirc]")
-
+		if(lastgen > 0)
+			add_overlay("teg-mid")
 
 #define GENRATE 800		// generator output coefficient from Q
 
@@ -125,7 +125,7 @@
 
 		t += "<BR>"
 
-		t += "<B><font color='blue'>Cold loop</font></B><BR>"
+		t += "<B><font color='cyan'>Cold loop</font></B><BR>"
 		t += "Temperature Inlet: [round(cold_circ_air2.temperature, 0.1)] K / Outlet: [round(cold_circ_air1.temperature, 0.1)] K<BR>"
 		t += "Pressure Inlet: [round(cold_circ_air2.return_pressure(), 0.1)] kPa /  Outlet: [round(cold_circ_air1.return_pressure(), 0.1)] kPa<BR>"
 
@@ -222,6 +222,7 @@
 		kill_circs()
 	connect_to_network()
 	to_chat(user, "<span class='notice'>You [anchored?"secure":"unsecure"] [src].</span>")
+	update_icon()
 	return TRUE
 
 /obj/machinery/power/generator/proc/multitool_act(mob/living/user, obj/item/I)

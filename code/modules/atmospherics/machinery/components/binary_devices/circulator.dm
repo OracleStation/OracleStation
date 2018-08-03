@@ -7,6 +7,7 @@
 	name = "circulator/heat exchanger"
 	desc = "A gas circulator pump and heat exchanger."
 	icon_state = "circ-off"
+	icon = 'icons/vg/obj/teg.dmi'
 
 	var/active = FALSE
 
@@ -88,6 +89,9 @@
 			icon_state = "circ-slow-[flipped]"
 	else
 		icon_state = "circ-off-[flipped]"
+	cut_overlays()
+	if(anchored)
+		add_overlay("[mode?"hot":"cold"]_overlay")
 
 /obj/machinery/atmospherics/components/binary/circulator/proc/wrench_act(mob/living/user, obj/item/I)
 	if(!panel_open)
@@ -124,6 +128,8 @@
 			node2.atmosinit()
 			node2.addMember(src)
 		build_network()
+
+	update_icon()
 
 	return TRUE
 
@@ -162,7 +168,8 @@
 	if(generator)
 		disconnectFromGenerator()
 	mode = !mode
-	to_chat(user, "<span class='notice'>You set [src] to [mode?"cold":"hot"] mode.</span>")
+	to_chat(user, "<span class='notice'>You set [src] to [mode?"hot":"cold"] mode.</span>")
+	update_icon()
 	return TRUE
 
 /obj/machinery/atmospherics/components/binary/circulator/proc/screwdriver_act(mob/user, obj/item/I)
