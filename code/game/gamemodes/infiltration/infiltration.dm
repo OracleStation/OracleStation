@@ -4,8 +4,8 @@
 /datum/game_mode/infiltration
 	name = "infiltration"
 	config_tag = "infiltration"
-	required_players = 0
-	required_enemies = 1
+	required_players = 25
+	required_enemies = 3
 	recommended_enemies = 5
 	antag_flag = ROLE_INFILTRATOR
 
