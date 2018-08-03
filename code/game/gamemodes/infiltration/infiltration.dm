@@ -58,20 +58,24 @@
 	var result = infiltration_team.get_result()
 	switch(result)
 		if(INFILTRATION_ALLCOMPLETE)
+			SSblackbox.add_details("infiltrator_win", "major")
 			SSticker.mode_result = "major win - objectives complete"
 		if(INFILTRATION_MOSTCOMPLETE)
 			SSticker.mode_result = "semi-major win - most objectives complete"
+			SSblackbox.add_details("infiltrator_win", "mostly")
 		if(INFILTRATION_SOMECOMPLETE)
 			SSticker.mode_result = "minor win - some objectives complete"
+			SSblackbox.add_details("infiltrator_win", "minor")
 		else
 			SSticker.mode_result = "loss - no objectives complete"
+			SSblackbox.add_details("infiltrator_win", "loss")
 	return ..()
 
 /datum/game_mode/proc/auto_declare_completion_infiltration()
 	var/list/parts = list()
-	var/text = "<br><span class='header'>The syndicate infiltrators were:</span>"
+	var/text = "<br><font size=3><b>The infiltrators were:</b></font>"
 	text += printplayerlist(infiltration_team.members)
-	text += "<br><br>"
+	text += "<br>"
 	parts += text
 
 	var/objectives_text = ""
@@ -79,12 +83,15 @@
 	for(var/datum/objective/objective in infiltration_team.objectives)
 		if(objective.check_completion())
 			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='greentext'>Success!</span>"
+			SSblackbox.add_details("infiltrator_objective","[objective.type]|SUCCESS")
 		else
 			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
+			SSblackbox.add_details("infiltrator_objective","[objective.type]|FAIL")
 		count++
 
 	parts += objectives_text
-	return parts.Join("<br>")
+	to_chat(world, parts.Join("<br>"))
+	return TRUE
 
 /datum/game_mode/infiltration/generate_credit_text()
 	var/list/round_credits = list()
