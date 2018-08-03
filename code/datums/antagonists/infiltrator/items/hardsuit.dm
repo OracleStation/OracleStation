@@ -13,7 +13,7 @@
 		I.head_piece = src
 
 /obj/item/clothing/suit/space/hardsuit/infiltration
-	name = "security hardsuit"
+	name = "chameleon hardsuit"
 	desc = "A special suit that protects against hazardous, low pressure environments. Has an additional layer of armor."
 	item_state = "sec_hardsuit"
 	w_class = WEIGHT_CLASS_NORMAL

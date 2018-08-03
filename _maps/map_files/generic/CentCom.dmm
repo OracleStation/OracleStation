@@ -13945,18 +13945,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/red/side,
 /area/infiltrator_base/jail)
-"Mq" = (
-/obj/docking_port/stationary{
-	area_type = /area/infiltrator_base/outside;
-	dir = 2;
-	dwidth = 14;
-	height = 13;
-	id = "syndicatecutter_home";
-	name = "Syndicate Home Outpost";
-	width = 22
-	},
-/turf/open/space/basic,
-/area/space)
 "Mr" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -38959,7 +38947,7 @@ aa
 aa
 aa
 aa
-Mq
+aa
 aa
 aa
 aa

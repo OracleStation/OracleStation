@@ -85,3 +85,14 @@
 
 	parts += objectives_text
 	return parts.Join("<br>")
+
+/datum/game_mode/infiltration/generate_credit_text()
+	var/list/round_credits = list()
+
+	round_credits += "<center><h1>The Sneaky Infiltrators:</h1>"
+	for(var/datum/mind/i in infiltration_team.members)
+		round_credits += "<center><h2>[i.name]</h2>"
+	round_credits += "<br>"
+
+	round_credits += ..()
+	return round_credits
