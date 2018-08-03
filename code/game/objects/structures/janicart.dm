@@ -15,7 +15,6 @@
 	var/signs = 0
 	var/const/max_signs = 4
 
-
 /obj/structure/janitorialcart/New()
 	create_reagents(100)
 	..()
@@ -161,3 +160,5 @@
 		add_overlay("cart_replacer")
 	if(signs)
 		add_overlay("cart_sign[signs]")
+	if(reagents.total_volume > 0)
+		add_overlay("cart_water")
