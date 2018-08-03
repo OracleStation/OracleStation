@@ -16,6 +16,8 @@
 		msg += "[t_He] [t_is] wearing [icon2html(wear_mask, user)] \a [src.wear_mask] on [t_his] face.\n"
 	if (wear_neck)
 		msg += "[t_He] [t_is] wearing [icon2html(wear_neck, user)] \a [src.wear_neck] around [t_his] neck.\n"
+	if(can_be_held)
+		msg += "[t_He] looks small enough to be picked up with <b>Alt+Click</b>!\n"
 
 	for(var/obj/item/I in held_items)
 		if(!(I.flags_1 & ABSTRACT_1))
@@ -89,7 +91,6 @@
 
 		if(digitalcamo)
 			msg += "[t_He] [t_is] moving [t_his] body in an unnatural and blatantly unsimian manner.\n"
-
 
 
 	msg += "*---------*</span>"

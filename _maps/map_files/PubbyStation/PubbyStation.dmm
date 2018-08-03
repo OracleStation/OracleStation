@@ -29195,6 +29195,7 @@
 	dir = 8;
 	pixel_x = 23
 	},
+/obj/item/device/roboanalyzer,
 /turf/open/floor/plasteel/black,
 /area/science/robotics/lab)
 "bnT" = (
@@ -35289,6 +35290,7 @@
 	},
 /area/medical/sleeper)
 "bzR" = (
+/obj/machinery/body_scanner,
 /turf/open/floor/plasteel/whiteblue/side{
 	dir = 1
 	},

@@ -1,0 +1,88 @@
+<div class='display'>
+		<section>
+		<span class='label'>Occupant:</span>
+		<div class='content' id="name">@{name}</div>
+		</section>
+
+		<section>
+		<div class='label'>Status:</div>
+		<div class='content' id="stat">@{stat}</div>
+		</section>
+
+		<section>
+		<div class='label'>Brute Damage:</div>
+		<div class='content'>
+			<div class='progressBar' id="bruteloss">
+			<div class='progressFill bad' style="width: @{bruteloss}"></div>
+				<div class='progressLabel'>@{bruteloss}%</div>
+			</div>
+		</div>
+		</section>
+
+		<section>
+		<div class='label'>Burn Damage:</div>
+		<div class='content'>
+			<div class='progressBar' id="fireloss">
+			<div class='progressFill bad' style="width: @{fireloss}"></div>
+				<div class='progressLabel'>@{fireloss}</div>
+			</div>
+		</div>
+		</section>
+
+		<section>
+		<div class='label'>Toxin Damage:</div>
+		<div class='content'>
+			<div class='progressBar' id="toxloss">
+			<div class='progressFill bad' style="width: @{toxloss}"></div>
+				<div class='progressLabel'>@{toxloss}</div>
+			</div>
+		</div>
+		</section>
+
+		<section>
+		<div class='label'>Oxygen Damage:</div>
+		<div class='content'>
+			<div class='progressBar' id="oxyloss">
+			<div class='progressFill bad' style="width: @{oxyloss}"></div>
+				<div class='progressLabel'>@{oxyloss}</div>
+			</div>
+		</div>
+		</section>
+
+		<section>
+		<div class='label'>Blood Levels:</div>
+		<div class='content'>
+			<div class='progressBar' id="blood">
+			<div class='progressFill bad' style="width: @{blood}"></div>
+				<div class='progressLabel'>@{blood}</div>
+			</div>
+		</div>
+		</section>
+</div>
+
+<br>
+
+<div class='display'>
+	<h1>Bodyparts:</h1><br>
+	<div class='content' id="bodyparts">@{bodyparts}</div>
+</div>
+
+<br>
+
+<div class='display'>
+	<h1>Internal Organs:</h1><br>
+	<div class='content' id="organs">@{organs}</div>
+</div>
+
+<br>
+
+<div class='display'>
+	<h1>Implants:</h1><br>
+	<div class='content' id="implants">@{implants}</div>
+</div>
+
+<br>
+
+<div class='display' id="eject_button">
+	@{eject_button}
+</div>

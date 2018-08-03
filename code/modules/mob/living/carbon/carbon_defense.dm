@@ -293,15 +293,15 @@
 			to_chat(src, "<span class='warning'>Your eyes itch and burn severely!</span>")
 			adjust_eye_damage(rand(12, 16))
 
-		if(eyes.eye_damage > 10)
+		if(eyes.get_damage_perc() > 10)
 			blind_eyes(damage)
 			blur_eyes(damage * rand(3, 6))
 
-			if(eyes.eye_damage > 20)
-				if(prob(eyes.eye_damage - 20))
+			if(eyes.get_damage_perc() > 20)
+				if(prob(eyes.get_damage_perc() - 20))
 					if(become_nearsighted())
 						to_chat(src, "<span class='warning'>Your eyes start to burn badly!</span>")
-				else if(prob(eyes.eye_damage - 25))
+				else if(prob(eyes.get_damage_perc() - 25))
 					if(become_blind())
 						to_chat(src, "<span class='warning'>You can't see anything!</span>")
 			else
@@ -329,13 +329,13 @@
 			var/deaf = max(ears.deaf, deafen_pwr * effect_amount)
 			adjustEarDamage(ear_damage,deaf)
 
-			if(ears.ear_damage >= 15)
+			if(ears.get_damage_perc() >= 15)
 				to_chat(src, "<span class='warning'>Your ears start to ring badly!</span>")
-				if(prob(ears.ear_damage - 5))
+				if(prob(ears.get_damage_perc() - 5) && ears.get_damage_perc() > ORGAN_DAMAGE_HIGH)
 					to_chat(src, "<span class='userdanger'>You can't hear anything!</span>")
-					ears.ear_damage = min(ears.ear_damage, UNHEALING_EAR_DAMAGE)
+					ears.heal_damage(20)//de-de-hearing you
 					// you need earmuffs, or replacement
-			else if(ears.ear_damage >= 5)
+			else if(ears.get_damage_perc() >= 5)
 				to_chat(src, "<span class='warning'>Your ears start to ring!</span>")
 			SEND_SOUND(src, sound('sound/weapons/flash_ring.ogg',0,1,0,250))
 		return effect_amount //how soundbanged we are

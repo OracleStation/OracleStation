@@ -4,6 +4,7 @@
 	activated = 0
 	origin_tech = "materials=2;biotech=4;programming=4;syndicate=3"
 	var/datum/gang/gang
+	shows_up_on_scanners = FALSE
 
 /obj/item/implant/gang/New(loc,var/setgang)
 	..()

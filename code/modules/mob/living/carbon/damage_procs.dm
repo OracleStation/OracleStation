@@ -177,15 +177,12 @@
 	if(update)
 		update_damage_overlays()
 
-
-
 /mob/living/carbon/adjustStaminaLoss(amount, updating_stamina = 1)
 	if(status_flags & GODMODE)
 		return 0
 	staminaloss = Clamp(staminaloss + amount, 0, maxHealth*2)
 	if(updating_stamina)
 		update_stamina()
-
 
 /mob/living/carbon/setStaminaLoss(amount, updating_stamina = 1)
 	if(status_flags & GODMODE)
@@ -194,24 +191,19 @@
 	if(updating_stamina)
 		update_stamina()
 
-/mob/living/carbon/getBrainLoss()
-	. = 0
-	var/obj/item/organ/brain/B = getorganslot(ORGAN_SLOT_BRAIN)
-	if(B)
-		. = B.get_brain_damage()
-
 //Some sources of brain damage shouldn't be deadly
-/mob/living/carbon/adjustBrainLoss(amount, maximum = BRAIN_DAMAGE_DEATH)
+/mob/living/carbon/adjustBrainLoss(amount, maximum_perc = BRAIN_DAMAGE_DEATH)
 	if(status_flags & GODMODE)
 		return 0
-	var/prev_brainloss = getBrainLoss()
+
 	var/obj/item/organ/brain/B = getorganslot(ORGAN_SLOT_BRAIN)
 	if(!B)
 		return
-	B.adjust_brain_damage(amount, maximum)
+	var/prev_brainloss = B.get_damage_perc()
+	B.take_damage(amount, maximum_perc)
 	if(amount <= 0) //cut this early
 		return
-	var/brainloss = getBrainLoss()
+	var/brainloss = B.get_damage_perc()
 	if(brainloss > BRAIN_DAMAGE_MILD && !has_trauma_type(BRAIN_TRAUMA_MILD))
 		if(prob((amount * 2) + ((brainloss - BRAIN_DAMAGE_MILD) / 5))) //1 damage|50 brain damage = 4% chance
 			gain_trauma_type(BRAIN_TRAUMA_MILD)
@@ -222,15 +214,9 @@
 			else
 				gain_trauma_type(BRAIN_TRAUMA_SEVERE)
 
-	if(prev_brainloss < 40 && brainloss >= 40)
+	if(prev_brainloss < 20 && brainloss >= 20)
 		to_chat(src, "<span class='warning'>You feel lightheaded.</span>")
-	else if(prev_brainloss < 120 && brainloss >= 120)
+	else if(prev_brainloss < 60 && brainloss >= 60)
 		to_chat(src, "<span class='warning'>You feel less in control of your thoughts.</span>")
-	else if(prev_brainloss < 180 && brainloss >= 180)
+	else if(prev_brainloss < 90 && brainloss >= 90)
 		to_chat(src, "<span class='warning'>You can feel your mind flickering on and off...</span>")
-
-/mob/living/carbon/setBrainLoss(amount)
-	var/obj/item/organ/brain/B = getorganslot(ORGAN_SLOT_BRAIN)
-	if(B)
-		var/adjusted_amount = amount - B.get_brain_damage()
-		B.adjust_brain_damage(adjusted_amount, null)

@@ -11,6 +11,7 @@
 	var/delay = 7
 	var/popup = FALSE // is the DOUWANNABLOWUP window open?
 	var/active = FALSE
+	shows_up_on_scanners = FALSE
 
 /obj/item/implant/explosive/on_mob_death(mob/living/L, gibbed)
 	activate("death")

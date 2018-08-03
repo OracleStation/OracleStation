@@ -3,6 +3,7 @@
 	desc = "What did you cut this off of?"
 	zone = "groin"
 	slot = ORGAN_SLOT_TAIL
+	max_integrity = ORGAN_HEALTH_NONE
 
 /obj/item/organ/tail/cat
 	name = "cat tail"

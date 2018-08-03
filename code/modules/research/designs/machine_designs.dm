@@ -120,7 +120,15 @@
 	id = "sleeper"
 	req_tech = list("programming" = 3, "biotech" = 2, "engineering" = 3)
 	build_path = /obj/item/circuitboard/machine/sleeper
-	category = list ("Medical Machinery")
+	category = list("Medical Machinery")
+
+/datum/design/board/bscanner
+	name = "Machine Design (Body Scanner Board)"
+	desc = "The circuit board for a body scanner."
+	id = "bscanner"
+	req_tech = list("programming" = 2, "biotech" = 2, "engineering" = 3)
+	build_path = /obj/item/circuitboard/machine/body_scanner
+	category = list("Medical Machinery")
 
 /datum/design/board/cryotube
 	name = "Machine Design (Cryotube Board)"

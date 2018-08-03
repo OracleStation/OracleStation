@@ -1003,3 +1003,8 @@
 			client.move_delay = world.time + movement_delay()
 	lying_prev = lying
 	return canmove
+
+/mob/living/proc/generate_mob_holder()
+	..()
+	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(src), src, (istext(can_be_held) ? can_be_held : ""), 'icons/mob/animals_held.dmi', 'icons/mob/animals_held_lh.dmi', 'icons/mob/animals_held_rh.dmi')
+	return holder

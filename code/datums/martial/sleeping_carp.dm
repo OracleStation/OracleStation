@@ -239,7 +239,7 @@
 				H.visible_message("<span class='warning'>[user] delivers a heavy hit to [H]'s head, knocking them out cold!</span>", \
 									   "<span class='userdanger'>[user] knocks you unconscious!</span>")
 				H.SetSleeping(600)
-				H.adjustBrainLoss(15, 150)
+				H.adjustBrainLoss(15, 75)
 	else
 		return ..()
 
