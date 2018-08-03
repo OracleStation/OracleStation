@@ -7,7 +7,7 @@
 	name = "\improper Medibot"
 	desc = "A little medical robot. He looks somewhat underwhelmed."
 	icon = 'icons/mob/aibots.dmi'
-	icon_state = "medibot0"
+	icon_state = "medibot"
 	density = FALSE
 	anchored = FALSE
 	health = 20
@@ -50,8 +50,10 @@
 	var/treatment_tox = "charcoal"
 	var/treatment_virus_avoid = null
 	var/treatment_virus = "spaceacillin"
-	var/treat_virus = 1 //If on, the bot will attempt to treat viral infections, curing them if possible.
-	var/shut_up = 0 //self explanatory :)
+	var/treat_virus = TRUE //If on, the bot will attempt to treat viral infections, curing them if possible.
+	var/shut_up = FALSE //self explanatory :)
+	var/mutable_appearance/face
+	var/animating = FALSE
 
 /mob/living/simple_animal/bot/medbot/mysterious
 	name = "\improper Mysterious Medibot"
@@ -79,22 +81,38 @@
 	cut_overlays()
 	if(skin)
 		add_overlay("medskin_[skin]")
-	if(!on)
-		icon_state = "medibot0"
-		return
-	if(IsStun())
-		icon_state = "medibota"
-		return
+
 	if(mode == BOT_HEALING)
-		icon_state = "medibots[stationary_mode]"
-		return
-	else if(stationary_mode) //Bot has yellow light to indicate stationary mode.
-		icon_state = "medibot2"
+		add_overlay("medibot-healing")
+	else if(stationary_mode)
+		add_overlay("medibot-stationary")
 	else
-		icon_state = "medibot1"
+		add_overlay("medibot-on-patrol")
+
+	if(!on)
+		add_overlay("screen-off")
+		return
+
+	if(!animating)
+		if(emagged == 2)
+			face.icon_state = "face-emag"
+		else 
+			face.icon_state = "face-idle"
+	add_overlay(face)
+	
+
+/mob/living/simple_animal/bot/medbot/proc/stop_animation()
+	animating = FALSE
+	update_icon()
+
+/mob/living/simple_animal/bot/medbot/proc/start_animation()
+	animating = TRUE
+	update_icon()
+
 
 /mob/living/simple_animal/bot/medbot/Initialize(mapload, new_skin)
 	. = ..()
+	face = new(icon, "face-idle")
 	var/datum/job/doctor/J = new /datum/job/doctor
 	access_card.access += J.get_access()
 	prev_access = access_card.access
@@ -244,7 +262,7 @@
 		if(user)
 			to_chat(user, "<span class='notice'>You short out [src]'s reagent synthesis circuits.</span>")
 		audible_message("<span class='danger'>[src] buzzes oddly!</span>")
-		flick("medibot_spark", src)
+		flick_overlay_view(image(icon,src,"medibot-spark",FLOAT_LAYER+0.1), src, 2 SECONDS)
 		playsound(src, "sparks", 75, 1)
 		if(user)
 			oldpatient = user
@@ -283,9 +301,20 @@
 
 	if(frustration > 8)
 		oldpatient = patient
+		face.icon_state = "face-frustrated"
+		start_animation()
+		addtimer(CALLBACK(src, .proc/stop_animation), wait = 3 SECONDS)
 		soft_reset()
 
 	if(!patient)
+		if(prob(25))
+			if(emagged == 2)
+				face.icon_state = "face-emag1"
+			else
+				face.icon_state = "face-idle[rand(1,4)]"
+			start_animation()
+			addtimer(CALLBACK(src, .proc/stop_animation), wait = 4 SECONDS)
+			
 		if(!shut_up && prob(1))
 			var/list/messagevoice = list("Radar, put a mask on!" = 'sound/voice/mradar.ogg',"There's always a catch, and I'm the best there is." = 'sound/voice/mcatch.ogg',"I knew it, I should've been a plastic surgeon." = 'sound/voice/msurgeon.ogg',"What kind of medbay is this? Everyone's dropping like flies." = 'sound/voice/mflies.ogg',"Delicious!" = 'sound/voice/mdelicious.ogg')
 			var/message = pick(messagevoice)
@@ -298,6 +327,10 @@
 	if(patient && (get_dist(src,patient) <= 1)) //Patient is next to us, begin treatment!
 		if(mode != BOT_HEALING)
 			mode = BOT_HEALING
+			if(!emagged) 
+				face.icon_state = "face-heal"
+				start_animation()
+				addtimer(CALLBACK(src, .proc/stop_animation), wait = 9 SECONDS)
 			update_icon()
 			frustration = 0
 			medicate_patient(patient)
@@ -415,6 +448,10 @@
 
 	if(C.stat == DEAD || (C.status_flags & FAKEDEATH))
 		var/list/messagevoice = list("No! Stay with me!" = 'sound/voice/mno.ogg',"Live, damnit! LIVE!" = 'sound/voice/mlive.ogg',"I...I've never lost a patient before. Not today, I mean." = 'sound/voice/mlost.ogg')
+		face.icon_state = "face-qq[rand(1,3)]"
+		start_animation()
+		addtimer(CALLBACK(src, .proc/stop_animation), wait = 22)
+
 		var/message = pick(messagevoice)
 		speak(message)
 		playsound(loc, messagevoice[message], 50, 0)

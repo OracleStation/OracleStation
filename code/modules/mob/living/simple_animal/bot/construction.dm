@@ -286,7 +286,7 @@
 	. = ..()
 	spawn(5)
 		if(skin)
-			add_overlay("kit_skin_[skin]")
+			add_overlay("medskin_[skin]")
 
 /obj/item/storage/firstaid/attackby(obj/item/bodypart/S, mob/user, params)
 
