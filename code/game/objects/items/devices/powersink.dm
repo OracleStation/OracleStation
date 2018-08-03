@@ -149,15 +149,20 @@ GLOBAL_VAR_INIT(powersink_transmitted, 0)
 						A.charging = 1 // It's no longer full
 
 /obj/item/device/powersink/infiltrator
-	desc = "A nulling power sink which drains energy from electrical systems. It appears to have some sort of bluespace antenna attached."
 	var/target
 	var/target_reached = FALSE
+	var/obj/item/device/radio/alert_radio
+
+/obj/item/device/powersink/infiltrator/Initialize()
+	. = ..()
+	alert_radio = new(src)
+	alert_radio.make_syndie()
 
 /obj/item/device/powersink/infiltrator/on_drain(drained, datum/powernet/PN)
 	GLOB.powersink_transmitted += drained
 	if(GLOB.powersink_transmitted >= target && !target_reached)
+		alert_radio.talk_into(src, "Power objective reached.", "Syndicate", get_spans(), get_default_language())
 		visible_message("<span class='notice'>[src] beeps.</span>")
 		playsound('sound/machines/ping.ogg', 50, 1)
-		desc += " <b>An LED is blinking green on it.</b>"
 		target_reached = TRUE
 	return ..()
