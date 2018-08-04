@@ -22,3 +22,10 @@
 			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 	else
 		return ..()
+
+	update_icon()
+
+/obj/structure/mopbucket/update_icon()
+	cut_overlays()
+	if(reagents.total_volume > 0)
+		add_overlay("mopbucket_water")
