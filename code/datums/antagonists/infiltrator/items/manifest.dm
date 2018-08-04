@@ -16,7 +16,7 @@
 		if(!ID)
 			to_chat(user, "<span class='notice'>You need to wear your ID to properly spoof the manifest! Try again.</span>")
 			return
-		if(input(user, "Are you sure you want your crew manifest entry to be [H.real_name], [ID.assignment]?", "", "Yes", "No") == "Yes")
+		if(alert(user, "Are you sure you want your crew manifest entry to be [H.real_name], [ID.assignment]?", "", "Yes", "No") == "Yes")
 			GLOB.data_core.manifest_inject(H, H.client, ID.assignment)
 			to_chat(user, "<span class='notice'>Added to manifest.</span>")
 			do_sparks(2, FALSE, src)
