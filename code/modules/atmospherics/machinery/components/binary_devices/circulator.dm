@@ -15,7 +15,7 @@
 	pipe_flags = PIPING_ONE_PER_TURF | PIPING_DEFAULT_LAYER_ONLY
 
 	density = TRUE
-
+	anchored = FALSE
 
 	var/flipped = 0
 	var/mode = CIRCULATOR_HOT

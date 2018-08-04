@@ -6,6 +6,8 @@
 	density = TRUE
 	use_power = NO_POWER_USE
 
+	anchored = FALSE
+
 	var/obj/machinery/atmospherics/components/binary/circulator/cold_circ
 	var/obj/machinery/atmospherics/components/binary/circulator/hot_circ
 
@@ -16,11 +18,13 @@
 
 /obj/machinery/power/generator/Initialize(mapload)
 	. = ..()
-	find_circs()
-	connect_to_network()
+	if(anchored)
+		find_circs()
+		connect_to_network()
 	SSair.atmos_machinery += src
 	update_icon()
 	component_parts = list(new /obj/item/circuitboard/machine/generator)
+	update_icon()
 
 /obj/machinery/power/generator/verb/rotate()
 	set category = "Object"
