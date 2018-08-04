@@ -37,7 +37,7 @@
 	if(istype(H))
 		H.set_species(/datum/species/human)
 		H.equipOutfit(/datum/outfit/infiltrator)
-		H.dna.species.random_name(H.gender, TRUE)
+		addtimer(CALLBACK(H.dna.species, /datum/species/human.proc/random_name, H.gender, TRUE), 5)
 	owner.store_memory("Do <B>NOT</B> kill or destroy needlessly, as this defeats the purpose of an 'infiltration'!")
 	owner.objectives |= infiltrator_team.objectives
 	. = ..()
