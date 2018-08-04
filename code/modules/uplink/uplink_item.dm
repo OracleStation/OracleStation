@@ -1369,7 +1369,13 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	name = "Chameleon Hardsuit"
 	desc = "An infiltration hardsuit, capable of changing it's appearance instantly."
 	item = /obj/item/clothing/suit/space/hardsuit/infiltration
-	cost = 10
+	cost = 8
+
+/datum/uplink_item/infiltration/manifest_spoof
+	name = "Crew Manifest Spoof"
+	desc = "A button capable of adding a single person to the crew manifest."
+	item = /obj/item/device/manifestspoof
+	cost = 15 //Maybe this is too cheap??
 
 // Pointless
 /datum/uplink_item/badass

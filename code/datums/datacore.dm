@@ -195,10 +195,12 @@
 	return dat
 
 
-/datum/datacore/proc/manifest_inject(mob/living/carbon/human/H, client/C)
-	if(H.mind && (H.mind.assigned_role != H.mind.special_role))
+/datum/datacore/proc/manifest_inject(mob/living/carbon/human/H, client/C, forced_job)
+	if(H.mind && (forced_job || (H.mind.assigned_role != H.mind.special_role)))
 		var/assignment
-		if(H.mind.assigned_role)
+		if(forced_job)
+			assignment = forced_job
+		else if(H.mind.assigned_role)
 			assignment = H.mind.assigned_role
 		else if(H.job)
 			assignment = H.job

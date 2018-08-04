@@ -3,6 +3,7 @@
 	desc = "A strange circuitboard, branded with a large red S, with several ports."
 	icon = 'icons/obj/module.dmi'
 	icon_state = "ai_hijack"
+	origin_tech = "syndicate=4"
 
 /obj/item/ai_hijack_device/afterattack(atom/O, mob/user, proximity)
 	if(isAI(O))

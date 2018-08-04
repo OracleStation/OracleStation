@@ -91,6 +91,7 @@
 	var/registered_name = null // The name registered_name on the card
 	var/assignment = null
 	var/access_txt // mapping aid
+	var/ai_jam = FALSE // does it stop tracking?
 
 
 
@@ -158,8 +159,8 @@ update_label("John Doe", "Clowny")
 	name = "agent card"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_SYNDICATE)
 	origin_tech = "syndicate=1"
-	var/anyone = FALSE //Can anyone forge the ID or just syndicate?
 	icon_state = "syndie"
+	var/anyone = FALSE //Can anyone forge the ID or just syndicate?
 
 /obj/item/card/id/syndicate/Initialize()
 	. = ..()
@@ -181,7 +182,8 @@ update_label("John Doe", "Clowny")
 /obj/item/card/id/syndicate/attack_self(mob/user)
 	if(isliving(user) && user.mind)
 		if(user.mind.special_role || anyone)
-			if(alert(user, "Action", "Agent ID", "Show", "Forge") == "Forge")
+			var/result = alert(user, "Action", "Agent ID", "Show", "Forge", "Toggle AI Jamming")
+			if(result == "Forge")
 				var t = copytext(sanitize(input(user, "What name would you like to put on this card?", "Agent card name", registered_name ? registered_name : (ishuman(user) ? user.real_name : user.name))as text | null),1,26)
 				if(!t || t == "Unknown" || t == "floor" || t == "wall" || t == "r-wall") //Same as mob/dead/new_player/prefrences.dm
 					if (t)
@@ -197,6 +199,9 @@ update_label("John Doe", "Clowny")
 				update_label()
 				to_chat(user, "<span class='notice'>You successfully forge the ID card.</span>")
 				return
+			else if(result == "Toggle AI Jamming") //This might be a bit OP but people can be stupid so I dunno.
+				ai_jam = !ai_jam
+				to_chat(user, "<span class='notice'>You turn the anti-tracking functionality on the card [ai_jam ? "on" : "off"].")
 	..()
 
 /obj/item/card/id/syndicate/anyone

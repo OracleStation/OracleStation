@@ -16,6 +16,7 @@
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/transforming/energy/sword/saber, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/infiltration
 	jetpack = /obj/item/tank/jetpack/suit
+	origin_tech = "syndicate=5"
 	var/datum/action/item_action/chameleon/change/chameleon_action
 	var/obj/item/clothing/head/helmet/space/hardsuit/infiltration/head_piece
 
