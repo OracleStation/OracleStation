@@ -6,10 +6,10 @@
 	required_reagents = list("ethanol" = 1, "oxygen" = 1, "silver" = 1)
 	required_temp = 420
 
-/datum/chemical_reaction/neurotoxin2
-	name = "neurotoxin2"
-	id = "neurotoxin2"
-	results = list("neurotoxin2" = 1)
+/datum/chemical_reaction/fentanyl
+	name = "fentanyl"
+	id = "fentanyl"
+	results = list("fentanyl" = 1)
 	required_reagents = list("space_drugs" = 1)
 	required_temp = 674
 
