@@ -40,6 +40,10 @@
 /datum/game_mode/infiltration/check_finished() //to be called by SSticker
 	if(!infiltration_team || !LAZYLEN(infiltration_team.objectives) || CONFIG_GET(keyed_flag_list/continuous)["infiltration"])
 		return ..()
+	if(replacementmode && round_converted == 2)
+		return replacementmode.check_finished()
+	if((SSshuttle.emergency.mode == SHUTTLE_ENDGAME) || station_was_nuked)
+		return TRUE
 	var/objectives_complete = TRUE
 	var/all_at_base = TRUE
 	for(var/A in infiltration_team.objectives)
