@@ -98,10 +98,10 @@
 	var/win = TRUE
 	for(var/datum/objective/objective in infiltration_team.objectives)
 		if(objective.check_completion())
-			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='greentext'>Success!</span>"
+			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <font color='green'><B>Success!</B></font>"
 			SSblackbox.add_details("infiltrator_objective","[objective.type]|SUCCESS")
 		else
-			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
+			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <font color='red'>Fail.</font>"
 			SSblackbox.add_details("infiltrator_objective","[objective.type]|FAIL")
 			win = FALSE
 		count++
