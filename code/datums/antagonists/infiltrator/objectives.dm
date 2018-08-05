@@ -87,4 +87,8 @@ GLOBAL_LIST_INIT(infiltrator_kidnap_areas, typecacheof(list(/area/shuttle/stealt
 		explanation_text = "Free Objective"
 
 /datum/objective/infiltrator/kidnap/check_completion()
-	return ((target && target.current && considered_alive(target.current)) || (target && target.current && target.current.stat == DEAD && istype(target.current.death_area, /area/infiltrator_base))) && is_type_in_typecache(get_area(target), GLOB.infiltrator_kidnap_areas)
+	if(target && target.current && considered_alive(target.current) && is_type_in_typecache(get_area(target), GLOB.infiltrator_kidnap_areas))
+		return TRUE
+	else if (target && target.current && target.current.stat == DEAD && is_type_in_typecache(target.current.death_area, GLOB.infiltrator_kidnap_areas))
+		return TRUE
+	return FALSE

@@ -4,6 +4,7 @@
 #define MAX_MINOR_OBJECTIVES 4
 
 /datum/team/infiltrator
+	var/list/uplinks = list()
 
 /datum/team/infiltrator/proc/add_objective(type)
 	var/datum/objective/O = new type

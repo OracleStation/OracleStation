@@ -75,6 +75,15 @@
 
 /datum/game_mode/proc/auto_declare_completion_infiltration()
 	var/list/parts = list()
+
+	var/TC_uses = 0
+	var/uplink_true = FALSE
+	var/purchases = ""
+	for(var/obj/item/device/uplink/H in infiltration_team.uplinks)
+		TC_uses += H.spent_telecrystals
+		uplink_true = TRUE
+		purchases += H.purchase_log
+
 	var/text = "<br><font size=3><b>The infiltrators were:</b></font>"
 	text += printplayerlist(infiltration_team.members)
 	text += "<br>"
@@ -82,6 +91,7 @@
 
 	var/objectives_text = ""
 	var/count = 1
+	var/win = TRUE
 	for(var/datum/objective/objective in infiltration_team.objectives)
 		if(objective.check_completion())
 			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='greentext'>Success!</span>"
@@ -89,9 +99,16 @@
 		else
 			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
 			SSblackbox.add_details("infiltrator_objective","[objective.type]|FAIL")
+			win = FALSE
 		count++
 
 	parts += objectives_text
+
+	if(uplink_true)
+		parts += " (used [TC_uses] TC) [purchases]"
+		if(TC_uses == 0 && win)
+			var/static/icon/badass = icon('icons/badass.dmi', "badass")
+			parts += "<BIG>[icon2html(badass, world)]</BIG>"
 	to_chat(world, parts.Join("<br>"))
 	return TRUE
 

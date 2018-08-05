@@ -22,6 +22,9 @@
 	var/obj/item/implant/uplink/infiltrator/U = new/obj/item/implant/uplink/infiltrator(H)
 	U.implant(H)
 	U.hidden_uplink.owner = H.key
+	U.hidden_uplink.set_gamemode(/datum/game_mode/infiltration)
+	if(SSticker.mode.infiltration_team)
+		SSticker.mode.infiltration_team.uplinks += U.hidden_uplink
 	var/obj/item/implant/radio/syndicate/S = new/obj/item/implant/radio/syndicate(H)
 	S.implant(H)
 	H.faction |= "syndicate"

@@ -1364,18 +1364,49 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/infiltrator_pinpointer_upgrade
 	cost = 8
 
-
 /datum/uplink_item/infiltration/extra_stealthsuit
 	name = "Chameleon Hardsuit"
 	desc = "An infiltration hardsuit, capable of changing it's appearance instantly."
 	item = /obj/item/clothing/suit/space/hardsuit/infiltration
 	cost = 8
 
-/datum/uplink_item/infiltration/manifest_spoof
+// Events
+/datum/uplink_item/services
+	category = "Services"
+	include_modes = list(/datum/game_mode/infiltration, /datum/game_mode/nuclear)
+	surplus = 0
+
+/datum/uplink_item/services/manifest_spoof
 	name = "Crew Manifest Spoof"
 	desc = "A button capable of adding a single person to the crew manifest."
-	item = /obj/item/device/manifestspoof
+	item = /obj/item/device/service/manifest
 	cost = 15 //Maybe this is too cheap??
+
+/datum/uplink_item/services/fake_ion
+	name = "Fake Ion Storm"
+	desc = "Fakes an ion storm announcment. A good distraction, especially if the AI is weird anyways."
+	item = /obj/item/device/service/ion
+	cost = 7
+
+/datum/uplink_item/services/fake_meteor
+	name = "Fake Meteor Announcement"
+	desc = "Fakes an meteor announcment. A good way to get any C4 on the station exterior, or really any small explosion, brushed off as a meteor hit."
+	item = /obj/item/device/service/meteor
+	cost = 7
+
+/datum/uplink_item/services/fake_rod
+	name = "Fake Immovable Rod"
+	desc = "Fakes an immovable rod announcement. Good for a short-lasting distraction."
+	item = /obj/item/device/service/rodgod
+	cost = 6 //less likely to be believed
+
+/datum/uplink_item/services/centcom_spoof
+	name = "Custom CentCom announcement"
+	desc = "Allows you to send a fake CentCom announcement. Abusing this may result in the gods smiting you!"
+	item = /obj/item/device/service/a_really_bad_idea
+	cost = 20
+	include_modes = list(/datum/game_mode/infiltration) //no shit like this for nukies!
+
 
 // Pointless
 /datum/uplink_item/badass
