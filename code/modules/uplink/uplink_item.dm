@@ -1121,7 +1121,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/stack/telecrystal/five
 	cost = 5
 
-/datum/uplink_item/device_tools/telecrystal/five
+/datum/uplink_item/device_tools/telecrystal/bonemedipen
 	name = "C4L-Z1UM medipen"
 	desc = "A medipen stocked with an agent that will help regenerate bones and organs. A single-use pocket Medbay visit."
 	item = /obj/item/reagent_containers/hypospray/medipen/bonefixingjuice
