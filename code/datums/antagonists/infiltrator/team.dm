@@ -22,7 +22,10 @@
 	for(var/i in 1 to major)
 		add_objective(pick_n_take(major_objectives))
 	for(var/i in 1 to minor)
-		add_objective(pick(minor_objectives))
+		var/objective = pick(minor_objectives)
+		if(istype(objective, /datum/objective/download))
+			minor -= objective
+		add_objective(objective)
 	for(var/datum/mind/M in members)
 		M.objectives |= objectives
 

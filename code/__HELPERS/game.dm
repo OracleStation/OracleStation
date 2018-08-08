@@ -22,7 +22,13 @@
 	for(var/area/A in world)
 		if(A.name == N)
 			return A
-	return 0
+	return FALSE
+
+/proc/get_area_by_type(N)
+	for(var/area/A in world)
+		if(A.type == N)
+			return A
+	return FALSE
 
 /proc/get_areas_in_range(dist=0, atom/center=usr)
 	if(!dist)

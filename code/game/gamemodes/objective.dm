@@ -103,7 +103,8 @@ GLOBAL_LIST_EMPTY(objectives)
 			var/list/slots = list("backpack" = slot_in_backpack)
 			for(var/eq_path in special_equipment)
 				var/obj/O = new eq_path
-				H.equip_in_one_of_slots(O, slots)
+				if (!H.equip_in_one_of_slots(O, slots))
+					addtimer(CALLBACK(H, /mob/living/carbon/human.proc/equip_in_one_of_slots, O, slots), 50)
 
 /datum/objective/assassinate
 	var/target_role_type=0
@@ -519,7 +520,7 @@ GLOBAL_LIST_EMPTY(possible_items)
 
 		var/list/all_items = M.current.GetAllContents()	//this should get things in cheesewheels, books, etc.
 
-		for(var/obj/I in all_items) //Check for items
+		for(var/obj/item/I in all_items) //Check for items
 			if(istype(I, steal_target))
 				if(!targetinfo) //If there's no targetinfo, then that means it was a custom objective. At this point, we know you have the item, so return 1.
 					return TRUE
@@ -528,6 +529,22 @@ GLOBAL_LIST_EMPTY(possible_items)
 			if(targetinfo && (I.type in targetinfo.altitems)) //Ok, so you don't have the item. Do you have an alternative, at least?
 				if(targetinfo.check_special_completion(I))//Yeah, we do! Don't return 0 if we don't though - then you could fail if you had 1 item that didn't pass and got checked first!
 					return TRUE
+	var/list/ok_areas = list(/area/infiltrator_base, /area/syndicate_mothership, /area/shuttle/stealthcruiser)
+	var/list/compiled_areas = list()
+	for(var/A in ok_areas)
+		compiled_areas += typesof(A)
+	for(var/A in compiled_areas)
+		for(var/obj/item/I in area_contents(get_area_by_type(A))) //Check for items
+			if(istype(I, steal_target))
+				if(!targetinfo) //If there's no targetinfo, then that means it was a custom objective. At this point, we know you have the item, so return 1.
+					return TRUE
+				else if(targetinfo.check_special_completion(I))//Returns 1 by default. Items with special checks will return 1 if the conditions are fulfilled.
+					return TRUE
+			if(targetinfo && (I.type in targetinfo.altitems)) //Ok, so you don't have the item. Do you have an alternative, at least?
+				if(targetinfo.check_special_completion(I))//Yeah, we do! Don't return 0 if we don't though - then you could fail if you had 1 item that didn't pass and got checked first!
+					return TRUE
+			CHECK_TICK
+		CHECK_TICK
 	return FALSE
 
 
@@ -603,6 +620,21 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 						current_tech[T.id] = T.level
 					else if(T.level > current_tech[T.id])
 						current_tech[T.id] = T.level
+	var/list/ok_areas = list(/area/infiltrator_base, /area/syndicate_mothership, /area/shuttle/stealthcruiser)
+	var/list/compiled_areas = list()
+	for(var/A in ok_areas)
+		compiled_areas += typesof(A)
+	for(var/area/A in compiled_areas)
+		for(var/obj/item/disk/tech_disk/TD in area_contents(get_area_by_type(A)))
+			for(var/datum/tech/T in TD.tech_stored)
+				if(!T.id || !T.level)
+					continue
+				else if(!current_tech[T.id])
+					current_tech[T.id] = T.level
+				else if(T.level > current_tech[T.id])
+					current_tech[T.id] = T.level
+			CHECK_TICK
+		CHECK_TICK
 	var/total = 0
 	for(var/i in current_tech)
 		total += current_tech[i]
