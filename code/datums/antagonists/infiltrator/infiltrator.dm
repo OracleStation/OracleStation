@@ -36,8 +36,8 @@
 	var/mob/living/carbon/human/H = owner.current
 	if(istype(H))
 		H.set_species(/datum/species/human)
+		H.real_name = H.dna.species.random_name(H.gender, TRUE)
 		H.equipOutfit(/datum/outfit/infiltrator)
-		H.dna.species.random_name(H.gender, FALSE)
 	owner.store_memory("Do <B>NOT</B> kill or destroy needlessly, as this defeats the purpose of an 'infiltration'!")
 	owner.objectives |= infiltrator_team.objectives
 	. = ..()

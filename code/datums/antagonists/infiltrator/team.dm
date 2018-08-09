@@ -23,8 +23,8 @@
 		add_objective(pick_n_take(major_objectives))
 	for(var/i in 1 to minor)
 		var/objective = pick(minor_objectives)
-		if(istype(objective, /datum/objective/download))
-			minor -= objective
+		if(objective in GLOB.single_infiltrator_objectives)
+			minor_objectives -= objective
 		add_objective(objective)
 	for(var/datum/mind/M in members)
 		M.objectives |= objectives

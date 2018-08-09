@@ -29,6 +29,8 @@
 
 /obj/item/device/service/ion/attack_self(mob/user)
 	priority_announce("Ion storm detected near the station. Please check all AI-controlled equipment for errors.", "Anomaly Alert", 'sound/ai/ionstorm.ogg')
+	message_admins("[key_name_admin(user)] made a fake ion storm announcement!")
+	log_game("[key_name_admin(user)] made a fake ion storm announcement!")
 	do_sparks(2, FALSE, src)
 	qdel(src)
 
@@ -37,6 +39,8 @@
 
 /obj/item/device/service/meteor/attack_self(mob/user)
 	priority_announce("Meteors have been detected on collision course with the station.", "Meteor Alert", 'sound/ai/meteors.ogg')
+	message_admins("[key_name_admin(user)] made a fake meteor storm announcement!")
+	log_game("[key_name_admin(user)] made a fake meteor storm announcement!")
 	do_sparks(2, FALSE, src)
 	qdel(src)
 
@@ -45,15 +49,19 @@
 
 /obj/item/device/service/rodgod/attack_self(mob/user)
 	priority_announce("What the fuck was that?!", "General Alert")
+	message_admins("[key_name_admin(user)] made a fake immovable rod announcement!")
+	log_game("[key_name_admin(user)] made a fake immovable rod announcement!")
 	do_sparks(2, FALSE, src)
 	qdel(src)
 
 /obj/item/device/service/a_really_bad_idea
-	desc = "Allows you to send any custom Centcomm announcement."
+	desc = "Allows you to send any custom Centcom announcement."
 
 /obj/item/device/service/a_really_bad_idea/attack_self(mob/user)
-	var/msg = stripped_input(usr, "Please enter anything you want. Anything. Serious.", "What?", "") as message|null
+	var/msg = stripped_input(user, "Please enter anything you want. Anything. Serious.", "What?", "") as message|null
 	if(msg)
 		priority_announce(msg, null, 'sound/ai/commandreport.ogg')
-	do_sparks(2, FALSE, src)
-	qdel(src)
+		message_admins("[key_name_admin(user)] made a fake Centcom announcement!")
+		log_game("[key_name_admin(user)] made a fake Centcom announcement!")
+		do_sparks(2, FALSE, src)
+		qdel(src)

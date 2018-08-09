@@ -2,6 +2,7 @@
 #define MAX_POWER_DRAIN 100000000
 
 GLOBAL_LIST_INIT(minor_infiltrator_objectives, list(/datum/objective/assassinate, /datum/objective/steal, /datum/objective/download))
+GLOBAL_LIST_INIT(single_infiltrator_objectives, list(/datum/objective/download))
 GLOBAL_LIST_INIT(infiltrator_kidnap_areas, typecacheof(list(/area/shuttle/stealthcruiser, /area/infiltrator_base)))
 
 /datum/objective/infiltrator
@@ -87,6 +88,8 @@ GLOBAL_LIST_INIT(infiltrator_kidnap_areas, typecacheof(list(/area/shuttle/stealt
 		explanation_text = "Free Objective"
 
 /datum/objective/infiltrator/kidnap/check_completion()
+	if(QDELETED(target) || !target)
+		return TRUE
 	if(target && target.current && considered_alive(target.current) && is_type_in_typecache(get_area(target), GLOB.infiltrator_kidnap_areas))
 		return TRUE
 	else if (target && target.current && target.current.stat == DEAD && is_type_in_typecache(target.current.death_area, GLOB.infiltrator_kidnap_areas))
