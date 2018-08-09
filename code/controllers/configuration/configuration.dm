@@ -236,6 +236,7 @@ GLOBAL_PROTECT(config_dir)
 	var/list/probabilities = Get(/datum/config_entry/keyed_number_list/probability)
 	var/list/min_pop = Get(/datum/config_entry/keyed_number_list/min_pop)
 	var/list/max_pop = Get(/datum/config_entry/keyed_number_list/max_pop)
+	var/list/repeated_mode_adjust = Get(/datum/config_entry/number_list/repeated_mode_adjust)
 	for(var/T in gamemode_cache)
 		var/datum/game_mode/M = new T()
 		if(!(M.config_tag in modes))
@@ -249,8 +250,15 @@ GLOBAL_PROTECT(config_dir)
 		if(max_pop[M.config_tag])
 			M.maximum_players = max_pop[M.config_tag]
 		if(M.can_start())
-			runnable_modes[M] = probabilities[M.config_tag]
-
+			var/final_weight = probabilities[M.config_tag]
+			if(SSpersistence.saved_modes.len == 3 && repeated_mode_adjust.len == 3)
+				var/recent_round = min(SSpersistence.saved_modes.Find(M.config_tag),3)
+				var/adjustment = 0
+				while(recent_round)
+					adjustment += repeated_mode_adjust[recent_round]
+					recent_round = SSpersistence.saved_modes.Find(M.config_tag,recent_round+1,0)
+				final_weight *= ((100-adjustment)/100)
+			runnable_modes[M] = final_weight
 	return runnable_modes
 
 /datum/controller/configuration/proc/get_runnable_midround_modes(crew)
