@@ -2461,13 +2461,44 @@
 		if(!customname)
 			customname = "paper"
 
+		var/stampname
+		var/stamptype
+		var/stampvalue
 		var/sendername
 		switch(faxtype)
 			if("Central Command")
-				sendername = "Central Command"
+				stamptype = "Stamp"
+				stampvalue = "cent"
+				sendername = command_name()
+
 			if("Syndicate")
+				stamptype = "Stamp"
+				stampvalue = "syndicate"
 				sendername = "UNKNOWN"
+
 			if("Custom")
+				stamptype = input(src.owner, "Pick a stamp?", "Stamp Type") as null|anything in list("Stamp","None")
+				if(stamptype == "Stamp")
+					stampname = input(src.owner, "Pick a stamp icon.", "Stamp Icon") as null|anything in list("Nanotrasen","Syndicate","Granted","Denied","Clown")
+					switch(stampname)
+						if("Nanotrasen")
+							stampvalue = "cent"
+						if("Syndicate")
+							stampvalue = "syndicate"
+						if("Granted")
+							stampvalue = "ok"
+						if("Denied")
+							stampvalue = "deny"
+						if("Clown")
+							stampvalue = "clown"
+
+				else if(stamptype == "None")
+					stamptype = ""
+
+				else
+					qdel(P)
+					return
+
 				sendername = input(owner, "What organization does the fax come from? This determines the prefix of the paper (i.e. Central Command- Title). This is optional.", "Organization") as text|null
 
 		if(sender)
@@ -2478,10 +2509,27 @@
 			P.name = "[sendername]- [customname]"
 		else
 			P.name = "[customname]"
+
 		P.info = input_text
 		P.update_icon()
 		P.x = rand(-2, 0)
 		P.y = rand(-1, 2)
+
+		if(stamptype)
+			var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
+			stampoverlay.pixel_x = -1
+			stampoverlay.pixel_y = 0
+
+			stampoverlay.icon_state = "paper_stamp-[stampvalue]"
+			P.add_overlay(stampoverlay)
+
+			if(stamptype == "Stamp")
+				if(!P.stamped)
+					P.stamped = new
+				P.stamped += /obj/item/stamp/nanotrasen
+				P.overlays += stampoverlay
+				P.stamps += "<HR><img src=large_stamp-[stampvalue].png>"
+
 
 		if(destination != "All Departments")
 			if(fax.receivefax(P) == FALSE)
@@ -2552,6 +2600,17 @@
 		P.x = rand(-2, 0)
 		P.y = rand(-1, 2)
 		P.update_icon()
+		var/stampvalue = "cent"
+		var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
+		stampoverlay.icon_state = "paper_stamp-[stampvalue]"
+		stampoverlay.pixel_x = -1
+		stampoverlay.pixel_y = 0
+		P.stamped = list()
+		P.stamped += /obj/item/stamp/nanotrasen
+
+		P.overlays += stampoverlay
+		P.add_overlay(stampoverlay)
+		P.stamps += "<HR><img src=large_stamp-[stampvalue].png>"
 		//we have to physically teleport the fax paper
 		fax.handle_animation()
 		P.forceMove(fax.loc)
@@ -2594,6 +2653,17 @@
 		P.x = rand(-2, 0)
 		P.y = rand(-1, 2)
 		P.update_icon()
+		var/stampvalue = "cent"
+		var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
+		stampoverlay.icon_state = "paper_stamp-[stampvalue]"
+		stampoverlay.pixel_x = -1
+		stampoverlay.pixel_y = 0
+		P.stamped = list()
+		P.stamped += /obj/item/stamp/nanotrasen
+
+		P.overlays += stampoverlay
+		P.add_overlay(stampoverlay)
+		P.stamps += "<HR><img src=large_stamp-[stampvalue].png>"
 		fax.receivefax(P)
 		if(istype(H) && H.stat == CONSCIOUS && (istype(H.ears, /obj/item/device/radio/headset)))
 			to_chat(H, "<span class='notice'>Your headset pings, notifying you that a reply to your fax has arrived.</span>")
