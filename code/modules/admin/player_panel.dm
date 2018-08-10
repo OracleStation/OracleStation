@@ -638,7 +638,8 @@
 				if(M)
 					dat += "<tr><td><a href='?_src_=holder;[HrefToken()];adminplayeropts=[REF(M)]'>[M.real_name]</a>[M.client ? "" : " <i>(No Client)</i>"][M.stat == DEAD ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
 					dat += "<td><A href='?priv_msg=[M.ckey]'>PM</A></td>"
-					dat += "<td><A HREF='?_src_=holder;[HrefToken()];traitor=[REF(M)]'>Show Objective</A></td></tr>"
+					dat += "<td><A HREF='?_src_=holder;[HrefToken()];traitor=[REF(M)]'>Show Objective</A></td>"
+					dat += "<td><A href='?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(M)]'>FLW</a></td></tr>"
 				else
 					dat += "<tr><td><a href='?_src_=vars;[HrefToken()];Vars=[REF(infiltrator)]'>[infiltrator.name]([infiltrator.key])</a><i>Infiltrator body destroyed!</i></td></tr>"
 					dat += "<td><A href='?priv_msg=[infiltrator.key]'>PM</A></td>"
