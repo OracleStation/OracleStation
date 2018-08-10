@@ -56,7 +56,7 @@
 			if(M && M.current && M.current.stat && M.current.client)
 				var/turf/T = get_turf(M.current)
 				var/area/A = get_area(T)
-				if(T.z != ZLEVEL_CENTCOM || !is_type_in_typecache(A, areas_that_can_finish))
+				if((T.z != ZLEVEL_CENTCOM) || !is_type_in_typecache(A, areas_that_can_finish))
 					all_at_base = FALSE
 	return all_at_base && objectives_complete
 
