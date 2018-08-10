@@ -90,7 +90,7 @@ GLOBAL_LIST_INIT(infiltrator_kidnap_areas, typecacheof(list(/area/shuttle/stealt
 /datum/objective/infiltrator/kidnap/check_completion()
 	if(QDELETED(target) || !target)
 		return TRUE
-	if(target && target.current && considered_alive(target.current) && is_type_in_typecache(get_area(target), GLOB.infiltrator_kidnap_areas))
+	if(target && target.current && considered_alive(target) && is_type_in_typecache(get_area(target), GLOB.infiltrator_kidnap_areas))
 		return TRUE
 	else if (target && target.current && target.current.stat == DEAD && is_type_in_typecache(target.current.death_area, GLOB.infiltrator_kidnap_areas))
 		return TRUE

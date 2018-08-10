@@ -121,10 +121,10 @@ GLOBAL_LIST_EMPTY(objectives)
 		var/mob/living/carbon/human/H
 		if(ishuman(target.current))
 			H = target.current
-		if(!considered_alive(target.current) || issilicon(target.current) || isbrain(target.current) || target.current.z > 6 || !target.current.ckey || (H && H.dna.species.id == "memezombies")) //Borgs/brains/AIs count as dead for traitor objectives. --NeoFite
-			return 1
-		return 0
-	return 1
+		if(!considered_alive(target) || issilicon(target.current) || isbrain(target.current) || target.current.z > 6 || !target.current.ckey || (H && H.dna.species.id == "memezombies")) //Borgs/brains/AIs count as dead for traitor objectives. --NeoFite
+			return TRUE
+		return FALSE
+	return TRUE
 
 /datum/objective/assassinate/update_explanation_text()
 	..()
@@ -154,7 +154,7 @@ GLOBAL_LIST_EMPTY(objectives)
 
 /datum/objective/mutiny/check_completion()
 	if(target && target.current)
-		if(!considered_alive(target.current) || !ishuman(target.current) || !target.current.ckey)
+		if(!considered_alive(target) || !ishuman(target.current) || !target.current.ckey)
 			return 1
 		var/turf/T = get_turf(target.current)
 		if(T && (!(T.z in GLOB.station_z_levels)) || (target.current.client && target.current.client.is_afk()))			//If they leave the station or go afk they count as dead for this
@@ -186,7 +186,7 @@ GLOBAL_LIST_EMPTY(objectives)
 		var/mob/living/carbon/human/H
 		if(ishuman(target.current))
 			H = target.current
-		if(!considered_alive(target.current) || issilicon(target.current) || isbrain(target.current) || target.current.z > 6 || !target.current.ckey || (H && H.dna.species.id == "memezombies")) //Borgs/brains/AIs count as dead for traitor objectives. --NeoFite
+		if(!considered_alive(target) || issilicon(target.current) || isbrain(target.current) || target.current.z > 6 || !target.current.ckey || (H && H.dna.species.id == "memezombies")) //Borgs/brains/AIs count as dead for traitor objectives. --NeoFite
 			return 1
 		if(target.current.onCentCom() || target.current.onSyndieBase())
 			return 0
