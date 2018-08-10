@@ -34,7 +34,9 @@
 /obj/item/pinpointer/infiltrator/attack_self(mob/user)
 	if(!upgraded)
 		return ..()
-	active = TRUE
+	if(!active)
+		active = TRUE
+		START_PROCESSING(SSfastprocess, src)
 	if(mode == MODE_CUTTER)
 		mode = MODE_TARGET
 		scan_for_target()
@@ -43,6 +45,8 @@
 		mode = MODE_CUTTER
 		scan_for_target()
 		to_chat(user, "<span class='notice'>[src] is now tracking the syndicate cutter.</span>")
+	update_pointer_overlay()
+
 
 /obj/item/pinpointer/infiltrator/attackby(obj/item/I, mob/user, params)
 	if(!upgraded && istype(I, /obj/item/infiltrator_pinpointer_upgrade) && user.mind)
