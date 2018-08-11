@@ -6,7 +6,6 @@
 /turf/open/floor/plating/asteroid //floor piece
 	name = "asteroid sand"
 	baseturf = /turf/open/floor/plating/asteroid
-	icon = 'icons/turf/floors.dmi'
 	icon_state = "asteroid"
 	icon_plating = "asteroid"
 	postdig_icon_change = TRUE
@@ -18,10 +17,11 @@
 
 /turf/open/floor/plating/asteroid/Initialize()
 	var/proper_name = name
-	. = ..()
 	name = proper_name
 	if(prob(floor_variance))
 		icon_state = "[environment_type][rand(0,12)]"
+
+	. = ..()
 
 	if(LAZYLEN(archdrops))
 		AddComponent(/datum/component/archaeology, 100, archdrops)
@@ -68,7 +68,6 @@
 /turf/open/floor/plating/asteroid/basalt
 	name = "volcanic floor"
 	baseturf = /turf/open/floor/plating/asteroid/basalt
-	icon = 'icons/turf/floors.dmi'
 	icon_state = "basalt"
 	icon_plating = "basalt"
 	environment_type = "basalt"

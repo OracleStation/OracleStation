@@ -27,8 +27,6 @@
 	icon_state = "asteroidplating"
 
 /turf/open/floor/plating/airless/astplate
-	icon_state = "asteroidplating"
-
 
 /turf/open/floor/plating/ashplanet
 	icon = 'icons/turf/mining.dmi'
