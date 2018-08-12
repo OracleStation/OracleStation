@@ -94,6 +94,10 @@ GLOBAL_VAR_INIT(powersink_transmitted, 0)
 			..()
 
 		if(CLAMPED_OFF)
+			var/area/A = get_area(src)
+			if(!A.requires_power)
+				to_chat(user, "<span class='warning'>Activating the power sink here would instantly overload it.</span>")
+				return
 			user.visible_message( \
 				"[user] activates \the [src]!", \
 				"<span class='notice'>You activate \the [src].</span>",
