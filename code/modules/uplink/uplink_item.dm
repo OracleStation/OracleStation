@@ -1452,7 +1452,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			you will receive."
 	item = /obj/item/storage/box/syndicate
 	cost = 20
-	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang, /datum/game_mode/infiltration)
 	cant_discount = TRUE
 
 /datum/uplink_item/badass/surplus
@@ -1461,7 +1461,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			but you never know. Contents are sorted to always be worth 50 TC."
 	item = /obj/structure/closet/crate
 	cost = 20
-	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang, /datum/game_mode/infiltration)
 	cant_discount = TRUE
 
 /datum/uplink_item/badass/surplus/spawn_item(turf/loc, obj/item/device/uplink/U)
