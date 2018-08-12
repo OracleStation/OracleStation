@@ -162,14 +162,6 @@
 	static_inventory += inv_box
 
 	inv_box = new /obj/screen/inventory()
-	inv_box.name = "pda"
-	inv_box.icon = ui_style
-	inv_box.icon_state = "pda"
-	inv_box.screen_loc = ui_pda
-	inv_box.slot_id = slot_wear_pda
-	static_inventory += inv_box
-
-	inv_box = new /obj/screen/inventory()
 	inv_box.name = "mask"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "mask"
@@ -207,14 +199,6 @@
 	inv_box.icon_state = "pocket"
 	inv_box.screen_loc = ui_storage2
 	inv_box.slot_id = slot_r_store
-	static_inventory += inv_box
-
-	inv_box = new /obj/screen/inventory()
-	inv_box.name = "suit storage"
-	inv_box.icon = ui_style
-	inv_box.icon_state = "suit_storage"
-	inv_box.screen_loc = ui_sstore1
-	inv_box.slot_id = slot_s_store
 	static_inventory += inv_box
 
 	using = new /obj/screen/resist()
@@ -273,12 +257,21 @@
 	toggleable_inventory += inv_box
 
 	inv_box = new /obj/screen/inventory()
-	inv_box.name = "belt"
+	inv_box.name = "belt1"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "belt"
 //	inv_box.icon_full = "template_small"
-	inv_box.screen_loc = ui_belt
-	inv_box.slot_id = slot_belt
+	inv_box.screen_loc = ui_belt1
+	inv_box.slot_id = slot_belt1
+	static_inventory += inv_box
+
+	inv_box = new /obj/screen/inventory()
+	inv_box.name = "belt2"
+	inv_box.icon = ui_style
+	inv_box.icon_state = "belt"
+//	inv_box.icon_full = "template_small"
+	inv_box.screen_loc = ui_belt2
+	inv_box.slot_id = slot_belt2
 	static_inventory += inv_box
 
 	throw_icon = new /obj/screen/throw_catch()
@@ -395,18 +388,15 @@
 
 	if(screenmob.hud_used)
 		if(screenmob.hud_used.hud_shown)
-			if(H.s_store)
-				H.s_store.screen_loc = ui_sstore1
-				screenmob.client.screen += H.s_store
 			if(H.wear_id)
 				H.wear_id.screen_loc = ui_id
 				screenmob.client.screen += H.wear_id
-			if(H.wear_pda)
-				H.wear_pda.screen_loc = ui_pda
-				screenmob.client.screen += H.wear_pda
-			if(H.belt)
-				H.belt.screen_loc = ui_belt
-				screenmob.client.screen += H.belt
+			if(H.belt1)
+				H.belt1.screen_loc = ui_belt1
+				screenmob.client.screen += H.belt1
+			if(H.belt2)
+				H.belt2.screen_loc = ui_belt2
+				screenmob.client.screen += H.belt2
 			if(H.back)
 				H.back.screen_loc = ui_back
 				screenmob.client.screen += H.back
@@ -417,14 +407,14 @@
 				H.r_store.screen_loc = ui_storage2
 				screenmob.client.screen += H.r_store
 		else
-			if(H.s_store)
-				screenmob.client.screen -= H.s_store
 			if(H.wear_id)
 				screenmob.client.screen -= H.wear_id
-			if(H.wear_pda)
-				screenmob.client.screen -= H.wear_pda
-			if(H.belt)
-				screenmob.client.screen -= H.belt
+			if(H.belt1)
+				H.belt1.screen_loc = ui_belt1
+				screenmob.client.screen += H.belt1
+			if(H.belt2)
+				H.belt2.screen_loc = ui_belt2
+				screenmob.client.screen += H.belt2
 			if(H.back)
 				screenmob.client.screen -= H.back
 			if(H.l_store)

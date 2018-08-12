@@ -23,6 +23,7 @@
 	storage_slots = 21
 	resistance_flags = 0
 	max_integrity = 300
+	equipped_item_retrieval_delay = 30
 	species_fit = list("Vox Outcast")
 	sprite_sheets = list(
 		"Vox Outcast" = 'icons/mob/species/vox/back.dmi'
@@ -96,6 +97,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	max_w_class = WEIGHT_CLASS_NORMAL
 	max_combined_w_class = 60
+	equipped_item_retrieval_delay = 0 // Santa needs to be fast.
 
 /obj/item/storage/backpack/cultpack
 	name = "trophy rack"
@@ -188,6 +190,9 @@
 	desc = "A trendy looking satchel."
 	icon_state = "satchel-norm"
 	species_exception = list(/datum/species/angel) //satchels can be equipped since they are on the side, not back
+	equipped_item_retrieval_delay = 0
+	max_combined_w_class = 12
+	storage_slots = 12
 
 /obj/item/storage/backpack/satchel/leather
 	name = "leather satchel"
@@ -266,7 +271,6 @@
 	desc = "A very slim satchel that can easily fit into tight spaces."
 	icon_state = "satchel-flat"
 	w_class = WEIGHT_CLASS_NORMAL //Can fit in backpacks itself.
-	max_combined_w_class = 15
 	level = 1
 	cant_hold = list(/obj/item/storage/backpack/satchel/flat) //muh recursive backpacks
 
@@ -322,6 +326,9 @@
 	desc = "A sturdy backpack worn over one shoulder."
 	icon_state = "courierbag"
 	item_state = "courierbag"
+	equipped_item_retrieval_delay = 10
+	max_combined_w_class = 15
+	storage_slots = 15
 
 /obj/item/storage/backpack/messenger/chem
 	name = "chemistry messenger bag"
@@ -383,7 +390,9 @@
 	icon_state = "duffel"
 	item_state = "duffel"
 	slowdown = 1
+	equipped_item_retrieval_delay = 50
 	max_combined_w_class = 30
+	storage_slots = 30
 
 /obj/item/storage/backpack/duffelbag/captain
 	name = "captain's duffel bag"
@@ -471,6 +480,7 @@
 	item_state = "duffel-syndie"
 	origin_tech = "syndicate=1"
 	silent = 1
+	equipped_item_retrieval_delay = 10 // Streamlined for tactical effeciency and user comfort.
 	slowdown = 0
 
 /obj/item/storage/backpack/duffelbag/syndie/hitman

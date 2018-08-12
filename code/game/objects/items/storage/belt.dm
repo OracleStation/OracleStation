@@ -4,7 +4,7 @@
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state = "utilitybelt"
 	item_state = "utility"
-	slot_flags = SLOT_BELT
+	slot_flags = SLOT_BELT_GREEDY
 	attack_verb = list("whipped", "lashed", "disciplined")
 	max_integrity = 300
 	var/content_overlays = FALSE //If this is true, the belt will gain overlays based on what it's holding
@@ -402,6 +402,7 @@
 	icon_state = "bandolier"
 	item_state = "bandolier"
 	storage_slots = 18
+	slot_flags = SLOT_BELT
 	display_contents_with_number = TRUE
 	can_hold = list(
 		/obj/item/ammo_casing/shotgun
@@ -472,6 +473,7 @@
 	item_state = "sheath"
 	storage_slots = 1
 	rustle_jimmies = FALSE
+	storage_slots = SLOT_BELT
 	w_class = WEIGHT_CLASS_BULKY
 	max_w_class = WEIGHT_CLASS_BULKY
 	can_hold = list(

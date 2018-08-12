@@ -167,7 +167,7 @@ effective or pretty fucking useless.
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state = "utilitybelt"
 	item_state = "utility"
-	slot_flags = SLOT_BELT
+	slot_flags = SLOT_BELT_GREEDY
 	attack_verb = list("whipped", "lashed", "disciplined")
 
 	var/mob/living/carbon/human/user = null
@@ -178,7 +178,7 @@ effective or pretty fucking useless.
 	actions_types = list(/datum/action/item_action/toggle)
 
 /obj/item/device/shadowcloak/ui_action_click(mob/user)
-	if(user.get_item_by_slot(slot_belt) == src)
+	if(user.get_item_by_slot(slot_belt1) == src || user.get_item_by_slot(slot_belt2))
 		if(!on)
 			Activate(usr)
 		else
@@ -186,7 +186,7 @@ effective or pretty fucking useless.
 	return
 
 /obj/item/device/shadowcloak/item_action_slot_check(slot, mob/user)
-	if(slot == slot_belt)
+	if(slot == slot_belt1 || slot == slot_belt2)
 		return 1
 
 /obj/item/device/shadowcloak/proc/Activate(mob/living/carbon/human/user)
@@ -208,11 +208,11 @@ effective or pretty fucking useless.
 
 /obj/item/device/shadowcloak/dropped(mob/user)
 	..()
-	if(user && user.get_item_by_slot(slot_belt) != src)
+	if(user && user.get_item_by_slot(slot_belt1) != src && user.get_item_by_slot(slot_belt2))
 		Deactivate()
 
 /obj/item/device/shadowcloak/process()
-	if(user.get_item_by_slot(slot_belt) != src)
+	if(user.get_item_by_slot(slot_belt1) != src && user.get_item_by_slot(slot_belt2))
 		Deactivate()
 		return
 	var/turf/T = get_turf(src)

@@ -139,7 +139,7 @@
 	uniform = /obj/item/clothing/under/color/grey
 	id = /obj/item/card/id
 	ears = /obj/item/device/radio/headset
-	pda_slot = /obj/item/device/pda
+	belt2 = /obj/item/device/pda
 	back = /obj/item/storage/backpack
 	shoes = /obj/item/clothing/shoes/sneakers/black
 
@@ -147,7 +147,7 @@
 	var/satchel  = /obj/item/storage/backpack/satchel
 	var/duffelbag = /obj/item/storage/backpack/duffelbag
 	var/courierbag = /obj/item/storage/backpack/messenger
-	var/box = /obj/item/storage/box/survival
+	var/box = /obj/item/storage/box/survival/normal
 
 /datum/outfit/job/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	switch(H.backbag)
@@ -192,7 +192,7 @@
 		C.update_label()
 		H.sec_hud_set_ID()
 
-	var/obj/item/device/pda/PDA = H.wear_pda
+	var/obj/item/device/pda/PDA = H.belt2
 	if(istype(PDA))
 		PDA.owner = H.real_name
 		PDA.ownjob = J.title

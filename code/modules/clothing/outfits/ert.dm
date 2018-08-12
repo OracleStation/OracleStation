@@ -24,8 +24,8 @@
 	suit = /obj/item/clothing/suit/space/hardsuit/ert
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	back = /obj/item/storage/backpack/captain
-	belt = /obj/item/storage/belt/security/full
-	backpack_contents = list(/obj/item/storage/box/engineer=1,\
+	belt1 = /obj/item/storage/belt/security/full
+	backpack_contents = list(/obj/item/storage/box/survival/engineer=1,\
 		/obj/item/melee/baton/loaded=1,\
 		/obj/item/clothing/mask/gas/sechailer=1,\
 		/obj/item/gun/energy/e_gun=1)
@@ -44,7 +44,7 @@
 	name = "ERT Commander - High Alert"
 
 	glasses = /obj/item/clothing/glasses/thermal/eyepatch
-	backpack_contents = list(/obj/item/storage/box/engineer=1,\
+	backpack_contents = list(/obj/item/storage/box/survival/engineer=1,\
 		/obj/item/melee/baton/loaded=1,\
 		/obj/item/clothing/mask/gas/sechailer/swat=1,\
 		/obj/item/gun/energy/pulse/pistol=1)
@@ -57,8 +57,8 @@
 	suit = /obj/item/clothing/suit/space/hardsuit/ert/sec
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	back = /obj/item/storage/backpack/security
-	belt = /obj/item/storage/belt/security/full
-	backpack_contents = list(/obj/item/storage/box/engineer=1,\
+	belt1 = /obj/item/storage/belt/security/full
+	backpack_contents = list(/obj/item/storage/box/survival/engineer=1,\
 		/obj/item/storage/box/handcuffs=1,\
 		/obj/item/clothing/mask/gas/sechailer=1,\
 		/obj/item/gun/energy/e_gun/stun=1,\
@@ -77,7 +77,7 @@
 /datum/outfit/ert/security/alert
 	name = "ERT Security - High Alert"
 
-	backpack_contents = list(/obj/item/storage/box/engineer=1,\
+	backpack_contents = list(/obj/item/storage/box/survival/engineer=1,\
 		/obj/item/storage/box/handcuffs=1,\
 		/obj/item/clothing/mask/gas/sechailer/swat=1,\
 		/obj/item/melee/baton/loaded=1,\
@@ -91,9 +91,9 @@
 	suit = /obj/item/clothing/suit/space/hardsuit/ert/med
 	glasses = /obj/item/clothing/glasses/hud/health
 	back = /obj/item/storage/backpack/satchel/med
-	belt = /obj/item/storage/belt/medical
+	belt1 = /obj/item/storage/belt/medical
 	r_hand = /obj/item/storage/firstaid/regular
-	backpack_contents = list(/obj/item/storage/box/engineer=1,\
+	backpack_contents = list(/obj/item/storage/box/survival/engineer=1,\
 		/obj/item/melee/baton/loaded=1,\
 		/obj/item/clothing/mask/gas/sechailer=1,\
 		/obj/item/gun/energy/e_gun=1,\
@@ -113,7 +113,7 @@
 /datum/outfit/ert/medic/alert
 	name = "ERT Medic - High Alert"
 
-	backpack_contents = list(/obj/item/storage/box/engineer=1,\
+	backpack_contents = list(/obj/item/storage/box/survival/engineer=1,\
 		/obj/item/melee/baton/loaded=1,\
 		/obj/item/clothing/mask/gas/sechailer/swat=1,\
 		/obj/item/gun/energy/pulse/pistol=1,\
@@ -127,10 +127,10 @@
 	suit = /obj/item/clothing/suit/space/hardsuit/ert/engi
 	glasses =  /obj/item/clothing/glasses/meson/engine
 	back = /obj/item/storage/backpack/industrial
-	belt = /obj/item/storage/belt/utility/full
+	belt1 = /obj/item/storage/belt/utility/full
 	l_pocket = /obj/item/rcd_ammo/large
 	r_hand = /obj/item/storage/firstaid/regular
-	backpack_contents = list(/obj/item/storage/box/engineer=1,\
+	backpack_contents = list(/obj/item/storage/box/survival/engineer=1,\
 		/obj/item/melee/baton/loaded=1,\
 		/obj/item/clothing/mask/gas/sechailer=1,\
 		/obj/item/gun/energy/e_gun=1,\
@@ -149,7 +149,7 @@
 /datum/outfit/ert/engineer/alert
 	name = "ERT Engineer - High Alert"
 
-	backpack_contents = list(/obj/item/storage/box/engineer=1,\
+	backpack_contents = list(/obj/item/storage/box/survival/engineer=1,\
 		/obj/item/melee/baton/loaded=1,\
 		/obj/item/clothing/mask/gas/sechailer/swat=1,\
 		/obj/item/gun/energy/pulse/pistol=1,\
@@ -164,7 +164,7 @@
 	gloves = /obj/item/clothing/gloves/color/black
 	ears = /obj/item/device/radio/headset/headset_cent
 	glasses = /obj/item/clothing/glasses/sunglasses
-	belt = /obj/item/gun/energy/e_gun
+	belt1 = /obj/item/gun/energy/e_gun
 	l_pocket = /obj/item/pen
 	back = /obj/item/storage/backpack/satchel
 	r_pocket = /obj/item/device/pda/heads

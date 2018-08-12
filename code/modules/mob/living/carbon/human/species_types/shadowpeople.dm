@@ -31,7 +31,7 @@
 	limbs_id = "shadow"
 	burnmod = 1.5
 	blacklisted = TRUE
-	no_equip = list(slot_wear_mask, slot_wear_suit, slot_gloves, slot_shoes, slot_w_uniform, slot_s_store)
+	no_equip = list(slot_wear_mask, slot_wear_suit, slot_gloves, slot_shoes, slot_w_uniform)
 	species_traits = list(NOBREATH,RESISTCOLD,RESISTPRESSURE,NOGUNS,NOBLOOD,RADIMMUNE,VIRUSIMMUNE,PIERCEIMMUNE,NODISMEMBER,NO_UNDERWEAR,NOHUNGER,NO_BONES)
 	mutanteyes = /obj/item/organ/eyes/night_vision/nightmare
 	var/obj/effect/proc_holder/spell/targeted/shadowwalk/shadowwalk

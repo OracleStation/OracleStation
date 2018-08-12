@@ -21,7 +21,7 @@ Quartermaster
 	name = "Quartermaster"
 	jobtype = /datum/job/qm
 	id = /obj/item/card/id/job/cargo
-	pda_slot = /obj/item/device/pda/quartermaster
+	belt2 = /obj/item/device/pda/quartermaster
 	ears = /obj/item/device/radio/headset/headset_cargo
 	uniform = /obj/item/clothing/under/rank/cargo
 	shoes = /obj/item/clothing/shoes/sneakers/brown
@@ -52,7 +52,7 @@ Cargo Technician
 	name = "Cargo Technician"
 	jobtype = /datum/job/cargo_tech
 	id = /obj/item/card/id/job/cargo
-	pda_slot = /obj/item/device/pda/cargo
+	belt2 = /obj/item/device/pda/cargo
 	ears = /obj/item/device/radio/headset/headset_cargo
 	uniform = /obj/item/clothing/under/rank/cargotech
 
@@ -81,7 +81,7 @@ Shaft Miner
 	name = "Shaft Miner (Lavaland)"
 	jobtype = /datum/job/mining
 	id = /obj/item/card/id/job/cargo
-	pda_slot = /obj/item/device/pda/shaftminer
+	belt2 = /obj/item/device/pda/shaftminer
 	ears = /obj/item/device/radio/headset/headset_cargo/mining
 	shoes = /obj/item/clothing/shoes/workboots/mining
 	gloves = /obj/item/clothing/gloves/color/black
@@ -97,7 +97,7 @@ Shaft Miner
 	backpack = /obj/item/storage/backpack/explorer
 	satchel = /obj/item/storage/backpack/satchel/explorer
 	duffelbag = /obj/item/storage/backpack/duffelbag
-	box = /obj/item/storage/box/survival_mining
+	box = /obj/item/storage/box/survival/mining
 
 /datum/outfit/job/miner/asteroid
 	name = "Shaft Miner (Asteroid)"
@@ -109,8 +109,8 @@ Shaft Miner
 	suit = /obj/item/clothing/suit/hooded/explorer
 	mask = /obj/item/clothing/mask/gas/explorer
 	glasses = /obj/item/clothing/glasses/meson
-	suit_store = /obj/item/tank/internals/oxygen
-	internals_slot = slot_s_store
+	belt1 = /obj/item/tank/internals/emergency_oxygen/engi
+	internals_slot = slot_belt1
 	backpack_contents = list(
 		/obj/item/storage/bag/ore=1,
 		/obj/item/kitchen/knife/combat/survival=1,
@@ -161,7 +161,7 @@ Bartender
 	jobtype = /datum/job/bartender
 
 	glasses = /obj/item/clothing/glasses/sunglasses/reagent
-	pda_slot = /obj/item/device/pda/bar
+	belt2 = /obj/item/device/pda/bar
 	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/bartender
 	suit = /obj/item/clothing/suit/armor/vest
@@ -192,7 +192,7 @@ Cook
 	name = "Cook"
 	jobtype = /datum/job/cook
 
-	pda_slot = /obj/item/device/pda/cook
+	belt2 = /obj/item/device/pda/cook
 	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/chef
 	suit = /obj/item/clothing/suit/toggle/chef
@@ -243,12 +243,12 @@ Botanist
 	name = "Botanist"
 	jobtype = /datum/job/hydro
 
-	pda_slot = /obj/item/device/pda/botanist
+	belt1 = /obj/item/device/plant_analyzer
+	belt2 = /obj/item/device/pda/botanist
 	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/hydroponics
 	suit = /obj/item/clothing/suit/apron
 	gloves  =/obj/item/clothing/gloves/botanic_leather
-	suit_store = /obj/item/device/plant_analyzer
 
 	backpack = /obj/item/storage/backpack/botany
 	satchel = /obj/item/storage/backpack/satchel/hyd
@@ -278,7 +278,7 @@ Janitor
 	name = "Janitor"
 	jobtype = /datum/job/janitor
 
-	pda_slot = /obj/item/device/pda/janitor
+	belt2 = /obj/item/device/pda/janitor
 	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/janitor
 	backpack_contents = list(/obj/item/device/modular_computer/tablet/preset/advanced=1)

@@ -361,7 +361,9 @@
 				H.update_inv_glasses()
 			if(H.ears && washears && wash_obj(H.ears))
 				H.update_inv_ears()
-			if(H.belt && wash_obj(H.belt))
+			if(H.belt1 && wash_obj(H.belt1))
+				H.update_inv_belt()
+			if(H.belt2 && wash_obj(H.belt2))
 				H.update_inv_belt()
 		else
 			if(M.wear_mask && wash_obj(M.wear_mask))

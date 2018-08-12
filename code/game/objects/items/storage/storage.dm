@@ -25,7 +25,7 @@
 	var/collection_mode = 1;  //0 = pick one at a time, 1 = pick all on tile, 2 = pick all of a type
 	var/preposition = "in" // You put things 'in' a bag, but trays need 'on'.
 	var/rustle_jimmies = TRUE	//Play the rustle sound on insertion
-
+	var/equipped_item_retrieval_delay = 0 // How long it takes us to pull an item out of storage if the storage item is equipped.
 
 /obj/item/storage/MouseDrop(atom/over_object)
 	if(ismob(usr)) //all the check for item manipulation are in other places, you can safely open any storages as anything and its not buggy, i checked
@@ -122,6 +122,9 @@
 		L += S.return_inv()
 	return L
 
+/obj/item/storage/proc/sum_w_class()
+	for(var/obj/item/I in contents)
+		. += I.w_class
 
 /obj/item/storage/proc/show_to(mob/user)
 	if(!user.client)
@@ -262,9 +265,12 @@
 
 	//var/mob/living/carbon/human/H = user
 	var/row_num = 0
-	var/col_count = min(7,storage_slots) -1
+	var/col_count = min(7, min(storage_slots, (max_combined_w_class - sum_w_class() + adjusted_contents))) -1 /* OK, I made this expression kind of a nightmare to read, so I'll explain it.
+                                                                                                             * With an upper limit of 7, take either the amount of storage slots the storage item has
+	                                                                                                           * Or the number of functional slots it has left after adjusting for w_class. Whichever is lower.*/
 	if(adjusted_contents > 7)
 		row_num = round((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
+		col_count = min(7, storage_slots) -1
 	standard_orient_objs(row_num, col_count, numbered_contents)
 
 
@@ -297,11 +303,7 @@
 			to_chat(usr, "<span class='warning'>[W] is too big for [src]!</span>")
 		return 0
 
-	var/sum_w_class = W.w_class
-	for(var/obj/item/I in contents)
-		sum_w_class += I.w_class //Adds up the combined w_classes which will be in the storage item if the item is added to it.
-
-	if(sum_w_class > max_combined_w_class)
+	if((W.w_class + sum_w_class()) > max_combined_w_class)
 		if(!stop_messages)
 			to_chat(usr, "<span class='warning'>[W] won't fit in [src], make some space!</span>")
 		return 0
@@ -369,6 +371,17 @@
 /obj/item/storage/proc/remove_from_storage(obj/item/W, atom/new_location)
 	if(!istype(W))
 		return 0
+
+	var/atom/current = src
+	while(istype(current, /obj/item/storage))
+		if(ismob(current.loc))
+			var/mob/M = current.loc
+			var/obj/item/storage/S = current
+			if(S.equipped_item_retrieval_delay && S in M.get_all_slots())
+				if(!do_after(M, S.equipped_item_retrieval_delay, target=M))
+					return 0
+				break
+		current = current.loc
 
 	if(istype(src, /obj/item/storage/fancy))
 		var/obj/item/storage/fancy/F = src
@@ -445,6 +458,9 @@
 			H.r_store = null
 			return
 
+
+
+
 	orient2hud(user)
 	if(loc == user)
 		if(user.s_active)
@@ -495,7 +511,8 @@
 		things -= I
 		if (I.loc != src)
 			continue
-		remove_from_storage(I, target)
+		if(!remove_from_storage(I, target))
+			return FALSE
 		if (TICK_CHECK)
 			progress.update(progress.goal - things.len)
 			return TRUE

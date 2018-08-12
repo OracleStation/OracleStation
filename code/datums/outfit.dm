@@ -5,7 +5,8 @@
 	var/suit = null
 	var/toggle_helmet = TRUE
 	var/back = null
-	var/belt = null
+	var/belt1 = null
+	var/belt2 = null
 	var/gloves = null
 	var/shoes = null
 	var/head = null
@@ -16,8 +17,6 @@
 	var/id = null
 	var/l_pocket = null
 	var/r_pocket = null
-	var/pda_slot = null
-	var/suit_store = null
 	var/r_hand = null
 	var/l_hand = null
 	var/internals_slot = null //ID of slot containing a gas tank
@@ -45,8 +44,10 @@
 		H.equip_to_slot_or_del(new suit(H),slot_wear_suit)
 	if(back)
 		H.equip_to_slot_or_del(new back(H),slot_back)
-	if(belt)
-		H.equip_to_slot_or_del(new belt(H),slot_belt)
+	if(belt1)
+		H.equip_to_slot_or_del(new belt1(H),slot_belt1)
+	if(belt2)
+		H.equip_to_slot_or_del(new belt2(H),slot_belt2)
 	if(gloves)
 		H.equip_to_slot_or_del(new gloves(H),slot_gloves)
 	if(shoes)
@@ -63,10 +64,6 @@
 		H.equip_to_slot_or_del(new glasses(H),slot_glasses)
 	if(id)
 		H.equip_to_slot_or_del(new id(H),slot_wear_id)
-	if(pda_slot)
-		H.equip_to_slot_or_del(new pda_slot(H),slot_wear_pda)
-	if(suit_store)
-		H.equip_to_slot_or_del(new suit_store(H),slot_s_store)
 
 	if(accessory)
 		var/obj/item/clothing/under/U = H.w_uniform
@@ -137,12 +134,14 @@
 		H.ears.add_fingerprint(H,1)
 	if(H.glasses)
 		H.glasses.add_fingerprint(H,1)
-	if(H.belt)
-		H.belt.add_fingerprint(H,1)
-		for(var/obj/item/I in H.belt.contents)
+	if(H.belt1)
+		H.belt1.add_fingerprint(H,1)
+		for(var/obj/item/I in H.belt1.contents)
 			I.add_fingerprint(H,1)
-	if(H.s_store)
-		H.s_store.add_fingerprint(H,1)
+	if(H.belt2)
+		H.belt2.add_fingerprint(H,1)
+		for(var/obj/item/I in H.belt2.contents)
+			I.add_fingerprint(H,1)
 	if(H.l_store)
 		H.l_store.add_fingerprint(H,1)
 	if(H.r_store)

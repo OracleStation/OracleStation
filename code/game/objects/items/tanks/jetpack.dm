@@ -151,7 +151,7 @@
 		return
 
 	var/mob/living/carbon/human/H = user
-	if(!istype(H.s_store, /obj/item/tank/internals))
+	if(!istype(H.belt1, /obj/item/tank/internals))
 		to_chat(user, "<span class='warning'>You need a tank in your suit storage!</span>")
 		return
 	..()
@@ -160,7 +160,7 @@
 	if(!istype(loc, /obj/item/clothing/suit/space/hardsuit) || !ishuman(loc.loc))
 		return
 	var/mob/living/carbon/human/H = loc.loc
-	tank = H.s_store
+	tank = H.belt1
 	air_contents = tank.air_contents
 	START_PROCESSING(SSobj, src)
 	..()
@@ -176,7 +176,7 @@
 		turn_off()
 		return
 	var/mob/living/carbon/human/H = loc.loc
-	if(!tank || tank != H.s_store)
+	if(!tank || tank != H.belt1)
 		turn_off()
 		return
 	..()

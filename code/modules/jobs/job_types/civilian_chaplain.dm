@@ -86,8 +86,7 @@ Chaplain
 /datum/outfit/job/chaplain
 	name = "Chaplain"
 	jobtype = /datum/job/chaplain
-
-	pda_slot = /obj/item/device/pda/chaplain
+	belt2 = /obj/item/device/pda/chaplain
 	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/chaplain
 	backpack_contents = list(/obj/item/device/camera/spooky = 1)

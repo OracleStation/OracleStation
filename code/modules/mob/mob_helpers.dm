@@ -12,6 +12,10 @@
 	if(player_logged && stat != DEAD)
 		return TRUE
 
+/mob/proc/get_all_slots() // Override this for mobs that have body slots.
+	return 0
+
+
 /proc/check_zone(zone)
 	if(!zone)
 		return "chest"

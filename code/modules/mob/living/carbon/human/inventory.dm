@@ -14,12 +14,12 @@
 			return handcuffed
 		if(slot_legcuffed)
 			return legcuffed
-		if(slot_belt)
-			return belt
+		if(slot_belt1)
+			return belt1
+		if(slot_belt2)
+			return belt2
 		if(slot_wear_id)
 			return wear_id
-		if(slot_wear_pda)
-			return wear_pda
 		if(slot_ears)
 			return ears
 		if(slot_glasses)
@@ -38,23 +38,21 @@
 			return l_store
 		if(slot_r_store)
 			return r_store
-		if(slot_s_store)
-			return s_store
 	return null
 
-/mob/living/carbon/human/proc/get_all_slots()
+/mob/living/carbon/human/get_all_slots()
 	. = get_head_slots() | get_body_slots()
 
 /mob/living/carbon/human/proc/get_body_slots()
 	return list(
 		back,
-		s_store,
 		handcuffed,
 		legcuffed,
 		wear_suit,
 		gloves,
 		shoes,
-		belt,
+		belt1,
+		belt2,
 		wear_id,
 		l_store,
 		r_store,
@@ -73,10 +71,10 @@
 /mob/living/carbon/human/proc/get_storage_slots()
 	return list(
 		back,
-		belt,
+		belt1,
+		belt2,
 		l_store,
-		r_store,
-		s_store,
+		r_store
 		)
 
 //This is an UNSAFE proc. Use mob_can_equip() before calling this one! Or rather use equip_to_slot_if_possible() or advanced_equip_to_slot_if_possible()
@@ -86,16 +84,16 @@
 
 	var/not_handled = FALSE //Added in case we make this type path deeper one day
 	switch(slot)
-		if(slot_belt)
-			belt = I
+		if(slot_belt1)
+			belt1 = I
+			update_inv_belt()
+		if(slot_belt2)
+			belt2 = I
 			update_inv_belt()
 		if(slot_wear_id)
 			wear_id = I
 			sec_hud_set_ID()
 			update_inv_wear_id()
-		if(slot_wear_pda)
-			wear_pda = I
-			update_inv_wear_pda()
 		if(slot_ears)
 			ears = I
 			update_inv_ears()
@@ -135,9 +133,6 @@
 		if(slot_r_store)
 			r_store = I
 			update_inv_pockets()
-		if(slot_s_store)
-			s_store = I
-			update_inv_s_store()
 		else
 			to_chat(src, "<span class='danger'>You are trying to equip this item to an unsupported inventory slot. Report this to a coder!</span>")
 
@@ -155,8 +150,6 @@
 	if(index && !QDELETED(src) && dna.species.mutanthands) //hand freed, fill with claws, skip if we're getting deleted.
 		put_in_hand(new dna.species.mutanthands(), index)
 	if(I == wear_suit)
-		if(s_store && invdrop)
-			dropItemToGround(s_store, TRUE) //It makes no sense for your suit storage to stay on you if you drop your suit.
 		if(wear_suit.breakouttime) //when unequipping a straightjacket
 			drop_all_held_items() //suit is restraining
 			update_action_buttons_icon() //certain action buttons may be usable again.
@@ -173,10 +166,10 @@
 				dropItemToGround(l_store, TRUE)
 			if(wear_id)
 				dropItemToGround(wear_id)
-			if(wear_pda)
-				dropItemToGround(wear_pda)
-			if(belt)
-				dropItemToGround(belt)
+			if(belt1)
+				dropItemToGround(belt1)
+			if(belt2)
+				dropItemToGround(belt2)
 		w_uniform = null
 		update_suit_sensors()
 		if(!QDELETED(src))
@@ -207,8 +200,12 @@
 		shoes = null
 		if(!QDELETED(src))
 			update_inv_shoes()
-	else if(I == belt)
-		belt = null
+	else if(I == belt1)
+		belt1 = null
+		if(!QDELETED(src))
+			update_inv_belt()
+	else if(I == belt2)
+		belt2 = null
 		if(!QDELETED(src))
 			update_inv_belt()
 	else if(I == wear_id)
@@ -216,10 +213,6 @@
 		sec_hud_set_ID()
 		if(!QDELETED(src))
 			update_inv_wear_id()
-	else if(I == wear_pda)
-		wear_pda = null
-		if(!QDELETED(src))
-			update_inv_wear_pda()
 	else if(I == r_store)
 		r_store = null
 		if(!QDELETED(src))
@@ -228,10 +221,6 @@
 		l_store = null
 		if(!QDELETED(src))
 			update_inv_pockets()
-	else if(I == s_store)
-		s_store = null
-		if(!QDELETED(src))
-			update_inv_s_store()
 
 /mob/living/carbon/human/wear_mask_update(obj/item/clothing/C, toggle_off = 1)
 	if((C.flags_inv & (HIDEHAIR|HIDEFACIALHAIR)) || (initial(C.flags_inv) & (HIDEHAIR|HIDEFACIALHAIR)))

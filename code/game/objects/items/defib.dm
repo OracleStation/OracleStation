@@ -89,8 +89,8 @@
 			else
 				to_chat(user, "<span class='warning'>Put the defibrillator on your back first!</span>")
 
-		else if(slot_flags == SLOT_BELT)
-			if(user.get_item_by_slot(slot_belt) == src)
+		else if(slot_flags == SLOT_BELT || slot_flags == SLOT_BELT_GREEDY)
+			if(user.get_item_by_slot(slot_belt1) == src || user.get_item_by_slot(slot_belt2) == src)
 				ui_action_click()
 			else
 				to_chat(user, "<span class='warning'>Strap the defibrillator's belt on first!</span>")
@@ -183,7 +183,7 @@
 
 /obj/item/defibrillator/equipped(mob/user, slot)
 	..()
-	if((slot_flags == SLOT_BACK && slot != slot_back) || (slot_flags == SLOT_BELT && slot != slot_belt))
+	if((slot_flags == SLOT_BACK && slot != slot_back) || (slot_flags == SLOT_BELT && (slot != slot_belt1 && slot != slot_belt2)))
 		remove_paddles(user)
 		update_icon()
 
@@ -235,11 +235,11 @@
 	icon_state = "defibcompact"
 	item_state = "defibcompact"
 	w_class = WEIGHT_CLASS_NORMAL
-	slot_flags = SLOT_BELT
+	slot_flags = SLOT_BELT_GREEDY
 	origin_tech = "biotech=5"
 
 /obj/item/defibrillator/compact/item_action_slot_check(slot, mob/user)
-	if(slot == user.getBeltSlot())
+	if(slot in user.getBeltSlots())
 		return 1
 
 /obj/item/defibrillator/compact/loaded/Initialize()

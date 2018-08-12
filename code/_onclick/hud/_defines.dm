@@ -30,13 +30,12 @@
 #define ui_devilsouldisplay "WEST:6,CENTER-1:15"
 
 //Lower center, persistent menu
-#define ui_sstore1 "CENTER-5:10,SOUTH:5"
-#define ui_id "CENTER-4:12,SOUTH:5"
-#define ui_belt "CENTER-3:14,SOUTH:5"
+#define ui_id "CENTER-5:10,SOUTH:5"
+#define ui_belt2 "CENTER-4:14,SOUTH:5"
+#define ui_belt1 "CENTER-3:14,SOUTH:5"
 #define ui_back "CENTER-2:14,SOUTH:5"
 #define ui_storage1 "CENTER+1:18,SOUTH:5"
 #define ui_storage2 "CENTER+2:20,SOUTH:5"
-#define ui_pda "CENTER+3:22,SOUTH:5"
 
 /proc/ui_hand_position(i) //values based on old hand ui positions (CENTER:-/+16,SOUTH:5)
 	var/x_off = -(!(i % 2))

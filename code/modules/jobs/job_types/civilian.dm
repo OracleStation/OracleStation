@@ -26,8 +26,7 @@ Clown
 	name = "Clown"
 	jobtype = /datum/job/clown
 	id = /obj/item/card/id/job/clown
-	pda_slot = /obj/item/device/pda/clown
-	ears = /obj/item/device/radio/headset/headset_srv
+	belt2 = /obj/item/device/pda/clown
 	uniform = /obj/item/clothing/under/rank/clown
 	shoes = /obj/item/clothing/shoes/clown_shoes
 	mask = /obj/item/clothing/mask/gas/clown_hat
@@ -89,7 +88,7 @@ Mime
 	name = "Mime"
 	jobtype = /datum/job/mime
 	id = /obj/item/card/id/job/mime
-	pda_slot = /obj/item/device/pda/mime
+	belt2 = /obj/item/device/pda/mime
 	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/mime
 	mask = /obj/item/clothing/mask/gas/mime
@@ -136,8 +135,7 @@ Curator
 /datum/outfit/job/curator
 	name = "Curator"
 	jobtype = /datum/job/curator
-
-	pda_slot = /obj/item/device/pda/curator
+	belt2 = /obj/item/device/pda/curator
 	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/curator
 	l_hand = /obj/item/storage/bag/books
@@ -186,7 +184,7 @@ Internal Affairs Agent
 	name = "Internal Affairs Agent"
 	jobtype = /datum/job/iaa
 	id = /obj/item/card/id/job/sec
-	pda_slot = /obj/item/device/pda/iaa
+	belt2 = /obj/item/device/pda/iaa
 	ears = /obj/item/device/radio/headset/iaa
 	uniform = /obj/item/clothing/under/iaa/blacksuit
 	suit = /obj/item/clothing/suit/toggle/iaa/black

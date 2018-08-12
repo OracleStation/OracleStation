@@ -14,6 +14,14 @@
 			return legcuffed
 	return null
 
+/mob/living/carbon/get_all_slots()
+	return list(
+		back,
+		wear_mask,
+		wear_neck,
+		head
+		)
+
 /mob/living/carbon/proc/equip_in_one_of_slots(obj/item/I, list/slots, qdel_on_fail = 1)
 	for(var/slot in slots)
 		if(equip_to_slot_if_possible(I, slots[slot], qdel_on_fail = 0, disable_warning = TRUE))
@@ -139,4 +147,3 @@
 	if(I.flags_inv & HIDEMASK || forced)
 		update_inv_wear_mask()
 	update_inv_head()
-

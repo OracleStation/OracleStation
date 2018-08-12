@@ -331,8 +331,8 @@
 	ears = /obj/item/device/radio/headset/syndicate/alt
 	l_pocket = /obj/item/pinpointer/nuke/syndicate
 	id = /obj/item/card/id/syndicate
-	belt = /obj/item/gun/ballistic/automatic/pistol
-	backpack_contents = list(/obj/item/storage/box/syndie=1)
+	belt1 = /obj/item/gun/ballistic/automatic/pistol
+	backpack_contents = list(/obj/item/storage/box/survival/syndie=1)
 
 	var/tc = 25
 
@@ -366,9 +366,9 @@
 	suit = /obj/item/clothing/suit/space/hardsuit/syndi
 	r_pocket = /obj/item/tank/internals/emergency_oxygen/engi
 	internals_slot = slot_r_store
-	belt = /obj/item/storage/belt/military
+	belt1 = /obj/item/storage/belt/military
 	r_hand = /obj/item/gun/ballistic/automatic/shotgun/bulldog
-	backpack_contents = list(/obj/item/storage/box/syndie=1,\
+	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/tank/jetpack/oxygen/harness=1,\
 		/obj/item/gun/ballistic/automatic/pistol=1)
 

@@ -21,7 +21,7 @@
 	if(!d_type)
 		return 0
 	var/protection = 0
-	var/list/body_parts = list(head, wear_mask, wear_suit, w_uniform, back, gloves, shoes, belt, s_store, glasses, ears, wear_id) //Everything but pockets. Pockets are l_store and r_store. (if pockets were allowed, putting something armored, gloves or hats for example, would double up on the armor)
+	var/list/body_parts = list(head, wear_mask, wear_suit, w_uniform, back, gloves, shoes, belt1, belt2, glasses, ears, wear_id) //Everything but pockets. Pockets are l_store and r_store. (if pockets were allowed, putting something armored, gloves or hats for example, would double up on the armor)
 	for(var/bp in body_parts)
 		if(!bp)
 			continue
@@ -544,9 +544,6 @@
 				inventory_items_to_kill += r_store
 			if(l_store)
 				inventory_items_to_kill += l_store
-			if(s_store)
-				inventory_items_to_kill += s_store
-
 
 	//ARMS & HANDS//
 	if(!bodyzone_hit || bodyzone_hit == "l_arm" || bodyzone_hit == "r_arm")
@@ -621,8 +618,10 @@
 	if(!bodyzone_hit)
 		if(back)
 			inventory_items_to_kill += back
-		if(belt)
-			inventory_items_to_kill += belt
+		if(belt1)
+			inventory_items_to_kill += belt1
+		if(belt2)
+			inventory_items_to_kill += belt2
 
 		inventory_items_to_kill += held_items
 

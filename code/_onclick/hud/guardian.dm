@@ -44,25 +44,25 @@
 		inv_box.name = "internal storage"
 		inv_box.icon = ui_style
 		inv_box.icon_state = "suit_storage"
-		inv_box.screen_loc = ui_id
+		inv_box.screen_loc = ui_belt2
 		inv_box.slot_id = slot_generic_dextrous_storage
 		static_inventory += inv_box
 
 		using = new /obj/screen/guardian/Communicate()
-		using.screen_loc = ui_sstore1
+		using.screen_loc = ui_id
 		static_inventory += using
 
 	else
 
 		using = new /obj/screen/guardian/Communicate()
-		using.screen_loc = ui_id
+		using.screen_loc = ui_belt2
 		static_inventory += using
 
 	healths = new /obj/screen/healths/guardian()
 	infodisplay += healths
 
 	using = new /obj/screen/guardian/Manifest()
-	using.screen_loc = ui_belt
+	using.screen_loc = ui_belt1
 	static_inventory += using
 
 	using = new /obj/screen/guardian/Recall()

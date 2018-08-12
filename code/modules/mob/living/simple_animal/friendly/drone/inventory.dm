@@ -79,5 +79,5 @@
 /mob/living/simple_animal/drone/getBackSlot()
 	return slot_generic_dextrous_storage
 
-/mob/living/simple_animal/drone/getBeltSlot()
+/mob/living/simple_animal/drone/getBeltSlots()
 	return slot_generic_dextrous_storage

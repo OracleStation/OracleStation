@@ -1215,7 +1215,8 @@
 				current.forceMove(get_turf(locate("landmark*Syndicate-Spawn")))
 			if("dressup")
 				var/mob/living/carbon/human/H = current
-				qdel(H.belt)
+				qdel(H.belt1)
+				qdel(H.belt2)
 				qdel(H.back)
 				qdel(H.ears)
 				qdel(H.gloves)
@@ -1491,7 +1492,8 @@
 
 		if(ishuman(current))
 			var/mob/living/carbon/human/H = current
-			qdel(H.belt)
+			qdel(H.belt1)
+			qdel(H.belt2)
 			qdel(H.back)
 			qdel(H.ears)
 			qdel(H.gloves)

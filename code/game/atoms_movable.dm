@@ -589,7 +589,8 @@
 		M.transferItemToLoc(src, targetturf, TRUE)	//nodrops disks when?
 	else if(istype(loc, /obj/item/storage))
 		var/obj/item/storage/S = loc
-		S.remove_from_storage(src, targetturf)
+		if(!S.remove_from_storage(src, targetturf))
+			return 0
 	else
 		forceMove(targetturf)
 	// move the disc, so ghosts remain orbiting it even if it's "destroyed"

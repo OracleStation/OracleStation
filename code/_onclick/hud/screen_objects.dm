@@ -284,12 +284,12 @@
 			C.internal = I
 		else if(ishuman(C))
 			var/mob/living/carbon/human/H = C
-			if(istype(H.s_store, /obj/item/tank))
-				to_chat(H, "<span class='notice'>You are now running on internals from the [H.s_store] on your [H.wear_suit].</span>")
-				H.internal = H.s_store
-			else if(istype(H.belt, /obj/item/tank))
-				to_chat(H, "<span class='notice'>You are now running on internals from the [H.belt] on your belt.</span>")
-				H.internal = H.belt
+			if(istype(H.belt1, /obj/item/tank))
+				to_chat(H, "<span class='notice'>You are now running on internals from the [H.belt1] on your belt.</span>")
+				H.internal = H.belt1
+			else if(istype(H.belt2, /obj/item/tank))
+				to_chat(H, "<span class='notice'>You are now running on internals from the [H.belt2] on your belt.</span>")
+				H.internal = H.belt2
 			else if(istype(H.l_store, /obj/item/tank))
 				to_chat(H, "<span class='notice'>You are now running on internals from the [H.l_store] in your left pocket.</span>")
 				H.internal = H.l_store

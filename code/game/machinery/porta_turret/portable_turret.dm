@@ -485,7 +485,9 @@
 			if(perp.is_holding_item_of_type(/obj/item/gun) ||  perp.is_holding_item_of_type(/obj/item/melee/baton))
 				threatcount += 4
 
-			if(istype(perp.belt, /obj/item/gun) || istype(perp.belt, /obj/item/melee/baton))
+			if(istype(perp.belt1, /obj/item/gun) || istype(perp.belt1, /obj/item/melee/baton))
+				threatcount += 2
+			if(istype(perp.belt2, /obj/item/gun) || istype(perp.belt2, /obj/item/melee/baton))
 				threatcount += 2
 
 	if(check_records)	//if the turret can check the records, check if they are set to *Arrest* on records
@@ -968,7 +970,9 @@
 			. += 4
 		if(perp.is_holding_item_of_type(/obj/item/gun/energy/laser/redtag))
 			. += 4
-		if(istype(perp.belt, /obj/item/gun/energy/laser/redtag))
+		if(istype(perp.belt1, /obj/item/gun/energy/laser/redtag))
+			. += 2
+		if(istype(perp.belt2, /obj/item/gun/energy/laser/redtag))
 			. += 2
 
 	if(team_color == "red")
@@ -977,7 +981,9 @@
 			. += 4
 		if(perp.is_holding_item_of_type(/obj/item/gun/energy/laser/bluetag))
 			. += 4
-		if(istype(perp.belt, /obj/item/gun/energy/laser/bluetag))
+		if(istype(perp.belt1, /obj/item/gun/energy/laser/bluetag))
+			. += 2
+		if(istype(perp.belt2, /obj/item/gun/energy/laser/bluetag))
 			. += 2
 
 /obj/machinery/porta_turret/lasertag/setup(obj/item/gun/gun)

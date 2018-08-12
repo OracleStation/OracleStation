@@ -340,8 +340,10 @@
 /mob/living/carbon/human/get_equipped_items()
 	var/list/items = ..()
 
-	if(belt)
-		items += belt
+	if(belt1)
+		items += belt1
+	if(belt2)
+		items += belt2
 	if(ears)
 		items += ears
 	if(glasses)
@@ -352,14 +354,10 @@
 		items += shoes
 	if(wear_id)
 		items += wear_id
-	if(wear_pda)
-		items += wear_pda
 	if(r_store)
 		items += r_store
 	if(l_store)
 		items += l_store
-	if(s_store)
-		items += s_store
 	if(wear_suit)
 		items += wear_suit
 	if(w_uniform)
@@ -395,7 +393,12 @@
 		S.handle_item_insertion(src)
 		return TRUE
 
-	S = M.get_item_by_slot(slot_belt)
+	S = M.get_item_by_slot(slot_belt1)
+	if(istype(S) && S.can_be_inserted(src,1))		//else we put in belt
+		S.handle_item_insertion(src)
+		return TRUE
+
+	S = M.get_item_by_slot(slot_belt2)
 	if(istype(S) && S.can_be_inserted(src,1))		//else we put in belt
 		S.handle_item_insertion(src)
 		return TRUE
@@ -425,8 +428,14 @@
 /mob/proc/getBackSlot()
 	return slot_back
 
-/mob/proc/getBeltSlot()
-	return slot_belt
+/mob/proc/getBeltSlots()
+	return list(slot_belt1, slot_belt2)
+
+/mob/proc/getBelt1Slot()
+	return slot_belt1
+
+/mob/proc/getBelt2Slot()
+	return slot_belt2
 
 
 

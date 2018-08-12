@@ -152,7 +152,7 @@
 	static_inventory += using
 
 	using = new /obj/screen/blob/Blobbernaut()
-	using.screen_loc = ui_belt
+	using.screen_loc = ui_belt1
 	static_inventory += using
 
 	using = new /obj/screen/blob/ResourceBlob()
@@ -180,5 +180,3 @@
 /mob/camera/blob/create_mob_hud()
 	if(client && !hud_used)
 		hud_used = new /datum/hud/blob_overmind(src)
-
-
