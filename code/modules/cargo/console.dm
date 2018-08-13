@@ -18,11 +18,18 @@
 	circuit = /obj/item/circuitboard/computer/cargo/request
 	requestonly = TRUE
 
-/obj/machinery/computer/cargo/Initialize()
+/obj/machinery/computer/cargo/Initialize(mapload, obj/item/circuitboard/computer/cargo/C)
 	. = ..()
+
+	if (C)
+		// Propagate contraband/emag values from the circuit board used to construct the console.
+		contraband = C.contraband
+		emagged = C.emagged
+
+	// This also permamently sets this on the circuit board to preserve the values when the console is deconstructed.
 	var/obj/item/circuitboard/computer/cargo/board = circuit
-	contraband = board.contraband
-	emagged = board.emagged
+	board.contraband = contraband
+	board.emagged = emagged
 
 /obj/machinery/computer/cargo/emag_act(mob/user)
 	if(emagged)
@@ -33,7 +40,7 @@
 	emagged = TRUE
 	contraband = TRUE
 
-	// This also permamently sets this on the circuit board
+	// This also permamently sets this on the circuit board to preserve the values when the console is deconstructed.
 	var/obj/item/circuitboard/computer/cargo/board = circuit
 	board.contraband = TRUE
 	board.emagged = TRUE
