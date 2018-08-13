@@ -229,8 +229,8 @@ Difficulty: Hard
 					if(health < maxHealth * 0.5 && blink_counter > 1)
 						visible_message("<span class='hierophant'>\"Mx ampp rsx iwgeti.\"</span>")
 						var/oldcolor = color
-						animate(src, color = "#660099", time = 6)
-						sleep(6)
+						animate(src, color = "#660099", time = 8)
+						sleep(8)
 						while(health && !QDELETED(target) && blink_counter)
 							if(loc == target.loc || loc == target) //we're on the same tile as them after about a second we can stop now
 								break
@@ -249,8 +249,8 @@ Difficulty: Hard
 					visible_message("<span class='hierophant'>\"Piezi mx rsalivi xs vyr.\"</span>")
 					blinking = TRUE
 					var/oldcolor = color
-					animate(src, color = "#660099", time = 6)
-					sleep(6)
+					animate(src, color = "#660099", time = 8)
+					sleep(8)
 					while(health && !QDELETED(target) && cross_counter)
 						cross_counter--
 						if(prob(60))
@@ -266,8 +266,8 @@ Difficulty: Hard
 					visible_message("<span class='hierophant'>\"Mx gerrsx lmhi.\"</span>")
 					blinking = TRUE
 					var/oldcolor = color
-					animate(src, color = "#660099", time = 6)
-					sleep(6)
+					animate(src, color = "#660099", time = 8)
+					sleep(8)
 					var/list/targets = ListTargets()
 					var/list/cardinal_copy = GLOB.cardinals.Copy()
 					while(health && targets.len && cardinal_copy.len)
@@ -388,7 +388,7 @@ Difficulty: Hard
 	playsound(T,'sound/magic/wand_teleport.ogg', 200, 1)
 	playsound(source,'sound/machines/airlockopen.ogg', 200, 1)
 	blinking = TRUE
-	sleep(2) //short delay before we start...
+	sleep(4) //short delay before we start...
 	new /obj/effect/temp_visual/hierophant/telegraph/teleport(T, src)
 	new /obj/effect/temp_visual/hierophant/telegraph/teleport(source, src)
 	for(var/t in RANGE_TURFS(1, T))
@@ -397,15 +397,15 @@ Difficulty: Hard
 	for(var/t in RANGE_TURFS(1, source))
 		var/obj/effect/temp_visual/hierophant/blast/B = new(t, src, FALSE)
 		B.damage = 30
-	animate(src, alpha = 0, time = 2, easing = EASE_OUT) //fade out
-	sleep(1)
+	animate(src, alpha = 0, time = 3, easing = EASE_OUT) //fade out
+	sleep(2)
 	visible_message("<span class='hierophant_warning'>[src] fades out!</span>")
 	density = FALSE
 	sleep(2)
 	forceMove(T)
 	sleep(1)
-	animate(src, alpha = 255, time = 2, easing = EASE_IN) //fade IN
-	sleep(1)
+	animate(src, alpha = 255, time = 3, easing = EASE_IN) //fade IN
+	sleep(2)
 	density = TRUE
 	visible_message("<span class='hierophant_warning'>[src] fades in!</span>")
 	sleep(1) //at this point the blasts we made detonate
@@ -419,7 +419,7 @@ Difficulty: Hard
 		return
 	new /obj/effect/temp_visual/hierophant/telegraph(T, src)
 	playsound(T,'sound/effects/bin_close.ogg', 200, 1)
-	sleep(2)
+	sleep(3)
 	for(var/t in RANGE_TURFS(1, T))
 		new /obj/effect/temp_visual/hierophant/blast(t, src, FALSE)
 

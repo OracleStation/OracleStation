@@ -107,7 +107,7 @@
 	if(ismineralturf(loc))
 		var/turf/closed/mineral/M = loc
 		M.gets_drilled()
-	addtimer(CALLBACK(src, .proc/Trip), 10)
+	addtimer(CALLBACK(src, .proc/Trip), 15)
 
 /obj/effect/goliath_tentacle/original/Initialize()
 	. = ..()
