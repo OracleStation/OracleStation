@@ -1,5 +1,5 @@
 /datum/reagent/blood
-	data = list("donor"=null,"viruses"=null,"blood_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null)
+	data = list("species"=null,"donor"=null,"viruses"=null,"blood_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null)
 	name = "Blood"
 	id = "blood"
 	color = "#C80000" // rgb: 200, 0, 0
@@ -572,17 +572,8 @@
 	id = "unstablemutationtoxin"
 	description = "An unstable and unpredictable corruptive toxin produced by slimes."
 	color = "#5EFF3B" //RGB: 94, 255, 59
-	mutationtext = "<span class='danger'>The pain subsides. You feel... different.</span>"
-
-/datum/reagent/stableslimetoxin/unstable/on_mob_life(mob/living/carbon/human/H)
-	var/list/possible_morphs = list()
-	for(var/type in subtypesof(/datum/species))
-		var/datum/species/S = type
-		if(initial(S.blacklisted))
-			continue
-		possible_morphs += S
-	race = pick(possible_morphs)
-	..()
+	mutationtext = "<span class='danger'>The pain subsides. You feel... slimy.</span>"
+	race = /datum/species/jelly/slime
 
 /datum/reagent/mulligan
 	name = "Mulligan Toxin"
