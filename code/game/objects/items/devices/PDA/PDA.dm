@@ -128,7 +128,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if((!isnull(cartridge)) && (mode == 0))
 		dat += " | <img src=pda_eject.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=Eject'>Eject [cartridge]</a>"
 	if(mode)
-		dat += " | <img src=pda_menu.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=Return'>Return</a>"
+		dat += " | <img src=pda_menu.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=Home'>Return</a>"
 
 	dat += "<br>"
 
@@ -151,6 +151,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				dat += "<li><img src=pda_notes.png class=pda_icon class=pda_icon>   <a href='byond://?src=[REF(src)];choice=1'>Notekeeper</a></li>"
 				dat += "<li><img src=pda_mail.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=2'>Messenger</a></li>"
 				dat += "<li><img src=pda_notes.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=41'>View Crew Manifest</a></li>"
+				dat += "<li><img src=pda_map.png class=pda_icon>   <a href='byond://?src=[REF(src)];choice=64'>View Station Map</a></li>"
 
 				if(cartridge)
 					if(cartridge.access)
@@ -246,6 +247,16 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 				dat += tnote
 				dat += "<br>"
+
+			if(64) //webmap
+				var/currentMapDir = "" // blank define
+				dat += "<h4>Station Map</h4>"
+				dat += "<center>"
+				currentMapDir = SSmapping.config.map_name
+				if(SSmapping.config.map_name == "PubbyStation") // Required because webmap dirs have no spaced, yet pubby name does.
+					currentMapDir = "PubbyStation"
+				dat += "<iframe src='https://oraclestation.com/maps/"+currentMapDir+"/index.html' width='475' height='475'>"
+				dat += "</center>"
 
 			if(41) //crew manifest
 				dat += "<h4>Crew Manifest</h4>"
