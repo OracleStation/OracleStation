@@ -478,7 +478,7 @@
 				eye_overlay.pixel_y += H.dna.species.offset_features[OFFSET_FACE][2]
 			standing += eye_overlay
 
-	//Underwear, Undershirts & Socks
+	//Underwear & Undershirts
 	if(!(NO_UNDERWEAR in species_traits))
 		if(H.underwear)
 			var/datum/sprite_accessory/underwear/underwear = GLOB.underwear_list[H.underwear]
@@ -493,10 +493,6 @@
 				else
 					standing += mutable_appearance(undershirt.icon, undershirt.icon_state, -BODY_LAYER)
 
-		if(H.socks && H.get_num_legs() >= 2 && !(DIGITIGRADE in species_traits))
-			var/datum/sprite_accessory/socks/socks = GLOB.socks_list[H.socks]
-			if(socks)
-				standing += mutable_appearance(socks.icon, socks.icon_state, -BODY_LAYER)
 
 	if(standing.len)
 		H.overlays_standing[BODY_LAYER] = standing
