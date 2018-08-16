@@ -730,3 +730,13 @@
 		/obj/item/stack/cable_coil = 2,
 		/obj/item/stock_parts/console_screen = 1,
 		/obj/item/stack/sheet/glass = 1)
+
+/obj/item/circuitboard/machine/generator
+	name = "Thermo-Electric Generator (Machine Board)"
+	build_path = /obj/machinery/power/generator
+	req_components = list()
+
+/obj/item/circuitboard/machine/circulator
+	name = "Circulator/Heat Exchanger (Machine Board)"
+	build_path = /obj/machinery/atmospherics/components/binary/circulator
+	req_components = list()

@@ -1,0 +1,4 @@
+\b[Rr]+[Ee]{2,}\b
+\b[Yy]+[Ee]{2,}[Tt]+([Ee][Dd])?([Ii][Nn][Gg])?\b
+\b[Nn][Ii][Gg]{2,}[Aa]?[Ee]?[Rr]?[Ss]?[Zz]?\b
+\b[Ff][Aa][Gg]{2,}[Oo][Tt]\b

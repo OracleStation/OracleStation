@@ -48,7 +48,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define BODY_BEHIND_LAYER		26		//certain mutantrace features (tail when looking south) that must appear behind the body parts
 #define BODYPARTS_LAYER			25		//Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
 #define BODY_ADJ_LAYER			24		//certain mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_LAYER				23		//underwear, undershirts, socks, eyes, lips(makeup)
+#define BODY_LAYER				23		//underwear, undershirts, eyes, lips(makeup)
 #define FRONT_MUTATIONS_LAYER	22		//mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
 #define DAMAGE_LAYER			21		//damage indicators (cuts and burns)
 #define UNIFORM_LAYER			20

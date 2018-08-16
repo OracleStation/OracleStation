@@ -131,6 +131,7 @@
 	B.holder = bucket
 	B.volume = 70
 	//set reagent data
+	B.data["species"] = null
 	B.data["donor"] = O
 
 	for(var/thing in O.viruses)

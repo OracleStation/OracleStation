@@ -710,6 +710,17 @@
 					/obj/item/am_containment)
 	crate_name = "antimatter jar crate"
 
+/datum/supply_pack/engineering/engine
+	name = "Thermoelectric Generator Crate"
+	cost = 5000
+	contains = list(
+		/obj/machinery/power/generator,
+		/obj/machinery/atmospherics/components/binary/circulator,
+		/obj/machinery/atmospherics/components/binary/circulator/cold)
+	crate_name = "teg crate"
+	crate_type = /obj/structure/closet/crate/secure/engineering
+	dangerous = TRUE
+
 /datum/supply_pack/engineering/shuttle_engine
 	name = "Shuttle Engine Crate"
 	cost = 5000
@@ -1769,5 +1780,3 @@
 	contains = list(/obj/vehicle/bicycle)
 	crate_name = "Bicycle Crate"
 	crate_type = /obj/structure/closet/crate/large
-
-

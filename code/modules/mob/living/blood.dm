@@ -160,6 +160,7 @@
 	if(blood_id == "blood") //actual blood reagent
 		var/blood_data = list()
 		//set the blood data
+		blood_data["species"] = dna.species.type
 		blood_data["donor"] = src
 		blood_data["viruses"] = list()
 

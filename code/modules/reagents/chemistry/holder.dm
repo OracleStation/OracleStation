@@ -372,6 +372,8 @@
 					if(!has_reagent(B, cached_required_catalysts[B]))
 						break
 					total_matching_catalysts++
+				if(!C.can_react(src))
+					continue
 				if(cached_my_atom)
 					if(!C.required_container)
 						matching_container = 1

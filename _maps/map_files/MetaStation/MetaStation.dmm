@@ -2897,11 +2897,11 @@
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/cigbutt/cigarbutt{
-	pixel_x = 5;
-	pixel_y = -1
-	},
 /obj/structure/table/wood,
+/obj/machinery/recharger{
+	pixel_x = 7;
+	pixel_y = 5
+	},
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/hos)
 "agk" = (
@@ -3148,6 +3148,9 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
+/obj/item/book/manual/wiki/security_sop{
+	pixel_x = 3
+	},
 /turf/open/floor/plasteel/vault,
 /area/security/prison)
 "agQ" = (
@@ -3228,7 +3231,12 @@
 /area/crew_quarters/heads/hos)
 "agW" = (
 /obj/structure/table/wood,
-/obj/machinery/recharger,
+/obj/item/book/manual/wiki/command_sop{
+	pixel_x = -5
+	},
+/obj/item/book/manual/wiki/security_sop{
+	pixel_x = 3
+	},
 /turf/open/floor/plasteel/black,
 /area/crew_quarters/heads/hos)
 "agX" = (
@@ -5101,6 +5109,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/machinery/syndicatebomb/training,
 /turf/open/floor/plasteel,
 /area/security/range)
 "ala" = (
@@ -5143,6 +5152,9 @@
 	pixel_y = 7
 	},
 /obj/item/pen,
+/obj/item/book/manual/wiki/general_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/neutral/corner{
 	dir = 4
 	},
@@ -6307,7 +6319,10 @@
 /area/security/main)
 "any" = (
 /obj/structure/table/reinforced,
-/obj/item/paper,
+/obj/item/book/manual/wiki/security_space_law{
+	pixel_x = -3;
+	pixel_y = 5
+	},
 /turf/open/floor/plasteel,
 /area/security/main)
 "anB" = (
@@ -8608,6 +8623,9 @@
 	pixel_x = -3;
 	pixel_y = 5
 	},
+/obj/item/book/manual/wiki/security_sop{
+	pixel_x = 3
+	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "ast" = (
@@ -8742,6 +8760,9 @@
 /obj/item/clothing/head/cone{
 	pixel_x = -4;
 	pixel_y = 4
+	},
+/obj/item/book/manual/wiki/security_sop{
+	pixel_x = 3
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
@@ -12183,13 +12204,12 @@
 /area/security/detectives_office)
 "azT" = (
 /obj/structure/table/wood,
-/obj/item/storage/fancy/cigarettes,
-/obj/item/clothing/glasses/sunglasses,
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/item/book/manual/wiki/security_sop,
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "azU" = (
@@ -12459,6 +12479,9 @@
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/item/clothing/suit/hooded/wintercoat/engineering,
 /obj/effect/turf_decal/delivery,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "aAr" = (
@@ -13115,6 +13138,9 @@
 /obj/effect/turf_decal/bot{
 	dir = 1
 	},
+/obj/item/book/manual/wiki/engineering_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel{
 	dir = 1
 	},
@@ -13543,6 +13569,8 @@
 	pixel_y = 7
 	},
 /obj/item/pen,
+/obj/item/storage/fancy/cigarettes,
+/obj/item/clothing/glasses/sunglasses,
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "aCw" = (
@@ -15122,6 +15150,9 @@
 /obj/item/folder,
 /obj/item/folder,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/item/book/manual/wiki/general_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/cult{
 	dir = 2
 	},
@@ -15144,6 +15175,9 @@
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
+	},
+/obj/item/book/manual/wiki/cargo_sop{
+	pixel_x = 5
 	},
 /turf/open/floor/plasteel/brown{
 	dir = 2
@@ -15549,6 +15583,9 @@
 	},
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_y = -30
+	},
+/obj/item/book/manual/wiki/security_sop{
+	pixel_x = 3
 	},
 /turf/open/floor/plasteel/black,
 /area/security/brig)
@@ -16242,6 +16279,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/item/airlock_painter,
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "aIc" = (
@@ -16688,6 +16726,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/top{
 	dir = 4
 	},
+/obj/item/book/manual/wiki/security_sop{
+	pixel_x = 3
+	},
 /turf/open/floor/plasteel/black,
 /area/hallway/primary/fore)
 "aIG" = (
@@ -16836,7 +16877,6 @@
 	dir = 8
 	},
 /obj/item/clothing/glasses/sunglasses/big,
-/obj/item/book/manual/wiki/ultimate_sop,
 /turf/open/floor/wood,
 /area/iaaoffice)
 "aIX" = (
@@ -16855,7 +16895,6 @@
 	},
 /obj/item/clothing/glasses/sunglasses,
 /obj/item/cartridge/iaa,
-/obj/item/book/manual/wiki/ultimate_sop,
 /turf/open/floor/wood,
 /area/iaaoffice)
 "aIY" = (
@@ -16973,8 +17012,8 @@
 /area/engine/engineering)
 "aJn" = (
 /obj/structure/table,
-/obj/item/airlock_painter,
 /obj/effect/turf_decal/delivery,
+/obj/item/book/manual/wiki/engineering_sop,
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "aJp" = (
@@ -18327,6 +18366,9 @@
 /obj/item/folder/yellow,
 /obj/item/folder/red,
 /obj/item/folder/blue,
+/obj/item/book/manual/wiki/ultimate_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/carpet,
 /area/iaaoffice)
 "aMV" = (
@@ -19753,6 +19795,9 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27
 	},
+/obj/item/book/manual/wiki/general_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/neutral/corner{
 	dir = 1
 	},
@@ -20005,6 +20050,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/item/book/manual/wiki/cargo_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
 "aQp" = (
@@ -20080,6 +20128,9 @@
 /obj/item/folder/yellow,
 /obj/item/folder/yellow,
 /obj/item/storage/firstaid/regular,
+/obj/item/book/manual/wiki/general_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/brown/corner{
 	dir = 1
 	},
@@ -20255,6 +20306,9 @@
 /obj/item/folder/yellow,
 /obj/item/folder/red,
 /obj/item/folder/blue,
+/obj/item/book/manual/wiki/ultimate_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/carpet,
 /area/iaaoffice)
 "aQN" = (
@@ -20694,6 +20748,9 @@
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
+	},
+/obj/item/book/manual/wiki/cargo_sop{
+	pixel_x = 5
 	},
 /turf/open/floor/plasteel/brown{
 	dir = 2
@@ -23205,6 +23262,9 @@
 	dir = 1;
 	network = list("SS13")
 	},
+/obj/item/book/manual/wiki/security_sop{
+	pixel_x = 3
+	},
 /turf/open/floor/plasteel/red/side,
 /area/security/checkpoint/supply)
 "aXp" = (
@@ -24600,6 +24660,9 @@
 /obj/machinery/newscaster/security_unit{
 	pixel_x = 30
 	},
+/obj/item/book/manual/wiki/security_sop{
+	pixel_x = 3
+	},
 /turf/open/floor/plasteel/red/side{
 	dir = 5
 	},
@@ -25093,6 +25156,9 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
+/obj/item/book/manual/wiki/general_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/brown{
 	dir = 5
 	},
@@ -25533,6 +25599,10 @@
 	pixel_y = 7
 	},
 /obj/item/pen,
+/obj/item/book/manual/wiki/engineering_sop{
+	pixel_x = 5
+	},
+/obj/item/book/manual/wiki/command_sop,
 /turf/open/floor/plasteel/neutral/side{
 	dir = 8
 	},
@@ -26214,6 +26284,9 @@
 /obj/item/book/manual/wiki/security_space_law{
 	pixel_x = -3;
 	pixel_y = 5
+	},
+/obj/item/book/manual/wiki/security_sop{
+	pixel_x = 3
 	},
 /turf/open/floor/plasteel/red/side{
 	dir = 9
@@ -27507,6 +27580,13 @@
 	pixel_x = -30;
 	pixel_y = 1
 	},
+/obj/item/book/manual/wiki/command_sop{
+	pixel_x = 5
+	},
+/obj/item/book/manual/wiki/crewResources_sop,
+/obj/item/book/manual/wiki/general_sop{
+	pixel_x = -5
+	},
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/captain/private)
 "bfz" = (
@@ -27790,6 +27870,9 @@
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -26
+	},
+/obj/item/book/manual/wiki/command_sop{
+	pixel_x = 5
 	},
 /turf/open/floor/plasteel/black,
 /area/ai_monitored/turret_protected/ai)
@@ -28694,6 +28777,9 @@
 	pixel_x = -23
 	},
 /obj/structure/table/glass,
+/obj/item/book/manual/wiki/engineering_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/yellow/side{
 	dir = 1
 	},
@@ -29061,6 +29147,9 @@
 /obj/item/folder/yellow,
 /obj/item/device/multitool,
 /obj/item/pen/red,
+/obj/item/book/manual/wiki/cargo_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/brown{
 	dir = 8
 	},
@@ -29133,6 +29222,9 @@
 /obj/item/grenade/chem_grenade/cleaner,
 /obj/item/grenade/chem_grenade/cleaner,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/book/manual/wiki/service_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel,
 /area/janitor)
 "biT" = (
@@ -29963,6 +30055,9 @@
 /obj/structure/cable/yellow{
 	d2 = 8;
 	icon_state = "0-8"
+	},
+/obj/item/book/manual/wiki/cargo_sop{
+	pixel_x = 5
 	},
 /turf/open/floor/plasteel/arrival{
 	dir = 6
@@ -31441,18 +31536,17 @@
 /area/engine/break_room)
 "bnh" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/security_space_law{
-	pixel_x = -3;
-	pixel_y = 5
-	},
 /obj/item/device/taperecorder{
 	pixel_x = -4
+	},
+/obj/item/book/manual/wiki/security_sop{
+	pixel_x = 3
 	},
 /turf/open/floor/plasteel,
 /area/security/main)
 "bni" = (
 /obj/structure/table,
-/obj/machinery/syndicatebomb/training,
+/obj/item/book/manual/wiki/security_sop,
 /turf/open/floor/plasteel,
 /area/security/main)
 "bnk" = (
@@ -31792,6 +31886,9 @@
 "bnQ" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/chips,
+/obj/item/book/manual/wiki/general_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/grimy,
 /area/hallway/primary/port)
 "bnR" = (
@@ -31961,14 +32058,25 @@
 /turf/open/floor/plating,
 /area/crew_quarters/heads/hop)
 "bom" = (
-/obj/item/folder/blue,
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/table/wood,
-/obj/item/device/assembly/flash/handheld,
+/obj/item/book/manual/wiki/command_sop{
+	pixel_x = 5
+	},
+/obj/item/book/manual/wiki/crewResources_sop{
+	pixel_x = 3
+	},
+/obj/item/book/manual/wiki/cargo_sop,
+/obj/item/book/manual/wiki/service_sop{
+	pixel_x = -3
+	},
+/obj/item/book/manual/wiki/general_sop{
+	pixel_x = -5
+	},
 /turf/open/floor/wood,
 /area/crew_quarters/heads/hop)
 "bon" = (
@@ -32047,12 +32155,7 @@
 	dir = 4
 	},
 /obj/structure/table/glass,
-/obj/item/folder/blue{
-	pixel_y = 2
-	},
-/obj/item/folder/blue{
-	pixel_y = 2
-	},
+/obj/item/book/manual/wiki/command_sop,
 /turf/open/floor/plasteel/black,
 /area/bridge)
 "boy" = (
@@ -32255,6 +32358,9 @@
 /obj/item/gun/ballistic/revolver/doublebarrel,
 /obj/machinery/light/small{
 	dir = 1
+	},
+/obj/item/book/manual/wiki/service_sop{
+	pixel_x = 5
 	},
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
@@ -33232,6 +33338,7 @@
 /obj/item/pen,
 /obj/structure/window/reinforced,
 /obj/structure/table/wood,
+/obj/item/folder/blue,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/hop)
 "bqC" = (
@@ -33350,6 +33457,8 @@
 	pixel_y = 8
 	},
 /obj/structure/table/glass,
+/obj/item/folder/blue,
+/obj/item/folder/blue,
 /turf/open/floor/plasteel/black,
 /area/bridge)
 "bqP" = (
@@ -34821,6 +34930,7 @@
 	network = list("MiniSat","tcomm");
 	pixel_y = -28
 	},
+/obj/item/book/manual/wiki/engineering_sop,
 /turf/open/floor/plasteel/darkblue/corner,
 /area/engine/break_room)
 "btH" = (
@@ -35220,6 +35330,16 @@
 /area/bridge)
 "buC" = (
 /obj/structure/bookcase,
+/obj/item/book/manual/wiki/general_sop,
+/obj/item/book/manual/wiki/engineering_sop,
+/obj/item/book/manual/wiki/medical_sop,
+/obj/item/book/manual/wiki/cargo_sop,
+/obj/item/book/manual/wiki/science_sop,
+/obj/item/book/manual/wiki/security_sop,
+/obj/item/book/manual/wiki/service_sop,
+/obj/item/book/manual/wiki/crewResources_sop,
+/obj/item/book/manual/wiki/command_sop,
+/obj/item/book/manual/wiki/security_space_law,
 /turf/open/floor/wood,
 /area/bridge)
 "buD" = (
@@ -35902,6 +36022,9 @@
 	},
 /obj/item/folder,
 /obj/item/folder,
+/obj/item/book/manual/wiki/general_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/cult{
 	dir = 2
 	},
@@ -35935,6 +36058,7 @@
 "bwk" = (
 /obj/structure/closet/secure_closet/hop,
 /obj/item/storage/secure/briefcase,
+/obj/item/device/assembly/flash/handheld,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/hop)
 "bwl" = (
@@ -36087,6 +36211,9 @@
 /obj/item/pen,
 /obj/machinery/light_switch{
 	pixel_x = 28
+	},
+/obj/item/book/manual/wiki/command_sop{
+	pixel_x = 5
 	},
 /turf/open/floor/plasteel/black,
 /area/bridge)
@@ -37284,6 +37411,9 @@
 	pixel_y = 7
 	},
 /obj/item/pen,
+/obj/item/book/manual/wiki/engineering_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/caution{
 	dir = 1
 	},
@@ -37794,6 +37924,9 @@
 	},
 /obj/item/pen,
 /obj/effect/turf_decal/delivery,
+/obj/item/book/manual/wiki/general_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/command)
 "bzR" = (
@@ -39070,6 +39203,9 @@
 /area/security/vacantoffice)
 "bCM" = (
 /obj/structure/table/wood,
+/obj/item/book/manual/wiki/general_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/wood,
 /area/security/vacantoffice)
 "bCN" = (
@@ -41617,6 +41753,10 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
+/obj/item/book/manual/wiki/service_sop{
+	pixel_x = 5
+	},
+/obj/item/book/manual/wiki/general_sop,
 /turf/open/floor/wood,
 /area/library)
 "bHW" = (
@@ -45248,6 +45388,9 @@
 	},
 /obj/item/pen,
 /obj/effect/decal/cleanable/cobweb,
+/obj/item/book/manual/wiki/general_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/wood,
 /area/library)
 "bPP" = (
@@ -45870,6 +46013,9 @@
 	pixel_y = 7
 	},
 /obj/item/pen/invisible,
+/obj/item/book/manual/wiki/service_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/engine/cult,
 /area/library)
 "bRm" = (
@@ -47351,6 +47497,9 @@
 	pixel_y = 8
 	},
 /obj/item/pen,
+/obj/item/book/manual/wiki/general_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/green,
 /area/hallway/primary/central)
 "bUe" = (
@@ -49133,6 +49282,9 @@
 	pixel_y = -2
 	},
 /obj/structure/table/glass,
+/obj/item/book/manual/wiki/service_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/green,
 /area/hydroponics)
 "bYf" = (
@@ -49510,6 +49662,9 @@
 	pixel_y = -2
 	},
 /obj/item/reagent_containers/dropper,
+/obj/item/book/manual/wiki/medical_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/whiteblue/side{
 	dir = 1
 	},
@@ -49623,6 +49778,9 @@
 	pixel_y = 10
 	},
 /obj/item/device/radio/off,
+/obj/item/book/manual/wiki/security_sop{
+	pixel_x = 3
+	},
 /turf/open/floor/plasteel/red/side{
 	dir = 5
 	},
@@ -50310,6 +50468,9 @@
 	dir = 2;
 	network = list("SS13","RD")
 	},
+/obj/item/book/manual/wiki/science_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/whitepurple/side{
 	dir = 1
 	},
@@ -50373,6 +50534,9 @@
 /obj/machinery/firealarm{
 	dir = 4;
 	pixel_x = 24
+	},
+/obj/item/book/manual/wiki/security_sop{
+	pixel_x = 3
 	},
 /turf/open/floor/plasteel/red/side{
 	dir = 5
@@ -53057,6 +53221,9 @@
 	pixel_x = 11;
 	pixel_y = 23
 	},
+/obj/item/book/manual/wiki/medical_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/vault,
 /area/medical/sleeper)
 "cfL" = (
@@ -53922,7 +54089,12 @@
 	pixel_y = 32
 	},
 /obj/structure/table/glass,
-/obj/item/device/radio/off,
+/obj/item/book/manual/wiki/science_sop{
+	pixel_x = 5
+	},
+/obj/item/device/radio/off{
+	pixel_x = -5
+	},
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
 	},
@@ -56261,6 +56433,9 @@
 /obj/item/stack/packageWrap,
 /obj/item/hand_labeler,
 /obj/structure/table/glass,
+/obj/item/book/manual/wiki/medical_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/whiteyellow/side{
 	dir = 4
 	},
@@ -56303,6 +56478,9 @@
 	pixel_y = 6
 	},
 /obj/structure/table,
+/obj/item/book/manual/wiki/science_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/white,
 /area/science/lab)
 "cmH" = (
@@ -56424,6 +56602,9 @@
 /obj/item/pen,
 /obj/effect/turf_decal/stripes/line{
 	dir = 2
+	},
+/obj/item/book/manual/wiki/science_sop{
+	pixel_x = 5
 	},
 /turf/open/floor/plasteel,
 /area/science/explab)
@@ -56782,6 +56963,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/item/pen,
 /turf/open/floor/plasteel/barber{
 	dir = 8
 	},
@@ -59450,9 +59632,10 @@
 	icon_state = "4-8"
 	},
 /obj/structure/table/glass,
-/obj/item/folder/blue,
-/obj/item/folder/blue,
-/obj/item/pen,
+/obj/item/book/manual/wiki/command_sop{
+	pixel_x = 5
+	},
+/obj/item/book/manual/wiki/medical_sop,
 /turf/open/floor/plasteel/barber{
 	dir = 8
 	},
@@ -61671,6 +61854,10 @@
 	pixel_y = -1
 	},
 /obj/item/pen,
+/obj/item/book/manual/wiki/science_sop{
+	pixel_x = -5
+	},
+/obj/item/book/manual/wiki/command_sop,
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
 	},
@@ -62621,6 +62808,9 @@
 	pixel_y = 4
 	},
 /obj/structure/table/glass,
+/obj/item/book/manual/wiki/medical_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/white/side{
 	dir = 2
 	},
@@ -62848,6 +63038,9 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
+	},
+/obj/item/book/manual/wiki/science_sop{
+	pixel_x = -5
 	},
 /turf/open/floor/plasteel,
 /area/science/misc_lab/range)
@@ -63178,6 +63371,9 @@
 	pixel_x = -24
 	},
 /obj/structure/table/glass,
+/obj/item/book/manual/wiki/medical_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/vault,
 /area/medical/genetics/cloning)
 "czY" = (
@@ -63877,6 +64073,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
+/obj/item/book/manual/wiki/science_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel,
 /area/science/mixing)
 "cBw" = (
@@ -64222,6 +64421,10 @@
 	pixel_x = -4
 	},
 /obj/effect/landmark/revenantspawn,
+/obj/item/folder/white{
+	pixel_x = 4;
+	pixel_y = -3
+	},
 /turf/open/floor/plasteel/black,
 /area/medical/morgue)
 "cCl" = (
@@ -64594,6 +64797,7 @@
 	name = "Station Intercom (General)";
 	pixel_x = 29
 	},
+/obj/item/clothing/gloves/color/latex,
 /turf/open/floor/plasteel/black,
 /area/medical/morgue)
 "cCZ" = (
@@ -64700,6 +64904,9 @@
 	pixel_y = 4
 	},
 /obj/effect/turf_decal/delivery,
+/obj/item/book/manual/wiki/science_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
 "cDh" = (
@@ -65186,11 +65393,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/item/folder/white{
-	pixel_x = 4;
-	pixel_y = -3
-	},
-/obj/item/clothing/gloves/color/latex,
+/obj/item/book/manual/wiki/medical_sop,
 /turf/open/floor/plasteel/black,
 /area/medical/morgue)
 "cEf" = (
@@ -65486,6 +65689,9 @@
 /obj/structure/table/glass,
 /obj/structure/sign/deathsposal{
 	pixel_x = -30
+	},
+/obj/item/book/manual/wiki/medical_sop{
+	pixel_x = 5
 	},
 /turf/open/floor/plasteel/whitegreen/side{
 	dir = 8
@@ -68377,6 +68583,9 @@
 	pixel_y = -3
 	},
 /obj/item/pen,
+/obj/item/book/manual/wiki/science_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/black,
 /area/science/server)
 "cJU" = (
@@ -69766,6 +69975,9 @@
 	icon_state = "1-2"
 	},
 /obj/structure/table/wood,
+/obj/item/book/manual/wiki/service_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/grimy,
 /area/chapel/office)
 "cMH" = (
@@ -69854,6 +70066,9 @@
 /obj/structure/table/wood,
 /obj/structure/noticeboard{
 	pixel_y = 29
+	},
+/obj/item/book/manual/wiki/general_sop{
+	pixel_x = 5
 	},
 /turf/open/floor/plasteel/vault,
 /area/chapel/main)
@@ -70711,6 +70926,9 @@
 	pixel_y = 7
 	},
 /obj/item/pen,
+/obj/item/book/manual/wiki/security_sop{
+	pixel_x = 3
+	},
 /turf/open/floor/plasteel/red/side,
 /area/hallway/secondary/exit/departure_lounge)
 "cOz" = (
@@ -73019,6 +73237,9 @@
 /obj/structure/table,
 /obj/effect/turf_decal/stripes/line{
 	dir = 2
+	},
+/obj/item/book/manual/wiki/science_sop{
+	pixel_x = 5
 	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
@@ -77077,6 +77298,9 @@
 	},
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/item/book/manual/wiki/science_sop{
+	pixel_x = 5
 	},
 /turf/open/floor/plasteel/whitepurple/side{
 	dir = 1
@@ -82082,6 +82306,9 @@
 	pixel_y = 7
 	},
 /obj/item/pen,
+/obj/item/book/manual/wiki/security_sop{
+	pixel_x = 3
+	},
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "dEG" = (
@@ -84282,6 +84509,17 @@
 /obj/machinery/photocopier,
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/recreation)
+"dOb" = (
+/obj/structure/table/reinforced,
+/obj/item/paper_bin{
+	pixel_x = -2;
+	pixel_y = 6
+	},
+/obj/item/book/manual/wiki/general_sop{
+	pixel_x = 5
+	},
+/turf/open/floor/plasteel/purple,
+/area/hallway/primary/aft)
 "dRD" = (
 /obj/machinery/button/door{
 	id = "kitchen";
@@ -84371,6 +84609,15 @@
 /obj/machinery/door/window{
 	name = "Kitchen Windoor";
 	req_access_txt = "28"
+	},
+/turf/open/floor/plasteel/cafeteria{
+	dir = 5
+	},
+/area/crew_quarters/kitchen)
+"gza" = (
+/obj/structure/table,
+/obj/item/book/manual/wiki/service_sop{
+	pixel_x = 5
 	},
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
@@ -84606,6 +84853,9 @@
 /obj/item/clothing/glasses/monocle,
 /obj/item/clothing/head/sombrero,
 /obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/book/manual/wiki/service_sop{
+	pixel_x = 5
+	},
 /turf/open/floor/wood,
 /area/crew_quarters/theatre)
 "mOX" = (
@@ -84677,6 +84927,15 @@
 	},
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
+"osC" = (
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/structure/table,
+/obj/item/book/manual/wiki/security_sop,
+/turf/open/floor/plasteel,
+/area/security/brig)
 "oAT" = (
 /turf/open/floor/plasteel/vault{
 	dir = 5
@@ -84756,6 +85015,10 @@
 /area/crew_quarters/cafeteria)
 "qNv" = (
 /obj/structure/table/wood,
+/obj/item/book/manual/wiki/service_sop{
+	pixel_x = 5
+	},
+/obj/item/book/manual/wiki/general_sop,
 /turf/open/floor/plasteel/bar,
 /area/crew_quarters/cafeteria)
 "rjl" = (
@@ -84776,6 +85039,13 @@
 	dir = 5
 	},
 /area/crew_quarters/kitchen)
+"rlW" = (
+/obj/structure/table/reinforced,
+/obj/item/book/manual/wiki/general_sop{
+	pixel_x = 5
+	},
+/turf/open/floor/wood,
+/area/crew_quarters/bar)
 "rrq" = (
 /obj/item/device/radio/intercom{
 	name = "Station Intercom (General)";
@@ -110894,7 +111164,7 @@ anr
 apG
 awc
 axd
-dIJ
+osC
 azG
 dIT
 dJa
@@ -113028,7 +113298,7 @@ cvH
 cAk
 cBf
 cvH
-cqv
+dOb
 cEi
 cCq
 cCq
@@ -119162,7 +119432,7 @@ bKh
 kJW
 bLM
 bOS
-bOS
+gza
 bQD
 bRS
 bST
@@ -121209,7 +121479,7 @@ bmP
 buR
 bwV
 oAT
-rFU
+rlW
 oeM
 byC
 bFt

@@ -40,7 +40,7 @@ There are several things that need to be remembered:
 >	There are also these special cases:
 		update_damage_overlays()	//handles damage overlays for brute/burn damage
 		update_body()				//Handles updating your mob's body layer and mutant bodyparts
-									as well as sprite-accessories that didn't really fit elsewhere (underwear, undershirts, socks, lips, eyes)
+									as well as sprite-accessories that didn't really fit elsewhere (underwear, undershirts, lips, eyes)
 									//NOTE: update_mutantrace() is now merged into this!
 		update_hair()				//Handles updating your hair overlay (used to be update_face, but mouth and
 									eyes were merged into update_body())
