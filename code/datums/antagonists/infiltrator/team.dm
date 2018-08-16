@@ -8,9 +8,9 @@
 
 /datum/team/infiltrator/proc/add_objective(type)
 	var/datum/objective/O = new type
-	O.find_target()
 	O.team = src
 	objectives += O
+	O.find_target()
 
 /datum/team/infiltrator/proc/update_objectives()
 	if(LAZYLEN(objectives))
