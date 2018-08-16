@@ -365,6 +365,9 @@
 /datum/action/item_action/hands_free/activate
 	name = "Activate"
 
+/datum/action/item_action/hands_free/uplink
+	name = "Open Uplink"
+
 /datum/action/item_action/hands_free/shift_nerves
 	name = "Shift Nerves"
 

@@ -202,6 +202,7 @@ update_label("John Doe", "Clowny")
 			else if(result == "Toggle AI Jamming") //This might be a bit OP but people can be stupid so I dunno.
 				ai_jam = !ai_jam
 				to_chat(user, "<span class='notice'>You turn the anti-tracking functionality on the card [ai_jam ? "on" : "off"].")
+				return
 	..()
 
 /obj/item/card/id/syndicate/anyone

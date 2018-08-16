@@ -18,7 +18,7 @@ GLOBAL_LIST_INIT(infiltrator_kidnap_areas, typecacheof(list(/area/shuttle/stealt
 				new item_type(T)
 
 /datum/objective/infiltrator/exploit
-	explanation_text = "Ensure there is at least 1 hijacked AI."
+	explanation_text = "Ensure there is at least 1 hijacked AI. Use the serial exploitation unit to hijack an AI."
 	item_type = /obj/item/ai_hijack_device
 
 
@@ -32,9 +32,9 @@ GLOBAL_LIST_INIT(infiltrator_kidnap_areas, typecacheof(list(/area/shuttle/stealt
 /datum/objective/infiltrator/exploit/update_explanation_text()
 	..()
 	if(target && target.current)
-		explanation_text = "Hijack [station_name()]'s AI unit, [target.name]."
+		explanation_text = "Hijack [station_name()]'s AI unit, [target.name], with the serial exploitation unit."
 	else
-		explanation_text = "Ensure there is at least 1 hijacked AI on [station_name()]."
+		explanation_text = "Ensure there is at least 1 hijacked AI on [station_name()]. Use the serial exploitation unit to hijack an AI."
 
 /datum/objective/infiltrator/exploit/check_completion()
 	if(!target)
