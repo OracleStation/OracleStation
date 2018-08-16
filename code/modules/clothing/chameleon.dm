@@ -148,6 +148,9 @@
 		var/obj/item/clothing/suit/space/hardsuit/infiltration/I = target
 		var/obj/item/clothing/suit/space/hardsuit/HS = new picked_item
 		update_item(HS.helmettype, I.head_piece)
+		var/mob/living/M = owner
+		if(istype(M))
+			M.update_inv_head()
 		QDEL_NULL(HS)
 	target.icon = initial(picked_item.icon)
 
