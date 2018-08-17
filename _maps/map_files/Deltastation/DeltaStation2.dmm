@@ -74185,7 +74185,7 @@
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "cOM" = (
-/obj/machinery/chem_dispenser/constructable,
+/obj/machinery/chem_dispenser,
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/science/xenobiology)

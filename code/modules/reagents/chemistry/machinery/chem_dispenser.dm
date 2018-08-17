@@ -15,8 +15,12 @@
 	var/amount = 30
 	var/recharged = 0
 	var/recharge_delay = 5
+	var/recharge_amount = 10
+	var/recharge_counter = 0
+	var/macrotier = 1
 	var/mutable_appearance/beaker_overlay
 	var/obj/item/reagent_containers/beaker = null
+	var/list/saved_recipes = list()
 	var/list/dispensable_reagents = list(
 		"hydrogen",
 		"lithium",
@@ -58,13 +62,21 @@
 	recharge()
 	dispensable_reagents = sortList(dispensable_reagents)
 
-/obj/machinery/chem_dispenser/process()
+/obj/machinery/chem_dispenser/examine(mob/user)
+	..()
+	if(panel_open)
+		to_chat(user, "<span class='notice'>[src]'s maintenance hatch is open!</span>")
 
-	if(recharged < 0)
-		recharge()
-		recharged = recharge_delay
-	else
-		recharged -= 1
+/obj/machinery/chem_dispenser/process()
+	if (recharge_counter >= 4)
+		if(!is_operational())
+			return
+		var/usedpower = cell.give(recharge_amount)
+		if(usedpower)
+			use_power(250*recharge_amount)
+		recharge_counter = 0
+		return
+	recharge_counter++
 
 /obj/machinery/chem_dispenser/proc/recharge()
 	if(stat & (BROKEN|NOPOWER))
@@ -130,6 +142,7 @@
 		data["beakerTransferAmounts"] = null
 
 	var chemicals[0]
+	var/recipes[0]
 	var/is_hallucinating = FALSE
 	if(user.hallucinating())
 		is_hallucinating = TRUE
@@ -140,7 +153,10 @@
 			if(is_hallucinating && prob(5))
 				chemname = "[pick_list_replacements("hallucination.json", "chemicals")]"
 			chemicals.Add(list(list("title" = chemname, "id" = temp.id)))
+	for(var/recipe in saved_recipes)
+		recipes.Add(list(recipe))
 	data["chemicals"] = chemicals
+	data["recipes"] = recipes
 	return data
 
 /obj/machinery/chem_dispenser/ui_act(action, params)
@@ -169,13 +185,72 @@
 				. = TRUE
 		if("eject")
 			if(beaker)
-				beaker.forceMove(loc)
+				beaker.forceMove(drop_location())
+				if(Adjacent(usr) && !issilicon(usr))
+					usr.put_in_hands(beaker)
 				beaker = null
 				cut_overlays()
 				. = TRUE
+		if("dispense_recipe")
+			if(!is_operational() || QDELETED(cell))
+				return
+			var/recipe_to_use = params["recipe"]
+			var/list/chemicals_to_dispense = process_recipe_list(recipe_to_use)
+			var/res = get_macro_resolution()
+			for(var/key in chemicals_to_dispense) // i suppose you could edit the list locally before passing it
+				var/list/keysplit = splittext(key," ")
+				var/r_id = keysplit[1]
+				if(beaker && dispensable_reagents.Find(r_id)) // but since we verify we have the reagent, it'll be fine
+					var/datum/reagents/R = beaker.reagents
+					var/free = R.maximum_volume - R.total_volume
+					var/actual = min(round(chemicals_to_dispense[key], res), (cell.charge * powerefficiency)*10, free)
+					if(actual)
+						if(!cell.use(actual / powerefficiency))
+							say("Not enough energy to complete operation!")
+							return
+						R.add_reagent(r_id, actual)
+		if("clear_recipes")
+			if(!is_operational())
+				return
+			var/yesno = alert("Clear all recipes?",, "Yes","No")
+			if(yesno == "Yes")
+				saved_recipes = list()
+		if("add_recipe")
+			if(!is_operational())
+				return
+			var/name = stripped_input(usr,"Name","What do you want to name this recipe?", "Recipe", MAX_NAME_LEN)
+			var/recipe = stripped_input(usr,"Recipe","Insert recipe with chem IDs")
+			if(!usr.canUseTopic(src, !issilicon(usr)))
+				return
+			if(name && recipe)
+				var/list/first_process = splittext(recipe, ";")
+				if(!LAZYLEN(first_process))
+					return
+				var/res = get_macro_resolution()
+				var/resmismatch = FALSE
+				for(var/reagents in first_process)
+					var/list/reagent = splittext(reagents, "=")
+					if(dispensable_reagents.Find(reagent[1]))
+						if (!resmismatch && !check_macro_part(reagents, res))
+							resmismatch = TRUE
+						continue
+					else
+						var/chemid = reagent[1]
+						visible_message("<span class='warning'>[src] buzzes.</span>", "<span class='italics'>You hear a faint buzz.</span>")
+						to_chat(usr, "<span class ='danger'>[src] cannot find Chemical ID: <b>[chemid]</b>!</span>")
+						playsound(src, 'sound/machines/buzz-two.ogg', 50, 1)
+						return
+				if (resmismatch && alert("[src] is not yet capable of replicating this recipe with the precision it needs, do you want to save it anyway?",, "Yes","No") == "No")
+					return
+				saved_recipes += list(list("recipe_name" = name, "contents" = recipe))
 
 /obj/machinery/chem_dispenser/attackby(obj/item/I, mob/user, params)
 	if(default_unfasten_wrench(user, I))
+		return
+	if(default_deconstruction_screwdriver(user, icon_state, icon_state, I))
+		update_icon()
+		return
+	if(default_deconstruction_crowbar(I))
 		return
 
 	if(istype(I, /obj/item/reagent_containers) && (I.container_type & OPENCONTAINER_1))
@@ -220,88 +295,54 @@
 	visible_message("<span class='danger'> The [src] malfunctions, spraying chemicals everywhere!</span>")
 	..()
 
-/obj/machinery/chem_dispenser/constructable
-	name = "portable chem dispenser"
-	icon = 'goon/icons/obj/chemical.dmi'
-	icon_state = "minidispenser"
-	powerefficiency = 0.001
-	amount = 5
-	recharge_delay = 30
-	dispensable_reagents = list()
-	circuit = /obj/item/circuitboard/machine/chem_dispenser
-	var/static/list/dispensable_reagent_tiers = list(
-		list(
-			"hydrogen",
-			"oxygen",
-			"silicon",
-			"phosphorus",
-			"sulfur",
-			"carbon",
-			"nitrogen",
-			"water"
-		),
-		list(
-			"lithium",
-			"sugar",
-			"sacid",
-			"copper",
-			"mercury",
-			"sodium",
-			"iodine",
-			"bromine"
-		),
-		list(
-			"ethanol",
-			"chlorine",
-			"potassium",
-			"aluminium",
-			"radium",
-			"fluorine",
-			"iron",
-			"welding_fuel",
-			"silver",
-			"stable_plasma"
-		),
-		list(
-			"oil",
-			"ash",
-			"acetone",
-			"saltpetre",
-			"ammonia",
-			"diethylamine"
-		)
-	)
 
-/obj/machinery/chem_dispenser/constructable/RefreshParts()
-	var/time = 0
-	var/i
+/obj/machinery/chem_dispenser/RefreshParts()
+	recharge_amount = initial(recharge_amount)
+	var/newpowereff = 0.0666666
 	for(var/obj/item/stock_parts/cell/P in component_parts)
 		cell = P
 	for(var/obj/item/stock_parts/matter_bin/M in component_parts)
-		time += M.rating
+		newpowereff += 0.0166666666*M.rating
 	for(var/obj/item/stock_parts/capacitor/C in component_parts)
-		time += C.rating
-	recharge_delay /= time/2         //delay between recharges, double the usual time on lowest 50% less than usual on highest
+		recharge_amount *= C.rating
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		for(i=1, i<=M.rating, i++)
-			dispensable_reagents |= dispensable_reagent_tiers[i]
-	dispensable_reagents = sortList(dispensable_reagents)
+		if (M.rating > macrotier)
+			macrotier = M.rating
+	powerefficiency = round(newpowereff, 0.01)
 
-/obj/machinery/chem_dispenser/constructable/attackby(obj/item/I, mob/user, params)
-	if(default_deconstruction_screwdriver(user, "minidispenser-o", "minidispenser", I))
-		return
-
-	if(exchange_parts(user, I))
-		return
-
-	if(default_deconstruction_crowbar(I))
-		return
+/obj/machinery/chem_dispenser/on_deconstruction()
+	cell = null
+	if(beaker)
+		beaker.forceMove(drop_location())
+		beaker = null
 	return ..()
 
-/obj/machinery/chem_dispenser/constructable/on_deconstruction()
-	if(beaker)
-		beaker.loc = loc
-		beaker = null
+/obj/machinery/chem_dispenser/proc/get_macro_resolution()
+	. = 5
+	if (macrotier > 1)
+		. -= macrotier // 5 for tier1, 3 for 2, 2 for 3, 1 for 4.
+
+/obj/machinery/chem_dispenser/proc/check_macro(macro)
+	var/res = get_macro_resolution()
+	for (var/reagent in splittext(trim(macro), ";"))
+		if (!check_macro_part(reagent, res))
+			return FALSE
+	return TRUE
+
+/obj/machinery/chem_dispenser/proc/check_macro_part(var/part, var/res = get_macro_resolution())
+	var/detail = splittext(part, "=")
+	if (round(text2num(detail[2]), res) != text2num(detail[2]))
+		return FALSE
+	return TRUE
+
+/obj/machinery/chem_dispenser/proc/process_recipe_list(var/fucking_hell)
+	var/list/key_list = list()
+	var/list/final_list = list()
+	var/list/first_process = splittext(fucking_hell, ";")
+	for(var/reagents in first_process)
+		var/list/fuck = splittext(reagents, "=")
+		final_list += list(avoid_assoc_duplicate_keys(fuck[1],key_list) = text2num(fuck[2]))
+	return final_list
 
 /obj/machinery/chem_dispenser/drinks
 	name = "soda dispenser"

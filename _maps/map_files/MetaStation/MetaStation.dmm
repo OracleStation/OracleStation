@@ -77678,7 +77678,7 @@
 	},
 /area/science/xenobiology)
 "dcL" = (
-/obj/machinery/chem_dispenser/constructable,
+/obj/machinery/chem_dispenser,
 /obj/machinery/light,
 /turf/open/floor/plasteel/whitepurple/side,
 /area/science/xenobiology)
