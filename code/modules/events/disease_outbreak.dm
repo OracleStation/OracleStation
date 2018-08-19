@@ -7,9 +7,7 @@
 
 /datum/round_event/disease_outbreak
 	announceWhen	= 15
-
 	var/virus_type
-
 	var/max_severity = 3
 
 
@@ -22,7 +20,7 @@
 
 /datum/round_event/disease_outbreak/start()
 	var/advanced_virus = FALSE
-	max_severity = 3 + max(Floor((world.time - control.earliest_start)/6000),0) //3 symptoms at 20 minutes, plus 1 per 10 minutes
+	max_severity = 3 + max(Floor((world.time - control.earliest_start)/6000, 1),0) //3 symptoms at 20 minutes, plus 1 per 10 minutes
 	if(prob(20 + (10 * max_severity)))
 		advanced_virus = TRUE
 
@@ -61,16 +59,19 @@
 			else
 				D = new virus_type()
 		else
-			D = make_virus(max_severity, max_severity)
+			D = new /datum/disease/advance/random(max_severity, max_severity)
+		if(!H.CanContractDisease(D))
+			QDEL_NULL(D)
+			continue
 		D.carrier = TRUE
-		H.AddDisease(D)
+		H.ForceContractDisease(D, FALSE, TRUE)
 
 		if(advanced_virus)
 			var/datum/disease/advance/A = D
 			var/list/name_symptoms = list() //for feedback
 			for(var/datum/symptom/S in A.symptoms)
 				name_symptoms += S.name
-			message_admins("An event has triggered a random advanced virus outbreak on [key_name_admin(H)]! It has these symptoms: [english_list(name_symptoms)]")
+			message_admins("An event has triggered a random advanced virus outbreak on [ADMIN_LOOKUPFLW(H)]! It has these symptoms: [english_list(name_symptoms)]")
 			log_game("An event has triggered a random advanced virus outbreak on [key_name(H)]! It has these symptoms: [english_list(name_symptoms)]")
 		break
 
