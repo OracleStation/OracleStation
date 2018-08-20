@@ -140,7 +140,6 @@
 		data["beakerTransferAmounts"] = null
 
 	var chemicals[0]
-	var/recipes[0]
 	var/is_hallucinating = FALSE
 	if(user.hallucinating())
 		is_hallucinating = TRUE
