@@ -1384,7 +1384,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 
 /datum/uplink_item/services/fake_ion
 	name = "Fake Ion Storm"
-	desc = "Fakes an ion storm announcment. A good distraction, especially if the AI is weird anyways."
+	desc = "Fakes an ion storm announcment. A good distraction, especially if the AI is weird anyway."
 	item = /obj/item/device/service/ion
 	cost = 7
 
