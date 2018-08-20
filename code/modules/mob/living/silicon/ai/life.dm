@@ -23,6 +23,9 @@
 				icon_state = "ai-notmalf"
 				QDEL_NULL(hijacking)
 				cut_overlays()
+				for(var/datum/objective/infiltrator/exploit/O in GLOB.objectives)
+					if(O.target == src || !O.target)
+						O.hijacked = TRUE
 
 		if(malfhack && malfhack.aidisabled)
 			deltimer(malfhacking)

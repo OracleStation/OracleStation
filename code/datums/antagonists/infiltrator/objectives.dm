@@ -20,7 +20,7 @@ GLOBAL_LIST_INIT(infiltrator_kidnap_areas, typecacheof(list(/area/shuttle/stealt
 /datum/objective/infiltrator/exploit
 	explanation_text = "Ensure there is at least 1 hijacked AI. Use the serial exploitation unit to hijack an AI."
 	item_type = /obj/item/ai_hijack_device
-
+	var/hijacked = FALSE
 
 /datum/objective/infiltrator/exploit/find_target()
 	var/list/possible_targets = active_ais(1)
@@ -37,12 +37,7 @@ GLOBAL_LIST_INIT(infiltrator_kidnap_areas, typecacheof(list(/area/shuttle/stealt
 		explanation_text = "Ensure there is at least 1 hijacked AI on [station_name()]. Use the serial exploitation unit to hijack an AI."
 
 /datum/objective/infiltrator/exploit/check_completion()
-	if(!target)
-		return LAZYLEN(get_antag_minds(/datum/antagonist/hijacked_ai))
-	if(isAI(target))
-		var/mob/living/silicon/ai/A = target
-		return A && A.mind && A.mind.has_antag_datum(/datum/antagonist/hijacked_ai)
-	return FALSE
+	return hijacked
 
 
 /datum/objective/infiltrator/power
