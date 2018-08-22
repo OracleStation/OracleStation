@@ -190,6 +190,10 @@
 	max_ammo = 30
 	multiple_sprites = 2
 
+/obj/item/ammo_box/magazine/m556/arg
+	icon_state = "arg"
+	origin_tech = "combat=5"
+
 /obj/item/ammo_box/magazine/m12g
 	name = "shotgun magazine (12g taser slugs)"
 	desc = "A drum magazine."
