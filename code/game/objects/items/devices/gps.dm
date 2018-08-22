@@ -79,8 +79,8 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	if(!tracking || emped) //Do not bother scanning if the GPS is off or EMPed
 		return data
 
-	var/turf/curr = get_turf(src)
-	data["current"] = "[get_area_name(curr)] ([curr.x], [curr.y], [curr.z])"
+	locked_location = get_turf(src)
+	data["current"] = "[get_area_name(locked_location)] ([locked_location.x], [locked_location.y], [locked_location.z])"
 
 	var/list/signals = list()
 	data["signals"] = list()
@@ -90,17 +90,17 @@ GLOBAL_LIST_EMPTY(GPS_list)
 		if(G.emped || !G.tracking || G == src)
 			continue
 		var/turf/pos = get_turf(G)
-		if(!global_mode && pos.z != curr.z)
+		if(!global_mode && pos.z != locked_location.z)
 			continue
 		var/area/gps_area = get_area_name(G)
 		var/list/signal = list()
 		signal["entrytag"] = G.gpstag //Name or 'tag' of the GPS
 		signal["area"] = format_text(gps_area)
 		signal["coord"] = "[pos.x], [pos.y], [pos.z]"
-		if(pos.z == curr.z) //Distance/Direction calculations for same z-level only
-			signal["dist"] = max(get_dist(curr, pos), 0) //Distance between the src and remote GPS turfs
-			signal["degrees"] = round(Get_Angle(curr, pos)) //0-360 degree directional bearing, for more precision.
-			var/direction = uppertext(dir2text(get_dir(curr, pos))) //Direction text (East, etc). Not as precise, but still helpful.
+		if(pos.z == locked_location.z) //Distance/Direction calculations for same z-level only
+			signal["dist"] = max(get_dist(locked_location, pos), 0) //Distance between the src and remote GPS turfs
+			signal["degrees"] = round(Get_Angle(locked_location, pos)) //0-360 degree directional bearing, for more precision.
+			var/direction = uppertext(dir2text(get_dir(locked_location, pos))) //Direction text (East, etc). Not as precise, but still helpful.
 			if(!direction)
 				direction = "CENTER"
 				signal["degrees"] = "N/A"
@@ -190,7 +190,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	START_PROCESSING(SSfastprocess, src)
 
 /obj/item/device/gps/visible_debug/process()
-	var/turf/T = get_turf(src)
+	var/turf/T  = get_turf(src)
 	if(T)
 		// I assume it's faster to color,tag and OR the turf in, rather
 		// then checking if its there
