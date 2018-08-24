@@ -151,20 +151,29 @@
 			if(mob.client && mob.client.prefs && mob.client.prefs.chat_toggles & CHAT_LOOC)
 				clients_to_hear += mob.client
 
+	var/message_admin = "<span class='looc'>LOOC: [ADMIN_LOOKUPFLW(mob)]: [msg]</span>"
+	var/message_admin_remote = "<span class='looc'><font color='black'>(R)</font>LOOC: [ADMIN_LOOKUPFLW(mob)]: [msg]</span>"
+	var/message_regular
+
+	if(isobserver(mob)) //if you're a spooky ghost
+		if((prefs.chat_toggles & CHAT_ANONDCHAT)) //if you want to stay anonymous with your ckey
+			message_regular = "<span class='looc'>LOOC: Ghost of [mob.real_name]: [msg]</span>"
+		else
+			var/key_to_print = mob.key
+			if(holder && holder.fakekey)
+				key_to_print = holder.fakekey //stealthminning
+			message_regular = "<span class='looc'>LOOC: [key_to_print]: [msg]</span>"
+	else
+		message_regular = "<span class='looc'>LOOC: [mob.name]: [msg]</span>"
+
 	for(var/client/C in GLOB.clients)
 		if(C in GLOB.admins)
 			if(C in clients_to_hear)
-				to_chat(C, "<span class='looc'>LOOC: [ADMIN_LOOKUPFLW(mob)]: [msg]</span>")
+				to_chat(C, message_admin)
 			else
-				to_chat(C, "<span class='looc'><font color='black'>(R)</font>LOOC: [ADMIN_LOOKUPFLW(mob)]: [msg]</span>")
+				to_chat(C, message_admin_remote)
 		else if(C in clients_to_hear)
-			if(isobserver(mob))
-				if((prefs.chat_toggles & CHAT_ANONDCHAT))
-					to_chat(C, "<span class='looc'>LOOC: [mob.key]: [msg]</span>")
-				else
-					to_chat(C, "<span class='looc'>LOOC: Ghost of [mob.name]: [msg]</span>")
-			else
-				to_chat(C, "<span class='looc'>LOOC: [mob.name]: [msg]</span>")
+			to_chat(C, message_regular)
 
 /mob/proc/get_looc_source()
 	return src
