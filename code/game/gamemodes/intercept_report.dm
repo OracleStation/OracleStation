@@ -54,4 +54,8 @@
 			text += "A dangerous Wizards' Federation individual by the name of [pick(GLOB.wizard_first)] [pick(GLOB.wizard_second)] has recently escaped confinement from an unlisted prison facility. This \
 			man is a dangerous mutant with the ability to alter himself and the world around him by what he and his leaders believe to be magic. If this man attempts an attack on your station, \
 			his execution is highly encouraged, as is the preservation of his body for later study."
+		if("infiltration")
+			text += "A partially decrypted transmission from MI13 reveals that one several of stations may be targeted by their agents, including yours. Be aware, MI13 agents are highly trained, \
+			but generally employ stealthy tactics and avoid needless bloodshed. Watch out for suspicious people, likely disguising as someone not very noticeable, like an assistant. They are likely highly equipped, \
+			with the equipment necessary to do things like hijacking your artificial intelligence unit, stealing power, or changing their appearance in an instant."
 	return text

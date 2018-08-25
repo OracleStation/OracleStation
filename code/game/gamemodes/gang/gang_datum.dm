@@ -159,11 +159,11 @@
 
 /datum/gang/proc/add_gang_hud(datum/mind/recruit_mind)
 	ganghud.join_hud(recruit_mind.current)
-	SSticker.mode.set_antag_hud(recruit_mind.current, ((recruit_mind in bosses) ? "gang_boss" : "gangster"))
+	set_antag_hud(recruit_mind.current, ((recruit_mind in bosses) ? "gang_boss" : "gangster"))
 
 /datum/gang/proc/remove_gang_hud(datum/mind/defector_mind)
 	ganghud.leave_hud(defector_mind.current)
-	SSticker.mode.set_antag_hud(defector_mind.current, null)
+	set_antag_hud(defector_mind.current, null)
 
 /datum/gang/proc/domination(modifier=1)
 	set_domination_time(determine_domination_time(src) * modifier)

@@ -57,3 +57,7 @@ GLOBAL_LIST_EMPTY(awaydestinations)	//a list of landmarks that the warpgate can 
 GLOBAL_LIST_EMPTY(sortedAreas)
 
 GLOBAL_LIST_EMPTY(all_abstract_markers)
+
+
+GLOBAL_LIST_EMPTY(infiltrator_start)
+GLOBAL_LIST_EMPTY(infiltrator_objective_items)

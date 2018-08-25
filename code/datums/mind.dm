@@ -128,7 +128,7 @@
 	memory = null
 
 // Datum antag mind procs
-/datum/mind/proc/add_antag_datum(datum_type)
+/datum/mind/proc/add_antag_datum(datum_type, team)
 	if(!datum_type)
 		return
 	var/datum/antagonist/A = new datum_type(src)
@@ -136,6 +136,10 @@
 		qdel(A)
 		return
 	LAZYADD(antag_datums, A)
+	A.create_team(team)
+	var/datum/team/antag_team = A.get_team()
+	if(antag_team)
+		antag_team.add_member(src)
 	A.on_gain()
 	return A
 
@@ -229,10 +233,13 @@
 	remove_objectives()
 	remove_antag_equip()
 
+/datum/mind/proc/remove_infiltrator()
+	src.remove_antag_datum(/datum/antagonist/infiltrator)
+
 
 /datum/mind/proc/remove_gang()
-		SSticker.mode.remove_gangster(src,0,1,1)
-		remove_objectives()
+	SSticker.mode.remove_gangster(src,0,1,1)
+	remove_objectives()
 
 /datum/mind/proc/remove_antag_equip()
 	var/list/Mob_Contents = current.get_contents()
@@ -253,6 +260,7 @@
 	remove_cultist()
 	remove_rev()
 	remove_gang()
+	remove_infiltrator()
 	SSticker.mode.update_changeling_icons_removed(src)
 	SSticker.mode.update_traitor_icons_removed(src)
 	SSticker.mode.update_wiz_icons_removed(src)
@@ -503,7 +511,25 @@
 		else
 			text += " | Disabled in Prefs"
 
+		/** INFILTRATOR ***/
 		sections["nuclear"] = text
+
+		text = "infiltrator"
+		if (SSticker.mode.config_tag=="infiltration")
+			text = uppertext(text)
+		text = "<i><b>[text]</b></i>: "
+		if (has_antag_datum(/datum/antagonist/infiltrator))
+			text += "<b>INFILTRATOR</b> | <a href='?src=[REF(src)];infiltrator=clear'>nanotrasen</a>"
+			text += "<br><a href='?src=[REF(src)];infiltrator=lair'>To base</a>, <a href='?src=[REF(src)];common=undress'>undress</a>"
+		else
+			text += "<a href='?src=[REF(src)];infiltrator=infiltrator'>infiltrator</a> | <b>NANOTRASEN</b>"
+
+		if(current && current.client && (ROLE_INFILTRATOR in current.client.prefs.be_special))
+			text += " | Enabled in Prefs"
+		else
+			text += " | Disabled in Prefs"
+
+		sections["infiltrator"] = text
 
 
 		/** WIZARD ***/
@@ -748,7 +774,7 @@
 			out += sections[i]+"<br>"
 
 
-	if(((src in SSticker.mode.head_revolutionaries) || (src in SSticker.mode.traitors) || (src in SSticker.mode.syndicates)) && ishuman(current))
+	if(((src in SSticker.mode.head_revolutionaries) || (src in SSticker.mode.traitors) || (src in SSticker.mode.syndicates) || has_antag_datum(/datum/antagonist/infiltrator)) && ishuman(current))
 
 		text = "Uplink: <a href='?src=[REF(src)];common=uplink'>give</a>"
 		var/obj/item/device/uplink/U = find_syndicate_uplink()
@@ -1239,6 +1265,13 @@
 				else
 					to_chat(usr, "<span class='danger'>No valid nuke found!</span>")
 
+	else if (href_list["infiltrator"])
+		if("lair")
+			current.forceMove(get_turf(pick(GLOB.infiltrator_start)))
+		if("infiltrator")
+			add_antag_datum(/datum/antagonist/infiltrator)
+		if("clear")
+			remove_antag_datum(/datum/antagonist/infiltrator)
 	else if (href_list["traitor"])
 		switch(href_list["traitor"])
 			if("clear")

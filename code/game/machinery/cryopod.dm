@@ -281,8 +281,8 @@
 			qdel(O)
 		else if(O.target && istype(O.target, /datum/mind))
 			if(O.target == mob_occupant.mind)
-				if(O.owner && O.owner.current)
-					to_chat(O.owner.current, "<BR><span class='userdanger'>You get the feeling your target is no longer within reach. Time for Plan [pick("A","B","C","D","X","Y","Z")]. Objectives updated!</span>")
+				for(var/datum/mind/M in O.get_owners())
+					to_chat(M.current, "<BR><span class='userdanger'>You get the feeling your target is no longer within reach. Time for Plan [pick("A","B","C","D","X","Y","Z")]. Objectives updated!</span>")
 				O.target = null
 				spawn(10) //This should ideally fire after the occupant is deleted.
 					if(!O)
@@ -292,6 +292,8 @@
 					if(!(O.target))
 						O.owner.objectives -= O
 						qdel(O)
+					for(var/datum/mind/M in O.get_owners())
+						M.announce_objectives()
 
 	if(mob_occupant.mind && mob_occupant.mind.assigned_role)
 		//Handle job slot/tater cleanup.

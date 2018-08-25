@@ -365,12 +365,21 @@
 /datum/action/item_action/hands_free/activate
 	name = "Activate"
 
+/datum/action/item_action/hands_free/uplink
+	name = "Open Uplink"
+
 /datum/action/item_action/hands_free/shift_nerves
 	name = "Shift Nerves"
 
 /datum/action/item_action/explosive_implant
-	check_flags = 0
+	check_flags = NONE
 	name = "Activate Explosive Implant"
+
+/datum/action/item_action/dusting_implant
+	check_flags =  NONE
+	name = "Activate Dusting Implant"
+	icon_icon = 'icons/effects/blood.dmi'
+	button_icon_state = "remains"
 
 /datum/action/item_action/toggle_research_scanner
 	name = "Toggle Research Scanner"

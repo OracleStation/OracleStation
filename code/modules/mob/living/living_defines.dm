@@ -79,3 +79,5 @@
 	var/last_words	//used for database logging
 	var/can_crawl = FALSE //whether it can move while knocked down or resting
 	var/can_be_held = FALSE	//whether this can be picked up and held.
+
+	var/area/death_area
