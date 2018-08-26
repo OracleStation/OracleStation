@@ -262,6 +262,7 @@
 	new /obj/item/clothing/suit/toggle/labcoat/emt(src)
 	new /obj/item/storage/box/bodybags(src)
 	new /obj/item/roller(src)
+	new /obj/item/defibrillator/loaded(src)
 
 /obj/structure/closet/wardrobe/robotics_black
 	name = "robotics wardrobe"
