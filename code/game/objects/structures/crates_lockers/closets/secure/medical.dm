@@ -93,3 +93,27 @@
 	..()
 	new /obj/item/storage/box/pillbottles(src)
 	new /obj/item/storage/box/pillbottles(src)
+
+
+/obj/structure/closet/secure_closet/paramedic
+	name = "paramedic closet"
+	desc = "A closet full of emergency rescue supplies."
+	icon_state = "paramedic"
+	req_access = list(ACCESS_PARAMEDIC)
+
+/obj/structure/closet/secure_closet/paramedic/PopulateContents()
+	..()
+	new /obj/item/clothing/under/rank/medical/paramedic(src)
+	new /obj/item/clothing/under/rank/medical/paramedic(src)
+	new /obj/item/clothing/suit/toggle/labcoat/emt(src)
+	new /obj/item/clothing/suit/toggle/labcoat/emt(src)
+	new /obj/item/clothing/suit/space/hardsuit/medical/emt(src)
+	new /obj/item/clothing/head/helmet/space/hardsuit/medical/emt(src)
+	new /obj/item/storage/firstaid/regular(src)
+	new /obj/item/storage/firstaid/o2(src)
+	new /obj/item/storage/pill_bottle/epinephrine(src)
+	new /obj/item/storage/belt/medical(src)
+	new /obj/item/clothing/gloves/color/latex(src)
+	new /obj/item/clothing/mask/breath(src)
+	new /obj/item/tank/internals/emergency_oxygen/engi(src)
+	new /obj/item/defibrillator/loaded(src)
