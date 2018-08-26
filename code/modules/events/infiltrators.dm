@@ -26,12 +26,12 @@
 
 /datum/round_event/ghost_role/infiltrators/spawn_role()
 	var/datum/game_mode/infiltration/temp = new
-	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for a infiltration team being sent in?", ROLE_INFILTRATOR, temp)
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for an infiltration team being sent in?", ROLE_INFILTRATOR, temp)
 	var/list/mob/dead/observer/chosen = list()
 	var/mob/dead/observer/theghost = null
 	if(!LAZYLEN(candidates) || candidates.len < 3)
 		return NOT_ENOUGH_PLAYERS
-	var/numagents = 5
+	var/numagents = 4
 	var/agentcount = 0
 	for(var/i = 0, i<numagents,i++)
 		shuffle_inplace(candidates) //More shuffles means more randoms

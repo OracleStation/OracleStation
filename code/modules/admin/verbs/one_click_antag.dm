@@ -565,7 +565,7 @@
 
 /datum/admins/proc/makeInfiltratorTeam()
 	var/datum/game_mode/infiltration/temp = new
-	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for a infiltration team being sent in?", ROLE_INFILTRATOR, temp)
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for an infiltration team being sent in?", ROLE_INFILTRATOR, temp)
 	var/list/mob/dead/observer/chosen = list()
 	var/mob/dead/observer/theghost = null
 	if(candidates.len)
