@@ -40,7 +40,11 @@ before_install:
   - pip3 install --user bs4
   - export PATH=$PATH:$HOME/.local/bin
 
+install:
+  - tools/travis/install_build_tools.sh
+
 before_script:
+  - tools/travis/before_build_tools.sh
   - tools/travis/before_build_byond.sh
 
 script:
