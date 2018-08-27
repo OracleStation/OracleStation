@@ -107,7 +107,7 @@
 	else if(data == 5)
 
 		for(var/obj/item/device/radio/R in GLOB.all_radios["[freq]"])
-			if(!R.independent)
+			if(!(freq in R.independent))
 				continue
 
 			if(R.receive_range(freq, level) > -1)
