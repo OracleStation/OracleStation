@@ -115,7 +115,6 @@ Mime
 		H.mind.miming = 1
 
 	H.dna.add_mutation(CLOWNMUT)
-	H.dna.add_mutation(WACKY)
 /*
 Curator
 */
