@@ -89,9 +89,13 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_body_markings, GLOB.vox_body_markings_list)
 	if(!GLOB.vox_tail_markings_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_tail_markings, GLOB.vox_tail_markings_list)
+	if(!GLOB.corvid_body_feathers_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/corvid_body_feathers, GLOB.corvid_body_feathers_list)
+	if(!GLOB.corvid_head_feathers_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/corvid_head_feathers, GLOB.corvid_head_feathers_list)
 
 	//For now we will always return none for tail_human and ears.
-	return(list("mcolor" = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"), "tail_unathi" = pick(GLOB.tails_list_unathi), "tail_ethari" = pick(GLOB.tails_list_ethari), "tail_human" = "None", "wings" = "None", "snout" = pick(GLOB.snouts_list), "snout_ethari" = pick(GLOB.snouts_ethari_list), "ears_ethari" = "Fox", "horns" = pick(GLOB.horns_list), "ears" = "None", "frills" = pick(GLOB.frills_list), "spines" = pick(GLOB.spines_list), "body_markings" = pick(GLOB.body_markings_list), "legs" = "Normal Legs", "ipc_screen" = pick(GLOB.ipc_screens_list), "ipc_antenna" = pick(GLOB.ipc_antennas_list),"ipc_chassis" = pick(GLOB.ipc_chassis_list),"vox_body" = pick(GLOB.vox_bodies_list),"vox_quills" = pick(GLOB.vox_quills_list),"vox_facial_quills" = pick(GLOB.vox_facial_quills_list),"vox_body_markings" = pick(GLOB.vox_body_markings_list),"vox_tail_markings" = pick(GLOB.vox_tail_markings_list)))
+	return(list("mcolor" = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"), "tail_unathi" = pick(GLOB.tails_list_unathi), "tail_ethari" = pick(GLOB.tails_list_ethari), "tail_human" = "None", "wings" = "None", "snout" = pick(GLOB.snouts_list), "snout_ethari" = pick(GLOB.snouts_ethari_list), "ears_ethari" = "Fox", "horns" = pick(GLOB.horns_list), "ears" = "None", "frills" = pick(GLOB.frills_list), "spines" = pick(GLOB.spines_list), "body_markings" = pick(GLOB.body_markings_list), "legs" = "Normal Legs", "ipc_screen" = pick(GLOB.ipc_screens_list), "ipc_antenna" = pick(GLOB.ipc_antennas_list),"ipc_chassis" = pick(GLOB.ipc_chassis_list),"vox_body" = pick(GLOB.vox_bodies_list),"vox_quills" = pick(GLOB.vox_quills_list),"vox_facial_quills" = pick(GLOB.vox_facial_quills_list),"vox_body_markings" = pick(GLOB.vox_body_markings_list),"vox_tail_markings" = pick(GLOB.vox_tail_markings_list), "corvid_body_feathers" = pick(GLOB.corvid_body_feathers_list), "corvid_head_feathers" = pick(GLOB.corvid_head_feathers_list)))
 
 /proc/random_hair_style(gender)
 	switch(gender)

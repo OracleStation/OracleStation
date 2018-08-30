@@ -1859,3 +1859,21 @@ datum/sprite_accessory/ipc_screens/textdrop
 /datum/sprite_accessory/vox_tail_markings/stripe
 	name = "Stripe"
 	icon_state = "stripe"
+	
+// Corvid Accessories
+
+/datum/sprite_accessory/corvid_body_feathers
+	icon = 'icons/mob/corvid_accessories.dmi'
+	color_src = HAIR
+	
+/datum/sprite_accessory/corvid_body_feathers/none
+	name = "None"
+	icon_state = "none"
+	
+/datum/sprite_accessory/corvid_head_feathers
+	icon = 'icons/mob/corvid_accessories.dmi'
+	color_src = HAIR
+	
+/datum/sprite_accessory/corvid_head_feathers/none
+	name = "None"
+	icon_state = "none"

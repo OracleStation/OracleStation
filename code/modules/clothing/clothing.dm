@@ -276,9 +276,10 @@ BLIND     // can't see anything
 	var/transfer_prints = FALSE
 	strip_delay = 20
 	equip_delay_other = 40
-	species_fit = list("Vox Outcast")
+	species_fit = list("Vox Outcast", "Corvid")
 	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/gloves.dmi'
+		"Vox Outcast" = 'icons/mob/species/vox/gloves.dmi',
+		"Corvid" = 'icons/mob/species/corvid/gloves.dmi'
 		)
 
 /obj/item/clothing/gloves/worn_overlays(isinhands = FALSE)
@@ -310,9 +311,10 @@ BLIND     // can't see anything
 	var/blockTracking = 0 //For AI tracking
 	var/can_toggle = null
 	dynamic_hair_suffix = "+generic"
-	species_fit = list("Vox Outcast")
+	species_fit = list("Vox Outcast", "Corvid")
 	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/head.dmi'
+		"Vox Outcast" = 'icons/mob/species/vox/head.dmi',
+		"Corvid" = 'icons/mob/species/corvid/head.dmi'
 		)
 
 /obj/item/clothing/head/Initialize()
@@ -364,9 +366,10 @@ BLIND     // can't see anything
 	equip_delay_other = 40
 	var/mask_adjusted = 0
 	var/adjusted_flags = null
-	species_fit = list("Vox Outcast")
+	species_fit = list("Vox Outcast", "Corvid")
 	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/mask.dmi'
+		"Vox Outcast" = 'icons/mob/species/vox/mask.dmi',
+		"Corvid" = 'icons/mob/species/corvid/masks.dmi'
 		)
 
 /obj/item/clothing/mask/worn_overlays(isinhands = FALSE)
@@ -423,9 +426,10 @@ BLIND     // can't see anything
 
 	body_parts_covered = FEET
 	slot_flags = SLOT_FEET
-	species_fit = list("Vox Outcast")
+	species_fit = list("Vox Outcast", "Corvid")
 	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/shoes.dmi'
+		"Vox Outcast" = 'icons/mob/species/vox/shoes.dmi',
+		"Corvid" = 'icons/mob/species/corvid/shoes.dmi'
 		)
 
 	permeability_coefficient = 0.50
@@ -502,9 +506,10 @@ BLIND     // can't see anything
 	slot_flags = SLOT_OCLOTHING
 	var/blood_overlay_type = "suit"
 	var/togglename = null
-	species_fit = list("Vox Outcast")
+	species_fit = list("Vox Outcast", "Corvid")
 	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi',
+		"Corvid" = 'icons/mob/species/corvid/suit.dmi'
 		)
 
 
@@ -553,9 +558,10 @@ BLIND     // can't see anything
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	resistance_flags = 0
 	dog_fashion = null
-	species_fit = list("Vox Outcast")
+	species_fit = list("Vox Outcast", "Corvid")
 	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/helmet.dmi'
+		"Vox Outcast" = 'icons/mob/species/vox/helmet.dmi',
+		"Corvid" = 'icons/mob/species/vox/helmet.dmi'
 		)
 
 /obj/item/clothing/suit/space
@@ -578,9 +584,10 @@ BLIND     // can't see anything
 	strip_delay = 80
 	equip_delay_other = 80
 	resistance_flags = 0
-	species_fit = list("Vox Outcast")
+	species_fit = list("Vox Outcast", "Corvid")
 	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi'
+		"Vox Outcast" = 'icons/mob/species/vox/suit.dmi',
+		"Corvid" = 'icons/mob/species/corvid/suit.dmi'
 		)
 
 //Under clothing
@@ -602,9 +609,10 @@ BLIND     // can't see anything
 	var/alt_covers_chest = 0 // for adjusted/rolled-down jumpsuits, 0 = exposes chest and arms, 1 = exposes arms only
 	var/obj/item/clothing/accessory/attached_accessory
 	var/mutable_appearance/accessory_overlay
-	species_fit = list("Vox Outcast")
+	species_fit = list("Vox Outcast", "Corvid")
 	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/uniform.dmi'
+		"Vox Outcast" = 'icons/mob/species/vox/uniform.dmi',
+		"Corvid" = 'icons/mob/species/corvid/uniform.dmi'
 		)
 
 /obj/item/clothing/under/worn_overlays(isinhands = FALSE)
