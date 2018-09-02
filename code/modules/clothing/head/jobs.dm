@@ -257,12 +257,14 @@
 	name = "officer beret"
 	desc = "A black Blueshield beret."
 	icon_state = "beret_centcom_officer"
+	dog_fashion = /datum/dog_fashion/head/beret_blueshield
 	armor = list(melee = 40, bullet = 20, laser = 10, energy = 10, bomb = 10, bio = 5, rad = 5, fire = 5, acid = 30)
 	strip_delay = 60
 
 /obj/item/clothing/head/beret/blueshieldnavy
 	name = "navy officer beret"
 	desc = "A navy Blueshield beret."
+	dog_fashion = /datum/dog_fashion/head/beret_blueshieldnavy
 	icon_state = "beret_centcom_officer_navy"
 	armor = list(melee = 40, bullet = 20, laser = 10, energy = 10, bomb = 10, bio = 5, rad = 5, fire = 5, acid = 30)
 	strip_delay = 60

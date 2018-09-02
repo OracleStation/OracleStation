@@ -119,6 +119,7 @@
 	desc = "An armored vest with the badge of a Blueshield Lieutenant."
 	icon_state = "blueshield"
 	item_state = "blueshield"
+	dog_fashion = /datum/dog_fashion/back/bsarmor
 
 /obj/item/clothing/suit/armor/riot
 	name = "riot suit"
