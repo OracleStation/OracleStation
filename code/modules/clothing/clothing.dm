@@ -561,7 +561,7 @@ BLIND     // can't see anything
 	species_fit = list("Vox Outcast", "Corvid")
 	sprite_sheets = list(
 		"Vox Outcast" = 'icons/mob/species/vox/helmet.dmi',
-		"Corvid" = 'icons/mob/species/vox/helmet.dmi'
+		"Corvid" = 'icons/mob/species/corvid/head.dmi'
 		)
 
 /obj/item/clothing/suit/space

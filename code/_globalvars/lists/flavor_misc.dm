@@ -48,6 +48,7 @@ GLOBAL_LIST_EMPTY(vox_body_markings_list)
 GLOBAL_LIST_EMPTY(vox_tail_markings_list)
 GLOBAL_LIST_EMPTY(corvid_body_feathers_list)
 GLOBAL_LIST_EMPTY(corvid_head_feathers_list)
+GLOBAL_LIST_EMPTY(corvid_eyes_list)
 
 GLOBAL_LIST_INIT(ghost_forms_with_directions_list, list("ghost")) //stores the ghost forms that support directional sprites
 GLOBAL_LIST_INIT(ghost_forms_with_accessories_list, list("ghost")) //stores the ghost forms that support hair and other such things

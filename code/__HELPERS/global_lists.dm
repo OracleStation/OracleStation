@@ -46,6 +46,7 @@
 	// Corvid bodyparts
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/corvid_head_feathers, GLOB.corvid_head_feathers_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/corvid_body_feathers, GLOB.corvid_body_feathers_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/corvid_eyes, GLOB.corvid_eyes_list)
 
 	//Species
 	for(var/spath in subtypesof(/datum/species))

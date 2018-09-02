@@ -153,3 +153,5 @@
 #define SPECIES_INORGANIC 40
 #define SPECIES_UNDEAD  41
 #define SPECIES_ROBOTIC 42
+#define NOAUGMENTATION 43 // Cannot be augmented
+#define SMALLSPECIES 44 // Is small by default and shouldn't be affected by Dwarfing

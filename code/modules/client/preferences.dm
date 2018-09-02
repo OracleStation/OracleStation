@@ -508,6 +508,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<h3>Corvid Head Feathers</h3>"
 
 					dat += "<a href='?_src_=prefs;preference=corvid_head_feathers;task=input'>[features["corvid_head_feathers"]]</a><BR>"
+					dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=hair;task=input'>Change</a><BR>"
+					dat += "</td>"
+
+				if("corvid_eyes" in pref_species.mutant_bodyparts)
+					dat += "<td valign='top' width='10%'>"
+
+					dat += "<h3>Corvid Eye color</h3>"
+
+					dat += "<span style='border: 1px solid #161616; background-color: #[eye_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=eyes;task=input'>Change</a><BR>"
 
 					dat += "</td>"
 
