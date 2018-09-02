@@ -15,7 +15,7 @@
 	device_type = BINARY
 
 	construction_type = /obj/item/pipe/directional
-	pipe_state = "junction2"
+	pipe_state = "junction"
 
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction/SetInitDirections()
 	switch(dir)
