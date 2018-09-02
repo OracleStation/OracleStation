@@ -69,6 +69,16 @@
 	speak = list("le woof!", "le bark!", "JAPPE!!")
 	emote_see = list("cowers in fear.", "surrenders.", "plays dead.","looks as though there is a wall in front of him.")
 
+/datum/dog_fashion/head/beret_blueshield
+	name = "Blueshield REAL_NAME"
+	desc = "Will stand by you until the bitter end."
+	emote_see = list("stands with pride.", "growls heroicly.")
+
+/datum/dog_fashion/head/beret_blueshieldnavy
+	name = "Blueshield REAL_NAME"
+	desc = "Will stand by you until the bitter end."
+	emote_see = list("stands with pride.", "growls heroicly.")
+
 
 /datum/dog_fashion/head/detective
 	name = "Detective REAL_NAME"
@@ -167,3 +177,9 @@
 /datum/dog_fashion/back/deathsquad
 	name = "Trooper REAL_NAME"
 	desc = "That's not red paint. That's real corgi blood."
+
+/datum/dog_fashion/back/bsarmor
+	name = "Blueshield REAL_NAME"
+	desc = "Will stand by you until the bitter end."
+	emote_see = list("stands with pride.", "growls heroicly.")
+
