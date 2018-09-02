@@ -72,12 +72,12 @@
 /datum/dog_fashion/head/beret_blueshield
 	name = "Blueshield REAL_NAME"
 	desc = "Will stand by you until the bitter end."
-	emote_see = list("stands with pride.", "growls heroicly.")
+	emote_see = list("stands with pride.", "growls heroically.")
 
 /datum/dog_fashion/head/beret_blueshieldnavy
 	name = "Blueshield REAL_NAME"
 	desc = "Will stand by you until the bitter end."
-	emote_see = list("stands with pride.", "growls heroicly.")
+	emote_see = list("stands with pride.", "growls heroically.")
 
 
 /datum/dog_fashion/head/detective
@@ -181,5 +181,5 @@
 /datum/dog_fashion/back/bsarmor
 	name = "Blueshield REAL_NAME"
 	desc = "Will stand by you until the bitter end."
-	emote_see = list("stands with pride.", "growls heroicly.")
+	emote_see = list("stands with pride.", "growls heroically.")
 
