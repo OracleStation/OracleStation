@@ -1859,3 +1859,46 @@ datum/sprite_accessory/ipc_screens/textdrop
 /datum/sprite_accessory/vox_tail_markings/stripe
 	name = "Stripe"
 	icon_state = "stripe"
+	
+// Corvid Accessories
+
+/datum/sprite_accessory/corvid_body_feathers
+	icon = 'icons/mob/corvid_accessories.dmi'
+	color_src = HAIR
+	
+/datum/sprite_accessory/corvid_body_feathers/none
+	name = "None"
+	icon_state = "none"
+	color_src = HAIR
+
+/datum/sprite_accessory/corvid_body_feathers/extra
+	name = "Extra feathers"
+	icon_state = "extra"
+
+/datum/sprite_accessory/corvid_head_feathers
+	icon = 'icons/mob/corvid_accessories.dmi'
+	color_src = HAIR
+	
+/datum/sprite_accessory/corvid_head_feathers/none
+	name = "None"
+	icon_state = "none"
+
+/datum/sprite_accessory/corvid_head_feathers/short
+	name = "Short"
+	icon_state = "short"
+
+/datum/sprite_accessory/corvid_head_feathers/bushy
+	name = "Bushy"
+	icon_state = "bushy"
+
+/datum/sprite_accessory/corvid_head_feathers/spiky
+	name = "Spiky"
+	icon_state = "spiky"
+
+/datum/sprite_accessory/corvid_eyes
+	icon = 'icons/mob/corvid_accessories.dmi'
+	color_src = EYECOLOR
+
+/datum/sprite_accessory/corvid_eyes/default
+	name = "default"
+	icon_state = "default"

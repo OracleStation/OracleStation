@@ -23,9 +23,10 @@
 	storage_slots = 21
 	resistance_flags = 0
 	max_integrity = 300
-	species_fit = list("Vox Outcast")
+	species_fit = list("Vox Outcast", "Corvid")
 	sprite_sheets = list(
-		"Vox Outcast" = 'icons/mob/species/vox/back.dmi'
+		"Vox Outcast" = 'icons/mob/species/vox/back.dmi',
+		"Corvid" = 'icons/mob/species/corvid/back.dmi'
 		)
 
 /*

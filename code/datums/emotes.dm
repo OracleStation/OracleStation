@@ -15,6 +15,7 @@
 	var/message_simple = "" //Message to display if the user is a simple_animal
 	var/message_ipc = "" // Message to display if the user is an IPC
 	var/message_vox = "" // Message to display if the user is a vox
+	var/message_corvid = "" // Message to display if the user is a Corvid
 	var/message_param = "" //Message to display if a param was given
 	var/emote_type = EMOTE_VISIBLE //Whether the emote is visible or audible
 	var/restraint_check = FALSE //Checks if the mob is restrained before performing the emote

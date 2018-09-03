@@ -53,6 +53,7 @@
 #define isethari(A) (is_species(A, /datum/species/ethari))
 #define isipc(A) (is_species(A, /datum/species/ipc))
 #define isvox(A) (is_species(A, /datum/species/vox))
+#define iscorvid(a) (is_species(A, /datum/species/corvid))
 #define isashwalker(A) (is_species(A, /datum/species/unathi/ashwalker))
 
 //more carbon mobs
