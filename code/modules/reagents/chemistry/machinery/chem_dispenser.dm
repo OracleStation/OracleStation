@@ -9,6 +9,7 @@
 	idle_power_usage = 40
 	interact_offline = 1
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	circuit = /obj/item/circuitboard/machine/chem_dispenser 
 	var/cell_type = /obj/item/stock_parts/cell/high
 	var/obj/item/stock_parts/cell/cell
 	var/powerefficiency = 0.01
