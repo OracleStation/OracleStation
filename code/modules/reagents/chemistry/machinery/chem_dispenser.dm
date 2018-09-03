@@ -15,6 +15,8 @@
 	var/amount = 30
 	var/recharged = 0
 	var/recharge_delay = 5
+	var/recharge_amount = 10
+	var/recharge_counter = 0
 	var/mutable_appearance/beaker_overlay
 	var/obj/item/reagent_containers/beaker = null
 	var/list/dispensable_reagents = list(
@@ -58,13 +60,21 @@
 	recharge()
 	dispensable_reagents = sortList(dispensable_reagents)
 
-/obj/machinery/chem_dispenser/process()
+/obj/machinery/chem_dispenser/examine(mob/user)
+	..()
+	if(panel_open)
+		to_chat(user, "<span class='notice'>[src]'s maintenance hatch is open!</span>")
 
-	if(recharged < 0)
-		recharge()
-		recharged = recharge_delay
-	else
-		recharged -= 1
+/obj/machinery/chem_dispenser/process()
+	if (recharge_counter >= 4)
+		if(!is_operational())
+			return
+		var/usedpower = cell.give(recharge_amount)
+		if(usedpower)
+			use_power(250*recharge_amount)
+		recharge_counter = 0
+		return
+	recharge_counter++
 
 /obj/machinery/chem_dispenser/proc/recharge()
 	if(stat & (BROKEN|NOPOWER))
@@ -169,13 +179,20 @@
 				. = TRUE
 		if("eject")
 			if(beaker)
-				beaker.forceMove(loc)
+				beaker.forceMove(drop_location())
+				if(Adjacent(usr) && !issilicon(usr))
+					usr.put_in_hands(beaker)
 				beaker = null
 				cut_overlays()
 				. = TRUE
 
 /obj/machinery/chem_dispenser/attackby(obj/item/I, mob/user, params)
 	if(default_unfasten_wrench(user, I))
+		return
+	if(default_deconstruction_screwdriver(user, icon_state, icon_state, I))
+		update_icon()
+		return
+	if(default_deconstruction_crowbar(I))
 		return
 
 	if(istype(I, /obj/item/reagent_containers) && (I.container_type & OPENCONTAINER_1))
@@ -220,88 +237,24 @@
 	visible_message("<span class='danger'> The [src] malfunctions, spraying chemicals everywhere!</span>")
 	..()
 
-/obj/machinery/chem_dispenser/constructable
-	name = "portable chem dispenser"
-	icon = 'goon/icons/obj/chemical.dmi'
-	icon_state = "minidispenser"
-	powerefficiency = 0.001
-	amount = 5
-	recharge_delay = 30
-	dispensable_reagents = list()
-	circuit = /obj/item/circuitboard/machine/chem_dispenser
-	var/static/list/dispensable_reagent_tiers = list(
-		list(
-			"hydrogen",
-			"oxygen",
-			"silicon",
-			"phosphorus",
-			"sulfur",
-			"carbon",
-			"nitrogen",
-			"water"
-		),
-		list(
-			"lithium",
-			"sugar",
-			"sacid",
-			"copper",
-			"mercury",
-			"sodium",
-			"iodine",
-			"bromine"
-		),
-		list(
-			"ethanol",
-			"chlorine",
-			"potassium",
-			"aluminium",
-			"radium",
-			"fluorine",
-			"iron",
-			"welding_fuel",
-			"silver",
-			"stable_plasma"
-		),
-		list(
-			"oil",
-			"ash",
-			"acetone",
-			"saltpetre",
-			"ammonia",
-			"diethylamine"
-		)
-	)
 
-/obj/machinery/chem_dispenser/constructable/RefreshParts()
-	var/time = 0
-	var/i
+/obj/machinery/chem_dispenser/RefreshParts()
+	recharge_amount = initial(recharge_amount)
+	var/newpowereff = 0.0666666
 	for(var/obj/item/stock_parts/cell/P in component_parts)
 		cell = P
 	for(var/obj/item/stock_parts/matter_bin/M in component_parts)
-		time += M.rating
+		newpowereff += 0.0166666666*M.rating
 	for(var/obj/item/stock_parts/capacitor/C in component_parts)
-		time += C.rating
-	recharge_delay /= time/2         //delay between recharges, double the usual time on lowest 50% less than usual on highest
-	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		for(i=1, i<=M.rating, i++)
-			dispensable_reagents |= dispensable_reagent_tiers[i]
-	dispensable_reagents = sortList(dispensable_reagents)
+		recharge_amount *= C.rating
+	powerefficiency = round(newpowereff, 0.01)
 
-/obj/machinery/chem_dispenser/constructable/attackby(obj/item/I, mob/user, params)
-	if(default_deconstruction_screwdriver(user, "minidispenser-o", "minidispenser", I))
-		return
-
-	if(exchange_parts(user, I))
-		return
-
-	if(default_deconstruction_crowbar(I))
-		return
-	return ..()
-
-/obj/machinery/chem_dispenser/constructable/on_deconstruction()
+/obj/machinery/chem_dispenser/on_deconstruction()
+	cell = null
 	if(beaker)
-		beaker.loc = loc
+		beaker.forceMove(drop_location())
 		beaker = null
+	return ..()
 
 /obj/machinery/chem_dispenser/drinks
 	name = "soda dispenser"
