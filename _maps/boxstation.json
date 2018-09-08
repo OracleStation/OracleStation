@@ -4,5 +4,6 @@
     "map_file": "BoxStation.dmm",
     "minetype": "lavaland",
     "transition_config": "default",
-    "allow_custom_shuttles": "yes"
+    "allow_custom_shuttles": "yes",
+    "station_name": "Maybe we should just delete this one"
 }

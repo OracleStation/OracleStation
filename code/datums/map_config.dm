@@ -10,6 +10,7 @@
     var/map_file = "BoxStation.dmm"
 
     var/minetype = "lavaland"
+    var/station_name = ""
 
     var/list/transition_config = list(CENTCOM = SELFLOOPING,
                                     MAIN_STATION = CROSSLINKED,
@@ -67,6 +68,12 @@
     map_file = json["map_file"]
 
     minetype = json["minetype"]
+
+    station_name = json["station_name"]
+    if(length(station_name) < 1)
+        station_name = CONFIG_GET(string/stationname)
+        if(length(station_name) < 1)
+            station_name = new_station_name()
     allow_custom_shuttles = json["allow_custom_shuttles"]
 
     var/list/jtcl = json["transition_config"]
@@ -87,6 +94,7 @@
     CHECK_EXISTS("minetype")
     CHECK_EXISTS("transition_config")
     CHECK_EXISTS("allow_custom_shuttles")
+    CHECK_EXISTS("station_name")
 
     var/path = GetFullMapPath(json["map_path"], json["map_file"])
     if(!fexists(path))
