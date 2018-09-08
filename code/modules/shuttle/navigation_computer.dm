@@ -1,20 +1,35 @@
 /obj/machinery/computer/camera_advanced/shuttle_docker
 	name = "navigation computer"
 	desc = "Used to designate a precise transit location for a spacecraft."
+	icon_screen = "shuttle"
+	icon_keyboard = "tech_key"
 	z_lock = ZLEVEL_STATION_PRIMARY
 	jump_action = null
 	var/datum/action/innate/shuttledocker_rotate/rotate_action = new
 	var/datum/action/innate/shuttledocker_place/place_action = new
-	var/shuttleId = ""
-	var/shuttlePortId = ""
-	var/shuttlePortName = ""
+	var/datum/action/innate/shuttledocker_travel/travel_action = new
+	var/shuttleId = null
+	var/shuttlePortId = null
+	var/shuttlePortName = null
+	var/possible_destinations = null
 	var/list/jumpto_ports = list() //hashset of ports to jump to and ignore for collision purposes
 	var/list/blacklisted_turfs
 	var/obj/docking_port/stationary/my_port
 	var/view_range = 7
+	var/stored_icon_size = 0
 	var/x_offset = 0
 	var/y_offset = 0
 	var/space_turfs_only = TRUE
+
+/obj/machinery/computer/camera_advanced/shuttle_docker/Initialize()
+	. = ..()
+	if(shuttleId == null)
+		var/area/shuttle_area = get_area(src)
+		var/obj/docking_port/mobile/M = locate() in shuttle_area.contents
+		if(M)
+			shuttleId = M.id
+			shuttlePortId = "[shuttleId]_custom"
+			shuttlePortName = "Designated Location"
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/GrantActions(mob/living/user)
 	if(jumpto_ports.len)
@@ -30,6 +45,11 @@
 		place_action.target = user
 		place_action.Grant(user)
 		actions += place_action
+
+	if(travel_action && possible_destinations)
+		travel_action.target = user
+		travel_action.Grant(user)
+		actions += travel_action
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/CreateEye()
 	var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
@@ -64,6 +84,8 @@
 		user.client.images += the_eye.placement_images
 		user.client.images += the_eye.placed_images
 		user.client.view = view_range
+		stored_icon_size = winget(user.client, "mapwindow.map", "icon-size")
+		winset(user.client, "mapwindow.map", "icon-size=0")
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/remove_eye_control(mob/living/user)
 	..()
@@ -72,6 +94,7 @@
 		user.client.images -= the_eye.placement_images
 		user.client.images -= the_eye.placed_images
 		user.client.view = world.view
+		winset(user.client, "mapwindow.map", "icon-size=[stored_icon_size]")
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/proc/placeLandingSpot()
 	if(!checkLandingSpot())
@@ -174,6 +197,61 @@
 	user.lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	user.sync_lighting_plane_alpha()
 	return TRUE
+
+/datum/action/innate/shuttledocker_travel
+	name = "Travel"
+	icon_icon = 'icons/mob/actions/actions_mecha.dmi'
+	button_icon_state = "mech_overload_off"
+
+/datum/action/innate/shuttledocker_travel/Activate()
+	if(QDELETED(target) || !isliving(target))
+		return
+	var/mob/living/C = target
+	var/mob/camera/aiEye/remote/remote_eye = C.remote_control
+	var/obj/machinery/computer/camera_advanced/shuttle_docker/origin = remote_eye.origin
+
+	var/obj/docking_port/mobile/M = SSshuttle.getShuttle(origin.shuttleId)
+	if(M.mode != SHUTTLE_IDLE)
+		to_chat(usr, "<span class='warning'>Shuttle already in transit.</span>")
+		return
+
+	var/list/options = params2list(origin.possible_destinations)
+	var/list/docks = list()
+	for(var/obj/docking_port/stationary/S in SSshuttle.stationary)
+		if(!options.Find(S.id))
+			continue
+		if(!M.check_dock(S))
+			continue
+		docks.Add(S)
+
+	if(!docks.len)
+		to_chat(usr, "<span class='notice'>No valid destinations detected.</span>")
+		return
+
+	var/list/portnames = list()
+	for(var/obj/docking_port/stationary/S in docks)
+		portnames += S.name
+
+	if(portnames.len == 1)
+		portnames += "Cancel" // We need at least two entries in the list for the dialog to work.
+
+	var/destination_name = input("Location: [M.getStatusText()]", "Choose location to travel to:", null) as null|anything in portnames
+	var/destination = null
+
+	for(var/obj/docking_port/stationary/S in docks)
+		if(S.name == destination_name)
+			destination = S.id
+			break
+
+	if(destination && destination != "Cancel")
+		switch(SSshuttle.moveShuttle(origin.shuttleId, destination, 1))
+			if(0)
+				origin.say("Shuttle departing. Please stand away from the doors.")
+				to_chat(usr, "<span class='notice'>Shuttle departure in progress.</span>")
+			if(1)
+				to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
+			else
+				to_chat(usr, "<span class='notice'>Unable to comply.</span>")
 
 /datum/action/innate/shuttledocker_rotate
 	name = "Rotate"
