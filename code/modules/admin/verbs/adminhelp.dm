@@ -493,7 +493,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	deltimer(adminhelptimerid)
 	adminhelptimerid = 0
 
-/client/verb/adminhelp(msg as text)
+/client/verb/adminhelp()
 	set category = "Admin"
 	set name = "Adminhelp"
 
@@ -505,33 +505,65 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(prefs.muted & MUTE_ADMINHELP)
 		to_chat(src, "<span class='danger'>Error: Admin-PM: You cannot send adminhelps (Muted).</span>")
 		return
-	if(handle_spam_prevention(msg,MUTE_ADMINHELP))
+
+	var/list/choices = list(
+		"Report a player" = "A",
+		"Ask a question about game mechanics" = "M",
+		"Report a bug" = "G",
+		)
+
+	if(prob(2))
+		choices["Ask for antag"] = "B"
+
+	var/choice = input("What is your issue?", "Adminhelp") in null|choices
+	if(!choice)
 		return
 
-	if(!msg)
-		return
+	SSblackbox.add_details("admin_verb","Adminhelp")
 
-	SSblackbox.add_details("admin_verb","Adminhelp") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	if(current_ticket)
-		if(alert(usr, "You already have a ticket open. Is this for the same issue?",,"Yes","No") != "No")
-			if(current_ticket)
-				current_ticket.MessageNoRecipient(msg)
-				current_ticket.TimeoutVerb()
+	switch(choices[choice])
+		if("M")
+			var/sobstory = input(choice, "Adminhelp") as message
+
+			if(handle_spam_prevention(sobstory,MUTE_ADMINHELP))
 				return
-			else
-				to_chat(usr, "<span class='warning'>Ticket not found, creating new one...</span>")
-		else
-			current_ticket.AddInteraction("[key_name_admin(usr)] opened a new ticket.")
-			current_ticket.Close()
 
-	//Extremely simple system of suggesting mentorhelp instead of adminhelp
-	var/msg_lower = lowertext(msg)
-	if((findtext(msg_lower, "how to") == 1 || findtext(msg_lower, "how do") == 1) && GLOB.mentors.len)
-		if(alert("\"[msg]\" looks like a game mechanics question, would you like to ask in mentorhelp instead?", "Adminhelp?", "Yes, mentorhelp", "No, adminhelp") == "Yes, mentorhelp")
-			mentorhelp(msg)
-			return
+			if(!sobstory)
+				return
 
-	new /datum/admin_help(msg, src, FALSE)
+			mentorhelp(sobstory)
+		if("A")
+			var/sobstory = input(choice, "Adminhelp") as message
+
+			if(handle_spam_prevention(sobstory,MUTE_ADMINHELP))
+				return
+
+			if(!sobstory)
+				return
+			if(current_ticket)
+				if(alert(usr, "You already have a ticket open. Is this for the same issue?",,"Yes","No") != "No")
+					if(current_ticket)
+						current_ticket.MessageNoRecipient(sobstory)
+						current_ticket.TimeoutVerb()
+						return
+					else
+						to_chat(usr, "<span class='warning'>Ticket not found, creating new one...</span>")
+				else
+					current_ticket.AddInteraction("[key_name_admin(usr)] opened a new ticket.")
+					current_ticket.Close()
+
+			//Extremely simple system of suggesting mentorhelp instead of adminhelp
+			var/msg_lower = lowertext(sobstory)
+			if((findtext(msg_lower, "how to") == 1 || findtext(msg_lower, "how do") == 1) && GLOB.mentors.len)
+				if(alert("\"[sobstory]\" looks like a game mechanics question, would you like to ask in mentorhelp instead?", "Adminhelp?", "Yes, mentorhelp", "No, adminhelp") == "Yes, mentorhelp")
+					mentorhelp(sobstory)
+					return
+
+			new /datum/admin_help(sobstory, src, FALSE)
+		if("G")
+			reportissue()
+		if("B")
+			to_chat(src, "<span class='userdanger'><font size='11'>No.</font></span>")
 
 //admin proc
 /client/proc/cmd_admin_ticket_panel()
