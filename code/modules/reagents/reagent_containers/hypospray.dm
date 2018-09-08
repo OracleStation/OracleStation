@@ -104,7 +104,7 @@
 			if(R.cell.use(100))
 				reagents.add_reagent_list(list_reagents)
 				update_icon()
-	return
+	return TRUE
 
 /obj/item/reagent_containers/hypospray/medipen/update_icon()
 	if(reagents.total_volume > 0)
@@ -159,3 +159,16 @@
 	volume = 1
 	amount_per_transfer_from_this = 1
 	list_reagents = list("unstablemutationtoxin" = 1)
+
+/obj/item/reagent_containers/hypospray/medipen/bonefixingjuice
+	name = "rejuvenating agent injector"
+	desc = "The C4L-Z1UM agent will induce a short stasis that will heal any organ damage and bone fractures effectively. \
+	Has a menacing red S on it."
+	volume = 10
+	amount_per_transfer_from_this = 10
+	list_reagents = list("bonefixingjuice" = 10)
+	icon_state = "syndipen"
+
+/obj/item/reagent_containers/hypospray/medipen/bonefixingjuice/attack(mob/M, mob/user)
+	if(..())
+		playsound(user.loc, 'sound/effects/hypospray.ogg', 50)
