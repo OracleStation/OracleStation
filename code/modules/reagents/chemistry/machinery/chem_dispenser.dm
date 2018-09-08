@@ -47,6 +47,15 @@
 		"bromine",
 		"stable_plasma"
 	)
+	var/list/upgraded_reagents = list(
+		"sacid",
+		"oil",
+		"ash",
+		"acetone",
+		"saltpetre",
+		"ammonia",
+		"diethylamine"
+	)
 	var/list/emagged_reagents = list(
 		"space_drugs",
 		"morphine",
@@ -249,6 +258,10 @@
 	for(var/obj/item/stock_parts/capacitor/C in component_parts)
 		recharge_amount *= C.rating
 	powerefficiency = round(newpowereff, 0.01)
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
+		if(M.rating >= 3)
+			dispensable_reagents |= upgraded_reagents
+	dispensable_reagents = sortList(dispensable_reagents)
 
 /obj/machinery/chem_dispenser/on_deconstruction()
 	cell = null
