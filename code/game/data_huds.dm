@@ -87,53 +87,25 @@
 		maxi_health = 100 //so crit shows up right for aliens and other high-health carbon mobs; noncarbons don't have crit.
 	var/resulthealth = (M.health / maxi_health) * 100
 	switch(resulthealth)
-		if(100 to INFINITY)
-			return "health100"
-		if(95 to 100)
-			return "health95" //For telling patients to eat a warm donk pocket and go on with their shift.
-		if(90 to 95)
+		if(90 to INFINITY)
+			return "health100" //For telling patients to eat a warm donk pocket and go on with their shift.
+		if(75 to 90)
 			return "health90"
-		if(80 to 90)
-			return "health80"
-		if(70 to 80)
-			return "health70"
-		if(60 to 70)
-			return "health60"
-		if(50 to 60)
+		if(50 to 75)
+			return "health75"
+		if(25 to 50)
 			return "health50"
-		if(40 to 50)
-			return "health40"
-		if(30 to 40)
-			return "health30"
-		if(20 to 30)
-			return "health20"
-		if(10 to 20)
-			return "health10"
-		if(0 to 10)
+		if(0 to 25)
+			return "health25"
+		if(-50 to 0)
 			return "health0"
-		if(-10 to 0)
-			return "health-0" //The health bar will turn a brilliant red and flash as usual, but deducted health will be black.
-		if(-20 to -10)
-			return "health-10"
-		if(-30 to -20)
-			return "health-20"
-		if(-40 to -30)
-			return "health-30"
-		if(-50 to -40)
-			return "health-40"
-		if(-60 to -50)
+		if(-99 to -50)
 			return "health-50"
-		if(-70 to -60)
-			return "health-60"
-		if(-80 to -70)
-			return "health-70" //Doc?
-		if(-90 to -80)
-			return "health-80" //Hey, doc?
-		if(-100 to -90)
-			return "health-90" //HURRY UP, DOC!
+		if(-INFINITY to -99)
+			return "health-100"
 		else
 			return "health-100" //doc u had 1 job
-	return "0"
+	return "health-100"
 
 //HOOKS
 
