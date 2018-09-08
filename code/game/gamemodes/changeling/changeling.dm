@@ -180,8 +180,8 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 
 	if (changeling.current.mind)
 		var/mob/living/carbon/human/H = changeling.current
-		if(H.mind.assigned_role == "Clown")
-			to_chat(H, "You have evolved beyond your clownish nature, allowing you to wield weapons without harming yourself.")
+		if(H.mind.assigned_role == "Clown" || H.mind.assigned_role == "Mime")
+			to_chat(H, "You have evolved beyond your clumsy nature, allowing you to wield weapons without harming yourself.")
 			H.dna.remove_mutation(CLOWNMUT)
 
 	var/obj_count = 1

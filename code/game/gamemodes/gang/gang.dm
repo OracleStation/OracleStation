@@ -112,8 +112,8 @@ GLOBAL_LIST_INIT(gang_outfit_pool, list(/obj/item/clothing/suit/jacket/leather, 
 		return
 
 	if (mob.mind)
-		if (mob.mind.assigned_role == "Clown")
-			to_chat(mob, "Your training has allowed you to overcome your clownish nature, allowing you to wield weapons without harming yourself.")
+		if (mob.mind.assigned_role == "Clown" || mob.mind.assigned_role == "Mime")
+			to_chat(mob, "Your training has allowed you to overcome your clumsy nature, allowing you to wield weapons without harming yourself.")
 			mob.dna.remove_mutation(CLOWNMUT)
 
 	var/obj/item/device/gangtool/gangtool = new(mob)
