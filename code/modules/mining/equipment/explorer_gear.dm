@@ -56,6 +56,6 @@
 	..()
 	w_class = mask_adjusted ? WEIGHT_CLASS_NORMAL : WEIGHT_CLASS_SMALL
 
-/obj/item/clothing/mask/gas/explorer/folded/New()
-	..()
+/obj/item/clothing/mask/gas/explorer/folded/Initialize()
+	. = ..()
 	adjustmask()

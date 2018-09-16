@@ -12,6 +12,7 @@
 	see_in_dark = 5
 	speak_chance = 1
 	turns_per_move = 10
+	can_be_held = TRUE
 
 //Corgis and pugs are now under one dog subtype
 
@@ -31,6 +32,7 @@
 	var/facehugger
 	var/nofur = 0 		//Corgis that have risen past the material plane of existence.
 	gold_core_spawnable = 2
+	can_be_held = "corgi"
 
 /mob/living/simple_animal/pet/dog/pug
 	name = "\improper pug"
@@ -42,6 +44,7 @@
 	icon_dead = "pug_dead"
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/pug = 3)
 	gold_core_spawnable = 2
+	can_be_held = "pug"
 
 /mob/living/simple_animal/pet/dog/Initialize()
 	. = ..()
@@ -62,7 +65,8 @@
 
 /mob/living/simple_animal/pet/dog/corgi/show_inv(mob/user)
 	user.set_machine(src)
-	if(user.stat) return
+	if(user.stat)
+		return
 
 	var/dat = 	"<div align='center'><b>Inventory of [name]</b></div><p>"
 	if(inventory_head)
@@ -119,10 +123,9 @@
 	..()
 	update_corgi_fluff()
 
-
-
 /mob/living/simple_animal/pet/dog/corgi/Topic(href, href_list)
-	if(usr.stat) return
+	if(usr.stat)
+		return
 
 	//Removing from inventory
 	if(href_list["remove_inv"])
@@ -313,6 +316,7 @@
 		icon_state = "old_corgi"
 		icon_living = "old_corgi"
 		icon_dead = "old_corgi_dead"
+		can_be_held = "old_corgi"
 		desc = "At a ripe old age of [record_age] Ian's not as spry as he used to be, but he'll always be the HoP's beloved corgi." //RIP
 		turns_per_move = 20
 
@@ -492,6 +496,7 @@
 	icon_state = "void_puppy"
 	icon_living = "void_puppy"
 	icon_dead = "void_puppy_dead"
+	can_be_held = "void_puppy"
 	nofur = 1
 	unsuitable_atmos_damage = 0
 	minbodytemp = TCMB
@@ -515,6 +520,7 @@
 	response_harm   = "kicks"
 	var/turns_since_scan = 0
 	var/puppies = 0
+	can_be_held = "lisa"
 	gold_core_spawnable = 0
 
 //Lisa already has a cute bow!

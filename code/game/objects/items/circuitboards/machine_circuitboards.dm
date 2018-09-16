@@ -9,6 +9,14 @@
 		/obj/item/stock_parts/console_screen = 1,
 		/obj/item/stack/sheet/glass = 1)
 
+/obj/item/circuitboard/machine/body_scanner
+	name = "Body Scanner (Machine Board)"
+	build_path = /obj/machinery/body_scanner
+	origin_tech = "programming=3;biotech=2;engineering=2"
+	req_components = list(
+		/obj/item/stock_parts/scanning_module = 1,
+		/obj/item/stock_parts/console_screen = 1)
+
 /obj/item/circuitboard/machine/announcement_system
 	name = "Announcement System (Machine Board)"
 	build_path = /obj/machinery/announcement_system
@@ -588,14 +596,14 @@
 		/obj/item/stock_parts/capacitor = 6)
 
 /obj/item/circuitboard/machine/chem_dispenser
-	name = "Portable Chem Dispenser (Machine Board)"
-	build_path = /obj/machinery/chem_dispenser/constructable
+	name = "Chem Dispenser (Machine Board)"
+	build_path = /obj/machinery/chem_dispenser
 	origin_tech = "materials=4;programming=4;plasmatech=4;biotech=3"
 	req_components = list(
 		/obj/item/stock_parts/matter_bin = 2,
 		/obj/item/stock_parts/capacitor = 1,
 		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/stock_parts/console_screen = 1,
+		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stock_parts/cell = 1)
 	def_components = list(/obj/item/stock_parts/cell = /obj/item/stock_parts/cell/high)
 
@@ -722,3 +730,13 @@
 		/obj/item/stack/cable_coil = 2,
 		/obj/item/stock_parts/console_screen = 1,
 		/obj/item/stack/sheet/glass = 1)
+
+/obj/item/circuitboard/machine/generator
+	name = "Thermo-Electric Generator (Machine Board)"
+	build_path = /obj/machinery/power/generator
+	req_components = list()
+
+/obj/item/circuitboard/machine/circulator
+	name = "Circulator/Heat Exchanger (Machine Board)"
+	build_path = /obj/machinery/atmospherics/components/binary/circulator
+	req_components = list()

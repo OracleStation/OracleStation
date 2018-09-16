@@ -35,7 +35,7 @@
 	else
 		vision_flags = SEE_TURFS
 		darkness_view = 1
-		lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
+		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 		if(voluntary)
 			to_chat(user, "<span class='notice'>You toggle the goggles' scanning mode to \[Meson].</span>")
 		else

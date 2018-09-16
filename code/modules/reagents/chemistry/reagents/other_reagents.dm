@@ -1,5 +1,5 @@
 /datum/reagent/blood
-	data = list("donor"=null,"viruses"=null,"blood_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null)
+	data = list("species"=null,"donor"=null,"viruses"=null,"blood_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null)
 	name = "Blood"
 	id = "blood"
 	color = "#C80000" // rgb: 200, 0, 0
@@ -167,8 +167,7 @@
 
 	else if(istype(O, /obj/item/stack/sheet/hairlesshide))
 		var/obj/item/stack/sheet/hairlesshide/HH = O
-		var/obj/item/stack/sheet/wetleather/WL = new(get_turf(HH))
-		WL.amount = HH.amount
+		new /obj/item/stack/sheet/wetleather(get_turf(HH), HH.amount)
 		qdel(HH)
 
 /*
@@ -198,7 +197,8 @@
 	..()
 
 /datum/reagent/water/holywater/on_mob_life(mob/living/M)
-	if(!data) data = 1
+	if(!data)
+		data = 1
 	data++
 	M.jitteriness = min(M.jitteriness+4,10)
 	if(data >= 30)		// 12 units, 54 seconds @ metabolism 0.4 units & tick rate 1.8 sec
@@ -206,8 +206,15 @@
 			M.stuttering = 1
 		M.stuttering = min(M.stuttering+4, 10)
 		M.Dizzy(5)
-		if(iscultist(M) && prob(5))
-			M.say(pick("Av'te Nar'sie","Pa'lid Mors","INO INO ORA ANA","SAT ANA!","Daim'niodeis Arc'iai Le'eones","R'ge Na'sie","Diabo us Vo'iscum","Eld' Mon Nobis"))
+		if(iscultist(M) && prob(8))
+			switch(pick("speech", "message", "emote"))
+				if("speech")
+					M.say(pick("Av'te Nar'sie","Pa'lid Mors","INO INO ORA ANA","SAT ANA!","Daim'niodeis Arc'iai Le'eones","R'ge Na'sie","Diabo us Vo'iscum","Eld' Mon Nobis"))
+				if("message")
+					to_chat(M, "<span class='cult'>[pick("Shai'Tye-", "Dianu-", \
+					"They will not take you from me, Serva-", "Your blood is mine!")].</span>")
+				if("emote")
+					M.visible_message("<span class='warning'>[M] [pick("bleeds from the nose", "drools blackened blood", "thrashes wildly for a moment")].</span>")
 		else if(is_servant_of_ratvar(M) && prob(8))
 			switch(pick("speech", "message", "emote"))
 				if("speech")
@@ -221,8 +228,12 @@
 		if(iscultist(M) || is_servant_of_ratvar(M))
 			if(iscultist(M))
 				SSticker.mode.remove_cultist(M.mind, 1, 1)
+				to_chat(M, "<span class='userdanger'>The influence of Nar'sie and all your memories while you were under her control have been wiped from your mind. You do not remember the faces of your fellow cultists, and their names have gone too, along with any base locations or tactics.</span>")
+				M.visible_message("<span class='cult'>[M] is purged of their dark blood as the evil influence of Nar'sie is forced from their mind by holy power!</span>")
 			else if(is_servant_of_ratvar(M))
 				remove_servant_of_ratvar(M)
+				to_chat(M, "<span class='userdanger'>Ratvar's light dims, and your ancient knowledge is lost, along with any memories you had as one of His servants. You do not remember the names of any allies and you are unable to remember anything they've said or done this shift.</span>")
+				M.visible_message("<span class='brass'>[M] slumps as their link with the Engine is severed by holy power, stealing away their magic!</span>")
 			M.jitteriness = 0
 			M.stuttering = 0
 			holder.remove_reagent(id, volume)	// maybe this is a little too perfect and a max() cap on the statuses would be better??
@@ -231,7 +242,8 @@
 
 /datum/reagent/water/holywater/reaction_turf(turf/T, reac_volume)
 	..()
-	if(!istype(T)) return
+	if(!istype(T))
+		return
 	if(reac_volume>=10)
 		for(var/obj/effect/rune/R in T)
 			qdel(R)
@@ -260,7 +272,7 @@
 		M.adjustBruteLoss(-2, 0)
 		M.adjustFireLoss(-2, 0)
 	else
-		M.adjustBrainLoss(3, 150)
+		M.adjustBrainLoss(3, 75)
 		M.adjustToxLoss(1, 0)
 		M.adjustFireLoss(2, 0)
 		M.adjustOxyLoss(2, 0)
@@ -280,7 +292,7 @@
 	M.IgniteMob()			//Only problem with igniting people is currently the commonly availible fire suits make you immune to being on fire
 	M.adjustToxLoss(1, 0)
 	M.adjustFireLoss(1, 0)		//Hence the other damages... ain't I a bastard?
-	M.adjustBrainLoss(5, 150)
+	M.adjustBrainLoss(5, 75)
 	holder.remove_reagent(src.id, 1)
 
 /datum/reagent/medicine/omnizine/godblood
@@ -412,16 +424,16 @@
 	process_flags = ORGANIC | SYNTHETIC
 
 /datum/reagent/stableslimetoxin/on_mob_life(mob/living/carbon/human/H)
-	..()
 	if(!istype(H))
 		return
-	to_chat(H, "<span class='warning'><b>You crumple in agony as your flesh wildly morphs into new forms!</b></span>")
-	H.visible_message("<b>[H]</b> falls to the ground and screams as [H.p_their()] skin bubbles and froths!") //'froths' sounds painful when used with SKIN.
-	H.Knockdown(60)
-	addtimer(CALLBACK(src, .proc/mutate, H), 30)
-	return
+	if(volume >= 1)
+		to_chat(H, "<span class='warning'><b>You crumple in agony as your flesh wildly morphs into new forms!</b></span>")
+		H.visible_message("<b>[H]</b> falls to the ground and screams as [H.p_their()] skin bubbles and froths!") //'froths' sounds painful when used with SKIN.
+		H.Knockdown(60)
+		addtimer(CALLBACK(null, .proc/mutate_with_toxin, H, mutationtext, race), 30)
+	return ..()
 
-/datum/reagent/stableslimetoxin/proc/mutate(mob/living/carbon/human/H)
+/proc/mutate_with_toxin(mob/living/carbon/human/H, mutationtext = null, race = /datum/species/human)
 	if(QDELETED(H))
 		return
 	var/current_species = H.dna.species.type
@@ -560,17 +572,8 @@
 	id = "unstablemutationtoxin"
 	description = "An unstable and unpredictable corruptive toxin produced by slimes."
 	color = "#5EFF3B" //RGB: 94, 255, 59
-	mutationtext = "<span class='danger'>The pain subsides. You feel... different.</span>"
-
-/datum/reagent/stableslimetoxin/unstable/on_mob_life(mob/living/carbon/human/H)
-	var/list/possible_morphs = list()
-	for(var/type in subtypesof(/datum/species))
-		var/datum/species/S = type
-		if(initial(S.blacklisted))
-			continue
-		possible_morphs += S
-	race = pick(possible_morphs)
-	..()
+	mutationtext = "<span class='danger'>The pain subsides. You feel... slimy.</span>"
+	race = /datum/species/jelly/slime
 
 /datum/reagent/mulligan
 	name = "Mulligan Toxin"

@@ -478,7 +478,7 @@
 				eye_overlay.pixel_y += H.dna.species.offset_features[OFFSET_FACE][2]
 			standing += eye_overlay
 
-	//Underwear, Undershirts & Socks
+	//Underwear & Undershirts
 	if(!(NO_UNDERWEAR in species_traits))
 		if(H.underwear)
 			var/datum/sprite_accessory/underwear/underwear = GLOB.underwear_list[H.underwear]
@@ -493,10 +493,6 @@
 				else
 					standing += mutable_appearance(undershirt.icon, undershirt.icon_state, -BODY_LAYER)
 
-		if(H.socks && H.get_num_legs() >= 2 && !(DIGITIGRADE in species_traits))
-			var/datum/sprite_accessory/socks/socks = GLOB.socks_list[H.socks]
-			if(socks)
-				standing += mutable_appearance(socks.icon, socks.icon_state, -BODY_LAYER)
 
 	if(standing.len)
 		H.overlays_standing[BODY_LAYER] = standing
@@ -631,8 +627,12 @@
 		if(!(DIGITIGRADE in species_traits)) //Someone cut off a digitigrade leg and tacked it on
 			species_traits += DIGITIGRADE
 		var/should_be_squished = FALSE
-		if(H.wear_suit && ((H.wear_suit.flags_inv & HIDEJUMPSUIT) || (H.wear_suit.body_parts_covered & LEGS)) || (H.w_uniform && (H.w_uniform.body_parts_covered & LEGS)))
-			should_be_squished = TRUE
+		if(H.wear_suit)
+			if((H.wear_suit.flags_inv & HIDEJUMPSUIT) || ((H.wear_suit.body_parts_covered & LEGS) && (H.wear_suit.body_parts_covered & FEET)))
+				should_be_squished = TRUE
+		if(H.w_uniform && !H.wear_suit)
+			if(H.w_uniform.mutantrace_variation == NO_MUTANTRACE_VARIATION)
+				should_be_squished = TRUE
 		if(O.use_digitigrade == FULL_DIGITIGRADE && should_be_squished)
 			O.use_digitigrade = SQUISHED_DIGITIGRADE
 			update_needed = TRUE

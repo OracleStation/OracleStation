@@ -45,6 +45,7 @@
 
 /mob/living/death(gibbed)
 	stat = DEAD
+	death_area = get_area(src)
 	unset_machine()
 	timeofdeath = world.time
 	tod = worldtime2text()

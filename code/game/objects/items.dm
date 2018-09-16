@@ -10,6 +10,10 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/item_state = null
 	var/lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	var/righthand_file = 'icons/mob/inhands/items_righthand.dmi'
+	var/ground_icon = null 	// If not null, the path to the file that contains our ground icon_states.
+	var/ground_state = null	// If not null, what our icon_state is when we're on the ground.
+	var/inventory_icon = null 	// Pairs with ground_icon, the path to the file that contains our inventory icon_states. If not specified, defaults to the initial icon.
+	var/inventory_state = null	// Pairs with ground_state, what our icon_state is when we're in inventory. If not specified, defaults to the initial icon_state.
 
 	//Dimensions of the icon file used when this item is worn, eg: hats.dmi
 	//eg: 32x32 sprite, 64x64 sprite, etc.
@@ -45,12 +49,11 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	//Since any item can now be a piece of clothing, this has to be put here so all items share it.
 	var/flags_inv //This flag is used to determine when items in someone's inventory cover others. IE helmets making it so you can't see glasses, etc.
+	var/mutantrace_variation = NO_MUTANTRACE_VARIATION //Are there special sprites for specific situations? Don't use this unless you need to.
 
 	var/item_color = null //this needs deprecating, soonish
 
 	var/body_parts_covered = 0 //see setup.dm for appropriate bit flags
-	//var/heat_transfer_coefficient = 1 //0 prevents all transfers, 1 is invisible
-	var/gas_transfer_coefficient = 1 // for leaking gas from turf to mask and vice-versa (for masks right now, but at some point, i'd like to include space helmets)
 	var/permeability_coefficient = 1 // for chemicals/diseases
 	var/siemens_coefficient = 1 // for electrical admittance/conductance (electrocution checks and shit)
 	var/slowdown = 0 // How much clothing is slowing you down. Negative values speeds you up
@@ -146,6 +149,13 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			hitsound = 'sound/items/welder.ogg'
 		if(damtype == "brute")
 			hitsound = "swing_hit"
+
+	if(ground_icon && !inventory_icon)
+		inventory_icon = icon
+	if(ground_state && !inventory_state)
+		inventory_state = icon_state
+	if(istype(loc, /turf))
+		handle_inventory_transition(FALSE)
 
 /obj/item/Destroy()
 	flags_1 &= ~DROPDEL_1	//prevent reqdels
@@ -263,18 +273,18 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(istype(loc, /obj/item/storage))
 		//If the item is in a storage item, take it out
 		var/obj/item/storage/S = loc
-		S.remove_from_storage(src, user.loc)
+		S.remove_from_storage(src, S.loc)
 
 	if(throwing)
 		throwing.finalize(FALSE)
 	if(loc == user)
-		if(!user.dropItemToGround(src))
+		if(!user.temporarilyRemoveItemFromInventory(src))// changed this line from dropItemToGround() to this; not sure why it works, but it works ~Flatty
 			return
 
 	pickup(user)
 	add_fingerprint(user)
 	if(!user.put_in_active_hand(src))
-		dropped(user)
+		src.forceMove(user.loc)// this line had dropped() on it and I am also not sure why this works but it does ~Flatty
 
 
 /obj/item/attack_paw(mob/user)
@@ -285,12 +295,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	if(istype(loc, /obj/item/storage))
 		var/obj/item/storage/S = loc
-		S.remove_from_storage(src, user.loc)
+		S.remove_from_storage(src, S.loc)
 
 	if(throwing)
 		throwing.finalize(FALSE)
 	if(loc == user)
-		if(!user.dropItemToGround(src))
+		if(!user.temporarilyRemoveItemFromInventory(src))
 			return
 
 	pickup(user)
@@ -382,27 +392,43 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/proc/talk_into(mob/M, input, channel, spans, datum/language/language)
 	return ITALICS | REDUCE_RANGE
 
+/obj/item/proc/handle_inventory_transition(var/_in_inventory)
+	in_inventory = _in_inventory
+	if(!_in_inventory)
+		if(ground_icon)
+			icon = ground_icon
+		if(ground_state)
+			icon_state = ground_state
+		return
+	if(inventory_icon)
+		icon = inventory_icon
+	if(inventory_state)
+		icon_state = inventory_state
+
 /obj/item/proc/dropped(mob/user)
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.Remove(user)
 	if(DROPDEL_1 & flags_1)
 		qdel(src)
-	in_inventory = FALSE
+	handle_inventory_transition(FALSE)
 
 // called just as an item is picked up (loc is not yet changed)
 /obj/item/proc/pickup(mob/user)
-	in_inventory = TRUE
+	handle_inventory_transition(TRUE)
 	return
 
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
 /obj/item/proc/on_exit_storage(obj/item/storage/S)
-	return
+	if(istype(loc, /mob))
+		handle_inventory_transition(TRUE)
+		return
+	handle_inventory_transition(FALSE)
 
 // called when this item is added into a storage item, which is passed on as S. The loc variable is already set to the storage item.
 /obj/item/proc/on_enter_storage(obj/item/storage/S)
-	return
+	handle_inventory_transition(TRUE)
 
 // called when "found" in pockets and storage items. Returns 1 if the search should end.
 /obj/item/proc/on_found(mob/finder)
@@ -418,7 +444,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		var/datum/action/A = X
 		if(item_action_slot_check(slot, user)) //some items only give their actions buttons when in a specific slot.
 			A.Grant(user)
-	in_inventory = TRUE
+	handle_inventory_transition(TRUE)
 
 //sometimes we only want to grant the item's action if it's equipped in a specific slot.
 /obj/item/proc/item_action_slot_check(slot, mob/user)
@@ -515,7 +541,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/obj/item/organ/eyes/eyes = M.getorganslot(ORGAN_SLOT_EYES)
 	if (!eyes)
 		return
-	if(eyes.eye_damage >= 10)
+	var/damage_to_eyes = eyes.get_damage_perc()
+	if(damage_to_eyes >= 10)
 		M.adjust_blurriness(15)
 		if(M.stat != DEAD)
 			to_chat(M, "<span class='danger'>Your eyes start to bleed profusely!</span>")
@@ -529,7 +556,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			M.adjust_blurriness(10)
 			M.Unconscious(20)
 			M.Knockdown(40)
-		if (prob(eyes.eye_damage - 10 + 1))
+		if(prob(damage_to_eyes - 9))
 			if(M.become_blind())
 				to_chat(M, "<span class='danger'>You go blind!</span>")
 
@@ -548,7 +575,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	..()
 	if(current_size >= STAGE_FOUR)
 		throw_at(S,14,3, spin=0)
-	else return
+	else
+		return
 
 /obj/item/throw_impact(atom/A)
 	if(A && !QDELETED(A))
@@ -570,7 +598,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if (callback) //call the original callback
 		. = callback.Invoke()
 	throw_speed = initial(throw_speed) //explosions change this.
-	in_inventory = FALSE
+	handle_inventory_transition(FALSE)
 
 /obj/item/proc/remove_item_from_storage(atom/newLoc) //please use this if you're going to snowflake an item out of a obj/item/storage
 	if(!newLoc)
@@ -696,3 +724,31 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/MouseExited()
 	deltimer(tip_timer)//delete any in-progress timer if the mouse is moved off the item before it finishes
 	closeToolTip(usr)
+
+/obj/item/proc/do_pickup_animation(turf/target)
+	set waitfor = FALSE
+	var/turf/T = get_turf(src)
+	var/image/I = image(icon = src, loc = loc, layer = layer + 0.1)
+	I.plane = GAME_PLANE
+	I.transform *= 0.75
+	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
+	flick_overlay(I, GLOB.clients, 6)
+	var/matrix/M = new
+	M.Turn(pick(-30, 30))
+
+	animate(I, transform = M, time = 1)
+	sleep(1)
+	animate(I, transform = matrix(), time = 1)
+	sleep(1)
+
+	if(QDELETED(target) || QDELETED(src))
+		return
+	var/to_x = (target.x - T.x) * 32
+	var/to_y = (target.y - T.y) * 32
+
+	if(!to_x && !to_y)
+		to_y = 20
+
+	animate(I, alpha = 175, pixel_x = to_x, pixel_y = to_y, time = 3, easing = CUBIC_EASING)
+	sleep(1)
+	animate(I, alpha = 0, time = 1)

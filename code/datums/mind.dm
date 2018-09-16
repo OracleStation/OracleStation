@@ -128,7 +128,7 @@
 	memory = null
 
 // Datum antag mind procs
-/datum/mind/proc/add_antag_datum(datum_type)
+/datum/mind/proc/add_antag_datum(datum_type, team)
 	if(!datum_type)
 		return
 	var/datum/antagonist/A = new datum_type(src)
@@ -136,6 +136,10 @@
 		qdel(A)
 		return
 	LAZYADD(antag_datums, A)
+	A.create_team(team)
+	var/datum/team/antag_team = A.get_team()
+	if(antag_team)
+		antag_team.add_member(src)
 	A.on_gain()
 	return A
 
@@ -182,6 +186,11 @@
 		if(changeling)
 			qdel(changeling)
 			changeling = null
+
+			var/obj/item/organ/brain/B = current.getorganslot(ORGAN_SLOT_BRAIN)
+			if(B)
+				B.vital = TRUE
+				B.decoy_override = FALSE
 	special_role = null
 	remove_antag_equip()
 	SSticker.mode.update_changeling_icons_removed(src)
@@ -224,10 +233,13 @@
 	remove_objectives()
 	remove_antag_equip()
 
+/datum/mind/proc/remove_infiltrator()
+	src.remove_antag_datum(/datum/antagonist/infiltrator)
+
 
 /datum/mind/proc/remove_gang()
-		SSticker.mode.remove_gangster(src,0,1,1)
-		remove_objectives()
+	SSticker.mode.remove_gangster(src,0,1,1)
+	remove_objectives()
 
 /datum/mind/proc/remove_antag_equip()
 	var/list/Mob_Contents = current.get_contents()
@@ -248,6 +260,7 @@
 	remove_cultist()
 	remove_rev()
 	remove_gang()
+	remove_infiltrator()
 	SSticker.mode.update_changeling_icons_removed(src)
 	SSticker.mode.update_traitor_icons_removed(src)
 	SSticker.mode.update_wiz_icons_removed(src)
@@ -293,7 +306,8 @@
 					uplink_loc = R
 
 	if (!uplink_loc)
-		if(!silent) to_chat(traitor_mob, "Unfortunately, [employer] wasn't able to get you an Uplink.")
+		if(!silent)
+			to_chat(traitor_mob, "Unfortunately, [employer] wasn't able to get you an Uplink.")
 		. = 0
 	else
 		var/obj/item/device/uplink/U = new(uplink_loc)
@@ -303,19 +317,22 @@
 		if(uplink_loc == R)
 			R.traitor_frequency = sanitize_frequency(rand(MIN_FREQ, MAX_FREQ))
 
-			if(!silent) to_chat(traitor_mob, "[employer] has cunningly disguised a Syndicate Uplink as your [R.name]. Simply dial the frequency [format_frequency(R.traitor_frequency)] to unlock its hidden features.")
+			if(!silent)
+				to_chat(traitor_mob, "[employer] has cunningly disguised a Syndicate Uplink as your [R.name]. Simply dial the frequency [format_frequency(R.traitor_frequency)] to unlock its hidden features.")
 			traitor_mob.mind.store_memory("<B>Radio Frequency:</B> [format_frequency(R.traitor_frequency)] ([R.name]).")
 
 		else if(uplink_loc == PDA)
 			PDA.lock_code = "[rand(100,999)] [pick("Alpha","Bravo","Charlie","Delta","Echo","Foxtrot","Golf","Hotel","India","Juliet","Kilo","Lima","Mike","November","Oscar","Papa","Quebec","Romeo","Sierra","Tango","Uniform","Victor","Whiskey","X-ray","Yankee","Zulu")]"
 
-			if(!silent) to_chat(traitor_mob, "[employer] has cunningly disguised a Syndicate Uplink as your [PDA.name]. Simply enter the code \"[PDA.lock_code]\" into the ringtone select to unlock its hidden features.")
+			if(!silent)
+				to_chat(traitor_mob, "[employer] has cunningly disguised a Syndicate Uplink as your [PDA.name]. Simply enter the code \"[PDA.lock_code]\" into the ringtone select to unlock its hidden features.")
 			traitor_mob.mind.store_memory("<B>Uplink Passcode:</B> [PDA.lock_code] ([PDA.name]).")
 
 		else if(uplink_loc == P)
 			P.traitor_unlock_degrees = rand(1, 360)
 
-			if(!silent) to_chat(traitor_mob, "[employer] has cunningly disguised a Syndicate Uplink as your [P.name]. Simply twist the top of the pen [P.traitor_unlock_degrees] from its starting position to unlock its hidden features.")
+			if(!silent)
+				to_chat(traitor_mob, "[employer] has cunningly disguised a Syndicate Uplink as your [P.name]. Simply twist the top of the pen [P.traitor_unlock_degrees] from its starting position to unlock its hidden features.")
 			traitor_mob.mind.store_memory("<B>Uplink Degrees:</B> [P.traitor_unlock_degrees] ([P.name]).")
 
 //Link a new mobs mind to the creator of said mob. They will join any team they are currently on, and will only switch teams when their creator does.
@@ -494,7 +511,25 @@
 		else
 			text += " | Disabled in Prefs"
 
+		/** INFILTRATOR ***/
 		sections["nuclear"] = text
+
+		text = "infiltrator"
+		if (SSticker.mode.config_tag=="infiltration")
+			text = uppertext(text)
+		text = "<i><b>[text]</b></i>: "
+		if (has_antag_datum(/datum/antagonist/infiltrator))
+			text += "<b>INFILTRATOR</b> | <a href='?src=[REF(src)];infiltrator=clear'>nanotrasen</a>"
+			text += "<br><a href='?src=[REF(src)];infiltrator=lair'>To base</a>, <a href='?src=[REF(src)];common=undress'>undress</a>"
+		else
+			text += "<a href='?src=[REF(src)];infiltrator=infiltrator'>infiltrator</a> | <b>NANOTRASEN</b>"
+
+		if(current && current.client && (ROLE_INFILTRATOR in current.client.prefs.be_special))
+			text += " | Enabled in Prefs"
+		else
+			text += " | Disabled in Prefs"
+
+		sections["infiltrator"] = text
 
 
 		/** WIZARD ***/
@@ -739,7 +774,7 @@
 			out += sections[i]+"<br>"
 
 
-	if(((src in SSticker.mode.head_revolutionaries) || (src in SSticker.mode.traitors) || (src in SSticker.mode.syndicates)) && ishuman(current))
+	if(((src in SSticker.mode.head_revolutionaries) || (src in SSticker.mode.traitors) || (src in SSticker.mode.syndicates) || has_antag_datum(/datum/antagonist/infiltrator)) && ishuman(current))
 
 		text = "Uplink: <a href='?src=[REF(src)];common=uplink'>give</a>"
 		var/obj/item/device/uplink/U = find_syndicate_uplink()
@@ -1230,6 +1265,13 @@
 				else
 					to_chat(usr, "<span class='danger'>No valid nuke found!</span>")
 
+	else if (href_list["infiltrator"])
+		if("lair")
+			current.forceMove(get_turf(pick(GLOB.infiltrator_start)))
+		if("infiltrator")
+			add_antag_datum(/datum/antagonist/infiltrator)
+		if("clear")
+			remove_antag_datum(/datum/antagonist/infiltrator)
 	else if (href_list["traitor"])
 		switch(href_list["traitor"])
 			if("clear")

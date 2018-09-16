@@ -15,7 +15,6 @@
 	icon_state = "fire"
 	item_state = "ro_suit"
 	w_class = WEIGHT_CLASS_BULKY
-	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.50
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/device/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/extinguisher, /obj/item/crowbar)
@@ -85,7 +84,6 @@
 	icon_state = "bombsuit"
 	item_state = "bombsuit"
 	w_class = WEIGHT_CLASS_BULKY
-	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	flags_1 = THICKMATERIAL_1
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -139,7 +137,6 @@
 	icon_state = "rad"
 	item_state = "rad_suit"
 	w_class = WEIGHT_CLASS_BULKY
-	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.50
 	flags_1 = THICKMATERIAL_1
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS

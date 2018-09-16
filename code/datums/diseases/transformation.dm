@@ -16,6 +16,7 @@
 	var/list/stage4 = list("You feel white bread.")
 	var/list/stage5 = list("Oh the humanity!")
 	var/new_form = /mob/living/carbon/human
+	infectable_hosts = list(SPECIES_ORGANIC, SPECIES_UNDEAD, SPECIES_ROBOTIC)
 
 /datum/disease/transformation/stage_act()
 	..()
@@ -243,17 +244,30 @@
 /datum/disease/transformation/lizard
 	name = "Heat-Lamp Syndrome"
 	max_stages = 5
-	cure_text = "Unknown"
-	cures = list("adminordrazine")
+	cure_text = "Milk"
+	cures = list("milk")
 	agent = "lizard tears"
 	desc = "This disease turns its victim into a small lizard."
 	viable_mobtypes = list(/mob/living/carbon/human)
 	severity = HARMFUL
-	stage_prob = 10
 	visibility_flags = 0
 	stage1 = list("You feel dry.")
 	stage2 = list("You feel like following the janitor.")
-	stage3 = list("Your skin feels a bit... scaly.")
-	stage4 = list("It's too cold in here.")
-	stage5 = list("You begin to feel small.")
+	stage3 = list("<span class='danger'>Your skin feels a bit... scaly.</span>")
+	stage4 = list("<span class='danger'>A juicy roach sounds delicious right about now.</span>")
+	stage5 = list("<span class='danger'>It's too cold in here!</span>", "<span class='danger'>You feel small...</span>")
 	new_form = /mob/living/simple_animal/hostile/lizard
+	infectable_hosts = list(SPECIES_ORGANIC)
+	var/datum/species/unathi/unathi = new /datum/species/unathi()
+
+/datum/disease/transformation/lizard/stage_act()
+	..()
+	switch(stage)
+		if(3)
+			if (prob(10))
+				affected_mob.say(pick("Hiss!"))
+		if(4)
+			affected_mob.set_species(unathi)
+		if(5)
+			if (prob(20))
+				affected_mob.say(pick("Hisss!", "Ssskree!", "HISSS!!"))

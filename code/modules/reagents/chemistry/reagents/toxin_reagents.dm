@@ -434,17 +434,17 @@
 	else
 		..()
 
-/datum/reagent/toxin/neurotoxin2
-	name = "Neurotoxin"
-	id = "neurotoxin2"
-	description = "Neurotoxin will inhibit brain function and cause toxin damage before eventually knocking out its victim."
+/datum/reagent/toxin/fentanyl
+	name = "Fentanyl"
+	id = "fentanyl"
+	description = "Fentanyl will inhibit brain function and cause toxin damage before eventually knocking out its victim."
 	reagent_state = LIQUID
 	color = "#64916E"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	toxpwr = 0
 
-/datum/reagent/toxin/neurotoxin2/on_mob_life(mob/living/M)
-	M.adjustBrainLoss(3*REM, 150)
+/datum/reagent/toxin/fentanyl/on_mob_life(mob/living/M)
+	M.adjustBrainLoss(3*REM, 75)
 	. = 1
 	if(M.toxloss <= 60)
 		M.adjustToxLoss(1*REM, 0)
@@ -715,7 +715,7 @@
 /datum/reagent/toxin/rotatium/on_mob_life(mob/living/M)
 	if(M.hud_used)
 		if(current_cycle >= 20 && current_cycle%20 == 0)
-			var/list/screens = list(M.hud_used.plane_masters["[GAME_PLANE]"], M.hud_used.plane_masters["[LIGHTING_PLANE]"])
+			var/list/screens = list(M.hud_used.plane_masters["[OPENTURF_PLANE]"], M.hud_used.plane_masters["[GAME_PLANE]"], M.hud_used.plane_masters["[LIGHTING_PLANE]"])
 			var/rotation = min(round(current_cycle/20), 89) // By this point the player is probably puking and quitting anyway
 			for(var/whole_screen in screens)
 				animate(whole_screen, transform = matrix(rotation, MATRIX_ROTATE), time = 5, easing = QUAD_EASING, loop = -1)
@@ -724,7 +724,7 @@
 
 /datum/reagent/toxin/rotatium/on_mob_delete(mob/living/M)
 	if(M && M.hud_used)
-		var/list/screens = list(M.hud_used.plane_masters["[GAME_PLANE]"], M.hud_used.plane_masters["[LIGHTING_PLANE]"])
+		var/list/screens = list(M.hud_used.plane_masters["[OPENTURF_PLANE]"], M.hud_used.plane_masters["[GAME_PLANE]"], M.hud_used.plane_masters["[LIGHTING_PLANE]"])
 		for(var/whole_screen in screens)
 			animate(whole_screen, transform = matrix(), time = 5, easing = QUAD_EASING)
 	..()
@@ -743,7 +743,7 @@
 /datum/reagent/toxin/skewium/on_mob_life(mob/living/M)
 	if(M.hud_used)
 		if(current_cycle >= 5 && current_cycle % 3 == 0)
-			var/list/screens = list(M.hud_used.plane_masters["[GAME_PLANE]"], M.hud_used.plane_masters["[LIGHTING_PLANE]"])
+			var/list/screens = list(M.hud_used.plane_masters["[OPENTURF_PLANE]"], M.hud_used.plane_masters["[GAME_PLANE]"], M.hud_used.plane_masters["[LIGHTING_PLANE]"])
 			var/matrix/skew = matrix()
 			var/intensity = 8
 			skew.set_skew(rand(-intensity,intensity), rand(-intensity,intensity))
@@ -760,7 +760,7 @@
 
 /datum/reagent/toxin/skewium/on_mob_delete(mob/living/M)
 	if(M && M.hud_used)
-		var/list/screens = list(M.hud_used.plane_masters["[GAME_PLANE]"], M.hud_used.plane_masters["[LIGHTING_PLANE]"])
+		var/list/screens = list(M.hud_used.plane_masters["[OPENTURF_PLANE]"], M.hud_used.plane_masters["[GAME_PLANE]"], M.hud_used.plane_masters["[LIGHTING_PLANE]"])
 		for(var/whole_screen in screens)
 			animate(whole_screen, transform = matrix(), time = 5, easing = QUAD_EASING)
 	..()

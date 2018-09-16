@@ -8,6 +8,7 @@
 	icon = 'icons/mob/aibots.dmi'
 	icon_state = "mining_drone"
 	icon_living = "mining_drone"
+	gender = NEUTER
 	status_flags = CANSTUN|CANKNOCKDOWN|CANPUSH
 	mouse_opacity = MOUSE_OPACITY_ICON
 	faction = list("neutral")

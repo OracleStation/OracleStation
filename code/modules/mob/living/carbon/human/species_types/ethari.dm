@@ -3,7 +3,7 @@
 	name = "Ethari"
 	id = "ethari"
 	default_color = "#DF8134"
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR)
+	species_traits = list(SPECIES_ORGANIC,MUTCOLORS,EYECOLOR,LIPS,HAIR)
 	mutant_bodyparts = list("tail_ethari", "body_markings", "snout_ethari", "ears_ethari")
 	coldmod = 0.67
 	heatmod = 1.5

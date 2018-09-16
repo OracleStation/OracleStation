@@ -710,6 +710,17 @@
 					/obj/item/am_containment)
 	crate_name = "antimatter jar crate"
 
+/datum/supply_pack/engineering/engine
+	name = "Thermoelectric Generator Crate"
+	cost = 5000
+	contains = list(
+		/obj/machinery/power/generator,
+		/obj/machinery/atmospherics/components/binary/circulator,
+		/obj/machinery/atmospherics/components/binary/circulator/cold)
+	crate_name = "teg crate"
+	crate_type = /obj/structure/closet/crate/secure/engineering
+	dangerous = TRUE
+
 /datum/supply_pack/engineering/shuttle_engine
 	name = "Shuttle Engine Crate"
 	cost = 5000
@@ -718,6 +729,14 @@
 	crate_name = "shuttle engine crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
 	special = TRUE
+
+/datum/supply_pack/engineering/inflatable
+	name = "Inflatable Barriers Crate"
+	cost = 800
+	contains = list(/obj/item/storage/briefcase/inflatable,
+					/obj/item/storage/briefcase/inflatable,
+					/obj/item/storage/briefcase/inflatable)
+	crate_name = "inflatable barrier crate"
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Medical /////////////////////////////////////////
@@ -1553,7 +1572,6 @@
 					/obj/item/clothing/head/collectable/welding,
 					/obj/item/clothing/head/collectable/flatcap,
 					/obj/item/clothing/head/collectable/pirate,
-					/obj/item/clothing/head/collectable/kitty,
 					/obj/item/clothing/head/collectable/rabbitears,
 					/obj/item/clothing/head/collectable/wizard,
 					/obj/item/clothing/head/crown/fancy,

@@ -20,7 +20,7 @@
 /obj/item/cartridge/virus/clown
 	name = "\improper Honkworks 5.0 cartridge"
 	icon_state = "cart-clown"
-	desc = "A data cartridge for portable microcomputers. It smells vaguely of banannas"
+	desc = "Regular NT-made clown cartridge. It smells vaguely of bananas."
 	access = CART_CLOWN
 
 /obj/item/cartridge/virus/clown/send_virus(obj/item/device/pda/target, mob/living/U)
@@ -36,6 +36,7 @@
 
 /obj/item/cartridge/virus/mime
 	name = "\improper Gestur-O 1000 cartridge"
+	desc = "Standard issue for all mimes. Who thought this was a good idea?"
 	icon_state = "cart-mi"
 	access = CART_MIME
 
@@ -53,6 +54,7 @@
 
 /obj/item/cartridge/virus/syndicate
 	name = "\improper Detomatix cartridge"
+	desc = "Great for blowing up the PDAs of those pesky Nanotrasen employees."
 	icon_state = "cart"
 	access = CART_REMOTE_DOOR
 	remote_door_id = "smindicate" //Make sure this matches the syndicate shuttle's shield/door id!!	//don't ask about the name, testing.
@@ -66,9 +68,7 @@
 		charges--
 		var/difficulty = 0
 		if(target.cartridge)
-			difficulty += BitCount(target.cartridge.access&(CART_MEDICAL | CART_SECURITY | CART_ENGINE | CART_CLOWN | CART_JANITOR | CART_MANIFEST))
-		if(target.cartridge.access & CART_MANIFEST)
-			difficulty++ //if cartridge has manifest access it has extra snowflake difficulty
+			difficulty += BitCount(target.cartridge.access&(CART_MEDICAL | CART_SECURITY | CART_ENGINE | CART_CLOWN | CART_JANITOR))
 		else
 			difficulty += 2
 		if(!target.detonatable || prob(difficulty * 15) || (target.hidden_uplink))
@@ -81,6 +81,7 @@
 
 /obj/item/cartridge/virus/frame
 	name = "\improper F.R.A.M.E. cartridge"
+	desc = "Make your boss look like an Enemy of the Corporation! Impress your friends! Fun for the whole family!"
 	icon_state = "cart"
 	var/telecrystals = 0
 

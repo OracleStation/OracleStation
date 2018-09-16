@@ -13,7 +13,7 @@ Blueshield
 	selection_color = "#ddddff"
 	req_admin_notify = 1
 	minimal_player_age = 14
-	exp_requirements = 600 //10 hours
+	exp_requirements = 1200
 	exp_type = EXP_TYPE_CREW
 	special_notice = "You are a bodyguard for heads of staff. You are not a security officer. Do not do security's job."
 

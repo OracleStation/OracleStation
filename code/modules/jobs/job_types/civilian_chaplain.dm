@@ -88,6 +88,7 @@ Chaplain
 	jobtype = /datum/job/chaplain
 
 	pda_slot = /obj/item/device/pda/chaplain
+	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/chaplain
 	backpack_contents = list(/obj/item/device/camera/spooky = 1)
 	accessory = /obj/item/clothing/accessory/pocketprotector/cosmetology

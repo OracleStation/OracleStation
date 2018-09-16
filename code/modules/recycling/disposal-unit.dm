@@ -96,7 +96,7 @@
 			return
 
 	if(user.a_intent != INTENT_HARM)
-		if(!user.drop_item() || (I.flags_1 & ABSTRACT_1))
+		if(I.flags_1 & ABSTRACT_1)
 			return
 		place_item_in_disposal(I, user)
 		update_icon()
@@ -105,8 +105,17 @@
 		return ..()
 
 /obj/machinery/disposal/proc/place_item_in_disposal(obj/item/I, mob/user)
-	I.forceMove(src)
-	user.visible_message("[user.name] places \the [I] into \the [src].", "<span class='notice'>You place \the [I] into \the [src].</span>")
+	if(istype(I, /obj/item/clothing/head/mob_holder))
+		var/obj/item/clothing/head/mob_holder/H = I
+		var/mob/living/m = H.held_mob
+		H.release()
+		if(m)
+			user.start_pulling(m, 1)
+			stuff_mob_in(m,user)
+		return//you don't want this going into disposals ever
+	if(user.temporarilyRemoveItemFromInventory(I))
+		I.forceMove(src)
+		user.visible_message("[user.name] places \the [I] into \the [src].", "<span class='notice'>You place \the [I] into \the [src].</span>")
 
 //mouse drop another mob or self
 /obj/machinery/disposal/MouseDrop_T(mob/living/target, mob/living/user)
@@ -478,13 +487,17 @@
 		return
 	switch(dir)
 		if(NORTH)
-			if(AM.loc.y != loc.y+1) return
+			if(AM.loc.y != loc.y+1)
+				return
 		if(EAST)
-			if(AM.loc.x != loc.x+1) return
+			if(AM.loc.x != loc.x+1)
+				return
 		if(SOUTH)
-			if(AM.loc.y != loc.y-1) return
+			if(AM.loc.y != loc.y-1)
+				return
 		if(WEST)
-			if(AM.loc.x != loc.x-1) return
+			if(AM.loc.x != loc.x-1)
+				return
 
 	if(isobj(AM))
 		var/obj/O = AM

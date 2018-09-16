@@ -2,6 +2,7 @@
 #define POWER_RESTORATION_START 1
 #define POWER_RESTORATION_SEARCH_APC 2
 #define POWER_RESTORATION_APC_FOUND 3
+#define HIJACK_TIME 2400
 
 /mob/living/silicon/ai/Life()
 	if (stat == DEAD)
@@ -12,6 +13,19 @@
 		update_gravity(mob_has_gravity())
 
 		handle_status_effects()
+
+		update_icon()
+		if(hijacking)
+			if(prob(5))
+				to_chat(src, "<span class='danger'>Warning! Unauthorized device connected to serial port /dev/ttyS0!</span>")
+			if(world.time >= hijack_start+HIJACK_TIME && mind)
+				mind.add_antag_datum(/datum/antagonist/hijacked_ai)
+				icon_state = "ai-notmalf"
+				QDEL_NULL(hijacking)
+				cut_overlays()
+				for(var/datum/objective/infiltrator/exploit/O in GLOB.objectives)
+					if(O.target == src || !O.target)
+						O.hijacked = TRUE
 
 		if(malfhack && malfhack.aidisabled)
 			deltimer(malfhacking)
@@ -139,9 +153,12 @@
 				ai_restore_power()
 				return
 		switch(PRP)
-			if (1) to_chat(src, "APC located. Optimizing route to APC to avoid needless power waste.")
-			if (2) to_chat(src, "Best route identified. Hacking offline APC power port.")
-			if (3) to_chat(src, "Power port upload access confirmed. Loading control program into APC power port software.")
+			if (1)
+				to_chat(src, "APC located. Optimizing route to APC to avoid needless power waste.")
+			if (2)
+				to_chat(src, "Best route identified. Hacking offline APC power port.")
+			if (3)
+				to_chat(src, "Power port upload access confirmed. Loading control program into APC power port software.")
 			if (4)
 				to_chat(src, "Transfer complete. Forcing APC to execute program.")
 				sleep(50)
@@ -172,6 +189,7 @@
 	to_chat(src, "You've lost power!")
 	addtimer(CALLBACK(src, .proc/start_RestorePowerRoutine), 20)
 
+#undef HIJACK_TIME
 #undef POWER_RESTORATION_OFF
 #undef POWER_RESTORATION_START
 #undef POWER_RESTORATION_SEARCH_APC

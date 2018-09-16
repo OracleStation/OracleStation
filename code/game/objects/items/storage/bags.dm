@@ -168,7 +168,8 @@
 // Modified handle_item_insertion.  Would prefer not to, but...
 /obj/item/storage/bag/sheetsnatcher/handle_item_insertion(obj/item/W, prevent_warning = 0)
 	var/obj/item/stack/sheet/S = W
-	if(!istype(S)) return 0
+	if(!istype(S))
+		return 0
 
 	var/amount
 	var/inserted = 0
@@ -249,7 +250,8 @@
 // Instead of removing
 /obj/item/storage/bag/sheetsnatcher/remove_from_storage(obj/item/W, atom/new_location)
 	var/obj/item/stack/sheet/S = W
-	if(!istype(S)) return 0
+	if(!istype(S))
+		return 0
 
 	//I would prefer to drop a new stack, but the item/attack_hand code
 	// that calls this can't recieve a different object than you clicked on.
@@ -333,14 +335,14 @@
 /obj/item/storage/bag/tray/proc/rebuild_overlays()
 	cut_overlays()
 	for(var/obj/item/I in contents)
-		add_overlay(mutable_appearance(I.icon, I.icon_state))
+		add_overlay(new /mutable_appearance(I))
 
 /obj/item/storage/bag/tray/remove_from_storage(obj/item/W as obj, atom/new_location)
 	..()
 	rebuild_overlays()
 
 /obj/item/storage/bag/tray/handle_item_insertion(obj/item/I, prevent_warning = 0)
-	add_overlay(mutable_appearance(I.icon, I.icon_state))
+	add_overlay(new /mutable_appearance(I))
 	. = ..()
 
 

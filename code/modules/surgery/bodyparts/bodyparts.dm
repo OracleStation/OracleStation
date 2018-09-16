@@ -123,7 +123,8 @@
 		return
 	broken = TRUE
 	spawn(1)//because otherwise it pops before the punch message; we don't want that
-		owner.visible_message("<span class='userdanger'>You hear a cracking sound coming from [owner]'s [name].</span>", "<span class='warning'>You feel something crack in your [name]!</span>", "<span class='warning'>You hear an awful cracking sound.</span>")
+
+		owner.visible_message("<span class='userdanger'>You see [owner]'s [name] deform un-naturally.</span>", "<span class='warning'>You feel something crack in your [name]!</span>", "<span class='warning'>You hear an awful cracking sound.</span>")
 
 /obj/item/bodypart/proc/fix_bone()
 	broken = FALSE
@@ -136,7 +137,7 @@
 		return
 
 	if(prob(5))
-		to_chat(owner, "<span class='userdanger'>[pick("You feel broken bones moving around in your [src]!", "There are broken bones moving around in your [src]!", "The bones in your [src] are moving around!")]</span>")
+		to_chat(owner, "<span class='userdanger'>[pick("You feel broken bones moving around in your [name]!", "There are broken bones moving around in your [name]!", "The bones in your [name] are moving around!")]</span>")
 		receive_damage(rand(1, 3))
 		//1-3 damage every 20 tiles for every broken bodypart.
 		//A single broken bodypart will give you an average of 650 tiles to run before you get a total of 100 damage and fall into crit
@@ -161,7 +162,18 @@
 		if(ALIEN_BODYPART,LARVA_BODYPART) //aliens take double burn
 			burn *= 2
 
-	if(prob(brute*break_modifier) && ((brute_dam + burn_dam)/max_damage) > 0.3 )
+	//break_modifier is based on the item used: blunt = 0, sharp = 1, accurate sharp = 2
+	if(prob(break_modifier * 30 / status) && owner)//0% chance for blunt objects, 30% for sharp, 60% for REALLY SHARP OHGOD; halved for robotic bodyparts
+	//the numbers are like that to make organ damage less "averaged out". Every patient that swings by medbay will have a more unique condition, with specific organs being affected
+		var/list/organs = owner.getorganszone(body_zone)
+		if(!organs.len)
+			return
+		var/obj/item/organ/O = pick(organs)
+		if(O)
+			O.take_damage(rand(brute, brute*2))
+
+	//blunt objects break bones better, but damage organs less
+	if(prob(brute * (3-break_modifier) * 1.5) && ((brute_dam + burn_dam)/max_damage) > 0.2)
 		break_bone()
 
 	var/can_inflict = max_damage - (brute_dam + burn_dam)

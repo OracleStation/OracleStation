@@ -58,7 +58,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/age = 30						//age of character
 	var/underwear = "Nude"				//underwear type
 	var/undershirt = "Nude"				//undershirt type
-	var/socks = "Nude"					//socks type
 	var/backbag = DBACKPACK				//backpack type
 	var/hair_style = "Bald"				//Hair type
 	var/hair_color = "000"				//Hair color
@@ -67,7 +66,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
-	var/list/features = list("mcolor" = "FFF", "tail_unathi" = "Smooth", "tail_human" = "None", "tail_ethari" = "Bushy", "snout_ethari" = "Sharp", "ears_ethari" = "Fox", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "ipc_screen" = "Blue", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)", "vox_quills" = "None", "vox_facial_quills" = "None", "vox_body_markings" = "None", "vox_body" = "Green", "vox_tail_markings" = "None")
+	var/list/features = list("mcolor" = "FFF", "tail_unathi" = "Smooth", "tail_human" = "None", "tail_ethari" = "Bushy", "snout_ethari" = "Sharp", "ears_ethari" = "Fox", "snout" = "Round", "horns" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "ipc_screen" = "Blue", "ipc_antenna" = "None", "ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)", "vox_quills" = "None", "vox_facial_quills" = "None", "vox_body_markings" = "None", "vox_body" = "Green", "vox_tail_markings" = "None")
 	var/species_looking_at = "human"	//used as a helper to keep track of in the species selct thingy
 	var/list/custom_names = list("clown", "mime", "ai", "cyborg", "religion", "deity")
 	var/prefered_security_department = SEC_DEPT_RANDOM
@@ -104,6 +103,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/clientfps = 60
 
 	var/parallax
+
+	var/ambientocclusion = TRUE
 
 	var/uplink_spawn_loc = UPLINK_PDA
 
@@ -214,7 +215,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						S["real_name"] >> name
 						if(!name)
 							name = "Character[i]"
-						//if(i!=1) dat += " | "
+						/*if(i!=1)
+							dat += " | " */
 						dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;num=[i];' [i == default_slot ? "class='linkOn'" : ""]>[name]</a> "
 					dat += "</center>"
 
@@ -263,7 +265,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			dat += "<b>Underwear:</b><BR><a href ='?_src_=prefs;preference=underwear;task=input'>[underwear]</a><BR>"
 			dat += "<b>Undershirt:</b><BR><a href ='?_src_=prefs;preference=undershirt;task=input'>[undershirt]</a><BR>"
-			dat += "<b>Socks:</b><BR><a href ='?_src_=prefs;preference=socks;task=input'>[socks]</a><BR>"
 			dat += "<b>Backpack:</b><BR><a href ='?_src_=prefs;preference=bag;task=input'>[backbag]</a><BR>"
 			dat += "<b>Uplink Spawn Location:</b><BR><a href ='?_src_=prefs;preference=uplink_loc;task=input'>[uplink_spawn_loc]</a><BR></td>"
 
@@ -503,14 +504,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 					dat += "</td>"
 
-				if("ears" in pref_species.mutant_bodyparts)
-					dat += "<td valign='top' width='7%'>"
-
-					dat += "<h3>Ears</h3>"
-
-					dat += "<a href='?_src_=prefs;preference=ears;task=input'>[features["ears"]]</a><BR>"
-
-					dat += "</td>"
 
 				if("wings" in pref_species.mutant_bodyparts && GLOB.r_wings_list.len >1)
 					dat += "<td valign='top' width='7%'>"
@@ -615,6 +608,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				else
 					dat += "High"
 			dat += "</a><br>"
+
+			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'>[ambientocclusion ? "Enabled" : "Disabled"]</a><br>"
 
 			dat += "</td><td width='300px' height='300px' valign='top'>"
 
@@ -986,8 +981,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					underwear = random_underwear(gender)
 				if("undershirt")
 					undershirt = random_undershirt(gender)
-				if("socks")
-					socks = random_socks()
 				if("eyes")
 					eye_color = random_eye_color()
 				if("s_tone")
@@ -1007,6 +1000,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(S.required_playtime_remaining(parent))//we're checking against this list to prevent href shenanigans
 						to_chat(parent, "<span class='danger'>You need more playtime to play [S.name]!</span>")
 						let_them = FALSE
+
+				var/list/roundstart_species = CONFIG_GET(keyed_number_list/roundstart_races)
+				if(!(sid in roundstart_species))
+					to_chat(parent, "<span class='warning'>Whoops! Something went wrong. You should probably tell a coder.</span>")
+					message_admins("[parent.key] tried to pick a non-roundstart species. Possible href exploit.")
+					let_them = FALSE
+
 				if(let_them)
 					var/newtype = GLOB.species_list[sid]
 					pref_species = new newtype()
@@ -1145,12 +1145,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_undershirt)
 						undershirt = new_undershirt
 
-				if("socks")
-					var/new_socks
-					new_socks = input(user, "Choose your character's socks:", "Character Preference") as null|anything in GLOB.socks_list
-					if(new_socks)
-						socks = new_socks
-
 				if("eyes")
 					var/new_eyes = input(user, "Choose your character's eye colour:", "Character Preference") as color|null
 					if(new_eyes)
@@ -1212,12 +1206,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					new_horns = input(user, "Choose your character's horns:", "Character Preference") as null|anything in GLOB.horns_list
 					if(new_horns)
 						features["horns"] = new_horns
-
-				if("ears")
-					var/new_ears
-					new_ears = input(user, "Choose your character's ears:", "Character Preference") as null|anything in GLOB.ears_list
-					if(new_ears)
-						features["ears"] = new_ears
 
 				if("wings")
 					var/new_wings
@@ -1402,7 +1390,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						gender = MALE
 					underwear = random_underwear(gender)
 					undershirt = random_undershirt(gender)
-					socks = random_socks()
 					facial_hair_style = random_facial_hair_style(gender)
 					hair_style = random_hair_style(gender)
 
@@ -1480,6 +1467,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if (parent && parent.mob && parent.mob.hud_used)
 						parent.mob.hud_used.update_parallax_pref(parent.mob)
 
+				if("ambientocclusion")
+					ambientocclusion = !ambientocclusion
+					if(parent && parent.screen && parent.screen.len)
+						var/obj/screen/plane_master/game_world/PM = locate(/obj/screen/plane_master/game_world) in parent.screen
+						PM.filters = null //byond doesn't support finding specific filters within the filters var, as the filters var is a fake list
+						if(ambientocclusion)
+							PM.filters += AMBIENT_OCCLUSION
+
 				if("save")
 					save_preferences()
 					save_character()
@@ -1536,7 +1531,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.facial_hair_style = facial_hair_style
 	character.underwear = underwear
 	character.undershirt = undershirt
-	character.socks = socks
 
 	character.backbag = backbag
 

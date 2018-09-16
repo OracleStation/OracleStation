@@ -183,7 +183,7 @@
 	name = "Pipe Painter"
 	id = "pipe_painter"
 	build_type = AUTOLATHE
-	materials = list(MAT_METAL = 5000, MAT_GLASS = 2000)
+	materials = list(MAT_METAL = 50, MAT_GLASS = 50)
 	build_path = /obj/item/device/pipe_painter
 	category = list("initial", "Misc")
 
@@ -193,6 +193,14 @@
 	build_type = AUTOLATHE
 	materials = list(MAT_METAL = 50, MAT_GLASS = 50)
 	build_path = /obj/item/airlock_painter
+	category = list("initial", "Misc")
+
+/datum/design/floor_painter
+	name = "Floor Painter"
+	id = "floor_painter"
+	build_type = AUTOLATHE
+	materials = list(MAT_METAL = 50, MAT_GLASS = 50)
+	build_path = /obj/item/device/floor_painter
 	category = list("initial", "Misc")
 
 /datum/design/metal
@@ -405,6 +413,13 @@
 	build_type = AUTOLATHE
 	materials = list(MAT_METAL = 500, MAT_GLASS = 50)
 	build_path = /obj/item/device/healthanalyzer
+	category = list("initial", "Medical")
+
+/datum/design/roboanalyzer
+	id = "roboanalyzer"
+	build_type = AUTOLATHE
+	materials = list(MAT_METAL = 500, MAT_GLASS = 50)
+	build_path = /obj/item/device/roboanalyzer
 	category = list("initial", "Medical")
 
 /datum/design/beanbag_slug
@@ -814,4 +829,3 @@
 	materials = list(MAT_GLASS = 20)
 	build_path = /obj/item/stock_parts/cell/emergency_light
 	category = list("initial", "Electronics")
-	

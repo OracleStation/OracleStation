@@ -22,7 +22,7 @@
 	name = "Spaceacillin"
 	id = "spaceacillin"
 	results = list("spaceacillin" = 2)
-	required_reagents = list("fungus" = 1, "ethanol" = 1)
+	required_reagents = list("mushroomhallucinogen" = 1, "ethanol" = 1)
 
 /datum/chemical_reaction/synaptizine
 	name = "Synaptizine"
@@ -152,6 +152,12 @@
 	id = "epinephrine"
 	results = list("epinephrine" = 6)
 	required_reagents = list("phenol" = 1, "acetone" = 1, "diethylamine" = 1, "oxygen" = 1, "chlorine" = 1, "hydrogen" = 1)
+
+/datum/chemical_reaction/mitocholide
+	name = "Mitocholide"
+	id = "mitocholide"
+	results = list("mitocholide" = 3)
+	required_reagents = list("cryoxadone" = 1, "synthflesh" = 1, "stable_plasma" = 1)
 
 /datum/chemical_reaction/strange_reagent
 	name = "Strange Reagent"

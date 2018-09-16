@@ -131,8 +131,9 @@
 		update_item_icon()
 	UpdateButtonIcon()
 
-/datum/action/item_action/chameleon/change/proc/update_item(obj/item/picked_item)
-	target.name = initial(picked_item.name)
+/datum/action/item_action/chameleon/change/proc/update_item(obj/item/picked_item, obj/item/target = src.target)
+	if(!istype(target, /obj/item/card/id) && !istype(target, /obj/item/device/pda)) // Avoid having an already forged ID card be called "identification card" when setting disguise.
+		target.name = initial(picked_item.name)
 	target.desc = initial(picked_item.desc)
 	target.icon_state = initial(picked_item.icon_state)
 	if(isitem(target))
@@ -143,6 +144,14 @@
 			var/obj/item/clothing/CL = I
 			var/obj/item/clothing/PCL = picked_item
 			CL.flags_cover = initial(PCL.flags_cover)
+	if(istype(target, /obj/item/clothing/suit/space/hardsuit/infiltration) && istype(target, /obj/item/clothing/suit/space/hardsuit))
+		var/obj/item/clothing/suit/space/hardsuit/infiltration/I = target
+		var/obj/item/clothing/suit/space/hardsuit/HS = new picked_item
+		update_item(HS.helmettype, I.head_piece)
+		var/mob/living/M = owner
+		if(istype(M))
+			M.update_inv_head()
+		QDEL_NULL(HS)
 	target.icon = initial(picked_item.icon)
 
 /datum/action/item_action/chameleon/change/Trigger()
@@ -150,7 +159,7 @@
 		return
 
 	select_look(owner)
-	return 1
+	return TRUE
 
 /datum/action/item_action/chameleon/change/proc/emp_randomise()
 	if(istype(target, /obj/item/gun/energy/laser/chameleon))
@@ -345,7 +354,6 @@
 
 	flags_1 = BLOCK_GAS_SMOKE_EFFECT_1 | MASKINTERNALS_1
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|HIDEFACIALHAIR
-	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH
 

@@ -56,9 +56,9 @@ Bonus
 			else
 				M.blur_eyes(20)
 				M.adjust_eye_damage(5)
-				if(eyes.eye_damage >= 10)
+				if(eyes.get_damage_perc() >= 10)
 					M.become_nearsighted()
-				if(prob(eyes.eye_damage - 10 + 1))
+				if(prob(eyes.get_damage_perc() - 10 + 1))
 					if(!remove_eyes)
 						if(M.become_blind())
 							to_chat(M, "<span class='userdanger'>You go blind!</span>")
@@ -125,7 +125,7 @@ Bonus
 				else if(M.eye_blind || M.eye_blurry)
 					M.set_blindness(0)
 					M.set_blurriness(0)
-				else if(eyes.eye_damage > 0)
+				else if(eyes.get_damage_perc() > 0)
 					M.adjust_eye_damage(-1)
 		else
 			if(prob(base_message_chance))

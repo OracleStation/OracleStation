@@ -6,6 +6,7 @@
 #define PLANE_SPACE -95
 #define PLANE_SPACE_PARALLAX -90
 
+#define OPENTURF_PLANE -2
 #define GAME_PLANE -1
 #define BLACKNESS_PLANE 0 //To keep from conflicts with SEE_BLACKNESS internals
 //#define TURF_LAYER 2 //For easy recordkeeping; this is a byond define
@@ -24,6 +25,7 @@
 #define GAS_PIPE_VISIBLE_LAYER 2.47
 #define GAS_FILTER_LAYER 2.48
 #define GAS_PUMP_LAYER 2.49
+#define CONVEYOR_LAYER 2.495
 #define LOW_OBJ_LAYER 2.5
 #define LOW_SIGIL_LAYER 2.52
 #define SIGIL_LAYER 2.54
@@ -31,6 +33,7 @@
 
 #define BELOW_OPEN_DOOR_LAYER 2.6
 #define OPEN_DOOR_LAYER 2.7
+#define DOOR_HELPER_LAYER 2.71 //keep this above OPEN_DOOR_LAYER
 #define PROJECTILE_HIT_THRESHHOLD_LAYER 2.75 //projectiles won't hit objects at or below this layer if possible
 #define TABLE_LAYER 2.8
 #define BELOW_OBJ_LAYER 2.9

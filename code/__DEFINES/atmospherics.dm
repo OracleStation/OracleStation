@@ -41,8 +41,8 @@
 #define MINIMUM_TEMPERATURE_RATIO_TO_SUSPEND		0.012
 #define MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND		4		//Minimum temperature difference before group processing is suspended
 #define MINIMUM_TEMPERATURE_DELTA_TO_CONSIDER		0.5		//Minimum temperature difference before the gas temperatures are just set to be equal
-#define MINIMUM_TEMPERATURE_FOR_SUPERCONDUCTION		T20C+10
-#define MINIMUM_TEMPERATURE_START_SUPERCONDUCTION	T20C+200
+#define MINIMUM_TEMPERATURE_FOR_SUPERCONDUCTION		(T20C+10)
+#define MINIMUM_TEMPERATURE_START_SUPERCONDUCTION	(T20C+200)
 #define FLOOR_HEAT_TRANSFER_COEFFICIENT		0.4
 #define WALL_HEAT_TRANSFER_COEFFICIENT		0.0
 #define DOOR_HEAT_TRANSFER_COEFFICIENT		0.0
@@ -51,8 +51,8 @@
 #define WINDOW_HEAT_TRANSFER_COEFFICIENT	0.1		//a hack for now
 	//Must be between 0 and 1. Values closer to 1 equalize temperature faster
 	//Should not exceed 0.4 else strange heat flow occur
-#define FIRE_MINIMUM_TEMPERATURE_TO_SPREAD	150+T0C
-#define FIRE_MINIMUM_TEMPERATURE_TO_EXIST	100+T0C
+#define FIRE_MINIMUM_TEMPERATURE_TO_SPREAD	(150+T0C)
+#define FIRE_MINIMUM_TEMPERATURE_TO_EXIST	(100+T0C)
 #define FIRE_SPREAD_RADIOSITY_SCALE			0.85
 #define FIRE_CARBON_ENERGY_RELEASED			500000	//Amount of heat released per mole of burnt carbon into the tile
 #define FIRE_PLASMA_ENERGY_RELEASED			3000000	//Amount of heat released per mole of burnt plasma into the tile
@@ -62,8 +62,8 @@
 	//Plasma fire properties
 #define OXYGEN_BURN_RATE_BASE				1.4
 #define PLASMA_BURN_RATE_DELTA				9
-#define PLASMA_MINIMUM_BURN_TEMPERATURE		100+T0C
-#define PLASMA_UPPER_TEMPERATURE			1370+T0C
+#define PLASMA_MINIMUM_BURN_TEMPERATURE		(100+T0C)
+#define PLASMA_UPPER_TEMPERATURE			(1370+T0C)
 #define PLASMA_MINIMUM_OXYGEN_NEEDED		2
 #define PLASMA_MINIMUM_OXYGEN_PLASMA_RATIO	30
 #define PLASMA_OXYGEN_FULLBURN				10
@@ -119,7 +119,7 @@
 
 #define PRESSURE_DAMAGE_COEFFICIENT			4		//The amount of pressure damage someone takes is equal to (pressure / HAZARD_HIGH_PRESSURE)*PRESSURE_DAMAGE_COEFFICIENT, with the maximum of MAX_PRESSURE_DAMAGE
 #define MAX_HIGH_PRESSURE_DAMAGE			4		//This used to be 20... I got this much random rage for some retarded decision by polymorph?! Polymorph now lies in a pool of blood with a katana jammed in his spleen. ~Errorage --PS: The katana did less than 20 damage to him :(
-#define LOW_PRESSURE_DAMAGE					2		//The amounb of damage someone takes when in a low pressure area (The pressure threshold is so low that it doesn't make sense to do any calculations, so it just applies this flat value).
+#define LOW_PRESSURE_DAMAGE					4		//The amount of damage someone takes when in a low pressure area (The pressure threshold is so low that it doesn't make sense to do any calculations, so it just applies this flat value).
 
 #define COLD_SLOWDOWN_FACTOR				20		//Humans are slowed by the difference between bodytemp and BODYTEMP_COLD_DAMAGE_LIMIT divided by this
 

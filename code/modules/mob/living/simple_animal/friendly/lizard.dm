@@ -4,6 +4,7 @@
 	icon_state = "lizard"
 	icon_living = "lizard"
 	icon_dead = "lizard_dead"
+	can_be_held = "lizard"
 	speak_emote = list("hisses")
 	health = 5
 	maxHealth = 5
@@ -38,3 +39,7 @@
 		return TRUE
 	else
 		return ..()
+
+/mob/living/simple_animal/hostile/lizard/generate_mob_holder()
+	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(src), src, "lizard", 'icons/mob/animals_held.dmi', 'icons/mob/animals_held_lh.dmi', 'icons/mob/animals_held_rh.dmi', TRUE)
+	return holder

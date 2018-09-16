@@ -178,7 +178,8 @@ Borg Shaker
 					RG.add_reagent(reagent_ids[valueofi], 5)
 
 /obj/item/reagent_containers/borghypo/borgshaker/afterattack(obj/target, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 
 	else if(target.is_open_container() && target.reagents)
 		var/datum/reagents/R = reagent_list[mode]
@@ -226,7 +227,7 @@ Borg Shaker
 /obj/item/reagent_containers/borghypo/peace/hacked
 	desc = "Everything's peaceful in death!"
 	icon_state = "borghypo_s"
-	reagent_ids = list("dizzysolution","tiresolution","tirizene","sulfonal","sodium_thiopental","cyanide","neurotoxin2")
+	reagent_ids = list("dizzysolution","tiresolution","tirizene","sulfonal","sodium_thiopental","cyanide","fentanyl")
 	accepts_reagent_upgrades = FALSE
 
 /obj/item/reagent_containers/borghypo/epi

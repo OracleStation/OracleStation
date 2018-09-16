@@ -13,10 +13,13 @@
 	possible_transfer_amounts = list(5,10,15,20,25,30,50)
 	volume = 50
 	resistance_flags = 0
+	you_drink_from_this = TRUE
 
 /obj/item/reagent_containers/food/drinks/on_reagent_change()
-	if (gulp_size < 5) gulp_size = 5
-	else gulp_size = max(round(reagents.total_volume / 5), 5)
+	if (gulp_size < 5)
+		gulp_size = 5
+	else
+		gulp_size = max(round(reagents.total_volume / 5), 5)
 
 /obj/item/reagent_containers/food/drinks/attack(mob/M, mob/user, def_zone)
 
@@ -51,7 +54,8 @@
 	return 1
 
 /obj/item/reagent_containers/food/drinks/afterattack(obj/target, mob/user , proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
 
 		if (!is_open_container())
@@ -343,6 +347,7 @@
 	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
 	container_type = NONE
 	spillable = FALSE
+	you_drink_from_this = TRUE
 
 /obj/item/reagent_containers/food/drinks/soda_cans/attack(mob/M, mob/user)
 	if(M == user && !src.reagents.total_volume && user.a_intent == INTENT_HARM && user.zone_selected == "head")
@@ -390,8 +395,8 @@
 	list_reagents = list("lemon_lime" = 30)
 	foodtype = FRUIT
 
-/obj/item/reagent_containers/food/drinks/soda_cans/lemon_lime/New()
-	..()
+/obj/item/reagent_containers/food/drinks/soda_cans/lemon_lime/Initialize()
+	. = ..()
 	name = "Lemon-Lime Soda"
 
 /obj/item/reagent_containers/food/drinks/soda_cans/space_up
@@ -447,3 +452,9 @@
 	desc = "There is no air shortage. Do not drink."
 	icon_state = "air"
 	list_reagents = list("nitrogen" = 24, "oxygen" = 6)
+
+/obj/item/reagent_containers/food/drinks/soda_cans/synthanol
+	name = "Beep's Classic Synthanol"
+	desc = "A can of IPC booze, however that works."
+	icon_state = "synthanolcan"
+	list_reagents = list("synthanol" = 50)

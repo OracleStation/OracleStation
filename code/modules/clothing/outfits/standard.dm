@@ -372,7 +372,7 @@
 
 
 	var/obj/item/card/id/W = H.wear_id
-	W.icon_state = "centcom"
+	W.icon_state = "deathsquad"
 	W.access = get_all_accesses()//They get full station access.
 	W.access += get_centcom_access("Death Commando")//Let's add their alloted CentCom access.
 	W.assignment = "Death Commando"
@@ -391,7 +391,3 @@
 	head = /obj/item/clothing/head/helmet/space/chronos
 	mask = /obj/item/clothing/mask/breath
 	suit_store = /obj/item/tank/internals/oxygen
-
-
-
-

@@ -278,10 +278,6 @@
 	S.DisIntegrate(src)
 	return TRUE
 
-/obj/machinery/field/generator/swarmer_act(mob/living/simple_animal/hostile/swarmer/S)
-	S.DisIntegrate(src)
-	return TRUE
-
 /obj/machinery/gravity_generator/swarmer_act(mob/living/simple_animal/hostile/swarmer/S)
 	S.DisIntegrate(src)
 	return TRUE
@@ -319,6 +315,10 @@
 	return FALSE
 
 /obj/structure/cable/swarmer_act(mob/living/simple_animal/hostile/swarmer/S)
+	to_chat(S, "<span class='warning'>Disrupting the power grid would bring no benefit to us. Aborting.</span>")
+	return FALSE
+
+/obj/machinery/field/swarmer_act(mob/living/simple_animal/hostile/swarmer/S)
 	to_chat(S, "<span class='warning'>Disrupting the power grid would bring no benefit to us. Aborting.</span>")
 	return FALSE
 
@@ -500,10 +500,10 @@
 	D.pixel_z = target.pixel_z
 	if(do_mob(src, target, 100))
 		to_chat(src, "<span class='info'>Dismantling complete.</span>")
-		var/obj/item/stack/sheet/metal/M = new /obj/item/stack/sheet/metal(target.loc)
-		M.amount = 5
+		var/atom/Tsec = target.drop_location()
+		new /obj/item/stack/sheet/metal(Tsec, 5)
 		for(var/obj/item/I in target.component_parts)
-			I.loc = M.loc
+			I.forceMove(Tsec)
 		var/obj/effect/temp_visual/swarmer/disintegration/N = new /obj/effect/temp_visual/swarmer/disintegration(get_turf(target))
 		N.pixel_x = target.pixel_x
 		N.pixel_y = target.pixel_y
@@ -512,7 +512,7 @@
 		if(istype(target, /obj/machinery/computer))
 			var/obj/machinery/computer/C = target
 			if(C.circuit)
-				C.circuit.loc = M.loc
+				C.circuit.forceMove(Tsec)
 		qdel(target)
 
 

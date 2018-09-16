@@ -51,6 +51,12 @@
 		manifest = null
 		update_icon()
 
+/obj/structure/closet/crate/handle_lock_addition()
+	return
+
+/obj/structure/closet/crate/handle_lock_removal()
+	return
+
 /obj/structure/closet/crate/proc/tear_manifest(mob/user)
 	to_chat(user, "<span class='notice'>You tear the manifest off of [src].</span>")
 	playsound(src, 'sound/items/poster_ripped.ogg', 75, 1)
@@ -95,7 +101,6 @@
 	new /obj/item/reagent_containers/blood/OMinus(src)
 	new /obj/item/reagent_containers/blood/OPlus(src)
 	new /obj/item/reagent_containers/blood/unathi(src)
-	new /obj/item/reagent_containers/blood/ethari(src)
 	new /obj/item/reagent_containers/blood/vox(src)
 	for(var/i in 1 to 3)
 		new /obj/item/reagent_containers/blood/random(src)

@@ -5,6 +5,7 @@
 
 /obj/structure/closet/secure_closet/captains/PopulateContents()
 	..()
+	new /obj/item/clothing/head/beret/captain(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/captain(src)
 	if(prob(33))
 		new /obj/item/storage/backpack/captain(src)
@@ -28,7 +29,7 @@
 	new /obj/item/clothing/gloves/color/captain(src)
 	new /obj/item/restraints/handcuffs/cable/zipties(src)
 	new /obj/item/storage/belt/sabre(src)
-	new /obj/item/gun/energy/e_gun(src)
+	new /obj/item/gun/energy/e_gun/mini(src)
 	new /obj/item/door_remote/captain(src)
 
 /obj/structure/closet/secure_closet/hop
@@ -51,7 +52,7 @@
 	new /obj/item/device/assembly/flash/handheld(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
 	new /obj/item/restraints/handcuffs/cable/zipties(src)
-	new /obj/item/gun/energy/e_gun(src)
+	new /obj/item/gun/energy/e_gun/mini(src)
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/door_remote/civillian(src)
 
@@ -62,6 +63,8 @@
 
 /obj/structure/closet/secure_closet/blueshield/PopulateContents()
 	..()
+	new /obj/item/clothing/head/beret/blueshield(src)
+	new /obj/item/clothing/head/beret/blueshieldnavy(src)
 	new /obj/item/storage/briefcase(src)
 	new	/obj/item/storage/firstaid/regular(src)
 	new /obj/item/storage/belt/security(src)
@@ -158,7 +161,10 @@
 
 /obj/structure/closet/secure_closet/security/PopulateContents()
 	..()
-	new /obj/item/clothing/suit/armor/vest(src)
+	if(prob(20))//lower prob, because they already start with those
+		new /obj/item/clothing/suit/armor/vest(src)
+	else
+		new /obj/item/clothing/suit/armor/jacket(src)
 	new /obj/item/clothing/head/helmet/sec(src)
 	new /obj/item/device/radio/headset/headset_sec(src)
 	new /obj/item/device/radio/headset/headset_sec/alt(src)

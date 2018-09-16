@@ -221,7 +221,6 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 		H.set_species(/datum/species/unathi, 1)
 		H.underwear = "Nude"
 		H.undershirt = "Nude"
-		H.socks = "Nude"
 		H.dna.features["mcolor"] = "511" //A deep red
 		H.regenerate_icons()
 	else //Did the devil get hit by a staff of transmutation?
@@ -443,7 +442,6 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 			H.set_species(/datum/species/unathi, 1)
 			H.underwear = "Nude"
 			H.undershirt = "Nude"
-			H.socks = "Nude"
 			H.dna.features["mcolor"] = "511"
 			H.regenerate_icons()
 			if(SOULVALUE >= TRUE_THRESHOLD) //Yes, BOTH this and the above if statement are to run if soulpower is high enough.

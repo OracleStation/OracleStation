@@ -663,18 +663,32 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
 	icon_state = "boozeomat"        //////////////18 drink entities below, plus the glasses, in case someone wants to edit the number of bottles
 	icon_deny = "boozeomat-deny"
-	products = list(/obj/item/reagent_containers/food/drinks/bottle/gin = 5, /obj/item/reagent_containers/food/drinks/bottle/whiskey = 5,
-					/obj/item/reagent_containers/food/drinks/bottle/tequila = 5, /obj/item/reagent_containers/food/drinks/bottle/vodka = 5,
-					/obj/item/reagent_containers/food/drinks/bottle/vermouth = 5, /obj/item/reagent_containers/food/drinks/bottle/rum = 5,
-					/obj/item/reagent_containers/food/drinks/bottle/wine = 5, /obj/item/reagent_containers/food/drinks/bottle/cognac = 5,
-					/obj/item/reagent_containers/food/drinks/bottle/kahlua = 5, /obj/item/reagent_containers/food/drinks/bottle/hcider = 5,
-					/obj/item/reagent_containers/food/drinks/bottle/absinthe = 5, /obj/item/reagent_containers/food/drinks/bottle/grappa = 5,
-					/obj/item/reagent_containers/food/drinks/ale = 6, /obj/item/reagent_containers/food/drinks/bottle/orangejuice = 4,
-					/obj/item/reagent_containers/food/drinks/bottle/tomatojuice = 4, /obj/item/reagent_containers/food/drinks/bottle/limejuice = 4,
-					/obj/item/reagent_containers/food/drinks/bottle/cream = 4, /obj/item/reagent_containers/food/drinks/soda_cans/tonic = 8,
-					/obj/item/reagent_containers/food/drinks/soda_cans/cola = 8, /obj/item/reagent_containers/food/drinks/soda_cans/sodawater = 15,
-					/obj/item/reagent_containers/food/drinks/drinkingglass = 30, /obj/item/reagent_containers/food/drinks/ice = 10,
-					/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass = 12, /obj/item/reagent_containers/food/drinks/flask = 3)
+	products = list(/obj/item/reagent_containers/food/drinks/bottle/gin = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/whiskey = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/tequila = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/vodka = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/vermouth = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/rum = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/wine = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/cognac = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/kahlua = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/hcider = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/absinthe = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/grappa = 5,
+					/obj/item/reagent_containers/food/drinks/soda_cans/synthanol = 5,
+					/obj/item/reagent_containers/food/drinks/ale = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/orangejuice = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/tomatojuice = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/limejuice = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/cream = 5,
+					/obj/item/reagent_containers/food/drinks/soda_cans/tonic = 5,
+					/obj/item/reagent_containers/food/drinks/soda_cans/cola = 5,
+					/obj/item/reagent_containers/food/drinks/soda_cans/sodawater = 5,
+					/obj/item/reagent_containers/food/drinks/drinkingglass = 30,
+					/obj/item/reagent_containers/food/drinks/ice = 10,
+					/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass = 10,
+					/obj/item/reagent_containers/food/drinks/flask = 5)
+
 	contraband = list(/obj/item/reagent_containers/food/drinks/mug/tea = 12)
 	product_slogans = "I hope nobody asks me for a bloody cup o' tea...;Alcohol is humanity's friend. Would you abandon a friend?;Quite delighted to serve you!;Is nobody thirsty on this station?"
 	product_ads = "Drink up!;Booze is good for you!;Alcohol is humanity's best friend.;Quite delighted to serve you!;Care for a nice, cold beer?;Nothing cures you like booze!;Have a sip!;Have a drink!;Have a beer!;Beer is good for you!;Only the finest alcohol!;Best quality booze since 2053!;Award-winning wine!;Maximum alcohol!;Man loves beer.;A toast for progress!"
@@ -1080,7 +1094,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	icon_state = "engivend"
 	icon_deny = "engivend-deny"
 	req_access_txt = "11" //Engineering Equipment access
-	products = list(/obj/item/clothing/glasses/meson/engine = 2, /obj/item/device/multitool = 4, /obj/item/electronics/airlock = 10, /obj/item/electronics/apc = 10, /obj/item/electronics/airalarm = 10, /obj/item/stock_parts/cell/high = 10, /obj/item/construction/rcd/loaded = 3, /obj/item/device/geiger_counter = 5, /obj/item/grenade/chem_grenade/smart_metal_foam = 10)
+	products = list(/obj/item/clothing/glasses/meson/engine = 2, /obj/item/device/multitool = 4, /obj/item/electronics/airlock = 10, /obj/item/electronics/apc = 10, /obj/item/electronics/airalarm = 10, /obj/item/stock_parts/cell/high = 10, /obj/item/construction/rcd/loaded = 3, /obj/item/device/geiger_counter = 5, /obj/item/grenade/chem_grenade/smart_metal_foam = 10,  /obj/item/storage/briefcase/inflatable = 3)
 	contraband = list(/obj/item/stock_parts/cell/potato = 3)
 	premium = list(/obj/item/storage/belt/utility = 3, /obj/item/storage/box/smart_metal_foam = 1)
 	armor = list(melee = 100, bullet = 100, laser = 100, energy = 100, bomb = 0, bio = 0, rad = 0, fire = 100, acid = 50)
@@ -1131,6 +1145,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	/obj/item/clothing/under/pants/camo = 1, /obj/item/clothing/under/pants/blackjeans=2, /obj/item/clothing/under/pants/khaki=2,
 	/obj/item/clothing/under/pants/white=2, /obj/item/clothing/under/pants/red=1, /obj/item/clothing/under/pants/black=2,
 	/obj/item/clothing/under/pants/tan=2, /obj/item/clothing/under/pants/track=1, /obj/item/clothing/suit/jacket/miljacket = 1,
+	/obj/item/clothing/suit/jacket/miljacket/desert = 1, /obj/item/clothing/suit/jacket/miljacket/navy = 1,
 	/obj/item/clothing/neck/tie/blue=1, /obj/item/clothing/neck/tie/red=1, /obj/item/clothing/neck/tie/black=1, /obj/item/clothing/neck/tie/horrible=1,
 	/obj/item/clothing/neck/scarf/red=1, /obj/item/clothing/neck/scarf/green=1, /obj/item/clothing/neck/scarf/darkblue=1,
 	/obj/item/clothing/neck/scarf/purple=1, /obj/item/clothing/neck/scarf/yellow=1, /obj/item/clothing/neck/scarf/orange=1,

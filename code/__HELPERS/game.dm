@@ -22,7 +22,13 @@
 	for(var/area/A in world)
 		if(A.name == N)
 			return A
-	return 0
+	return FALSE
+
+/proc/get_area_by_type(N)
+	for(var/area/A in world)
+		if(A.type == N)
+			return A
+	return FALSE
 
 /proc/get_areas_in_range(dist=0, atom/center=usr)
 	if(!dist)
@@ -225,7 +231,8 @@
 	else  // A variation of get_hear inlined here to take advantage of the compiler's fastpath for obj/mob in view
 		var/lum = T.luminosity
 		T.luminosity = 6 // This is the maximum luminosity
-		processing_list = viewers(R, T)
+		for(var/mob/M in view(R, T))
+			processing_list += M
 		for(var/obj/O in view(R, T))
 			processing_list += O
 		T.luminosity = lum
@@ -573,3 +580,17 @@
 	var/pressure = environment.return_pressure()
 	if(pressure <= LAVALAND_EQUIPMENT_EFFECT_PRESSURE)
 		return TRUE
+
+/proc/considered_alive(datum/mind/M, enforce_human = TRUE)
+	if(M && M.current)
+		if(enforce_human)
+			var/mob/living/carbon/human/H
+			if(ishuman(M.current))
+				H = M.current
+			return M.current.stat != DEAD && !issilicon(M.current) && !isbrain(M.current) && (!H || H.dna.species.id != "memezombies")
+		else if(isliving(M.current))
+			return M.current.stat != DEAD
+	return FALSE
+
+/proc/considered_afk(datum/mind/M)
+	return !M || !M.current || !M.current.client || M.current.client.is_afk()

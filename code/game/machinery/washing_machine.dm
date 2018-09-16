@@ -64,8 +64,7 @@
 	return
 
 /obj/item/stack/sheet/hairlesshide/machine_wash(obj/machinery/washing_machine/WM)
-	var/obj/item/stack/sheet/wetleather/WL = new(loc)
-	WL.amount = amount
+	new /obj/item/stack/sheet/wetleather(drop_location(), amount)
 	qdel(src)
 
 /obj/item/clothing/suit/hooded/ian_costume/machine_wash(obj/machinery/washing_machine/WM)
@@ -192,6 +191,10 @@
 	if(default_deconstruction_screwdriver(user, null, null, W))
 		update_icon()
 		return
+
+	if(istype(W, /obj/item/clothing/head/mob_holder))
+		to_chat(user, "<span class='warning'>This does not fit in the washing machine.</span>")
+		return 1
 
 	else if(user.a_intent != INTENT_HARM)
 

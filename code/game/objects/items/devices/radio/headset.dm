@@ -295,8 +295,10 @@
 		if(keyslot2.syndie)
 			src.syndie = 1
 
-		if (keyslot2.independent)
-			independent = TRUE
+		for(var/ch_name in keyslot2.independent)
+			if (ch_name in src.independent)
+				continue
+			independent += GLOB.radiochannels[ch_name]
 
 
 	for(var/ch_name in channels)

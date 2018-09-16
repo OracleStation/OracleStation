@@ -1215,10 +1215,6 @@
 	dir = 4
 	},
 /area/mine/production)
-"dt" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/mine/production)
 "du" = (
 /turf/open/floor/plasteel/loadingarea,
 /area/mine/production)
@@ -3372,6 +3368,26 @@
 	},
 /turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
+"vL" = (
+/obj/machinery/door/airlock/external{
+	glass = 1;
+	name = "Mining Shuttle Airlock";
+	opacity = 0;
+	req_access_txt = "0"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel,
+/area/mine/production)
+"Dr" = (
+/obj/machinery/door/airlock/external{
+	glass = 1;
+	name = "Mining External Airlock";
+	opacity = 0;
+	req_access_txt = "54"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel,
+/area/mine/eva)
 "Uq" = (
 /obj/docking_port/stationary{
 	area_type = /area/lavaland/surface/outdoors;
@@ -17521,7 +17537,7 @@ aj
 ab
 ab
 bN
-cj
+vL
 br
 ab
 ab
@@ -21375,7 +21391,7 @@ aj
 ab
 bf
 bg
-bX
+Dr
 bg
 bf
 ai

@@ -48,6 +48,8 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 		to_chat(user, "<span class='notice'>You attach wire to the [name].</span>")
 		var/obj/item/stack/light_w/new_tile = new(user.loc)
 		new_tile.add_fingerprint(user)
+	else if(istype(W, /obj/item/device/lightreplacer))
+		W.attackby(src, user)
 	else if(istype(W, /obj/item/stack/rods))
 		var/obj/item/stack/rods/V = W
 		if (V.get_amount() >= 1 && get_amount() >= 1)

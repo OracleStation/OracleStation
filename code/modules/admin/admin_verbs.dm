@@ -172,7 +172,7 @@ GLOBAL_LIST_INIT(admin_verbs_debug, world.AVerbsDebug())
 GLOBAL_PROTECT(admin_verbs_possess)
 GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, /proc/release))
 GLOBAL_PROTECT(admin_verbs_permissions)
-GLOBAL_LIST_INIT(admin_verbs_permissions, list(/client/proc/edit_admin_permissions))
+GLOBAL_LIST_INIT(admin_verbs_permissions, list(/client/proc/edit_admin_permissions, /client/proc/edit_mentor_permissions))
 GLOBAL_PROTECT(admin_verbs_poll)
 GLOBAL_LIST_INIT(admin_verbs_poll, list(/client/proc/create_poll))
 
@@ -605,7 +605,8 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	set name = "Give Disease"
 	set desc = "Gives a Disease to a mob."
 	var/datum/disease/D = input("Choose the disease to give to that guy", "ACHOO") as null|anything in SSdisease.diseases
-	if(!D) return
+	if(!D)
+		return
 	T.ForceContractDisease(new D)
 	SSblackbox.add_details("admin_verb","Give Disease") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(usr)] gave [key_name(T)] the disease [D].")

@@ -165,6 +165,12 @@
 
 /mob/proc/put_in_hand(obj/item/I, hand_index)
 	if(can_put_in_hand(I, hand_index))
+		if(m_intent == MOVE_INTENT_WALK)
+			to_chat(src, "<span class='notice'>You start [pick("inconspicuously", "slowly", "carefully", "silently")] picking up [I]. (Walk mode)</span>")
+			if(!do_after(src, 2 SECONDS, target = I))
+				return FALSE
+		else if(isturf(I.loc))
+			I.do_pickup_animation(src)
 		I.forceMove(src)
 		held_items[hand_index] = I
 		I.layer = ABOVE_HUD_LAYER

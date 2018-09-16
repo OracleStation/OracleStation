@@ -58,13 +58,6 @@
 	name = "Captain REAL_NAME"
 	desc = "Probably better than the last captain."
 
-/datum/dog_fashion/head/kitty
-	name = "Runtime"
-	emote_see = list("coughs up a furball", "stretches")
-	emote_hear = list("purrs")
-	speak = list("Purrr", "Meow!", "MAOOOOOW!", "HISSSSS", "MEEEEEEW")
-	desc = "It's a cute little kitty-cat! ... wait ... what the hell?"
-
 /datum/dog_fashion/head/rabbit
 	name = "Hoppy"
 	emote_see = list("twitches its nose", "hops around a bit")
@@ -75,6 +68,16 @@
 	desc = "Mon dieu! C'est un chien!"
 	speak = list("le woof!", "le bark!", "JAPPE!!")
 	emote_see = list("cowers in fear.", "surrenders.", "plays dead.","looks as though there is a wall in front of him.")
+
+/datum/dog_fashion/head/beret_blueshield
+	name = "Blueshield REAL_NAME"
+	desc = "Will stand by you until the bitter end."
+	emote_see = list("stands with pride.", "growls heroically.")
+
+/datum/dog_fashion/head/beret_blueshieldnavy
+	name = "Blueshield REAL_NAME"
+	desc = "Will stand by you until the bitter end."
+	emote_see = list("stands with pride.", "growls heroically.")
 
 
 /datum/dog_fashion/head/detective
@@ -174,3 +177,9 @@
 /datum/dog_fashion/back/deathsquad
 	name = "Trooper REAL_NAME"
 	desc = "That's not red paint. That's real corgi blood."
+
+/datum/dog_fashion/back/bsarmor
+	name = "Blueshield REAL_NAME"
+	desc = "Will stand by you until the bitter end."
+	emote_see = list("stands with pride.", "growls heroically.")
+

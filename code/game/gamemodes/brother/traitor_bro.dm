@@ -1,20 +1,20 @@
-/datum/objective_team/brother_team
-	name = "brotherhood" 
-	member_name = "blood brother" 
+/datum/team/brother_team
+	name = "brotherhood"
+	member_name = "blood brother"
 	var/list/objectives = list()
 	var/meeting_area
 
-/datum/objective_team/brother_team/is_solo()
+/datum/team/brother_team/is_solo()
 	return FALSE
 
-/datum/objective_team/brother_team/proc/add_objective(datum/objective/O, needs_target = FALSE)
+/datum/team/brother_team/proc/add_objective(datum/objective/O, needs_target = FALSE)
 	O.team = src
 	if(needs_target)
 		O.find_target()
 	O.update_explanation_text()
 	objectives += O
 
-/datum/objective_team/brother_team/proc/forge_brother_objectives()
+/datum/team/brother_team/proc/forge_brother_objectives()
 	objectives = list()
 	var/is_hijacker = prob(10)
 	for(var/i = 1 to max(1, CONFIG_GET(number/brother_objectives_amount) + (members.len > 2) - is_hijacker))
@@ -25,7 +25,7 @@
 	else if(!locate(/datum/objective/escape) in objectives)
 		add_objective(new/datum/objective/escape)
 
-/datum/objective_team/brother_team/proc/forge_single_objective()
+/datum/team/brother_team/proc/forge_single_objective()
 	if(prob(50))
 		if(LAZYLEN(active_ais()) && prob(100/GLOB.joined_player_list.len))
 			add_objective(new/datum/objective/destroy, TRUE)
@@ -38,7 +38,7 @@
 
 /datum/game_mode
 	var/list/datum/mind/brothers = list()
-	var/list/datum/objective_team/brother_team/brother_teams = list()
+	var/list/datum/team/brother_team/brother_teams = list()
 
 /datum/game_mode/traitor/bros
 	name = "traitor+brothers"
@@ -51,7 +51,7 @@
 	<span class='danger'>Blood Brothers</span>: Accomplish your objectives.\n\
 	<span class='notice'>Crew</span>: Do not let the traitors or brothers succeed!"
 
-	var/list/datum/objective_team/brother_team/pre_brother_teams = list()
+	var/list/datum/team/brother_team/pre_brother_teams = list()
 	var/const/team_amount = 2 //hard limit on brother teams if scaling is turned off
 	var/const/min_team_size = 2
 
@@ -71,9 +71,9 @@
 		num_teams = max(1, round(num_players() / bsc))
 
 	for(var/j = 1 to num_teams)
-		if(possible_brothers.len < min_team_size || antag_candidates.len <= required_enemies) 
+		if(possible_brothers.len < min_team_size || antag_candidates.len <= required_enemies)
 			break
-		var/datum/objective_team/brother_team/team = new
+		var/datum/team/brother_team/team = new
 		var/team_size = prob(10) ? min(3, possible_brothers.len) : 2
 		for(var/k = 1 to team_size)
 			var/datum/mind/bro = pick(possible_brothers)
@@ -86,7 +86,7 @@
 	return ..()
 
 /datum/game_mode/traitor/bros/post_setup()
-	for(var/datum/objective_team/brother_team/team in pre_brother_teams)
+	for(var/datum/team/brother_team/team in pre_brother_teams)
 		team.meeting_area = pick(meeting_areas)
 		meeting_areas -= team.meeting_area
 		team.forge_brother_objectives()
@@ -104,7 +104,7 @@
 		return
 	var/text = "<br><font size=4><b>The blood brothers were:</b></font>"
 	var/teamnumber = 1
-	for(var/datum/objective_team/brother_team/team in brother_teams)
+	for(var/datum/team/brother_team/team in brother_teams)
 		if(!team.members.len)
 			continue
 		text += "<br><font size=3><b>Team #[teamnumber++]</b></font>"

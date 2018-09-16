@@ -17,7 +17,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 
 /mob/living/carbon/human/Initialize()
 	verbs += /mob/living/proc/mob_sleep
-	verbs += /mob/living/proc/lay_down
+	verbs += /mob/living/proc/lay_down_helper
 
 	//initialize limbs first
 	create_bodyparts()
@@ -615,7 +615,6 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	else
 		facial_hair_style = "Shaved"
 	hair_style = pick("Bedhead", "Bedhead 2", "Bedhead 3")
-	underwear = "Nude"
 	update_body()
 	update_hair()
 
@@ -784,6 +783,8 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 		if(hud_used.healthdoll)
 			hud_used.healthdoll.cut_overlays()
 			if(stat != DEAD)
+				if(hal_screwyhud == SCREWYHUD_HEALTHY)
+					return
 				hud_used.healthdoll.icon_state = "healthdoll_OVERLAY"
 				for(var/X in bodyparts)
 					var/obj/item/bodypart/BP = X
@@ -800,10 +801,10 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 						icon_num = 4
 					if(damage > (comparison*4))
 						icon_num = 5
-					if(hal_screwyhud == SCREWYHUD_HEALTHY)
-						icon_num = 0
 					if(icon_num)
 						hud_used.healthdoll.add_overlay(mutable_appearance('icons/mob/screen_gen.dmi', "[BP.body_zone][icon_num]"))
+					if(BP.broken)
+						hud_used.healthdoll.add_overlay(mutable_appearance('icons/mob/screen_gen.dmi', "[BP.body_zone]_fract"))
 				for(var/t in get_missing_limbs()) //Missing limbs
 					hud_used.healthdoll.add_overlay(mutable_appearance('icons/mob/screen_gen.dmi', "[t]6"))
 			else
@@ -889,7 +890,6 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	.["Make cyborg"] = "?_src_=vars;[HrefToken()];makerobot=[REF(src)]"
 	.["Make alien"] = "?_src_=vars;[HrefToken()];makealien=[REF(src)]"
 	.["Make slime"] = "?_src_=vars;[HrefToken()];makeslime=[REF(src)]"
-	.["Toggle Purrbation"] = "?_src_=vars;[HrefToken()];purrbation=[REF(src)]"
 
 /mob/living/carbon/human/MouseDrop_T(mob/living/target, mob/living/user)
 	if((target != pulling) || (grab_state < GRAB_AGGRESSIVE) || (user != target) || !isliving(user) || stat || user.stat)//Get consent first :^)

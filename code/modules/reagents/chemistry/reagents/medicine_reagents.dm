@@ -688,7 +688,7 @@
 	else if(M.eye_blind || M.eye_blurry)
 		M.set_blindness(0)
 		M.set_blurriness(0)
-	else if(eyes.eye_damage > 0)
+	else if(eyes.get_damage_perc() > 0)
 		M.adjust_eye_damage(-1)
 	..()
 
@@ -757,6 +757,37 @@
 		. = 1
 	..()
 
+/datum/reagent/medicine/mitocholide
+	name = "Mitocholide"
+	id = "mitocholide"
+	description = "Slowly heals all organ damage. Easy to overdose."
+	reagent_state = LIQUID
+	taste_description = "bitterness"
+	overdose_threshold = 15
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
+
+/datum/reagent/medicine/mitocholide/on_mob_life(mob/living/M)
+	var/mob/living/carbon/C = M
+	if(!C || !C.organ_damage_tracker)
+		return ..()
+	for(var/thing in C.internal_organs)
+		var/obj/item/organ/O = thing
+		O.heal_damage(rand(2, 6))
+	..()
+
+/datum/reagent/medicine/mitocholide/overdose_process(mob/living/M)
+	var/mob/living/carbon/C = M
+	if(!C)
+		return ..()
+	for(var/thing in C.internal_organs)
+		var/obj/item/organ/O = thing
+		O.take_damage(rand(1, 2))
+	if(prob(8))
+		C.vomit()
+	if(prob(10))
+		to_chat(C, "<span class='boldwarning'>[pick(list("Something hurts in your lower body", "Your insides are burning"))]!</span>")
+	..()
+
 /datum/reagent/medicine/strange_reagent
 	name = "Strange Reagent"
 	id = "strange_reagent"
@@ -818,7 +849,13 @@
 	process_flags = SYNTHETIC
 
 /datum/reagent/medicine/liquid_solder/on_mob_life(mob/living/M)
-	M.adjustBrainLoss(-3*REM)
+	M.adjustBrainLoss(-2*REM)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		if(prob(30) && C.has_trauma_type(BRAIN_TRAUMA_SPECIAL))
+			C.cure_trauma_type(BRAIN_TRAUMA_SPECIAL)
+		if(prob(10) && C.has_trauma_type(BRAIN_TRAUMA_MILD))
+			C.cure_trauma_type(BRAIN_TRAUMA_MILD)
 	..()
 
 /datum/reagent/medicine/mutadone
@@ -928,7 +965,7 @@
 	M.adjustFireLoss(-3 * REM, 0)
 	M.adjustOxyLoss(-15 * REM, 0)
 	M.adjustToxLoss(-3 * REM, 0)
-	M.adjustBrainLoss(2 * REM, 150) //This does, after all, come from ambrosia, and the most powerful ambrosia in existence, at that!
+	M.adjustBrainLoss(2 * REM, 75) //This does, after all, come from ambrosia, and the most powerful ambrosia in existence, at that!
 	M.adjustCloneLoss(-1 * REM, 0)
 	M.adjustStaminaLoss(-30 * REM, 0)
 	M.jitteriness = min(max(0, M.jitteriness + 3), 30)
@@ -994,6 +1031,16 @@
 
 /datum/reagent/medicine/miningnanites/on_mob_life(mob/living/M)
 	M.heal_bodypart_damage(5,5, 0)
+	var/mob/living/carbon/C = M
+	if(C)
+		for(var/thing in C.bodyparts)
+			var/obj/item/bodypart/B = thing
+			if(prob(25))
+				B.fix_bone()
+		if(C.organ_damage_tracker)
+			for(var/thing in C.internal_organs)
+				var/obj/item/organ/O = thing
+				O.heal_damage(10)//heals 50 damage per survival medipen to every organ
 	..()
 	. = 1
 
@@ -1039,12 +1086,13 @@
 	..()
 
 /datum/reagent/medicine/corazone
-	// Heart attack code will not do damage if corazone is present
-	// because it's SPACE MAGIC ASPIRIN
+	// Stops all organ damage effects from happening
+	// Also stops heart attacks
 	name = "Corazone"
 	id = "corazone"
 	description = "A medication used to treat pain, fever, and inflammation, along with heart attacks."
 	color = "#F5F5F5"
+	metabolization_rate = 0 // it gets filtered out manually in carbon code; rip
 
 /datum/reagent/medicine/corazone/on_mob_life(mob/living/M as mob)
 	..()

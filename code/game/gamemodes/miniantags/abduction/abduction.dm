@@ -212,13 +212,13 @@
 // OBJECTIVES
 /datum/objective/experiment
 	target_amount = 6
-	var/team
+	var/a_team
 
 /datum/objective/experiment/New()
 	explanation_text = "Experiment on [target_amount] humans."
 
 /datum/objective/experiment/check_completion()
-	var/ab_team = team
+	var/ab_team = a_team
 	if(owner)
 		if(!owner.current || !ishuman(owner.current))
 			return 0

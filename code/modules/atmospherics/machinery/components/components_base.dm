@@ -46,8 +46,10 @@ Iconnery
 	var/turf/T = loc
 	if(level == 2 || !T.intact)
 		showpipe = TRUE
+		plane = GAME_PLANE
 	else
 		showpipe = FALSE
+		plane = OPENTURF_PLANE
 
 	if(!showpipe)
 		return //no need to update the pipes if they aren't showing
@@ -84,6 +86,9 @@ Pipenet stuff; housekeeping
 			P.build_pipeline(src)
 
 /obj/machinery/atmospherics/components/proc/nullifyPipenet(datum/pipeline/reference)
+	if(!reference)
+		CRASH("nullifyPipenet(null) called by [type] on [COORD(src)]")
+		return
 	var/I = parents.Find(reference)
 	reference.other_airs -= AIR_I
 	reference.other_atmosmch -= src

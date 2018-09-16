@@ -141,6 +141,11 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		to_chat(src, "<span class='warning'>You find yourself unable to speak!</span>")
 		return
 
+	if(check_retard_speech(message))
+		var/reeee = pick(GLOB.retard_lines)
+		to_chat(src, "<span class='warning'>[reeee]</span>")
+		return
+
 	var/message_range = 7
 
 	var/succumbed = FALSE
@@ -386,6 +391,14 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	return message
 
 /mob/living/proc/radio(message, message_mode, list/spans, language)
+	var/obj/item/implant/radio/imp = locate() in src
+	if(imp && imp.radio.on)
+		if(message_mode == MODE_HEADSET)
+			imp.radio.talk_into(src, message, , spans, language)
+			return ITALICS | REDUCE_RANGE
+		if(message_mode == MODE_DEPARTMENT || message_mode in GLOB.radiochannels)
+			imp.radio.talk_into(src, message, message_mode, spans, language)
+			return ITALICS | REDUCE_RANGE
 	switch(message_mode)
 		if(MODE_R_HAND)
 			for(var/obj/item/r_hand in get_held_items_for_side("r", all = TRUE))

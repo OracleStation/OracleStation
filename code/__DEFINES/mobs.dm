@@ -60,15 +60,22 @@
 /*see __DEFINES/inventory.dm for bodypart bitflag defines*/
 
 //Brain Damage defines
-#define BRAIN_DAMAGE_MILD 20
-#define BRAIN_DAMAGE_SEVERE 100
-#define BRAIN_DAMAGE_DEATH 200
+#define BRAIN_DAMAGE_MILD 10
+#define BRAIN_DAMAGE_SEVERE 50
+#define BRAIN_DAMAGE_DEATH 100
 
 #define BRAIN_TRAUMA_MILD /datum/brain_trauma/mild
 #define BRAIN_TRAUMA_SEVERE /datum/brain_trauma/severe
 #define BRAIN_TRAUMA_SPECIAL /datum/brain_trauma/special
 
-#define BRAIN_DAMAGE_INTEGRITY_MULTIPLIER 0.5
+//default HP values; 200 for more important organs or sth
+#define ORGAN_HEALTH_NONE 0 //for stuff that doesn't get damaged at all
+#define ORGAN_HEALTH_DEFAULT 100
+#define ORGAN_HEALTH_HIGH 200
+
+//percentage tiers
+#define ORGAN_DAMAGE_LOW 30
+#define ORGAN_DAMAGE_HIGH 90
 
 //Health hud screws for carbon mobs
 #define SCREWYHUD_NONE 0
@@ -154,10 +161,6 @@
 #define SLIDE 2
 #define GALOSHES_DONT_HELP 4
 #define SLIDE_ICE 8
-
-
-#define UNHEALING_EAR_DAMAGE 100
-
 
 #define INCORPOREAL_MOVE_BASIC 1
 #define INCORPOREAL_MOVE_SHADOW 2 // leaves a trail of shadows

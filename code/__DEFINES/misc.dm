@@ -48,7 +48,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define BODY_BEHIND_LAYER		26		//certain mutantrace features (tail when looking south) that must appear behind the body parts
 #define BODYPARTS_LAYER			25		//Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
 #define BODY_ADJ_LAYER			24		//certain mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_LAYER				23		//underwear, undershirts, socks, eyes, lips(makeup)
+#define BODY_LAYER				23		//underwear, undershirts, eyes, lips(makeup)
 #define FRONT_MUTATIONS_LAYER	22		//mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
 #define DAMAGE_LAYER			21		//damage indicators (cuts and burns)
 #define UNIFORM_LAYER			20
@@ -406,6 +406,10 @@ GLOBAL_LIST_INIT(ghost_others_options, list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DE
 #define CLOCK_SILICONS 22
 #define CLOCK_PROSELYTIZATION 23
 #define SHUTTLE_HIJACK 24
+#define INFILTRATION_ALLCOMPLETE 25
+#define INFILTRATION_MOSTCOMPLETE 26
+#define INFILTRATION_SOMECOMPLETE 27
+#define INFILTRATION_NONECOMPLETE 28
 
 #define TURF_DECAL_PAINT "paint"
 #define TURF_DECAL_DAMAGE "damage"
@@ -444,3 +448,6 @@ GLOBAL_LIST_INIT(ghost_others_options, list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DE
 
 //text files
 #define BRAIN_DAMAGE_FILE "traumas.json"
+
+//Filters
+#define AMBIENT_OCCLUSION filter(type="drop_shadow", x=0, y=-2, size=4, border=4, color="#04080FAA")

@@ -13,6 +13,7 @@
 	var/mob/living/brain/brainmob = null
 	var/damaged_brain = FALSE //whether the brain organ is damaged.
 	var/decoy_override = FALSE	//I apologize to the security players, and myself, who abused this, but this is going to go.
+	max_integrity = ORGAN_HEALTH_HIGH
 
 	var/list/datum/brain_trauma/traumas = list()
 
@@ -147,29 +148,10 @@
 	else
 		..()
 
-/obj/item/organ/brain/proc/get_brain_damage()
-	var/brain_damage_threshold = max_integrity * BRAIN_DAMAGE_INTEGRITY_MULTIPLIER
-	var/offset_integrity = obj_integrity - (max_integrity - brain_damage_threshold)
-	. = (1 - (offset_integrity / brain_damage_threshold)) * BRAIN_DAMAGE_DEATH
-
-/obj/item/organ/brain/proc/adjust_brain_damage(amount, maximum)
-	var/adjusted_amount
-	if(amount >= 0 && maximum)
-		var/brainloss = get_brain_damage()
-		var/new_brainloss = Clamp(brainloss + amount, 0, maximum)
-		if(brainloss > new_brainloss) //brainloss is over the cap already
-			return 0
-		adjusted_amount = new_brainloss - brainloss
-	else
-		adjusted_amount = amount
-
-	adjusted_amount *= BRAIN_DAMAGE_INTEGRITY_MULTIPLIER
-	if(adjusted_amount)
-		if(adjusted_amount >= 0.1)
-			take_damage(adjusted_amount)
-		else if(adjusted_amount <= -0.1)
-			obj_integrity = min(max_integrity, obj_integrity-adjusted_amount)
-	. = adjusted_amount
+/obj/item/organ/brain/on_full_heal()
+	. = ..()
+	damaged_brain = FALSE
+	cure_all_traumas()
 
 /obj/item/organ/brain/Destroy() //copypasted from MMIs.
 	if(brainmob)

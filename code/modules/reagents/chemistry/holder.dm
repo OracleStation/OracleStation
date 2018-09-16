@@ -372,6 +372,8 @@
 					if(!has_reagent(B, cached_required_catalysts[B]))
 						break
 					total_matching_catalysts++
+				if(!C.can_react(src))
+					continue
 				if(cached_my_atom)
 					if(!C.required_container)
 						matching_container = 1
@@ -670,7 +672,8 @@
 	return jointext(names, ",")
 
 /datum/reagents/proc/remove_all_type(reagent_type, amount, strict = 0, safety = 1) // Removes all reagent of X type. @strict set to 1 determines whether the childs of the type are included.
-	if(!isnum(amount)) return 1
+	if(!isnum(amount))
+		return 1
 	var/list/cached_reagents = reagent_list
 	var/has_removed_reagent = 0
 

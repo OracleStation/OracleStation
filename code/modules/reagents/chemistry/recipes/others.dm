@@ -125,100 +125,96 @@
 	required_reagents = list("ammonia" = 2, "nitrogen" = 1, "oxygen" = 2)
 	required_temp = 525
 
+/datum/chemical_reaction/holywater
+	name = "Holy Water"
+	id = "holywater"
+	results = list("holywater" = 3)
+	required_reagents = list("water" = 1, "mercury" = 1, "wine" = 1)
+
 ////////////////////////////////// Mutation Toxins ///////////////////////////////////
 
-/datum/chemical_reaction/stable_mutation_toxin
+/datum/chemical_reaction/mutation_toxin
+	var/species_type = null
+	required_reagents = list("unstablemutationtoxin" = 1, "blood" = 1)
+
+/datum/chemical_reaction/mutation_toxin/can_react(datum/reagents/holder)
+	var/datum/reagent/blood/B = locate() in holder.reagent_list
+	if(species_type && istype(B) && B.data["species"])
+		return B.data["species"] == species_type
+	else
+		return FALSE
+
+/datum/chemical_reaction/mutation_toxin/human
 	name = "Stable Mutation Toxin"
 	id = "stablemutationtoxin"
 	results = list("stablemutationtoxin" = 1)
-	required_reagents = list("unstablemutationtoxin" = 1, "blood" = 1) //classic
+	species_type = /datum/species/human
 
-/datum/chemical_reaction/lizard_mutation_toxin
+/datum/chemical_reaction/mutation_toxin/unathi
 	name = "Unathi Mutation Toxin"
 	id = "lizardmutationtoxin"
 	results = list("lizardmutationtoxin" = 1)
-	required_reagents = list("unstablemutationtoxin" = 1, "radium" = 1) //mutant
+	species_type = /datum/species/unathi
 
-/datum/chemical_reaction/ethari_mutation_toxin
+/datum/chemical_reaction/mutation_toxin/ethari
 	name = "Ethari Mutation Toxin"
 	id = "etharimutationtoxin"
 	results = list("etharimutationtoxin" = 1)
-	required_reagents = list("unstablemutationtoxin" = 1, "welding_fuel" = 1)
+	species_type = /datum/species/ethari
 
-/datum/chemical_reaction/fly_mutation_toxin
+/datum/chemical_reaction/mutation_toxin/fly
 	name = "Fly Mutation Toxin"
 	id = "flymutationtoxin"
 	results = list("flymutationtoxin" = 1)
-	required_reagents = list("unstablemutationtoxin" = 1, "mutagen" = 1) //VERY mutant
+	species_type = /datum/species/fly
+
+/datum/chemical_reaction/mutation_toxin/abductor
+	name = "Abductor Mutation Toxin"
+	id = "abductormutationtoxin"
+	results = list("abductormutationtoxin" = 1)
+	species_type = /datum/species/abductor
+
+/datum/chemical_reaction/mutation_toxin/pod
+	name = "Podperson Mutation Toxin"
+	id = "podmutationtoxin"
+	results = list("podmutationtoxin" = 1)
+	species_type = /datum/species/pod
+
+/datum/chemical_reaction/mutation_toxin/vox
+	name = "Vox Mutation Toxin"
+	id = "voxmutationtoxin"
+	results = list("voxmutationtoxin" = 1)
+	species_type = /datum/species/vox
+
+/datum/chemical_reaction/mutation_toxin/ashwalker
+	name = "Ash Mutation Toxin"
+	id = "ashmutationtoxin"
+	results = list("ashmutationtoxin" = 1)
+	species_type = /datum/species/unathi/ashwalker
+
+/datum/chemical_reaction/mutation_toxin/plasmaman
+	name = "Plasma Mutation Toxin"
+	id = "plasmamutationtoxin"
+	results = list("plasmamutationtoxin" = 1)
+	species_type = /datum/species/plasmaman
+	
+/datum/chemical_reaction/mutation_toxin/shadow
+	name = "Shadow Mutation Toxin"
+	id = "shadowmutationtoxin"
+	results = list("shadowmutationtoxin" = 1)
+	species_type = /datum/species/shadow
+
+/datum/chemical_reaction/robot_mutation_toxin
+	name = "Robot Mutation Toxin"
+	id = "ipcmutationtoxin"
+	results = list("ipcmutationtoxin" = 1)
+	required_reagents = list("unstablemutationtoxin" = 1, "nanomachines" = 1) //beep boop
 
 /datum/chemical_reaction/jelly_mutation_toxin
 	name = "Imperfect Mutation Toxin"
 	id = "jellymutationtoxin"
 	results = list("jellymutationtoxin" = 1)
 	required_reagents = list("unstablemutationtoxin" = 1, "slimejelly" = 1) //why would you even make this
-
-/datum/chemical_reaction/abductor_mutation_toxin
-	name = "Abductor Mutation Toxin"
-	id = "abductormutationtoxin"
-	results = list("abductormutationtoxin" = 1)
-	required_reagents = list("unstablemutationtoxin" = 1, "morphine" = 1)
-
-/datum/chemical_reaction/robot_mutation_toxin
-	name = "Robot Mutation Toxin"
-	id = "ipcmutationtoxin"
-	results = list("ipcmutationtoxin" = 1)
-	required_reagents = list("unstablemutationtoxin" = 1, "teslium" = 1) //beep boop
-
-/datum/chemical_reaction/pod_mutation_toxin
-	name = "Podperson Mutation Toxin"
-	id = "podmutationtoxin"
-	results = list("podmutationtoxin" = 1)
-	required_reagents = list("unstablemutationtoxin" = 1, "eznutriment" = 1) //plant food
-
-/datum/chemical_reaction/golem_mutation_toxin
-	name = "Golem Mutation Toxin"
-	id = "golemmutationtoxin"
-	results = list("golemmutationtoxin" = 1)
-	required_reagents = list("unstablemutationtoxin" = 1, "silver" = 1) //not too hard to get but also not just there in xenobio
-
-/datum/chemical_reaction/vox_mutation_toxin
-	name = "Vox Mutation Toxin"
-	id = "voxmutationtoxin"
-	results = list("voxmutationtoxin" = 1)
-	required_reagents = list("amutationtoxin" = 1, "eggyolk" = 1, "nitrogen" = 1)
-
-//BLACKLISTED RACES
-/datum/chemical_reaction/skeleton_mutation_toxin
-	name = "Skeleton Mutation Toxin"
-	id = "skeletonmutationtoxin"
-	results = list("skeletonmutationtoxin" = 1)
-	required_reagents = list("amutationtoxin" = 1, "milk" = 1) //good for yer bones
-
-/datum/chemical_reaction/zombie_mutation_toxin
-	name = "Zombie Mutation Toxin"
-	id = "zombiemutationtoxin"
-	results = list("zombiemutationtoxin" = 1)
-	required_reagents = list("amutationtoxin" = 1, "toxin" = 1)
-
-/datum/chemical_reaction/ash_mutation_toxin //ash lizard
-	name = "Ash Mutation Toxin"
-	id = "ashmutationtoxin"
-	results = list("ashmutationtoxin" = 1)
-	required_reagents = list("amutationtoxin" = 1, "lizardmutationtoxin" = 1, "ash" = 1)
-
-
-//DANGEROUS RACES
-/datum/chemical_reaction/plasma_mutation_toxin
-	name = "Plasma Mutation Toxin"
-	id = "plasmamutationtoxin"
-	results = list("plasmamutationtoxin" = 1)
-	required_reagents = list("skeletonmutationtoxin" = 1, "plasma" = 1, "uranium" = 1) //this is very fucking powerful, so it's hard to make
-
-/datum/chemical_reaction/shadow_mutation_toxin
-	name = "Shadow Mutation Toxin"
-	id = "shadowmutationtoxin"
-	results = list("shadowmutationtoxin" = 1)
-	required_reagents = list("amutationtoxin" = 1, "liquid_dark_matter" = 1, "holywater" = 1)
 
 //Technically a mutation toxin
 /datum/chemical_reaction/mulligan
@@ -583,7 +579,7 @@
 	name = "carpet"
 	id = "carpet"
 	results = list("carpet" = 2)
-	required_reagents = list("fungus" = 1, "blood" = 1)
+	required_reagents = list("mushroomhallucinogen" = 1, "blood" = 1)
 
 /datum/chemical_reaction/oil
 	name = "Oil"
@@ -720,3 +716,47 @@
 	var/location = get_turf(holder.my_atom)
 	for(var/i, i <= created_volume, i++)
 		new /obj/item/reagent_containers/food/snacks/chocolatebar(location)
+
+// IPC DRINKS
+
+/datum/chemical_reaction/synthanol
+	name = "Synthanol"
+	id = "synthanol"
+	required_reagents = list("lube" = 1, "plasma" = 1, "welding_fuel" = 1)
+	results = list("synthanol" = 3)
+
+/datum/chemical_reaction/synthanol/robottears
+	name = "Robot Tears"
+	id = "robottears"
+	required_reagents = list("synthanol" = 1, "oil" = 1, "sodawater" = 1)
+	results = list("robottears" = 3)
+
+/datum/chemical_reaction/synthanol/trinary
+	name = "Trinary"
+	id = "trinary"
+	required_reagents = list("synthanol" = 1, "limejuice" = 1, "orangejuice" = 1)
+	results = list("trinary" = 3)
+
+/datum/chemical_reaction/synthanol/servo
+	name = "Servo"
+	id = "servo"
+	required_reagents = list("synthanol" = 2, "cream" = 1, "hot_coco" = 1)
+	results = list("servo" = 4)
+
+/datum/chemical_reaction/synthanol/uplink
+	name = "Uplink"
+	id = "uplink"
+	required_reagents = list("rum" = 1, "vodka" = 1, "tequila" = 1, "whiskey" = 1, "synthanol" = 1)
+	results = list("uplink" = 5)
+
+/datum/chemical_reaction/synthanol/synthnsoda
+	name = "Synth 'n Soda"
+	id = "synthnsoda"
+	required_reagents = list("synthanol" = 1, "cola" = 1)
+	results = list("synthnsoda" = 2)
+
+/datum/chemical_reaction/synthanol/synthignon
+	name = "Synthignon"
+	id = "synthignon"
+	required_reagents = list("synthanol" = 1, "wine" = 1)
+	results = list("synthignon" = 2)

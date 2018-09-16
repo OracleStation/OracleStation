@@ -21,6 +21,9 @@
 	return
 	//I recommend you set the result amount to the total volume of all components.
 
+/datum/chemical_reaction/proc/can_react(datum/reagents/holder)
+	return TRUE //Default implementation is empty, but can override!
+
 /datum/chemical_reaction/proc/chemical_mob_spawn(datum/reagents/holder, amount_to_spawn, reaction_name, mob_faction = "chemicalsummon")
 	var/static/list/chemical_mob_spawn_meancritters = list() // list of possible hostile mobs
 	var/static/list/chemical_mob_spawn_nicecritters = list() // and possible friendly mobs

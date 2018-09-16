@@ -68,7 +68,8 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 
 	if(antag_candidates.len>0)
 		for(var/i = 0, i < num_changelings, i++)
-			if(!antag_candidates.len) break
+			if(!antag_candidates.len)
+				break
 			var/datum/mind/changeling = pick(antag_candidates)
 			antag_candidates -= changeling
 			changelings += changeling
@@ -121,7 +122,7 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 		changeling_assassinate.find_target_by_role("Changeling", TRUE)
 		if(changeling_assassinate.target && changeling_assassinate.target.current) //if we did find a target
 			no_assassinate = FALSE
-			changeling_assassinate.explanation_text += "They are known in the hivemind as [changeling_assassinate.target.changeling.changelingID]."
+			changeling_assassinate.explanation_text = "Assassinate [changeling_assassinate.target.changeling.changelingID], a fellow changeling. [pick("They can no longer be trusted.", "They pose a threat to the hivemind.")]"
 			changeling.objectives += changeling_assassinate
 		else //couldn't find a target, we're leaving
 			qdel(changeling_assassinate)
@@ -369,7 +370,6 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 
 	prof.underwear = H.underwear
 	prof.undershirt = H.undershirt
-	prof.socks = H.socks
 
 	var/list/slots = list("head", "wear_mask", "back", "wear_suit", "w_uniform", "shoes", "belt", "gloves", "glasses", "ears", "wear_id", "s_store")
 	for(var/slot in slots)
@@ -426,7 +426,6 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	user.real_name = chosen_prof.name
 	user.underwear = chosen_prof.underwear
 	user.undershirt = chosen_prof.undershirt
-	user.socks = chosen_prof.socks
 
 	chosen_dna.transfer_identity(user, 1)
 	user.updateappearance(mutcolor_update=1)
@@ -477,7 +476,6 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 
 	var/underwear
 	var/undershirt
-	var/socks
 
 /datum/changelingprofile/Destroy()
 	qdel(dna)
@@ -496,7 +494,6 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	newprofile.item_state_list = item_state_list.Copy()
 	newprofile.underwear = underwear
 	newprofile.undershirt = undershirt
-	newprofile.socks = socks
 
 /datum/game_mode/proc/update_changeling_icons_added(datum/mind/changling_mind)
 	var/datum/atom_hud/antag/hud = GLOB.huds[ANTAG_HUD_CHANGELING]

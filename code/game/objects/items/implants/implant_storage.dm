@@ -13,6 +13,7 @@
 	origin_tech = "materials=2;magnets=4;bluespace=5;syndicate=4"
 	item_color = "r"
 	var/obj/item/storage/internal/implant/storage
+	shows_up_on_scanners = FALSE
 
 /obj/item/implant/storage/New()
 	..()

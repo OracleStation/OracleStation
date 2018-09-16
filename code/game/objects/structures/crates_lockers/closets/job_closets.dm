@@ -132,6 +132,12 @@
 	material_drop = /obj/item/stack/sheet/mineral/wood
 	material_drop_amount = 5
 
+/obj/structure/closet/coffin/handle_lock_addition()
+	return
+
+/obj/structure/closet/coffin/handle_lock_removal()
+	return
+
 /obj/structure/closet/wardrobe/red
 	name = "security wardrobe"
 	icon_door = "red"
@@ -150,6 +156,10 @@
 		new /obj/item/clothing/head/beret/sec(src)
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/head/soft/sec(src)
+	for(var/i in 1 to 3)
+		new /obj/item/clothing/head/soft/sec/corp(src)
+	for(var/i in 1 to 3)
+		new /obj/item/clothing/under/rank/security/corporate(src)
 	new /obj/item/clothing/mask/bandana/red(src)
 	new /obj/item/clothing/mask/bandana/red(src)
 	return
@@ -176,6 +186,7 @@
 	icon_door = "atmos_wardrobe"
 
 /obj/structure/closet/wardrobe/atmospherics_yellow/PopulateContents()
+	new /obj/item/clothing/head/beret/atmos(src)
 	new /obj/item/storage/backpack/duffelbag/engineering(src)
 	new /obj/item/storage/backpack/satchel/eng(src)
 	new /obj/item/storage/backpack/industrial(src)
@@ -192,6 +203,7 @@
 	icon_door = "yellow"
 
 /obj/structure/closet/wardrobe/engineering_yellow/PopulateContents()
+	new /obj/item/clothing/head/beret/eng(src)
 	new /obj/item/storage/backpack/duffelbag/engineering(src)
 	new /obj/item/storage/backpack/industrial(src)
 	new /obj/item/storage/backpack/satchel/eng(src)
@@ -210,6 +222,9 @@
 	name = "medical doctor's wardrobe"
 
 /obj/structure/closet/wardrobe/white/medical/PopulateContents()
+	new /obj/item/clothing/head/beret/med(src)
+	new /obj/item/clothing/head/beret/med(src)
+	new /obj/item/clothing/head/beret/med(src)
 	new /obj/item/storage/backpack/duffelbag/med(src)
 	new /obj/item/storage/backpack/medic(src)
 	new /obj/item/storage/backpack/satchel/med(src)
@@ -242,18 +257,20 @@
 	new /obj/item/clothing/suit/hooded/wintercoat/medical(src)
 	new /obj/item/clothing/gloves/color/latex(src)
 	new /obj/item/clothing/head/soft/emt(src)
-	new /obj/item/clothing/head/helmet/space/paramedic(src)
-	new /obj/item/clothing/suit/space/paramedic(src)
+	new /obj/item/clothing/suit/space/hardsuit/medical/emt
 	new /obj/item/clothing/suit/storage/paramedic(src)
 	new /obj/item/clothing/suit/toggle/labcoat/emt(src)
 	new /obj/item/storage/box/bodybags(src)
 	new /obj/item/roller(src)
+	new /obj/item/defibrillator/loaded(src)
 
 /obj/structure/closet/wardrobe/robotics_black
 	name = "robotics wardrobe"
 	icon_door = "black"
 
 /obj/structure/closet/wardrobe/robotics_black/PopulateContents()
+	new /obj/item/clothing/head/beret/sci(src)
+	new /obj/item/clothing/head/beret/sci(src)
 	new /obj/item/clothing/glasses/hud/diagnostic(src)
 	new /obj/item/clothing/glasses/hud/diagnostic(src)
 	new /obj/item/clothing/under/rank/roboticist(src)
@@ -316,6 +333,7 @@
 	icon_door = "white"
 
 /obj/structure/closet/wardrobe/virology_white/PopulateContents()
+	new /obj/item/clothing/head/beret/med(src)
 	new /obj/item/clothing/under/rank/virologist(src)
 	new /obj/item/clothing/under/rank/virologist(src)
 	new /obj/item/clothing/shoes/sneakers/white(src)
@@ -335,6 +353,8 @@
 	icon_door = "white"
 
 /obj/structure/closet/wardrobe/science_white/PopulateContents()
+	new /obj/item/clothing/head/beret/sci(src)
+	new /obj/item/clothing/head/beret/sci(src)
 	new /obj/item/storage/backpack/science(src)
 	new /obj/item/storage/backpack/science(src)
 	new /obj/item/storage/backpack/satchel/tox(src)
