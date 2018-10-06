@@ -1,3 +1,9 @@
+# Whoops!
+
+It appears we have died! On the 8th of September 2018 Oracle Station has ceased to exist as a server and community. That said, this repository will stay up for as long as it can, for the sake of you people being able to port features from us or just have a good hearty laugh at how shitty our codebase was.
+
+Enjoy.
+
 # OracleStation
 
 [![Build Status](https://travis-ci.org/OracleStation/OracleStation.svg?branch=master)](https://travis-ci.org/OracleStation/OracleStation)
